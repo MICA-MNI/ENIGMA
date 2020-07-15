@@ -22,7 +22,7 @@ ENIGMA TOOLBOX
 Authors
 -------
 
-- Sara Lariviere, MICA Lab - Montreal Neurological Institute
-- Raul Rodriguez-Cruces, MICA Lab - Montreal Neurological Institute
-- Bo-Yong Park, MICA Lab - Montreal Neurological Institute
-- Boris Bernhardt, MICA Lab - Montreal Neurological Institute
+- **Sara Lariviere**, *MICA Lab - Montreal Neurological Institute*
+- **Raul Rodriguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+- **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
+- **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*

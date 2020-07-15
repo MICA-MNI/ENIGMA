@@ -12,10 +12,6 @@ Python installation
 ENIGMA TOOLBOX works on Python 3.5+, and probably with older versions of Python 3,
 although it has not been tested. 
 
-
-Installation
-^^^^^^^^^^^^
-
 ENIGMA TOOLBOX relies on several packages, including BrainSpace:
 
 BrainSpace can be installed using ``pip``: ::
@@ -23,15 +19,14 @@ BrainSpace can be installed using ``pip``: ::
     pip install brainspace
 
 
-Alternatively, you can install the package from Github as follows: ::
+You can also install the package from Github as follows: ::
 
     git clone https://github.com/MICA-MNI/BrainSpace.git
     cd BrainSpace
     python setup.py install
 
 
-Dependencies
-^^^^^^^^^^^^^^^^^^^^^^^
+And has the following dependencies:
 * `numpy <https://numpy.org/>`_
 * `scipy <https://scipy.org/scipylib/index.html>`_
 * `scikit-learn <https://scikit-learn.org/stable/>`_
