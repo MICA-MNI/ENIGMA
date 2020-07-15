@@ -1,10 +1,10 @@
-function [a,cb]=sctxSurfStatViewData(data, surf_L, surf_R, title, background);
+function [a,cb]=plot_subcortical(data, surf_L, surf_R, title, background);
 
 % sctxSurfStatViewData is a simple viewer for subcortical surface data
 % 
-% Usage: [a, cb] = sctxSurfStatViewData(data, surf [,title [,background]]);
+% Usage: [a, cb] = plot_subcortical(data, surf [,title [,background]]);
 % 
-% data        = 1 x v vector of data, v=# of subcortical structures (14)
+% data        = 1 x v vector of data, v=# of subcortical structures (16)
 %   one value per subcortical structure
 %   order is L-accumbens, L-amygdala, L-caudate, L-hippocampus, L-pallidum
 %               L-putamen, L-thalamus, L-ventricle, R-accumbens, R-amygdala, R-caudate,
@@ -24,9 +24,8 @@ function [a,cb]=sctxSurfStatViewData(data, surf_L, surf_R, title, background);
 %
 %
 %
-% Modified from BoSurfStatViewData.m
 % SL | a rainy November night 2019
-% SL | added ventricles sunny July 2020 morning
+% SL | added ventricles on a sunny July 2020 morning
 
 if nargin<4 
     title=inputname(1);
