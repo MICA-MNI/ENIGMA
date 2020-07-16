@@ -3,7 +3,7 @@
 Surface visualization
 ======================================
 
-This page contains links to descriptions and examples to visualize surface data!
+This page contains descriptions and examples to visualize surface data!
 
 
 Cortical surface visualization
@@ -35,7 +35,7 @@ Cortical surface visualization
 
 Subcortical surface visualization
 ---------------
-The subcortical viewer includes 16 aseg regions...
+| The **ENIGMA TOOLBOX**'s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. 
 
 .. tabs::
 
@@ -47,7 +47,7 @@ The subcortical viewer includes 16 aseg regions...
         >>> from brainspace.utils.parcellation import subcorticalvertices
 
         >>> # Transform subcortical values (one per subcortical structure) to vertices
-        >>> # Input values are ordered as follows:
+        >>> # Input values (i.e., subcortical_values) are ordered as follows:
         >>> #     np.array([left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
         >>> #               left-pallidum, left-putamen, left-thalamus, left-ventricles,
         >>> #               right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
@@ -64,6 +64,7 @@ The subcortical viewer includes 16 aseg regions...
 
    .. code-tab:: matlab
 
+        % add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/micasoft/ENIGMA/matlab/'));
 
         % Plot subcortical values
