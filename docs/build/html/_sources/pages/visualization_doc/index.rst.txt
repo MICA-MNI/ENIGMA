@@ -31,6 +31,7 @@ Cortical surface visualization
         % Load left and right hemispheres
         [surf_lh, surf_rh] = load_conte69();
 
+|
 
 Subcortical surface visualization
 ---------------
