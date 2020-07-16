@@ -8,7 +8,7 @@ This page contains descriptions and examples to visualize surface data!
 
 Cortical surface visualization
 ---------------
-**ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical surfaces
+**ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces... and mapping between parcellations and vertices.
 
 .. tabs::
 
