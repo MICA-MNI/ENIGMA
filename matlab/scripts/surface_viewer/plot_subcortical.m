@@ -11,10 +11,8 @@ function [a,cb]=plot_subcortical(data, title, background);
 %                   R-hippocampus, R-pallidum, R-putamen, R-thalamus,
 %                   R-ventricle
 %
-% For both left and right subcortical surfaces:
-%   surf.coord  = 3 x v matrix of coordinates.
-%   surf.tri    = 3 x t matrix of triangle indices, 1-based, t=#triangles.
 % title       = any string, data name by default.
+%
 % background  = background colour, any matlab ColorSpec, such as 
 %   'white' (default), 'black'=='k', 'r'==[1 0 0], [1 0.4 0.6] (pink) etc.
 %   Letter and line colours are inverted if background is dark (mean<0.5).
