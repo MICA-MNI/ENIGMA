@@ -11,22 +11,22 @@
 }
 
 .sphinx-tabs .sphinx-menu a.item {
-    color: #1c7070 !important;
+    color: #259595 !important;
 }
 
 .sphinx-tabs .sphinx-menu {
-    border-bottom-color: #1c7070 !important;
+    border-bottom-color: #259595 !important;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 
 .sphinx-tabs .sphinx-menu a.active.item {
-    border-color: #1c7070 !important;
+    border-color: #259595 !important;
 }
 
 .sphinx-tab {
-    border-color: #1c7070 !important;
+    border-color: #259595 !important;
     box-sizing: border-box;
 }
 
