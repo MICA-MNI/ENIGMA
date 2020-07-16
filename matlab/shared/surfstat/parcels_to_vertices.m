@@ -15,7 +15,7 @@ function map2surf = parcels_to_vertices(parcel_data, surface_name)
 % Last modifications
 % SL  |  July July July 2020 
 
-if nargin < 3
+if nargin < 2
     surface_name = 'fsa5';
 end
 
@@ -30,7 +30,7 @@ end
 
 map2surf = zeros(1,size(surf.coord,2)); 
 uparcel = unique(label_vector);
-for i=1:length(label_vector)
+for i=1:length(uparcel)
     index = label_vector==uparcel(i);
     map2surf(index) = parcel_data(i); 
 end

@@ -52,7 +52,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #259595" >
           
 
           
@@ -165,7 +165,7 @@
 <p>This page contains descriptions and examples to visualize surface data!</p>
 <div class="section" id="cortical-surface-visualization">
 <h2>Cortical surface visualization<a class="headerlink" href="#cortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
-<p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical surfaces</p>
+<p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces… and mapping between parcellations and vertices.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -193,10 +193,31 @@
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="s">&#39;/path/to/micasoft/BrainSpace/matlab&#39;</span><span class="p">);</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">% Load left and right hemispheres</span>
-<span class="p">[</span><span class="n">surf_lh</span><span class="p">,</span> <span class="n">surf_rh</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_conte69</span><span class="p">();</span>
+<span class="c">%% Because ENIGMA does not provide values for the brain mask and the corpus callosum</span>
+<span class="c">% we will give them a value of zero</span>
+<span class="n">a_idx</span>                 <span class="s">=</span> <span class="s">[2:1:4</span> <span class="s">6:1:39</span> <span class="s">41:1:71]</span><span class="p">;</span>       <span class="c">% indices of parcels included in ENIGMA</span>
+<span class="n">data_DK</span>               <span class="s">=</span> <span class="s">zeros(71,</span> <span class="s">1)</span><span class="p">;</span>                 <span class="c">% vector of zeros to be filled with cortical values</span>
+<span class="n">data_DK</span><span class="p">(</span><span class="n">a_idx</span><span class="p">)</span>        <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">67</span><span class="p">;</span>                       <span class="c">% insert cortical values (one per region, 68 x 1 vector) in vector of zeros</span>
+
+<span class="c">%% Map parcellation values to surface (vertices)</span>
+<span class="n">data_fsa5</span>             <span class="s">=</span> <span class="s">parcels_to_vertices(data_DK,</span> <span class="s">&#39;fsa5&#39;)</span>
+
+<span class="c">%% Plot cortical values</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>                                   <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">)])</span>    <span class="c">% change colorbar limits here</span>
+
+
+<span class="c">% A similar approach can be done to map Desikan-Killiany data to Conte69</span>
+<span class="n">data_conte69</span>          <span class="s">=</span> <span class="s">parcels_to_vertices(data_DK,</span> <span class="s">&#39;conte69&#39;)</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">,</span> <span class="s">&#39;conte69&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -247,10 +268,10 @@
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/micasoft/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">% Plot subcortical values</span>
+<span class="c">%% Plot subcortical values</span>
 <span class="c">% Input values are ordered as follows:</span>
 <span class="c">%      [left-accumbens, left-amygdala, left-caudate, left-hippocampus,</span>
 <span class="c">%       left-pallidum, left-putamen, left-thalamus, left-ventricles,</span>

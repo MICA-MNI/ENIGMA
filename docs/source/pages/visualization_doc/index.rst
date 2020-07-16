@@ -25,20 +25,32 @@ Cortical surface visualization
         32492
 
    .. code-tab:: matlab
+
         %% add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        %% Map Desikan-Killiany data to fsaverage5
-        % Load labelling vector to map parcellated data to brain surface 
-        aparc_fsa5            = dlmread('aparc_fsa5.csv');
-
-        % Because ENIGMA does not provide values for the brain mask and the corpus callosum
+        %% Because ENIGMA does not provide values for the brain mask and the corpus callosum
         % we will give them a value of zero
-        data_DK               = zeros(71, 1)
-        [surf_lh, surf_rh]    = load_conte69();
+        a_idx                 = [2:1:4 6:1:39 41:1:71];       % indices of parcels included in ENIGMA
+        data_DK               = zeros(71, 1);                 % vector of zeros to be filled with cortical values
+        data_DK(a_idx)        = 0:1:67;                       % insert cortical values (one per region, 68 x 1 vector) in vector of zeros
+        
+        %% Map parcellation values to surface (vertices)
+        data_fsa5             = parcels_to_vertices(data_DK, 'fsa5')
+        
+        %% Plot cortical values
+        f = figure,
+            plot_cortical(data_fsa5, 'fsa5')
+            colormap(viridis)                                   % change colormap here 
+            SurfStatColLim([min(data_fsa5), max(data_fsa5)])    % change colorbar limits here
 
 
-        % A similar approach can be done to map Desikan-Killiany data to Conte69
+        % A similar approach can be done to map Desikan-Killiany data to Conte69                      
+        data_conte69          = parcels_to_vertices(data_DK, 'conte69')
+        f = figure,
+            plot_cortical(data_conte69, 'conte69')
+            colormap(viridis)                                   
+            SurfStatColLim([min(data_conte69), max(data_conte69)])   
 
 |
 
