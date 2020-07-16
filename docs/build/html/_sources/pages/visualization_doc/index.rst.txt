@@ -60,6 +60,7 @@ The subcortical viewer includes 16 aseg regions...
         >>> plot_hemispheres(surf_lh, surf_rh, array_name=data, size=(800, 400), 
         ...                  cmap='viridis', color_range=(0,15), color_bar=True)
 
+
    .. code-tab:: matlab
 
         addpath(genpath('/path/to/micasoft/ENIGMA/matlab/'));
@@ -70,8 +71,11 @@ The subcortical viewer includes 16 aseg regions...
         %       left-pallidum, left-putamen, left-thalamus, left-ventricles,
         %       right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
         %       right-pallidum, right-putamen, right-thalamus, right-ventricles]
-        data = 1:1:16                                % 16 x 1 data vector
+        data = 0:1:15;                               % 16 x 1 data vector
         f = figure,
             plot_subcortical(data);
             colormap(viridis)                         % change colormap here 
             SurfStatColLim([min(data), max(data)])    % change colorbar limits here
+
+
+.. image:: ./examples/example_figs/sctx_py.png

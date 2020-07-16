@@ -11,16 +11,16 @@ Python installation
 
 **ENIGMA TOOLBOX** relies heavily on BrainSpace, which is already included in our repository.
 
-Alternatively, you can also install BrainSpace using ``pip``: ::
-
-    pip install brainspace
-
-
-Or directly from the **ENIGMA TOOLBOX** Github as follows: ::
+You can directly download it from the **ENIGMA TOOLBOX** Github as follows: ::
 
     git clone https://github.com/MICA-MNI/ENIGMA.git
     cd python/BrainSpace
     python setup.py install
+
+
+Alternatively, you can also install BrainSpace using ``pip``: ::
+
+    pip install brainspace
 
 
 **ENIGMA TOOLBOX** and BrainSpace have the following dependencies:

@@ -22,10 +22,12 @@ function [a,cb]=plot_subcortical(data, title, background);
 % a  = vector of handles to the axes, left to right, top to bottom. 
 % cb = handle to the colorbar.
 %
+% Sara Lariviere  |  saratheriver@gmail.com
 %
-%
+% Last modifications:
 % SL | a rainy November night 2019
 % SL | added ventricles on a sunny July 2020 morning
+
 
 if nargin<2
     title=inputname(1);
