@@ -1,6 +1,6 @@
-function [a,cb]=plot_subcortical(data, surf_L, surf_R, title, background);
+function [a,cb]=plot_subcortical(data, title, background);
 
-% sctxSurfStatViewData is a simple viewer for subcortical surface data
+% plot_subcortical is a simple viewer for subcortical surface data
 % 
 % Usage: [a, cb] = plot_subcortical(data, surf [,title [,background]]);
 % 
@@ -27,13 +27,16 @@ function [a,cb]=plot_subcortical(data, surf_L, surf_R, title, background);
 % SL | a rainy November night 2019
 % SL | added ventricles on a sunny July 2020 morning
 
-if nargin<4 
+if nargin<2
     title=inputname(1);
 end
-if nargin<5
+if nargin<3
     background='white';
 end
 
+% load subcortical templates
+surf_lh = SurfStatReadSurf('sctx_lh');
+surf_rh = SurfStatReadSurf('sctx_rh')
 
 data = [ repmat(data(1), 867, 1); repmat(data(2), 1419, 1); ...
             repmat(data(3), 3012, 1); repmat(data(4), 3784, 1); ...
@@ -44,11 +47,11 @@ data = [ repmat(data(1), 867, 1); repmat(data(2), 1419, 1); ...
             repmat(data(13), 1373, 1); repmat(data(14), 3871, 1); ...
             repmat(data(15), 3699, 1); repmat(data(16), 7180, 1)];
 
-vl   = 1:size(surf_L.coord, 2);
-vr   = [1:size(surf_R.coord, 2)] + max(size(surf_L.coord, 2));
+vl   = 1:size(surf_lh.coord, 2);
+vr   = [1:size(surf_rh.coord, 2)] + max(size(surf_lh.coord, 2));
 
-tl   = 1:size(surf_L.tri, 1);
-tr   = [1:size(surf_R.tri, 1)] + max(size(surf_L.tri, 1));
+tl   = 1:size(surf_lh.tri, 1);
+tr   = [1:size(surf_rh.tri, 1)] + max(size(surf_lh.tri, 1));
 clim = [min(data),max(data)];
 if clim(1) == clim(2)
     clim = clim(1) + [-1 0];
@@ -62,7 +65,7 @@ h=0.25;
 w=0.20;
 
 a(1)=axes('position',[0.1 0.3 w h]);
-trisurf(surf_L.tri,surf_L.coord(1,:),surf_L.coord(2,:),surf_L.coord(3,:),...
+trisurf(surf_lh.tri,surf_lh.coord(1,:),surf_lh.coord(2,:),surf_lh.coord(3,:),...
     double(data(vl)),'EdgeColor','none');
 % view(0,90);
 view(-90,0)
@@ -70,7 +73,7 @@ daspect([1 1 1]); axis tight; camlight; axis vis3d off;
 lighting phong; material dull; shading flat;
 
 a(2)=axes('position',[0.1+w 0.3 w h]);
-trisurf(surf_L.tri,surf_L.coord(1,:),surf_L.coord(2,:),surf_L.coord(3,:),...
+trisurf(surf_lh.tri,surf_lh.coord(1,:),surf_lh.coord(2,:),surf_lh.coord(3,:),...
     double(data(vl)),'EdgeColor','none');
 view(90,0); 
 % view(90,-90)
@@ -78,7 +81,7 @@ daspect([1 1 1]); axis tight; camlight; axis vis3d off;
 lighting phong; material dull; shading flat;
 
 a(3)=axes('position',[0.1+2*w 0.3 w h]);
-trisurf(surf_R.tri,surf_R.coord(1,:),surf_R.coord(2,:),surf_R.coord(3,:),...
+trisurf(surf_rh.tri,surf_rh.coord(1,:),surf_rh.coord(2,:),surf_rh.coord(3,:),...
     double(data(vr)),'EdgeColor','none');
 view(-90,0); 
 % view(-90,-90)
@@ -86,7 +89,7 @@ daspect([1 1 1]); axis tight; camlight; axis vis3d off;
 lighting phong; material dull; shading flat;
 
 a(4)=axes('position',[0.1+3*w 0.3 w h]);
-trisurf(surf_R.tri,surf_R.coord(1,:),surf_R.coord(2,:),surf_R.coord(3,:),...
+trisurf(surf_rh.tri,surf_rh.coord(1,:),surf_rh.coord(2,:),surf_rh.coord(3,:),...
     double(data(vr)),'EdgeColor','none');
 view(90,0);
 % view(0,90);

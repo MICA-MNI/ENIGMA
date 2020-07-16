@@ -13,7 +13,7 @@ ENIGMA TOOLBOX
    
    pages/install
    python_doc/index_python
-   pages/matlab_doc/index
+   pages/visualization_doc/index
    pages/references
    pages/funding
 
