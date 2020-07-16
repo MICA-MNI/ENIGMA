@@ -13,7 +13,7 @@ Cortical surface visualization
 .. tabs::
 
    .. code-tab:: py
-
+       
         >>> from brainspace.datasets import load_conte69
 
         >>> # Load left and right hemispheres
@@ -25,11 +25,20 @@ Cortical surface visualization
         32492
 
    .. code-tab:: matlab
+        %% add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        addpath('/path/to/micasoft/BrainSpace/matlab');
+        %% Map Desikan-Killiany data to fsaverage5
+        % Load labelling vector to map parcellated data to brain surface 
+        aparc_fsa5            = dlmread('aparc_fsa5.csv');
 
-        % Load left and right hemispheres
-        [surf_lh, surf_rh] = load_conte69();
+        % Because ENIGMA does not provide values for the brain mask and the corpus callosum
+        % we will give them a value of zero
+        data_DK               = zeros(71, 1)
+        [surf_lh, surf_rh]    = load_conte69();
+
+
+        % A similar approach can be done to map Desikan-Killiany data to Conte69
 
 |
 
@@ -64,10 +73,10 @@ Subcortical surface visualization
 
    .. code-tab:: matlab
 
-        % add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/micasoft/ENIGMA/matlab/'));
+        %% add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        % Plot subcortical values
+        %% Plot subcortical values
         % Input values are ordered as follows:
         %      [left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
         %       left-pallidum, left-putamen, left-thalamus, left-ventricles,
