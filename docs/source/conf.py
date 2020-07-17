@@ -41,6 +41,9 @@ master_doc = 'index'
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
+from pygments.styles import get_style_by_name
+get_style_by_name('enigmalexer')
+
 from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
