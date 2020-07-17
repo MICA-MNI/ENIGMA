@@ -12,7 +12,7 @@ Support
 
 ...
 
-Manuscripts
+Related publications
 --------------
 
 Some scripts and analyses have been used in previous ENIGMA publications. Make sure you check them out!
@@ -23,6 +23,8 @@ Some scripts and analyses have been used in previous ENIGMA publications. Make s
 .. image:: ./docs/source/pages/extrafigs/rdme_epi.png
     :scale: 70%
     :align: center
+
+
 
 
 `Structural covariance networks and graph analysis in OCD <https://academic.oup.com/brain/article/143/2/684/5732968>`_
