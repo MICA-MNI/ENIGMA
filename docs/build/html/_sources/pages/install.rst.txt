@@ -13,7 +13,7 @@ Python installation
 
 You can directly download it from the **ENIGMA TOOLBOX** Github as follows: ::
 
-    git clone https://github.com/MICA-MNI/ENIGMA.git
+    git clone https://github.com/saratheriver/ENIGMA.git
     cd python/BrainSpace
     python setup.py install
 
