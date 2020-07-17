@@ -14,6 +14,7 @@ ENIGMA TOOLBOX
    pages/install
    pages/HCP_doc/index
    pages/visualization_doc/index
+   pages/epicenter_doc/index
 
 
 
