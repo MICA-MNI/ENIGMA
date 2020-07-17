@@ -12,10 +12,8 @@ ENIGMA TOOLBOX
    :caption: Table of Contents
    
    pages/install
-   python_doc/index_python
+   python_doc/HCP_doc/index
    pages/visualization_doc/index
-   pages/references
-   pages/funding
 
 
 
