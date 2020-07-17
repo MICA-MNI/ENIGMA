@@ -40,13 +40,6 @@ master_doc = 'index'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
-# The name of the Pygments (syntax highlighting) style to use.
-from pygments.styles import get_style_by_name
-get_style_by_name('enigmalexer')
-
-from pygments.styles import get_all_styles
-pygments_style = 'vim'
-
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -56,6 +49,13 @@ pygments_style = 'vim'
 html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = { 'style_nav_header_background': '#259595'}
+
+# The name of the Pygments (syntax highlighting) style to use.
+from pygments.styles import get_style_by_name
+get_style_by_name('enigmalexer')
+
+from pygments.styles import get_all_styles
+pygments_style = 'enigmalexer'
 
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
@@ -74,4 +74,3 @@ html_css_files = ['css/saratheriver_enigma.css']
 # add custom files that are stored in _static
 def setup(app):
    app.add_stylesheet("css/saratheriver_tabs.css")
-   app.add_stylesheet("css/saratheriver_friendly.py")
