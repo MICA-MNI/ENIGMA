@@ -45,7 +45,7 @@ from pygments.styles import get_style_by_name
 get_style_by_name('enigmalexer')
 
 from pygments.styles import get_all_styles
-pygments_style = 'enigmalexer'
+pygments_style = 'vim'
 
 
 # -- Options for HTML output -------------------------------------------------
