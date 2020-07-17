@@ -41,7 +41,7 @@ master_doc = 'index'
 exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'friendly'
+pygments_style = 'enigmalexer'
 
 
 # -- Options for HTML output -------------------------------------------------

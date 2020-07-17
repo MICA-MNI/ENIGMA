@@ -1,0 +1,44 @@
+.sphinx-tabs {
+    margin-bottom: 2em;
+}
+
+.sphinx-tabs:last-child {
+    margin-bottom: 1em;
+}
+
+.sphinx-tabs .sphinx-menu .item p {
+    margin: 0;
+}
+
+.sphinx-tabs .sphinx-menu a.item {
+    color: #259595 !important;
+}
+
+.sphinx-tabs .sphinx-menu {
+    border-bottom-color: #259595 !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sphinx-tabs .sphinx-menu a.active.item {
+    border-color: #259595 !important;
+}
+
+.sphinx-tab {
+    border-color: #259595 !important;
+    box-sizing: border-box;
+}
+
+.sphinx-tab.tab.active {
+    margin-bottom: 0;
+}
+
+/* Code tabs don't need the code-block border */
+.code-tab.tab {
+    padding: 0.4em !important;
+}
+
+.code-tab.tab div[class^='highlight'] {
+    border: none;
+}
