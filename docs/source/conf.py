@@ -51,7 +51,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = { 'style_nav_header_background': '#259595'}
 
 # The name of the Pygments (syntax highlighting) style to use.
-
+from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
 #def setup(app):
