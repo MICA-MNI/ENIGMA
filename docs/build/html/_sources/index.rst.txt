@@ -9,7 +9,7 @@ ENIGMA TOOLBOX
 
 .. toctree::
    :maxdepth: 1
-   :caption: Table of Contents:
+   :caption: Table of Contents
    
    pages/install
    python_doc/index_python
