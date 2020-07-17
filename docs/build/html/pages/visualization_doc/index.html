@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
 
   
   
@@ -30,6 +34,8 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../../_static/sphinx_tabs/tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -162,12 +168,140 @@
 <p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces.
 Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
 The same approach can be used to map parcellated data to conte69 surface space; simply replace every instance of ‘fsa5’ with ‘conte69’!</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">brainspace.datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.datasets</span> <span class="kn">import</span> <span class="n">load_fsa5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.plotting</span> <span class="kn">import</span> <span class="n">plot_hemispheres</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.utils.parcellation</span> <span class="kn">import</span> <span class="n">map_to_labels</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Because ENIGMA does not provide values for the brain mask and the corpus callosum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># we will give them a value of zeros</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a_idx</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">39</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">71</span><span class="p">))</span> <span class="c1"># indices of parcels included in ENIGMA</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_DK</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">71</span><span class="p">)</span>                                               <span class="c1"># vector of zeros to be filled with cortical values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_DK</span><span class="p">[</span><span class="n">a_idx</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">69</span><span class="p">))</span>                                  <span class="c1"># insert orginal Desikan-Killiany cortical values (68 values) in the vector of zeros</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load cortical surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surf_lh</span><span class="p">,</span> <span class="n">surf_rh</span> <span class="o">=</span> <span class="n">load_fsa5</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load mapping between parcellation (Desikan-Killiany) and surface (fsa5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;aparc_fsa5.csv&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">brainspace</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
+<span class="gp">... </span>                      <span class="s1">&#39;parcellations&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellation values to surface (vertices)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">data_DK</span><span class="p">,</span> <span class="n">labeling</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_hemispheres</span><span class="p">(</span><span class="n">surf_lh</span><span class="p">,</span> <span class="n">surf_rh</span><span class="p">,</span> <span class="n">array_name</span><span class="o">=</span><span class="n">data_fsa5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Because ENIGMA does not provide values for the brain mask and the corpus callosum</span>
+<span class="c">% we will give them a value of zero</span>
+<span class="n">a_idx</span>                 <span class="s">=</span> <span class="s">[2:1:4</span> <span class="s">6:1:39</span> <span class="s">41:1:71]</span><span class="p">;</span>     <span class="c">% indices of parcels included in ENIGMA</span>
+<span class="n">data_DK</span>               <span class="s">=</span> <span class="s">zeros(71,</span> <span class="s">1)</span><span class="p">;</span>               <span class="c">% vector of zeros to be filled with cortical values</span>
+<span class="n">data_DK</span><span class="p">(</span><span class="n">a_idx</span><span class="p">)</span>        <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">68</span><span class="p">;</span>                     <span class="c">% insert orginal Desikan-Killiany cortical values (68 values) in the vector of zeros</span>
+
+<span class="c">%% Map parcellation values to surface (vertices)</span>
+<span class="n">data_fsa5</span>             <span class="s">=</span> <span class="s">parcels_to_vertices(data_DK,</span> <span class="s">&#39;fsa5&#39;)</span>
+
+<span class="c">%% Plot cortical values</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>                                <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">)])</span> <span class="c">% change colorbar limits here</span>
+
+
+<span class="c">% A similar approach can be done to map Desikan-Killiany data to Conte69</span>
+<span class="n">data_conte69</span>          <span class="s">=</span> <span class="s">parcels_to_vertices(data_DK,</span> <span class="s">&#39;conte69&#39;)</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">,</span> <span class="s">&#39;conte69&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data_conte69</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
 <img alt="../../_images/ctx_py.png" src="../../_images/ctx_py.png" />
 </div>
 <div class="section" id="subcortical-surface-visualization">
 <h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles.</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.datasets</span> <span class="kn">import</span> <span class="n">load_subcortical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.plotting</span> <span class="kn">import</span> <span class="n">plot_hemispheres</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">brainspace.utils.parcellation</span> <span class="kn">import</span> <span class="n">subcorticalvertices</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Transform subcortical values (one per subcortical structure) to vertices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Input values (i.e., subcortical_values) are ordered as follows:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#     np.array([left-accumbens, left-amygdala, left-caudate, left-hippocampus,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               left-pallidum, left-putamen, left-thalamus, left-ventricles,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               right-accumbens, right-amygdala, right-caudate, right-hippocampus,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               right-pallidum, right-putamen, right-thalamus, right-ventricles])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">subcorticalvertices</span><span class="p">(</span><span class="n">subcortical_values</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load subcortical surfaces</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">surf_lh</span><span class="p">,</span> <span class="n">surf_rh</span> <span class="o">=</span> <span class="n">load_subcortical</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot subcortical values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_hemispheres</span><span class="p">(</span><span class="n">surf_lh</span><span class="p">,</span> <span class="n">surf_rh</span><span class="p">,</span> <span class="n">array_name</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Plot subcortical values</span>
+<span class="c">% Input values are ordered as follows:</span>
+<span class="c">%      [left-accumbens, left-amygdala, left-caudate, left-hippocampus,</span>
+<span class="c">%       left-pallidum, left-putamen, left-thalamus, left-ventricles,</span>
+<span class="c">%       right-accumbens, right-amygdala, right-caudate, right-hippocampus,</span>
+<span class="c">%       right-pallidum, right-putamen, right-thalamus, right-ventricles]</span>
+<span class="n">data</span> <span class="p">=</span> <span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">15</span><span class="p">;</span>                               <span class="c">% 16 x 1 data vector</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>                         <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)])</span>    <span class="c">% change colorbar limits here</span>
+</pre></div>
+</div>
+</div>
 </div>
 <img alt="../../_images/sctx_py.png" src="../../_images/sctx_py.png" />
 </div>
