@@ -51,7 +51,7 @@ MATLAB installation
 **ENIGMA TOOLBOX** was tested with MATLAB R2017b.
 
 To install the MATLAB toolbox simply `download
-<https://github.com/MICA-MNI/ENIGMA>`_, unzip the GitHub toolbox, and run
+<https://github.com/MICA-MNI/ENIGMA>`_ and unzip the GitHub toolbox, and run
 the following in MATLAB: ::
 
     addpath('/path/to/ENIGMA/matlab/')
