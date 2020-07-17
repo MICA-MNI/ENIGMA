@@ -49,12 +49,23 @@ pygments_style = 'friendly'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
+#html_theme = 'sphinx_rtd_theme'
 
-html_theme_options = { 'style_nav_header_background': '#259595'}
+
+
+
+#html_theme_options = { 'style_nav_header_background': '#259595'}
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# These paths are either relative to html_static_path
+# or fully qualified paths (eg. https://...)
+#html_css_files = [
+#    'css/saratheriver_enigma.css',
+#]
+
+html_style = 'css/saratheriver_enigma.css'
