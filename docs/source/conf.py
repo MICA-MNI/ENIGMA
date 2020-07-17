@@ -70,4 +70,4 @@ html_css_files = ['css/saratheriver_enigma.css']
 # add custom files that are stored in _static
 def setup(app):
    app.add_stylesheet("css/saratheriver_tabs.css")
-   app.add_stylesheet("css/saratheriver_friendly.css")
+   app.add_stylesheet("css/saratheriver_friendly.py")
