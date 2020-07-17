@@ -5,7 +5,7 @@
 
 
 ENIGMA TOOLBOX
-=====
+==================
 
 .. toctree::
    :maxdepth: 1
@@ -20,7 +20,7 @@ ENIGMA TOOLBOX
 
 
 Authors
--------
+--------------
 
 - **Sara Lariviere**, *MICA Lab - Montreal Neurological Institute*
 - **Raul Rodriguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
