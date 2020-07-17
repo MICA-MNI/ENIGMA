@@ -51,7 +51,7 @@ html_theme = 'sphinx_rtd_theme'
 html_theme_options = { 'style_nav_header_background': '#259595'}
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'vim'
+pygments_style = 'sphinx'
 
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
