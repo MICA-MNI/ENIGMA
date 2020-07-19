@@ -24,17 +24,3 @@ Covariance network generation
 
 
 
-Subcortical hubs and relation to atrophy
----------------
-| ...
-
-.. tabs::
-
-   .. code-tab:: py
-
-        >>> ...
-
-   .. code-tab:: matlab
-
-        %% ...
-
