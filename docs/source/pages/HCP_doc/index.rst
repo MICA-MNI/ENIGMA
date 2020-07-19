@@ -1,6 +1,6 @@
 .. _hcp_connectivity:
 
-HCP connectivity data
+Connectivity matrices
 ======================================
 
 This page contains descriptions and examples to use HCP connectivity data!
@@ -8,9 +8,10 @@ This page contains descriptions and examples to use HCP connectivity data!
 
 Cortical connectivity matrices
 ---------------
-The **ENIGMA TOOLBOX** provides structural (obtained from diffusion MRI) and functional 
-(obtained from resting-state functional MRI) connectivity matrices. Following the examples below, we can 
-load and explore various connectivity metrics and easily map them to the surface (for surface visualization, please see :ref:`surface_visualization`).
+The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional 
+(resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP). 
+Following the examples below, we can load and explore various connectivity metrics as well as easily 
+map them to the surface (please also see :ref:`surface_visualization`).
 
 .. tabs::
 
