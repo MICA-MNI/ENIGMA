@@ -7,7 +7,7 @@ This page contains descriptions and examples to visualize surface data!
 
 
 Cortical surface visualization
----------------
+-----------------------------------
 **ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces.   
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices). 
 The same approach can be used to map parcellated data to conte69 surface space; simply replace every instance of 'fsa5' with 'conte69'!
@@ -78,7 +78,7 @@ The same approach can be used to map parcellated data to conte69 surface space; 
 
 
 Subcortical surface visualization
----------------
+---------------------------------------
 | The **ENIGMA TOOLBOX**'s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. 
 
 .. tabs::

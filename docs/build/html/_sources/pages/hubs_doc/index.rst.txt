@@ -7,7 +7,7 @@ This page contains descriptions and examples to build hub susceptibility models!
 
 
 Cortical hubs and relation to atrophy
----------------
+------------------------------------------
 | ...
 
 .. tabs::
@@ -25,7 +25,7 @@ Cortical hubs and relation to atrophy
 
 
 Subcortical hubs and relation to atrophy
----------------
+---------------------------------------------
 | ...
 
 .. tabs::

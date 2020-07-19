@@ -7,7 +7,7 @@ This page contains descriptions and examples to identify disease epicenters!
 
 
 Cortical epicenters
----------------
+---------------------
 The **ENIGMA TOOLBOX** ... (for surface visualization, please see :ref:`surface_visualization`).
 
 .. tabs::
@@ -25,7 +25,7 @@ The **ENIGMA TOOLBOX** ... (for surface visualization, please see :ref:`surface_
 
 
 Subcortical epicenters
----------------
+-------------------------
 | ...
  **ENIGMA TOOLBOX**! As above, we can map our results to the surface!
 

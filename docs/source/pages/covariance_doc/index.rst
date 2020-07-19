@@ -7,7 +7,7 @@ This page contains descriptions and examples to generate structural covariance n
 
 
 Covariance network generation
----------------
+---------------------------------
 | ...
 
 .. tabs::
