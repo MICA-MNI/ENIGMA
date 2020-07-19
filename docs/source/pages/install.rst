@@ -9,21 +9,7 @@ Installation
 Python installation
 -------------------
 
-**ENIGMA TOOLBOX** relies heavily on BrainSpace, which is already included in our repository.
-
-You can directly download it from the **ENIGMA TOOLBOX** Github as follows: ::
-
-    git clone https://github.com/saratheriver/ENIGMA.git
-    cd python/BrainSpace
-    python setup.py install
-
-
-Alternatively, you can also install BrainSpace using ``pip``: ::
-
-    pip install brainspace
-
-
-**ENIGMA TOOLBOX** and BrainSpace have the following dependencies:
+**ENIGMA TOOLBOX** has the following dependencies:
 
 - `numpy <https://numpy.org/>`_
 - `scipy <https://scipy.org/scipylib/index.html>`_
@@ -31,17 +17,20 @@ Alternatively, you can also install BrainSpace using ``pip``: ::
 - `vtk <https://vtk.org/>`_
 - `matplotlib <https://matplotlib.org/>`_
 - `nibabel <https://nipy.org/nibabel/index.html>`_
+-
 
-Nibabel is required for reading/writing Gifti surfaces. Matplotlib is only
-used for colormaps and we may remove this dependency in future releases.
-To enable interactivity, some plotting functionality in IPython notebooks makes
-use of the panel package. PyQT is another dependency for background plotting.
-See `PyVista <https://docs.pyvista.org/plotting/qt_plotting.html#background-plotting>`_
-for more on background plotting. The support of background rendering however
-is still experimental.
+Additional softwares for gene expression mapping and surface visualization can be directly downloaded from the **ENIGMA TOOLBOX** Github as follows: ::
 
-* `panel <https://panel.pyviz.org/>`_
-* `pyqt <https://riverbankcomputing.com/software/pyqt/intro>`_
+    git clone https://github.com/saratheriver/ENIGMA.git
+    cd python/BrainSpace && python setup.py install
+    cd python/abagen && python setup.py install
+
+
+Alternatively, you can also install BrainSpace and abagen using ``pip``: ::
+
+    pip install brainspace abagen
+
+
 
 
 

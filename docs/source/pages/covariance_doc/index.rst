@@ -1,6 +1,6 @@
 .. _cov_network:
 
-Structural covariance network
+Structural covariance
 ======================================
 
 This page contains descriptions and examples to generate structural covariance networks!
