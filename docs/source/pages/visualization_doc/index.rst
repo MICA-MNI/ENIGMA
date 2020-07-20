@@ -1,4 +1,4 @@
-.. _surface_visualization:
+.. _surf_visualization:
 
 Surface visualization
 ======================================

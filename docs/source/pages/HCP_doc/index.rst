@@ -11,7 +11,7 @@ Cortical connectivity matrices
 The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional 
 (resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP). 
 Following the examples below, we can load and explore various connectivity metrics as well as easily 
-map them to the surface (please also see :ref:`surface_visualization`).
+map them to the surface (please also see :ref:`surf_visualization`).
 
 .. tabs::
 
