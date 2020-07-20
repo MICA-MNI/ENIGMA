@@ -9,21 +9,21 @@ ENIGMA TOOLBOX
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting started 🎬
+   :caption: ⤍ Getting started
    
    pages/install
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Connectivity data 
+   :caption: ⤍ Connectivity data 
    
    pages/HCP_doc/index
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Network-based atrophy models
+   :caption: ⤍ Network-based atrophy models
    
    pages/hubs_doc/index
    pages/epicenter_doc/index
@@ -31,7 +31,7 @@ ENIGMA TOOLBOX
 
 .. toctree::
    :maxdepth: 1
-   :caption: Structural covariance networks
+   :caption: ⤍ Structural covariance networks
 
    pages/covariance_doc/index
    pages/gt_doc/index
@@ -39,7 +39,7 @@ ENIGMA TOOLBOX
 
 .. toctree::
    :maxdepth: 1
-   :caption: Gene expression
+   :caption: ⤍ Gene expression
 
    pages/genemaps_doc/index
    pages/epilepsygenes_doc/index
@@ -47,7 +47,7 @@ ENIGMA TOOLBOX
 
 .. toctree::
    :maxdepth: 1
-   :caption: Surface data visualization
+   :caption: ⤍ Surface data visualization
 
    pages/visualization_doc/index
 
