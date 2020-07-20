@@ -4,19 +4,19 @@
    contain the root `toctree` directive.
 
 
-ENIGMA TOOLBOX 🌎🌏🌍
+ENIGMA TOOLBOX 
 ===========================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Getting started
+   :caption: Getting started 🎬
    
    pages/install
 
 
 .. toctree::
    :maxdepth: 1
-   :caption: Connectivity data
+   :caption: Connectivity data 
    
    pages/HCP_doc/index
 
@@ -35,6 +35,14 @@ ENIGMA TOOLBOX 🌎🌏🌍
 
    pages/covariance_doc/index
    pages/gt_doc/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Gene expression
+
+   pages/genemaps_doc/index
+   pages/epilepsygenes_doc/index
 
 
 .. toctree::
