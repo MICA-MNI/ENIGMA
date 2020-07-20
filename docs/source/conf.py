@@ -48,8 +48,7 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
-html_theme_options = { 'style_nav_header_background': '#259595',
-                       "rightsidebar": "false"}
+html_theme_options = { 'style_nav_header_background': '#259595'}
 
 
 # The name of the Pygments (syntax highlighting) style to use.
