@@ -29,18 +29,18 @@ ENIGMA TOOLBOX 🌎🌏🌍
    pages/epicenter_doc/index
 
 
-   .. toctree::
+.. toctree::
    :maxdepth: 1
    :caption: Structural covariance networks
-   
+
    pages/covariance_doc/index
    pages/gt_doc/index
 
 
-   .. toctree::
+.. toctree::
    :maxdepth: 1
-   :caption: Surface visualization
-   
+   :caption: Surface data visualization
+
    pages/visualization_doc/index
 
 
