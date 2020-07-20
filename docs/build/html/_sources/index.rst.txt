@@ -4,8 +4,8 @@
    contain the root `toctree` directive.
 
 
-ENIGMA TOOLBOX /🌎🌏🌍/
-========================
+ENIGMA TOOLBOX 🌎🌏🌍
+===========================
 
 .. toctree::
    :maxdepth: 1
@@ -19,21 +19,14 @@ ENIGMA TOOLBOX /🌎🌏🌍/
    :caption: Connectivity data
    
    pages/HCP_doc/index
-   pages/hubs_doc/index
-   pages/epicenter_doc/index
-   pages/covariance_doc/index
-   pages/visualization_doc/index
 
 
 .. toctree::
    :maxdepth: 1
    :caption: Network-based atrophy models
    
-   pages/HCP_doc/index
    pages/hubs_doc/index
    pages/epicenter_doc/index
-   pages/covariance_doc/index
-   pages/visualization_doc/index
 
 
    .. toctree::
@@ -41,6 +34,7 @@ ENIGMA TOOLBOX /🌎🌏🌍/
    :caption: Structural covariance networks
    
    pages/covariance_doc/index
+   pages/gt_doc/index
 
 
    .. toctree::
