@@ -4,8 +4,8 @@
    contain the root `toctree` directive.
 
 
-ENIGMA TOOLBOX
-==================
+ENIGMA TOOLBOX /🌎🌏🌍/
+========================
 
 .. toctree::
    :maxdepth: 1
