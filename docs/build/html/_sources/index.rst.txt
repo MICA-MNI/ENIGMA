@@ -7,8 +7,8 @@
 ENIGMA TOOLBOX 
 ===========================
 
-Our aim is to provide an open source repository for sharing neuroimaging data, 
-analytical codes, and visualization tools that are ENIGMA-focused.
+**ENIGMA TOOLBOX**'s goal is to provide an open source repository for sharing neuroimaging data, 
+analytical codes, and visualization tools that are ENIGMA-friendly and focused.
 
 **Data sharing** 💌
    ...
