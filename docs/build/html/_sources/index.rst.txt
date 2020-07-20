@@ -9,15 +9,45 @@ ENIGMA TOOLBOX /🌎🌏🌍/
 
 .. toctree::
    :maxdepth: 1
-   :caption: Table of Contents
+   :caption: Getting started
    
    pages/install
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Connectivity data
+   
    pages/HCP_doc/index
    pages/hubs_doc/index
    pages/epicenter_doc/index
    pages/covariance_doc/index
    pages/visualization_doc/index
 
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Network-based atrophy models
+   
+   pages/HCP_doc/index
+   pages/hubs_doc/index
+   pages/epicenter_doc/index
+   pages/covariance_doc/index
+   pages/visualization_doc/index
+
+
+   .. toctree::
+   :maxdepth: 1
+   :caption: Structural covariance networks
+   
+   pages/covariance_doc/index
+
+
+   .. toctree::
+   :maxdepth: 1
+   :caption: Surface visualization
+   
+   pages/visualization_doc/index
 
 
 
