@@ -1,6 +1,6 @@
 .. _surf_visualization:
 
-Surface visualization
+Surface data visualization
 ======================================
 
 This page contains descriptions and examples to visualize surface data!
