@@ -13,20 +13,24 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
 **Data sharing** 💌
    As part of the **ENIGMA TOOLBOX**, we are making several data matrices openly available! As of now, 
    these include functional and structural connectivity data as well as transcriptomic data.
+   
 
 **Harmonization of analytical methods** 👯‍♀️
    Why make all these codes and data available, you may ask? One key goal of the **ENIGMA TOOLBOX** is
    to harmonize analytical methods both *within* and *across* ENIGMA Working Groups, ultimately facilitating
    comparisons of imaging and genetic findings across diseases.
 
+
 **Visualization tools** 🎨
    Tired of displaying your surface findings in tables? Look no further! The **ENIGMA TOOLBOX** has got you 
    covered! Check out our visualization tools and project your cortical and subcortical data to the surface!
+
 
 **Step-by-step tutorials** 👣
    The **ENIGMA TOOLBOX** has a 'No data, No problem' policy! To make things easier, we provide example data that
    have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
    tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
+   
 
 
 
