@@ -28,6 +28,7 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
    The **ENIGMA TOOLBOX** has a 'No data, No problem' policy! To make things easier, we provide example data that
    have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
    tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
+
 |
 
 
@@ -76,6 +77,7 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
    :caption: Surface data visualization
 
    pages/visualization_doc/index
+   
 |
 
 
