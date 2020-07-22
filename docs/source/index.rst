@@ -4,10 +4,8 @@
    contain the root `toctree` directive.
 
 
-:: 
 
-E N I G M A   T O O L B O X 
-
+ENIGMA TOOLBOX
 ===================================
 
 Our goal is to provide an open source repository for sharing neuroimaging data, 
