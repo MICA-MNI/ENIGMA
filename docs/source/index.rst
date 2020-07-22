@@ -76,7 +76,7 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
    :caption: Surface data visualization
 
    pages/visualization_doc/index
-
+|
 
 
 Authors
