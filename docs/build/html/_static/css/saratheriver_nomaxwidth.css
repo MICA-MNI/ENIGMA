@@ -2,5 +2,6 @@
    max-width: none;
 }
 
+
 @media screen and (max-width:768px){.tablet-hide{display:none}}
 @media screen and (max-width:480px){.mobile-hide{display:none}}
