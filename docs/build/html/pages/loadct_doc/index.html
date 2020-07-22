@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Connectivity matrices &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Load example data &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Hub susceptibility" href="../hubs_doc/index.html" />
-    <link rel="prev" title="Load example data" href="../loadct_doc/index.html" /> 
+    <link rel="next" title="Connectivity matrices" href="../HCP_doc/index.html" />
+    <link rel="prev" title="Installation" href="../install.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,12 +96,13 @@
 </ul>
 <p class="caption"><span class="caption-text">Loading data</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../loadct_doc/index.html">Load example data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Connectivity matrices</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#cortical-connectivity-matrices">Cortical connectivity matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#subcortical-connectivity-matrices">Subcortical connectivity matrices</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Load example data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#load-cortical-thickness-data">Load cortical thickness data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-cortical-surface-area-data">Load cortical surface area data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-subcortical-volume-data">Load subcortical volume data</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../HCP_doc/index.html">Connectivity matrices</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
 <ul>
@@ -167,13 +168,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Connectivity matrices</li>
+      <li>Load example data</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/pages/HCP_doc/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/loadct_doc/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -186,15 +187,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="connectivity-matrices">
-<span id="hcp-connectivity"></span><h1>Connectivity matrices<a class="headerlink" href="#connectivity-matrices" title="Permalink to this headline">¶</a></h1>
-<p>This page contains descriptions and examples to use HCP connectivity data!</p>
-<div class="section" id="cortical-connectivity-matrices">
-<h2>Cortical connectivity matrices<a class="headerlink" href="#cortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
-<p>The <strong>ENIGMA TOOLBOX</strong> provides structural (diffusion MRI) and functional
-(resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP).
-Following the examples below, we can load and explore various connectivity metrics as well as easily
-map them to the surface (please also see <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">Surface data visualization</span></a>).</p>
+  <div class="section" id="load-example-data">
+<span id="load-ct"></span><h1>Load example data<a class="headerlink" href="#load-example-data" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to load our example data!</p>
+<div class="section" id="load-cortical-thickness-data">
+<h2>Load cortical thickness data<a class="headerlink" href="#load-cortical-thickness-data" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">…</div>
+</div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -220,11 +220,40 @@ map them to the surface (please also see <a class="reference internal" href="../
 </div>
 </div>
 </div>
-<div class="section" id="subcortical-connectivity-matrices">
-<h2>Subcortical connectivity matrices<a class="headerlink" href="#subcortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-cortical-surface-area-data">
+<h2>Load cortical surface area data<a class="headerlink" href="#load-cortical-surface-area-data" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
-<div class="line">Subcortico-cortical as well as subcortico-subcortical connectivity matrices are also included in the
-<strong>ENIGMA TOOLBOX</strong>! As above, we can load these structural and functional matrices and project them to the surface!</div>
+<div class="line">…</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-subcortical-volume-data">
+<h2>Load subcortical volume data<a class="headerlink" href="#load-subcortical-volume-data" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">…</div>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -261,10 +290,10 @@ map them to the surface (please also see <a class="reference internal" href="../
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../hubs_doc/index.html" class="btn btn-neutral float-right" title="Hub susceptibility" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../HCP_doc/index.html" class="btn btn-neutral float-right" title="Connectivity matrices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../loadct_doc/index.html" class="btn btn-neutral float-left" title="Load example data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

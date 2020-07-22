@@ -14,12 +14,15 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
 **Data sharing** 💌
    As part of the **ENIGMA TOOLBOX**, we are making several data matrices openly available! As of now, 
    these include functional and structural connectivity data as well as transcriptomic data.
+|
    
 
 **Harmonization of analytical methods** 👯‍♀️
    Why make all these codes and data available, you may ask? One key goal of the **ENIGMA TOOLBOX** is
    to harmonize analytical methods both *within* and *across* ENIGMA Working Groups, ultimately facilitating
    comparisons of imaging and genetic findings across diseases.
+
+|
 
 
 **Visualization tools** 🎨
@@ -44,8 +47,9 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
 
 .. toctree::
    :maxdepth: 1
-   :caption: Connectivity data 
+   :caption: Loading data 
    
+   pages/loadct_doc/index
    pages/HCP_doc/index
 
 
