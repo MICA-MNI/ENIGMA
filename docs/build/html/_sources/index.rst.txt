@@ -11,6 +11,7 @@ ENIGMA TOOLBOX
 .. image:: ./pages/extrafigs/spinearth.gif
     :scale: 50%
     :align: left
+    
 
 
 | Our goal is to provide an open source repository for sharing neuroimaging data, 
