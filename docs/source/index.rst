@@ -16,6 +16,7 @@ ENIGMA TOOLBOX
 | Our goal is to provide an open source repository for sharing neuroimaging data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
 
+
 **Data sharing** 💌
    As part of the **ENIGMA TOOLBOX**, we are making several data matrices openly available! As of now, 
    these include functional and structural connectivity data as well as transcriptomic data.
