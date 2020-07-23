@@ -9,7 +9,6 @@ ENIGMA TOOLBOX
 ===================================
 
 .. image:: https://drive.google.com/file/d/1O03tWzpTJpjwoHKIi_7CBQSdjhO09l4g/view?usp=sharing
-    :alt: spinearth
     :scale: 50%
     :align: left
 
