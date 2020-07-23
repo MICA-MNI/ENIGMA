@@ -5,8 +5,13 @@
 
 
 
-ENIGMA TOOLBOX
+ENIGMA TOOLBOX 
 ===================================
+
+.. image:: https://drive.google.com/file/d/1O03tWzpTJpjwoHKIi_7CBQSdjhO09l4g/view?usp=sharing
+    :alt: spinearth
+    :scale: 50%
+    :align: left
 
 Our goal is to provide an open source repository for sharing neuroimaging data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
@@ -29,7 +34,6 @@ analytical codes, and visualization tools that are 100% ENIGMA-friendly and -foc
    have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
    tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
 
-|
 
 
 
