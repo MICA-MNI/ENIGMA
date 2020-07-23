@@ -8,7 +8,7 @@
 ENIGMA TOOLBOX 
 ===================================
 
-.. image:: https://drive.google.com/file/d/1O03tWzpTJpjwoHKIi_7CBQSdjhO09l4g/view?usp=sharing
+.. image:: ./pages/extrafigs/spinearth.gif
     :scale: 50%
     :align: left
 
