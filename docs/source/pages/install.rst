@@ -17,18 +17,17 @@ Python installation
 - `vtk <https://vtk.org/>`_
 - `matplotlib <https://matplotlib.org/>`_
 - `nibabel <https://nipy.org/nibabel/index.html>`_
--
 
-Additional softwares for gene expression mapping and surface visualization can be directly downloaded from the **ENIGMA TOOLBOX** Github as follows: ::
+
+An additional software for gene expression mapping can be directly downloaded from the **ENIGMA TOOLBOX** Github as follows: ::
 
     git clone https://github.com/saratheriver/ENIGMA.git
-    cd python/BrainSpace && python setup.py install
     cd python/abagen && python setup.py install
 
 
-Alternatively, you can also install BrainSpace and abagen using ``pip``: ::
+Alternatively, you can also install abagen using ``pip``: ::
 
-    pip install brainspace abagen
+    pip install abagen
 
 
 
