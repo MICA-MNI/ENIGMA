@@ -8,8 +8,9 @@ def load_sc_sctx_labels():
   ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', fname)
   return np.loadtxt(ipth, dtype=np.float, delimiter=',')
 
-from enigmatoolbox.datasets import load_sc_sctx_labels
-sc = load_sc_sctx_labels()
+from enigmatoolbox.datasets import load_sc, load_fc
+c, cl, s, sl = load_sc()
+c2, cl2, s2, sl2 = load_fc()
 
 """
 class struct():
