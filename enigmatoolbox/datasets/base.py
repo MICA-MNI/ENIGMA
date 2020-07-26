@@ -134,7 +134,7 @@ def load_fsa5(with_normals=True, join=False):
     """
 
     root_pth = os.path.dirname(__file__)
-    fname = 'fsa5.pial.{}.gii'
+    fname = 'fsa5_{}.gii'
 
     ipth = os.path.join(root_pth, 'surfaces', fname)
     surfs = [None] * 2
