@@ -1,0 +1,2 @@
+recursive-include enigmatoolbox/datasets *
+include README.rst LICENSE
