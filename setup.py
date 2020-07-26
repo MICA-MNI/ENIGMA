@@ -45,7 +45,7 @@ setup(
 
     name='enigmatoolbox',
     version=__version__,
-    description='enigma tools for good people',
+    description='good enigma tools for good people',
     long_description=long_description,
     long_description_content_type='text/x-rst',
     url='https://github.com/saratheriver/ENIGMA',
@@ -65,7 +65,7 @@ setup(
         'Programming Language :: Python :: 3 :: Only',
     ],
     keywords='enigma surface connectivity atrophy',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages=find_packages(exclude=['contrib', 'docs']),
     python_requires='>=3.5',
     install_requires=INSTALL_REQUIRES,
     extras_require={
