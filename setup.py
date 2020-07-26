@@ -36,7 +36,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 __version__ = None
-version_file = path.join(here, 'python/enigmatoolbox/_version.py')
+version_file = path.join(here, 'enigmatoolbox/_version.py')
 with io_open(version_file, mode='r') as fd:
     exec(fd.read())
 
