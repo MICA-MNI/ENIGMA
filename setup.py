@@ -75,6 +75,5 @@ setup(
         #'Bug Reports': 'https://github.com/saratheriver/ENIGMA/issues',
         'Source': 'https://github.com/saratheriver/ENIGMA',
     },
-    #download_url='https://github.com/saratheriver/ENIGMA/archive/'
-    #             '{ver}.tar.gz'.format(ver=__version__),
+    download_url='https://github.com/saratheriver/ENIGMA/archive/0.0.1.tar.gz'
 )
