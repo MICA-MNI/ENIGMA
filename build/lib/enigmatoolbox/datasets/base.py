@@ -227,36 +227,9 @@ def load_marker(name, join=False):
     return x[:x.size//2], x[x.size//2:]
 
 
-def load_sc():
-    """ Load structural connectivity data from 207 HPC subjects
-        Parcellated using Desikan Killiany (68 cortical regions and 16 subcortical structures)
-
-        Returns
-        -------
-        strucMatrix_ctx : 68 x 68 ndarray representing cortico-cortical connectivity
-        strucLabels_ctx : 68 x 1 ndarray representing cortical labels
-        strucMatrix_sctx : 14 x 68 ndarray representing subcortico-cortical connectivity
-        strucLabels_sctx : 14 x 1 ndarray representing subcortical labels *
-
-        * ventricles are excluded
-
-        """
-    root_pth = os.path.dirname(__file__)
-
-    ctx = 'strucMatrix_ctx.csv'
-    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
-
-    ctxL = 'strucLabels_ctx.csv'
-    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
-
-    sctx = 'strucMatrix_sctx.csv'
-    sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
-
-    sctxL = 'strucLabels_sctx.csv'
-    sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
-
-    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
-           np.loadtxt(sctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
+def load_sc_sctx_labels():
+  root_pth = os.path.dirname(__file__)
+  fname = 'structLabels_sctx.csv'
+  ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', fname)
+  return np.loadtxt(ipth, dtype=np.float, delimiter=',')
 
