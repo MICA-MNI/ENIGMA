@@ -9,6 +9,7 @@ def load_sc_sctx_labels():
   return np.loadtxt(ipth, dtype=np.float, delimiter=',')
 
 
+
 """
 class struct():
   pass

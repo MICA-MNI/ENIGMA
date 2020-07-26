@@ -12,7 +12,6 @@ enigmatoolbox/datasets/__init__.py
 enigmatoolbox/datasets/base.py
 enigmatoolbox/mesh/__init__.py
 enigmatoolbox/mesh/array_operations.py
-enigmatoolbox/mesh/mesh_cluster.py
 enigmatoolbox/mesh/mesh_correspondence.py
 enigmatoolbox/mesh/mesh_creation.py
 enigmatoolbox/mesh/mesh_elements.py
