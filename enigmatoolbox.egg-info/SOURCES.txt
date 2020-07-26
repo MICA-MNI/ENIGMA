@@ -1,0 +1,8 @@
+README.rst
+setup.py
+enigmatoolbox.egg-info/PKG-INFO
+enigmatoolbox.egg-info/SOURCES.txt
+enigmatoolbox.egg-info/dependency_links.txt
+enigmatoolbox.egg-info/not-zip-safe
+enigmatoolbox.egg-info/requires.txt
+enigmatoolbox.egg-info/top_level.txt
