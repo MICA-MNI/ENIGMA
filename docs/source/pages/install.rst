@@ -19,15 +19,16 @@ Python installation
 - `nibabel <https://nipy.org/nibabel/index.html>`_
 
 
-An additional software for gene expression mapping can be directly downloaded from the **ENIGMA TOOLBOX** Github as follows: ::
+The **ENIGMA TOOLBOX** can be directly downloaded from Github as follows: ::
 
     git clone https://github.com/saratheriver/ENIGMA.git
-    cd python/abagen && python setup.py install
+    cd ENIGMA
+    python setup.py install
 
 
-Alternatively, you can also install abagen using ``pip``: ::
+Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
 
-    pip install abagen
+    pip install enigmatoolbox
 
 
 
