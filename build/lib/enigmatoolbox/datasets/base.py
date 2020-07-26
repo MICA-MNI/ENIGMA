@@ -226,3 +226,10 @@ def load_marker(name, join=False):
         return x
     return x[:x.size//2], x[x.size//2:]
 
+
+def load_sc_sctx_labels():
+  root_pth = os.path.dirname(__file__)
+  fname = 'structLabels_sctx.csv'
+  ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', fname)
+  return np.loadtxt(ipth, dtype=np.float, delimiter=',')
+
