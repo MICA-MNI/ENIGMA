@@ -45,8 +45,29 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
    .. code-tab:: matlab
 
-        %% ...  
+        %% Let's use load_sc() and load_fc() functions to return:
+        # 68 x 68 matrix (fc/sc: cortico-cortical connectivity matrix)
+        # 68 x 1 cell array (fcl/scl: name of cortical areas)  
 
+        %% Load and plot functional connectivity data
+        [fc, fcl, ~, ~] = load_fc();
+        f = figure,
+          imagesc(fc, [0 0.8]);   % change axis limits here
+          colormap(Reds);         % change colormap here
+          colorbar;               % display colorbar
+
+        %% Load and plot structural connectivity data
+        [sc, scl, ~, ~] = load_sc();
+        f = figure,
+          imagesc(sc, [0 0.8]);   % change axis limits here
+          colormap(Reds);         % change colormap here
+          colorbar;               % display colorbar
+
+        %% We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
+        seed = 'L_middletemporal'
+        seed_conn_fc = fc(find(strcmp(scl, seed)), :)   # extract FC row corresponding to the seed
+        seed_conn_sc = sc(find(strcmp(scl, seed)), :)   # extract SC row corresponding to the seed
+     
 
 .. image:: ./examples/example_figs/ctx_conn.png
     :align: center

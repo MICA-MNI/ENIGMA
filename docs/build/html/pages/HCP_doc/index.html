@@ -235,7 +235,28 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Let&#39;s use load_sc() and load_fc() functions to return:</span>
+# <span class="mi">68</span> <span class="n">x</span> <span class="mi">68</span> <span class="n">matrix</span> <span class="p">(</span><span class="n">fc</span><span class="o">/</span><span class="n">sc</span><span class="p">:</span> <span class="n">cortico</span><span class="o">-</span><span class="n">cortical</span> <span class="n">connectivity</span> <span class="n">matrix</span><span class="p">)</span>
+# <span class="mi">68</span> <span class="n">x</span> <span class="mi">1</span> <span class="n">cell</span> <span class="n">array</span> <span class="p">(</span><span class="n">fcl</span><span class="o">/</span><span class="n">scl</span><span class="p">:</span> <span class="n">name</span> <span class="n">of</span> <span class="n">cortical</span> <span class="n">areas</span><span class="p">)</span>
+
+<span class="c">%% Load and plot functional connectivity data</span>
+<span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.8</span><span class="p">]);</span>   <span class="c">% change axis limits here</span>
+  <span class="n">colormap</span><span class="p">(</span><span class="n">Reds</span><span class="p">);</span>         <span class="c">% change colormap here</span>
+  <span class="n">colorbar</span><span class="p">;</span>               <span class="c">% display colorbar</span>
+
+<span class="c">%% Load and plot structural connectivity data</span>
+<span class="p">[</span><span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.8</span><span class="p">]);</span>   <span class="c">% change axis limits here</span>
+  <span class="n">colormap</span><span class="p">(</span><span class="n">Reds</span><span class="p">);</span>         <span class="c">% change colormap here</span>
+  <span class="n">colorbar</span><span class="p">;</span>               <span class="c">% display colorbar</span>
+
+<span class="c">%% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
+<span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;L_middletemporal&#39;</span>
+<span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   # <span class="n">extract</span> <span class="n">FC</span> <span class="n">row</span> <span class="n">corresponding</span> <span class="n">to</span> <span class="n">the</span> <span class="n">seed</span>
+<span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   # <span class="n">extract</span> <span class="n">SC</span> <span class="n">row</span> <span class="n">corresponding</span> <span class="n">to</span> <span class="n">the</span> <span class="n">seed</span>
 </pre></div>
 </div>
 </div>
