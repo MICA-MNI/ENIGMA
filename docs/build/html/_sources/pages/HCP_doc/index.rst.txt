@@ -86,7 +86,8 @@ Following the examples below, we can load connectivity data and extract seed-bas
 Load subcortical connectivity matrices
 -------------------------------------------
 | Subcortico-cortical as well as subcortico-subcortical connectivity matrices are also included in the
- **ENIGMA TOOLBOX**! As above, we can load these structural and functional matrices and project them to the surface!
+ **ENIGMA TOOLBOX**! As above, we can load these structural and functional matrices and extract seed-based connectivity
+ from subcortical seeds!
 
 .. tabs::
 
@@ -114,7 +115,7 @@ Load subcortical connectivity matrices
 
 
    .. code-tab:: matlab
-   
+
         %% add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
