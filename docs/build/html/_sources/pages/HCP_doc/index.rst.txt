@@ -114,6 +114,7 @@ Load subcortical connectivity matrices
 
 
    .. code-tab:: matlab
+   
         %% add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
