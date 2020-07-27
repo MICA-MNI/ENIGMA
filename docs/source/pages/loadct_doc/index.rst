@@ -22,6 +22,8 @@ Load cortical thickness data
         %% ...  
 
 
+|
+
 
 Load cortical surface area data
 --------------------------------------
@@ -38,6 +40,8 @@ Load cortical surface area data
 
         %% ...  
 
+
+|
 
 
 Load subcortical volume data

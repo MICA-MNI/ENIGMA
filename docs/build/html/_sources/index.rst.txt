@@ -64,15 +64,7 @@ ________________________________________________________________________________
    :caption: Getting started
    
    pages/install
-
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Loading data 
-   
    pages/loadct_doc/index
-   pages/HCP_doc/index
 
 
 .. toctree::
@@ -80,6 +72,7 @@ ________________________________________________________________________________
    :hidden:
    :caption: Network-based atrophy models
    
+   pages/HCP_doc/index
    pages/hubs_doc/index
    pages/epicenter_doc/index
 
