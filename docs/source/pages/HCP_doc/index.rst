@@ -49,7 +49,6 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
 
 .. image:: ./examples/example_figs/ctx_conn.png
-    :scale: 40%
     :align: center
 
 
