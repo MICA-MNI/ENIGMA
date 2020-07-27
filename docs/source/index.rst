@@ -14,7 +14,6 @@ codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 
 
 .. image:: ./pages/extrafigs/spinearth.gif
-    :scale: 100%
     :align: left
 
 
