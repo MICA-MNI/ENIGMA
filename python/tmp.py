@@ -33,3 +33,7 @@ plot_hemispheres(surf_lh, surf_rh, array_name=data_fsa5, size=(800, 400),
 # _, _, x = f() to ignore multiple returns
 
 plotting.plot_matrix
+
+
+sc, scl, _, _ = load_fc()
+sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=0.8, vmin=0, cmap='Reds')
