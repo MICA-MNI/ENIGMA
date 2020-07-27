@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/saratheriver_tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/css/saratheriver_enigma.css" type="text/css" />
 
@@ -32,6 +36,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/language_data.js"></script>
+        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../_static/sphinx_tabs/tabs.js"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -86,11 +92,7 @@
             
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python-installation">Python installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#matlab-installation">MATLAB installation</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Loading data</span></p>
 <ul>
@@ -183,8 +185,20 @@
   <div class="section" id="installation">
 <span id="install-page"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <p><strong>ENIGMA TOOLBOX</strong> is available in Python and MATLAB</p>
-<div class="section" id="python-installation">
-<h2>Python installation<a class="headerlink" href="#python-installation" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Python installation</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Matlab installation</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
 <p><strong>ENIGMA TOOLBOX</strong> has the following dependencies:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numpy.org/">numpy</a></p></li>
@@ -205,13 +219,13 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="matlab-installation">
-<h2>MATLAB installation<a class="headerlink" href="#matlab-installation" title="Permalink to this headline">¶</a></h2>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
 <p><strong>ENIGMA TOOLBOX</strong> was tested with MATLAB R2017b.</p>
 <p>To install the MATLAB toolbox simply <a class="reference external" href="https://github.com/MICA-MNI/ENIGMA">download</a> and unzip the GitHub toolbox, and run
 the following in MATLAB:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">addpath</span><span class="p">(</span><span class="s1">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>

@@ -74,6 +74,8 @@ The same approach can be used to map parcellated data to conte69 surface space; 
 
 
 .. image:: ./examples/example_figs/ctx_py.png
+    :scale: 100%
+    :align: center
 
 
 
@@ -125,3 +127,5 @@ Subcortical surface visualization
 
 
 .. image:: ./examples/example_figs/sctx_py.png
+    :scale: 100%
+    :align: center

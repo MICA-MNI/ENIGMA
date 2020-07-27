@@ -10,14 +10,35 @@ Load cortical connectivity matrices
 ----------------------------------------
 The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional 
 (resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP). 
-Following the examples below, we can load and explore various connectivity metrics as well as easily 
-map them to the surface (please also see :ref:`surf_visualization`).
+Following the examples below, we can load connectivity data and extract seed-based connectivity. 
+
+.. Note:: 
+     Seed-based connectivity, as well as various connectivity metrics, can be easily mapped onto 
+     the surface template! Simply follow our tutorial :ref:`here <surf_visualization>`!
 
 .. tabs::
 
    .. code-tab:: py
        
-        >>> ...
+        >>> from enigmatoolbox.datasets import load_sc, load_fc
+        >>> from nilearn import plotting
+
+        >>> # Let's use load_sc() and load_fc() functions to return:
+        >>> # 68 x 68 ndarray (c: cortico-cortical connectivity matrix)
+        >>> # 68 x 1 ndarray (cl: name of cortical areas)
+
+        >>> # Load and plot functional connectivity data
+        >>> fc, fcl, _, _ = load_fc()
+        >>> fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.8, vmin=0, cmap='viridis', title="Functional cortico-cortical connectivity")
+
+        >>> # Load and plot structural connectivity data
+        >>> sc, scl, _, _ = load_sc()
+        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=0.8, vmin=0, cmap='viridis', title="Structural cortico-cortical connectivity")
+
+        >>> # We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as seed:
+        >>> seed = "L_middletemporal"
+        >>> seed_conn_fc = fc[[i for i, item in enumerate(fcl) if seed in item],]   # extract FC row corresponding to the seed
+        >>> seed_conn_sc = sc[[i for i, item in enumerate(scl) if seed in item],]   # extract SC row corresponding to the seed
 
 
    .. code-tab:: matlab
@@ -25,6 +46,12 @@ map them to the surface (please also see :ref:`surf_visualization`).
         %% ...  
 
 
+.. image:: ./examples/example_figs/ctx_fconn.png
+    :scale: 50%
+    :align: center
+
+
+|
 
 
 Load subcortical connectivity matrices
@@ -36,7 +63,26 @@ Load subcortical connectivity matrices
 
    .. code-tab:: py
 
-        >>> ...
+        >>> from enigmatoolbox.datasets import load_sc, load_fc
+        >>> from nilearn import plotting
+
+        >>> # Let's use load_sc() and load_fc() functions to return:
+        >>> # 14 x 68 ndarray (c: subcortico-cortical connectivity matrix)
+        >>> # 14 x 1 ndarray (cl: name of subcortical areas)
+
+        >>> # Load and plot functional connectivity data
+        >>> _, _, fc, fcl = load_fc()
+        >>> fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.8, vmin=0, cmap='viridis', title="Functional subcortico-cortical connectivity")
+
+        >>> # Load and plot structural connectivity data
+        >>> _, _, sc, scl = load_sc()
+        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=0.8, vmin=0, cmap='viridis', title="Structural subcortico-cortical connectivity")
+
+        >>> # As above, we can also extract seed-based connectivity! Here, we chose the left hippocampus as seed region:
+        >>> seed = "HIPPOCAMPUS_LEFT"
+        >>> seed_conn_fc = fc[[i for i, item in enumerate(fcl) if seed in item],]   # extract FC row corresponding to the seed
+        >>> seed_conn_sc = sc[[i for i, item in enumerate(scl) if seed in item],]   # extract SC row corresponding to the seed
+
 
    .. code-tab:: matlab
 
