@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'ENIGMA TOOLBOX'
-copyright = '2020, Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
+copyright = '2020, enigmators'
 author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
 
 
