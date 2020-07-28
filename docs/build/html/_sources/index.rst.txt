@@ -55,6 +55,15 @@ The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier
 have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
 tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
 
+**Development and getting involved** ⚙️
+-------------------------------------------
+Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
+hesitate to post them to our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_! Or are you interested in collaborating 
+or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.com/define.php?term=noice>`_! 
+Make sure you familiarize yourself with our `contributing guidelines <https://github.com/saratheriver/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
+first and then discuss your ideas on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_ and 
+`pull request <https://github.com/saratheriver/ENIGMA/pulls>`_.
+
 .. toctree::
    :maxdepth: 1
    :hidden:
@@ -98,22 +107,6 @@ tutorials. Alternatively, easily replace our example data with other ENIGMA-deri
    :caption: Surface data visualization
 
    pages/visualization_doc/index
-
-|
-
-___________________________________________________________________________________________________
-
-|
-
-**Development and getting involved** ⚙️
--------------------------------------------
-Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
-hesitate to post them to our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_!
-
-Are you interested in collaborating or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.com/define.php?term=noice>`_! 
-Make sure you familiarize yourself with our `contributing guidelines <https://github.com/saratheriver/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
-first and then discuss your ideas on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_ and 
-`pull request <https://github.com/saratheriver/ENIGMA/pulls>`_.
 
 |
 

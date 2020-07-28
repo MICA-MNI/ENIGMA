@@ -3,8 +3,8 @@ ENIGMA TOOLBOX 🤠
 =======================
 
 
-| Ello!
-| How u doin'?
+
+How u doin'?
 
 
 Support
