@@ -1,0 +1,15 @@
+% load connectivity data
+[fc, ~, ~, ~]     = load_fc();
+[sc, ~, ~, ~]     = load_fc();
+
+% compute weighted degree centrality
+dc                  = sum(fc);
+
+% map parcellated data to surface
+data_fsa5           = map_to_labels(dc, 'aparc_fsa5.csv');
+
+% and plot the results
+f = figure,
+    plot_cortical(data_fsa5, 'fsa5', 'functional degree centrality')
+    colormap([Reds])
+    SurfStatColLim([20 30])
