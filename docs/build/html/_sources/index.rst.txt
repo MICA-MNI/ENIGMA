@@ -105,8 +105,8 @@ tutorials. Alternatively, easily replace our example data with other ENIGMA-deri
 ___________________________________________________________________________________________________
 
 
-Contributors
------------------
+Enigmators
+-------------------
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
 - **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
