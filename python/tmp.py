@@ -1,19 +1,20 @@
-from enigmatoolbox.datasets import load_sc, load_fc
-from nilearn import plotting
+import os
+import numpy as np
+import enigmatoolbox.datasets
+from enigmatoolbox.datasets import load_fsa5
+from enigmatoolbox.plotting import plot_hemispheres
 
-# Let's use load_sc() and load_fc() functions to return:
-# 14 x 68 ndarray (fc/sc: subcortico-cortical connectivity matrix)
-# 14 x 1 ndarray (fcl/scl: name of subcortical areas)
+# Load mapping between parcellation (e.g., Desikan-Killiany) and surface (fsa5)
+fname = 'aparc_fsa5.csv'
+labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
+                      'parcellations', 'aparc_fsa5.csv'), dtype=np.int)
 
-# Load and plot functional connectivity data
-_, _, fc, fcl = load_fc()
-fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.5, vmin=0, cmap='Reds')
+# Map parcellation values to surface (vertices)
+# The function below will work with ENIGMA-parcellated data (e.g., Desikan-Killiany atlas
+# without values for the brain mask and the corpus callosum [68 x 1 ndarray])
+data_fsa5 = map_to_labels(np.arange(68), labeling)
 
-# Load and plot structural connectivity data
-_, _, sc, scl = load_sc()
-sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=10, vmin=0, cmap='Blues')
-
-# As above, we can also extract seed-based connectivity! Here, we chose the left hippocampus as example seed:
-seed = "Lhippo"
-seed_conn_fc = fc[[i for i, item in enumerate(fcl) if seed in item],]   # extract FC row corresponding to the seed
-seed_conn_sc = sc[[i for i, item in enumerate(scl) if seed in item],]   # extract SC row corresponding to the seed
+# Load cortical surface and map values to the surface brain
+surf_lh, surf_rh = load_fsa5()
+plot_hemispheres(surf_lh, surf_rh, array_name=data_fsa5, size=(800, 400),
+                 cmap='viridis', color_bar=True, color_range=(np.min(data_fsa5), np.max(data_fsa5)))

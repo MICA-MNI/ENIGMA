@@ -9,6 +9,9 @@ function [fc, fcl, fcs, fcsl] = load_fc()
 %       fcs   = functional subcortico-cortical connectivity matrix (14 x 68)
 %       fcsl  = name of subcortical regions (in same order as fcs; 1 x 14)
 %
+% Please see Lariviere et al., 2020, bioRxiv for details on HCP
+% participants, data processing, and connectivity matrix generation
+%
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 %

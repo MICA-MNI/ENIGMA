@@ -239,8 +239,7 @@ def load_sc():
         strucLabels_sctx : 14 x 1 ndarray representing subcortical labels *
 
         * ventricles are excluded
-
-        """
+    """
     root_pth = os.path.dirname(__file__)
 
     ctx = 'strucMatrix_ctx.csv'
@@ -273,8 +272,7 @@ def load_fc():
         strucLabels_sctx : 14 x 1 ndarray representing subcortical labels *
 
         * ventricles are excluded
-
-        """
+    """
     root_pth = os.path.dirname(__file__)
 
     ctx = 'funcMatrix_ctx.csv'
@@ -293,3 +291,23 @@ def load_fc():
            np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
            np.loadtxt(sctx_ipth, dtype=np.float, delimiter=','), \
            np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
+
+
+def enigma_covariance(zdata):
+    """ Construction of intra-individual brain structural covariance networks
+
+        Parameters
+        ----------
+        zdata : z-scored matrix (#subjects x #features) of morphological features
+                (e.g., cortical thickness + subcortical volume)
+
+        Returns
+        -------
+        joint_var_matrix : ndarray #features x #features x #subjects
+    """
+    joint_var_matrix = np.zeros((zdata.shape[1], zdata.shape[1], zdata.shape[0]))
+    for kk in range(zdata.shape[0]):
+        for ii in range(zdata.shape[1]):
+            for jj in range(zdata.shape[1]):
+                joint_var_matrix[ii, jj, kk] = 1 / np.exp(np.square(zdata[kk, ii] - zdata[kk, jj]))
+    return joint_var_matrix

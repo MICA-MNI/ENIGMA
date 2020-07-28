@@ -213,6 +213,11 @@ def map_to_labels(source_val, target_lab, mask=None, fill=0, source_lab=None):
         Target array with corresponding source values.
 
     """
+    if source_val.size == 68 and np.unique(target_lab).size == 71:
+        a_idx = list(range(1, 4)) + list(range(5, 39)) + list(range(40, 71))
+        ddk = np.zeros(71)
+        ddk[a_idx] = source_val
+        source_val = ddk
 
     if mask is not None:
         target_lab2 = target_lab[mask]
@@ -336,6 +341,7 @@ def reduce_by_labels(values, labels, weights=None, target_labels=None,
     if values.ndim == 1:
         return mapped[0]
     return mapped
+
 
 def subcorticalvertices(subcortical_values=None):
     """
