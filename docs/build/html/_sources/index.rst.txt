@@ -27,10 +27,11 @@ codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 
 |
 
+|
+
 ___________________________________________________________________________________________________
 
 |
-
 
 **Data sharing** 💌
 --------------------------
@@ -101,8 +102,29 @@ tutorials. Alternatively, easily replace our example data with other ENIGMA-deri
 
    pages/visualization_doc/index
 
+|
 
 ___________________________________________________________________________________________________
+
+|
+
+Dvelopment and getting involved
+---------------------------------------
+Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
+hesitate to post them to our Github `issues https://github.com/saratheriver/ENIGMA/issues`_ !
+
+Are you interested in collaborating or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.com/define.php?term=noice>`_! 
+Make sure you familiarize yourself with our  first and then discuss your ideas on our Github
+`issues https://github.com/saratheriver/ENIGMA/issues`_ and `pull request <https://github.com/saratheriver/ENIGMA/pulls>`_ 🤠.
+ 
+
+
+
+|
+
+___________________________________________________________________________________________________
+
+|
 
 
 Enigmators
@@ -114,3 +136,4 @@ Enigmators
 - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
 - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
 - **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
+

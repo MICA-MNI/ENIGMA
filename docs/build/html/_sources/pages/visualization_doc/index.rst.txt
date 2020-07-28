@@ -25,7 +25,7 @@ The same approach can be used to map parcellated data to conte69 surface space; 
         >>> # Load mapping between parcellation (e.g., Desikan-Killiany) and surface (fsa5)
         >>> fname = 'aparc_fsa5.csv'
         >>> labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
-        ...           'parcellations', 'aparc_fsa5.csv'), dtype=np.int)
+        ...           'parcellations', fname), dtype=np.int)
 
         >>> # Map parcellation values to surface (vertices)
         >>> # In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with 
