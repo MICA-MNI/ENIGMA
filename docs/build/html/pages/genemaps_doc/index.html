@@ -232,7 +232,13 @@ not matched to any tissue sample and thus are filled with NaN values in the data
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Fetch gene expression data</span>
+<span class="c">%    gx          = matrix of gene expression data (82 x 15633)</span>
+<span class="c">%    reglabels   = name of cortical regions in same order as gx</span>
+<span class="c">%                  (82 x 1 cell array)</span>
+<span class="c">%    genelabels  = name of genes in same order as gx</span>
+<span class="c">%                  (1 x 15633 cell array)</span>
+<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
