@@ -354,6 +354,7 @@ def subcorticalvertices(subcortical_values=None, ventricles=True):
                                     L_accumbens, L_amygdala, L_caudate, L_hippocampus, L_pallidun, L_putamen, L_thalamus,
                                     L_ventricles, R_accumbens, R_amygdala, R_caudate, R_hippocampus, R_pallidun, R_putamen,
                                     R_thalamus, R_ventricles
+    ventricles : True (default) includes ventricles; False (ventricles are NaNs)
     Returns
     ----------
     data : ndarray (51278 values)
@@ -361,8 +362,13 @@ def subcorticalvertices(subcortical_values=None, ventricles=True):
     """
     numvertices = [867, 1419, 3012, 3784, 1446, 4003, 3726, 7653, 838, 1457, 3208, 3742, 1373, 3871, 3699, 7180]
     data = []
-    if isinstance(subcortical_values, np.ndarray) and ventricles:
+    if isinstance(subcortical_values, np.ndarray):
         for ii in range(16):
             data.append(np.tile(subcortical_values[ii], (numvertices[ii], 1)))
         data = np.vstack(data).flatten()
+
+    if ventricles is False:
+        data[18257:25909] = np.nan
+        data[44098:] = np.nan
+
     return data

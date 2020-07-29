@@ -1,8 +1,9 @@
 import os
 import numpy as np
 import enigmatoolbox.datasets
-from enigmatoolbox.plotting import plot_co
-from enigmatoolbox.utils.parcellation import map_to_labels
+from enigmatoolbox.plotting import plot_cortical
+from enigmatoolbox.utils.parcellation import map_to_labels, subcorticalvertices
+from enigmatoolbox.datasets import load_subcortical
 
 # Load functional and structural subcortico-cortical connectivity data
 _, _, fc, _ = load_fc()
@@ -13,11 +14,11 @@ dc_f = np.sum(fc, axis=1)
 dc_s = np.sum(sc, axis=0)
 
 #
-dc_f_sctx = subcorticalvertices(subcortical_values=np.array(range(16)))
+dc_f_sctx = subcorticalvertices(subcortical_values=np.nan(16))
 
 # And project the results on the subcortical surfaces
 surf_lh, surf_rh = load_subcortical()
-plot_hemispheres(surf_lh, surf_rh, array_name=dc_f_sctx, size=(800, 400),
+plot_hemispheres(surf_lh, surf_rh, array_name=d, size=(800, 400),
                  cmap='Reds', color_bar=True, color_range=(1, 10))
 
 plot_hemispheres(surf_lh, surf_rh, array_name=dc_s, size=(800, 400),
@@ -40,5 +41,15 @@ labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file
 # callosum [68 x 1 ndarray])
 data_fsa5 = map_to_labels(np.arange(68), labeling)
 
-plot_cortical(array_name=data_fsa5, size=(800, 400),
-                 cmap='Blues', color_bar=True, color_range=(100, 300))
+d = np.empty(68)
+d[:] = np.nan
+d = map_to_labels(d, labeling)
+
+plot_cortical(array_name=d, size=(800, 400), nan_color=(0,0,0,0),
+                 cmap='Blues', color_bar=True)
+
+
+
+data = np.array(range(16))
+plot_subcortical(array_name=d, size=(800, 400), nan_color=(0,0,0,0),
+                 cmap='Blues', color_bar=True)

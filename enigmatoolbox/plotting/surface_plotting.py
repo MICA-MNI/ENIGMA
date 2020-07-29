@@ -15,7 +15,8 @@ from .base import Plotter
 from .colormaps import colormaps
 from . import defaults_plotting as dp
 from .utils import _broadcast, _expand_arg, _grep_args, _gen_grid, _get_ranges
-from ..datasets import load_fsa5, load_conte69
+from ..datasets import load_fsa5, load_conte69, load_subcortical
+from ..utils.parcellation import subcorticalvertices
 
 from ..vtk_interface.decorators import wrap_input
 
@@ -439,114 +440,6 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
 
 
 @wrap_input(0, 1)
-def plot_hemispheres(surf_lh, surf_rh, array_name=None, color_bar=False,
-                     color_range=None, label_text=None,
-                     cmap='viridis', nan_color=(0, 0, 0, 1), zoom=1,
-                     background=(1, 1, 1), size=(400, 400), interactive=True,
-                     embed_nb=False, screenshot=False, filename=None,
-                     scale=(1, 1), transparent_bg=True, **kwargs):
-    """Plot left and right hemispheres in lateral and medial views.
-
-    Parameters
-    ----------
-    surf_lh : vtkPolyData or BSPolyData
-        Left hemisphere.
-    surf_rh : vtkPolyData or BSPolyData
-        Right hemisphere.
-    array_name : str, list of str, ndarray or list of ndarray, optional
-        Name of point data array to plot. If ndarray, the array is split for
-        the left and right hemispheres. If list, plot one row per array.
-        Default is None.
-    color_bar : bool, optional
-        Plot color bar for each array (row). Default is False.
-    color_range : {'sym'}, tuple or sequence.
-        Range for each array name. If 'sym', uses a symmetric range. Only used
-        if array has positive and negative values. Default is None.
-    label_text : dict[str, array-like], optional
-        Label text for column/row. Possible keys are {'left', 'right',
-        'top', 'bottom'}, which indicate the location. Default is None.
-    nan_color : tuple
-        Color for nan values. Default is (0, 0, 0, 1).
-    zoom : float or sequence of float, optional
-        Zoom applied to the surfaces in each layout entry.
-    background : tuple
-        Background color. Default is (1, 1, 1).
-    cmap : str, optional
-        Color map name (from matplotlib). Default is 'viridis'.
-    size : tuple, optional
-        Window size. Default is (800, 200).
-    interactive : bool, optional
-        Whether to enable interaction. Default is True.
-    embed_nb : bool, optional
-        Whether to embed figure in notebook. Only used if running in a
-        notebook. Default is False.
-    screenshot : bool, optional
-        Take a screenshot instead of rendering. Default is False.
-    filename : str, optional
-        Filename to save the screenshot. Default is None.
-    transparent_bg : bool, optional
-        Whether to us a transparent background. Only used if
-        ``screenshot==True``. Default is False.
-    scale : tuple, optional
-        Scale (magnification). Only used if ``screenshot==True``.
-        Default is None.
-    kwargs : keyword-valued args
-        Additional arguments passed to the plotter.
-
-
-    Returns
-    -------
-    figure : Ipython Image or None
-        Figure to plot. None if using vtk for rendering (i.e.,
-        ``embed_nb == False``).
-
-    See Also
-    --------
-    :func:`build_plotter`
-    :func:`plot_surf`
-
-    """
-
-    if color_bar is True:
-        color_bar = 'right'
-
-    surfs = {'lh': surf_lh, 'rh': surf_rh}
-    layout = ['lh', 'lh', 'rh', 'rh']
-    view = ['lateral', 'medial', 'lateral', 'medial']
-
-    if isinstance(array_name, np.ndarray):
-        if array_name.ndim == 2:
-            array_name = [a for a in array_name]
-        elif array_name.ndim == 1:
-            array_name = [array_name]
-
-    if isinstance(array_name, list):
-        layout = [layout] * len(array_name)
-        array_name2 = []
-        n_pts_lh = surf_lh.n_points
-        for an in array_name:
-            if isinstance(an, np.ndarray):
-                name = surf_lh.append_array(an[:n_pts_lh], at='p')
-                surf_rh.append_array(an[n_pts_lh:], name=name, at='p')
-                array_name2.append(name)
-            else:
-                array_name2.append(an)
-        array_name = np.asarray(array_name2)[:, None]
-
-    if isinstance(cmap, list):
-        cmap = np.asarray(cmap)[:, None]
-
-    kwds = {'view': view, 'share': 'r'}
-    kwds.update(kwargs)
-    return plot_surf(surfs, layout, array_name=array_name, color_bar=color_bar,
-                     color_range=color_range, label_text=label_text, cmap=cmap,
-                     nan_color=nan_color, zoom=zoom, background=background,
-                     size=size, interactive=interactive, embed_nb=embed_nb,
-                     screenshot=screenshot, filename=filename, scale=scale,
-                     transparent_bg=transparent_bg, **kwds)
-
-
-@wrap_input(0, 1)
 def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
                   color_range=None, label_text=None,
                   cmap='viridis', nan_color=(0, 0, 0, 1), zoom=1,
@@ -649,6 +542,118 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
     kwds = {'view': view, 'share': 'r'}
     kwds.update(kwargs)
     return plot_surf(surfs, layout, array_name=array_name, color_bar=color_bar,
+                     color_range=color_range, label_text=label_text, cmap=cmap,
+                     nan_color=nan_color, zoom=zoom, background=background,
+                     size=size, interactive=interactive, embed_nb=embed_nb,
+                     screenshot=screenshot, filename=filename, scale=scale,
+                     transparent_bg=transparent_bg, **kwds)
+
+
+def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
+                    color_range=None, label_text=None,
+                    cmap='viridis', nan_color=(0, 0, 0, 1), zoom=1,
+                    background=(1, 1, 1), size=(400, 400), interactive=True,
+                    embed_nb=False, screenshot=False, filename=None,
+                    scale=(1, 1), transparent_bg=True, **kwargs):
+    """Plot left and right hemispheres in lateral and medial views.
+
+    Parameters
+    ----------
+    array_name : str, list of str, ndarray or list of ndarray, optional
+        Name of point data array to plot. If ndarray, the array is split for
+        the left and right hemispheres. If list, plot one row per array.
+        Default is None.
+    ventricles : True (default) includes ventricles (array_name must have 16 values
+                 False does not include ventricles (e.g., connectivity; array must have 14 values)
+    color_bar : bool, optional
+        Plot color bar for each array (row). Default is False.
+    color_range : {'sym'}, tuple or sequence.
+        Range for each array name. If 'sym', uses a symmetric range. Only used
+        if array has positive and negative values. Default is None.
+    label_text : dict[str, array-like], optional
+        Label text for column/row. Possible keys are {'left', 'right',
+        'top', 'bottom'}, which indicate the location. Default is None.
+    nan_color : tuple
+        Color for nan values. Default is (0, 0, 0, 1).
+    zoom : float or sequence of float, optional
+        Zoom applied to the surfaces in each layout entry.
+    background : tuple
+        Background color. Default is (1, 1, 1).
+    cmap : str, optional
+        Color map name (from matplotlib). Default is 'viridis'.
+    size : tuple, optional
+        Window size. Default is (800, 200).
+    interactive : bool, optional
+        Whether to enable interaction. Default is True.
+    embed_nb : bool, optional
+        Whether to embed figure in notebook. Only used if running in a
+        notebook. Default is False.
+    screenshot : bool, optional
+        Take a screenshot instead of rendering. Default is False.
+    filename : str, optional
+        Filename to save the screenshot. Default is None.
+    transparent_bg : bool, optional
+        Whether to us a transparent background. Only used if
+        ``screenshot==True``. Default is False.
+    scale : tuple, optional
+        Scale (magnification). Only used if ``screenshot==True``.
+        Default is None.
+    kwargs : keyword-valued args
+        Additional arguments passed to the plotter.
+
+
+    Returns
+    -------
+    figure : Ipython Image or None
+        Figure to plot. None if using vtk for rendering (i.e.,
+        ``embed_nb == False``).
+
+    See Also
+    --------
+    :func:`build_plotter`
+    :func:`plot_surf`
+
+    """
+
+    if color_bar is True:
+        color_bar = 'right'
+
+    if ventricles:
+        surf_lh, surf_rh = load_subcortical()
+    elif ventricles is False:
+        surf_lh, surf_rh = load_subcortical()
+
+    surfs = {'lh': surf_lh, 'rh': surf_rh}
+    layout = ['lh', 'lh', 'rh', 'rh']
+    view = ['lateral', 'medial', 'lateral', 'medial']
+
+    if isinstance(array_name, np.ndarray):
+        if array_name.ndim == 2:
+            array_name = [a for a in array_name]
+        elif array_name.ndim == 1:
+            array_name = [array_name]
+
+    if isinstance(array_name, list):
+        layout = [layout] * len(array_name)
+        array_name2 = []
+        n_pts_lh = surf_lh.n_points
+        for an in array_name:
+            if isinstance(an, np.ndarray):
+                name = surf_lh.append_array(an[:n_pts_lh], at='p')
+                surf_rh.append_array(an[n_pts_lh:], name=name, at='p')
+                array_name2.append(name)
+            else:
+                array_name2.append(an)
+        array_name = np.asarray(array_name2)[:, None]
+
+    array_name2 = subcorticalvertices(array_name, ventricles=ventricles)
+
+    if isinstance(cmap, list):
+        cmap = np.asarray(cmap)[:, None]
+
+    kwds = {'view': view, 'share': 'r'}
+    kwds.update(kwargs)
+    return plot_surf(surfs, layout, array_name=array_name2, color_bar=color_bar,
                      color_range=color_range, label_text=label_text, cmap=cmap,
                      nan_color=nan_color, zoom=zoom, background=background,
                      size=size, interactive=interactive, embed_nb=embed_nb,
