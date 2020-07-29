@@ -28,17 +28,17 @@ Following the examples below, we can fetch microarray expression data.
        
         >>> from enigmatoolbox.datasets import fetch_ahba
 
-       >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
-       >>> df = fetch_ahba()
+        >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
+        >>> df = fetch_ahba()
 
-       >>> # However, if you prefer to use numpy, you can also extract the data as follows:
-       >>> genex = df.iloc[:, 1:].to_numpy()
+        >>> # However, if you prefer to use numpy, you can also extract the data as follows:
+        >>> genex = df.iloc[:, 1:].to_numpy()
 
-       >>> # Obtain the region labels
-       >>> reglabels = df.iloc[:,0].to_list()
+        >>> # Obtain the region labels
+        >>> reglabels = df.iloc[:,0].to_list()
 
-       >>> # As well as the gene labels
-       >>> glabels = df.columns.values[1:].tolist()
+        >>> # As well as the gene labels
+        >>> glabels = df.columns.values[1:].tolist()
 
    .. code-tab:: matlab
 
