@@ -321,8 +321,8 @@ def fetch_ahba():
 
             Returns
             -------
-            g : gene expression matrix, 82 x 15634 panda dataframe
+            g : gene expression matrix, 82 x 15633 panda dataframe
         """
-    url = 'https://github.com/saratheriver/enigma-extra/blob/master/ahba/allgenes.csv.gzip?raw=true'
+    url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
 
     return pd.read_csv(url, error_bad_lines=False)
