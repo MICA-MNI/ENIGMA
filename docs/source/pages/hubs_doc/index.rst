@@ -20,9 +20,9 @@ denotes increased hubness (*i.e.*, node with many connections).
         >>> import os
         >>> import numpy as np
         >>> import enigmatoolbox.datasets
-        >>> from enigmatoolbox.datasets import load_fsa5
-        >>> from enigmatoolbox.plotting import plot_hemispheres
+        >>> from enigmatoolbox.plotting import plot_cortical
         >>> from enigmatoolbox.datasets import load_sc, load_fc
+        >>> from enigmatoolbox.utils.parcellation import map_to_labels
 
         >>> # Load functional and structural cortico-cortical connectivity data
         >>> fc, _, _, _ = load_fc()
@@ -40,12 +40,11 @@ denotes increased hubness (*i.e.*, node with many connections).
         >>> dc_s_fsa5 = map_to_labels(dc_s, labeling)
 
         >>> # And project the results on the surface brain
-        >>> surf_lh, surf_rh = load_fsa5()
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=dc_f_fsa5, size=(800, 400),
-        ...                  cmap='Reds', color_bar=True, color_range=(20, 30))
+        >>> plot_cortical(array_name=dc_f_fsa5, surface_name="fsa5", size=(800, 400),
+        ...                 cmap='Reds', color_bar=True, color_range=(20, 30))
 
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=dc_s_fsa5, size=(800, 400),
-        ...                  cmap='Blues', color_bar=True, color_range=(100, 300))
+        >>> plot_cortical(array_name=dc_s_fsa5, surface_name="fsa5", size=(800, 400),
+        ...               cmap='Blues', color_bar=True, color_range=(100, 300))
 
 
    .. code-tab:: matlab
@@ -95,11 +94,8 @@ denotes increased hubness!
 
    .. code-tab:: py
 
-        >>> import os
         >>> import numpy as np
-        >>> import enigmatoolbox.datasets
-        >>> from enigmatoolbox.datasets import load_fsa5
-        >>> from enigmatoolbox.plotting import plot_hemispheres
+        >>> from enigmatoolbox.plotting import plot_subcortical
         >>> from enigmatoolbox.datasets import load_sc, load_fc
 
         >>> # Load functional and structural subcortico-cortical connectivity data
@@ -107,15 +103,14 @@ denotes increased hubness!
         >>> _, _, sc, _ = load_sc()
 
         >>> # Compute weighted degree centrality measures from the connectivity data
-        >>> dc_f = np.sum(fc, axis=0)
-        >>> dc_s = np.sum(sc, axis=0)
+        >>> dc_f = np.sum(fc, axis=1)
+        >>> dc_s = np.sum(sc, axis=1)
 
-        >>> # And project the results on the subcortical surfaces
-        >>> surf_lh, surf_rh = load_subcortical()
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=dc_f, size=(800, 400),
-        ...                  cmap='Reds', color_bar=True, color_range=(20, 30))
+        >>> # And project the results on the subcortical surfaces (don't forget to set the ventricles flag to False!)
+        >>> plot_subcortical(array_name=dc_f, ventricles=False, size=(800, 400),
+        ...                  cmap='Reds', color_bar=True, color_range=(5, 10))
 
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=dc_s, size=(800, 400),
+        >>> plot_subcortical(array_name=dc_s, ventricles=False, size=(800, 400),
         ...                  cmap='Blues', color_bar=True, color_range=(100, 300))
 
    .. code-tab:: matlab
@@ -128,7 +123,7 @@ denotes increased hubness!
         dc_f                = sum(fc, 2);
         dc_s                = sum(sc, 2);
 
-        %% And project the results on the subcortical surfaces (don't forget the 'False' flag!
+        %% And project the results on the subcortical surfaces (don't forget to set the ventricles flag to 'False'!
         f = figure,
           plot_subcortical(dc_f, 'False', 'functional degree centrality')
           colormap([Reds])
@@ -138,6 +133,9 @@ denotes increased hubness!
           plot_subcortical(dc_s, 'False', 'structural degree centrality')
           colormap([Blues])
           SurfStatColLim([100 300])
+
+.. image:: ./examples/example_figs/fc_hubs_sctx.png
+    :align: center
 
 
 |

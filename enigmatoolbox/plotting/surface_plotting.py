@@ -551,7 +551,7 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
 
 def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
                     color_range=None, label_text=None,
-                    cmap='viridis', nan_color=(0, 0, 0, 1), zoom=1,
+                    cmap='viridis', nan_color=(1, 1, 1, 0), zoom=1,
                     background=(1, 1, 1), size=(400, 400), interactive=True,
                     embed_nb=False, screenshot=False, filename=None,
                     scale=(1, 1), transparent_bg=True, **kwargs):
@@ -574,7 +574,7 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
         Label text for column/row. Possible keys are {'left', 'right',
         'top', 'bottom'}, which indicate the location. Default is None.
     nan_color : tuple
-        Color for nan values. Default is (0, 0, 0, 1).
+        Color for nan values. Default is (1, 1, 1, 0).
     zoom : float or sequence of float, optional
         Zoom applied to the surfaces in each layout entry.
     background : tuple
