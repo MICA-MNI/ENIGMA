@@ -13,10 +13,8 @@ Installation
         **ENIGMA TOOLBOX** has the following dependencies:
 
         - `numpy <https://numpy.org/>`_
-        - `scipy <https://scipy.org/scipylib/index.html>`_
-        - `scikit-learn <https://scikit-learn.org/stable/>`_
+        - `panda <https://pandas.pydata.org/>`_
         - `vtk <https://vtk.org/>`_
-        - `matplotlib <https://matplotlib.org/>`_
         - `nibabel <https://nipy.org/nibabel/index.html>`_
         - `nilearn <https://nilearn.github.io/>`_
 

@@ -1,5 +1,6 @@
 import os
 import numpy as np
+import pandas as pd
 
 from vtk import vtkPolyDataNormals
 
@@ -311,3 +312,20 @@ def enigma_covariance(zdata):
             for jj in range(zdata.shape[1]):
                 joint_var_matrix[ii, jj, kk] = 1 / np.exp(np.square(zdata[kk, ii] - zdata[kk, jj]))
     return joint_var_matrix
+
+
+def fetch_ahba():
+    """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes
+            Parcellated using Desikan Killiany
+                68 cortical regions and 14 subcortical structures (ventricles are excluded)
+
+            Returns
+            -------
+            g : gene expression matrix, 82 x 15634 panda dataframe
+        """
+    root_pth = os.path.dirname(__file__)
+
+    g = 'allgenes.csv'
+    g_ipth = os.path.join(root_pth, 'ahba', g)
+
+    return pd.read_csv(g_ipth)

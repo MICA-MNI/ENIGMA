@@ -87,7 +87,7 @@ subcortico-cortical connections for every subcortical area. Once again, higher d
 denotes increased hubness!
 
 .. Attention:: 
-     Because we do not have connectivity values for the ventricles, do make sure you set 
+     Because we do not have connectivity values for the ventricles, do make sure to set 
      the "ventricles" flag to ``False`` when displaying the findings on the subcortical surfaces!
 
 .. tabs::
