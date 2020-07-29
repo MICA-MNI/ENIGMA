@@ -325,7 +325,7 @@ def fetch_ahba():
         """
     root_pth = os.path.dirname(__file__)
 
-    g = 'allgenes.csv'
+    g = 'allgenes.csv.gzip'
     g_ipth = os.path.join(root_pth, 'ahba', g)
 
     return pd.read_csv(g_ipth)
