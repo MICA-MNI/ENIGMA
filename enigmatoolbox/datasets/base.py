@@ -323,9 +323,6 @@ def fetch_ahba():
             -------
             g : gene expression matrix, 82 x 15634 panda dataframe
         """
-    root_pth = os.path.dirname(__file__)
+    url = 'https://github.com/saratheriver/enigma-extra/blob/master/ahba/allgenes.csv.gzip?raw=true'
 
-    g = 'allgenes.csv.gzip'
-    g_ipth = os.path.join(root_pth, 'ahba', g)
-
-    return pd.read_csv(g_ipth)
+    return pd.read_csv(url, error_bad_lines=False)
