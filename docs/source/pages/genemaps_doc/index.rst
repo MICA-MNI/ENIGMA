@@ -9,7 +9,7 @@ This page contains descriptions and examples to load gene expression data!
 Fetch gene expression data
 --------------------------------------
 The **ENGMA TOOLBOX** provides microarray expression data obtained from the `Allen Human Brain Atlas <https://human.brain-map.org/>`_.
-Following the examples below, we can fetch microarray expression data and extract GWAS-implicated disease risk genes.
+Following the examples below, we can fetch microarray expression data.
 
 
 .. Note::
@@ -26,13 +26,25 @@ Following the examples below, we can fetch microarray expression data and extrac
 
    .. code-tab:: py
        
-        >>> ...
+        >>> from enigmatoolbox.datasets import fetch_ahba
 
+       >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
+       >>> df = fetch_ahba()
+
+       >>> # However, if you prefer to use numpy, you can also extract the data as follows:
+       >>> genex = df.iloc[:, 1:].to_numpy()
+
+       >>> # Obtain the region labels
+       >>> reglabels = df.iloc[:,0].to_list()
+
+       >>> # As well as the gene labels
+       >>> glabels = df.columns.values[1:].tolist()
 
    .. code-tab:: matlab
 
         %% ...  
 
-
+.. image:: ./examples/example_figs/gx.png
+    :align: center
 
 

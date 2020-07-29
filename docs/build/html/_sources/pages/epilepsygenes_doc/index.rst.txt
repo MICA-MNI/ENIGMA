@@ -8,7 +8,7 @@ This page contains descriptions and examples to load epilepsy-realted gene expre
 
 Epilepsy-related gene expression maps
 -----------------------------------------
-| ...
+... and extract GWAS-implicated disease risk genes.
 
 .. tabs::
 

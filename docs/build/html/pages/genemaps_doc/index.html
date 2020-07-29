@@ -188,7 +188,7 @@
 <div class="section" id="fetch-gene-expression-data">
 <h2>Fetch gene expression data<a class="headerlink" href="#fetch-gene-expression-data" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>ENGMA TOOLBOX</strong> provides microarray expression data obtained from the <a class="reference external" href="https://human.brain-map.org/">Allen Human Brain Atlas</a>.
-Following the examples below, we can fetch microarray expression data and extract GWAS-implicated disease risk genes.</p>
+Following the examples below, we can fetch microarray expression data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The Allen Human Brain Atlas microarray expression data loaded as part of the <strong>ENIGMA TOOLBOX</strong> was originally
@@ -215,7 +215,19 @@ not matched to any tissue sample and thus are filled with NaN values in the data
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span> <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">fetch_ahba</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># Fetch gene expression data (output of fetch_ahba() is a dataframe)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">df</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># However, if you prefer to use numpy, you can also extract the data as follows:</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">genex</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># Obtain the region labels</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">reglabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="c1"># As well as the gene labels</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">glabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -225,6 +237,7 @@ not matched to any tissue sample and thus are filled with NaN values in the data
 </div>
 </div>
 </div>
+<img alt="../../_images/gx.png" class="align-center" src="../../_images/gx.png" />
 </div>
 </div>
 
