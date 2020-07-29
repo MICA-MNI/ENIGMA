@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import enigmatoolbox.datasets
-from enigmatoolbox.plotting import plot_cortical
+from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 from enigmatoolbox.utils.parcellation import map_to_labels, subcorticalvertices
 from enigmatoolbox.datasets import load_subcortical
 
@@ -50,6 +50,9 @@ plot_cortical(array_name=d, size=(800, 400), nan_color=(0,0,0,0),
 
 
 
-data = np.array(range(16))
-plot_subcortical(array_name=d, size=(800, 400), nan_color=(0,0,0,0),
+import numpy as np
+from enigmatoolbox.plotting import plot_cortical, plot_subcortical
+
+data = np.array(range(14))
+plot_subcortical(array_name=data, ventricles=False, size=(800, 400), nan_color=(1,1,1,0),
                  cmap='Blues', color_bar=True)

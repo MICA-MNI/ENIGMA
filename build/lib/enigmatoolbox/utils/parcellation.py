@@ -343,7 +343,7 @@ def reduce_by_labels(values, labels, weights=None, target_labels=None,
     return mapped
 
 
-def subcorticalvertices(subcortical_values=None, ventricles=True):
+def subcorticalvertices(subcortical_values=None):
     """
     Transforms one value per subcortical area to vertices
 
@@ -354,7 +354,6 @@ def subcorticalvertices(subcortical_values=None, ventricles=True):
                                     L_accumbens, L_amygdala, L_caudate, L_hippocampus, L_pallidun, L_putamen, L_thalamus,
                                     L_ventricles, R_accumbens, R_amygdala, R_caudate, R_hippocampus, R_pallidun, R_putamen,
                                     R_thalamus, R_ventricles
-    ventricles : True (default) includes ventricles; False (ventricles are NaNs)
     Returns
     ----------
     data : ndarray (51278 values)
@@ -366,9 +365,4 @@ def subcorticalvertices(subcortical_values=None, ventricles=True):
         for ii in range(16):
             data.append(np.tile(subcortical_values[ii], (numvertices[ii], 1)))
         data = np.vstack(data).flatten()
-
-    if ventricles is False:
-        data[18257:25909] = np.nan
-        data[44098:] = np.nan
-
     return data

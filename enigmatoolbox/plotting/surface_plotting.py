@@ -627,6 +627,15 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     layout = ['lh', 'lh', 'rh', 'rh']
     view = ['lateral', 'medial', 'lateral', 'medial']
 
+    if len(array_name) == 16 and ventricles:
+        array_name = subcorticalvertices(array_name)
+    elif len(array_name) == 14 and ventricles is False:
+        array_name3 = np.empty(16)
+        array_name3[:] = np.nan
+        array_name3[0:7] = array_name[0:7]
+        array_name3[8:15] = array_name[7:]
+        array_name = subcorticalvertices(array_name3)
+
     if isinstance(array_name, np.ndarray):
         if array_name.ndim == 2:
             array_name = [a for a in array_name]
@@ -646,14 +655,12 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
                 array_name2.append(an)
         array_name = np.asarray(array_name2)[:, None]
 
-    array_name2 = subcorticalvertices(array_name, ventricles=ventricles)
-
     if isinstance(cmap, list):
         cmap = np.asarray(cmap)[:, None]
 
     kwds = {'view': view, 'share': 'r'}
     kwds.update(kwargs)
-    return plot_surf(surfs, layout, array_name=array_name2, color_bar=color_bar,
+    return plot_surf(surfs, layout, array_name=array_name, color_bar=color_bar,
                      color_range=color_range, label_text=label_text, cmap=cmap,
                      nan_color=nan_color, zoom=zoom, background=background,
                      size=size, interactive=interactive, embed_nb=embed_nb,
