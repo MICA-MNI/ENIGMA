@@ -1,22 +1,18 @@
 % load connectivity data
-[fc, ~, ~, ~]     = load_fc();
-[sc, ~, ~, ~]     = load_sc();
+[~, ~, fc, ~]     = load_fc();
+[~, ~, sc, ~]     = load_sc();
 
 % compute weighted degree centrality
-dc_f                = sum(fc);
-dc_s                = sum(sc);
-
-% map parcellated data to surface
-dc_f_fsa5           = map_to_labels(dc_f, 'aparc_fsa5.csv');
-dc_s_fsa5           = map_to_labels(dc_s, 'aparc_fsa5.csv');
+dc_f                = sum(fc, 2);
+dc_s                = sum(sc, 2);
 
 % and project the results on the surface brain
 f = figure,
-    plot_cortical(dc_f_fsa5, 'fsa5', 'functional degree centrality')
+    plot_subcortical(dc_f, 'False', 'functional degree centrality')
     colormap([Reds])
-    SurfStatColLim([20 30])
+    SurfStatColLim([5 10])
     
 f = figure,
-    plot_cortical(dc_s_fsa5, 'fsa5', 'structural degree centrality')
+     plot_subcortical(dc_s, 'False', 'structural degree centrality')
     colormap([Blues])
     SurfStatColLim([100 300])
