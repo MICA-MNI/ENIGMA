@@ -25,7 +25,6 @@ function [gx, reglabels, genelabels] = fetch_ahba()
 % urlwrite(url, '.gtmp.csv');
 % g = readtable('.gtmp.csv');
 
-% Fetch the csv table from github and load it locally | option 2
 !wget https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv
 g = readtable('allgenes.csv');
 
@@ -34,10 +33,8 @@ gx          = table2array(g(:, 2:end));
 reglabels   = table2array(g(:, 1));
 genelabels  = g.Properties.VariableNames(2:end);
 
-% remove table locally | option 1
+% remove table locally
 % delete('.gtmp.csv');
-
-% remove table locally | option 2
 delete('allgenes.csv');
 
 return
