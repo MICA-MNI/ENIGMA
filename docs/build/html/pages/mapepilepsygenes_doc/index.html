@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Epilepsy-related gene expression &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Visualize gene expression maps &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -43,9 +43,7 @@
 
     
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Surface data visualization" href="../visualization_doc/index.html" />
-    <link rel="prev" title="Gene expression data" href="../genemaps_doc/index.html" /> 
+    <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -107,13 +105,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../gt_doc/index.html">Graph theory analyses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Gene expression</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../genemaps_doc/index.html">Gene expression data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Epilepsy-related gene expression</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#epilepsy-related-gene-expression-maps">Epilepsy-related gene expression maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Epilepsy-related gene expression maps</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../epilepsygenes_doc/index.html">Epilepsy-related gene expression</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Surface data visualization</span></p>
 <ul>
@@ -164,13 +158,13 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Epilepsy-related gene expression</li>
+      <li>Visualize gene expression maps</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/pages/epilepsygenes_doc/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/pages/mapepilepsygenes_doc/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -183,63 +177,15 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="epilepsy-related-gene-expression">
-<span id="ep-genes"></span><h1>Epilepsy-related gene expression<a class="headerlink" href="#epilepsy-related-gene-expression" title="Permalink to this headline">¶</a></h1>
-<p>This page contains descriptions and examples to extract epilepsy-related gene expression data!</p>
+  <div class="section" id="visualize-gene-expression-maps">
+<span id="ep-genes"></span><h1>Visualize gene expression maps<a class="headerlink" href="#visualize-gene-expression-maps" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to project gene expression maps to the surface!
+Additional details are provided in the <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">surface visualization</span></a> section!</p>
 <div class="section" id="epilepsy-related-gene-expression-maps">
 <h2>Epilepsy-related gene expression maps<a class="headerlink" href="#epilepsy-related-gene-expression-maps" title="Permalink to this headline">¶</a></h2>
 <p>Leveraging findings from a recent <a class="reference external" href="https://www.nature.com/articles/s41467-018-07524-z">GWAS</a> from the International
 League Against Epilepsy Consortium on Complex Epilepsies, we can extract gene expression maps for a set of pre-defined
 epilepsy-related genes!</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
-<div class="docutils container">
-<p>Matlab</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">fetch_ahba</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">epilepsy_genes</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s start by loading the microarray expression data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gx</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the names of genes associated with specific epilepsy subtypes (using Focal HS as example here)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Other subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, &#39;cae&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">epigx</span> <span class="o">=</span> <span class="n">epilepsy_genes</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_genes</span> <span class="o">=</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalhs&#39;</span><span class="p">]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now extract the gene expression data for these specifc genes</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx</span> <span class="o">=</span> <span class="n">gx</span><span class="p">[</span><span class="n">fh_genes</span><span class="p">]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Alternatively, we can also combine all dem epilepsy genes together (and removing duplicates)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">allg</span> <span class="o">=</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;allepilepsy&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalepilepsy&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;generalizedepilepsy&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;jme&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;cae&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalhs&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">allg</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">allg</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">allgx</span> <span class="o">=</span> <span class="n">gx</span><span class="p">[</span><span class="n">allg</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>Epilepsy-related gene expression maps<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Following up on the above example, we provide a brief example to project gene expression maps to the surface!
-Additional details are provided in the <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">surface visualization</span></a> section!</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -287,15 +233,6 @@ Additional details are provided in the <a class="reference internal" href="../vi
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../visualization_doc/index.html" class="btn btn-neutral float-right" title="Surface data visualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../genemaps_doc/index.html" class="btn btn-neutral float-left" title="Gene expression data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

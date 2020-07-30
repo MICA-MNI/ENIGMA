@@ -26,12 +26,13 @@ import enigmatoolbox.datasets
 from enigmatoolbox.utils.parcellation import map_to_labels
 from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 
-# Following the above code, we can then map epilepsy-related gene expression to the surface!
+# Following the above code, we can then map epilepsy-related gene expression to the cortical surface!
 labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
           'parcellations', 'aparc_fsa5.csv'), dtype=np.int)
 fh_gx_fsa5 = map_to_labels(np.mean(fh_gx, axis=1)[:68], labeling)
 plot_cortical(array_name=fh_gx_fsa5, surface_name="fsa5", size=(800, 400), nan_color=(1, 1, 1, 1),
               cmap='Greys', color_bar=True, color_range=(0.4, 0.55))
 
+# And to the subcortical surface!!
 plot_subcortical(array_name=np.mean(fh_gx, axis=1)[68:], ventricles=False, size=(800, 400),
                  cmap='Greys', color_bar=True, color_range=(0.4, 0.65))
