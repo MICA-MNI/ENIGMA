@@ -314,7 +314,7 @@ def enigma_covariance(zdata):
     return joint_var_matrix
 
 
-def fetch_ahba():
+def fetch_ahba(csvfile=None):
     """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes
             Parcellated using Desikan Killiany
                 68 cortical regions and 14 subcortical structures (ventricles are excluded)
@@ -323,9 +323,11 @@ def fetch_ahba():
             -------
             g : gene expression matrix, 82 x 15633 panda dataframe
         """
-    url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
-
-    return pd.read_csv(url, error_bad_lines=False)
+    if csvfile is None:
+        url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
+        return pd.read_csv(url, error_bad_lines=False)
+    else:
+        return pd.read_csv(csvfile, error_bad_lines=False)
 
 def epilepsy_genes():
     """ Outputs names of epilepsy-related risk genes based on previous GWAS

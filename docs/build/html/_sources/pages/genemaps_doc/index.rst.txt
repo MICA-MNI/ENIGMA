@@ -22,6 +22,12 @@ Following the examples below, we can fetch microarray expression data.
      Please also note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were 
      not matched to any tissue sample and thus are filled with NaN values in the data matrix.
 
+.. Warning::
+     The command ``fetch_ahba()`` fetches a large (~24 MB) microarray dataset from the internet and may thus be 
+     incredibly slow to load if you lack a good connection. But don't you worry: you can download the
+     relevant file by typing this command in your terminal ``wget https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv``
+     and specifying its path in the ``fetch_ahba()`` function as follows:``fetch_ahba('/path/to/allgenes.csv')``
+
 .. tabs::
 
    .. code-tab:: py

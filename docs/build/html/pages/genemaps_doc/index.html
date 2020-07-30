@@ -201,6 +201,13 @@ used in ENIGMA-derived data matrices!</p>
 <p>Please also note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were
 not matched to any tissue sample and thus are filled with NaN values in the data matrix.</p>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> fetches a large (~24 MB) microarray dataset from the internet and may thus be
+incredibly slow to load if you lack a good connection. But don’t you worry: you can download the
+relevant file by typing this command in your terminal <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv</span></code>
+and specifying its path in the <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> function as follows:<code class="docutils literal notranslate"><span class="pre">fetch_ahba('/path/to/allgenes.csv')</span></code></p>
+</div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
