@@ -326,3 +326,23 @@ def fetch_ahba():
     url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
 
     return pd.read_csv(url, error_bad_lines=False)
+
+def epilepsy_genes():
+    """ Outputs names of epilepsy-related risk genes based on previous GWAS
+        (ILAE on Complex Epilepsies, 2018, Nat Comms)
+
+        Returns
+        -------
+        epigx : names of genes for epilepsy subtypes (dict)
+    """
+    allepilepsy = ['FANCL', 'BCL11A', 'SCN3A', 'SCN2A', 'TTC21B', 'SCN1A', 'HEATR3', 'BRD7']
+    focalepilepsy = ['SCN3A', 'SCN2A', 'TTC21B', 'SCN1A']
+    generalizedepilepsy = ['FANCL', 'BCL11A', 'SCN3A', 'SCN2A', 'TTC21B', 'SCN1A', 'STAT4', 'PCDH7', 'GABRA2', 'KCNN2',
+                           'ATXN1', 'PNPO', 'GRIK1']
+    jme = ['STX1B']
+    cae = ['FANCL', 'BCL11A', 'ZEB2']
+    focalhs = ['C3orf33', 'SLC33A1', 'KCNAB1', 'GJA1']
+
+    return {'allepilepsy': allepilepsy, 'focalepilepsy': focalepilepsy,
+             'generalizedepilepsy': generalizedepilepsy, 'jme': jme,
+             'cae': cae, 'focalhs': focalhs}
