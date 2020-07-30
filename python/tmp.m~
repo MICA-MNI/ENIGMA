@@ -1,8 +1,13 @@
-%% Fetch gene expression data
-%    gx          = matrix of gene expression data (82 x 15633)
-%    reglabels   = name of cortical regions in same order as gx
-%                  (82 x 1 cell array)
-%    genelabels  = name of genes in same order as gx
-%                     (1 x 15633 cell array)
-[gx, reglabels, genelabels] = fetch_ahba();
+%% add the path to the ENIGMA TOOLBOX matlab folder
+addpath(genpath('/path/to/ENIGMA/matlab/'));
 
+%% Following the above code, we can then map epilepsy-related gene expression to the cortical surface!
+mfh_mean(fh_gx, 2);
+fh_gx_fsa5           = map_to_labels(, 'aparc_fsa5.csv');
+
+f = figure,
+  plot_cortical(dc_f_fsa5, 'fsa5', 'functional degree centrality')
+  colormap([Reds])
+  SurfStatColLim([20 30])
+  
+%% And to the subcortical surface!!

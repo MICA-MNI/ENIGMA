@@ -111,7 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../genemaps_doc/index.html">Gene expression data</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Epilepsy-related gene expression</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#epilepsy-related-gene-expression-maps">Epilepsy-related gene expression maps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Epilepsy-related gene expression maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualize-epilepsy-related-gene-expression-patterns">Visualize epilepsy-related gene expression patterns</a></li>
 </ul>
 </li>
 </ul>
@@ -185,7 +185,8 @@
             
   <div class="section" id="epilepsy-related-gene-expression">
 <span id="ep-genes"></span><h1>Epilepsy-related gene expression<a class="headerlink" href="#epilepsy-related-gene-expression" title="Permalink to this headline">¶</a></h1>
-<p>This page contains descriptions and examples to extract epilepsy-related gene expression data!</p>
+<p>This page contains descriptions and examples to extract epilepsy-related gene expression data
+and project them to cortical and subcortical surfaces!</p>
 <div class="section" id="epilepsy-related-gene-expression-maps">
 <h2>Epilepsy-related gene expression maps<a class="headerlink" href="#epilepsy-related-gene-expression-maps" title="Permalink to this headline">¶</a></h2>
 <p>Leveraging findings from a recent <a class="reference external" href="https://www.nature.com/articles/s41467-018-07524-z">GWAS</a> from the International
@@ -227,7 +228,25 @@ epilepsy-related genes!</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Let&#39;s start by loading the microarray expression data</span>
+<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+
+<span class="c">%% Get the names of genes associated with specific epilepsy subtypes (using Focal HS as example here)</span>
+<span class="c">% Other subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, &#39;cae&#39;</span>
+<span class="n">epigx</span>        <span class="s">=</span> <span class="s">epilepsy_genes()</span><span class="p">;</span>
+<span class="n">fh_genes</span>     <span class="s">=</span> <span class="s">find(ismember(genelabels,</span> <span class="s">epigx.focalhs))</span><span class="p">;</span>
+
+<span class="c">%% We can now extract the gene expression data for these specifc genes</span>
+<span class="n">fh_gx</span>        <span class="s">=</span> <span class="s">gx(:,</span> <span class="s">fh_genes)</span><span class="p">;</span>
+
+<span class="c">%% Alternatively, we can also combine all dem epilepsy genes together (and removing duplicates)</span>
+<span class="n">allg</span>         <span class="s">=</span> <span class="s">unique([epigx.allepilepsy</span> <span class="s">epigx.focalepilepsy</span> <span class="s">epigx.generalizedepilepsy</span> <span class="s">...</span>
+                       <span class="n">epigx</span><span class="p">.</span><span class="n">jme</span> <span class="n">epigx</span><span class="p">.</span><span class="n">cae</span> <span class="n">epigx</span><span class="p">.</span><span class="n">focalhs</span><span class="p">]);</span>
+<span class="n">all_genes</span>    <span class="s">=</span> <span class="s">find(ismember(genelabels,</span> <span class="s">allg))</span><span class="p">;</span>
+<span class="n">allgx</span>        <span class="s">=</span> <span class="s">gx(:,</span> <span class="s">all_genes)</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -236,8 +255,8 @@ epilepsy-related genes!</p>
 <div class="line"><br /></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>Epilepsy-related gene expression maps<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="visualize-epilepsy-related-gene-expression-patterns">
+<h2>Visualize epilepsy-related gene expression patterns<a class="headerlink" href="#visualize-epilepsy-related-gene-expression-patterns" title="Permalink to this headline">¶</a></h2>
 <p>Following up on the above example, we provide a brief example to project gene expression maps to the surface!
 Additional details are provided in the <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">surface visualization</span></a> section!</p>
 <div class="sphinx-tabs docutils container">
@@ -261,8 +280,8 @@ Additional details are provided in the <a class="reference internal" href="../vi
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span><span class="p">,</span> <span class="n">plot_subcortical</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">abeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">enigmatoolbox</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
-<span class="gp">... </span>          <span class="n">parcellations</span><span class="s1">&#39;, &#39;</span><span class="n">aparc_fsa5</span><span class="o">.</span><span class="n">csv</span><span class="s1">&#39;), dtype=np.int)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">enigmatoolbox</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
+<span class="gp">... </span>           <span class="s1">&#39;parcellations&#39;</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5.csv&#39;</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">68</span><span class="p">],</span> <span class="n">labeling</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">))</span>
@@ -274,11 +293,28 @@ Additional details are provided in the <a class="reference internal" href="../vi
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
+<span class="n">mean_fh_gx</span>           <span class="s">=</span> <span class="s">mean(fh_gx,</span> <span class="s">2)</span><span class="p">;</span>
+<span class="n">fh_gx_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(mean_fh_gx(1:68),</span> <span class="s">&#39;aparc_fsa5.csv&#39;)</span><span class="p">;</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">fh_gx_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.55</span><span class="p">])</span>
+
+<span class="c">%% And to the subcortical surface!!</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">mean_fh_gx</span><span class="p">(</span><span class="mi">69</span><span class="p">:</span><span class="k">end</span><span class="p">),</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.65</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<img alt="../../_images/epigx.png" class="align-center" src="../../_images/epigx.png" />
 </div>
 </div>
 
