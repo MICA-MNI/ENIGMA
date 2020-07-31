@@ -1,13 +1,13 @@
 .. _ep_genes:
 
-Epilepsy-related gene expression
+Disease-related gene expression maps
 =========================================
 
 This page contains descriptions and examples to extract GWAS-implicated gene expression data
 and project them to cortical and subcortical surfaces!
 
 
-Disease-related gene expression maps
+Extract disease-related genes
 -----------------------------------------
 Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined 
 disease-related genes, including:
@@ -22,7 +22,7 @@ but feel free to replace *epilepsy* with any other disorder listed above!
 
 .. Caution::
      Pre-defined gene sets are obtained from individual studies and are liable to be changed!
-     We welcome any suggestions you may have on defining disease-related gene sets and are
+     We welcome any suggestions you may have on defining proper disease-related gene sets and are
      happy to expand this function to include other interesting disorders! Get in touch with us
      `here <https://github.com/saratheriver/ENIGMA/issues>`_!
 
@@ -64,7 +64,7 @@ but feel free to replace *epilepsy* with any other disorder listed above!
 |
 
 
-Visualize disease-related gene expression patterns
+Visualize disease-related gene expression maps
 ------------------------------------------------------------------------
 Following up on the above example, we provide a brief example to project gene expression maps to the surface! 
 Once again, we use Focal HS (epilepsy) genes as an example.
