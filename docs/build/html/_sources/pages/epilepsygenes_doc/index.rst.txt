@@ -12,11 +12,11 @@ Extract disease-related genes
 Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined 
 disease-related genes, including:
 `autism spectrum disorder <https://www.nature.com/articles/s41588-019-0344-8>`_, 
-`bipolar <https://www.nature.com/articles/s41588-019-0397-8>`_, 
+`bipolar disorder <https://www.nature.com/articles/s41588-019-0397-8>`_, 
 `depression <https://www.nature.com/articles/s41593-018-0326-7>`_,  
-`epilepsy <https://www.nature.com/articles/s41467-018-07524-z>`_,
+`common epilepsies <https://www.nature.com/articles/s41467-018-07524-z>`_,
 `schizophrenia <https://www.nature.com/articles/s41588-018-0059-2>`_, and
-`tourette <https://ajp.psychiatryonline.org/doi/10.1176/appi.ajp.2018.18070857?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed>`_. 
+`tourette's syndrome <https://ajp.psychiatryonline.org/doi/10.1176/appi.ajp.2018.18070857?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%20%200pubmed>`_. 
 In the following tutorial, we will use epilepsy-related genes (more specifically, genes related to focal 
 hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with any other disorder listed above!
 
