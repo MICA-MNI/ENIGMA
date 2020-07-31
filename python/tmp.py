@@ -1,12 +1,12 @@
 from enigmatoolbox.datasets import fetch_ahba
-from enigmatoolbox.datasets import epilepsy_genes
+from enigmatoolbox.datasets import risk_genes
 
 # Let's start by loading the microarray expression data
 gx = fetch_ahba()
 
 # Get the names of genes associated with specific epilepsy subtypes (using Focal HS as example here)
 # Other subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', 'cae'
-epigx = epilepsy_genes()
+epigx = risk_genes("epilepsy")
 fh_genes = epigx['focalhs']
 
 # We can now extract the gene expression data for these specifc genes

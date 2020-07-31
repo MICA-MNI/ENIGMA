@@ -3,38 +3,46 @@
 Epilepsy-related gene expression
 =========================================
 
-This page contains descriptions and examples to extract epilepsy-related gene expression data
+This page contains descriptions and examples to extract GWAS-implicated gene expression data
 and project them to cortical and subcortical surfaces!
 
 
-Epilepsy-related gene expression maps
+Disease-related gene expression maps
 -----------------------------------------
-Leveraging findings from a recent `GWAS <https://www.nature.com/articles/s41467-018-07524-z>`_ from the International 
-League Against Epilepsy Consortium on Complex Epilepsies, we can extract gene expression maps for a set of pre-defined 
-epilepsy-related genes! 
+Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined 
+disease-related genes, including:
+`autism spectrum disorder <https://www.nature.com/articles/s41467-018-07524-z>`_, 
+`bipolar <https://www.nature.com/articles/s41467-018-07524-z>`_, 
+`depression <https://www.nature.com/articles/s41467-018-07524-z>`_,  
+`epilepsy <https://www.nature.com/articles/s41467-018-07524-z>`_,
+`schizophrenia <https://www.nature.com/articles/s41467-018-07524-z>`_, and
+`tourette <https://www.nature.com/articles/s41467-018-07524-z>`_. In the following tutorial, we will
+use epilepsy-related genes (more specifically, genes related to focal hippocampal sclerosis) as an example,
+but feel free to replace *epilepsy* with any other disorder listed above!
+
+.. Caution::
+     Pre-defined gene sets are obtained from individual studies and are liable to be changed!
+     We welcome any suggestions you may have on defining disease-related gene sets and are
+     happy to expand this function to include other interesting disorders! Get in touch with us
+     `here <https://github.com/saratheriver/ENIGMA/issues>`_!
 
 .. tabs::
 
    .. code-tab:: py
        
         >>> from enigmatoolbox.datasets import fetch_ahba
-        >>> from enigmatoolbox.datasets import epilepsy_genes
+        >>> from enigmatoolbox.datasets import risk_genes
 
         >>> # Let's start by loading the microarray expression data
         >>> gx = fetch_ahba()
 
-        >>> # Get the names of genes associated with specific epilepsy subtypes (using Focal HS as example here)
-        >>> # Other subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', 'cae'
+        >>> # Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)
+        >>> # Other epilepsy subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', and 'cae'
         >>> epigx = epilepsy_genes()
         >>> fh_genes = epigx['focalhs']
 
-        >>> # We can now extract the gene expression data for these specifc genes
+        >>> # We can now extract the gene expression data for these Focal HS genes
         >>> fh_gx = gx[fh_genes]
-
-        >>> # Alternatively, we can also combine all dem epilepsy genes together (and removing duplicates)
-        >>> allg = epigx['allepilepsy'] + epigx['focalepilepsy'] + epigx['generalizedepilepsy'] + epigx['jme'] + epigx['cae'] + epigx['focalhs']
-        >>> allg = list(dict.fromkeys(allg))
-        >>> allgx = gx[allg]
 
    .. code-tab:: matlab
 
@@ -44,28 +52,23 @@ epilepsy-related genes!
         %% Let's start by loading the microarray expression data
         [gx, reglabels, genelabels] = fetch_ahba();
 
-        %% Get the names of genes associated with specific epilepsy subtypes (using Focal HS as example here)
-        % Other subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', 'cae'
+        %% Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)
+        % Other subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', and 'cae'
         epigx        = epilepsy_genes();
         fh_genes     = find(ismember(genelabels, epigx.focalhs));
 
-        %% We can now extract the gene expression data for these specifc genes
+        %% We can now extract the gene expression data for these Focal HS genes
         fh_gx        = gx(:, fh_genes);
-
-        %% Alternatively, we can also combine all dem epilepsy genes together (and removing duplicates)
-        allg         = unique([epigx.allepilepsy epigx.focalepilepsy epigx.generalizedepilepsy ...
-                               epigx.jme epigx.cae epigx.focalhs]);
-        all_genes    = find(ismember(genelabels, allg));    
-        allgx        = gx(:, all_genes);
 
 
 |
 
 
-Visualize epilepsy-related gene expression patterns
+Visualize disease-related gene expression patterns
 ------------------------------------------------------------------------
-Following up on the above example, we provide a brief example to project gene expression maps to the surface!
-Additional details are provided in the :ref:`surface visualization <surf_visualization>` section!
+Following up on the above example, we provide a brief example to project gene expression maps to the surface! 
+Once again, we use Focal HS (epilepsy) genes as an example.
+Additional details on surface visualization are provided in :ref:`this section <surf_visualization>` section!
 
 .. tabs::
 
@@ -78,16 +81,25 @@ Additional details are provided in the :ref:`surface visualization <surf_visuali
         >>> from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 
         >>> # Following the above code, we can then map epilepsy-related gene expression to the cortical surface!
+        >>> # Let's first compute the mean of all Focal HS genes across cortical areas only
+        >>> fh_gx = np.mean(fh_gx, axis=1)
+
+        >>> # And separate cortical (ctx) from subcortical (sctx) areas
+        >>> fh_gx_ctx = np.mean(fh_gx, axis=1)[:68]
+        >>> fh_gx_sctx = np.mean(fh_gx, axis=1)[68:]
+
+        >>> # We can now compute the mapping between the parcellated gene expression data and our surface template
         >>> labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
         ...            'parcellations', 'aparc_fsa5.csv'), dtype=np.int)
-        >>> fh_gx_fsa5 = map_to_labels(np.mean(fh_gx, axis=1)[:68], labeling)
-        >>> plot_cortical(array_name=fh_gx_fsa5, surface_name="fsa5", size=(800, 400), nan_color=(1, 1, 1, 1),
+        >>> fh_gx_ctx_fsa5 = map_to_labels(fh_gx_ctx, labeling)
+
+        >>> # And finally project the output to the cortical surface
+        >>> plot_cortical(array_name=fh_gx_ctx_fsa5, surface_name="fsa5", size=(800, 400), nan_color=(1, 1, 1, 1),
         ...               cmap='Greys', color_bar=True, color_range=(0.4, 0.55))
 
-        >>> # And to the subcortical surface!!
-        >>> plot_subcortical(array_name=np.mean(fh_gx, axis=1)[68:], ventricles=False, size=(800, 400),
+        >>> # ... as well as to the subcortical surface!!
+        >>> plot_subcortical(array_name=fh_gx_sctx, ventricles=False, size=(800, 400),
         ...                 cmap='Greys', color_bar=True, color_range=(0.4, 0.65))
-
 
    .. code-tab:: matlab
 
@@ -95,17 +107,25 @@ Additional details are provided in the :ref:`surface visualization <surf_visuali
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Following the above code, we can then map epilepsy-related gene expression to the cortical surface!
+        % Let's first compute the mean of all Focal HS genes
         mean_fh_gx           = mean(fh_gx, 2);
-        fh_gx_fsa5           = map_to_labels(mean_fh_gx(1:68), 'aparc_fsa5.csv');
 
+        % And separate cortical (ctx) from subcortical (sctx) areas
+        fh_gx_ctx            = mean_fh_gx(1:68);
+        fh_gx_sctx           = mean_fh_gx(69:end);
+
+        %% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template
+        fh_gx_ctx_fsa5       = map_to_labels(fh_gx_ctx(1:68), 'aparc_fsa5.csv');
+
+        %% Finally, we can project the output to the cortical surface
         f = figure,
-          plot_cortical(fh_gx_fsa5, 'fsa5', 'focal hs-related gene expression')
+          plot_cortical(fh_gx_ctx_fsa5, 'fsa5', 'focal hs-related gene expression')
           colormap([Greys])
           SurfStatColLim([.4 .55])
   
-        %% And to the subcortical surface!!
+        %% ... as well as to the subcortical surface!!
         f = figure,
-          plot_subcortical(mean_fh_gx(69:end), 'False', 'focal hs-related gene expression')
+          plot_subcortical(fh_gx_sctx, 'False', 'focal hs-related gene expression')
           colormap([Greys])
           SurfStatColLim([.4 .65]) 
 
