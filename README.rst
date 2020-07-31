@@ -1,19 +1,25 @@
 =======================
-ENIGMA TOOLBOX 🤠
+ENIGMA TOOLBOX
 =======================
 
 
 
-How u doin'?
+How u doin'? 🤠
 
 
-Support
------------
+Development and getting involved
+---------------------------------------------
+Did you find a bug? Or do you have any problems, questions, or suggestions about the ENIGMA TOOLBOX?
+Please do not hesitate to get in touch with us on our Github issues! If you are interested in collaborating 
+or sharing your ENIGMA-related codes/tools (noice!), make sure you familiarize yourself with our contributing 
+guidelines first and then discuss your ideas on our Github issues and pull request.
 
-...
+
+|
+
 
 Related publications
---------------
+------------------------
 
 Some scripts and analyses have been used in previous ENIGMA publications. Make sure you check them out!
 
@@ -26,6 +32,7 @@ Some scripts and analyses have been used in previous ENIGMA publications. Make s
     :align: center
 
 
+|
 
 
 `Structural covariance networks and graph analysis in OCD <https://academic.oup.com/brain/article/143/2/684/5732968>`_
@@ -36,11 +43,15 @@ Some scripts and analyses have been used in previous ENIGMA publications. Make s
     :scale: 50%
     :align: center
 
+
+|
+
+
 Contributors
 -----------------------
 
-- **Sara Lariviere**, *MICA Lab - Montreal Neurological Institute*
-- **Raul Rodriguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+- **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
+- **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
 - **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
 - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
 - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
