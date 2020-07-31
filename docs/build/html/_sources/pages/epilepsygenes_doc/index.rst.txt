@@ -100,13 +100,13 @@ Additional details are provided in the :ref:`surface visualization <surf_visuali
 
         f = figure,
           plot_cortical(fh_gx_fsa5, 'fsa5', 'focal hs-related gene expression')
-          colormap([Reds])
+          colormap([Greys])
           SurfStatColLim([.4 .55])
   
         %% And to the subcortical surface!!
         f = figure,
           plot_subcortical(mean_fh_gx(69:end), 'False', 'focal hs-related gene expression')
-          colormap([Reds])
+          colormap([Greys])
           SurfStatColLim([.4 .65]) 
 
 .. image:: ./examples/example_figs/epigx.png

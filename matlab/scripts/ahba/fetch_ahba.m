@@ -31,13 +31,9 @@ function [gx, reglabels, genelabels] = fetch_ahba(csvfile)
 
 if nargin < 1
     % Fetch the csv table from github and load it locally | option 1
-    % url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv';
-    % urlwrite(url, '.gtmp.csv');
-    % g = readtable('.gtmp.csv');
-
-    % Fetch the csv table from github and load it locally | option 2
-    !wget https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv
-    g = readtable('allgenes.csv');
+    url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv';
+    urlwrite(url, '.gtmp.csv');
+    g = readtable('.gtmp.csv');
 
     % Extract relevant information
     gx          = table2array(g(:, 2:end));
@@ -45,10 +41,8 @@ if nargin < 1
     genelabels  = g.Properties.VariableNames(2:end);
 
     % remove table locally | option 1
-    % delete('.gtmp.csv');
+    delete('.gtmp.csv');
 
-    % remove table locally | option 2
-    delete('allgenes.csv');
 else
     g = readtable(csvfile);
     gx          = table2array(g(:, 2:end));
