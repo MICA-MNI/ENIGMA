@@ -39,7 +39,7 @@ hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with a
 
         >>> # Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)
         >>> # Other epilepsy subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', and 'cae'
-        >>> epigx = epilepsy_genes()
+        >>> epigx = risk_genes("epilepsy")
         >>> fh_genes = epigx['focalhs']
 
         >>> # We can now extract the gene expression data for these Focal HS genes
@@ -55,7 +55,7 @@ hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with a
 
         %% Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)
         % Other subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', and 'cae'
-        epigx        = epilepsy_genes();
+        epigx        = risk_genes("epilepsy");
         fh_genes     = find(ismember(genelabels, epigx.focalhs));
 
         %% We can now extract the gene expression data for these Focal HS genes

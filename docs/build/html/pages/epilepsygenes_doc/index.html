@@ -229,7 +229,7 @@ happy to expand this function to include other interesting disorders! Get in tou
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Other epilepsy subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">epigx</span> <span class="o">=</span> <span class="n">epilepsy_genes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epigx</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="s2">&quot;epilepsy&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh_genes</span> <span class="o">=</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalhs&#39;</span><span class="p">]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now extract the gene expression data for these Focal HS genes</span>
@@ -246,7 +246,7 @@ happy to expand this function to include other interesting disorders! Get in tou
 
 <span class="c">%% Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
 <span class="c">% Other subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
-<span class="n">epigx</span>        <span class="s">=</span> <span class="s">epilepsy_genes()</span><span class="p">;</span>
+<span class="n">epigx</span>        <span class="s">=</span> <span class="s">risk_genes(&quot;epilepsy&quot;)</span><span class="p">;</span>
 <span class="n">fh_genes</span>     <span class="s">=</span> <span class="s">find(ismember(genelabels,</span> <span class="s">epigx.focalhs))</span><span class="p">;</span>
 
 <span class="c">%% We can now extract the gene expression data for these Focal HS genes</span>
