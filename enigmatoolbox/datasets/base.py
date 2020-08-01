@@ -334,6 +334,7 @@ def risk_genes(disorder=None):
 
         Parameters (pick one)
         ---------------------
+        'adhd'          : Demontis et al., 2018, Nat Genet
         'asd'           : Grove et al., 2019, Nat Genet
         'bipolar'       : Stahl et al., 2019, Nat Genet
         'depression'    : Howard et al., 2019, Nat Genet
@@ -346,12 +347,18 @@ def risk_genes(disorder=None):
         -------
         dx_gx : names of genes for specified disorder
     """
-    if disorder is "asd":
+    if disorder is "adhd":
+        return {'ST3GAL3', 'KDM4A', 'KDM4A-AS1', 'PTPRF', 'SLC6A9', 'ARTN', 'DPH2', ...
+                 'ATP6V0B', 'B4GALT2', 'CCDC24', 'IPO13', 'SPAG16', 'PCDH7', 'LINC02497', ...
+                 'LINC00461', 'MIR9-2', 'LINC02060', 'TMEM161B-AS1', 'FOXP2', 'MIR3666', ...
+                 'LINC01288', 'SORCS3', 'DUSP6', 'POC1B', 'SEMA6D', 'LINC01572'};
+
+    elif disorder is "asd":
         return {'NEGR1', 'PTBP2', 'CADPS', 'FEZF2', 'TMEM33', 'DCAF4L1',
                 'SLC30A9', 'BEND4', 'NUDT12', 'KCNN2', 'MMS22L', 'POU3F2',
                 'KMT2E', 'SRPK2', 'C8orf74', 'SOX7', 'PINX1', 'MROH5',
                 'MARK3', 'CKB', 'TRMT61A', 'BAG5', 'APOPT1', 'KLC1',
-                'XRCC3', 'MACROD2', 'XRN2', 'KIZ', 'NKX2_4', 'NKX2_2'}
+                'XRCC3', 'MACROD2', 'XRN2', 'KIZ', 'NKX2-4', 'NKX2-2'}
 
     elif disorder is "bipolar":
         return {'PLEKHO1', 'LMAN2L', 'SCN2A', 'PCGEM1', 'TRANK1', 'ITIH1',

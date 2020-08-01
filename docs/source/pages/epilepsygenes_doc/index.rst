@@ -11,6 +11,7 @@ Extract disease-related genes
 -----------------------------------------
 Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined 
 disease-related genes, including:
+`attention deficit/hyperactivity disorder <https://www.nature.com/articles/s41588-018-0269-7>`_,
 `autism spectrum disorder <https://www.nature.com/articles/s41588-019-0344-8>`_, 
 `bipolar disorder <https://www.nature.com/articles/s41588-019-0397-8>`_, 
 `depression <https://www.nature.com/articles/s41593-018-0326-7>`_,  
