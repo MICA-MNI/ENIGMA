@@ -16,7 +16,7 @@ from numpy.lib.stride_tricks import as_strided
 from vtk import vtkCommand
 import vtk.qt as vtk_qt
 
-from brainspace import OFF_SCREEN
+from enigmatoolbox import OFF_SCREEN
 from ..vtk_interface.pipeline import serial_connect, get_output
 from ..vtk_interface.wrappers import (BSWindowToImageFilter, BSPNGWriter,
                                       BSBMPWriter, BSJPEGWriter, BSTIFFWriter,
