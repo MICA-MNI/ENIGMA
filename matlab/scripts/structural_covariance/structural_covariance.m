@@ -1,8 +1,8 @@
-function joint_var_matrix = enigma_covariance(data)
+function joint_var_matrix = structural_covariance(data)
 %
 %   HELLO!
 %
-%   joint_var_matrix = enigma_covariance(data)
+%   joint_var_matrix = structural_covariance(data)
 %
 %   Construction of intra-individual brain structural covariance networks
 %   Based on Yun et al., 2020, Brain  

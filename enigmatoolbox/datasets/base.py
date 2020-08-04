@@ -294,7 +294,7 @@ def load_fc():
            np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
 
 
-def enigma_covariance(zdata):
+def structural_covariance(zdata):
     """ Construction of intra-individual brain structural covariance networks
 
         Parameters
