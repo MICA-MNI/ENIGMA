@@ -19,8 +19,10 @@ The same approach can be used to map parcellated data to conte69 surface space; 
         >>> import os
         >>> import numpy as np
         >>> import enigmatoolbox.datasets
-        >>> from enigmatoolbox.datasets import load_fsa5
-        >>> from enigmatoolbox.plotting import plot_hemispheres
+        >>> from enigmatoolbox.plotting import plot_cortical
+
+        >>> # Load example data
+        >>> # code here here here 
 
         >>> # Load mapping between parcellation (e.g., Desikan-Killiany) and surface (fsa5)
         >>> fname = 'aparc_fsa5.csv'
@@ -31,11 +33,10 @@ The same approach can be used to map parcellated data to conte69 surface space; 
         >>> # In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with 
         >>> # ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus
         >>> # callosum [68 x 1 ndarray])
-        >>> data_fsa5 = map_to_labels(np.arange(68), labeling)
+        >>> xdata_fsa5 = map_to_labels(xdata, labeling)
 
         >>> # Load cortical surface and map values to the surface brain
-        >>> surf_lh, surf_rh = load_fsa5()
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=data_fsa5, size=(800, 400),
+        >>> plot_hemispheres(surface_name="fsa", array_name=xdata_fsa5, size=(800, 400),
         ...                  cmap='viridis', color_bar=True, color_range=(np.min(data_fsa5), np.max(data_fsa5)))
 
 
@@ -44,16 +45,18 @@ The same approach can be used to map parcellated data to conte69 surface space; 
         %% add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
+        %% Load example data
+        % code here here here 
+
         %% Map parcellation values to surface (vertices)
         % In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with 
         % ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus 
         % callosum [68 x 1 vector])
-        mat                   = 1:1:68;
-        data_fsa5             = map_to_labels(mat, 'aparc_fsa5.csv');
+        xdata_fsa5             = map_to_labels(xdata, 'aparc_fsa5.csv');
         
         %% Plot cortical values
         f = figure,
-            plot_cortical(data_fsa5, 'fsa5')
+            plot_cortical(xdata_fsa5, 'fsa5')
             colormap(viridis)                                % change colormap here 
             SurfStatColLim([min(data_fsa5), max(data_fsa5)]) % change colorbar limits here
 
@@ -72,23 +75,21 @@ Subcortical surface visualization
    .. code-tab:: py
 
         >>> import numpy as np
-        >>> from brainspace.datasets import load_subcortical
-        >>> from brainspace.plotting import plot_hemispheres
-        >>> from brainspace.utils.parcellation import subcorticalvertices
+        >>> from enigmatoolbox.datasets import plot_subcortical
+
+        >>> # Load example data
+        >>> # code here here here 
 
         >>> # Transform subcortical values (one per subcortical structure) to vertices
         >>> # Input values (i.e., subcortical_values) are ordered as follows:
         >>> #     np.array([left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
-        >>> #               left-pallidum, left-putamen, left-thalamus, left-ventricles,
+        >>> #               left-pallidum, left-putamen, left-thalamus, left-ventricles*,
         >>> #               right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
-        >>> #               right-pallidum, right-putamen, right-thalamus, right-ventricles]) 
-        >>> data = subcorticalvertices(subcortical_values=np.array(range(16)))
-
-        >>> # Load subcortical surfaces
-        >>> surf_lh, surf_rh = load_subcortical()
+        >>> #               right-pallidum, right-putamen, right-thalamus, right-ventricles*]) 
+        >>> # *ventricles are optional
 
         >>> # Plot subcortical values
-        >>> plot_hemispheres(surf_lh, surf_rh, array_name=data, size=(800, 400), 
+        >>> plot_subcortical(array_name=xdata, size=(800, 400), 
         ...                  cmap='viridis', color_range=(0,15), color_bar=True)
 
 
@@ -97,15 +98,18 @@ Subcortical surface visualization
         %% add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
+        %% Load example data
+        % code here here here 
+
         %% Plot subcortical values
         % Input values are ordered as follows:
         %      [left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
-        %       left-pallidum, left-putamen, left-thalamus, left-ventricles,
+        %       left-pallidum, left-putamen, left-thalamus, left-ventricles*,
         %       right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
-        %       right-pallidum, right-putamen, right-thalamus, right-ventricles]
-        data = 0:1:15;                               % 16 x 1 data vector
+        %       right-pallidum, right-putamen, right-thalamus, right-ventricles*]
+        % *ventricles are optional
         f = figure,
-            plot_subcortical(data);
+            plot_subcortical(xdata);
             colormap(viridis)                         % change colormap here 
             SurfStatColLim([min(data), max(data)])    % change colorbar limits here
 
