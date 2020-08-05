@@ -329,6 +329,7 @@ def fetch_ahba(csvfile=None):
     else:
         return pd.read_csv(csvfile, error_bad_lines=False)
 
+
 def risk_genes(disorder=None):
     """ Outputs names of GWAS-derived risk genes for specific diseases/disorders
 

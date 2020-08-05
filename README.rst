@@ -1,15 +1,17 @@
 =======================
 ENIGMA TOOLBOX
+🌎🌏🌍
 =======================
 
+Ello, how u doin'?
 
 
-How u doin'? 🤠
+|
 
 
-Development and getting involved
+Development and getting involved 🔧 
 ---------------------------------------------
-Did you find a bug? Or do you have any problems, questions, or suggestions about the ENIGMA TOOLBOX?
+Did you find a bug? Or do you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**?
 Please do not hesitate to get in touch with us on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_! 
 If you are interested in collaborating or sharing your ENIGMA-related codes/tools (`noice <https://www.urbandictionary.com/define.php?term=noice>`_!), 
 make sure you familiarize yourself with our `contributing guidelines <https://github.com/saratheriver/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
@@ -20,8 +22,8 @@ pull request `pull request <https://github.com/saratheriver/ENIGMA/pulls>`_.
 |
 
 
-Related publications
-------------------------
+Related publications 📝
+----------------------------
 
 Some scripts and analyses have been used in previous ENIGMA publications. Make sure you check them out!
 
@@ -49,7 +51,7 @@ Some scripts and analyses have been used in previous ENIGMA publications. Make s
 |
 
 
-Contributors
+Contributors 🦀
 -----------------------
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
