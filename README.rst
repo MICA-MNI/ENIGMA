@@ -11,11 +11,11 @@ Ello, how u doin'?
 Development and getting involved 🔧 
 ---------------------------------------------
 Did you find a bug? Or do you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**?
-Please do not hesitate to get in touch with us on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_! 
+Please do not hesitate to get in touch with us on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_! 
 If you are interested in collaborating or sharing your ENIGMA-related codes/tools (`noice <https://www.urbandictionary.com/define.php?term=noice>`_!), 
-make sure you familiarize yourself with our `contributing guidelines <https://github.com/saratheriver/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
-first and then discuss your ideas on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_ and 
-pull request `pull request <https://github.com/saratheriver/ENIGMA/pulls>`_.
+make sure you familiarize yourself with our `contributing guidelines <https://github.com/MICA-MNI/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
+first and then discuss your ideas on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_ and 
+pull request `pull request <https://github.com/MICA-MNI/ENIGMA/pulls>`_.
 
 
 |

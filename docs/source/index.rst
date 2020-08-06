@@ -58,11 +58,11 @@ tutorials. Alternatively, easily replace our example data with other ENIGMA-deri
 **Development and getting involved** ⚙️
 -------------------------------------------
 Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
-hesitate to post them to our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_! Or are you interested in collaborating 
+hesitate to post them to our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_! Or are you interested in collaborating 
 or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.com/define.php?term=noice>`_! 
-Make sure you familiarize yourself with our `contributing guidelines <https://github.com/saratheriver/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
-first and then discuss your ideas on our Github `issues <https://github.com/saratheriver/ENIGMA/issues>`_ and 
-`pull request <https://github.com/saratheriver/ENIGMA/pulls>`_.
+Make sure you familiarize yourself with our `contributing guidelines <https://github.com/MICA-MNI/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
+first and then discuss your ideas on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_ and 
+`pull request <https://github.com/MICA-MNI/ENIGMA/pulls>`_.
 
 .. toctree::
    :maxdepth: 1

@@ -276,25 +276,25 @@ You can see a list of our current contributors in the [contributors tab][link_en
 
 _These Contributing Guidelines have been adapted from the contributing guidelines of [The Turing Way](https://github.com/alan-turing-institute/the-turing-way/blob/master/CONTRIBUTING.md#contributing-through-github) and [tedana](https://github.com/ME-ICA/tedana/blob/master/CONTRIBUTING.md). (License: CC-BY)_
 
-[link_enigmatoolbox]: https://github.com/saratheriver/ENIGMA
-[link_enigmatoolbox_contributors]: https://github.com/saratheriver/ENIGMA/graphs/contributors
+[link_enigmatoolbox]: https://github.com/MICA-MNI/ENIGMA
+[link_enigmatoolbox_contributors]: https://github.com/MICA-MNI/ENIGMA/graphs/contributors
 [link_enigmatoolbox_docs]: https://enigma-toolbox.readthedocs.io/
-[link_enigmatoolbox_issues]: https://github.com/saratheriver/ENIGMA/issues
-[link_enigmatoolbox_labels]: https://github.com/saratheriver/ENIGMA/labels
-[link_enigmatoolbox_prs]: https://github.com/saratheriver/ENIGMA/pulls
-[link_enigmatoolbox_closedprs]: https://github.com/saratheriver/ENIGMA/pulls?q=is%3Apr+is%3Aclosed
+[link_enigmatoolbox_issues]: https://github.com/MICA-MNI/ENIGMA/issues
+[link_enigmatoolbox_labels]: https://github.com/MICA-MNI/ENIGMA/labels
+[link_enigmatoolbox_prs]: https://github.com/MICA-MNI/ENIGMA/pulls
+[link_enigmatoolbox_closedprs]: https://github.com/MICA-MNI/ENIGMA/pulls?q=is%3Apr+is%3Aclosed
 
-[labels_bugs]: https://github.com/saratheriver/ENIGMA/labels/bug
-[labels_documentation]: https://github.com/saratheriver/ENIGMA/labels/documentation
-[labels_enhancement]: https://github.com/saratheriver/ENIGMA/labels/enhancement
-[labels_goodfirst]: htttps://github.com/saratheriver/ENIGMA/labels/good%20first%20issue
-[labels_helpwanted]: https://github.com/saratheriver/ENIGMA/labels/help%20wanted
-[labels_highpriority]: https://github.com/saratheriver/ENIGMA/labels/high%20priority
-[labels_lowpriority]: https://github.com/saratheriver/ENIGMA/labels/low%20priority
-[labels_maintenance]: https://github.com/saratheriver/ENIGMA/labels/maintenance
-[labels_question]: https://github.com/saratheriver/ENIGMA/labels/question
-[labels_refactor]: https://github.com/saratheriver/ENIGMA/labels/refactor
-[labels_testing]: https://github.com/saratheriver/ENIGMA/labels/testing
+[labels_bugs]: https://github.com/MICA-MNI/ENIGMA/labels/bug
+[labels_documentation]: https://github.com/MICA-MNI/ENIGMA/labels/documentation
+[labels_enhancement]: https://github.com/MICA-MNI/ENIGMA/labels/enhancement
+[labels_goodfirst]: htttps://github.com/MICA-MNI/ENIGMA/labels/good%20first%20issue
+[labels_helpwanted]: https://github.com/MICA-MNI/ENIGMA/labels/help%20wanted
+[labels_highpriority]: https://github.com/MICA-MNI/ENIGMA/labels/high%20priority
+[labels_lowpriority]: https://github.com/MICA-MNI/ENIGMA/labels/low%20priority
+[labels_maintenance]: https://github.com/MICA-MNI/ENIGMA/labels/maintenance
+[labels_question]: https://github.com/MICA-MNI/ENIGMA/labels/question
+[labels_refactor]: https://github.com/MICA-MNI/ENIGMA/labels/refactor
+[labels_testing]: https://github.com/MICA-MNI/ENIGMA/labels/testing
 
 [link_branches]: https://help.github.com/articles/creating-and-deleting-branches-within-your-repository
 [link_clonerepo]: https://help.github.com/articles/cloning-a-repository
