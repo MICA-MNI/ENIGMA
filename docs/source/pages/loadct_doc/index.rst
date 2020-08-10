@@ -15,7 +15,7 @@ As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subj
 1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
 4=right TLE), **Age** (in years), **Sex** (1=males, 2=females), **Handedness** (1=right, 2=left),
 **AO** (age at onset in years, patients only), **DURILL** (duration of illness in years, patients only),
-**ICV** (intracranial volume).
+and **ICV** (intracranial volume).
 
 .. tabs::
 
@@ -49,7 +49,8 @@ Load subcortical volume data
    .. code-tab:: matlab
 
         %% ...  
-
+.. image:: ./examples/example_figs/metr1.png
+    :align: center
 
 |
 
@@ -69,7 +70,8 @@ Load cortical thickness data
    .. code-tab:: matlab
 
         %% ...  
-
+.. image:: ./examples/example_figs/metr2.png
+    :align: center
 
 |
 
@@ -89,14 +91,15 @@ Load cortical surface area data
    .. code-tab:: matlab
 
         %% ...  
-
+.. image:: ./examples/example_figs/metr3.png
+    :align: center
 
 |
 
 
 Just load everything!
 ------------------------------------
-Here's how you can load all the example data into one simple command line!
+You can also load all the example data into one simple command line!
 
 .. tabs::
 
