@@ -436,3 +436,27 @@ def risk_genes(disorder=None):
 
     else:
         raise ValueError("must specify a valid disorder... but just one!")
+
+
+def load_example_data():
+    """ Loads ENIGMA example dataset (from one site - MICA-MNI Montreal)
+            Processed according to ENIGMA protocols
+
+        Returns
+        -------
+        cov   : contains information on covariates (panda dataframe)
+        metr1 : contains information on subcortical volume
+        metr2 : contains information on cortical thickness
+        metr3 : contains information on surface area
+    """
+    root_pth = os.path.dirname(__file__)
+
+    cov = os.path.join(root_pth, 'xdata', 'cov.csv')
+    metr1 = os.path.join(root_pth, 'xdata', 'metr1_SubVol.csv')
+    metr2 = os.path.join(root_pth, 'xdata', 'metr2_CortThick.csv')
+    metr3 = os.path.join(root_pth, 'xdata', 'metr3_CortSurf.csv')
+
+    return pd.read_csv(cov, error_bad_lines=False), \
+           pd.read_csv(metr1, error_bad_lines=False), \
+           pd.read_csv(metr2, error_bad_lines=False), \
+           pd.read_csv(metr3, error_bad_lines=False)
