@@ -2,7 +2,7 @@ function [fc, fcl, fcs, fcsl] = load_fc()
 %
 % Usage: [fc, fcl, fcs, fcsl] = load_fc()
 %
-% Simple script to load fucntional connectivity data
+% Simple script to load functional connectivity data
 %   Outputs:
 %       fc    = functional cortico-cortical connectivity matrix (68 x 68)
 %       fcl   = name of cortical regions (in same order as fc; 1 x 68)

@@ -5,8 +5,8 @@ Load example data
 
 This page contains descriptions and examples to load our example data! 
 
-This is an example dataset that includes 10 healthy controls (XX females, age±SD=XX.XX±XX.X) and 10 individuals with 
-left-onset temporal lobe epilepsy (TLE, XX females, age±SD=XX.XX±XX.X).
+This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with 
+left-onset temporal lobe epilepsy (*TLE*, 7 females, age±SD=39.8±14.8 years).
 
 Load covariates data
 ------------------------------------
@@ -24,19 +24,30 @@ and **ICV** (intracranial volume).
         >>> from enigmatoolbox.datasets import load_example_data
         >>> cov, _, _, _ = load_example_data()
 
-
    .. code-tab:: matlab
 
-        %% ...  
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+
+        %% Load covariates data
+        [cov, ~, ~, ~] = load_example_data(); 
+
 .. image:: ./examples/example_figs/cov.png
     :align: center
+
 
 |
 
 
 Load subcortical volume data
 ------------------------------------
-| ...
+Subcortical grey matter volume data regroup 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
+
+.. DANGER:: 
+     The column order from ENIGMA-derived subcortical volume matrices does not match our subcortical 
+     visualization tools nor our connectivity matrices. To re-order ENIGMA-derived subcortical volume data, you may use 
+     our `function_name()` function, which will re-order the subcortical structures accordingly (*i.e.*, alphabetically,
+     with all left hemisphere structures first followed by all right hemisphere structures). 
 
 .. tabs::
 
@@ -45,40 +56,52 @@ Load subcortical volume data
         >>> from enigmatoolbox.datasets import load_example_data
         >>> _, metr1_SubVol, _, _ = load_example_data()
 
-
    .. code-tab:: matlab
 
-        %% ...  
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+
+        %% Load subcortical volume data
+        [~, metr1_SubVol, ~, ~] = load_example_data(); 
+
 .. image:: ./examples/example_figs/metr1.png
     :align: center
+
 
 |
 
 
 Load cortical thickness data
 --------------------------------------
-| ...
+Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+and subsequently averaged within each of the Desikan-Killiany parcels.
 
 .. tabs::
 
    .. code-tab:: py
        
         >>> from enigmatoolbox.datasets import load_example_data
-        _, _, metr2_CortThick, _ = load_example_data()
-
+        >>> _, _, metr2_CortThick, _ = load_example_data()
 
    .. code-tab:: matlab
 
-        %% ...  
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+
+        %% Load cortical thickness data
+        [~, ~, metr2_CortThick, ~] = load_example_data(); 
+  
 .. image:: ./examples/example_figs/metr2.png
     :align: center
+
 
 |
 
 
 Load cortical surface area data
 ------------------------------------
-| ...
+The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+this morphological measure is defined by the sum of the area of each of the triangles within the parcel.
 
 .. tabs::
 
@@ -90,9 +113,15 @@ Load cortical surface area data
 
    .. code-tab:: matlab
 
-        %% ...  
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+
+        %% Load cortical surface area data
+        [~, ~, ~, metr3_CortSurf] = load_example_data(); 
+    
 .. image:: ./examples/example_figs/metr3.png
     :align: center
+
 
 |
 
@@ -108,7 +137,10 @@ You can also load all the example data into one simple command line!
         >>> from enigmatoolbox.datasets import load_example_data
         >>> cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf = load_example_data()
 
-
    .. code-tab:: matlab
 
-        %% ...  
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+
+        %% Load everything!
+        [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data();

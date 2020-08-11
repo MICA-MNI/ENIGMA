@@ -104,7 +104,7 @@ Additional details on surface visualization are provided in :ref:`this section <
 
    .. code-tab:: matlab
 
-        %% add the path to the ENIGMA TOOLBOX matlab folder
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Following the above code, we can then map epilepsy-related gene expression to the cortical surface!

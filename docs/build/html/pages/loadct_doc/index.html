@@ -189,8 +189,8 @@
   <div class="section" id="load-example-data">
 <span id="load-ct"></span><h1>Load example data<a class="headerlink" href="#load-example-data" title="Permalink to this headline">¶</a></h1>
 <p>This page contains descriptions and examples to load our example data!</p>
-<p>This is an example dataset that includes 10 healthy controls (XX females, age±SD=XX.XX±XX.X) and 10 individuals with
-left-onset temporal lobe epilepsy (TLE, XX females, age±SD=XX.XX±XX.X).</p>
+<p>This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with
+left-onset temporal lobe epilepsy (<em>TLE</em>, 7 females, age±SD=39.8±14.8 years).</p>
 <div class="section" id="load-covariates-data">
 <h2>Load covariates data<a class="headerlink" href="#load-covariates-data" title="Permalink to this headline">¶</a></h2>
 <p>As per ENIGMA-Epilepsy protocol, covariate information includes <strong>SubjID</strong> (subjectID),
@@ -219,7 +219,11 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load covariates data</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -231,8 +235,13 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="section" id="load-subcortical-volume-data">
 <h2>Load subcortical volume data<a class="headerlink" href="#load-subcortical-volume-data" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">…</div>
+<p>Subcortical grey matter volume data regroup 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>The column order from ENIGMA-derived subcortical volume matrices does not match our subcortical
+visualization tools nor our connectivity matrices. To re-order ENIGMA-derived subcortical volume data, you may use
+our <cite>function_name()</cite> function, which will re-order the subcortical structures accordingly (<em>i.e.</em>, alphabetically,
+with all left hemisphere structures first followed by all right hemisphere structures).</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -254,7 +263,11 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load subcortical volume data</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -266,9 +279,8 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="section" id="load-cortical-thickness-data">
 <h2>Load cortical thickness data<a class="headerlink" href="#load-cortical-thickness-data" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">…</div>
-</div>
+<p>Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+and subsequently averaged within each of the Desikan-Killiany parcels.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -284,12 +296,16 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="go">_, _, metr2_CortThick, _ = load_example_data()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load cortical thickness data</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -301,9 +317,8 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="section" id="load-cortical-surface-area-data">
 <h2>Load cortical surface area data<a class="headerlink" href="#load-cortical-surface-area-data" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">…</div>
-</div>
+<p>The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+this morphological measure is defined by the sum of the area of each of the triangles within the parcel.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -324,7 +339,11 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load cortical surface area data</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -357,7 +376,11 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% ...</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load everything!</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
