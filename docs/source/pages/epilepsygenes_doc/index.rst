@@ -47,7 +47,7 @@ hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with a
 
    .. code-tab:: matlab
 
-        %% add the path to the ENIGMA TOOLBOX matlab folder
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
         
         %% Let's start by loading the microarray expression data

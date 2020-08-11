@@ -45,7 +45,7 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
    .. code-tab:: matlab
 
-        %% add the path to the ENIGMA TOOLBOX matlab folder
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Let's use load_sc() and load_fc() functions to return:
@@ -116,7 +116,7 @@ Load subcortical connectivity matrices
 
    .. code-tab:: matlab
 
-        %% add the path to the ENIGMA TOOLBOX matlab folder
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Let's use load_sc() and load_fc() functions to return:

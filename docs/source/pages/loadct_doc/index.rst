@@ -27,7 +27,7 @@ and **ICV** (intracranial volume).
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Load covariates data
         [cov, ~, ~, ~] = load_example_data(); 
@@ -41,7 +41,7 @@ and **ICV** (intracranial volume).
 
 Load subcortical volume data
 ------------------------------------
-Subcortical grey matter volume data regroup 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
+Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
 
 .. DANGER:: 
      The column order from ENIGMA-derived subcortical volume matrices does not match our subcortical 
@@ -59,7 +59,7 @@ Subcortical grey matter volume data regroup 12 subcortical regions, bilateral hi
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Load subcortical volume data
         [~, metr1_SubVol, ~, ~] = load_example_data(); 
@@ -86,7 +86,7 @@ and subsequently averaged within each of the Desikan-Killiany parcels.
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Load cortical thickness data
         [~, ~, metr2_CortThick, ~] = load_example_data(); 
@@ -114,7 +114,7 @@ this morphological measure is defined by the sum of the area of each of the tria
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Load cortical surface area data
         [~, ~, ~, metr3_CortSurf] = load_example_data(); 
@@ -140,7 +140,7 @@ You can also load all the example data into one simple command line!
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/'));
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Load everything!
         [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data();

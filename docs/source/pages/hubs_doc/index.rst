@@ -115,6 +115,9 @@ denotes increased hubness!
 
    .. code-tab:: matlab
 
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
         %% Load functional and structural subcortico-cortical connectivity data
         [~, ~, fc, ~]     = load_fc();
         [~, ~, sc, ~]     = load_sc();
@@ -153,5 +156,6 @@ Relations between hubs and morphological measures
 
    .. code-tab:: matlab
 
-        %%
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 

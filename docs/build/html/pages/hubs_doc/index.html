@@ -317,7 +317,10 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Load functional and structural subcortico-cortical connectivity data</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load functional and structural subcortico-cortical connectivity data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 
@@ -368,7 +371,8 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>

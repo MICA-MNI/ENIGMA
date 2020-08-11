@@ -220,7 +220,7 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load covariates data</span>
 <span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
@@ -235,7 +235,7 @@ and <strong>ICV</strong> (intracranial volume).</p>
 </div>
 <div class="section" id="load-subcortical-volume-data">
 <h2>Load subcortical volume data<a class="headerlink" href="#load-subcortical-volume-data" title="Permalink to this headline">¶</a></h2>
-<p>Subcortical grey matter volume data regroup 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
+<p>Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
 <div class="admonition danger">
 <p class="admonition-title">Danger</p>
 <p>The column order from ENIGMA-derived subcortical volume matrices does not match our subcortical
@@ -264,7 +264,7 @@ with all left hemisphere structures first followed by all right hemisphere struc
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load subcortical volume data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
@@ -302,7 +302,7 @@ and subsequently averaged within each of the Desikan-Killiany parcels.</p>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load cortical thickness data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
@@ -340,7 +340,7 @@ this morphological measure is defined by the sum of the area of each of the tria
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load cortical surface area data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
@@ -377,7 +377,7 @@ this morphological measure is defined by the sum of the area of each of the tria
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load everything!</span>
 <span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>

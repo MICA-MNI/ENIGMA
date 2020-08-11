@@ -48,6 +48,9 @@ Following the examples below, we can fetch microarray expression data.
 
    .. code-tab:: matlab
 
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+        
         %% Fetch gene expression data
         %    gx          = matrix of gene expression data (82 x 15633)
         %    reglabels   = name of cortical regions in same order as gx
