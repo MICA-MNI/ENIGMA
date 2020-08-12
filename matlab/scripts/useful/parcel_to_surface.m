@@ -1,10 +1,10 @@
-function map2surf = map_to_labels(parcel_data, parcellation)
+function parcel2surf = parcel_to_surface(parcel_data, parcellation)
 %
-% map2surf = map_to_labels(parcel_data, parcellation)
+% map2surf = parcel_to_surface(parcel_data, parcellation)
 %
 % INPUTS
 %   parcel_data  = p x 1 parcel vector (e.g., if Desikan Killiany from ENIGMA data, then 68 x 1)
-%   parcellation = 'aparc_fsa5.csv' (default)
+%   parcellation = 'aparc_fsa5' (default)
 %
 % OUTPUTS
 %   maps a 1 x p parcellation vector to a 1 x m surface vector 
@@ -16,7 +16,7 @@ function map2surf = map_to_labels(parcel_data, parcellation)
 
 
 if nargin < 2
-    parcellation = 'aparc_fsa5.csv';
+    parcellation = 'aparc_fsa5';
 end
 
 if any(size(parcel_data) == 68)
@@ -35,13 +35,13 @@ elseif contains(parcellation, 'conte69')
 end
 
 % load label vector
-label_vector     = dlmread(parcellation); 
+label_vector     = dlmread([parcellation '.csv']); 
 
 % map data to surface
-map2surf         = zeros(1,size(surf.coord,2)); 
+parcel2surf      = zeros(1,size(surf.coord,2)); 
 uparcel          = unique(label_vector);
 for ii=1:length(uparcel)
-    index           = label_vector==uparcel(ii);
-    map2surf(index) = data_DK(ii); 
+    index              = label_vector==uparcel(ii);
+    parcel2surf(index) = data_DK(ii); 
 end
 

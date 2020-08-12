@@ -278,10 +278,9 @@ Additional details on surface visualization are provided in <a class="reference 
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">enigmatoolbox.datasets</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">map_to_labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span><span class="p">,</span> <span class="n">plot_subcortical</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
@@ -292,10 +291,8 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">68</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_sctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">68</span><span class="p">:]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now compute the mapping between the parcellated gene expression data and our surface template</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">enigmatoolbox</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
-<span class="gp">... </span>           <span class="s1">&#39;parcellations&#39;</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5.csv&#39;</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="n">labeling</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now map the parcellated gene expression data to our surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># And finally project the output to the cortical surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -320,7 +317,7 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="n">fh_gx_sctx</span>           <span class="s">=</span> <span class="s">mean_fh_gx(69:end)</span><span class="p">;</span>
 
 <span class="c">%% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template</span>
-<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">map_to_labels(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5.csv&#39;)</span><span class="p">;</span>
+<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">map_to_labels(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% Finally, we can project the output to the cortical surface</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>

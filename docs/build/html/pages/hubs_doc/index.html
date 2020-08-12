@@ -207,12 +207,11 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">enigmatoolbox.datasets</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">map_to_labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural cortico-cortical connectivity data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
@@ -223,11 +222,8 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;aparc_fsa5.csv&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">enigmatoolbox</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
-<span class="gp">... </span>          <span class="s1">&#39;parcellations&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="n">labeling</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="n">labeling</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># And project the results on the surface brain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">dc_f_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
@@ -248,8 +244,8 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 <span class="n">dc_s</span>                <span class="s">=</span> <span class="s">sum(sc)</span><span class="p">;</span>
 
 <span class="c">%% Map parcellated data to the surface</span>
-<span class="n">dc_f_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_f,</span> <span class="s">&#39;aparc_fsa5.csv&#39;)</span><span class="p">;</span>
-<span class="n">dc_s_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_s,</span> <span class="s">&#39;aparc_fsa5.csv&#39;)</span><span class="p">;</span>
+<span class="n">dc_f_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_f,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">dc_s_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_s,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% And project the results on the surface brain</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>

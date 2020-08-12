@@ -5,7 +5,10 @@ Utility functions for parcellations/labelings.
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
 
+# Last modifications:
+#   Sara Lariviere <Aug2020>
 
+import os
 import numpy as np
 from scipy.stats import mode
 from scipy.optimize import linear_sum_assignment
@@ -184,7 +187,7 @@ def map_to_mask(values, mask, fill=0, axis=0):
     return mapped
 
 
-def map_to_labels(source_val, target_lab, mask=None, fill=0, source_lab=None):
+def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None):
     """Map data in source to target according to their labels.
 
     Target labels are sorted in ascending order, such that the smallest label
@@ -195,7 +198,7 @@ def map_to_labels(source_val, target_lab, mask=None, fill=0, source_lab=None):
     ----------
     source_val : ndarray, shape = (n_val,)
         Source array of values.
-    target_lab : ndarray, shape = (n_lab,)
+    target_lab : can be a string (e.g., aparc_fsa5) or an ndarray, shape = (n_lab,)
         Target labels.
     mask : ndarray, shape = (n_lab,), optional
         If mask is not None, only consider target labels in mask.
@@ -213,6 +216,12 @@ def map_to_labels(source_val, target_lab, mask=None, fill=0, source_lab=None):
         Target array with corresponding source values.
 
     """
+
+    if isinstance(target_lab, str):
+        fname = target_lab + '.csv'
+        parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
+        target_lab = np.loadtxt(parc_pth, dtype=np.int)
+
     if source_val.size == 68 and np.unique(target_lab).size == 71:
         a_idx = list(range(1, 4)) + list(range(5, 39)) + list(range(40, 71))
         ddk = np.zeros(71)

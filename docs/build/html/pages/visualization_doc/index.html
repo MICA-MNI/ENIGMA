@@ -190,6 +190,13 @@
 <p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!
 Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
 In the following example, we will display mean subcortical volume reductions in individuals with TLE (<em>z</em>-scored to healthy controls).</p>
+<div class="admonition-parcellations-parcellations-for-everyone admonition">
+<p class="admonition-title">Parcellations, parcellations for everyone</p>
+<p>Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-
+Killiany cortical parcels). Our <code class="docutils literal notranslate"><span class="pre">parcel_to_surface()</span></code> function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
+other parcellations (<em>e.g.</em>, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, and so on …), so you can take advantage of
+our visualization tools for all your other projects!</p>
+</div>
 <div class="admonition-don-t-like-fsaverage5-relax-we-got-you-covered admonition">
 <p class="admonition-title">Don’t like fsaverage5? Relax, we got you covered!</p>
 <p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’…
@@ -209,28 +216,35 @@ easy peasy lemon squeezy!</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">enigmatoolbox.datasets</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load example data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># code here here here</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load mapping between parcellation (e.g., Desikan-Killiany) and surface (fsa5)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fname</span> <span class="o">=</span> <span class="s1">&#39;aparc_fsa5.csv&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labeling</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">enigmatoolbox</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="vm">__file__</span><span class="p">),</span>
-<span class="gp">... </span>          <span class="s1">&#39;parcellations&#39;</span><span class="p">,</span> <span class="n">fname</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>            <span class="c1"># Selecting only columns with cortical thickness values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellation values to surface (vertices)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># callosum [68 x 1 ndarray])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xdata_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">labeling</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load cortical surface and map values to the surface brain</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_hemispheres</span><span class="p">(</span><span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa&quot;</span><span class="p">,</span> <span class="n">array_name</span><span class="o">=</span><span class="n">xdata_fsa5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
-<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from sub-PX013</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SubjID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sub-PX013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Before visualizing the data, we need to map the parcellated data to the surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">Z_PX013</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now project sub-PX013 cortical thickness patterns to the cortical surface!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_PX013_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -238,25 +252,34 @@ easy peasy lemon squeezy!</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Load example data</span>
-<span class="c">% code here here here</span>
+<span class="c">%% Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 
-<span class="c">%% Map parcellation values to surface (vertices)</span>
-<span class="c">% In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with</span>
-<span class="c">% ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus</span>
-<span class="c">% callosum [68 x 1 vector])</span>
-<span class="n">xdata_fsa5</span>             <span class="s">=</span> <span class="s">map_to_labels(xdata,</span> <span class="s">&#39;aparc_fsa5.csv&#39;)</span><span class="p">;</span>
+<span class="c">%% We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr2_CortThick(:,</span> <span class="s">2:end-5)</span><span class="p">;</span>    <span class="c">% Selecting only columns with cortical thickness values</span>
+<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                         <span class="c">% Selecting the group assignment column for all participants</span>
+<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                              <span class="c">% Specifying that controls are coded as 0</span>
+<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">%% As a quick example, let&#39;s chooose data from sub-PX013</span>
+<span class="n">Z_PX013</span>        <span class="s">=</span> <span class="s">Z(find(strcmp(cov.SubjID,</span> <span class="s">&#39;sub-PX013&#39;)),</span> <span class="s">:)</span><span class="p">;</span>
+
+<span class="c">%% Before visualizing the data, we need to map the parcellated data to the surface</span>
+<span class="n">Z_PX013_fsa5</span>   <span class="s">=</span> <span class="s">parcel_to_surface(Z_PX013,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% Plot cortical values</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">xdata_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>                                <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data_fsa5</span><span class="p">)])</span> <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_PX013_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                     <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                      <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>
 </div>
 <img alt="../../_images/ctx_py.png" class="align-center" src="../../_images/ctx_py.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 </div>
 <div class="section" id="subcortical-surface-visualization">
 <h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
@@ -296,7 +319,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Selecting only columns with cortical thickness values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Selecting only columns with subcortical volume values</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
@@ -319,7 +342,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
 
 <span class="c">%% Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
-<span class="n">data</span>           <span class="s">=</span> <span class="s">metr1_SubVol_r(:,</span> <span class="s">2:end-1)</span><span class="p">;</span>   <span class="c">% Selecting only columns with cortical thickness values</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr1_SubVol_r(:,</span> <span class="s">2:end-1)</span><span class="p">;</span>   <span class="c">% Selecting only columns with subcortical volume values</span>
 <span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                       <span class="c">% Selecting the group assignment column for all participants</span>
 <span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                            <span class="c">% Specifying that controls are coded as 0</span>
 <span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>

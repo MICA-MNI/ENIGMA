@@ -75,10 +75,9 @@ Additional details on surface visualization are provided in :ref:`this section <
 
    .. code-tab:: py
        
-        >>> import os
         >>> import numpy as np
         >>> import enigmatoolbox.datasets
-        >>> from enigmatoolbox.utils.parcellation import map_to_labels
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
         >>> from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 
         >>> # Following the above code, we can then map epilepsy-related gene expression to the cortical surface!
@@ -89,10 +88,8 @@ Additional details on surface visualization are provided in :ref:`this section <
         >>> fh_gx_ctx = np.mean(fh_gx, axis=1)[:68]
         >>> fh_gx_sctx = np.mean(fh_gx, axis=1)[68:]
 
-        >>> # We can now compute the mapping between the parcellated gene expression data and our surface template
-        >>> labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
-        ...            'parcellations', 'aparc_fsa5.csv'), dtype=np.int)
-        >>> fh_gx_ctx_fsa5 = map_to_labels(fh_gx_ctx, labeling)
+        >>> # We can now map the parcellated gene expression data to our surface template
+        >>> fh_gx_ctx_fsa5 = map_to_labels(fh_gx_ctx, 'aparc_fsa5')
 
         >>> # And finally project the output to the cortical surface
         >>> plot_cortical(array_name=fh_gx_ctx_fsa5, surface_name="fsa5", size=(800, 400), nan_color=(1, 1, 1, 1),
@@ -116,7 +113,7 @@ Additional details on surface visualization are provided in :ref:`this section <
         fh_gx_sctx           = mean_fh_gx(69:end);
 
         %% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template
-        fh_gx_ctx_fsa5       = map_to_labels(fh_gx_ctx(1:68), 'aparc_fsa5.csv');
+        fh_gx_ctx_fsa5       = map_to_labels(fh_gx_ctx(1:68), 'aparc_fsa5');
 
         %% Finally, we can project the output to the cortical surface
         f = figure,

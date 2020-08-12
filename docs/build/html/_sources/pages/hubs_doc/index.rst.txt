@@ -17,12 +17,11 @@ denotes increased hubness (*i.e.*, node with many connections).
 
    .. code-tab:: py
        
-        >>> import os
         >>> import numpy as np
         >>> import enigmatoolbox.datasets
         >>> from enigmatoolbox.plotting import plot_cortical
         >>> from enigmatoolbox.datasets import load_sc, load_fc
-        >>> from enigmatoolbox.utils.parcellation import map_to_labels
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
 
         >>> # Load functional and structural cortico-cortical connectivity data
         >>> fc, _, _, _ = load_fc()
@@ -33,11 +32,8 @@ denotes increased hubness (*i.e.*, node with many connections).
         >>> dc_s = np.sum(sc, axis=0)
 
         >>> # Map parcellated data to the surface
-        >>> fname = 'aparc_fsa5.csv'
-        >>> labeling = np.loadtxt(os.path.join(os.path.dirname(enigmatoolbox.datasets.__file__),
-        ...           'parcellations', fname), dtype=np.int)
-        >>> dc_f_fsa5 = map_to_labels(dc_f, labeling)
-        >>> dc_s_fsa5 = map_to_labels(dc_s, labeling)
+        >>> dc_f_fsa5 = parcel_to_surface(dc_f, 'aparc_fsa5')
+        >>> dc_s_fsa5 = parcel_to_surface(dc_s, 'aparc_fsa5')
 
         >>> # And project the results on the surface brain
         >>> plot_cortical(array_name=dc_f_fsa5, surface_name="fsa5", size=(800, 400),
@@ -45,7 +41,6 @@ denotes increased hubness (*i.e.*, node with many connections).
 
         >>> plot_cortical(array_name=dc_s_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='Blues', color_bar=True, color_range=(100, 300))
-
 
    .. code-tab:: matlab
 
@@ -58,8 +53,8 @@ denotes increased hubness (*i.e.*, node with many connections).
         dc_s                = sum(sc);
 
         %% Map parcellated data to the surface
-        dc_f_fsa5           = map_to_labels(dc_f, 'aparc_fsa5.csv');
-        dc_s_fsa5           = map_to_labels(dc_s, 'aparc_fsa5.csv');
+        dc_f_fsa5           = map_to_labels(dc_f, 'aparc_fsa5');
+        dc_s_fsa5           = map_to_labels(dc_s, 'aparc_fsa5');
 
         %% And project the results on the surface brain
         f = figure,
