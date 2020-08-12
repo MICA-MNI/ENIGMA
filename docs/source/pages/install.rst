@@ -3,8 +3,11 @@
 Installation
 ==============================
 
-**ENIGMA TOOLBOX** is available in Python and MATLAB
+**ENIGMA TOOLBOX** is available in Python and MATLAB!
 
+.. image:: ./extrafigs/dogdancing.gif
+    :scale: 72%
+    :align: left
 
 .. tabs::
 
@@ -28,8 +31,6 @@ Installation
         Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
 
             pip install enigmatoolbox
-
-
 
     .. tab:: Matlab installation
 
