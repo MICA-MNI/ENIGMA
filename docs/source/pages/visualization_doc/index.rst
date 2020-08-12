@@ -80,7 +80,7 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
 
      Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
      left-pallidum, left-putamen, left-thalamus, left-ventricles, right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
-     right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order them using our ``reorder_sctx()`` function! 
+     right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our ``reorder_sctx()`` function! 
      \*Ventricles are optional.
 
 
