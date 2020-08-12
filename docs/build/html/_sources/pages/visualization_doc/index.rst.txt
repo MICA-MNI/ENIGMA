@@ -12,7 +12,8 @@ Cortical surface visualization
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
 In the following example, we will display mean subcortical volume reductions in individuals with TLE (*z*-scored to healthy controls).
 
-.. Note::
+.. admonition:: Don't like fsaverage5? Relax, we got you covered!
+
      The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of 'fsa5' with 'conte69'...
      easy peasy lemon squeezy!
 
