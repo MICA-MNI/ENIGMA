@@ -6,7 +6,7 @@ from vtk import vtkPolyDataNormals
 
 from ..mesh.mesh_io import read_surface
 from ..mesh.mesh_operations import combine_surfaces
-from ..utils.parcellation import reduce_by_labels
+from ..utils.parcellation import surface_to_parcel
 from ..vtk_interface import wrap_vtk, serial_connect
 
 

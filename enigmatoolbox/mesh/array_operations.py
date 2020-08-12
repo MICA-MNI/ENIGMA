@@ -21,7 +21,7 @@ from vtk import (vtkCellSizeFilter, vtkCellCenters, vtkCellLocator,
 
 from . import mesh_elements as me
 from .mesh_operations import mask_points
-from ..utils.parcellation import map_to_mask, reduce_by_labels
+from ..utils.parcellation import map_to_mask, surface_to_parcel
 from ..vtk_interface import wrap_vtk, serial_connect
 from ..vtk_interface.decorators import append_vtk, wrap_input
 

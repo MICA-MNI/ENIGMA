@@ -272,7 +272,7 @@ def _get_redop(red_op, weights=None, axis=None):
     return fred
 
 
-def reduce_by_labels(values, labels, weights=None, target_labels=None,
+def surface_to_parcel(values, labels, weights=None, target_labels=None,
                      red_op='mean', axis=0, dtype=np.float):
     """Summarize data in `values` according to `labels`.
 
@@ -280,7 +280,7 @@ def reduce_by_labels(values, labels, weights=None, target_labels=None,
     ----------
     values : 1D or 2D ndarray
         Array of values.
-    labels : 1D ndarray, shape = (n_lab,)
+    labels : name of parcellation or 1D ndarray, shape = (n_lab,)
         Labels used summarize values.
     weights : 1D ndarray, shape = (n_lab,), optional
         Weights associated with labels. Only used when `red_op` is
@@ -307,6 +307,11 @@ def reduce_by_labels(values, labels, weights=None, target_labels=None,
     target_values : ndarray
         Summarized target values.
     """
+
+    if isinstance(labels, str):
+        fname = labels + '.csv'
+        parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
+        labels = np.loadtxt(parc_pth, dtype=np.int)
 
     if axis == 1 and values.ndim == 1:
         axis = 0
