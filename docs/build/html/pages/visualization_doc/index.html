@@ -231,11 +231,6 @@ easy peasy lemon squeezy!</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellation values to surface (vertices)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># callosum [68 x 1 ndarray])</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from sub-PX013</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SubjID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sub-PX013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
 

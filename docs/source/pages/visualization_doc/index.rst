@@ -43,11 +43,6 @@ In the following example, we will display mean subcortical volume reductions in 
         >>> controlCode = 0                                 # Specifying that controls are coded as 0
         >>> Z = zscore_matrix(data, group, controlCode)
 
-        >>> # Map parcellation values to surface (vertices)
-        >>> # In addition to several parcellations (Schaefer, Glasser, aparc, etc.), the function below also works with
-        >>> # ENIGMA-parcellated data (e.g., Desikan-Killiany atlas without values for the brain mask and the corpus
-        >>> # callosum [68 x 1 ndarray])
-
         >>> # As a quick example, let's choose data from sub-PX013
         >>> Z_PX013 = Z.to_numpy()[cov[cov['SubjID'] == 'sub-PX013'].index, :]
 
