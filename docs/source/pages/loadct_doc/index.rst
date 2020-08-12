@@ -44,9 +44,9 @@ Load subcortical volume data
 Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
 
 .. DANGER:: 
-     The column order from ENIGMA-derived subcortical volume matrices does not match our subcortical 
-     visualization tools nor our connectivity matrices. To re-order ENIGMA-derived subcortical volume data, you may use 
-     our `function_name()` function, which will re-order the subcortical structures accordingly (*i.e.*, alphabetically,
+     The column order from ENIGMA-derived subcortical volume matrices does not match the order in the connectivity matrices nor
+     the pre-requisite for our subcortical visualization tools. But, hey, don't you worry! To re-order ENIGMA-derived subcortical volume data, you may use 
+     our ``reorder_sctx()`` function, which will re-order the columns of the subcortical volume dataset accordingly (*i.e.*, alphabetically,
      with all left hemisphere structures first followed by all right hemisphere structures). 
 
 .. tabs::

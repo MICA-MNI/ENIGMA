@@ -627,6 +627,9 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     layout = ['lh', 'lh', 'rh', 'rh']
     view = ['lateral', 'medial', 'lateral', 'medial']
 
+    if array_name.shape == (1, 16) or array_name.shape == (1, 14):
+        array_name = np.transpose(array_name)
+
     if len(array_name) == 16 and ventricles:
         array_name = subcorticalvertices(array_name)
     elif len(array_name) == 14 and ventricles is False:

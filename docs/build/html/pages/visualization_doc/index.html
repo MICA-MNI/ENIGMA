@@ -189,7 +189,12 @@
 <h2>Cortical surface visualization<a class="headerlink" href="#cortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!
 Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
-The same approach can be used to map parcellated data to conte69 surface space; simply replace every instance of ‘fsa5’ with ‘conte69’!</p>
+In the following example, we will display mean subcortical volume reductions in individuals with TLE (<em>z</em>-scored to healthy controls).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’…
+easy peasy lemon squeezy!</p>
+</div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -230,7 +235,7 @@ The same approach can be used to map parcellated data to conte69 surface space; 
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Load example data</span>
@@ -255,8 +260,15 @@ The same approach can be used to map parcellated data to conte69 surface space; 
 </div>
 <div class="section" id="subcortical-surface-visualization">
 <h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles.</div>
+<p>The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz).
+Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
+we will display subcortical volume reductions (<em>z</em>-scored to healthy controls) in an individual with left TLE.</p>
+<div class="admonition-we-ve-mentioned-this-already-but-don-t-forget-that admonition">
+<p class="admonition-title">We’ve mentioned this already, but don’t forget that…</p>
+<p>Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus,
+left-pallidum, left-putamen, left-thalamus, left-ventricles, right-accumbens, right-amygdala, right-caudate, right-hippocampus,
+right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order them using our <code class="docutils literal notranslate"><span class="pre">reorder_sctx()</span></code> function!
+*Ventricles are optional.</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -273,43 +285,51 @@ The same approach can be used to map parcellated data to conte69 surface space; 
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load example data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># code here here here</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Transform subcortical values (one per subcortical structure) to vertices</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Input values (i.e., subcortical_values) are ordered as follows:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#     np.array([left-accumbens, left-amygdala, left-caudate, left-hippocampus,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               left-pallidum, left-putamen, left-thalamus, left-ventricles*,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               right-accumbens, right-amygdala, right-caudate, right-hippocampus,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1">#               right-pallidum, right-putamen, right-thalamus, right-ventricles*])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># *ventricles are optional</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot subcortical values</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">xdata</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
-<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">15</span><span class="p">),</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Selecting only columns with cortical thickness values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s project data from sub-PX013 to the subcortical surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SubjID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sub-PX013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_PX013</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Load example data</span>
-<span class="c">% code here here here</span>
+<span class="c">%% Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 
-<span class="c">%% Plot subcortical values</span>
-<span class="c">% Input values are ordered as follows:</span>
-<span class="c">%      [left-accumbens, left-amygdala, left-caudate, left-hippocampus,</span>
-<span class="c">%       left-pallidum, left-putamen, left-thalamus, left-ventricles*,</span>
-<span class="c">%       right-accumbens, right-amygdala, right-caudate, right-hippocampus,</span>
-<span class="c">%       right-pallidum, right-putamen, right-thalamus, right-ventricles*]</span>
-<span class="c">% *ventricles are optional</span>
+<span class="c">%% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
+<span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
+
+<span class="c">%% Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr1_SubVol_r(:,</span> <span class="s">2:end-1)</span><span class="p">;</span>   <span class="c">% Selecting only columns with cortical thickness values</span>
+<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                       <span class="c">% Selecting the group assignment column for all participants</span>
+<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                            <span class="c">% Specifying that controls are coded as 0</span>
+<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">%% As a quick example, let&#39;s project data from sub-PX013 to the subcortical surface template</span>
+<span class="n">Z_PX013</span> <span class="p">=</span> <span class="n">Z</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">cov</span><span class="p">.</span><span class="n">SubjID</span><span class="p">,</span> <span class="s">&#39;sub-PX013&#39;</span><span class="p">)),</span> <span class="p">:);</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">xdata</span><span class="p">);</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="n">viridis</span><span class="p">)</span>                         <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="n">min</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">max</span><span class="p">(</span><span class="n">data</span><span class="p">)])</span>    <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_PX013</span><span class="p">);</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                     <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                     <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>

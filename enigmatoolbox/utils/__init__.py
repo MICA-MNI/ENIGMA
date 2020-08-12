@@ -1,3 +1,4 @@
 from . import parcellation
+from . import useful
 
-__all__ = ['parcellation']
+__all__ = ['parcellation', 'useful']

@@ -1,0 +1,31 @@
+function data_r = reorder_sctx(data)
+%
+% Usage: data_r = reorder_sctx(data)
+%
+% Re-orders subcortical volume data alphabetically, and by hemisphere (left, then right)
+%
+%   Input:
+%      data         = data matrix (e.g. metr1_SubVol)
+%
+%   Output:
+%       data_r      = re-ordered data (L-acc, L-amyg, L-caud, L-hip ... R-thalamus, R-ventricle)
+%
+%
+% Sara Lariviere  |  saratheriver@gmail.com
+%
+% Last modifications:
+% SL | Watching NHL playoffs (CBJ-TBL) ... one of the longest matches ever!
+%      Fo' real... they're in 8th period... cray cray (August 2020)
+%      U
+
+    if size(data, 2) == 18:
+        new_order    = [1, 16, 14, 6, 12, 10, 8, 4, 2, 17, 15, 7, 13, 11, 9, 5, 3, 18]
+        data_r       = data(:, new_order)
+        
+    elseif data.shape[2] == 16:
+        new_order        = [15, 13, 5, 11, 9, 7, 3, 1, 16, 14, 6, 12, 10, 8, 4, 2]
+        data_r           = data[data.columns.values[new_order]]
+        
+    end
+
+return

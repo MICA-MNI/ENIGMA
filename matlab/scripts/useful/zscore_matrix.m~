@@ -1,0 +1,21 @@
+function Z = mica_zScoreFlip(values, group, controlCode)
+%
+% Usage: [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data()
+%
+% z-scores data w.r.t.
+%
+%   Outputs:
+%       Z   = z-scored data relative to control code (e.g., HCs)
+%
+%
+% Sara Lariviere  |  saratheriver@gmail.com
+%
+% Last modifications:
+% SL | still a hot and humid day in August 2020 (whatta summer!)
+
+C = strcmp(group, controlCode); 
+n = length(group);
+Z = (values - repmat(mean(values(C, :), 1), n, 1)) ...
+    ./ std(values(C, :), 0, 1);
+
+return
