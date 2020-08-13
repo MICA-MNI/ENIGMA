@@ -20,6 +20,7 @@ Installation
         - `vtk <https://vtk.org/>`_
         - `nibabel <https://nipy.org/nibabel/index.html>`_
         - `nilearn <https://nilearn.github.io/>`_
+        - `matplotlib <https://matplotlib.org/>`_
 
         The **ENIGMA TOOLBOX** can be directly downloaded from Github as follows: ::
 

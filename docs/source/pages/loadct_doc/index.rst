@@ -6,7 +6,7 @@ Load example data
 This page contains descriptions and examples to load our example data! 
 
 This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with 
-left-onset temporal lobe epilepsy (*TLE*, 7 females, age±SD=39.8±14.8 years).
+epilepsy (7 females, age±SD=39.8±14.8 years).
 
 Load covariates data
 ------------------------------------
