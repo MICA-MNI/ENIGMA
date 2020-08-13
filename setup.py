@@ -48,7 +48,7 @@ setup(
     description='good enigma tools for good people',
     long_description=long_description,
     long_description_content_type='text/x-rst',
-    url='https://github.com/saratheriver/ENIGMA',
+    url='https://github.com/MICA-MNI/ENIGMA',
     author='enigmators',
     author_email='saratheriver@gmail.com',
     classifiers=[
@@ -75,9 +75,9 @@ setup(
     zip_safe=False,
     project_urls={  # Optional
         'Documentation': 'https://enigma-toolbox.readthedocs.io',
-        #'Bug Reports': 'https://github.com/saratheriver/ENIGMA/issues',
-        'Source': 'https://github.com/saratheriver/ENIGMA',
+        #'Bug Reports': 'https://github.com/MICA-MNI/ENIGMA/issues',
+        'Source': 'https://github.com/MICA-MNI/ENIGMA',
     },
-    download_url='https://github.com/saratheriver/ENIGMA/archive/'
+    download_url='https://github.com/MICA-MNI/ENIGMA/archive/'
                  '{ver}.tar.gz'.format(ver=__version__),
 )
