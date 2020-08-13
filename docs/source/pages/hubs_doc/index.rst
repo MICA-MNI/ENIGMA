@@ -244,8 +244,8 @@ atrophy relative to controls).
 |
 
 
-Plot spatial correlations
--------------------------------------------------------
+Plot spatial correlations between hubs and morphological measures
+------------------------------------------------------------------------
 Now that we have done all the necessary analyses, we can finally display our correlations! 
 Here, a negative correlation indicates that greater atrophy (negative z-score values) correlates 
 with greater degree centrality (hubness).  
