@@ -378,14 +378,13 @@ feel free to simply skip right to the last section!</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">1 - Let&#39;s start by loading our example data and z-score data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    in patients relative to controls</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">1 - Let&#39;s start by loading our example data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data. Here we need the covariates, cortical thickness, and subcortical volume data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Here we need the covariates, cortical thickness, and subcortical volume data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so to match the order from the connectivity matrices and as a pre-requisite for plot_subcortical()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so to match the order from the connectivity matrices</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
@@ -393,17 +392,16 @@ feel free to simply skip right to the last section!</p>
 
 
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">2 - Let&#39;s then load our functional and structural connectivity matrices</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    and compute degree centrality metrics to identify the spatial distribution</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    of hubs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">2 - We can then and z-score data in patients relative to controls, so that lower values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">    correspond to greater atrophy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ct</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And mean z-score values across individuals with left TLE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mean z-score values across individuals with left TLE (SDx == 3)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ct_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sv_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sv</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 

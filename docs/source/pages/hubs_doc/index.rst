@@ -164,14 +164,13 @@ atrophy relative to controls).
         >>> from enigmatoolbox.datasets import load_sc, load_fc
 
         >>> """
-        >>> 1 - Let's start by loading our example data and z-score data 
-        >>>     in patients relative to controls
+        >>> 1 - Let's start by loading our example data
         >>> """
-        >>> # Let's first load our example data. Here we need the covariates, cortical thickness, and subcortical volume data
+        >>> # Here we need the covariates, cortical thickness, and subcortical volume data
         >>> cov, metr1_SubVol, metr2_CortThick, _ = load_example_data()
 
         >>> # After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)
-        >>> # so to match the order from the connectivity matrices and as a pre-requisite for plot_subcortical()
+        >>> # so to match the order from the connectivity matrices
         >>> metr1_SubVol_r = reorder_sctx(metr1_SubVol)
 
         >>> # We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
@@ -179,17 +178,16 @@ atrophy relative to controls).
 
 
         >>> """
-        >>> 2 - Let's then load our functional and structural connectivity matrices
-        >>>     and compute degree centrality metrics to identify the spatial distribution 
-        >>>     of hubs
+        >>> 2 - We can then and z-score data in patients relative to controls, so that lower values
+        >>>     correspond to greater atrophy          
         >>> """
-        >>> # We can z-score the data in patients relative to controls (lower z-score = more atrophy)
+        >>> # Z-score patients' data relative to controls (lower z-score = more atrophy)
         >>> group = cov['Dx'].to_list()
         >>> controlCode = 0
         >>> sv = zscore_matrix(metr1_SubVol_r.iloc[:, 1:-1], group, controlCode)
         >>> ct = zscore_matrix(metr2_CortThick.iloc[:, 1:-5], group, controlCode)
 
-        >>> # And mean z-score values across individuals with left TLE
+        >>> # Mean z-score values across individuals with left TLE (SDx == 3)
         >>> ct_tle = np.mean(ct.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
         >>> sv_tle = np.mean(sv.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
 
