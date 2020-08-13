@@ -10,7 +10,7 @@ Cortical surface visualization
 -----------------------------------
 **ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!   
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
-In the following example, we will display mean subcortical volume reductions in individuals with TLE (*z*-scored to healthy controls).
+In the following example, we will display mean subcortical volume reductions in individuals with left TLE (*z*-scored to healthy controls).
 
 .. admonition:: Parcellations, parcellations for everyone
 
@@ -21,8 +21,8 @@ In the following example, we will display mean subcortical volume reductions in 
 
 .. admonition:: Don't like fsaverage5? Relax, we got you covered!
 
-     The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of 'fsa5' with 'conte69'...
-     easy peasy lemon squeezy!
+     The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of 'fsa5' with 'conte69'!
+     Easy peasy lemon squeezy 🍋
 
 .. tabs::
 
@@ -43,14 +43,14 @@ In the following example, we will display mean subcortical volume reductions in 
         >>> controlCode = 0                                 # Specifying that controls are coded as 0
         >>> Z = zscore_matrix(data, group, controlCode)
 
-        >>> # As a quick example, let's choose data from sub-PX013
-        >>> Z_PX013 = Z.to_numpy()[cov[cov['SubjID'] == 'sub-PX013'].index, :]
+        >>> # As a quick example, let's choose data from individuals with left TLE
+        >>> Z_TLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
 
         >>> # Before visualizing the data, we need to map the parcellated data to the surface
-        >>> Z_PX013_fsa5 = parcel_to_surface(Z_PX013, 'aparc_fsa5')
+        >>> Z_TLE_fsa5 = parcel_to_surface(Z_TLE, 'aparc_fsa5')
 
-        >>> # We can now project sub-PX013 cortical thickness patterns to the cortical surface!
-        >>> plot_cortical(array_name=Z_PX013_fsa5, surface_name="fsa5", size=(800, 400),
+        >>> # We can now project cortical thickness descreases in left TLE to the cortical surface!
+        >>> plot_cortical(array_name=Z_TLE_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='Blues_r', color_bar=True, color_range=(-2, 0))
 
    .. code-tab:: matlab
@@ -62,22 +62,22 @@ In the following example, we will display mean subcortical volume reductions in 
         [cov, ~, metr2_CortThick, ~] = load_example_data();
 
         %% We can z-score the data in patients relative to controls (lower z-score = more atrophy)
-        data           = metr2_CortThick(:, 2:end-5);    % Selecting only columns with cortical thickness values
-        group          = cov.Dx;                         % Selecting the group assignment column for all participants
-        controlCode    = 0;                              % Specifying that controls are coded as 0
+        data           = metr2_CortThick(:, 2:end-5);         % Selecting only columns with cortical thickness values
+        group          = cov.Dx;                              % Selecting the group assignment column for all participants
+        controlCode    = 0;                                   % Specifying that controls are coded as 0
         Z              = zscore_matrix(data, group, controlCode);
         
-        %% As a quick example, let's chooose data from sub-PX013 
-        Z_PX013        = Z(find(strcmp(cov.SubjID, 'sub-PX013')), :);
+        %% As a quick example, let's choose data from individuals with left TLE
+        Z_TLE          = mean(Z(find(cov.SDx == 3), :), 1);   % Mean z-score values for left TLE patients (SDx == 3)
 
         %% Before visualizing the data, we need to map the parcellated data to the surface
-        Z_PX013_fsa5   = parcel_to_surface(Z_PX013, 'aparc_fsa5');
+        Z_TLE_fsa5   = parcel_to_surface(Z_TLE, 'aparc_fsa5');
 
         %% Plot cortical values
         f = figure,
-            plot_cortical(Z_PX013_fsa5, 'fsa5')
-            colormap(flipud(Blues));                     % change colormap here 
-            SurfStatColLim([-2, 0])                      % change colorbar limits here
+            plot_cortical(Z_TLE_fsa5, 'fsa5')
+            colormap(flipud(Blues));                          % change colormap here 
+            SurfStatColLim([-2, 0])                           % change colorbar limits here
 
 .. image:: ./examples/example_figs/ctx_py.png
     :align: center
@@ -90,7 +90,7 @@ Subcortical surface visualization
 ---------------------------------------
 The **ENIGMA TOOLBOX**'s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). 
 Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
-we will display subcortical volume reductions (*z*-scored to healthy controls) in an individual with left TLE.
+we will display subcortical volume reductions (*z*-scored to healthy controls) in individuals with left TLE.
 
 .. admonition:: We've mentioned this already, but don't forget that...
 
@@ -121,10 +121,10 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
         >>> controlCode = 0                                 # Specifying that controls are coded as 0
         >>> Z = zscore_matrix(data, group, controlCode)
 
-        >>> # As a quick example, let's project data from sub-PX013 to the subcortical surface template
-        >>> Z_PX013 = Z.to_numpy()[cov[cov['SubjID'] == 'sub-PX013'].index, :]
-        >>> plot_subcortical(array_name=Z_PX013, size=(800, 400),
-        ...                  cmap='Blues_r', color_bar=True, color_range=(-2, 0))
+        >>> # As a quick example, let's project data from individuals with left TLE to the subcortical surface template
+        >>> Z_LTLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
+        >>> plot_subcortical(array_name=Z_LTLE, size=(800, 400),
+        >>>                  cmap='Blues_r', color_bar=True, color_range=(-3, 0))
 
    .. code-tab:: matlab
 
@@ -141,14 +141,14 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
         data           = metr1_SubVol_r(:, 2:end-1);   % Selecting only columns with subcortical volume values
         group          = cov.Dx;                       % Selecting the group assignment column for all participants
         controlCode    = 0;                            % Specifying that controls are coded as 0
-        Z              = zscore_matrix(data, group, controlCode);
+        Z              = zscore_matrix(data, group, controlCode);  
 
-        %% As a quick example, let's project data from sub-PX013 to the subcortical surface template
-        Z_PX013 = Z(find(strcmp(cov.SubjID, 'sub-PX013')), :);
+        %% As a quick example, let's project data from individuals with left TLE to the subcortical surface template
+        Z_TLE = mean(Z(find(cov.SDx == 3), :), 1);     % Mean z-score values for left TLE patients (SDx == 3)
         f = figure,
-            plot_subcortical(Z_PX013);
-            colormap(flipud(Blues))                     % change colormap here
-            SurfStatColLim([-2, 0])                     % change colorbar limits here
+            plot_subcortical(Z_TLE);
+            colormap(flipud(Blues))                    % change colormap here
+            SurfStatColLim([-3, 0])                    % change colorbar limits here
 
 .. image:: ./examples/example_figs/sctx_py.png
     :align: center

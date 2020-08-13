@@ -189,7 +189,7 @@
 <h2>Cortical surface visualization<a class="headerlink" href="#cortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!
 Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
-In the following example, we will display mean subcortical volume reductions in individuals with TLE (<em>z</em>-scored to healthy controls).</p>
+In the following example, we will display mean subcortical volume reductions in individuals with left TLE (<em>z</em>-scored to healthy controls).</p>
 <div class="admonition-parcellations-parcellations-for-everyone admonition">
 <p class="admonition-title">Parcellations, parcellations for everyone</p>
 <p>Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-
@@ -199,8 +199,8 @@ our visualization tools for all your other projects!</p>
 </div>
 <div class="admonition-don-t-like-fsaverage5-relax-we-got-you-covered admonition">
 <p class="admonition-title">Don’t like fsaverage5? Relax, we got you covered!</p>
-<p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’…
-easy peasy lemon squeezy!</p>
+<p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’!
+Easy peasy lemon squeezy 🍋</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -231,14 +231,14 @@ easy peasy lemon squeezy!</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from sub-PX013</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SubjID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sub-PX013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from individuals with left TLE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Before visualizing the data, we need to map the parcellated data to the surface</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">Z_PX013</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now project sub-PX013 cortical thickness patterns to the cortical surface!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_PX013_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now project cortical thickness descreases in left TLE to the cortical surface!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -251,22 +251,22 @@ easy peasy lemon squeezy!</p>
 <span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 
 <span class="c">%% We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
-<span class="n">data</span>           <span class="s">=</span> <span class="s">metr2_CortThick(:,</span> <span class="s">2:end-5)</span><span class="p">;</span>    <span class="c">% Selecting only columns with cortical thickness values</span>
-<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                         <span class="c">% Selecting the group assignment column for all participants</span>
-<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                              <span class="c">% Specifying that controls are coded as 0</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr2_CortThick(:,</span> <span class="s">2:end-5)</span><span class="p">;</span>         <span class="c">% Selecting only columns with cortical thickness values</span>
+<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                              <span class="c">% Selecting the group assignment column for all participants</span>
+<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                                   <span class="c">% Specifying that controls are coded as 0</span>
 <span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
 
-<span class="c">%% As a quick example, let&#39;s chooose data from sub-PX013</span>
-<span class="n">Z_PX013</span>        <span class="s">=</span> <span class="s">Z(find(strcmp(cov.SubjID,</span> <span class="s">&#39;sub-PX013&#39;)),</span> <span class="s">:)</span><span class="p">;</span>
+<span class="c">%% As a quick example, let&#39;s choose data from individuals with left TLE</span>
+<span class="n">Z_TLE</span>          <span class="s">=</span> <span class="s">mean(Z(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>   <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
 
 <span class="c">%% Before visualizing the data, we need to map the parcellated data to the surface</span>
-<span class="n">Z_PX013_fsa5</span>   <span class="s">=</span> <span class="s">parcel_to_surface(Z_PX013,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">Z_TLE_fsa5</span>   <span class="s">=</span> <span class="s">parcel_to_surface(Z_TLE,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% Plot cortical values</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_PX013_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                     <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                      <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                          <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                           <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>
@@ -280,7 +280,7 @@ easy peasy lemon squeezy!</p>
 <h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz).
 Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
-we will display subcortical volume reductions (<em>z</em>-scored to healthy controls) in an individual with left TLE.</p>
+we will display subcortical volume reductions (<em>z</em>-scored to healthy controls) in individuals with left TLE.</p>
 <div class="admonition-we-ve-mentioned-this-already-but-don-t-forget-that admonition">
 <p class="admonition-title">We’ve mentioned this already, but don’t forget that…</p>
 <p>Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus,
@@ -319,10 +319,10 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s project data from sub-PX013 to the subcortical surface template</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_PX013</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SubjID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;sub-PX013&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_PX013</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
-<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_LTLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_LTLE</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -342,12 +342,12 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                            <span class="c">% Specifying that controls are coded as 0</span>
 <span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
 
-<span class="c">%% As a quick example, let&#39;s project data from sub-PX013 to the subcortical surface template</span>
-<span class="n">Z_PX013</span> <span class="p">=</span> <span class="n">Z</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">cov</span><span class="p">.</span><span class="n">SubjID</span><span class="p">,</span> <span class="s">&#39;sub-PX013&#39;</span><span class="p">)),</span> <span class="p">:);</span>
+<span class="c">%% As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
+<span class="n">Z_TLE</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">cov</span><span class="p">.</span><span class="n">SDx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">),</span> <span class="p">:),</span> <span class="mi">1</span><span class="p">);</span>     <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_PX013</span><span class="p">);</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                     <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                     <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">);</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                    <span class="c">% change colormap here</span>
+    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>
