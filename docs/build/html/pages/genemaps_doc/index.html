@@ -189,16 +189,16 @@
 <h2>Fetch gene expression data<a class="headerlink" href="#fetch-gene-expression-data" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>ENGMA TOOLBOX</strong> provides microarray expression data obtained from the <a class="reference external" href="https://human.brain-map.org/">Allen Human Brain Atlas</a>.
 Following the examples below, we can fetch microarray expression data.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
+<div class="admonition-wanna-know-where-we-got-those-genes admonition">
+<p class="admonition-title">Wanna know where we got those genes? 👖</p>
 <p>The Allen Human Brain Atlas microarray expression data loaded as part of the <strong>ENIGMA TOOLBOX</strong> was originally
 fetched from the <a class="reference external" href="https://github.com/rmarkello/abagen">abagen</a> toolbox using the <code class="docutils literal notranslate"><span class="pre">abagen.get_expression_data()</span></code>
 command, using data from <em>all</em> donors. We then re-organized the rows (corresponding to region labels) to match the order
-used in ENIGMA-derived data matrices!</p>
+used in ENIGMA-derived data matrices! For more flexibility, check our their toolbox!</p>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Please also note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were
+<div class="admonition-got-nans admonition">
+<p class="admonition-title">Got NaNs? 🥛</p>
+<p>Please note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were
 not matched to any tissue sample and thus are filled with NaN values in the data matrix.</p>
 </div>
 <div class="admonition warning">

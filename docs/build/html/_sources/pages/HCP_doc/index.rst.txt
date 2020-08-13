@@ -14,7 +14,8 @@ The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional
 (resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP). 
 Following the examples below, we can load connectivity data and extract seed-based connectivity. 
 
-.. Note:: 
+.. admonition:: Oh, by the way... ☝🏼
+
      Seed-based connectivity, as well as various connectivity metrics, can be easily mapped onto 
      the surface template! Simply follow our tutorial :ref:`here <surf_visualization>`!
 
