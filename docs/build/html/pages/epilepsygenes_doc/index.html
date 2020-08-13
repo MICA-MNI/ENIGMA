@@ -292,7 +292,7 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_sctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">68</span><span class="p">:]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now map the parcellated gene expression data to our surface template</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">map_to_labels</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># And finally project the output to the cortical surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
@@ -317,7 +317,7 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="n">fh_gx_sctx</span>           <span class="s">=</span> <span class="s">mean_fh_gx(69:end)</span><span class="p">;</span>
 
 <span class="c">%% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template</span>
-<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">map_to_labels(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">parcel_to_surface(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% Finally, we can project the output to the cortical surface</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>

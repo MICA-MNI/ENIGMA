@@ -345,8 +345,15 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 <div class="section" id="relations-between-hubs-and-morphological-measures">
 <h2>Relations between hubs and morphological measures<a class="headerlink" href="#relations-between-hubs-and-morphological-measures" title="Permalink to this headline">¶</a></h2>
-<div class="line-block">
-<div class="line">…</div>
+<p>Now that we have established the spatial distribution of hubs in the brain, we can then assess
+whether there is a selective vulnerability of these hub regions that parallels syndrome-specific atrophy patterns.
+For simplicity, in the following example, we will spatially correlate degree centrality measures to
+<em>z</em>-scored cortical thickness and subcortical volume measures (with lower values indicating greater
+atrophy relative to controls).</p>
+<div class="admonition-fascinating-right admonition">
+<p class="admonition-title">Fascinating, right?</p>
+<p>Make sure you check out our recent ENIGMA-Epilepsy study on this type of analysis… it’s right
+<a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1">here</a>!</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -362,7 +369,20 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="o">...</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>            <span class="c1"># Selecting only columns with cortical thickness values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

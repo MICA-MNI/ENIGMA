@@ -89,7 +89,7 @@ Additional details on surface visualization are provided in :ref:`this section <
         >>> fh_gx_sctx = np.mean(fh_gx, axis=1)[68:]
 
         >>> # We can now map the parcellated gene expression data to our surface template
-        >>> fh_gx_ctx_fsa5 = map_to_labels(fh_gx_ctx, 'aparc_fsa5')
+        >>> fh_gx_ctx_fsa5 = parcel_to_surface(fh_gx_ctx, 'aparc_fsa5')
 
         >>> # And finally project the output to the cortical surface
         >>> plot_cortical(array_name=fh_gx_ctx_fsa5, surface_name="fsa5", size=(800, 400), nan_color=(1, 1, 1, 1),
@@ -113,7 +113,7 @@ Additional details on surface visualization are provided in :ref:`this section <
         fh_gx_sctx           = mean_fh_gx(69:end);
 
         %% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template
-        fh_gx_ctx_fsa5       = map_to_labels(fh_gx_ctx(1:68), 'aparc_fsa5');
+        fh_gx_ctx_fsa5       = parcel_to_surface(fh_gx_ctx(1:68), 'aparc_fsa5');
 
         %% Finally, we can project the output to the cortical surface
         f = figure,

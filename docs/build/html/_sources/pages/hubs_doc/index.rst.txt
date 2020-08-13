@@ -141,13 +141,35 @@ denotes increased hubness!
 
 Relations between hubs and morphological measures
 -------------------------------------------------------
-| ...
+Now that we have established the spatial distribution of hubs in the brain, we can then assess 
+whether there is a selective vulnerability of these hub regions that parallels syndrome-specific atrophy patterns.
+For simplicity, in the following example, we will spatially correlate degree centrality measures to 
+*z*-scored cortical thickness and subcortical volume measures (with lower values indicating greater 
+atrophy relative to controls).
+
+.. admonition:: Fascinating, right?
+
+     Make sure you check out our recent ENIGMA-Epilepsy study on this type of analysis... it's right
+     `here <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
 
 .. tabs::
 
    .. code-tab:: py
 
-        >>> ...
+        >>> import numpy as np
+        >>> from enigmatoolbox.datasets import load_example_data
+        >>> from enigmatoolbox.utils.useful import zscore_matrix
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
+        >>> from enigmatoolbox.plotting import plot_cortical
+
+        >>> # Let's first load our example data. Here we only need the covariates and the cortical thickness data
+        >>> cov, _, metr2_CortThick, _ = load_example_data()
+
+        >>> # We can z-score the data in patients relative to controls (lower z-score = more atrophy)
+        >>> data = metr2_CortThick.iloc[:, 1:-5]            # Selecting only columns with cortical thickness values
+        >>> group = cov['Dx'].to_list()                     # Selecting the group assignment column for all participants
+        >>> controlCode = 0                                 # Specifying that controls are coded as 0
+        >>> Z = zscore_matrix(data, group, controlCode)
 
    .. code-tab:: matlab
 
