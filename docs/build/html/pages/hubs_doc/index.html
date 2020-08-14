@@ -245,8 +245,8 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 <span class="n">dc_s</span>                <span class="s">=</span> <span class="s">sum(sc)</span><span class="p">;</span>
 
 <span class="c">%% Map parcellated data to the surface</span>
-<span class="n">dc_f_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_f,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
-<span class="n">dc_s_fsa5</span>           <span class="s">=</span> <span class="s">map_to_labels(dc_s,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">dc_f_fsa5</span>           <span class="s">=</span> <span class="s">parcel_to_surface(dc_f,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">dc_s_fsa5</span>           <span class="s">=</span> <span class="s">parcel_to_surface(dc_s,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
 
 <span class="c">%% And project the results on the surface brain</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>

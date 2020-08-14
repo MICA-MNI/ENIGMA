@@ -53,8 +53,8 @@ denotes increased hubness (*i.e.*, node with many connections).
         dc_s                = sum(sc);
 
         %% Map parcellated data to the surface
-        dc_f_fsa5           = map_to_labels(dc_f, 'aparc_fsa5');
-        dc_s_fsa5           = map_to_labels(dc_s, 'aparc_fsa5');
+        dc_f_fsa5           = parcel_to_surface(dc_f, 'aparc_fsa5');
+        dc_s_fsa5           = parcel_to_surface(dc_s, 'aparc_fsa5');
 
         %% And project the results on the surface brain
         f = figure,

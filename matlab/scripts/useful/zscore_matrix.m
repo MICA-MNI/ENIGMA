@@ -16,7 +16,7 @@ function Z = zscore_matrix(data, group, controlCode)
 % Sara Lariviere  |  saratheriver@gmail.com
 %
 % Last modifications:
-% SL | still a hot and humid day in August 2020 (whatta summer!)
+% SL | still a hot and humid day in August 2020 (whatta summer we've been having!)
 
 if istable(data)
     data = table2array(data);
