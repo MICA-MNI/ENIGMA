@@ -302,5 +302,66 @@ with the spatial distribution of hub regions (greater degree centrality).
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
+        %% 1 - Let's start by loading our example data
+        % Here we need the covariates, cortical thickness, and subcortical volume data
+        [cov, metr1_SubVol, metr2_CortThick, ~] = load_example_data();
+
+        % After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)
+        % so to match the order from the connectivity matrices
+        metr1_SubVol_r                          = reorder_sctx(metr1_SubVol);
+
+        % We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
+        metr1_SubVol_r.LLatVent                 = [];
+        metr1_SubVol_r.RLatVent                 = [];
+
+        %% 2 - We can then and z-score data in patients relative to controls, so that lower values
+        %      correspond to greater atrophy
+        % Z-score patients' data relative to controls (lower z-score = more atrophy)
+        group        = cov.Dx;
+        controlCode  = 0;
+        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
+        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
+
+        % Mean z-score values across individuals with left TLE (SDx == 3)
+        ct_tle       = mean(ct(find(cov.SDx == 3), :), 1);
+        sv_tle       = mean(sv(find(cov.SDx == 3), :), 1);
+
+
+        %% 3 - Let's then load our functional and structural connectivity matrices
+        %        and compute degree centrality metrics to identify the spatial distribution
+        %        of hubs
+        % Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
+        [fc_ctx, ~, fc_sctx, ~]   = load_fc();
+        [sc_ctx, ~, sc_sctx, ~]   = load_sc();
+
+        % Compute weighted degree centrality measures from the functional connectivity data
+        fc_ctx_dc                 = sum(fc_ctx, 1);
+        fc_sctx_dc                = sum(fc_sctx, 2);
+
+        % Compute weighted degree centrality measures from the structural connectivity data
+        sc_ctx_dc                 = sum(sc_ctx);
+        sc_sctx_dc                = sum(sc_sctx, 2);
+
+
+        %% 4 - We can now perform spatial correlations between decreases in cortical thickness/
+        %      subcortical volume and functional/structural degree centrality maps
+        % Perform spatial correlations between functional hubs and atrophy
+        fc_ctx_r     = corrcoef(fc_ctx_dc, ct_tle);
+        fc_sctx_r    = corrcoef(fc_sctx_dc, sv_tle);
+
+        % Perform spatial correlations between structural hubs and atrophy
+        sc_ctx_r    = corrcoef(sc_ctx_dc, ct_tle);
+        sc_sctx_r   = corrcoef(sc_sctx_dc, sv_tle);
+
+        % Let's check our correlation values
+        fc_ctx_r(1, 2)
+        >> -0.3255
+        fc_sctx_r(1, 2)
+        >> -0.3695
+        sc_ctx_r(1, 2)
+        >> -0.1091
+        sc_sctx_r(1, 2)
+        >> -0.1546
+
 .. image:: ./examples/example_figs/hubs_atrophy.png
     :align: center

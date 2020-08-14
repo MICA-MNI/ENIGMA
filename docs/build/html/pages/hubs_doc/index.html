@@ -528,6 +528,67 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% 1 - Let&#39;s start by loading our example data</span>
+<span class="c">% Here we need the covariates, cortical thickness, and subcortical volume data</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
+
+<span class="c">% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
+<span class="c">% so to match the order from the connectivity matrices</span>
+<span class="n">metr1_SubVol_r</span>                          <span class="s">=</span> <span class="s">reorder_sctx(metr1_SubVol)</span><span class="p">;</span>
+
+<span class="c">% We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
+<span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">LLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
+<span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">RLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
+
+<span class="c">%% 2 - We can then and z-score data in patients relative to controls, so that lower values</span>
+<span class="c">%      correspond to greater atrophy</span>
+<span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
+<span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
+<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">% Mean z-score values across individuals with left TLE (SDx == 3)</span>
+<span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">mean(ct(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">sv_tle</span>       <span class="s">=</span> <span class="s">mean(sv(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
+
+
+<span class="c">%% 3 - Let&#39;s then load our functional and structural connectivity matrices</span>
+<span class="c">%        and compute degree centrality metrics to identify the spatial distribution</span>
+<span class="c">%        of hubs</span>
+<span class="c">% Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
+<span class="p">[</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+
+<span class="c">% Compute weighted degree centrality measures from the functional connectivity data</span>
+<span class="n">fc_ctx_dc</span>                 <span class="s">=</span> <span class="s">sum(fc_ctx,</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">fc_sctx_dc</span>                <span class="s">=</span> <span class="s">sum(fc_sctx,</span> <span class="s">2)</span><span class="p">;</span>
+
+<span class="c">% Compute weighted degree centrality measures from the structural connectivity data</span>
+<span class="n">sc_ctx_dc</span>                 <span class="s">=</span> <span class="s">sum(sc_ctx)</span><span class="p">;</span>
+<span class="n">sc_sctx_dc</span>                <span class="s">=</span> <span class="s">sum(sc_sctx,</span> <span class="s">2)</span><span class="p">;</span>
+
+
+<span class="c">%% 4 - We can now perform spatial correlations between decreases in cortical thickness/</span>
+<span class="c">%      subcortical volume and functional/structural degree centrality maps</span>
+<span class="c">% Perform spatial correlations between functional hubs and atrophy</span>
+<span class="n">fc_ctx_r</span>     <span class="s">=</span> <span class="s">corrcoef(fc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
+<span class="n">fc_sctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(fc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
+
+<span class="c">% Perform spatial correlations between structural hubs and atrophy</span>
+<span class="n">sc_ctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(sc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
+<span class="n">sc_sctx_r</span>   <span class="s">=</span> <span class="s">corrcoef(sc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
+
+<span class="c">% Let&#39;s check our correlation values</span>
+<span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.3255</span>
+<span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.3695</span>
+<span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.1091</span>
+<span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.1546</span>
 </pre></div>
 </div>
 </div>
