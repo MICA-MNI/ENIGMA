@@ -42,7 +42,7 @@ fc_ctx, _, fc_sctx, _ = load_fc()
 sc_ctx, _, sc_sctx, _ = load_sc()
 
 # Compute weighted degree centrality measures from the functional connectivity data
-fc_ctx_dc = np.sum(fc_ctx, axis=0)
+fc_ctx_dc = np.sum(np.round(fc_ctx,4), axis=0)
 fc_sctx_dc = np.sum(fc_sctx, axis=1)
 
 # Compute weighted degree centrality measures from the structural connectivity data
@@ -55,7 +55,7 @@ sc_sctx_dc = np.sum(sc_sctx, axis=1)
     subcortical volume and functional/structural degree centrality maps
 """
 # Perform spatial correlations between functional hubs and atrophy
-fc_ctx_r = np.corrcoef(fc_ctx_dc, ct_tle)[0, 1]
+fc_ctx_r = np.corrcoef(np.round(fc_ctx_dc, 4), np.round(ct_tle, 4))[0, 1]
 fc_sctx_r = np.corrcoef(fc_sctx_dc, sv_tle)[0, 1]
 
 # Perform spatial correlations between structural hubs and atrophy

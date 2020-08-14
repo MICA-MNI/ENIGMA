@@ -224,7 +224,7 @@ atrophy relative to controls).
 
         >>> # Let's check our correlation values
         >>> fc_ctx_r
-        Out: -0.3262858710039119
+        Out: -0.3254961672524519
         >>> fc_sctx_r
         Out: -0.3694570967953776
         >>> sc_ctx_r
