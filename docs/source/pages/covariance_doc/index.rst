@@ -3,8 +3,9 @@
 Structural covariance
 ======================================
 
-This page contains descriptions and examples to generate structural covariance networks!
+.. admonition:: 🚧 PAGE UNDER CONSTRUCTION 🚧
 
+     Please check back at a later time!
 
 Covariance network generation
 ---------------------------------

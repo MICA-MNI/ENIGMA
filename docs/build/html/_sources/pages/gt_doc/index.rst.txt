@@ -3,7 +3,9 @@
 Graph theory analyses
 ======================================
 
-This page contains descriptions and examples to perform graph theoretical analyses!
+.. admonition:: 🚧 PAGE UNDER CONSTRUCTION 🚧
+
+     Please check back at a later time!
 
 
 Clustering coefficient
@@ -22,6 +24,9 @@ Clustering coefficient
         %% ...  
 
 
+|
+
+
 Path length
 ---------------------------------
 | ...
@@ -37,6 +42,8 @@ Path length
 
         %% ...  
 
+
+|
 
 
 Small-world
