@@ -3,7 +3,7 @@
 Graph theory analyses
 ======================================
 
-.. admonition:: 🚧 PAGE UNDER CONSTRUCTION 🚧
+.. admonition:: PAGE UNDER CONSTRUCTION 🚧
 
      Please check back at a later time!
 

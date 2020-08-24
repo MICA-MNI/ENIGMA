@@ -3,7 +3,7 @@
 Structural covariance
 ======================================
 
-.. admonition:: 🚧 PAGE UNDER CONSTRUCTION 🚧
+.. admonition:: PAGE UNDER CONSTRUCTION 🚧
 
      Please check back at a later time!
 
