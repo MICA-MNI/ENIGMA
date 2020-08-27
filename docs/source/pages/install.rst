@@ -5,10 +5,6 @@ Installation
 
 **ENIGMA TOOLBOX** is available in Python and MATLAB!
 
-.. image:: ./extrafigs/dogdancing.gif
-    :scale: 72%
-    :align: left
-
 .. tabs::
 
     .. tab:: Python installation
@@ -29,8 +25,7 @@ Installation
             python setup.py install
 
 
-        Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
-
+.. Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
             pip install enigmatoolbox
 
     .. tab:: Matlab installation
