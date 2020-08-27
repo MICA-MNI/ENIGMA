@@ -271,11 +271,11 @@ atrophy relative to controls).
 
         % Compute weighted degree centrality measures from the functional connectivity data
         fc_ctx_dc                 = sum(fc_ctx, 1);
-        fc_sctx_dc                = sum(fc_sctx, 2);
+        fc_sctx_dc                = sum(fc_sctx, 2).';
 
         % Compute weighted degree centrality measures from the structural connectivity data
         sc_ctx_dc                 = sum(sc_ctx);
-        sc_sctx_dc                = sum(sc_sctx, 2);
+        sc_sctx_dc                = sum(sc_sctx, 2).';
 
 
         %% 4 - We can now perform spatial correlations between decreases in cortical thickness/
@@ -321,39 +321,39 @@ with the spatial distribution of hub regions (greater degree centrality).
 
         >>> # Functional cortical hubs and cortical thickness
         >>> ax1 = fig.add_subplot(gs[0, 0])
-        >>> ax1.scatter(fc_ctx_dc, ct_tle, color='#A8221C')
-        >>> m, b = np.polyfit(fc_ctx_dc, ct_tle, 1)
-        >>> ax1.plot(fc_ctx_dc, m*fc_ctx_dc + b, color='#A8221C')
-        >>> ax1.text(7, -1.88, '$r$=' + str(round(fc_ctx_r, 2)))
-        >>> ax1.set_xlabel('Cortico-cortical degree centrality')
-        >>> ax1.set_ylabel('Cortical thickness (z-score)')
+        >>> ax1.scatter(fc_ctx_dc, ct_tle, color='#A8221C')            # Plot scatter
+        >>> m, b = np.polyfit(fc_ctx_dc, ct_tle, 1)                    # Compute linear fit
+        >>> ax1.plot(fc_ctx_dc, m*fc_ctx_dc + b, color='#A8221C')      # Plot linear fit
+        >>> ax1.set_xlabel('Cortico-cortical degree centrality')       # Add x-axis label
+        >>> ax1.set_ylabel('Cortical thickness (z-score)')             # Add y-axis label
+        >>> ax1.text(7, -1.88, '$r$=' + str(round(fc_ctx_r, 2)))       # Add correlation value
 
         >>> # Functional subcortical hubs and subcortical volume
         >>> ax2 = fig.add_subplot(gs[0, 1])
         >>> ax2.scatter(fc_sctx_dc, sv_tle, color='#A8221C')
         >>> m, b = np.polyfit(fc_sctx_dc, sv_tle, 1)
         >>> ax2.plot(fc_sctx_dc, m*fc_sctx_dc + b, color='#A8221C')
-        >>> ax2.text(3, -3, '$r$=' + str(round(fc_sctx_r, 2)))
         >>> ax2.set_xlabel('Subcortico-cortical degree centrality')
         >>> ax2.set_ylabel('Subcortical volume (z-score)')
+        >>> ax2.text(3, -3, '$r$=' + str(round(fc_sctx_r, 2)))
 
         >>> # Structural cortical hubs and cortical thickness
         >>> ax3 = fig.add_subplot(gs[0, 2])
         >>> ax3.scatter(sc_ctx_dc, ct_tle, color='#324F7D')
         >>> m, b = np.polyfit(sc_ctx_dc, ct_tle, 1)
         >>> ax3.plot(sc_ctx_dc, m*sc_ctx_dc + b, color='#324F7D')
-        >>> ax3.text(88, -1.88, '$r$=' + str(round(sc_ctx_r, 2)))
         >>> ax3.set_xlabel('Cortico-cortical degree centrality')
         >>> ax3.set_ylabel('Cortical thickness (z-score)')
+        >>> ax3.text(88, -1.88, '$r$=' + str(round(sc_ctx_r, 2)))
 
         >>> # Structural subcortical hubs and subcortical volume
         >>> ax4 = fig.add_subplot(gs[0, 3])
         >>> ax4.scatter(sc_sctx_dc, sv_tle, color='#324F7D')
         >>> m, b = np.polyfit(sc_sctx_dc, sv_tle, 1)
         >>> ax4.plot(sc_sctx_dc, m*sc_sctx_dc + b, color='#324F7D')
-        >>> ax4.text(250, -3, '$r$=' + str(round(sc_sctx_r, 2)))
         >>> ax4.set_xlabel('Subcortico-cortical degree centrality')
         >>> ax4.set_ylabel('Subcortical volume (z-score)')
+        >>> ax4.text(250, -3, '$r$=' + str(round(sc_sctx_r, 2)))
 
         >>> plt.show()
 
@@ -362,7 +362,50 @@ with the spatial distribution of hub regions (greater degree centrality).
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        
-
+        %% Create figure
+        f = figure,
+            set(gcf,'color','w');
+            set(gcf,'units','normalized','position',[0 0 1 0.3])
+    
+            %% Functional cortical hubs and cortical thickness
+            ax1     = subplot(1, 4, 1); hold on
+            s1      = scatter(fc_ctx_dc, ct_tle, 88, [0.66 0.13 0.11], 'filled');       % Plot scatter
+            P1      = polyfit(fc_ctx_dc, ct_tle, 1);                                    % Compute linear fit
+            yfit_1  = P1(1) * fc_ctx_dc + P1(2);
+            plot(fc_ctx_dc, yfit_1, 'color', [0.66 0.13 0.11], 'LineWidth', 3)          % Plot linear fit
+            set(get(ax1, 'XLabel'), 'String', 'Cortico-cortical degree centrality');    % Add x-axis label
+            set(get(ax1, 'YLabel'), 'String', 'Cortical thickness (z-score)');          % Add y-axis label
+            text(7, -1.88, ['{\it r} = ' num2str(round(fc_ctx_r(1, 2),2))]);            % Add correlation value
+    
+            %% Functional subcortical hubs and subcortical volume
+            ax2     = subplot(1, 4, 2); hold on
+            s2      = scatter(fc_sctx_dc, sv_tle, 88, [0.66 0.13 0.11], 'filled');
+            P2      = polyfit(fc_sctx_dc, sv_tle, 1);
+            yfit_2  = P2(1) * fc_sctx_dc + P2(2);
+            plot(fc_sctx_dc, yfit_2, 'color', [0.66 0.13 0.11], 'LineWidth', 3)
+            set(get(ax2, 'XLabel'), 'String', 'Subcortico-cortical degree centrality');
+            set(get(ax2, 'YLabel'), 'String', 'Subcortical volume (z-score)');
+            text(3, -3, ['{\it r} = ' num2str(round(fc_sctx_r(1, 2),2))]);
+    
+            %% Structural cortical hubs and cortical thickness
+            ax3     = subplot(1, 4, 3); hold on
+            s3      = scatter(sc_ctx_dc, ct_tle, 88, [0.20 0.33 0.49], 'filled');
+            P3      = polyfit(sc_ctx_dc, ct_tle, 1);
+            yfit_3  = P3(1) * sc_ctx_dc + P3(2);
+            plot(sc_ctx_dc, yfit_3, 'color', [0.20 0.33 0.49], 'LineWidth', 3)
+            set(get(ax3, 'XLabel'), 'String', 'Cortico-cortical degree centrality');
+            set(get(ax3, 'YLabel'), 'String', 'Cortical thickness (z-score)');
+            text(88, -1.88, ['{\it r} = ' num2str(round(sc_ctx_r(1, 2),2))]);
+    
+            %% Structural subcortical hubs and subcortical volume
+            ax4     = subplot(1, 4, 4); hold on
+            s4      = scatter(sc_sctx_dc, sv_tle, 88, [0.20 0.33 0.49], 'filled');
+            P4      = polyfit(sc_sctx_dc, sv_tle, 1);
+            yfit_4  = P4(1) * sc_sctx_dc + P4(2);
+            plot(sc_sctx_dc, yfit_4, 'color', [0.20 0.33 0.49], 'LineWidth', 3)
+            set(get(ax4, 'XLabel'), 'String', 'Subcortico-cortical degree centrality');
+            set(get(ax4, 'YLabel'), 'String', 'Subcortical volume (z-score)');
+            text(250, -3, ['{\it r} = ' num2str(round(sc_sctx_r(1, 2),2))]);
+    
 .. image:: ./examples/example_figs/hubs_atrophy.png
     :align: center

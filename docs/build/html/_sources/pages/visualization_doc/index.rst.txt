@@ -14,8 +14,8 @@ In the following example, we will display mean subcortical volume reductions in 
 
 .. admonition:: Parcellations, parcellations for everyone! 🧩
 
-     Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-
-     Killiany cortical parcels). Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
+     Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-Killiany 
+     cortical parcels). Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
      other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, and so on ...), so you can take advantage of
      our visualization tools for all your other projects!
 
