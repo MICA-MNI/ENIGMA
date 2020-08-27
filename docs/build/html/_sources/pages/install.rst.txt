@@ -12,7 +12,7 @@ Installation
 .. tabs::
 
     .. tab:: Python installation
-
+    
         **ENIGMA TOOLBOX** has the following dependencies:
 
         - `numpy <https://numpy.org/>`_
@@ -27,6 +27,7 @@ Installation
             git clone https://github.com/MICA-MNI/ENIGMA.git
             cd ENIGMA
             python setup.py install
+
 
     .. tab:: Matlab installation
 
