@@ -2,7 +2,8 @@
 ENIGMA TOOLBOX
 =======================
 
-Ello, how u doin'?
+The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
+analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
 
 
 |
