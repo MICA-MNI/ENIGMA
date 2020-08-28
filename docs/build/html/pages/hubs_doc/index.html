@@ -183,6 +183,7 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
   <div class="section" id="hub-susceptibility">
@@ -646,6 +647,14 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
            </div>
            
           </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -700,6 +709,480 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
   <style>
          .wy-nav-content { max-width: none; }
   </style>
+
+
+
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hub-susceptibility">
+<span id="hubs-susceptibility"></span><h1>Hub susceptibility<a class="headerlink" href="#hub-susceptibility" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to build hub susceptibility models!</p>
+<div class="section" id="cortical-hubs">
+<h2>Cortical hubs<a class="headerlink" href="#cortical-hubs" title="Permalink to this headline">¶</a></h2>
+<p>Using the <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">HCP connectivity data</span></a>, we can then compute weighted (optimal for unthresholded connectivity
+matrices) degree centrality to identify structural and functional hub regions. This is done by simply
+computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality
+denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">enigmatoolbox.datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural cortico-cortical connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">dc_f_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">dc_s_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Load functional and structural cortico-cortical connectivity data</span>
+<span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="n">sc</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+
+<span class="c">%% Compute weighted degree centrality measures from the connectivity data</span>
+<span class="n">dc_f</span>                <span class="s">=</span> <span class="s">sum(fc)</span><span class="p">;</span>
+<span class="n">dc_s</span>                <span class="s">=</span> <span class="s">sum(sc)</span><span class="p">;</span>
+
+<span class="c">%% Map parcellated data to the surface</span>
+<span class="n">dc_f_fsa5</span>           <span class="s">=</span> <span class="s">parcel_to_surface(dc_f,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="n">dc_s_fsa5</span>           <span class="s">=</span> <span class="s">parcel_to_surface(dc_s,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+
+<span class="c">%% And project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">dc_f_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;functional degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mi">20</span> <span class="mi">30</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">dc_s_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;structural degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Blues</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mi">100</span> <span class="mi">300</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/fc_hubs_ctx.png" class="align-center" src="../../_images/fc_hubs_ctx.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="subcortical-hubs">
+<h2>Subcortical hubs<a class="headerlink" href="#subcortical-hubs" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">HCP connectivity data</span></a> can also be used to identify structural
+and functional subcortico-cortical hub regions. As above, we simply compute the sum of all weighted
+subcortico-cortical connections for every subcortical area. Once again, higher degree centrality
+denotes increased hubness!</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>Because we do not have connectivity values for the ventricles, do make sure to set
+the “ventricles” flag to <code class="docutils literal notranslate"><span class="pre">False</span></code> when displaying the findings on the subcortical surfaces!</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural subcortico-cortical connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dc_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And project the results on the subcortical surfaces (don&#39;t forget to set the ventricles flag to False!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">dc_f</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">dc_s</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Load functional and structural subcortico-cortical connectivity data</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+
+<span class="c">%% Compute weighted degree centrality measures from the connectivity data</span>
+<span class="n">dc_f</span>                <span class="s">=</span> <span class="s">sum(fc,</span> <span class="s">2)</span><span class="p">;</span>
+<span class="n">dc_s</span>                <span class="s">=</span> <span class="s">sum(sc,</span> <span class="s">2)</span><span class="p">;</span>
+
+<span class="c">%% And project the results on the subcortical surfaces (don&#39;t forget to set the ventricles flag to &#39;False&#39;!</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">dc_f</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;functional degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Reds</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mi">5</span> <span class="mi">10</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">dc_s</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;structural degree centrality&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Blues</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mi">100</span> <span class="mi">300</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/fc_hubs_sctx.png" class="align-center" src="../../_images/fc_hubs_sctx.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="relations-between-hubs-and-morphological-measures">
+<h2>Relations between hubs and morphological measures<a class="headerlink" href="#relations-between-hubs-and-morphological-measures" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have established the spatial distribution of hubs in the brain, we can then assess
+whether there is a selective vulnerability of these hub regions that parallels syndrome-specific atrophy patterns.
+For simplicity, in the following example, we will spatially correlate degree centrality measures to
+<em>z</em>-scored cortical thickness and subcortical volume measures (with lower values indicating greater
+atrophy relative to controls).</p>
+<div class="admonition-long-code-alert admonition">
+<p class="admonition-title">Long code alert 🚨</p>
+<p>For completeness, we include code that has been detailed elsewhere (<a class="reference internal" href="../loadct_doc/index.html#load-ct"><span class="std std-ref">loading example data</span></a>,
+<a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">z-scoring data</span></a>, <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">re-ordering subcortical volume data</span></a>,
+<a class="reference internal" href="#hubs-susceptibility"><span class="std std-ref">computing degree centrality</span></a>). If you’re already comfortable with these steps,
+feel free to simply skip right to the last section!</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">1 - Let&#39;s start by loading our example data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Here we need the covariates, cortical thickness, and subcortical volume data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so to match the order from the connectivity matrices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LLatVent&#39;</span><span class="p">,</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">])</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">2 - We can then and z-score data in patients relative to controls, so that lower values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">    correspond to greater atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ct</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mean z-score values across individuals with left TLE (SDx == 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ct_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sv</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">3 - Let&#39;s then load our functional and structural connectivity matrices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">    and compute degree centrality metrics to identify the spatial distribution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">    of hubs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the functional connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the structural connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">4 - We can now perform spatial correlations between decreases in cortical thickness/</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">    subcortical volume and functional/structural degree centrality maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between functional hubs and atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between structural hubs and atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s check our correlation values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_r</span>
+<span class="go">Out: -0.3254961672524519</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_r</span>
+<span class="go">Out: -0.3694570967953776</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_r</span>
+<span class="go">Out: -0.10906952508821116</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_r</span>
+<span class="go">Out: -0.15460373306487168</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% 1 - Let&#39;s start by loading our example data</span>
+<span class="c">% Here we need the covariates, cortical thickness, and subcortical volume data</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
+
+<span class="c">% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
+<span class="c">% so to match the order from the connectivity matrices</span>
+<span class="n">metr1_SubVol_r</span>                          <span class="s">=</span> <span class="s">reorder_sctx(metr1_SubVol)</span><span class="p">;</span>
+
+<span class="c">% We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
+<span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">LLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
+<span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">RLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
+
+<span class="c">%% 2 - We can then and z-score data in patients relative to controls, so that lower values</span>
+<span class="c">%      correspond to greater atrophy</span>
+<span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
+<span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
+<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">% Mean z-score values across individuals with left TLE (SDx == 3)</span>
+<span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">mean(ct(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">sv_tle</span>       <span class="s">=</span> <span class="s">mean(sv(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
+
+
+<span class="c">%% 3 - Let&#39;s then load our functional and structural connectivity matrices</span>
+<span class="c">%        and compute degree centrality metrics to identify the spatial distribution</span>
+<span class="c">%        of hubs</span>
+<span class="c">% Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
+<span class="p">[</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+
+<span class="c">% Compute weighted degree centrality measures from the functional connectivity data</span>
+<span class="n">fc_ctx_dc</span>                 <span class="s">=</span> <span class="s">sum(fc_ctx,</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">fc_sctx_dc</span>                <span class="s">=</span> <span class="s">sum(fc_sctx,</span> <span class="s">2).&#39;;</span>
+
+<span class="s">% Compute weighted degree centrality measures from the structural connectivity data</span>
+<span class="s">sc_ctx_dc                 = sum(sc_ctx);</span>
+<span class="s">sc_sctx_dc                = sum(sc_sctx, 2).&#39;</span><span class="p">;</span>
+
+
+<span class="c">%% 4 - We can now perform spatial correlations between decreases in cortical thickness/</span>
+<span class="c">%      subcortical volume and functional/structural degree centrality maps</span>
+<span class="c">% Perform spatial correlations between functional hubs and atrophy</span>
+<span class="n">fc_ctx_r</span>     <span class="s">=</span> <span class="s">corrcoef(fc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
+<span class="n">fc_sctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(fc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
+
+<span class="c">% Perform spatial correlations between structural hubs and atrophy</span>
+<span class="n">sc_ctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(sc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
+<span class="n">sc_sctx_r</span>   <span class="s">=</span> <span class="s">corrcoef(sc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
+
+<span class="c">% Let&#39;s check our correlation values</span>
+<span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.3255</span>
+<span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.3695</span>
+<span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.1091</span>
+<span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;</span> <span class="o">-</span><span class="mf">0.1546</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="plot-spatial-correlations-between-hubs-and-morphological-measures">
+<h2>Plot spatial correlations between hubs and morphological measures<a class="headerlink" href="#plot-spatial-correlations-between-hubs-and-morphological-measures" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have done all the necessary analyses, we can finally display our correlations!
+Here, a negative correlation indicates that greater atrophy (negative z-score values) correlates
+with the spatial distribution of hub regions (greater degree centrality).</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">)</span>            <span class="c1"># Plot scatter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                    <span class="c1"># Compute linear fit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">fc_ctx_dc</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">)</span>      <span class="c1"># Plot linear fit</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">)</span>       <span class="c1"># Add x-axis label</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cortical thickness (z-score)&#39;</span><span class="p">)</span>             <span class="c1"># Add y-axis label</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.88</span><span class="p">,</span> <span class="s1">&#39;$r$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fc_ctx_r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>       <span class="c1"># Add correlation value</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Functional subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">fc_sctx_dc</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A8221C&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subcortical volume (z-score)&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax2</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;$r$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fc_sctx_r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural cortical hubs and cortical thickness</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">sc_ctx_dc</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Cortical thickness (z-score)&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax3</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.88</span><span class="p">,</span> <span class="s1">&#39;$r$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sc_ctx_r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Structural subcortical hubs and subcortical volume</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">m</span><span class="o">*</span><span class="n">sc_sctx_dc</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#324F7D&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Subcortical volume (z-score)&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax4</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;$r$=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sc_sctx_r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Create figure</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;color&#39;</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">gcf</span><span class="p">,</span><span class="s">&#39;units&#39;</span><span class="p">,</span><span class="s">&#39;normalized&#39;</span><span class="p">,</span><span class="s">&#39;position&#39;</span><span class="p">,[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mf">0.3</span><span class="p">])</span>
+
+    <span class="c">%% Functional cortical hubs and cortical thickness</span>
+    <span class="n">ax1</span>     <span class="s">=</span> <span class="s">subplot(1,</span> <span class="s">4,</span> <span class="s">1)</span><span class="p">;</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">s1</span>      <span class="s">=</span> <span class="s">scatter(fc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">88,</span> <span class="s">[0.66</span> <span class="s">0.13</span> <span class="s">0.11],</span> <span class="s">&#39;filled&#39;)</span><span class="p">;</span>       <span class="c">% Plot scatter</span>
+    <span class="n">P1</span>      <span class="s">=</span> <span class="s">polyfit(fc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">1)</span><span class="p">;</span>                                    <span class="c">% Compute linear fit</span>
+    <span class="n">yfit_1</span>  <span class="s">=</span> <span class="s">P1(1)</span> <span class="s">*</span> <span class="s">fc_ctx_dc</span> <span class="s">+</span> <span class="s">P1(2)</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">yfit_1</span><span class="p">,</span> <span class="s">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>          <span class="c">% Plot linear fit</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s">&#39;XLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">);</span>    <span class="c">% Add x-axis label</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="s">&#39;YLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (z-score)&#39;</span><span class="p">);</span>          <span class="c">% Add y-axis label</span>
+    <span class="n">text</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.88</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;{\it r} = &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">))]);</span>            <span class="c">% Add correlation value</span>
+
+    <span class="c">%% Functional subcortical hubs and subcortical volume</span>
+    <span class="n">ax2</span>     <span class="s">=</span> <span class="s">subplot(1,</span> <span class="s">4,</span> <span class="s">2)</span><span class="p">;</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">s2</span>      <span class="s">=</span> <span class="s">scatter(fc_sctx_dc,</span> <span class="s">sv_tle,</span> <span class="s">88,</span> <span class="s">[0.66</span> <span class="s">0.13</span> <span class="s">0.11],</span> <span class="s">&#39;filled&#39;)</span><span class="p">;</span>
+    <span class="n">P2</span>      <span class="s">=</span> <span class="s">polyfit(fc_sctx_dc,</span> <span class="s">sv_tle,</span> <span class="s">1)</span><span class="p">;</span>
+    <span class="n">yfit_2</span>  <span class="s">=</span> <span class="s">P2(1)</span> <span class="s">*</span> <span class="s">fc_sctx_dc</span> <span class="s">+</span> <span class="s">P2(2)</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">yfit_2</span><span class="p">,</span> <span class="s">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.66</span> <span class="mf">0.13</span> <span class="mf">0.11</span><span class="p">],</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="s">&#39;XLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="s">&#39;YLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (z-score)&#39;</span><span class="p">);</span>
+    <span class="n">text</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;{\it r} = &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">))]);</span>
+
+    <span class="c">%% Structural cortical hubs and cortical thickness</span>
+    <span class="n">ax3</span>     <span class="s">=</span> <span class="s">subplot(1,</span> <span class="s">4,</span> <span class="s">3)</span><span class="p">;</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">s3</span>      <span class="s">=</span> <span class="s">scatter(sc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">88,</span> <span class="s">[0.20</span> <span class="s">0.33</span> <span class="s">0.49],</span> <span class="s">&#39;filled&#39;)</span><span class="p">;</span>
+    <span class="n">P3</span>      <span class="s">=</span> <span class="s">polyfit(sc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">1)</span><span class="p">;</span>
+    <span class="n">yfit_3</span>  <span class="s">=</span> <span class="s">P3(1)</span> <span class="s">*</span> <span class="s">sc_ctx_dc</span> <span class="s">+</span> <span class="s">P3(2)</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">yfit_3</span><span class="p">,</span> <span class="s">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="s">&#39;XLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Cortico-cortical degree centrality&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax3</span><span class="p">,</span> <span class="s">&#39;YLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Cortical thickness (z-score)&#39;</span><span class="p">);</span>
+    <span class="n">text</span><span class="p">(</span><span class="mi">88</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.88</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;{\it r} = &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sc_ctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">))]);</span>
+
+    <span class="c">%% Structural subcortical hubs and subcortical volume</span>
+    <span class="n">ax4</span>     <span class="s">=</span> <span class="s">subplot(1,</span> <span class="s">4,</span> <span class="s">4)</span><span class="p">;</span> <span class="n">hold</span> <span class="s">on</span>
+    <span class="n">s4</span>      <span class="s">=</span> <span class="s">scatter(sc_sctx_dc,</span> <span class="s">sv_tle,</span> <span class="s">88,</span> <span class="s">[0.20</span> <span class="s">0.33</span> <span class="s">0.49],</span> <span class="s">&#39;filled&#39;)</span><span class="p">;</span>
+    <span class="n">P4</span>      <span class="s">=</span> <span class="s">polyfit(sc_sctx_dc,</span> <span class="s">sv_tle,</span> <span class="s">1)</span><span class="p">;</span>
+    <span class="n">yfit_4</span>  <span class="s">=</span> <span class="s">P4(1)</span> <span class="s">*</span> <span class="s">sc_sctx_dc</span> <span class="s">+</span> <span class="s">P4(2)</span><span class="p">;</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">yfit_4</span><span class="p">,</span> <span class="s">&#39;color&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.20</span> <span class="mf">0.33</span> <span class="mf">0.49</span><span class="p">],</span> <span class="s">&#39;LineWidth&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="s">&#39;XLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortico-cortical degree centrality&#39;</span><span class="p">);</span>
+    <span class="n">set</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">ax4</span><span class="p">,</span> <span class="s">&#39;YLabel&#39;</span><span class="p">),</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="s">&#39;Subcortical volume (z-score)&#39;</span><span class="p">);</span>
+    <span class="n">text</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s">&#39;{\it r} = &#39;</span> <span class="n">num2str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sc_sctx_r</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">))]);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/hubs_atrophy.png" class="align-center" src="../../_images/hubs_atrophy.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
 
 
 

@@ -181,6 +181,7 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
   <div class="section" id="disease-related-gene-expression-maps">
@@ -342,6 +343,14 @@ Additional details on surface visualization are provided in <a class="reference 
            </div>
            
           </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -396,6 +405,178 @@ Additional details on surface visualization are provided in <a class="reference 
   <style>
          .wy-nav-content { max-width: none; }
   </style>
+
+
+
+           <div itemprop="articleBody">
+            
+  <div class="section" id="disease-related-gene-expression-maps">
+<span id="ep-genes"></span><h1>Disease-related gene expression maps<a class="headerlink" href="#disease-related-gene-expression-maps" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to extract GWAS-implicated gene expression data
+and project them to cortical and subcortical surfaces!</p>
+<div class="section" id="extract-disease-related-genes">
+<h2>Extract disease-related genes<a class="headerlink" href="#extract-disease-related-genes" title="Permalink to this headline">¶</a></h2>
+<p>Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined
+disease-related genes, including:
+<a class="reference external" href="https://www.nature.com/articles/s41588-018-0269-7">attention deficit/hyperactivity disorder</a>,
+<a class="reference external" href="https://www.nature.com/articles/s41588-019-0344-8">autism spectrum disorder</a>,
+<a class="reference external" href="https://www.nature.com/articles/s41588-019-0397-8">bipolar disorder</a>,
+<a class="reference external" href="https://www.nature.com/articles/s41593-018-0326-7">depression</a>,
+<a class="reference external" href="https://www.nature.com/articles/s41467-018-07524-z">common epilepsies</a>,
+<a class="reference external" href="https://www.nature.com/articles/s41588-018-0059-2">schizophrenia</a>, and
+<a class="reference external" href="https://ajp.psychiatryonline.org/doi/10.1176/appi.ajp.2018.18070857?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed">tourette’s syndrome</a>.
+In the following tutorial, we will use epilepsy-related genes (more specifically, genes related to focal
+hippocampal sclerosis) as an example, but feel free to replace <em>epilepsy</em> with any other disorder listed above!</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Pre-defined gene sets are obtained from individual studies and are liable to be changed!
+We welcome any suggestions you may have on defining proper disease-related gene sets and are
+happy to expand this function to include other interesting disorders! Get in touch with us
+<a class="reference external" href="https://github.com/saratheriver/ENIGMA/issues">here</a>!</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">fetch_ahba</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">risk_genes</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s start by loading the microarray expression data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gx</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Other epilepsy subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epigx</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="s2">&quot;epilepsy&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_genes</span> <span class="o">=</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalhs&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now extract the gene expression data for these Focal HS genes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx</span> <span class="o">=</span> <span class="n">gx</span><span class="p">[</span><span class="n">fh_genes</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Let&#39;s start by loading the microarray expression data</span>
+<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+
+<span class="c">%% Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
+<span class="c">% Other subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
+<span class="n">epigx</span>        <span class="s">=</span> <span class="s">risk_genes(&quot;epilepsy&quot;)</span><span class="p">;</span>
+<span class="n">fh_genes</span>     <span class="s">=</span> <span class="s">find(ismember(genelabels,</span> <span class="s">epigx.focalhs))</span><span class="p">;</span>
+
+<span class="c">%% We can now extract the gene expression data for these Focal HS genes</span>
+<span class="n">fh_gx</span>        <span class="s">=</span> <span class="s">gx(:,</span> <span class="s">fh_genes)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="visualize-disease-related-gene-expression-maps">
+<h2>Visualize disease-related gene expression maps<a class="headerlink" href="#visualize-disease-related-gene-expression-maps" title="Permalink to this headline">¶</a></h2>
+<p>Following up on the above example, we provide a brief example to project gene expression maps to the surface!
+Once again, we use Focal HS (epilepsy) genes as an example.
+Additional details on surface visualization are provided in <a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">this section</span></a> section!</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">enigmatoolbox.datasets</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span><span class="p">,</span> <span class="n">plot_subcortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first compute the mean of all Focal HS genes across cortical areas only</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And separate cortical (ctx) from subcortical (sctx) areas</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">68</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_sctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">68</span><span class="p">:]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now map the parcellated gene expression data to our surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And finally project the output to the cortical surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... as well as to the subcortical surface!!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_sctx</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
+<span class="c">% Let&#39;s first compute the mean of all Focal HS genes</span>
+<span class="n">mean_fh_gx</span>           <span class="s">=</span> <span class="s">mean(fh_gx,</span> <span class="s">2)</span><span class="p">;</span>
+
+<span class="c">% And separate cortical (ctx) from subcortical (sctx) areas</span>
+<span class="n">fh_gx_ctx</span>            <span class="s">=</span> <span class="s">mean_fh_gx(1:68)</span><span class="p">;</span>
+<span class="n">fh_gx_sctx</span>           <span class="s">=</span> <span class="s">mean_fh_gx(69:end)</span><span class="p">;</span>
+
+<span class="c">%% We can now compute the mapping between the parcellated (cortex only) gene expression data and our surface template</span>
+<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">parcel_to_surface(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+
+<span class="c">%% Finally, we can project the output to the cortical surface</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.55</span><span class="p">])</span>
+
+<span class="c">%% ... as well as to the subcortical surface!!</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">fh_gx_sctx</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
+  <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
+  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.65</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/epigx.png" class="align-center" src="../../_images/epigx.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
 
 
 

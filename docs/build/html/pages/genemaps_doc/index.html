@@ -180,6 +180,7 @@
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
            <div itemprop="articleBody">
             
   <div class="section" id="gene-expression-data">
@@ -261,6 +262,14 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
            </div>
            
           </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
@@ -315,6 +324,98 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
   <style>
          .wy-nav-content { max-width: none; }
   </style>
+
+
+
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gene-expression-data">
+<span id="gene-maps"></span><h1>Gene expression data<a class="headerlink" href="#gene-expression-data" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to load gene expression data!</p>
+<div class="section" id="fetch-gene-expression-data">
+<h2>Fetch gene expression data<a class="headerlink" href="#fetch-gene-expression-data" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>ENGMA TOOLBOX</strong> provides microarray expression data obtained from the <a class="reference external" href="https://human.brain-map.org/">Allen Human Brain Atlas</a>.
+Following the examples below, we can fetch microarray expression data.</p>
+<div class="admonition-wanna-know-where-we-got-those-genes admonition">
+<p class="admonition-title">Wanna know where we got those genes? 👖</p>
+<p>The Allen Human Brain Atlas microarray expression data loaded as part of the <strong>ENIGMA TOOLBOX</strong> was originally
+fetched from the <a class="reference external" href="https://github.com/rmarkello/abagen">abagen</a> toolbox using the <code class="docutils literal notranslate"><span class="pre">abagen.get_expression_data()</span></code>
+command, using data from <em>all</em> donors. We then re-organized the rows (corresponding to region labels) to match the order
+used in ENIGMA-derived data matrices! For more flexibility, check our their toolbox!</p>
+</div>
+<div class="admonition-got-nans admonition">
+<p class="admonition-title">Got NaNs? 🥛</p>
+<p>Please note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were
+not matched to any tissue sample and thus are filled with NaN values in the data matrix.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The command <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> fetches a large (~24 MB) microarray dataset from the internet and may thus be
+incredibly slow to load if you lack a good connection. But don’t you worry: you can download the
+relevant file by typing this command in your terminal <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv</span></code>
+and specifying its path in the <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> function as follows:<code class="docutils literal notranslate"><span class="pre">fetch_ahba('/path/to/allgenes.csv')</span></code></p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">fetch_ahba</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch gene expression data (output of fetch_ahba() is a dataframe)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># However, if you prefer to use numpy, you can also extract the data as follows:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genex</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain the region labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As well as the gene labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Fetch gene expression data</span>
+<span class="c">%    gx          = matrix of gene expression data (82 x 15633)</span>
+<span class="c">%    reglabels   = name of cortical regions in same order as gx</span>
+<span class="c">%                  (82 x 1 cell array)</span>
+<span class="c">%    genelabels  = name of genes in same order as gx</span>
+<span class="c">%                  (1 x 15633 cell array)</span>
+<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/gx.png" class="align-center" src="../../_images/gx.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+    <a href="http://enigma.ini.usc.edu/about-2/">
+        <img style="position: absolute; top: 0; left: 100px; height: 8.66em; width: 100%; border: 0; z-order: 5" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
+    </a>
+
+    <a href="https://github.com/MICA-MNI/ENIGMA">
+        <img style="position: absolute; top: 1em; right: 1em; height: 6.66em; width: auto; border: 0; z-order: 10;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/gh.png">
+    </a>
+
 
 
 
