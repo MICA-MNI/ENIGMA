@@ -6,8 +6,8 @@
 @media screen and (max-width:768px){.tablet-hide{display:none}}
 @media screen and (max-width:480px){.mobile-hide{display:none}}
 
-@media only screen and (max-width: 200px) {
-   img {
+@media screen and (max-width: 200px) {
+   img#wmap {
       display: none;
    }
 }
