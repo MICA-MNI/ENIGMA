@@ -1,7 +1,7 @@
-#gh {display: block;}
+#content-desktop {display: block;}
 
 @media screen and (max-width: 768px) {
 
-#gh {display: none;}
+#content-desktop {display: none;}
 
 }
