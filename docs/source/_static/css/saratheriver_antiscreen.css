@@ -1,7 +1,6 @@
 @media screen and (max-width: 400px) {
-    #mobileHide
+    #goaway
     {
         display: none !important;
-        visibility: hidden !important;
     }
 }
