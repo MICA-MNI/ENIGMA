@@ -1,5 +1,5 @@
 @media screen and (max-width: 400px) {
-    .mobileHide
+    #mobileHide
     {
         display: none !important;
         visibility: hidden !important;
