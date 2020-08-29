@@ -1,9 +1,0 @@
-#goaway {display: block;}
-#content-mobile {display: none;}
-
-@media screen and (max-width: 768px) {
-
-#goaway {display: none;}
-#content-mobile {display: block;}
-
-}
