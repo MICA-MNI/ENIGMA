@@ -4,11 +4,6 @@
     pip install enigmatoolbox
 
 
-|
-
-| 
-
-
 Installation
 ==============================
 
