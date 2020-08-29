@@ -1,6 +1,7 @@
 @media screen and (max-width: 400px) {
     .mobileHide
     {
-        visibility: hidden;
+        display: none !important;
+        visibility: hidden !important;
     }
 }
