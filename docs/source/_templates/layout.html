@@ -5,16 +5,16 @@
          .wy-nav-content { max-width: none; }
   </style>
 
-  <style type="text/css">
+
+  {% block document %}
+  {{super()}}
+
+   <style type="text/css">
     .mobileHide { display: inline;}
     @media only screen
     and (max-device-width : 480px){  .mobileHide { display: none;}}
   </style>
 
-
-{% block document %}
-{{super()}}
-  
   <div id=”mobileHide”>
     <a href="http://enigma.ini.usc.edu/about-2/">
       <img id="wmap" style="position: absolute; top: 0; left: 100px; height: 10.2725em; width: 100%; border: 0; z-order: 5;" src="https://github.com/saratheriver/enigma-pygments/raw/master/images/wmap5.png">
