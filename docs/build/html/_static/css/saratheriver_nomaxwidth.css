@@ -1,4 +1,4 @@
-@media screen and (max-width: 480px) {.mobileHide{display: none}}
+@media screen and (max-width: 200px){.mobileHide{display:none}}
 
 .wy-nav-content {
    max-width: none;
