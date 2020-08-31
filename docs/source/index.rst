@@ -3,16 +3,30 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-
-|
-
-| 
-
-
 **ENIGMA TOOLBOX**
 ============================
 *An open source repository for the sharing of neuroimaging and genetics data, analytical
 codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
+
+.. image:: ./pages/extrafigs/wmap.png
+   :align: left
+
+|
+
+
+|
+
+
+|
+
+
+|
+
+
+|
+
+
+|
 
 
 ___________________________________________________________________________________________________
