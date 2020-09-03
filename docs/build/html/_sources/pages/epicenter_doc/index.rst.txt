@@ -115,7 +115,7 @@ derived from subcortical volume decreases in individuals with left TLE.
 
      For completeness, we include code that has been detailed elsewhere (:ref:`loading example data <load_ct>`,
      :ref:`z-scoring, re-ordering, and visualizing subcortical surface data <surf_visualization>`). 
-     If you're already comfortable with these steps, feel free to simply skip right to the last section!
+     If you're already comfortable with these steps, feel free to simply skip right to the last two sections!
 
 .. tabs::
 
