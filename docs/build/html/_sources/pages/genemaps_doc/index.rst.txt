@@ -1,5 +1,7 @@
 .. _gene_maps:
 
+.. title:: Gene expression data! 🧬
+
 Gene expression data
 ======================================
 

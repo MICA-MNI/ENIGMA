@@ -1,5 +1,7 @@
 .. _cov_network:
 
+.. title:: Structural covariance! 👨🏾‍🤝‍👨🏼
+
 Structural covariance
 ======================================
 

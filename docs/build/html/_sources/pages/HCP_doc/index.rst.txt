@@ -1,5 +1,7 @@
 .. _hcp_connectivity:
 
+.. title:: Load connectivity data! ⏳
+
 Load connectivity data
 ======================================
 

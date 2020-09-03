@@ -1,5 +1,7 @@
 .. _surf_visualization:
 
+.. title:: Visualization tools! 👀
+
 Surface data visualization
 ======================================
 

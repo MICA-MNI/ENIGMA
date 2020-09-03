@@ -1,5 +1,7 @@
 .. _ep_genes:
 
+.. title:: Risk genes! ⚠️
+
 Disease-related gene expression maps
 =========================================
 

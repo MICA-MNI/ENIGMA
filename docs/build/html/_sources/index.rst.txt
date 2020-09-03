@@ -8,7 +8,7 @@
    *An open source repository for the sharing of neuroimaging and genetics data, analytical
    codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 
-.. title:: Welcome to the ENIGMA TOOLBOX 🧰
+.. title:: Welcome to the ENIGMA TOOLBOX! 🧰
 
 .. raw:: html
 

@@ -3,6 +3,7 @@
 .. Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
     pip install enigmatoolbox
 
+.. title:: Install me! 👶🏽
 
 Installation
 ==============================

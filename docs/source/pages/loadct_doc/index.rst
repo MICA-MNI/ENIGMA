@@ -1,5 +1,7 @@
 .. _load_ct:
 
+.. title:: Load example data! ⏳
+
 Load example data
 ======================================
 

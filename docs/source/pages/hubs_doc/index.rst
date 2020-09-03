@@ -1,5 +1,7 @@
 .. _hubs_susceptibility:
 
+.. title:: Hub susceptibility model! 🛩
+
 Hub susceptibility
 ======================================
 

@@ -1,5 +1,7 @@
 .. _epi_mapping:
 
+.. title:: Epicenter mapping! 📍
+
 Epicenter mapping
 ======================================
 
