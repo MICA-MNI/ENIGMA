@@ -93,6 +93,7 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew.html">What’s new?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../loadct_doc/index.html">Load example data</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
@@ -323,13 +324,13 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">plot_cortical</span><span class="p">(</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
   <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
-  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.55</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.55</span><span class="p">])</span>
 
 <span class="c">%% ... as well as to the subcortical surface!!</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">fh_gx_sctx</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
   <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
-  <span class="n">SurfStatColLim</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.65</span><span class="p">])</span>
+  <span class="n">colorbar_range</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.65</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>

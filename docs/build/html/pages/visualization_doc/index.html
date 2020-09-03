@@ -92,6 +92,7 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whatsnew.html">What’s new?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../loadct_doc/index.html">Load example data</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
@@ -266,7 +267,7 @@ Easy peasy lemon squeezy 🍋</p>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
     <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
     <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                          <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                           <span class="c">% change colorbar limits here</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                           <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>
@@ -347,7 +348,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
     <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">);</span>
     <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                    <span class="c">% change colormap here</span>
-    <span class="n">SurfStatColLim</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c">% change colorbar limits here</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c">% change colorbar limits here</span>
 </pre></div>
 </div>
 </div>

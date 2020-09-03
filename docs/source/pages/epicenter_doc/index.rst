@@ -10,7 +10,11 @@ This page contains descriptions and examples to identify disease epicenters!
 
 Cortical epicenters
 ---------------------
-The **ENIGMA TOOLBOX** ... (for surface visualization, please see :ref:`surf_visualization`).
+Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can also identify epicenters of atrophy.
+This is done by systematically correlating every region's seed-based connectivity profile with 
+a whole-brain atrophy map. Disease epicenters thus represent regions whose connectivity profile 
+spatially resembles the disease-related atrophy map. In this tutorial, our *atrophy map* will be 
+derived from cortical thickness decreases in individuals with left TLE.
 
 .. tabs::
 

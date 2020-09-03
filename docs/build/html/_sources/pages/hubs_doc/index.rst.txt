@@ -10,7 +10,7 @@ This page contains descriptions and examples to build hub susceptibility models!
 
 Cortical hubs
 ------------------------------------------
-Using the :ref:`HCP connectivity data <surf_visualization>`, we can then compute weighted (optimal for unthresholded connectivity
+Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can then compute weighted (optimal for unthresholded connectivity
 matrices) degree centrality to identify structural and functional hub regions. This is done by simply 
 computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality 
 denotes increased hubness (*i.e.*, node with many connections). 
@@ -62,12 +62,12 @@ denotes increased hubness (*i.e.*, node with many connections).
         f = figure,
           plot_cortical(dc_f_fsa5, 'fsa5', 'functional degree centrality')
           colormap([Reds])
-          SurfStatColLim([20 30])
+          colorbar_range([20 30])
      
         f = figure,
           plot_cortical(dc_s_fsa5, 'fsa5', 'structural degree centrality')
           colormap([Blues])
-          SurfStatColLim([100 300]) 
+          colorbar_range([100 300]) 
 
 .. image:: ./examples/example_figs/fc_hubs_ctx.png
     :align: center
@@ -127,12 +127,12 @@ denotes increased hubness!
         f = figure,
           plot_subcortical(dc_f, 'False', 'functional degree centrality')
           colormap([Reds])
-          SurfStatColLim([5 10])
+          colorbar_range([5 10])
      
         f = figure,
           plot_subcortical(dc_s, 'False', 'structural degree centrality')
           colormap([Blues])
-          SurfStatColLim([100 300])
+          colorbar_range([100 300])
 
 .. image:: ./examples/example_figs/fc_hubs_sctx.png
     :align: center
@@ -250,6 +250,7 @@ atrophy relative to controls).
         % We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
         metr1_SubVol_r.LLatVent                 = [];
         metr1_SubVol_r.RLatVent                 = [];
+
 
         %% 2 - We can then and z-score data in patients relative to controls, so that lower values
         %      correspond to greater atrophy

@@ -79,7 +79,7 @@ In the following example, we will display mean subcortical volume reductions in 
         f = figure,
             plot_cortical(Z_TLE_fsa5, 'fsa5')
             colormap(flipud(Blues));                          % change colormap here 
-            SurfStatColLim([-2, 0])                           % change colorbar limits here
+            colorbar_range([-2, 0])                           % change colorbar limits here
 
 .. image:: ./examples/example_figs/ctx_py.png
     :align: center
@@ -150,7 +150,7 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
         f = figure,
             plot_subcortical(Z_TLE);
             colormap(flipud(Blues))                    % change colormap here
-            SurfStatColLim([-3, 0])                    % change colorbar limits here
+            colorbar_range([-3, 0])                    % change colorbar limits here
 
 .. image:: ./examples/example_figs/sctx_py.png
     :align: center

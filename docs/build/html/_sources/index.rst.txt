@@ -72,7 +72,7 @@ these include :ref:`functional and structural connectivity data<hcp_connectivity
 
 Harmonization of analytical methods 👯‍♀️
 --------------------------------------------------------
-Why make all these codes and data available, you may ask? One key goal of the **ENIGMA TOOLBOX** is
+One key goal of the **ENIGMA TOOLBOX** is
 to harmonize analytical methods both *within* and *across* ENIGMA Working Groups, ultimately facilitating
 comparisons of imaging and genetic findings across diseases.
 
@@ -114,6 +114,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :caption: Getting started
    
    pages/install
+   pages/whatsnew
    pages/loadct_doc/index
 
 

@@ -1,8 +1,8 @@
-function cb = SurfStatColLim( clim );
+function cb = colorbar_range( clim );
 
 %Sets the colour limits for SurfStatView.
 %
-% Usage: cb = SurfStatColLim( clim );
+% Usage: cb = colorbar_range( clim );
 %
 % clim = [min, max] values of data for colour limits.
 %
