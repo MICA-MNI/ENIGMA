@@ -105,9 +105,14 @@ derived from cortical thickness decreases in individuals with left TLE.
 
 Subcortical epicenters
 -------------------------
+
+XXXXXXXXXXXXX
+MAKE SURE THIS WORKS  - HAS TO BE SCTX-CTX CONNECTIVITY TO PREDICT CORTICAL ATRPHY !!!!!!!!!!!!!
+XXXXXXXXXXXXX
+
 The HCP connectivity data can also be used to identify epicenters of subcortical atrophy. 
 As above, we simply correlate every subcortical region's seed-based connectivity profile (*e.g.*, subcortico-cortical connectivity) with 
-a whole-brain subcortical atrophy map. Disease epicenters thus represent regions whose connectivity profile 
+a whole-brain cortical atrophy map. Disease epicenters thus represent regions whose connectivity profile 
 spatially resembles the disease-related atrophy map. In the following tutorial, our *atrophy map* will be 
 derived from subcortical volume decreases in individuals with left TLE.
 
