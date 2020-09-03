@@ -3,13 +3,31 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-**ENIGMA TOOLBOX**
-============================
-*An open source repository for the sharing of neuroimaging and genetics data, analytical
-codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
+.. **ENIGMA TOOLBOX**
+   ============================
+   *An open source repository for the sharing of neuroimaging and genetics data, analytical
+   codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
+
+.. title:: Welcome to the ENIGMA TOOLBOX 🧰
+
+.. raw:: html
+
+   <style type="text/css">
+      hr {
+      width: 100%;
+      height: 1px;
+      background-color: #259595;
+      margin-top: 24px;
+      }
+   </style>
 
 .. image:: ./pages/extrafigs/wmap.png
    :align: left
+   :target: http://enigma.ini.usc.edu/
+   :alt: ENIGMA TOOLBOX
+
+
+|
 
 |
 
@@ -29,33 +47,59 @@ codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 |
 
 
-___________________________________________________________________________________________________
+|
+
+
 
 |
 
-**Data sharing** 💌
+
+.. raw:: html
+
+   <hr>
+
+|
+
+
+Data sharing 💌
 --------------------------
 As part of the **ENIGMA TOOLBOX**, we are making several data matrices openly available! As of now, 
 these include :ref:`functional and structural connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
 
-**Harmonization of analytical methods** 👯‍♀️
+.. raw:: html
+
+   <br>
+
+Harmonization of analytical methods 👯‍♀️
 --------------------------------------------------------
 Why make all these codes and data available, you may ask? One key goal of the **ENIGMA TOOLBOX** is
 to harmonize analytical methods both *within* and *across* ENIGMA Working Groups, ultimately facilitating
 comparisons of imaging and genetic findings across diseases.
 
-**Visualization tools** 🎨
+.. raw:: html
+
+   <br>
+
+Visualization tools 🎨
 -------------------------------------
 Tired of displaying your surface findings in tables? Look no further! The **ENIGMA TOOLBOX** has got you 
 covered! Check out our :ref:`visualization tools<surf_visualization>` and project your cortical and subcortical data to the surface!
 
-**Step-by-step tutorials** 👣
+.. raw:: html
+
+   <br>
+
+Step-by-step tutorials 👣
 ------------------------------------
 The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier, we provide :ref:`example data<load_ct>` that
 have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
 tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
 
-**Development and getting involved** ⚙️
+.. raw:: html
+
+   <br>
+
+Development and getting involved ⚙️
 -------------------------------------------
 Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
 hesitate to post them to our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_! Or are you interested in collaborating 
@@ -112,9 +156,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
 
 ___________________________________________________________________________________________________
 
-|
-
-**Enigmators** 🦀
+Enigmators 🦀
 -------------------------
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
