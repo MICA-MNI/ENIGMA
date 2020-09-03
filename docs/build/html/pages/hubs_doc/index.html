@@ -471,8 +471,8 @@ feel free to simply skip right to the last section!</p>
 <span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
 <span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
 <span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
-<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
 <span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
 
 <span class="c">% Mean z-score values across individuals with left TLE (SDx == 3)</span>
 <span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">mean(ct(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
@@ -480,8 +480,8 @@ feel free to simply skip right to the last section!</p>
 
 
 <span class="c">%% 3 - Let&#39;s then load our functional and structural connectivity matrices</span>
-<span class="c">%        and compute degree centrality metrics to identify the spatial distribution</span>
-<span class="c">%        of hubs</span>
+<span class="c">%      and compute degree centrality metrics to identify the spatial distribution</span>
+<span class="c">%      of hubs</span>
 <span class="c">% Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
 <span class="p">[</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="p">[</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>

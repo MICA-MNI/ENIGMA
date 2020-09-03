@@ -73,7 +73,7 @@ In the following example, we will display mean subcortical volume reductions in 
         Z_TLE          = mean(Z(find(cov.SDx == 3), :), 1);   % Mean z-score values for left TLE patients (SDx == 3)
 
         %% Before visualizing the data, we need to map the parcellated data to the surface
-        Z_TLE_fsa5   = parcel_to_surface(Z_TLE, 'aparc_fsa5');
+        Z_TLE_fsa5     = parcel_to_surface(Z_TLE, 'aparc_fsa5');
 
         %% Plot cortical values
         f = figure,

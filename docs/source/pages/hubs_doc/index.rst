@@ -257,8 +257,8 @@ atrophy relative to controls).
         % Z-score patients' data relative to controls (lower z-score = more atrophy)
         group        = cov.Dx;
         controlCode  = 0;
-        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
         ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
+        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
 
         % Mean z-score values across individuals with left TLE (SDx == 3)
         ct_tle       = mean(ct(find(cov.SDx == 3), :), 1);
@@ -266,8 +266,8 @@ atrophy relative to controls).
 
 
         %% 3 - Let's then load our functional and structural connectivity matrices
-        %        and compute degree centrality metrics to identify the spatial distribution
-        %        of hubs
+        %      and compute degree centrality metrics to identify the spatial distribution
+        %      of hubs
         % Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
         [fc_ctx, ~, fc_sctx, ~]   = load_fc();
         [sc_ctx, ~, sc_sctx, ~]   = load_sc();
