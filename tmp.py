@@ -1,6 +1,7 @@
 import numpy as np
 from enigmatoolbox.datasets import load_example_data
-from enigmatoolbox.utils.useful import zscore_matrix, reorder_sctx
+from enigmatoolbox.utils.useful import zscore_matrix
+from enigmatoolbox.plotting import plot_subcortical
 from enigmatoolbox.datasets import load_sc, load_fc
 
 """
@@ -26,13 +27,36 @@ ct_tle = np.mean(ct.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
 """
 3 - Let's then load our functional and structural connectivity matrices
 """
-# Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
-fc_ctx, _, fc_sctx, _ = load_fc()
-sc_ctx, _, sc_sctx, _ = load_sc()
+# Load functional and structural subcortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
+_, _, fc_sctx, _ = load_fc()
+_, _, sc_sctx, _ = load_sc()
 
 
 """
 4 - Functional/structural cortical disease epicenters
+    Correlations between seed-based connectivity (looping over all subcortical regions) and
+    cortical thickness decreases in left TLE
 """
-# Correlations between seed-based connectivity (looping over all cortical regions) and
-# cortical thickness decreases in left TLE
+# Functional subcortical epicenters
+fc_sctx_epi = []
+for seed in range(fc_sctx.shape[0]):
+    seed_con = fc_sctx[seed, :]
+    fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
+
+# Structural subcortical epicenters
+sc_sctx_epi = []
+for seed in range(sc_sctx.shape[0]):
+    seed_con = sc_sctx[seed, :]
+    sc_sctx_epi = np.append(sc_sctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
+
+
+"""
+5 - Project our findings onto cortical surfaces
+"""
+# Functional cortical epicenters
+plot_subcortical(fc_sctx_epi, ventricles=False, size=(800, 400),
+                 cmap='Reds_r', color_bar=True, color_range=(-0.5, 0))
+
+# Structural cortical epicenters
+plot_subcortical(sc_sctx_epi, ventricles=False, size=(800, 400),
+                 cmap='Blues_r', color_bar=True, color_range=(-0.5, 0))

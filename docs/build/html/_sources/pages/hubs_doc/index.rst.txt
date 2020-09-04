@@ -39,7 +39,7 @@ denotes increased hubness (*i.e.*, node with many connections).
 
         >>> # And project the results on the surface brain
         >>> plot_cortical(array_name=dc_f_fsa5, surface_name="fsa5", size=(800, 400),
-        ...                 cmap='Reds', color_bar=True, color_range=(20, 30))
+        ...               cmap='Reds', color_bar=True, color_range=(20, 30))
 
         >>> plot_cortical(array_name=dc_s_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='Blues', color_bar=True, color_range=(100, 300))
