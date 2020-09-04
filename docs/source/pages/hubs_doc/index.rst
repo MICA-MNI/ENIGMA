@@ -20,7 +20,6 @@ denotes increased hubness (*i.e.*, node with many connections).
    .. code-tab:: py
        
         >>> import numpy as np
-        >>> import enigmatoolbox.datasets
         >>> from enigmatoolbox.plotting import plot_cortical
         >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
@@ -69,7 +68,7 @@ denotes increased hubness (*i.e.*, node with many connections).
           colormap([Blues])
           colorbar_range([100 300]) 
 
-.. image:: ./examples/example_figs/fc_hubs_ctx.png
+.. image:: ./examples/example_figs/hubs_ctx.png
     :align: center
 
 
@@ -134,7 +133,7 @@ denotes increased hubness!
           colormap([Blues])
           colorbar_range([100 300])
 
-.. image:: ./examples/example_figs/fc_hubs_sctx.png
+.. image:: ./examples/example_figs/hubs_sctx.png
     :align: center
 
 
