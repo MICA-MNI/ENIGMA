@@ -113,7 +113,8 @@ derived from cortical thickness decreases in individuals with left TLE.
 .. admonition:: Long code alert 🚨
 
      For completeness, we include code that has been detailed elsewhere (:ref:`loading example data <load_ct>`,
-     :ref:`z-scoring and visualizing cortical surface data <surf_visualization>`). 
+     :ref:`z-scoring and visualizing cortical surface data <surf_visualization>`). Sections 1-3 are identical to 
+     the above example for identifying cortical epicenters.
      If you're already comfortable with these steps, feel free to simply skip right to the last two sections!
 
 .. tabs::
@@ -151,7 +152,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
         %% 4 - Functional/structural subcortical disease epicenters
         %      Correlations between seed-based connectivity (looping over
-        %      all cortical regions) and our subcortical volume decreases in left TLE
+        %      all cortical regions) and cortical thickness decreases in left TLE
         % Functional cortical epicenters
         fc_sctx_epi            = zeros(size(fc_sctx, 1), 1); % 14 x 1
         for seed = 1:size(fc_sctx, 1)

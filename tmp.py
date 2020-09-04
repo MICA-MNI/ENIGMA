@@ -25,9 +25,14 @@ ct_tle = np.mean(ct.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
 
 """
 3 - Let's then load our functional and structural connectivity matrices
-    and compute degree centrality metrics to identify the spatial distribution
-    of hubs
 """
 # Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
 fc_ctx, _, fc_sctx, _ = load_fc()
 sc_ctx, _, sc_sctx, _ = load_sc()
+
+
+"""
+4 - Functional/structural cortical disease epicenters
+"""
+# Correlations between seed-based connectivity (looping over all cortical regions) and
+# cortical thickness decreases in left TLE

@@ -304,7 +304,8 @@ derived from cortical thickness decreases in individuals with left TLE.</p>
 <div class="admonition-long-code-alert admonition">
 <p class="admonition-title">Long code alert 🚨</p>
 <p>For completeness, we include code that has been detailed elsewhere (<a class="reference internal" href="../loadct_doc/index.html#load-ct"><span class="std std-ref">loading example data</span></a>,
-<a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">z-scoring and visualizing cortical surface data</span></a>).
+<a class="reference internal" href="../visualization_doc/index.html#surf-visualization"><span class="std std-ref">z-scoring and visualizing cortical surface data</span></a>). Sections 1-3 are identical to
+the above example for identifying cortical epicenters.
 If you’re already comfortable with these steps, feel free to simply skip right to the last two sections!</p>
 </div>
 <div class="sphinx-tabs docutils container">
@@ -353,7 +354,7 @@ If you’re already comfortable with these steps, feel free to simply skip right
 
 <span class="c">%% 4 - Functional/structural subcortical disease epicenters</span>
 <span class="c">%      Correlations between seed-based connectivity (looping over</span>
-<span class="c">%      all cortical regions) and our subcortical volume decreases in left TLE</span>
+<span class="c">%      all cortical regions) and cortical thickness decreases in left TLE</span>
 <span class="c">% Functional cortical epicenters</span>
 <span class="n">fc_sctx_epi</span>            <span class="s">=</span> <span class="s">zeros(size(fc_sctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span> <span class="c">% 14 x 1</span>
 <span class="k">for</span> <span class="n">seed</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
