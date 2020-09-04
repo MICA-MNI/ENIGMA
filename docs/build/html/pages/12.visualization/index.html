@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualization tools! 👀 &mdash; ENIGMA TOOLBOX  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/saratheriver_tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/saratheriver_enigma.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../../_static/sphinx_tabs/tabs.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Citing the ENIGMA TOOLBOX" href="../13.citeus/index.html" />
+    <link rel="prev" title="Disease-related gene expression maps" href="../11.epilepsygenes/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #259595" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> ENIGMA TOOLBOX
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          <script type="text/javascript" src="../../static/js/copybutton.js"></script>
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../03.loadct/index.html">Load example data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04.loadsumstats/index.html">Load summary statistics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../05.HCP/index.html">Load connectivity data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06.hubs/index.html">Hub susceptibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07.epicenter/index.html">Epicenter mapping</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Structural covariance networks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../08.covariance/index.html">Structural covariance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09.gt/index.html">Graph theory analyses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Gene expression</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../10.genemaps/index.html">Gene expression data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11.epilepsygenes/index.html">Disease-related gene expression maps</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Surface data visualization</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Surface data visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cortical-surface-visualization">Cortical surface visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#subcortical-surface-visualization">Subcortical surface visualization</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">References &amp; acknowledgements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../13.citeus/index.html">Citing the ENIGMA TOOLBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14.refs/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15.funding/index.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ENIGMA TOOLBOX</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Visualization tools! 👀</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/pages/12.visualization/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="surface-data-visualization">
+<span id="surf-visualization"></span><h1>Surface data visualization<a class="headerlink" href="#surface-data-visualization" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to visualize surface data!</p>
+<div class="section" id="cortical-surface-visualization">
+<h2>Cortical surface visualization<a class="headerlink" href="#cortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
+<p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!
+Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
+In the following example, we will display mean subcortical volume reductions in individuals with left TLE (<em>z</em>-scored to healthy controls).</p>
+<div class="admonition-parcellations-parcellations-for-everyone admonition">
+<p class="admonition-title">Parcellations, parcellations for everyone! 🧩</p>
+<p>Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-Killiany
+cortical parcels). Our <code class="docutils literal notranslate"><span class="pre">parcel_to_surface()</span></code> function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
+other parcellations (<em>e.g.</em>, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, and so on …), so you can take advantage of
+our visualization tools for all your other projects!</p>
+</div>
+<div class="admonition-don-t-like-fsaverage5-relax-we-got-you-covered admonition">
+<p class="admonition-title">Don’t like fsaverage5? Relax, we got you covered! 🛀🏾</p>
+<p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’!
+Easy peasy lemon squeezy 🍋</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>            <span class="c1"># Selecting only columns with cortical thickness values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from individuals with left TLE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Before visualizing the data, we need to map the parcellated data to the surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now project cortical thickness descreases in left TLE to the cortical surface!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
+
+<span class="c">%% We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr2_CortThick(:,</span> <span class="s">2:end-5)</span><span class="p">;</span>         <span class="c">% Selecting only columns with cortical thickness values</span>
+<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                              <span class="c">% Selecting the group assignment column for all participants</span>
+<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                                   <span class="c">% Specifying that controls are coded as 0</span>
+<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">%% As a quick example, let&#39;s choose data from individuals with left TLE</span>
+<span class="n">Z_TLE</span>          <span class="s">=</span> <span class="s">mean(Z(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>   <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
+
+<span class="c">%% Before visualizing the data, we need to map the parcellated data to the surface</span>
+<span class="n">Z_TLE_fsa5</span>     <span class="s">=</span> <span class="s">parcel_to_surface(Z_TLE,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+
+<span class="c">%% Plot cortical values</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                          <span class="c">% change colormap here</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                           <span class="c">% change colorbar limits here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/ctx_py.png" class="align-center" src="../../_images/ctx_py.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="subcortical-surface-visualization">
+<h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz).
+Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
+we will display subcortical volume reductions (<em>z</em>-scored to healthy controls) in individuals with left TLE.</p>
+<div class="admonition-we-ve-mentioned-this-already-but-don-t-forget-that admonition">
+<p class="admonition-title">We’ve mentioned this already, but don’t forget that…</p>
+<p>Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus,
+left-pallidum, left-putamen, left-thalamus, left-ventricles, right-accumbens, right-amygdala, right-caudate, right-hippocampus,
+right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our <code class="docutils literal notranslate"><span class="pre">reorder_sctx()</span></code> function!
+*Ventricles are optional.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Selecting only columns with subcortical volume values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                     <span class="c1"># Selecting the group assignment column for all participants</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Specifying that controls are coded as 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_LTLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_LTLE</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">%% Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
+<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
+
+<span class="c">%% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
+<span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
+
+<span class="c">%% Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
+<span class="n">data</span>           <span class="s">=</span> <span class="s">metr1_SubVol_r(:,</span> <span class="s">2:end-1)</span><span class="p">;</span>   <span class="c">% Selecting only columns with subcortical volume values</span>
+<span class="n">group</span>          <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                       <span class="c">% Selecting the group assignment column for all participants</span>
+<span class="n">controlCode</span>    <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                            <span class="c">% Specifying that controls are coded as 0</span>
+<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">%% As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
+<span class="n">Z_TLE</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">cov</span><span class="p">.</span><span class="n">SDx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">),</span> <span class="p">:),</span> <span class="mi">1</span><span class="p">);</span>     <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">);</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                    <span class="c">% change colormap here</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c">% change colorbar limits here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<img alt="../../_images/sctx_py.png" class="align-center" src="../../_images/sctx_py.png" />
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../13.citeus/index.html" class="btn btn-neutral float-right" title="Citing the ENIGMA TOOLBOX" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../11.epilepsygenes/index.html" class="btn btn-neutral float-left" title="Disease-related gene expression maps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, enigmators
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a 
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by SL 🤠 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+
+  <footer>
+    
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a 
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by SL 🤠 
+
+  </footer>
+
+
+
+</body>
+</html>

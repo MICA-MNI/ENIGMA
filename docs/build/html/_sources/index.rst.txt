@@ -113,25 +113,25 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: Getting started
    
-   pages/install
-   pages/whatsnew
+   pages/01.install/index
+   pages/02.whatsnew/index
 
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: ENIGMA datasets
    
-   pages/loadct_doc/index
-   pages/loadsumstats_doc/index
+   pages/03.loadct/index
+   pages/04.loadsumstats/index
 
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Network-based atrophy models
    
-   pages/HCP_doc/index
-   pages/hubs_doc/index
-   pages/epicenter_doc/index
+   pages/05.HCP/index
+   pages/06.hubs/index
+   pages/07.epicenter/index
 
 
 .. toctree::
@@ -139,8 +139,8 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: Structural covariance networks
 
-   pages/covariance_doc/index
-   pages/gt_doc/index
+   pages/08.covariance/index
+   pages/09.gt/index
 
 
 .. toctree::
@@ -148,8 +148,8 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: Gene expression
 
-   pages/genemaps_doc/index
-   pages/epilepsygenes_doc/index
+   pages/10.genemaps/index
+   pages/11.epilepsygenes/index
 
 
 .. toctree::
@@ -157,7 +157,17 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: Surface data visualization
 
-   pages/visualization_doc/index
+   pages/12.visualization/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: References & acknowledgements
+
+   pages/13.citeus/index
+   pages/14.refs/index
+   pages/15.funding/index
 
 |
 
