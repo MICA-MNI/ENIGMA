@@ -11,7 +11,7 @@ This page contains descriptions and examples to identify disease epicenters!
 Cortical epicenters
 ---------------------
 Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can also identify epicenters of cortical atrophy.
-This is done by systematically correlating every cortical region's seed-based connectivity profile (*e.g.*, cortico-cortical connectivity) with 
+This is done by systematically correlating every cortical region's seed-based connectivity profile (*i.e.*, cortico-cortical connectivity) with 
 a whole-brain atrophy map. Disease epicenters thus represent regions whose connectivity profile 
 spatially resembles the disease-related atrophy map. In this tutorial, our *atrophy map* will be 
 derived from cortical thickness decreases in individuals with left TLE.
@@ -19,10 +19,10 @@ derived from cortical thickness decreases in individuals with left TLE.
 
 .. admonition:: Epicenter whaaat? 🤔
 
-     Cortical and subcortical epicenter regions are identified if their connectivity profiles correlate with a disease-specific cortical atrophy map. 
+     Cortical and subcortical epicenter regions are identified if their connectivity profiles correlate with a disease-specific *cortical* atrophy map. 
      In the following examples, regions with strong *negative* correlations represent disease epicenters. Moreover, and regardless of its atrophy level, 
-     a cortical or subcortical region can be an epicenter if it is (*i*) strongly connected to other high-atrophy regions and (*ii*) weakly connected 
-     to low-atrophy regions. 
+     a cortical or subcortical region can be an epicenter if it is (*i*) strongly connected to other high-atrophy cortical regions and (*ii*) weakly connected 
+     to low-atrophy cortical regions. 
 
 
 .. admonition:: Long code alert 🚨
@@ -105,16 +105,10 @@ derived from cortical thickness decreases in individuals with left TLE.
 
 Subcortical epicenters
 -------------------------
-
-XXXXXXXXXXXXX
-MAKE SURE THIS WORKS  - HAS TO BE SCTX-CTX CONNECTIVITY TO PREDICT CORTICAL ATRPHY !!!!!!!!!!!!!
-XXXXXXXXXXXXX
-
-The HCP connectivity data can also be used to identify epicenters of subcortical atrophy. 
-As above, we simply correlate every subcortical region's seed-based connectivity profile (*e.g.*, subcortico-cortical connectivity) with 
-a whole-brain cortical atrophy map. Disease epicenters thus represent regions whose connectivity profile 
-spatially resembles the disease-related atrophy map. In the following tutorial, our *atrophy map* will be 
-derived from subcortical volume decreases in individuals with left TLE.
+To identify subcortical epicenters of cortical atrophy, we once again correlate every subcortical region's seed-based 
+connectivity profile (*e.g.*, subcortico-cortical connectivity) with 
+a whole-brain cortical atrophy map. As above, our *atrophy map* will be 
+derived from cortical thickness decreases in individuals with left TLE.
 
 .. admonition:: Long code alert 🚨
 
@@ -134,16 +128,8 @@ derived from subcortical volume decreases in individuals with left TLE.
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% 1 - Let's start by loading our example data
-        % Here we need the covariates and the subcortical volume data
-        [cov, metr1_SubVol, ~, ~] = load_example_data();
-
-        % After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)
-        % so to match the order from the connectivity matrices
-        metr1_SubVol_r                          = reorder_sctx(metr1_SubVol);
-
-        % We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
-        metr1_SubVol_r.LLatVent                 = [];
-        metr1_SubVol_r.RLatVent                 = [];
+        % Here we need the covariates and the cortical thickness data
+        [cov, ~, metr2_CortThick, ~] = load_example_data();
 
 
         %% 2 - We can then and z-score data in patients relative to controls, so that lower values
@@ -151,10 +137,10 @@ derived from subcortical volume decreases in individuals with left TLE.
         % Z-score patients' data relative to controls (lower z-score = more atrophy)
         group        = cov.Dx;
         controlCode  = 0;
-        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
+        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
 
         % Mean z-score values across individuals with left TLE (SDx == 3)
-        sv_tle       = mean(sv(find(cov.SDx == 3), :), 1);
+        ct_tle       = mean(ct(find(cov.SDx == 3), :), 1);
 
 
         %% 3 - Let's then load our functional and structural connectivity matrices
@@ -165,20 +151,20 @@ derived from subcortical volume decreases in individuals with left TLE.
 
         %% 4 - Functional/structural subcortical disease epicenters
         %      Correlations between seed-based connectivity (looping over
-        %      all cortical regions) and our subcortical volume decreases in left TLE 
-        % Functional cortical epicenters 
+        %      all cortical regions) and our subcortical volume decreases in left TLE
+        % Functional cortical epicenters
         fc_sctx_epi            = zeros(size(fc_sctx, 1), 1); % 14 x 1
         for seed = 1:size(fc_sctx, 1)
-            seed_conn          = fc_sctx(:, seed);
-            r_tmp              = corrcoef(transpose(seed_conn), sv_tle);
+            seed_conn          = fc_sctx(seed, :);
+            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
             fc_sctx_epi(seed)  = r_tmp(1, 2);
         end
 
-        % Structural cortical epicenters 
+        % Structural cortical epicenters
         sc_sctx_epi            = zeros(size(sc_sctx, 1), 1); % 68 x 1
         for seed = 1:size(sc_sctx, 1)
-            seed_conn          = sc_sctx(:, seed);
-            r_tmp              = corrcoef(transpose(seed_conn), sv_tle);
+            seed_conn          = sc_sctx(seed, :);
+            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
             sc_sctx_epi(seed)  = r_tmp(1, 2);
         end
 
