@@ -161,6 +161,9 @@ derived from cortical thickness decreases in individuals with left TLE.
             colorbar_range([-0.5 0])
             colormap(flipud(Blues))
 
+.. image:: ./examples/example_figs/epi_ctx.png
+    :align: center
+
 
 |
 
@@ -304,3 +307,5 @@ derived from cortical thickness decreases in individuals with left TLE.
             colorbar_range([-0.5 0])
             colormap(flipud(Blues))
 
+.. image:: ./examples/example_figs/epi_sctx.png
+    :align: center
