@@ -115,8 +115,14 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    
    pages/install
    pages/whatsnew
-   pages/loadct_doc/index
 
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: ENIGMA datasets
+   
+   pages/loadct_doc/index
+   pages/loadsumstats_doc/index
 
 .. toctree::
    :maxdepth: 1
