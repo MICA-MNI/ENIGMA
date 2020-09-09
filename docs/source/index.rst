@@ -8,7 +8,7 @@
    *An open source repository for the sharing of neuroimaging and genetics data, analytical
    codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 
-.. title:: Welcome to the ENIGMA TOOLBOX! 🧰
+.. title:: Introducing the ENIGMA TOOLBOX 🧰
 
 .. raw:: html
 
@@ -21,37 +21,21 @@
       }
    </style>
 
-.. image:: ./pages/extrafigs/wmap.png
+.. .. image:: ./pages/extrafigs/wmap.png
    :align: left
    :target: http://enigma.ini.usc.edu/
    :alt: ENIGMA TOOLBOX
 
 
-|
+**Welcome to the ENIGMA TOOLBOX 👋🏼**
+==========================================
 
-|
+.. raw:: html
 
-
-|
-
-
-|
-
-
-|
-
-
-|
-
-
-|
-
-
-|
-
-
-
-|
+   <a href="http://enigma.ini.usc.edu/">
+      <img src="https://raw.githubusercontent.com/saratheriver/enigma-extra/master/wmap2.gif"
+         width=300px>
+   </a>
 
 
 .. raw:: html
