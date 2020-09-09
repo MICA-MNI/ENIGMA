@@ -242,7 +242,7 @@ happy to expand this function to include other interesting disorders! Get in tou
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Other epilepsy subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">epilepsy_genes</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="n">epilepsy</span><span class="s1">&#39;)[&#39;</span><span class="n">focal_hs</span><span class="s1">&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epilepsy_genes</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="n">epilepsy</span><span class="s1">&#39;)[&#39;</span><span class="n">focalhs</span><span class="s1">&#39;]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now extract the gene expression data for these Focal HS genes</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">epilepsy_gene_data</span> <span class="o">=</span> <span class="n">genes</span><span class="p">[</span><span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">epilepsy_genes</span><span class="p">)]</span>

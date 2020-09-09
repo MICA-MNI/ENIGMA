@@ -41,7 +41,7 @@ hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with a
 
         >>> # Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)
         >>> # Other epilepsy subtypes include: 'allepilepsy', 'focalepilepsy', 'generalizedepilepsy', 'jme', and 'cae'
-        >>> epilepsy_genes = risk_genes(epilepsy')['focal_hs']
+        >>> epilepsy_genes = risk_genes(epilepsy')['focalhs']
 
         >>> # We can now extract the gene expression data for these Focal HS genes
         >>> epilepsy_gene_data = genes[genes.columns.intersection(epilepsy_genes)]

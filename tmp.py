@@ -16,3 +16,4 @@ fc_sctx_r = np.corrcoef(fc_sctx_dc, np.mean(SubVol_Z_LTLE_r, axis=0))[0, 1]
 
 sc_ctx_r = np.corrcoef(sc_ctx_dc, np.mean(CortThick_Z_LTLE, axis=0))[0, 1]
 sc_sctx_r = np.corrcoef(sc_sctx_dc, np.mean(SubVol_Z_LTLE_r, axis=0))[0, 1]
+
