@@ -1,18 +1,18 @@
 import numpy as np
-from enigmatoolbox.plotting import plot_subcortical
-from enigmatoolbox.datasets import load_sc, load_fc
 
-# Load functional and structural subcortico-cortical connectivity data
-_, _, fc, _ = load_fc()
-_, _, sc, _ = load_sc()
+# Remove subcortical values corresponding to the ventricles
+SubVol_Z_LTLE_r = SubVol_Z_LTLE_r.drop(columns=['LLatVent', 'RLatVent'])
 
-# Compute weighted degree centrality measures from the connectivity data
-dc_f = np.sum(fc, axis=1)
-dc_s = np.sum(sc, axis=1)
+# Compute weighted degree centrality measures
+fc_ctx_dc = np.sum(fc_ctx, axis=0)
+fc_sctx_dc = np.sum(fc_sctx, axis=1)
 
-# And project the results on the subcortical surfaces (don't forget to set the ventricles flag to False!)
-plot_subcortical(array_name=dc_f, ventricles=False, size=(800, 400),
-                 cmap='Reds', color_bar=True, color_range=(5, 10))
+sc_ctx_dc = np.sum(sc_ctx, axis=0)
+sc_sctx_dc = np.sum(sc_sctx, axis=1)
 
-plot_subcortical(array_name=dc_s, ventricles=False, size=(800, 400),
-                 cmap='Blues', color_bar=True, color_range=(100, 300))
+# Perform spatial correlations between hubs and mean atrophy
+fc_ctx_r = np.corrcoef(fc_ctx_dc, np.mean(CortThick_Z_LTLE, axis=0))[0, 1]
+fc_sctx_r = np.corrcoef(fc_sctx_dc, np.mean(SubVol_Z_LTLE_r, axis=0))[0, 1]
+
+sc_ctx_r = np.corrcoef(sc_ctx_dc, np.mean(CortThick_Z_LTLE, axis=0))[0, 1]
+sc_sctx_r = np.corrcoef(sc_sctx_dc, np.mean(SubVol_Z_LTLE_r, axis=0))[0, 1]

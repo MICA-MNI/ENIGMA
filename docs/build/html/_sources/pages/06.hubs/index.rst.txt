@@ -179,7 +179,7 @@ atrophy relative to controls).
 
 
         >>> """
-        >>> 2 - We can then and z-score data in patients relative to controls, so that lower values
+        >>> 2 - We can then z-score data in patients relative to controls, so that lower values
         >>>     correspond to greater atrophy          
         >>> """
         >>> # Z-score patients' data relative to controls (lower z-score = more atrophy)
@@ -251,7 +251,7 @@ atrophy relative to controls).
         metr1_SubVol_r.RLatVent                 = [];
 
 
-        %% 2 - We can then and z-score data in patients relative to controls, so that lower values
+        %% 2 - We can then z-score data in patients relative to controls, so that lower values
         %      correspond to greater atrophy
         % Z-score patients' data relative to controls (lower z-score = more atrophy)
         group        = cov.Dx;

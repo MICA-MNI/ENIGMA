@@ -41,9 +41,9 @@ In the following example, we will display mean subcortical volume reductions in 
 
         >>> # We can z-score the data in patients relative to controls (lower z-score = more atrophy)
         >>> data = metr2_CortThick.iloc[:, 1:-5]            # Selecting only columns with cortical thickness values
-        >>> group = cov['Dx'].to_list()                     # Selecting the group assignment column for all participants
-        >>> controlCode = 0                                 # Specifying that controls are coded as 0
-        >>> Z = zscore_matrix(data, group, controlCode)
+        >>> groups = cov['Dx'].to_list()                    # Selecting the group assignment column for all participants
+        >>> controlGroup = 0                                # Specifying that controls are coded as 0
+        >>> Z = zscore_matrix(data, groups, controlGroup)
 
         >>> # As a quick example, let's choose data from individuals with left TLE
         >>> Z_TLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
@@ -65,9 +65,9 @@ In the following example, we will display mean subcortical volume reductions in 
 
         %% We can z-score the data in patients relative to controls (lower z-score = more atrophy)
         data           = metr2_CortThick(:, 2:end-5);         % Selecting only columns with cortical thickness values
-        group          = cov.Dx;                              % Selecting the group assignment column for all participants
-        controlCode    = 0;                                   % Specifying that controls are coded as 0
-        Z              = zscore_matrix(data, group, controlCode);
+        groups         = cov.Dx;                              % Selecting the group assignment column for all participants
+        controlGroup   = 0;                                   % Specifying that controls are coded as 0
+        Z              = zscore_matrix(data, groups, controlGroup);
         
         %% As a quick example, let's choose data from individuals with left TLE
         Z_TLE          = mean(Z(find(cov.SDx == 3), :), 1);   % Mean z-score values for left TLE patients (SDx == 3)
@@ -119,9 +119,9 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
 
         >>> # Let's also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy
         >>> data = metr1_SubVol_r.iloc[:, 1:-1]             # Selecting only columns with subcortical volume values
-        >>> group = cov['Dx'].to_list()                     # Selecting the group assignment column for all participants
-        >>> controlCode = 0                                 # Specifying that controls are coded as 0
-        >>> Z = zscore_matrix(data, group, controlCode)
+        >>> groups = cov['Dx'].to_list()                    # Selecting the group assignment column for all participants
+        >>> controlGroup = 0                                # Specifying that controls are coded as 0
+        >>> Z = zscore_matrix(data, groups, controlGroup)
 
         >>> # As a quick example, let's project data from individuals with left TLE to the subcortical surface template
         >>> Z_LTLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
@@ -141,9 +141,9 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
 
         %% Let's also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy
         data           = metr1_SubVol_r(:, 2:end-1);   % Selecting only columns with subcortical volume values
-        group          = cov.Dx;                       % Selecting the group assignment column for all participants
-        controlCode    = 0;                            % Specifying that controls are coded as 0
-        Z              = zscore_matrix(data, group, controlCode);  
+        groups         = cov.Dx;                       % Selecting the group assignment column for all participants
+        controlGroup   = 0;                            % Specifying that controls are coded as 0
+        Z              = zscore_matrix(data, group, controlGroup);  
 
         %% As a quick example, let's project data from individuals with left TLE to the subcortical surface template
         Z_TLE = mean(Z(find(cov.SDx == 3), :), 1);     % Mean z-score values for left TLE patients (SDx == 3)

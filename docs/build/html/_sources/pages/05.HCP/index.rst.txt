@@ -38,7 +38,7 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
         >>> # Load and plot structural connectivity data
         >>> sc, scl, _, _ = load_sc()
-        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=0.8, vmin=0, cmap='Blues')
+        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=10, vmin=0, cmap='Blues')
 
         >>> # We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         >>> seed = "L_middletemporal"

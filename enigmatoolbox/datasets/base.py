@@ -335,14 +335,15 @@ def risk_genes(disorder=None):
 
         Parameters (pick one)
         ---------------------
-        'adhd'          : Demontis et al., 2018, Nat Genet
-        'asd'           : Grove et al., 2019, Nat Genet
-        'bipolar'       : Stahl et al., 2019, Nat Genet
-        'depression'    : Howard et al., 2019, Nat Genet
-        'epilepsy'      : ILAE on Complex Epilepsies, 2018, Nat Commun
-        'ocd'           : n/a
-        'schizophrenia' : Pardiñas et al., 2018, Nat Genet
-        'tourette'      : Yu et al., 2019 Am J Psychiatry
+        'adhd'               : Demontis et al., 2018, Nat Genet
+        'asd'                : Grove et al., 2019, Nat Genet
+        'bipolar'            : Stahl et al., 2019, Nat Genet
+        'depression'         : Howard et al., 2019, Nat Genet
+        'epilepsy'           : ILAE on Complex Epilepsies, 2018, Nat Commun
+        'hippocampal_volume' : Horgusluoglu-Moloch, 2019, Sci Rep
+        'ocd'                : n/a
+        'schizophrenia'      : Pardiñas et al., 2018, Nat Genet
+        'tourette'           : Yu et al., 2019 Am J Psychiatry
 
         Returns
         -------
@@ -405,6 +406,9 @@ def risk_genes(disorder=None):
         return {'allepilepsy': allepilepsy, 'focalepilepsy': focalepilepsy,
                  'generalizedepilepsy': generalizedepilepsy, 'jme': jme,
                  'cae': cae, 'focalhs': focalhs}
+
+    elif disorder is "hippocampal_volume":
+        return {'TESC','ACVR1','MSRB3','DPP4'}
 
     elif disorder is "ocd":
         return print("aye aye aye I've got nothin'")

@@ -238,15 +238,14 @@ happy to expand this function to include other interesting disorders! Get in tou
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">risk_genes</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s start by loading the microarray expression data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gx</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genes</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Other epilepsy subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">epigx</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="s2">&quot;epilepsy&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_genes</span> <span class="o">=</span> <span class="n">epigx</span><span class="p">[</span><span class="s1">&#39;focalhs&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epilepsy_genes</span> <span class="o">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="n">epilepsy</span><span class="s1">&#39;)[&#39;</span><span class="n">focal_hs</span><span class="s1">&#39;]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now extract the gene expression data for these Focal HS genes</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx</span> <span class="o">=</span> <span class="n">gx</span><span class="p">[</span><span class="n">fh_genes</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">epilepsy_gene_data</span> <span class="o">=</span> <span class="n">genes</span><span class="p">[</span><span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">epilepsy_genes</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -255,15 +254,15 @@ happy to expand this function to include other interesting disorders! Get in tou
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Let&#39;s start by loading the microarray expression data</span>
-<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+<span class="p">[</span><span class="n">genes</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
 
 <span class="c">%% Get the names of genes associated with a specific epilepsy subtype (using Focal HS as example here)</span>
 <span class="c">% Other subtypes include: &#39;allepilepsy&#39;, &#39;focalepilepsy&#39;, &#39;generalizedepilepsy&#39;, &#39;jme&#39;, and &#39;cae&#39;</span>
-<span class="n">epigx</span>        <span class="s">=</span> <span class="s">risk_genes(&quot;epilepsy&quot;)</span><span class="p">;</span>
-<span class="n">fh_genes</span>     <span class="s">=</span> <span class="s">find(ismember(genelabels,</span> <span class="s">epigx.focalhs))</span><span class="p">;</span>
+<span class="n">epilepsy_genes</span> <span class="p">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="s">&#39;epilepsy&#39;</span><span class="p">);</span>
+<span class="n">epilepsy_genes</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">ismember</span><span class="p">(</span><span class="n">genelabels</span><span class="p">,</span> <span class="n">epilepsy_genes</span><span class="p">.</span><span class="n">focalhs</span><span class="p">));</span>
 
 <span class="c">%% We can now extract the gene expression data for these Focal HS genes</span>
-<span class="n">fh_gx</span>        <span class="s">=</span> <span class="s">gx(:,</span> <span class="s">fh_genes)</span><span class="p">;</span>
+<span class="n">epilepsy_gene_data</span> <span class="p">=</span> <span class="n">genes</span><span class="p">(:,</span> <span class="n">epilepsy_genes</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -297,22 +296,22 @@ Additional details on surface visualization are provided in <a class="reference 
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span><span class="p">,</span> <span class="n">plot_subcortical</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Following the above code, we can then map epilepsy-related gene expression to the cortical surface!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first compute the mean of all Focal HS genes across cortical areas only</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first compute the mean of all Focal HS genes</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">epilepsy_gene_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># And separate cortical (ctx) from subcortical (sctx) areas</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:</span><span class="mi">68</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_sctx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fh_gx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">68</span><span class="p">:]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_ctx</span> <span class="o">=</span> <span class="n">mean_epilepsy_genes</span><span class="p">[:</span><span class="mi">68</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_sctx</span> <span class="o">=</span> <span class="n">mean_epilepsy_genes</span><span class="p">[</span><span class="mi">68</span><span class="p">:]</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now map the parcellated gene expression data to our surface template</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fh_gx_ctx_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">fh_gx_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_ctx_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">mean_epilepsy_genes_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># And finally project the output to the cortical surface</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">mean_epilepsy_genes_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
 <span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">))</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># ... as well as to the subcortical surface!!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">fh_gx_sctx</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">mean_epilepsy_genes_sctx</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">))</span>
 </pre></div>
 </div>
