@@ -1,5 +1,5 @@
 """
-Figure 1. Load example data
+Figure 1a. Load example data
 """
 from enigmatoolbox.datasets import load_example_data
 from enigmatoolbox.utils.useful import zscore_matrix
@@ -19,7 +19,12 @@ SubVol_Z_LTLE = SubVol_Z.iloc[cov[cov['SDx'] == 3].index, :]
 
 
 """
-Figure 2. Surface data visualization
+Figure 1c. Load summary statistics
+"""
+
+
+"""
+Figure 2a. Surface data visualization
 """
 from enigmatoolbox.utils.useful import reorder_sctx
 import numpy as np
@@ -42,3 +47,85 @@ plot_cortical(array_name=CortThick_Z_LTLE_mean_fsa5, surface_name="fsa5",
 
 plot_subcortical(array_name=SubVol_Z_LTLE_r_mean, size=(800, 400),
                  cmap='Blues_r', color_bar=True, color_range=(-3, 0))
+
+
+"""
+Figure 3. Fetch disease-related gene expression data
+"""
+from enigmatoolbox.datasets import fetch_ahba, risk_genes
+
+# Fetch gene expression data
+genes = fetch_ahba()
+
+# Get the names of epilepsy-related genes (Focal HS phenotype)
+epilepsy_genes = risk_genes('epilepsy')['focalhs']
+
+# Extract gene expression data for epilepsy (Focal HS)
+epilepsy_gene_data = genes[genes.columns.intersection(epilepsy_genes)]
+
+
+"""
+Figure 4. Load connectivity data
+"""
+from enigmatoolbox.datasets import load_fc, load_sc
+
+# Load functional connectivity data
+fc_ctx, fc_ctx_labels, fc_sctx, fc_sctx_labels = load_fc()
+
+# Load structural connectivity data
+sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels = load_sc()
+
+
+"""
+Figure 5. Hub susceptibility model
+"""
+import numpy as np
+
+# Remove subcortical values corresponding to the ventricles
+SubVol_Z_LTLE_r_mean_noVent = SubVol_Z_LTLE_r_mean.drop(['LLatVent', 'RLatVent'])
+
+# Compute weighted degree centrality measures
+fc_ctx_dc = np.sum(fc_ctx, axis=0)
+fc_sctx_dc = np.sum(fc_sctx, axis=1)
+
+sc_ctx_dc = np.sum(sc_ctx, axis=0)
+sc_sctx_dc = np.sum(sc_sctx, axis=1)
+
+# Perform spatial correlations between hubs and mean atrophy
+fc_ctx_r = np.corrcoef(fc_ctx_dc, CortThick_Z_LTLE_mean)[0, 1]
+fc_sctx_r = np.corrcoef(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
+
+sc_ctx_r = np.corrcoef(sc_ctx_dc, CortThick_Z_LTLE_mean)[0, 1]
+sc_sctx_r = np.corrcoef(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
+
+
+"""
+Figure 6. Disease epicenter mapping
+"""
+import numpy as np
+
+# Identify functional epicenters
+fc_ctx_epi = []
+for seed in range(fc_ctx.shape[0]):
+    seed_con = fc_ctx[:, seed]
+    fc_ctx_epi = np.append(fc_ctx_epi,
+                           np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+
+fc_sctx_epi = []
+for seed in range(fc_sctx.shape[0]):
+    seed_con = fc_sctx[seed, :]
+    fc_sctx_epi = np.append(fc_sctx_epi,
+                            np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+
+# Identify structural epicenters
+sc_ctx_epi = []
+for seed in range(sc_ctx.shape[0]):
+    seed_con = sc_ctx[:, seed]
+    sc_ctx_epi = np.append(sc_ctx_epi,
+                           np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+
+sc_sctx_epi = []
+for seed in range(sc_sctx.shape[0]):
+    seed_con = sc_sctx[seed, :]
+    sc_sctx_epi = np.append(sc_sctx_epi,
+                            np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])

@@ -21,8 +21,7 @@ function Z = zscore_matrix(data, group, controlCode)
 data_orig = data;
 if istable(data_orig)
     data = table2array(data);
-else
-    data = data_orig;
+    el
 end
 
 if isstring(controlCode)
@@ -35,8 +34,5 @@ n = length(group);
 Z = (data - repmat(mean(data(C, :), 1), n, 1)) ...
     ./ std(data(C, :));
 
-if istable(data_orig)
-    Z  = array2table(Z, 'VariableNames', data_orig.Properties.VariableNames);
-end
 
 return

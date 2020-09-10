@@ -2,6 +2,7 @@
 
 .. title:: Load example data! ⏳
 
+
 Load example data
 ======================================
 
@@ -12,6 +13,7 @@ epilepsy (7 females, age±SD=39.8±14.8 years).
 
 Load covariates data
 ------------------------------------
+
 As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subjectID),
 **Dx** (diagnosis, 0=controls, 1=patients), **SDx** (sub-diagnosis, 0=controls,
 1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
