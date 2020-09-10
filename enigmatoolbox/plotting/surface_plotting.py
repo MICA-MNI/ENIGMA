@@ -10,6 +10,7 @@ from itertools import product as iter_prod
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 from .base import Plotter
 from .colormaps import colormaps
@@ -517,6 +518,9 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
     layout = ['lh', 'lh', 'rh', 'rh']
     view = ['lateral', 'medial', 'lateral', 'medial']
 
+    if isinstance(array_name, pd.Series):
+        array_name = array_name.to_numpy()
+
     if isinstance(array_name, np.ndarray):
         if array_name.ndim == 2:
             array_name = [a for a in array_name]
@@ -626,6 +630,9 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     surfs = {'lh': surf_lh, 'rh': surf_rh}
     layout = ['lh', 'lh', 'rh', 'rh']
     view = ['lateral', 'medial', 'lateral', 'medial']
+
+    if isinstance(array_name, pd.Series):
+        array_name = array_name.to_numpy()
 
     if array_name.shape == (1, 16) or array_name.shape == (1, 14):
         array_name = np.transpose(array_name)
