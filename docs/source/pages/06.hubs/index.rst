@@ -140,7 +140,7 @@ denotes increased hubness!
 |
 
 
-Relations between hubs and morphological measures
+Hub-atrophy correlations
 -------------------------------------------------------
 Now that we have established the spatial distribution of hubs in the brain, we can then assess 
 whether there is a selective vulnerability of these hub regions that parallels syndrome-specific atrophy patterns.
@@ -304,7 +304,26 @@ atrophy relative to controls).
 |
 
 
-Plot spatial correlations between hubs and morphological measures
+Permuted p-values for hub-atrophy correlations
+-------------------------------------------------------
+... spin test for cortical maps and shuf test for subcortical maps
+
+.. tabs::
+
+   .. code-tab:: py
+
+        >>> 
+
+   .. code-tab:: matlab
+
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
+
+|
+
+
+Plot hub-atrophy correlations
 ------------------------------------------------------------------------
 Now that we have done all the necessary analyses, we can finally display our correlations! 
 Here, a negative correlation indicates that greater atrophy (negative z-score values) correlates 
