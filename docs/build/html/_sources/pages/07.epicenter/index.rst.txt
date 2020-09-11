@@ -286,7 +286,7 @@ derived from cortical thickness decreases in individuals with left TLE.
         end
 
         % Structural subcortical epicenters
-        sc_sctx_epi            = zeros(size(sc_sctx, 1), 1); % 68 x 1
+        sc_sctx_epi            = zeros(size(sc_sctx, 1), 1); % 14 x 1
         for seed = 1:size(sc_sctx, 1)
             seed_conn          = sc_sctx(seed, :);
             r_tmp              = corrcoef(transpose(seed_conn), ct_tle);

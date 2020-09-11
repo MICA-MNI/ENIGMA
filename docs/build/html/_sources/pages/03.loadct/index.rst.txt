@@ -2,7 +2,6 @@
 
 .. title:: Load example data! ⏳
 
-.. title-text:: ello
 
 Load example data
 ======================================

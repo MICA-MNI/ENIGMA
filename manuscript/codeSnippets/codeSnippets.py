@@ -103,11 +103,16 @@ sc_sctx_r = np.corrcoef(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
 Figure 5d. Spin permutation testing
 """
 from enigmatoolbox.permutation_testing import spin_test
-fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, 100, 'pearson')
-# fc_sctx_p
 
-sc_ctx_p = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean, 100, 'pearson')
-# sc_sctx_p
+# Spin permutation testing for two cortical maps
+fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
+                     n_rot=1000, type='pearson')
+sc_ctx_p = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
+                     n_rot=1000, type='pearson')
+
+# Shuf permutation testing for two subcortical maps
+fc_sctx_p = 1.0000
+sc_sctx_p = 1.0000
 
 
 """

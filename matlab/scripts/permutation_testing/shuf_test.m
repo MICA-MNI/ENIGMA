@@ -5,20 +5,19 @@ function p_shuf = shuf_test(map1, map2, n_rot, type)
 % Usage: p_shuf = spin_test(map1, map2, [n_rot, [type]]);
 % 
 % INPUTS
-%   map1            = one of two maps to be correlated
-%   map2            = the other map to be correlated
-%   n_rot           = number of spin rotations (default 10000)
-%   type            = correlation type, 'pearson' (default), 'spearman'
-%
+%    map1            = one of two subcortical map to be correlated
+%    map2            = the other subcortical map to be correlated
+%    n_rot           = number of shuffles (default 100)
+%    type            = correlation type, 'pearson' (default), 'spearman'
+% 
 % OUTPUT
-%   p_shuf          = shuffled p-value
-%
-%
-% Last modifications:
-% SL | a rainy September day 2020
+%    p_shuf          = permutation p-value
+% 
+%  Sara Lariviere | a sunny September day 2020
+
 
 if nargin<3
-    n_rot=10000;
+    n_rot=1000;
 end
 if nargin<4
     type='pearson';

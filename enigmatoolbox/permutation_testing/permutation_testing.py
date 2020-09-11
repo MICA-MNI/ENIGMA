@@ -237,8 +237,8 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson'):
 def spin_test(map1, map2, surface_name='fsa5', n_rot=100, type='pearson'):
     """
     INPUTS
-       map1            = one of two maps to be correlated
-       map2            = the other map to be correlated
+       map1            = one of two cortical map to be correlated
+       map2            = the other cortical map to be correlated
        surface_name    = 'fsa5' (default) or 'conte69'
        n_rot           = number of spin rotations (default 100)
        type            = correlation type, 'pearson' (default), 'spearman'
@@ -273,3 +273,85 @@ def spin_test(map1, map2, surface_name='fsa5', n_rot=100, type='pearson'):
     p_spin = perm_sphere_p(map1, map2, perm_id, type)
 
     return p_spin
+
+
+def shuf_test(map1, map2, n_rot=100, type='pearson'):
+    """
+    INPUTS
+       map1            = one of two subcortical map to be correlated
+       map2            = the other subcortical map to be correlated
+       n_rot           = number of shuffles (default 100)
+       type            = correlation type, 'pearson' (default), 'spearman'
+
+    OUTPUT
+       p_shuf          = permutation p-value
+
+     Sara Lariviere | a sunny September day 2020
+    """
+
+    r = 0  # count successful (r) iterations unsuccessful (c) iterations
+    c = 0  # count unsuccessful (c) iterations
+    nroi = map1.shape[0]  # number of regions
+
+    # generate random permutations
+    perm_id = np.zeros((nroi, n_rot))
+    while (r < n_rot):
+        rot_lr_sort = np.random.permutation(nroi)
+
+        # verify that permutation does not map to itself
+        if np.all(rot_lr_sort == range(nroi)) is not True:
+            perm_id[:, r] = rot_lr_sort
+            r = r + 1
+        elif np.all(rot_lr_sort == range(nroi)) is True:
+            c = c + 1
+            print('map to itself n.' + str(c))
+
+        # track progress
+        if np.mod(r, 100) == 0:
+            print('permutation ' + str(r) + ' of ' + str(n_rot))
+
+    # empirical correlation
+    if type is 'pearson':
+        rho_emp = scipy.stats.pearsonr(map1, map2)[0]
+    elif type is 'spearman':
+        rho_emp = scipy.stats.spearmanr(map1, map2)[0]
+
+    # permutation of measures
+    x_perm = np.empty((0, nroi))
+    y_perm = np.empty((0, nroi))
+    for rr in range(n_rot):
+        x_perm2 = []
+        y_perm2 = []
+        for ii in range(nroi):
+            x_perm2 = np.append(x_perm2, map1[int(perm_id[ii, rr])])
+            y_perm2 = np.append(y_perm2, map2[int(perm_id[ii, rr])])
+        x_perm = np.vstack((x_perm, x_perm2))
+        y_perm = np.vstack((y_perm, y_perm2))
+
+    x_perm = np.transpose(x_perm)
+    y_perm = np.transpose(y_perm)
+
+    # correlation to unpermuted measures
+    rho_null_xy = []
+    rho_null_yx = []
+    if type is 'pearson':
+        for rr in range(n_rot):
+            rho_null_xy = np.append(rho_null_xy, scipy.stats.pearsonr(x_perm[:, rr], map2)[0])
+            rho_null_yx = np.append(rho_null_yx, scipy.stats.pearsonr(map1, y_perm[:, rr])[0])
+    elif type is 'spearman':
+        for rr in range(n_rot):
+            rho_null_xy = np.append(rho_null_xy, scipy.stats.spearmanr(x_perm[:, rr], map2)[0])
+            rho_null_yx = np.append(rho_null_yx, scipy.stats.spearmanr(map1, y_perm[:, rr])[0])
+
+    # p-value definition depends on the sign of the empirical correlation
+    if rho_emp > 0:
+        p_perm_xy = np.sum((rho_null_xy > rho_emp).astype(int)) / n_rot
+        p_perm_yx = np.sum((rho_null_yx > rho_emp).astype(int)) / n_rot
+    elif rho_emp < 0:
+        p_perm_xy = np.sum((rho_null_xy < rho_emp).astype(int)) / n_rot
+        p_perm_yx = np.sum((rho_null_yx < rho_emp).astype(int)) / n_rot
+
+    # average p-values
+    p_shuf = (p_perm_xy + p_perm_yx) / 2
+
+    return p_shuf

@@ -494,7 +494,7 @@ If you’re already comfortable with these steps, feel free to simply skip right
 <span class="n">end</span>
 
 <span class="s">%</span> <span class="s">Structural</span> <span class="s">subcortical</span> <span class="s">epicenters</span>
-<span class="n">sc_sctx_epi</span>            <span class="s">=</span> <span class="s">zeros(size(sc_sctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span> <span class="c">% 68 x 1</span>
+<span class="n">sc_sctx_epi</span>            <span class="s">=</span> <span class="s">zeros(size(sc_sctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span> <span class="c">% 14 x 1</span>
 <span class="k">for</span> <span class="n">seed</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">size</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">seed_conn</span>          <span class="s">=</span> <span class="s">sc_sctx(seed,</span> <span class="s">:)</span><span class="p">;</span>
     <span class="n">r_tmp</span>              <span class="s">=</span> <span class="s">corrcoef(transpose(seed_conn),</span> <span class="s">ct_tle)</span><span class="p">;</span>
