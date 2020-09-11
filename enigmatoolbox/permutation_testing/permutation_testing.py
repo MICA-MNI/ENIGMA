@@ -6,6 +6,7 @@ import os
 import nibabel as nb
 import numpy as np
 import scipy.stats
+import warnings
 
 from ..datasets import load_fsa5, load_conte69
 
@@ -60,6 +61,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
 
     Ported to Python by Sara Larivière, rainy September 2020 evening
     """
+    warnings.filterwarnings('ignore')
 
     # check that coordinate dimensions are correct
     if coord_l.shape[1] is not 3 or coord_r.shape[1] is not 3:
@@ -244,7 +246,7 @@ def spin_test(map1, map2, surface_name='fsa5', n_rot=100, type='pearson'):
     OUTPUT
        p_spin          = permutation p-value
 
-    Functions at the bottom from here
+    Functions at above from here
            https://github.com/frantisekvasa/rotate_parcellation
 
      Last modifications:

@@ -84,9 +84,13 @@ sc_sctx_r = corrcoef(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :});
 
 
 %% Figure 5e. Spin permutation testing
-% ello
 fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
-                     'fsa5', 10000, 'pearson');
+                     'fsa5', 100, 'pearson');
+% fc_sctx_p
+
+sc_ctx_p = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
+                     'fsa5', 100, 'pearson');
+% sc_sctx_p
 
 
 %% Figure 6b. Disease epicenter mapping
