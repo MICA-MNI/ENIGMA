@@ -1,2 +1,3 @@
 recursive-include enigmatoolbox/datasets *
+recursive-include enigmatoolbox/permutation_testing *
 include README.rst LICENSE
