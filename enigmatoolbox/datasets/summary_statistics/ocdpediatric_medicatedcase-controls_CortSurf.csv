@@ -1,4 +1,4 @@
-﻿SurfaceArea,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 OCDpediatric_medicatedcasesvsCN,L_bankssts,0.017,17.174,,,297,159,0.868,0.937
 OCDpediatric_medicatedcasesvsCN,L_caudalanteriorcingulate,-0.144,12.832,,,316,180,0.129,0.339
 OCDpediatric_medicatedcasesvsCN,L_caudalmiddlefrontal,-0.106,34.999,,,321,182,0.263,0.47

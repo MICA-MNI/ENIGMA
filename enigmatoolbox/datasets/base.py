@@ -500,10 +500,10 @@ def load_summary_stats(disorder=None):
                                                            '22q_psych+-psych-_CortThick.csv'), error_bad_lines=False)
         CortSurf_psychP_psychN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           '22q_psych+-psych-_CortSurf.csv'), error_bad_lines=False)
-        return {'CortThick_case_controls': CortThick_case_controls,
-                'CortSurf_case_controls': CortSurf_case_controls,
-                'CortThick_psychP_psychN': CortThick_psychP_psychN,
-                'CortSurf_psychP_psychN': CortSurf_psychP_psychN}
+        return {'CortThick_case_vs_controls': CortThick_case_controls,
+                'CortSurf_case_vs_controls': CortSurf_case_controls,
+                'CortThick_psychP_vs_psychN': CortThick_psychP_psychN,
+                'CortSurf_psychP_vs_psychN': CortSurf_psychP_psychN}
 
     elif disorder is "adhd":
         CortThick_case_controls_allages = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -531,14 +531,14 @@ def load_summary_stats(disorder=None):
                                                                     'adhdpediatric_case-controls_CortSurf.csv'),
                                                        error_bad_lines=False)
 
-        return {'CortThick_case_controls_allages': CortThick_case_controls_allages,
-                'CortSurf_case_controls_allages': CortSurf_case_controls_allages,
-                'CortThick_case_controls_adult': CortThick_case_controls_adult,
-                'CortSurf_case_controls_adult': CortSurf_case_controls_adult,
-                'CortThick_case_controls_adolescent': CortThick_case_controls_adolescent,
-                'CortSurf_case_controls_adolescent': CortSurf_case_controls_adolescent,
-                'CortThick_case_controls_pediatric': CortThick_case_controls_pediatric,
-                'CortSurf_case_controls_pediatric': CortSurf_case_controls_pediatric}
+        return {'CortThick_case_vs_controls_allages': CortThick_case_controls_allages,
+                'CortSurf_case_vs_controls_allages': CortSurf_case_controls_allages,
+                'CortThick_case_vs_controls_adult': CortThick_case_controls_adult,
+                'CortSurf_case_vs_controls_adult': CortSurf_case_controls_adult,
+                'CortThick_case_vs_controls_adolescent': CortThick_case_controls_adolescent,
+                'CortSurf_case_vs_controls_adolescent': CortSurf_case_controls_adolescent,
+                'CortThick_case_vs_controls_pediatric': CortThick_case_controls_pediatric,
+                'CortSurf_case_vs_controls_pediatric': CortSurf_case_controls_pediatric}
 
     elif disorder is "asd":
         CortThick_case_controls_meta_analysis = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -548,14 +548,14 @@ def load_summary_stats(disorder=None):
                                                                          'asd_mega-analysis_case-controls_CortThick.csv'),
                                                             error_bad_lines=False)
 
-        return {'CortThick_case_controls_meta_analysis': CortThick_case_controls_meta_analysis,
-                'CortThick_case_controls_mega_analysis': CortThick_case_controls_mega_analysis}
+        return {'CortThick_case_vs_controls_meta_analysis': CortThick_case_controls_meta_analysis,
+                'CortThick_case_vs_controls_mega_analysis': CortThick_case_controls_mega_analysis}
 
     elif disorder is "bipolar":
         CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'bd_case-controls_CortSurf.csv'), error_bad_lines=False)
 
-        return {'CortSurf_case_controls': CortSurf_case_controls}
+        return {'CortSurf_case_vs_controls': CortSurf_case_controls}
 
     elif disorder is "depression":
         CortThick_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -571,10 +571,10 @@ def load_summary_stats(disorder=None):
                                                                      'mddadolescent_case-controls_CortSurf.csv'),
                                                         error_bad_lines=False)
 
-        return {'CortThick_case_controls_adult': CortThick_case_controls_adult,
-                'CortSurf_case_controls_adult': CortSurf_case_controls_adult,
-                'CortThick_case_controls_adolescent': CortThick_case_controls_adolescent,
-                'CortSurf_case_controls_adolescent': CortSurf_case_controls_adolescent}
+        return {'CortThick_case_vs_controls_adult': CortThick_case_controls_adult,
+                'CortSurf_case_vs_controls_adult': CortSurf_case_controls_adult,
+                'CortThick_case_vs_controls_adolescent': CortThick_case_controls_adolescent,
+                'CortSurf_case_vs_controls_adolescent': CortSurf_case_controls_adolescent}
 
     elif disorder is "epilepsy":
         CortThick_case_controls_allepilepsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -602,14 +602,14 @@ def load_summary_stats(disorder=None):
                                                              'tlemtsr_case-controls_SubVol.csv'),
                                                 error_bad_lines=False)
 
-        return {'CortThick_case_controls_allepilepsy': CortThick_case_controls_allepilepsy,
-                'SubVol_case_controls_allepilepsy': SubVol_case_controls_allepilepsy,
-                'CortThick_case_controls_gge': CortThick_case_controls_gge,
-                'SubVol_case_controls_gge': SubVol_case_controls_gge,
-                'CortThick_case_controls_ltle': CortThick_case_controls_ltle,
-                'SubVol_case_controls_ltle': SubVol_case_controls_ltle,
-                'CortThick_case_controls_rtle': CortThick_case_controls_rtle,
-                'SubVol_case_controls_rtle': SubVol_case_controls_rtle}
+        return {'CortThick_case_vs_controls_allepilepsy': CortThick_case_controls_allepilepsy,
+                'SubVol_case_vs_controls_allepilepsy': SubVol_case_controls_allepilepsy,
+                'CortThick_case_vs_controls_gge': CortThick_case_controls_gge,
+                'SubVol_case_vs_controls_gge': SubVol_case_controls_gge,
+                'CortThick_case_vs_controls_ltle': CortThick_case_controls_ltle,
+                'SubVol_case_vs_controls_ltle': SubVol_case_controls_ltle,
+                'CortThick_case_vs_controls_rtle': CortThick_case_controls_rtle,
+                'SubVol_case_vs_controls_rtle': SubVol_case_controls_rtle}
 
     elif disorder is "ocd":
         CortThick_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -637,14 +637,14 @@ def load_summary_stats(disorder=None):
                                                                              'ocdpediatric_medicatedcase-controls_CortSurf.csv'),
                                                                 error_bad_lines=False)
 
-        return {'CortThick_case_controls_adult': CortThick_case_controls_adult,
-                'CortSurf_case_controls_adult': CortSurf_case_controls_adult,
-                'CortThick_medicatedcase_controls_adult': CortThick_medicatedcase_controls_adult,
-                'CortSurf_medicatedcase_controls_adult': CortSurf_medicatedcase_controls_adult,
-                'CortThick_case_controls_pediatric': CortThick_case_controls_pediatric,
-                'CortSurf_case_controls_pediatric': CortSurf_case_controls_pediatric,
-                'CortThick_medicatedcase_controls_pediatric': CortThick_medicatedcase_controls_pediatric,
-                'CortSurf_medicatedcase_controls_pediatric': CortSurf_medicatedcase_controls_pediatric}
+        return {'CortThick_case_vs_controls_adult': CortThick_case_controls_adult,
+                'CortSurf_case_vs_controls_adult': CortSurf_case_controls_adult,
+                'CortThick_medicatedcase_vs_controls_adult': CortThick_medicatedcase_controls_adult,
+                'CortSurf_medicatedcase_vs_controls_adult': CortSurf_medicatedcase_controls_adult,
+                'CortThick_case_vs_controls_pediatric': CortThick_case_controls_pediatric,
+                'CortSurf_case_vs_controls_pediatric': CortSurf_case_controls_pediatric,
+                'CortThick_medicatedcase_vs_controls_pediatric': CortThick_medicatedcase_controls_pediatric,
+                'CortSurf_medicatedcase_vs_controls_pediatric': CortSurf_medicatedcase_controls_pediatric}
 
     elif disorder is "schizophrenia":
         CortThick_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -652,8 +652,8 @@ def load_summary_stats(disorder=None):
         CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'scz_case-controls_CortSurf.csv'), error_bad_lines=False)
 
-        return {'CortThick_case_controls': CortThick_case_controls,
-                'CortSurf_case_controls': CortSurf_case_controls}
+        return {'CortThick_case_vs_controls': CortThick_case_controls,
+                'CortSurf_case_vs_controls': CortSurf_case_controls}
 
     else:
         raise ValueError("must specify a valid disorder...!")

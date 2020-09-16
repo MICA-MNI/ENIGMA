@@ -13,6 +13,10 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_tabs.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/css/saratheriver_enigma.css" type="text/css" />
 
@@ -32,6 +36,8 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+        <script src="../../_static/sphinx_tabs/tabs.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -198,59 +204,454 @@
             
   <div class="section" id="load-summary-statistics">
 <span id="load-sumstats"></span><h1>Load summary statistics<a class="headerlink" href="#load-summary-statistics" title="Permalink to this headline">¶</a></h1>
-<p>This page contains descriptions and examples to case-control summary statistics!</p>
+<p>This page contains descriptions and examples to load case-control datasets from
+several ENIGMA Working Groups!</p>
+<div class="admonition-can-t-find-the-data-you-re-searching-for admonition">
+<p class="admonition-title">Can’t find the data you’re searching for? 🙈</p>
+<p>Let us know what’s missing and we’ll try and fetch that data for you and implement it in our toolbox!
+Get in touch with us <a class="reference external" href="https://github.com/MICA-MNI/ENIGMA/issues">here</a>!</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <div class="section" id="q11-2-deletion-syndrome">
 <h2>22q11.2 deletion syndrome<a class="headerlink" href="#q11-2-deletion-syndrome" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-22q</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;22q&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls</span>
+<span class="go">CortSurf_case_vs_controls</span>
+<span class="go">CortThick_psychP_vs_psychN</span>
+<span class="go">CortSurf_psychP_vs_psychN</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-22q</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;22q&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortSurf_case_vs_controls</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_psychP_vs_psychN</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_psychP_vs_psychN</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="attention-deficit-hyperactivity-disorder">
 <h2>Attention deficit hyperactivity disorder<a class="headerlink" href="#attention-deficit-hyperactivity-disorder" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-ADHD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;adhd&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls_allages</span>
+<span class="go">CortSurf_case_vs_controls_allages</span>
+<span class="go">CortThick_case_vs_controls_adult</span>
+<span class="go">CortSurf_case_vs_controls_adult</span>
+<span class="go">CortThick_case_vs_controls_adolescent</span>
+<span class="go">CortSurf_case_vs_controls_adolescent</span>
+<span class="go">CortThick_case_vs_controls_pediatric</span>
+<span class="go">CortSurf_case_vs_controls_pediatric</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-ADHD</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;adhd&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls_allages:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortSurf_case_vs_controls_allages</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_case_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_adolescent</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_case_vs_controls_adolescent</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_case_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="autism-spectrum-disorder">
 <h2>Autism spectrum disorder<a class="headerlink" href="#autism-spectrum-disorder" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-Autism</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;asd&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls_meta_analysis</span>
+<span class="go">CortThick_case_vs_controls_mega_analysis</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-Autism</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;asd&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls_meta_analysis:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortThick_case_vs_controls_mega_analysis</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="bipolar-disorder">
 <h2>Bipolar disorder<a class="headerlink" href="#bipolar-disorder" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-BD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;bipolar&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortSurf_case_vs_controls</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-BD</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;bipolar&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortSurf_case_controls:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="epilepsy">
 <h2>Epilepsy<a class="headerlink" href="#epilepsy" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-Epilepsy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;epilepsy&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls_allepilepsy</span>
+<span class="go">SubVol_case_vs_controls_allepilepsy</span>
+<span class="go">CortThick_case_vs_controls_gge</span>
+<span class="go">SubVol_case_vs_controls_gge</span>
+<span class="go">CortThick_case_vs_controls_ltle</span>
+<span class="go">SubVol_case_vs_controls_ltle</span>
+<span class="go">CortThick_case_vs_controls_rtle</span>
+<span class="go">SubVol_case_vs_controls_rtle</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-Epilepsy</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;epilepsy&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls_allepilepsy:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">SubVol_case_vs_controls_allepilepsy</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_gge</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">SubVol_case_vs_controls_gge</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_ltle</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">SubVol_case_vs_controls_ltle</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_rtle</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">SubVol_case_vs_controls_rtle</span><span class="p">:</span> <span class="p">[</span><span class="mi">16</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="major-depressive-disorder">
 <h2>Major depressive disorder<a class="headerlink" href="#major-depressive-disorder" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-MDD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;depression&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls_adult</span>
+<span class="go">CortSurf_case_vs_controls_adult</span>
+<span class="go">CortThick_case_vs_controls_adolescent</span>
+<span class="go">CortSurf_case_vs_controls_adolescent</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-MDD</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;depression&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls_adult:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortSurf_case_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_adolescent</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_case_vs_controls_adolescent</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="obsessive-compulsive-disorder">
 <h2>Obsessive-compulsive disorder<a class="headerlink" href="#obsessive-compulsive-disorder" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-OCD</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;ocd&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls_adult</span>
+<span class="go">CortSurf_case_vs_controls_adult</span>
+<span class="go">CortThick_medicatedcase_vs_controls_adult</span>
+<span class="go">CortSurf_medicatedcase_vs_controls_adult</span>
+<span class="go">CortThick_case_vs_controls_pediatric</span>
+<span class="go">CortSurf_case_vs_controls_pediatric</span>
+<span class="go">CortThick_medicatedcase_vs_controls_pediatric</span>
+<span class="go">CortSurf_medicatedcase_vs_controls_pediatric</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-OCD</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;ocd&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls_adult:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortSurf_case_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_medicatedcase_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_medicatedcase_vs_controls_adult</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_case_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_case_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortThick_medicatedcase_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+<span class="n">CortSurf_medicatedcase_vs_controls_pediatric</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 </div>
 <div class="section" id="schizophrenia">
 <h2>Schizophrenia<a class="headerlink" href="#schizophrenia" title="Permalink to this headline">¶</a></h2>
-<p>…</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="docutils container">
+<p>Matlab</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_summary_stats</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load summary statistics for ENIGMA-Schizophrenia</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sum_stats</span> <span class="o">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s1">&#39;schizophrenia&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># List available summary statistic tables</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">table_name</span> <span class="ow">in</span> <span class="n">sum_stats</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span>
+
+<span class="go">CortThick_case_vs_controls</span>
+<span class="go">CortSurf_case_vs_controls</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Load summary statistics for ENIGMA-Schizophrenia</span>
+<span class="n">sum_stats</span> <span class="p">=</span> <span class="n">load_summary_stats</span><span class="p">(</span><span class="s">&#39;schizophrenia&#39;</span><span class="p">);</span>
+
+<span class="c">% List available summary statistic tables</span>
+<span class="n">sum_stats</span>
+
+<span class="s">CortThick_case_vs_controls:</span> <span class="s">[68×10</span> <span class="s">table]</span>
+<span class="n">CortSurf_case_vs_controls</span><span class="p">:</span> <span class="p">[</span><span class="mi">68</span>×<span class="mi">10</span> <span class="n">table</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

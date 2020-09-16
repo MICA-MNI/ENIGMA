@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 MDDadolescent_casevsCN,L_bankssts,-0.035,0.185,,,279,190,0.851,0.979
 MDDadolescent_casevsCN,L_caudalanteriorcingulate,-0.14,0.12,,,291,213,0.244,0.979
 MDDadolescent_casevsCN,L_caudalmiddlefrontal,0.004,0.107,,,294,213,0.967,0.979

@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 22qvsCN,L_bankssts,-0.03,0.08,-0.18,0.12,,,6.70E-01,7.11E-01
 22qvsCN,L_caudalanteriorcingulate,-0.21,0.08,-0.36,-0.06,,,5.68E-03,7.36E-03
 22qvsCN,L_caudalmiddlefrontal,0.51,0.08,0.36,0.66,,,6.79E-11,2.07E-10

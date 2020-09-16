@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 OCDpediatric_medicatedcasesvsCN,L_bankssts,-0.154,0.021,,,297,160,0.124,0.349
 OCDpediatric_medicatedcasesvsCN,L_caudalanteriorcingulate,-0.121,0.027,,,316,181,0.2,0.438
 OCDpediatric_medicatedcasesvsCN,L_caudalmiddlefrontal,-0.105,0.016,,,321,183,0.263,0.503

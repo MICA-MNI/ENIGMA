@@ -1,4 +1,4 @@
-﻿SurfaceArea,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 ADHDpediatric_casevsCN,L_bankssts,-0.1,-0.05,,,974,999,0.02,0.04
 ADHDpediatric_casevsCN,L_caudalanteriorcingulate,-0.08,-0.04,,,1040,1079,0.08,0.1
 ADHDpediatric_casevsCN,L_caudalmiddlefrontal,-0.15,-0.04,,,1046,1077,0.001,0.003

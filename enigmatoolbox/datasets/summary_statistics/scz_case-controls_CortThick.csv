@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 SCZ_case_vs_controls,L_bankssts,-0.352,0.04,,,5002,4343,5.96E-19,2.61E-18
 SCZ_case_vs_controls,L_caudalanteriorcingulate,-0.119,0.036,,,5053,4423,8.97E-04,9.23E-04
 SCZ_case_vs_controls,L_caudalmiddlefrontal,-0.363,0.055,,,5053,4410,3.95E-11,6.44E-11

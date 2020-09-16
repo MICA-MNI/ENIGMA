@@ -1,4 +1,4 @@
-﻿SurfaceArea,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 SCZ_case_vs_controls,L_bankssts,-0.178,0.03,,,4995,4341,1.69E-09,1.13E-08
 SCZ_case_vs_controls,L_caudalanteriorcingulate,-0.128,0.036,,,5050,4420,4.14E-04,5.08E-04
 SCZ_case_vs_controls,L_caudalmiddlefrontal,-0.159,0.034,,,5049,4406,2.70E-06,5.30E-06

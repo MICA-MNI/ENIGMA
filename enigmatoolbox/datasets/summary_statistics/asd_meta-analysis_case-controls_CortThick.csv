@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 ASD_meta-analysis_casevsCN,L_bankssts,-0.07,,,,976,1060,,0.126
 ASD_meta-analysis_casevsCN,L_caudalanteriorcingulate,0.03,,,,974,1056,,0.463
 ASD_meta-analysis_casevsCN,L_caudalmiddlefrontal,0.06,,,,977,1059,,0.147

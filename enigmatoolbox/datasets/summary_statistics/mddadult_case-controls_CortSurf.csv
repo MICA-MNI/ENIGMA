@@ -1,4 +1,4 @@
-﻿SurfaceArea,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 MDDadult_casevsCN,L_bankssts,-0.024,0.043,,,7487,1748,0.582,0.92
 MDDadult_casevsCN,L_caudalanteriorcingulate,0.021,0.03,,,7590,1883,0.48,0.92
 MDDadult_casevsCN,L_caudalmiddlefrontal,0.045,0.053,,,7605,1885,0.389,0.92

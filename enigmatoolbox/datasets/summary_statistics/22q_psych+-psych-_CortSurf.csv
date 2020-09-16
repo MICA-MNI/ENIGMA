@@ -1,4 +1,4 @@
-﻿SurfaceArea,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 22qPsych+vs22Psych-,L_bankssts,-0.039,0.183,-0.4,0.32,,,0.84,
 22qPsych+vs22Psych-,L_caudalanteriorcingulate,-0.213,0.183,-0.57,0.15,,,0.276,
 22qPsych+vs22Psych-,L_caudalmiddlefrontal,0.046,0.183,-0.31,0.4,,,0.813,

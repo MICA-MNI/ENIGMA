@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 TLEMTS-R_vs_CTL,L_bankssts,-0.218858574,0.149971758,-0.512797818,0.07508067,1228,322,0.144473773,0.144473773
 TLEMTS-R_vs_CTL,L_caudalanteriorcingulate,-0.022123014,0.077972734,-0.174946764,0.130700736,1287,337,0.776619167,0.776619167
 TLEMTS-R_vs_CTL,L_caudalmiddlefrontal,-0.300518981,0.097941233,-0.49248027,-0.108557691,1292,338,0.00215237,0.00215237

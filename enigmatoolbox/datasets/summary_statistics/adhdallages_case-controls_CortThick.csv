@@ -1,4 +1,4 @@
-﻿CorticalThickness,Structure,d.icv,se.icv,low.ci.icv,up.ci.icv,n.controls,n.patients,pobs,fdr.p
+﻿CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 ADHDallages_casevsCN,L_bankssts,0,-0.03,,,1816,2111,0.97,0.97
 ADHDallages_casevsCN,L_caudalanteriorcingulate,-0.04,-0.03,,,1925,2241,0.16,0.61
 ADHDallages_casevsCN,L_caudalmiddlefrontal,-0.05,-0.03,,,1931,2241,0.09,0.45

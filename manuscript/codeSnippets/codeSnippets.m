@@ -17,7 +17,11 @@ SubVol_Z_LTLE    = SubVol_Z(cov.SDx == 3, :);
 
 
 %% Figure 1d. Load summary statistics
-% ello
+% Load summary statistics for a given disease (e.g., epilepsy)
+sum_stats = load_summary_stats('epilepsy');
+
+% List available summary statistic tables
+sum_stats
 
 
 %% Figure 2b. Surface data visualization
