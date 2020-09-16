@@ -50,7 +50,7 @@ plot_subcortical(array_name=SubVol_Z_LTLE_r_mean, size=(800, 400),
 
 
 """
-Figure 3. Fetch disease-related gene expression data
+Figure 3a. Fetch disease-related gene expression data
 """
 from enigmatoolbox.datasets import fetch_ahba, risk_genes
 
@@ -65,7 +65,7 @@ epilepsy_gene_data = genes[genes.columns.intersection(epilepsy_genes)]
 
 
 """
-Figure 4. Load connectivity data
+Figure 4a. Load connectivity data
 """
 from enigmatoolbox.datasets import load_fc, load_sc
 
@@ -80,6 +80,7 @@ sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels = load_sc()
 Figure 5a. Hub susceptibility model
 """
 import numpy as np
+from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
 # Remove subcortical values corresponding to the ventricles
 SubVol_Z_LTLE_r_mean_noVent = SubVol_Z_LTLE_r_mean.drop(['LLatVent', 'RLatVent'])
@@ -88,60 +89,38 @@ SubVol_Z_LTLE_r_mean_noVent = SubVol_Z_LTLE_r_mean.drop(['LLatVent', 'RLatVent']
 fc_ctx_dc = np.sum(fc_ctx, axis=0)
 fc_sctx_dc = np.sum(fc_sctx, axis=1)
 
-sc_ctx_dc = np.sum(sc_ctx, axis=0)
-sc_sctx_dc = np.sum(sc_sctx, axis=1)
-
 # Perform spatial correlations between hubs and mean atrophy
 fc_ctx_r = np.corrcoef(fc_ctx_dc, CortThick_Z_LTLE_mean)[0, 1]
 fc_sctx_r = np.corrcoef(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
 
-sc_ctx_r = np.corrcoef(sc_ctx_dc, CortThick_Z_LTLE_mean)[0, 1]
-sc_sctx_r = np.corrcoef(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
-
-
-"""
-Figure 5d. Spin permutation testing
-"""
-from enigmatoolbox.permutation_testing import spin_test
-
 # Spin permutation testing for two cortical maps
 fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
                      n_rot=1000, type='pearson')
-sc_ctx_p = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
-                     n_rot=1000, type='pearson')
 
 # Shuf permutation testing for two subcortical maps
-fc_sctx_p = 1.0000
-sc_sctx_p = 1.0000
+fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent,
+                      n_rot=1000, type='pearson')
 
 
 """
-Figure 6. Disease epicenter mapping
+Figure 6a. Disease epicenter mapping
 """
 import numpy as np
+from enigmatoolbox.permutation_testing import spin_test
 
 # Identify functional epicenters
 fc_ctx_epi = []
+fc_ctx_epi_p = []
 for seed in range(fc_ctx.shape[0]):
     seed_con = fc_ctx[:, seed]
-    fc_ctx_epi = np.append(fc_ctx_epi,
-                           np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+    fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+    fc_ctx_epi_p = spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5',
+                         n_rot=1000, type='pearson')
 
 fc_sctx_epi = []
+fc_sctx_epi_p = []
 for seed in range(fc_sctx.shape[0]):
     seed_con = fc_sctx[seed, :]
-    fc_sctx_epi = np.append(fc_sctx_epi,
-                            np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
-
-# Identify structural epicenters
-sc_ctx_epi = []
-for seed in range(sc_ctx.shape[0]):
-    seed_con = sc_ctx[:, seed]
-    sc_ctx_epi = np.append(sc_ctx_epi,
-                           np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
-
-sc_sctx_epi = []
-for seed in range(sc_sctx.shape[0]):
-    seed_con = sc_sctx[seed, :]
-    sc_sctx_epi = np.append(sc_sctx_epi,
-                            np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+    fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
+    fc_sctx_epi_p = spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5',
+                             n_rot=1000, type='pearson')

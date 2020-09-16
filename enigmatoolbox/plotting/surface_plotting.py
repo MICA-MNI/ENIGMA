@@ -12,6 +12,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 from .base import Plotter
 from .colormaps import colormaps
 from . import defaults_plotting as dp

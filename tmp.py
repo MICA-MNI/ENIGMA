@@ -80,31 +80,31 @@ sc_sctx_p = shuf_test(sc_sctx_dc, sv_tle, n_rot=1000, type='pearson')
 
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-from enigmatoolbox.plotting import scatter
+from enigmatoolbox.plotting import enigma_scatter
 
 fig = plt.figure(constrained_layout=True, figsize=(15, 3))
 gs = gridspec.GridSpec(1, 4, figure=fig)
 
 # Functional cortical hubs and cortical thickness
 ax1 = fig.add_subplot(gs[0, 0])
-scatter(ax1, fc_ctx_dc, ct_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-        xlim=(5, 30), ylim=(-2, 1), corr_value=fc_ctx_r, p_value=fc_ctx_p)
+enigma_scatter(ax1, fc_ctx_dc, ct_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
+               xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
+               xlim=(5, 30), ylim=(-2, 1), corr_value=fc_ctx_r, p_value=fc_ctx_p)
 
 # Functional subcortical hubs and subcortical volume
 ax2 = fig.add_subplot(gs[0, 1])
-scatter(ax2, fc_sctx_dc, sv_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-        xlim=(1, 13), ylim=(-3.5, 0), corr_value=fc_sctx_r, p_value=fc_sctx_p, p_type='shuf')
+enigma_scatter(ax2, fc_sctx_dc, sv_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
+             xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
+             xlim=(1, 13), ylim=(-3.5, 0), corr_value=fc_sctx_r, p_value=fc_sctx_p, p_type='shuf')
 
 # Structural cortical hubs and cortical thickness
 ax3 = fig.add_subplot(gs[0, 2])
-scatter(ax3, sc_ctx_dc, ct_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-        xlim=(0, 350), ylim=(-2, 1), corr_value=sc_ctx_r, p_value=sc_ctx_p)
+enigma_scatter(ax3, sc_ctx_dc, ct_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
+             xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
+             xlim=(0, 350), ylim=(-2, 1), corr_value=sc_ctx_r, p_value=sc_ctx_p)
 
 # Functional subcortical hubs and subcortical volume
 ax4 = fig.add_subplot(gs[0, 3])
-scatter(ax4, sc_sctx_dc, sv_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-        xlim=(90, 375), ylim=(-3.5, 0), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')
+enigma_scatter(ax4, sc_sctx_dc, sv_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
+              xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
+              xlim=(90, 375), ylim=(-3.5, 0), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')

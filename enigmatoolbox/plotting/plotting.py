@@ -4,7 +4,7 @@ Plotting functions.
 
 import numpy as np
 
-def scatter(ax, x, y, scatter_color='#000000', linear_fit=False, fit_color=None,
+def enigma_scatter(ax, x, y, scatter_color='#000000', linear_fit=False, fit_color=None,
             xlim=None, ylim=None, xlabel=None, ylabel=None, corr_value=None, p_value=None, p_type='spin'):
     """
     Scatter plot.

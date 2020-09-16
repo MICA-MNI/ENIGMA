@@ -8,11 +8,62 @@ Load summary statistics
 This page contains descriptions and examples to case-control summary statistics! 
 
 
-ENIGMA-Epilepsy
----------------------------
+22q11.2 deletion syndrome
+-----------------------------------------
 ...
 
 
-ENIGMA-Schizophrenia
+|
+
+
+Attention deficit hyperactivity disorder
+------------------------------------------------------
+...
+
+
+|
+
+
+Autism spectrum disorder
+-------------------------------------
+...
+
+
+|
+
+
+Bipolar disorder
+----------------------------
+...
+
+
+|
+
+
+Epilepsy
+----------------------------
+...
+
+
+|
+
+
+Major depressive disorder
+----------------------------------
+...
+
+
+|
+
+
+Obsessive-compulsive disorder
+-----------------------------------------
+...
+
+
+|
+
+
+Schizophrenia
 ----------------------------
 ...
