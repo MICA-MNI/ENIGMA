@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 yeo7_colors = np.array([[0, 0, 0, 255],
                         [0, 118, 14, 255],
@@ -9,4 +10,7 @@ yeo7_colors = np.array([[0, 0, 0, 255],
                         [70, 130, 180, 255],
                         [196, 58, 250, 255]], dtype=np.uint8)
 
-colormaps = {'yeo7': yeo7_colors}
+root_pth = os.path.dirname(__file__)
+TealRd_colors = np.loadtxt(os.path.join(root_pth, 'cmaps', 'TealRd.csv'))
+
+colormaps = {'yeo7': yeo7_colors, 'TealRd': TealRd_colors}

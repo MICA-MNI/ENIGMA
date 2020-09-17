@@ -6,7 +6,6 @@ from vtk import vtkPolyDataNormals
 
 from ..mesh.mesh_io import read_surface
 from ..mesh.mesh_operations import combine_surfaces
-from ..utils.parcellation import surface_to_parcel
 from ..vtk_interface import wrap_vtk, serial_connect
 
 
@@ -488,6 +487,8 @@ def load_summary_stats(disorder=None):
         Returns
         -------
         summary stats        : available summary statistics (pd dataframe)
+
+
     """
     root_pth = os.path.dirname(__file__)
 
@@ -657,3 +658,40 @@ def load_summary_stats(disorder=None):
 
     else:
         raise ValueError("must specify a valid disorder...!")
+
+
+def reorder_sum_stats(in_file, out_file):
+    """
+    Re-order cortical structures in summary statistics files
+
+    in_file = pd dataframe (sum_stats)
+    """
+    # Load in_fil
+    in_file = pd.read_csv(in_file, error_bad_lines=False)
+
+    # Get original order properly
+    _, _, d_orig, _ = load_example_data()
+    d_orig.columns = d_orig.columns.str.rstrip('_thickavg')
+    d_orig = list(d_orig.columns)[1:-5]
+    d_orig[len(d_orig)//2-1] = 'L_insula'
+    d_orig[-1] = 'R_insula'
+
+    # Reorder summary stats
+    newidx = []
+    for j in range(len(d_orig)):
+        newidx = np.append(newidx, [i for i, e in enumerate(in_file['Structure'].to_list()) if e == d_orig[j]])
+
+    out = in_file.iloc[newidx]
+
+    return out.to_csv(out_file, index=False)
+
+"""
+    For every new summary statistic file, run the following command to reorder
+    cortical structures according to ENIGMA mega-analysis protocols!
+    
+    * only run for CortThick and CortSurf
+    ------------------------------------------------------------------------------------
+
+    in_file = '/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/enigmatoolbox/datasets/summary_statistics/tlemtsl_case-controls_CortThick.csv'
+    reorder_sum_stats(in_file, in_file)
+"""

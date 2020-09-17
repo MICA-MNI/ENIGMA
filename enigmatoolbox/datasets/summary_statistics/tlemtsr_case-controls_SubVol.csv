@@ -1,4 +1,4 @@
-﻿SuborticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+SuborticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
 tlemtsr_subvol,Laccumb,0.055,0.093,-0.128,0.237,1275,336,5.58E-01,5.58E-01
 tlemtsr_subvol,Lamyg,0.228,0.08,0.072,0.384,1286,334,4.24E-03,4.24E-03
 tlemtsr_subvol,Lcaud,-0.196,0.091,-0.374,-0.017,1291,337,3.14E-02,3.14E-02

@@ -19,19 +19,6 @@ SubVol_Z_LTLE = SubVol_Z.iloc[cov[cov['SDx'] == 3].index, :]
 
 
 """
-Figure 1c. Load summary statistics
-"""
-from enigmatoolbox.datasets import load_summary_stats
-
-# Load summary statistics for a given disease (e.g., epilepsy)
-sum_stats = load_summary_stats('epilepsy')
-
-# List available summary statistic tables
-for table_name in sum_stats:
-    print(table_name)
-
-
-"""
 Figure 2a. Surface data visualization
 """
 from enigmatoolbox.utils.useful import reorder_sctx
