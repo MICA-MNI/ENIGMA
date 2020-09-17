@@ -2,3 +2,17 @@
 .idea
 .gitmodules
 tmp.py
+
+docs/_build
+docs/generated
+
+.pytest_cache
+.ipynb_checkpoints
+
+*.egg-info
+build
+dist
+
+*.m~
+
+.vscode

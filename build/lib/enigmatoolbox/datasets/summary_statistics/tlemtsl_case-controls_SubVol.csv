@@ -1,0 +1,17 @@
+SuborticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+tlemtsl_subvol,Laccumb,-0.102,0.131,-0.359,0.155,1402,413,4.36E-01,4.36E-01
+tlemtsl_subvol,Lamyg,-0.219,0.094,-0.404,-0.034,1413,412,2.03E-02,2.03E-02
+tlemtsl_subvol,Lcaud,-0.182,0.118,-0.413,0.049,1418,414,1.22E-01,1.22E-01
+tlemtsl_subvol,Lhippo,-1.728,0.191,-2.103,-1.354,1412,410,1.35E-19,1.35E-19
+tlemtsl_subvol,Lpal,-0.269,0.15,-0.563,0.025,1332,398,7.25E-02,7.25E-02
+tlemtsl_subvol,Lput,-0.385,0.079,-0.54,-0.23,1352,410,1.07E-06,1.07E-06
+tlemtsl_subvol,Lthal,-0.843,0.126,-1.089,-0.596,1384,408,2.19E-11,2.19E-11
+tlemtsl_subvol,LLatVent,0.465,0.089,0.29,0.64,1417,414,1.96E-07,1.96E-07
+tlemtsl_subvol,Raccumb,-0.123,0.161,-0.438,0.193,1396,413,4.47E-01,4.47E-01
+tlemtsl_subvol,Ramyg,0.266,0.091,0.088,0.444,1387,398,3.42E-03,3.42E-03
+tlemtsl_subvol,Rcaud,-0.063,0.116,-0.291,0.165,1419,413,5.87E-01,5.87E-01
+tlemtsl_subvol,Rhippo,-0.204,0.144,-0.487,0.079,1417,414,1.59E-01,1.59E-01
+tlemtsl_subvol,Rpal,-0.452,0.09,-0.629,-0.275,1406,414,5.48E-07,5.48E-07
+tlemtsl_subvol,Rput,-0.285,0.112,-0.505,-0.064,1386,412,1.13E-02,1.13E-02
+tlemtsl_subvol,Rthal,-0.462,0.117,-0.691,-0.232,1412,414,8.12E-05,8.12E-05
+tlemtsl_subvol,RLatVent,0.363,0.093,0.181,0.545,1418,414,8.95E-05,8.95E-05
