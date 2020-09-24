@@ -12,7 +12,7 @@ Installation
 
 .. tabs::
 
-    .. tab:: Python installation
+    .. tab:: Python
     
         **ENIGMA TOOLBOX** has the following dependencies:
 
@@ -30,7 +30,7 @@ Installation
             python setup.py install
 
 
-    .. tab:: Matlab installation
+    .. tab:: Matlab
 
         **ENIGMA TOOLBOX** was tested with MATLAB R2017b.
 

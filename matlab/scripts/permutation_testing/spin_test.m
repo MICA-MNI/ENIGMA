@@ -14,6 +14,9 @@ function p_spin = spin_test(map1, map2, surface_name, n_rot, type)
 % OUTPUT
 %   p_spin          = permutation p-value
 %
+%
+% *** Only works for aparc parcellation in fsaverage for now ***
+%
 % Functions at the bottom from here 
 %       https://github.com/frantisekvasa/rotate_parcellation
 %
@@ -80,7 +83,7 @@ for ic = 1:colortable.numEntries                                                
        isempty(strfind(colortable.struct_names{ic},'corpus'))                    % exclude "unknown" structures and corpus callosum from the parcellation 
         ind = ind + 1;                                                           % increment counter for every valid region
         label = colortable.table(ic,5);                                          % ID of current parcel
-        centroid(ind,:) = mean(sphere_coords(label_annot == label, :));       % average coordinates of all vertices within the current parcel to generate the centroid
+        centroid(ind,:) = mean(sphere_coords(label_annot == label, :));          % average coordinates of all vertices within the current parcel to generate the centroid
     end
 end
 return

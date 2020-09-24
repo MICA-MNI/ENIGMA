@@ -6,7 +6,7 @@ from enigmatoolbox.datasets import load_summary_stats
 # Load summary statistics for a given disease (e.g., epilepsy)
 sum_stats = load_summary_stats('epilepsy')
 
-# Cortical thickness and subcortical volume
+# Get cortical thickness and subcortical volume tables
 CT = sum_stats['CortThick_case_vs_controls_ltle']
 SV = sum_stats['SubVol_case_vs_controls_ltle']
 
@@ -24,7 +24,7 @@ from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 # Map parcellated data to the surface (cortical values only)
 CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5')
 
-# Project data to the surface templates
+# Project Cohen's d values to the surface templates
 plot_cortical(array_name=CT_d_fsa5, surface_name="fsa5",
               size=(800, 400), cmap='TealRd', color_bar=True, color_range=(-0.5, 0.5))
 
@@ -63,7 +63,6 @@ sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels = load_sc()
 Figure 5a. Hub susceptibility model
 """
 import numpy as np
-from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
 # Remove subcortical values corresponding to the ventricles
 SV_d_noVent = SV_d.drop([np.where(SV['Structure'] == 'LLatVent')[0][0],
@@ -78,6 +77,12 @@ fc_sctx_dc = np.sum(fc_sctx, axis=1)
 fc_ctx_r = np.corrcoef(fc_ctx_dc, CT_d)[0, 1]
 fc_sctx_r = np.corrcoef(fc_sctx_dc, SV_d_noVent)[0, 1]
 
+
+"""
+Figure 5d. Permutation testing
+"""
+from enigmatoolbox.permutation_testing import spin_test, shuf_test
+
 # Spin permutation testing for two cortical maps
 fc_ctx_p = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', n_rot=1000)
 
@@ -91,7 +96,7 @@ Figure 6a. Disease epicenter mapping
 import numpy as np
 from enigmatoolbox.permutation_testing import spin_test
 
-# Identify functional epicenters
+# Identify cortical epicenters
 fc_ctx_epi = []
 fc_ctx_epi_p = []
 for seed in range(fc_ctx.shape[0]):
@@ -100,13 +105,11 @@ for seed in range(fc_ctx.shape[0]):
     fc_ctx_epi_p = np.append(fc_ctx_epi_p,
                              spin_test(seed_con, CT_d, surface_name='fsa5', n_rot=100))
 
-    plot_cortical(array_name=parcel_to_surface(fc_ctx_epi_p, 'aparc_fsa5'), surface_name="fsa5",
-                  size=(800, 400), cmap='Blues_r', color_bar=True, color_range=(0, 0.05))
-
+# Identify subcortical epicenters
 fc_sctx_epi = []
 fc_sctx_epi_p = []
 for seed in range(fc_sctx.shape[0]):
     seed_con = fc_sctx[seed, :]
     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
-    fc_sctx_epi_p = np.append(fc_ctx_epi_p,
-                              spin_test(seed_con, CT_d, surface_name='fsa5', n_rot=1000))
+    fc_sctx_epi_p = np.append(fc_sctx_epi_p,
+                              spin_test(seed_con, CT_d, surface_name='fsa5', n_rot=100))

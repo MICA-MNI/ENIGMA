@@ -16,20 +16,12 @@ CortThick_Z_LTLE = CortThick_Z(cov.SDx == 3, :);
 SubVol_Z_LTLE    = SubVol_Z(cov.SDx == 3, :);
 
 
-%% Figure 1d. Load summary statistics
-% Load summary statistics for a given disease (e.g., epilepsy)
-sum_stats = load_summary_stats('epilepsy');
-
-% List available summary statistic tables
-sum_stats
-
-
 %% Figure 2b. Surface data visualization
 % Re-order subcortical data (alphabetically and by hemisphere)
 SubVol_Z_LTLE_r = reorder_sctx(SubVol_Z_LTLE);
 
 % Mean data across all individuals with left TLE
-CortThick_Z_LTLE_mean = varfun(@mean, CortThick_Z_LTLE)
+CortThick_Z_LTLE_mean = varfun(@mean, CortThick_Z_LTLE);
 SubVol_Z_LTLE_r_mean  = varfun(@mean, SubVol_Z_LTLE_r);
 
 % Map parcellated data to the surface (cortical values only)
@@ -60,7 +52,10 @@ epilepsy_gene_data = genes(:, epilepsy_genes);
 
 %% Figure 4b. Load connectivity data
 % Load functional connectivity data
-[ctx, ctx_labels, sctx, sctx_labels] = load_fc();
+[fc_ctx, fc_ctx_labels, fc_sctx, fc_sctx_labels] = load_fc();
+
+% Load structural connectivity data
+[sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels] = load_sc();
 
 
 %% Figure 5b. Hub susceptibility model
@@ -70,41 +65,43 @@ SubVol_Z_LTLE_r_mean_noVent.mean_LLatVent = [];
 SubVol_Z_LTLE_r_mean_noVent.mean_RLatVent = [];
 
 % Compute weighted degree centrality measures
-ctx_dc  = sum(ctx, 1);
-sctx_dc = sum(sctx, 2);
+fc_ctx_dc  = sum(fc_ctx, 1);
+fc_sctx_dc = sum(fc_sctx, 2);
 
 % Perform spatial correlations between hubs and mean atrophy
-ctx_r  = corrcoef(ctx_dc, CortThick_Z_LTLE_mean{:, :});
-sctx_r = corrcoef(sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :});
+fc_ctx_r  = corrcoef(fc_ctx_dc, CortThick_Z_LTLE_mean{:, :});
+fc_sctx_r = corrcoef(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :});
 
+
+%% Figure 5e. Permutation testing
 % Spin permutation testing for two cortical maps
-ctx_p  = spin_test(ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
-                   'fsa5', 1000, 'pearson');
+fc_ctx_p  = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
+                      'fsa5', 1000);
 
 % Shuf permutation testing for two subcortical maps 
-sctx_p = shuf_test(sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :}, ...
-                   1000, 'pearson');
+fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :}, ...
+                      1000);
 
-
+                  
 %% Figure 6b. Disease epicenter mapping
 % Identify cortical epicenters
-ctx_epi              = zeros(size(ctx, 1), 1);
-ctx_epi_p = zeros(size(ctx, 1), 1);
-for seed = 1:size(ctx, 1)
-    seed_conn        = ctx(:, seed);
-    r_tmp            = corrcoef(seed_conn, CortThick_Z_LTLE_mean{:, :});
-    ctx_epi(seed)    = r_tmp(1, 2);
-    ctx_epi_p(seed)  = spin_test(seed_conn, CortThick_Z_LTLE_mean{:, :}, ...
-                                 'fsa5', 1000, 'pearson');
+fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
+fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
+for seed = 1:size(fc_ctx, 1)
+    seed_conn           = fc_ctx(:, seed);
+    r_tmp               = corrcoef(seed_conn, CortThick_Z_LTLE_mean{:, :});
+    fc_ctx_epi(seed)    = r_tmp(1, 2);
+    fc_ctx_epi_p(seed)  = spin_test(seed_conn, CortThick_Z_LTLE_mean{:, :}, ...
+                                    'fsa5', 1000);
 end
 
 % Identify subcortical epicenters
-sctx_epi             = zeros(size(sctx, 1), 1);
-sctx_epi_p           = zeros(size(sctx, 1), 1);
-for seed = 1:size(sctx, 1)
-    seed_conn        = sctx(seed, :);
-    r_tmp            = corrcoef(seed_conn, CortThick_Z_LTLE_mean{:, :});
-    sctx_epi(seed)   = r_tmp(1, 2);
-    sctx_epi_p(seed) = spin_test(seed_conn, CortThick_Z_LTLE_mean{:, :}, ...
-                                 'fsa5', 1000, 'pearson');
+fc_sctx_epi             = zeros(size(fc_sctx, 1), 1);
+fc_sctx_epi_p           = zeros(size(fc_sctx, 1), 1);
+for seed = 1:size(fc_sctx, 1)
+    seed_conn           = fc_sctx(seed, :);
+    r_tmp               = corrcoef(seed_conn, CortThick_Z_LTLE_mean{:, :});
+    fc_sctx_epi(seed)   = r_tmp(1, 2);
+    fc_sctx_epi_p(seed) = spin_test(seed_conn, CortThick_Z_LTLE_mean{:, :}, ...
+                                    'fsa5', 1000);
 end

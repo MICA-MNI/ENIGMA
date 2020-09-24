@@ -75,9 +75,10 @@ covered! Check out our :ref:`visualization tools<surf_visualization>` and projec
 
 Step-by-step tutorials 👣
 ------------------------------------
-The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier, we provide :ref:`example data<load_ct>` that
-have been processed according to ENIGMA protocols. Using these example data, you can complete all of the  
-tutorials. Alternatively, easily replace our example data with other ENIGMA-derived datasets!
+The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier, we provide :ref:`example data<load_ct>` from an individual site
+that have been processed according to ENIGMA protocols. The **ENIGMA TOOLBOX** also provides a platform for archiving meta- and mega-analytical :ref:`case-control 
+comparisons<load_sumstats>` across a wide range of disorders. Using our example data, previously published summary statistics, or any other ENIGMA-derived 
+datasets, you can easily complete all of the tutorials!
 
 .. raw:: html
 

@@ -1,9 +1,8 @@
-
-function [a,cb]=plot_subcortical(data, ventricles, title, background);
+function [a, cb] = plot_subcortical(data, ventricles, title, background);
 
 % plot_subcortical is a simple viewer for subcortical surface data
 % 
-% Usage: [a, cb] = plot_subcortical(data, surf [,title [,background]]);
+% Usage: [a, cb] = plot_subcortical(data, ventricles [,title [,background]]);
 % 
 % data        = 1 x v vector of data, v=# of subcortical structures (16)
 %   one value per subcortical structure
@@ -31,14 +30,15 @@ function [a,cb]=plot_subcortical(data, ventricles, title, background);
 % SL | a rainy November night 2019
 % SL | added ventricles on a sunny July 2020 morning
 
+
 if nargin<2
-    ventricles = 'True'
+    ventricles = 'True';
 end
 if nargin<3
-    title=inputname(1);
+    title = inputname(1);
 end
 if nargin<4
-    background='white';
+    background = 'white';
 end
 
 % load subcortical templates

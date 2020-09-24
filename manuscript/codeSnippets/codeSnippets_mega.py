@@ -88,13 +88,17 @@ fc_sctx_dc = np.sum(fc_sctx, axis=1)
 fc_ctx_r = np.corrcoef(fc_ctx_dc, CortThick_Z_LTLE_mean)[0, 1]
 fc_sctx_r = np.corrcoef(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent)[0, 1]
 
+
+"""
+Figure 5d. Permutation testing
+"""
+from enigmatoolbox.permutation_testing import spin_test, shuf_test
+
 # Spin permutation testing for two cortical maps
-fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
-                     n_rot=1000, type='pearson')
+fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5', n_rot=1000)
 
 # Shuf permutation testing for two subcortical maps
-fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent,
-                      n_rot=1000, type='pearson')
+fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent, n_rot=1000)
 
 
 """
@@ -103,19 +107,20 @@ Figure 6a. Disease epicenter mapping
 import numpy as np
 from enigmatoolbox.permutation_testing import spin_test
 
-# Identify functional epicenters
+# Identify cortical epicenters
 fc_ctx_epi = []
 fc_ctx_epi_p = []
 for seed in range(fc_ctx.shape[0]):
     seed_con = fc_ctx[:, seed]
     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
-    fc_ctx_epi_p = spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5',
-                         n_rot=1000, type='pearson')
+    fc_ctx_epi_p = np.append(fc_ctx_epi_p,
+                             spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5', n_rot=1000))
 
+# Identify subcortical epicenters
 fc_sctx_epi = []
 fc_sctx_epi_p = []
 for seed in range(fc_sctx.shape[0]):
     seed_con = fc_sctx[seed, :]
     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CortThick_Z_LTLE_mean)[0, 1])
-    fc_sctx_epi_p = spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5',
-                             n_rot=1000, type='pearson')
+    fc_sctx_epi_p = np.append(fc_sctx_epi_p,
+                              spin_test(seed_con, CortThick_Z_LTLE_mean, surface_name='fsa5', n_rot=1000))
