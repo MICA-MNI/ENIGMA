@@ -1,21 +1,22 @@
-function p_spin = spin_test(map1, map2, surface_name, n_rot, type)
+function p_spin = spin_test(map1, map2, surface_name, parcellation_name, n_rot, type)
 
 % spin_test(map1, map2, surface_name, n_rot, type);
 % 
 % Usage: p_spin = spin_test(map1, map2, [surface_name, [n_rot, [type]]]);
 % 
 % INPUTS
-%   map1            = one of two maps to be correlated
-%   map2            = the other map to be correlated
-%   surface_name    = 'fsa5' (default) or 'conte69'
-%   n_rot           = number of spin rotations (default 100)
-%   type            = correlation type, 'pearson' (default), 'spearman'
+%   map1               = one of two maps to be correlated
+%   map2               = the other map to be correlated
+%   surface_name       = 'fsa5' (default) or 'conte69'
+%   parcellation_name  = 'aparc' (default)'
+%   n_rot              = number of spin rotations (default 100)
+%   type               = correlation type, 'pearson' (default), 'spearman'
 %
 % OUTPUT
 %   p_spin          = permutation p-value
 %
 %
-% *** Only works for aparc parcellation in fsaverage5 for now ***
+% *** Only works for parcellations in fsaverage5 for now ***
 %
 % Functions at the bottom from here 
 %       https://github.com/frantisekvasa/rotate_parcellation
@@ -26,10 +27,13 @@ function p_spin = spin_test(map1, map2, surface_name, n_rot, type)
 if nargin<3
     surface_name = 'fsa5';
 end
-if nargin<4 
-    n_rot=100;
+if nargin<4
+    parcellation_name = 'aparc';
 end
 if nargin<5
+    n_rot=100;
+end
+if nargin<6
     type='pearson';
 end
 
@@ -38,14 +42,15 @@ if strcmp(surface_name, 'fsa5')
     lsphere = SurfStatReadSurf1('fsa5_sphere_lh');
     rsphere = SurfStatReadSurf1('fsa5_sphere_rh');
 elseif strcmp(surface_name, 'conte69')
+    error('Not yet implemented :/')
     lsphere = SurfStatReadSurf1('conte69_sphere_lh');
     rsphere = SurfStatReadSurf1('conte69_sphere_rh');
 end
 
 
 % 1 - get sphere coordinates of parcels
-lh_centroid = centroid_extraction_sphere(lsphere.coord.', 'fsa5_lh_aparc.annot');
-rh_centroid = centroid_extraction_sphere(rsphere.coord.', 'fsa5_rh_aparc.annot');
+lh_centroid = centroid_extraction_sphere(lsphere.coord.', [surface_name '_lh_' parcellation_name '.annot']);
+rh_centroid = centroid_extraction_sphere(rsphere.coord.', [surface_name '_rh_' parcellation_name '.annot']);
 
 % 2 - Generate permutation maps
 perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot);

@@ -234,14 +234,15 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson'):
     return p_perm
 
 
-def spin_test(map1, map2, surface_name='fsa5', n_rot=100, type='pearson'):
+def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100, type='pearson'):
     """
     INPUTS
-       map1            = one of two cortical map to be correlated
-       map2            = the other cortical map to be correlated
-       surface_name    = 'fsa5' (default) or 'conte69'
-       n_rot           = number of spin rotations (default 100)
-       type            = correlation type, 'pearson' (default), 'spearman'
+       map1               = one of two cortical map to be correlated
+       map2               = the other cortical map to be correlated
+       surface_name       = 'fsa5' (default) or 'conte69'
+       parcellation_name  = 'aparc' (default)
+       n_rot              = number of spin rotations (default 100)
+       type               = correlation type, 'pearson' (default), 'spearman'
 
     OUTPUT
        p_spin          = permutation p-value
@@ -256,11 +257,12 @@ def spin_test(map1, map2, surface_name='fsa5', n_rot=100, type='pearson'):
     if surface_name is "fsa5":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True)
     elif surface_name is "conte69":
+        raise ValueError('Not yet implemented :/')
         sphere_lh, sphere_rh = load_conte69(as_sphere=True)
 
     root_pth = os.path.dirname(__file__)
-    annotfile_lh = os.path.join(root_pth, 'annot', 'fsa5_lh_aparc.annot')
-    annotfile_rh = os.path.join(root_pth, 'annot', 'fsa5_rh_aparc.annot')
+    annotfile_lh = os.path.join(root_pth, 'annot', surface_name+'_lh_'+parcellation_name+'.annot')
+    annotfile_rh = os.path.join(root_pth, 'annot', surface_name+'_rh_'+parcellation_name+'.annot')
 
     # get sphere coordinates of parcels
     lh_centroid = centroid_extraction_sphere(sphere_lh.Points, annotfile_lh)

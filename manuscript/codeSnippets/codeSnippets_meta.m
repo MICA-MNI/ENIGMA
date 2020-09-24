@@ -65,12 +65,10 @@ fc_sctx_r = corrcoef(fc_sctx_dc, SV_d_noVent);
 
 %% Figure 5e. Permutation testing
 % Spin permutation testing for two cortical maps
-fc_ctx_p  = spin_test(fc_ctx_dc, CT_d, ...
-                      'fsa5', 1000);
+fc_ctx_p  = spin_test(fc_ctx_dc, CT_d, 'fsa5', 'aparc', 1000);
 
 % Shuf permutation testing for two subcortical maps 
-fc_sctx_p = shuf_test(fc_sctx_dc, SV_d_noVent, ...
-                      1000);
+fc_sctx_p = shuf_test(fc_sctx_dc, SV_d_noVent, 1000);
 
                   
 %% Figure 6b. Disease epicenter mapping
