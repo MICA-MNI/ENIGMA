@@ -15,7 +15,7 @@ function p_spin = spin_test(map1, map2, surface_name, n_rot, type)
 %   p_spin          = permutation p-value
 %
 %
-% *** Only works for aparc parcellation in fsaverage for now ***
+% *** Only works for aparc parcellation in fsaverage5 for now ***
 %
 % Functions at the bottom from here 
 %       https://github.com/frantisekvasa/rotate_parcellation
