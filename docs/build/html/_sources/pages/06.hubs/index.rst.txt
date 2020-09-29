@@ -153,22 +153,7 @@ atrophy relative to controls).
      For completeness, we include code that has been detailed elsewhere (:ref:`loading example data <load_ct>`,
      :ref:`z-scoring data <surf_visualization>`, :ref:`re-ordering subcortical volume data <surf_visualization>`, 
      :ref:`computing degree centrality <hubs_susceptibility>`). If you're already comfortable with these steps, 
-     feel free to simply skip right to the last two sections!
-
-.. admonition:: Spin permutation testing ⚾️
-
-     The intrinsic spatial smoothness in two given **cortical maps** may inflate the significance of their spatial correlation. 
-     To overcome this challenge, we assess statistical significance using *spin permutation tests*. 
-     To do so, we generate null models of overlap between cortical maps by projecting the spatial 
-     coordinates of cortical data onto the surface spheres, apply randomly sampled rotations, 
-     and reassign cortical values. We then compare the original correlation coefficients against 
-     the empirical distribution determined by the ensemble of spatially permuted correlation coefficients. 
-
-
-.. admonition:: Shuf permutation testing ⚾️
-
-     To compare spatial overlap between **subcortical maps**, we employed a similar approach with the exception 
-     that subcortical labels were randomly shuffled as opposed to being projected onto spheres.    
+     feel free to simply skip right to the last section!
      
 .. tabs::
 
@@ -178,7 +163,6 @@ atrophy relative to controls).
         >>> from enigmatoolbox.datasets import load_example_data
         >>> from enigmatoolbox.utils.useful import zscore_matrix, reorder_sctx
         >>> from enigmatoolbox.datasets import load_sc, load_fc
-        >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
         >>> """
         >>> 1 - Let's start by loading our example data
@@ -239,23 +223,6 @@ atrophy relative to controls).
         >>> sc_ctx_r = np.corrcoef(sc_ctx_dc, ct_tle)[0, 1]
         >>> sc_sctx_r = np.corrcoef(sc_sctx_dc, sv_tle)[0, 1]
 
-        >>> """
-        >>> 5 - We can also test the significance of our spatial correlations 
-        >>>     using spin (cortical maps) and shuf (subcortical maps) permutation
-        >>>     tests
-        >>> """
-        >>> # Spin permutation testing for two cortical maps
-        >>> fc_ctx_p = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
-        >>>                      n_rot=1000, type='pearson')
-        >>> sc_ctx_p = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean, surface_name='fsa5',
-        >>>                      n_rot=1000, type='pearson')
-
-        >>> # Shuf permutation testing for two subcortical maps
-        >>> fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent,
-        >>>                       n_rot=1000, type='pearson')
-        >>> sc_sctx_p = shuf_test(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent,
-        >>>                       n_rot=1000, type='pearson')
-
    .. code-tab:: matlab
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
@@ -314,20 +281,48 @@ atrophy relative to controls).
         sc_sctx_r   = corrcoef(sc_sctx_dc, sv_tle);
 
 
-        %% 5 - We can also test the significance of our spatial correlations 
-        %      using spin (cortical maps) and shuf (subcortical maps) permutation
-        %      tests
+|
+
+
+Spin permutation tests
+-------------------------------------------------------
+The intrinsic spatial smoothness in two given **cortical maps** may inflate the significance of their spatial correlation. 
+To overcome this challenge, we assess statistical significance using *spin permutation tests*. 
+To do so, we generate null models of overlap between cortical maps by projecting the spatial 
+coordinates of cortical data onto the surface spheres, apply randomly sampled rotations, 
+and reassign cortical values. We then compare the original correlation coefficients against 
+the empirical distribution determined by the ensemble of spatially permuted correlation coefficients. 
+
+| 
+     To compare spatial overlap between **subcortical maps**, we employed a similar approach with the exception 
+     that subcortical labels were randomly shuffled as opposed to being projected onto spheres.    
+
+.. tabs::
+
+   .. code-tab:: py **Python** | mega
+
+        >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
+
+        >>> # Spin permutation testing for two cortical maps
+        >>> fc_ctx_p = spin_test(fc_ctx_dc, ct_tle, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, type='pearson')
+        >>> sc_ctx_p = spin_test(sc_ctx_dc, ct_tle, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, type='pearson')
+
+        >>> # Shuf permutation testing for two subcortical maps
+        >>> fc_sctx_p = shuf_test(fc_sctx_dc, sv_tle, n_rot=1000, type='pearson')
+        >>> sc_sctx_p = shuf_test(sc_sctx_dc, sv_tle, n_rot=1000, type='pearson')
+
+   .. code-tab:: matlab **Matlab** | mega
+
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
         % Spin permutation testing for two cortical maps
-        fc_ctx_p  = spin_test(fc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
-                              'fsa5', 1000, 'pearson');
-        sc_ctx_p  = spin_test(sc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, ...
-                              'fsa5', 1000, 'pearson');
+        fc_ctx_p  = spin_test(fc_ctx_dc, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
+        sc_ctx_p  = spin_test(sc_ctx_dc, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
 
         % Shuf permutation testing for two subcortical maps 
-        fc_sctx_p = shuf_test(fc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :}, ...
-                              1000, 'pearson');
-        sc_sctx_p = shuf_test(sc_sctx_dc, SubVol_Z_LTLE_r_mean_noVent{:, :}, ...
-                              1000, 'pearson');
+        fc_sctx_p = shuf_test(fc_sctx_dc, sv_tle, 1000, 'pearson');
+        sc_sctx_p = shuf_test(sc_sctx_dc, sv_tle, 1000, 'pearson');
 
 
 |

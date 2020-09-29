@@ -45,10 +45,12 @@
 |
 
 
-Data sharing 💌
---------------------------
-As part of the **ENIGMA TOOLBOX**, we are making several data matrices openly available! As of now, 
-these include :ref:`functional and structural connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
+Data archiving and data sharing 💌
+----------------------------------
+The **ENIGMA TOOLBOX** provides a platform for archiving meta- and mega-analytical :ref:`case-control 
+comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are a
+lso making several data matrices openly available! As of now, these include :ref:`functional and structural 
+connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
 
 .. raw:: html
 
@@ -76,8 +78,7 @@ covered! Check out our :ref:`visualization tools<surf_visualization>` and projec
 Step-by-step tutorials 👣
 ------------------------------------
 The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier, we provide :ref:`example data<load_ct>` from an individual site
-that have been processed according to ENIGMA protocols. The **ENIGMA TOOLBOX** also provides a platform for archiving meta- and mega-analytical :ref:`case-control 
-comparisons<load_sumstats>` across a wide range of disorders. Using our example data, previously published summary statistics, or any other ENIGMA-derived 
+that have been processed according to ENIGMA protocols. Using our example data, previously published summary statistics, or any other ENIGMA-derived 
 datasets, you can easily complete all of the tutorials!
 
 .. raw:: html
@@ -100,6 +101,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    
    pages/01.install/index
    pages/02.whatsnew/index
+   pages/02.01.tutorialsinstructions/index
 
 .. toctree::
    :maxdepth: 1

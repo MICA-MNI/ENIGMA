@@ -96,6 +96,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Instructions for tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
@@ -109,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#cortical-hubs">Cortical hubs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#subcortical-hubs">Subcortical hubs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#hub-atrophy-correlations">Hub-atrophy correlations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spin-permutation-tests">Spin permutation tests</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#plot-hub-atrophy-correlations">Plot hub-atrophy correlations</a></li>
 </ul>
 </li>
@@ -368,21 +370,7 @@ atrophy relative to controls).</p>
 <p>For completeness, we include code that has been detailed elsewhere (<a class="reference internal" href="../03.loadct/index.html#load-ct"><span class="std std-ref">loading example data</span></a>,
 <a class="reference internal" href="../12.visualization/index.html#surf-visualization"><span class="std std-ref">z-scoring data</span></a>, <a class="reference internal" href="../12.visualization/index.html#surf-visualization"><span class="std std-ref">re-ordering subcortical volume data</span></a>,
 <a class="reference internal" href="#hubs-susceptibility"><span class="std std-ref">computing degree centrality</span></a>). If you’re already comfortable with these steps,
-feel free to simply skip right to the last two sections!</p>
-</div>
-<div class="admonition-spin-permutation-testing admonition">
-<p class="admonition-title">Spin permutation testing ⚾️</p>
-<p>The intrinsic spatial smoothness in two given <strong>cortical maps</strong> may inflate the significance of their spatial correlation.
-To overcome this challenge, we assess statistical significance using <em>spin permutation tests</em>.
-To do so, we generate null models of overlap between cortical maps by projecting the spatial
-coordinates of cortical data onto the surface spheres, apply randomly sampled rotations,
-and reassign cortical values. We then compare the original correlation coefficients against
-the empirical distribution determined by the ensemble of spatially permuted correlation coefficients.</p>
-</div>
-<div class="admonition-shuf-permutation-testing admonition">
-<p class="admonition-title">Shuf permutation testing ⚾️</p>
-<p>To compare spatial overlap between <strong>subcortical maps</strong>, we employed a similar approach with the exception
-that subcortical labels were randomly shuffled as opposed to being projected onto spheres.</p>
+feel free to simply skip right to the last section!</p>
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -402,7 +390,6 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.permutation_testing</span> <span class="kn">import</span> <span class="n">spin_test</span><span class="p">,</span> <span class="n">shuf_test</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="sd">1 - Let&#39;s start by loading our example data</span>
@@ -462,23 +449,6 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between structural hubs and atrophy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">5 - We can also test the significance of our spatial correlations</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    using spin (cortical maps) and shuf (subcortical maps) permutation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    tests</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Spin permutation testing for two cortical maps</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_p</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">CortThick_Z_LTLE_mean</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>                     <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_p</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">CortThick_Z_LTLE_mean</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>                     <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Shuf permutation testing for two subcortical maps</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_p</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>                      <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_p</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">,</span>
-<span class="gp">&gt;&gt;&gt; </span>                      <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,22 +507,63 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 <span class="c">% Perform spatial correlations between structural hubs and atrophy</span>
 <span class="n">sc_ctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(sc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
 <span class="n">sc_sctx_r</span>   <span class="s">=</span> <span class="s">corrcoef(sc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="spin-permutation-tests">
+<h2>Spin permutation tests<a class="headerlink" href="#spin-permutation-tests" title="Permalink to this headline">¶</a></h2>
+<p>The intrinsic spatial smoothness in two given <strong>cortical maps</strong> may inflate the significance of their spatial correlation.
+To overcome this challenge, we assess statistical significance using <em>spin permutation tests</em>.
+To do so, we generate null models of overlap between cortical maps by projecting the spatial
+coordinates of cortical data onto the surface spheres, apply randomly sampled rotations,
+and reassign cortical values. We then compare the original correlation coefficients against
+the empirical distribution determined by the ensemble of spatially permuted correlation coefficients.</p>
+<div class="line-block">
+<div class="line">To compare spatial overlap between <strong>subcortical maps</strong>, we employed a similar approach with the exception
+that subcortical labels were randomly shuffled as opposed to being projected onto spheres.</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | mega</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.permutation_testing</span> <span class="kn">import</span> <span class="n">spin_test</span><span class="p">,</span> <span class="n">shuf_test</span>
 
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Spin permutation testing for two cortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_p</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span> <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_p</span> <span class="o">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">sc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s1">&#39;fsa5&#39;</span><span class="p">,</span> <span class="n">parcellation_name</span><span class="o">=</span><span class="s1">&#39;aparc&#39;</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
 
-<span class="c">%% 5 - We can also test the significance of our spatial correlations</span>
-<span class="c">%      using spin (cortical maps) and shuf (subcortical maps) permutation</span>
-<span class="c">%      tests</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Shuf permutation testing for two subcortical maps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_p</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_p</span> <span class="o">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="n">n_rot</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;pearson&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
 <span class="c">% Spin permutation testing for two cortical maps</span>
-<span class="n">fc_ctx_p</span>  <span class="s">=</span> <span class="s">spin_test(fc_ctx_dc,</span> <span class="s">CortThick_Z_LTLE_mean{:,</span> <span class="s">:},</span> <span class="s">...</span>
-                      <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
-<span class="n">sc_ctx_p</span>  <span class="s">=</span> <span class="s">spin_test(sc_ctx_dc,</span> <span class="s">CortThick_Z_LTLE_mean{:,</span> <span class="s">:},</span> <span class="s">...</span>
-                      <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="n">fc_ctx_p</span>  <span class="s">=</span> <span class="s">spin_test(fc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">&#39;fsa5&#39;,</span> <span class="s">&#39;aparc&#39;,</span> <span class="s">1000,</span> <span class="s">&#39;pearson&#39;)</span><span class="p">;</span>
+<span class="n">sc_ctx_p</span>  <span class="s">=</span> <span class="s">spin_test(sc_ctx_dc,</span> <span class="s">ct_tle,</span> <span class="s">&#39;fsa5&#39;,</span> <span class="s">&#39;aparc&#39;,</span> <span class="s">1000,</span> <span class="s">&#39;pearson&#39;)</span><span class="p">;</span>
 
 <span class="c">% Shuf permutation testing for two subcortical maps</span>
-<span class="n">fc_sctx_p</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">{:,</span> <span class="p">:},</span> <span class="c">...</span>
-                      <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
-<span class="n">sc_sctx_p</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">SubVol_Z_LTLE_r_mean_noVent</span><span class="p">{:,</span> <span class="p">:},</span> <span class="c">...</span>
-                      <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="n">fc_sctx_p</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="n">sc_sctx_p</span> <span class="p">=</span> <span class="n">shuf_test</span><span class="p">(</span><span class="n">sc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
