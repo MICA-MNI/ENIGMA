@@ -1,9 +1,9 @@
 .. _hcp_connectivity:
 
-.. title:: Load connectivity data! ⏳
+.. title:: Free connectivity data! ⏳
 
-Load connectivity data
-======================================
+Functional and structural connectivity data
+==================================================
 
 This page contains descriptions and examples to use HCP connectivity data!
 For details on HCP participants and data processing, please see our manuscript entitled 
