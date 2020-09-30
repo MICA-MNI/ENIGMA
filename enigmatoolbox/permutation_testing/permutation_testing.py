@@ -164,7 +164,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
     return perm_id
 
 
-def perm_sphere_p(x, y, perm_id, corr_type='pearson'):
+def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
     """
     Function to generate a p-value for the spatial correlation between two parcellated cortical surface maps,
     using a set of spherical permutations of regions of interest (which can be generated using the function "rotate_parcellation").
@@ -231,10 +231,13 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson'):
     # average p-values
     p_perm = (p_perm_xy + p_perm_yx) / 2
 
-    return p_perm
+    if spin_dist is True:
+        return p_perm, np.append(rho_null_xy, rho_null_yx)
+    elif spin_dist is not True:
+        return p_perm
 
 
-def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100, type='pearson'):
+def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100, type='pearson', spin_dist=False):
     """
     INPUTS
        map1               = one of two cortical map to be correlated
@@ -243,11 +246,14 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
        parcellation_name  = 'aparc' (default)
        n_rot              = number of spin rotations (default 100)
        type               = correlation type, 'pearson' (default), 'spearman'
+       spin_dist          = save distribution of spinned correlations (null model)
 
     OUTPUT
        p_spin          = permutation p-value
+       r_dist          = distribution of spinned correlations (number of spin rotations * 2)
 
-    Functions at above from here
+
+    Functions above from here
            https://github.com/frantisekvasa/rotate_parcellation
 
      Last modifications:
@@ -272,21 +278,26 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot)
 
     # generate spin permuted p-value
-    p_spin = perm_sphere_p(map1, map2, perm_id, type)
+    p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, spin_dist=spin_dist)
 
-    return p_spin
+    if spin_dist is True:
+        return p_spin, r_dist
+    elif spin_dist is not True:
+        return p_spin
 
 
-def shuf_test(map1, map2, n_rot=100, type='pearson'):
+def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
     """
     INPUTS
        map1            = one of two subcortical map to be correlated
        map2            = the other subcortical map to be correlated
        n_rot           = number of shuffles (default 100)
        type            = correlation type, 'pearson' (default), 'spearman'
+       spin_dist       = save distribution of spinned correlations (null model)
 
     OUTPUT
        p_shuf          = permutation p-value
+       r_dist          = distribution of shuffled correlations (number of shuffles * 2)
 
      Sara Lariviere | a sunny September day 2020
     """
@@ -356,4 +367,10 @@ def shuf_test(map1, map2, n_rot=100, type='pearson'):
     # average p-values
     p_shuf = (p_perm_xy + p_perm_yx) / 2
 
-    return p_shuf
+    # null distribution
+    r_dist = np.append(rho_null_xy, rho_null_yx)
+
+    if spin_dist is True:
+        return p_shuf, r_dist
+    elif spin_dist is not True:
+        return p_shuf

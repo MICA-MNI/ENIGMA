@@ -100,12 +100,10 @@
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Load example data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#load-covariates-data">Load covariates data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-subcortical-volume-data">Load subcortical volume data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-cortical-thickness-data">Load cortical thickness data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#load-cortical-surface-area-data">Load cortical surface area data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#just-load-everything">Just load everything!</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Individual site data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#load-example-data">Load example data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#re-order-subcortical-regions">Re-order subcortical regions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#z-score-data">Z-score data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../04.loadsumstats/index.html">Load summary statistics</a></li>
@@ -200,201 +198,160 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="load-example-data">
-<span id="load-ct"></span><h1>Load example data<a class="headerlink" href="#load-example-data" title="Permalink to this headline">¶</a></h1>
-<p>This page contains descriptions and examples to load our example data!</p>
+  <div class="section" id="individual-site-data">
+<span id="load-ct"></span><h1>Individual site data<a class="headerlink" href="#individual-site-data" title="Permalink to this headline">¶</a></h1>
+<p>This page contains descriptions and examples to load our example data, re-order subcortical labels, and z-score values!</p>
+<div class="section" id="load-example-data">
+<span id="id1"></span><h2>Load example data<a class="headerlink" href="#load-example-data" title="Permalink to this headline">¶</a></h2>
 <p>This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with
 epilepsy (7 females, age±SD=39.8±14.8 years).</p>
-<div class="section" id="load-covariates-data">
-<h2>Load covariates data<a class="headerlink" href="#load-covariates-data" title="Permalink to this headline">¶</a></h2>
-<p>As per ENIGMA-Epilepsy protocol, covariate information includes <strong>SubjID</strong> (subjectID),
+<dl class="simple">
+<dt><strong>Covariates</strong></dt><dd><p>As per ENIGMA-Epilepsy protocol, covariate information includes <strong>SubjID</strong> (subjectID),
 <strong>Dx</strong> (diagnosis, 0=controls, 1=patients), <strong>SDx</strong> (sub-diagnosis, 0=controls,
 1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
 4=right TLE), <strong>Age</strong> (in years), <strong>Sex</strong> (1=males, 2=females), <strong>Handedness</strong> (1=right, 2=left),
 <strong>AO</strong> (age at onset in years, patients only), <strong>DURILL</strong> (duration of illness in years, patients only),
 and <strong>ICV</strong> (intracranial volume).</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
-<div class="docutils container">
-<p>Matlab</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Load covariates data</span>
-<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<img alt="../../_images/cov.png" class="align-center" src="../../_images/cov.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="load-subcortical-volume-data">
-<h2>Load subcortical volume data<a class="headerlink" href="#load-subcortical-volume-data" title="Permalink to this headline">¶</a></h2>
-<p>Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
-<div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>The column order from ENIGMA-derived subcortical volume matrices does not match the order in the connectivity matrices nor
-the pre-requisite for our subcortical visualization tools. But, hey, don’t you worry! To re-order ENIGMA-derived subcortical volume data, you may use
-our <code class="docutils literal notranslate"><span class="pre">reorder_sctx()</span></code> function, which will re-order the columns of the subcortical volume dataset accordingly (<em>i.e.</em>, alphabetically,
-with all left hemisphere structures first followed by all right hemisphere structures).</p>
-</div>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
-<div class="docutils container">
-<p>Matlab</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Load subcortical volume data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<img alt="../../_images/metr1.png" class="align-center" src="../../_images/metr1.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="load-cortical-thickness-data">
-<h2>Load cortical thickness data<a class="headerlink" href="#load-cortical-thickness-data" title="Permalink to this headline">¶</a></h2>
-<p>Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+</dd>
+<dt><strong>Subcortical volume</strong></dt><dd><p>Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
+</dd>
+<dt><strong>Cortical thickness</strong></dt><dd><p>Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
 and subsequently averaged within each of the Desikan-Killiany parcels.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
-<div class="docutils container">
-<p>Matlab</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Load cortical thickness data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<img alt="../../_images/metr2.png" class="align-center" src="../../_images/metr2.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="load-cortical-surface-area-data">
-<h2>Load cortical surface area data<a class="headerlink" href="#load-cortical-surface-area-data" title="Permalink to this headline">¶</a></h2>
-<p>The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+</dd>
+<dt><strong>Cortical surface area</strong></dt><dd><p>The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
 this morphological measure is defined by the sum of the area of each of the triangles within the parcel.</p>
+</dd>
+</dl>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | mega</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr3_CortSurf</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Load cortical surface area data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<img alt="../../_images/metr3.png" class="align-center" src="../../_images/metr3.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</div>
-<div class="section" id="just-load-everything">
-<h2>Just load everything!<a class="headerlink" href="#just-load-everything" title="Permalink to this headline">¶</a></h2>
-<p>You can also load all the example data into one simple command line!</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
-<div class="docutils container">
-<p>Python</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
-<div class="docutils container">
-<p>Matlab</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load all example data from an individual site</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">metr3_CortSurf</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Load everything!</span>
+<span class="c">% Load all example data from an individual site</span>
 <span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="re-order-subcortical-regions">
+<span id="reorder-sctx"></span><h2>Re-order subcortical regions<a class="headerlink" href="#re-order-subcortical-regions" title="Permalink to this headline">¶</a></h2>
+<p>The column order from ENIGMA-derived subcortical volume matrices does not match the order in the connectivity matrices nor
+the pre-requisite for our subcortical visualization tools. But, hey, don’t you worry! To re-order ENIGMA-derived subcortical volume data, you may use
+our <code class="docutils literal notranslate"><span class="pre">reorder_sctx()</span></code> function, which will re-order the columns of the subcortical volume dataset accordingly (<em>i.e.</em>, alphabetically,
+with all left hemisphere structures first followed by all right hemisphere structures).</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | mega</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">reorder_sctx</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Re-order the subcortical data alphabetically and by hemisphere</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Re-order the subcortical data alphabetically and by hemisphere</span>
+<span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="z-score-data">
+<span id="zscore-data"></span><h2>Z-score data<a class="headerlink" href="#z-score-data" title="Permalink to this headline">¶</a></h2>
+<p>With our example data loaded and re-ordered, we can then z-score data in patients, relative to controls,
+so that lower values correspond to greater atrophy. For simplicity, we also compute the mean z-score across
+all left TLE patients. These mean, z-scored vectors will be used in subsequent tutorials as measures of subcortical
+and cortical atrophy!</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | mega</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ct</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sa</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr3_CortSurf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_tle</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ct_tle</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sa_tle</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
+<span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
+<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">sa</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr3_CortSurf(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+
+<span class="c">% Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)</span>
+<span class="n">sv_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(sv{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sv</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
+<span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(ct{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">ct</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
+<span class="n">sa_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(sa{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

@@ -100,7 +100,7 @@
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../03.loadct/index.html">Load example data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03.loadct/index.html">Individual site data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04.loadsumstats/index.html">Load summary statistics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
@@ -209,6 +209,8 @@
 matrices) degree centrality to identify structural and functional hub regions. This is done by simply
 computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality
 denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
+<pre class="literal-block"><strong>Dependent steps</strong>
+↪ <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">Load cortico-cortical connectivity matrices</span></a></pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
@@ -225,12 +227,7 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural cortico-cortical connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the connectivity data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -250,9 +247,8 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Load functional and structural cortico-cortical connectivity data</span>
-<span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
-<span class="p">[</span><span class="n">sc</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">%% Compute weighted degree centrality measures from the connectivity data</span>
 <span class="n">dc_f</span>                <span class="s">=</span> <span class="s">sum(fc)</span><span class="p">;</span>
@@ -287,6 +283,8 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 and functional subcortico-cortical hub regions. As above, we simply compute the sum of all weighted
 subcortico-cortical connections for every subcortical area. Once again, higher degree centrality
 denotes increased hubness!</p>
+<pre class="literal-block"><strong>Dependent steps</strong>
+↪ <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">Load subcortico-cortical connectivity matrices</span></a></pre>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>Because we do not have connectivity values for the ventricles, do make sure to set
@@ -308,11 +306,6 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural subcortico-cortical connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the connectivity data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dc_f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -330,10 +323,6 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Load functional and structural subcortico-cortical connectivity data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>     <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 
 <span class="c">%% Compute weighted degree centrality measures from the connectivity data</span>
 <span class="n">dc_f</span>                <span class="s">=</span> <span class="s">sum(fc,</span> <span class="s">2)</span><span class="p">;</span>
@@ -365,13 +354,12 @@ whether there is a selective vulnerability of these hub regions that parallels s
 For simplicity, in the following example, we will spatially correlate degree centrality measures to
 <em>z</em>-scored cortical thickness and subcortical volume measures (with lower values indicating greater
 atrophy relative to controls).</p>
-<div class="admonition-long-code-alert admonition">
-<p class="admonition-title">Long code alert 🚨</p>
-<p>For completeness, we include code that has been detailed elsewhere (<a class="reference internal" href="../03.loadct/index.html#load-ct"><span class="std std-ref">loading example data</span></a>,
-<a class="reference internal" href="../12.visualization/index.html#surf-visualization"><span class="std std-ref">z-scoring data</span></a>, <a class="reference internal" href="../12.visualization/index.html#surf-visualization"><span class="std std-ref">re-ordering subcortical volume data</span></a>,
-<a class="reference internal" href="#hubs-susceptibility"><span class="std std-ref">computing degree centrality</span></a>). If you’re already comfortable with these steps,
-feel free to simply skip right to the last section!</p>
-</div>
+<pre class="literal-block"><strong>Dependent steps</strong>
+↪ <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">Load example data</span></a>
+↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a>
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a>
+↪ <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">Load cortico-cortical connectivity matrices</span></a>
+↪ <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">Load subcortico-cortical connectivity matrices</span></a></pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">

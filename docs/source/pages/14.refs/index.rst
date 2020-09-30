@@ -1,6 +1,6 @@
-.. _references:
+.. _referencelist:
 
-.. title:: References! 🖨
+.. title:: List of references! 🖨
 
 References
 ======================================

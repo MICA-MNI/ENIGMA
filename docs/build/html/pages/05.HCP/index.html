@@ -100,7 +100,7 @@
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../03.loadct/index.html">Load example data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03.loadct/index.html">Individual site data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../04.loadsumstats/index.html">Load summary statistics</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
@@ -203,7 +203,7 @@
 For details on HCP participants and data processing, please see our manuscript entitled
 <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1">Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study</a></p>
 <div class="section" id="load-cortical-connectivity-matrices">
-<h2>Load cortical connectivity matrices<a class="headerlink" href="#load-cortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
+<span id="load-corticocortical"></span><h2>Load cortical connectivity matrices<a class="headerlink" href="#load-cortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>ENIGMA TOOLBOX</strong> provides structural (diffusion MRI) and functional
 (resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP).
 Following the examples below, we can load connectivity data and extract seed-based connectivity.</p>
@@ -229,10 +229,6 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s use load_sc() and load_fc() functions to return:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 68 x 68 ndarray (fc/sc: cortico-cortical connectivity matrix)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 68 x 1 ndarray (fcl/scl: name of cortical areas)</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot functional connectivity data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fcl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
@@ -251,10 +247,6 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Let&#39;s use load_sc() and load_fc() functions to return:</span>
-<span class="c">% 68 x 68 matrix (fc/sc: cortico-cortical connectivity matrix)</span>
-<span class="c">% 1 x 68 cell array (fcl/scl: name of cortical areas)</span>
 
 <span class="c">%% Load and plot functional connectivity data</span>
 <span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
@@ -288,7 +280,7 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 </div>
 </div>
 <div class="section" id="load-subcortical-connectivity-matrices">
-<h2>Load subcortical connectivity matrices<a class="headerlink" href="#load-subcortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
+<span id="load-subcorticocortical"></span><h2>Load subcortical connectivity matrices<a class="headerlink" href="#load-subcortical-connectivity-matrices" title="Permalink to this headline">¶</a></h2>
 <div class="line-block">
 <div class="line">Subcortico-cortical as well as subcortico-subcortical connectivity matrices are also included in the
 <strong>ENIGMA TOOLBOX</strong>! As above, we can load these structural and functional matrices and extract seed-based connectivity

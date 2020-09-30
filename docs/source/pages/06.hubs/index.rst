@@ -13,7 +13,13 @@ Cortical hubs
 Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can then compute weighted (optimal for unthresholded connectivity
 matrices) degree centrality to identify structural and functional hub regions. This is done by simply 
 computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality 
-denotes increased hubness (*i.e.*, node with many connections). 
+denotes increased hubness (*i.e.*, node with many connections).
+
+
+.. parsed-literal:: 
+
+     **Dependent steps**
+     ↪ :ref:`Load cortico-cortical connectivity matrices <load_corticocortical>`
 
 .. tabs::
 
@@ -21,12 +27,7 @@ denotes increased hubness (*i.e.*, node with many connections).
        
         >>> import numpy as np
         >>> from enigmatoolbox.plotting import plot_cortical
-        >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
-
-        >>> # Load functional and structural cortico-cortical connectivity data
-        >>> fc, _, _, _ = load_fc()
-        >>> sc, _, _, _ = load_sc()
 
         >>> # Compute weighted degree centrality measures from the connectivity data
         >>> dc_f = np.sum(fc, axis=0)
@@ -45,9 +46,8 @@ denotes increased hubness (*i.e.*, node with many connections).
 
    .. code-tab:: matlab
 
-        %% Load functional and structural cortico-cortical connectivity data
-        [fc, ~, ~, ~]     = load_fc();
-        [sc, ~, ~, ~]     = load_sc();
+        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         %% Compute weighted degree centrality measures from the connectivity data
         dc_f                = sum(fc);
@@ -82,6 +82,11 @@ and functional subcortico-cortical hub regions. As above, we simply compute the 
 subcortico-cortical connections for every subcortical area. Once again, higher degree centrality 
 denotes increased hubness!
 
+.. parsed-literal:: 
+
+     **Dependent steps**
+     ↪ :ref:`Load subcortico-cortical connectivity matrices <load_subcorticocortical>`
+
 .. Attention:: 
      Because we do not have connectivity values for the ventricles, do make sure to set 
      the "ventricles" flag to ``False`` when displaying the findings on the subcortical surfaces!
@@ -92,11 +97,6 @@ denotes increased hubness!
 
         >>> import numpy as np
         >>> from enigmatoolbox.plotting import plot_subcortical
-        >>> from enigmatoolbox.datasets import load_sc, load_fc
-
-        >>> # Load functional and structural subcortico-cortical connectivity data
-        >>> _, _, fc, _ = load_fc()
-        >>> _, _, sc, _ = load_sc()
 
         >>> # Compute weighted degree centrality measures from the connectivity data
         >>> dc_f = np.sum(fc, axis=1)
@@ -113,10 +113,6 @@ denotes increased hubness!
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Load functional and structural subcortico-cortical connectivity data
-        [~, ~, fc, ~]     = load_fc();
-        [~, ~, sc, ~]     = load_sc();
 
         %% Compute weighted degree centrality measures from the connectivity data
         dc_f                = sum(fc, 2);
@@ -148,12 +144,14 @@ For simplicity, in the following example, we will spatially correlate degree cen
 *z*-scored cortical thickness and subcortical volume measures (with lower values indicating greater 
 atrophy relative to controls).
 
-.. admonition:: Long code alert 🚨
+.. parsed-literal:: 
 
-     For completeness, we include code that has been detailed elsewhere (:ref:`loading example data <load_ct>`,
-     :ref:`z-scoring data <surf_visualization>`, :ref:`re-ordering subcortical volume data <surf_visualization>`, 
-     :ref:`computing degree centrality <hubs_susceptibility>`). If you're already comfortable with these steps, 
-     feel free to simply skip right to the last section!
+     **Dependent steps**
+     ↪ :ref:`Load example data <load_example_data>`
+     ↪ :ref:`Re-order subcortical data <reorder_sctx>`
+     ↪ :ref:`Z-score data <zscore_data>`
+     ↪ :ref:`Load cortico-cortical connectivity matrices <load_corticocortical>`
+     ↪ :ref:`Load subcortico-cortical connectivity matrices <load_subcorticocortical>`
      
 .. tabs::
 

@@ -143,12 +143,47 @@ enigma_scatter(ax2, fc_sctx_dc, SV_d_noVent, scatter_color='#A8221C', linear_fit
 Figure 5d. Permutation testing
 """
 from enigmatoolbox.permutation_testing import spin_test, shuf_test
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 
 # Spin permutation testing for two cortical maps
-fc_ctx_p = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=1000)
+fc_ctx_p, fc_ctx_dist = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, spin_dist=True)
 
 # Shuf permutation testing for two subcortical maps
-fc_sctx_p = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000)
+fc_sctx_p, fc_sctx_dist = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000, spin_dist=True)
+
+# Plot null distributions
+fig = plt.figure(constrained_layout=True, figsize=(8, 3))
+gs = gridspec.GridSpec(1, 2, figure=fig)
+
+ax1 = fig.add_subplot(gs[0, 0])
+plt.hist(fc_ctx_dist, color='#A8221C', edgecolor='white', linewidth=0.58, bins=50)
+l1 = plt.axvline(x=fc_ctx_r, ymin=0, ymax=1, color='black', linestyle="dashed", linewidth=1.22,
+            dash_joinstyle='round', dash_capstyle='round', dashes=(2, 3), label='empirical')
+plt.legend(loc='upper right', frameon=False)
+ax1.spines['top'].set_visible(False)
+ax1.spines['right'].set_visible(False)
+ax1.set_xlabel('Null correlations (cortico-cortical)')
+ax1.set_ylabel('Density')
+ax1.set_xlim(-0.8, 0.8)
+ax1.text(ax1.get_xlim()[1] - (((ax1.get_xlim()[1] - ax1.get_xlim()[0]) / 100) * 36),
+         ax1.get_ylim()[1] - (((ax1.get_ylim()[1] - ax1.get_ylim()[0]) / 100) * 16),
+         '$p$$_{{{}}}$='.format('spin') + str(round(fc_ctx_p, 2)))
+
+ax2 = fig.add_subplot(gs[0, 1])
+plt.hist(fc_sctx_dist, color='#A8221C', edgecolor='white', linewidth=0.58, bins=50)
+plt.axvline(x=fc_sctx_r, ymin=0, ymax=1, color='black', linestyle="dashed", linewidth=1.22,
+            dash_joinstyle='round', dash_capstyle='round', dashes=(2, 3), label='empirical')
+plt.legend(loc='upper right', frameon=False)
+ax2.spines['top'].set_visible(False)
+ax2.spines['right'].set_visible(False)
+ax2.set_xlabel('Null correlations (subcortico-cortical)')
+ax2.set_ylabel('Density')
+ax2.set_xlim(-0.8, 0.8)
+ax2.text(ax2.get_xlim()[1] - (((ax2.get_xlim()[1] - ax2.get_xlim()[0]) / 100) * 36),
+         ax2.get_ylim()[1] - (((ax2.get_ylim()[1] - ax2.get_ylim()[0]) / 100) * 16),
+         '$p$$_{{{}}}$='.format('spin') + str(round(fc_sctx_p, 2)))
+
 
 
 """

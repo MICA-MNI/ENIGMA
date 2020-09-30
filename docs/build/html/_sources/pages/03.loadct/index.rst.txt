@@ -2,149 +2,134 @@
 
 .. title:: Load example data! ⏳
 
-
-Load example data
+Individual site data
 ======================================
 
-This page contains descriptions and examples to load our example data! 
+This page contains descriptions and examples to load our example data, re-order subcortical labels, and z-score values!
+
+
+.. _load_example_data:
+
+Load example data
+---------------------------
 
 This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with 
 epilepsy (7 females, age±SD=39.8±14.8 years).
 
-Load covariates data
-------------------------------------
+**Covariates**
+     As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subjectID),
+     **Dx** (diagnosis, 0=controls, 1=patients), **SDx** (sub-diagnosis, 0=controls,
+     1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
+     4=right TLE), **Age** (in years), **Sex** (1=males, 2=females), **Handedness** (1=right, 2=left),
+     **AO** (age at onset in years, patients only), **DURILL** (duration of illness in years, patients only),
+     and **ICV** (intracranial volume).
 
-As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subjectID),
-**Dx** (diagnosis, 0=controls, 1=patients), **SDx** (sub-diagnosis, 0=controls,
-1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
-4=right TLE), **Age** (in years), **Sex** (1=males, 2=females), **Handedness** (1=right, 2=left),
-**AO** (age at onset in years, patients only), **DURILL** (duration of illness in years, patients only),
-and **ICV** (intracranial volume).
-
-.. tabs::
-
-   .. code-tab:: py
-       
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> cov, _, _, _ = load_example_data()
-
-   .. code-tab:: matlab
-
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Load covariates data
-        [cov, ~, ~, ~] = load_example_data(); 
-
-.. image:: ./examples/example_figs/cov.png
-    :align: center
+**Subcortical volume**
+     Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
 
 
-|
+**Cortical thickness**
+     Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+     and subsequently averaged within each of the Desikan-Killiany parcels.
 
-
-Load subcortical volume data
-------------------------------------
-Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
-
-.. DANGER:: 
-     The column order from ENIGMA-derived subcortical volume matrices does not match the order in the connectivity matrices nor
-     the pre-requisite for our subcortical visualization tools. But, hey, don't you worry! To re-order ENIGMA-derived subcortical volume data, you may use 
-     our ``reorder_sctx()`` function, which will re-order the columns of the subcortical volume dataset accordingly (*i.e.*, alphabetically,
-     with all left hemisphere structures first followed by all right hemisphere structures). 
+**Cortical surface area**
+     The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+     this morphological measure is defined by the sum of the area of each of the triangles within the parcel.
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | mega
        
         >>> from enigmatoolbox.datasets import load_example_data
-        >>> _, metr1_SubVol, _, _ = load_example_data()
 
-   .. code-tab:: matlab
-
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Load subcortical volume data
-        [~, metr1_SubVol, ~, ~] = load_example_data(); 
-
-.. image:: ./examples/example_figs/metr1.png
-    :align: center
-
-
-|
-
-
-Load cortical thickness data
---------------------------------------
-Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
-and subsequently averaged within each of the Desikan-Killiany parcels.
-
-.. tabs::
-
-   .. code-tab:: py
-       
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> _, _, metr2_CortThick, _ = load_example_data()
-
-   .. code-tab:: matlab
-
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Load cortical thickness data
-        [~, ~, metr2_CortThick, ~] = load_example_data(); 
-  
-.. image:: ./examples/example_figs/metr2.png
-    :align: center
-
-
-|
-
-
-Load cortical surface area data
-------------------------------------
-The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
-this morphological measure is defined by the sum of the area of each of the triangles within the parcel.
-
-.. tabs::
-
-   .. code-tab:: py
-       
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> _, _, _, metr3_CortSurf = load_example_data()
-
-
-   .. code-tab:: matlab
-
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Load cortical surface area data
-        [~, ~, ~, metr3_CortSurf] = load_example_data(); 
-    
-.. image:: ./examples/example_figs/metr3.png
-    :align: center
-
-
-|
-
-
-Just load everything!
-------------------------------------
-You can also load all the example data into one simple command line!
-
-.. tabs::
-
-   .. code-tab:: py
-       
-        >>> from enigmatoolbox.datasets import load_example_data
+        >>> # Load all example data from an individual site
         >>> cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf = load_example_data()
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        %% Load everything!
+        % Load all example data from an individual site
         [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data();
+
+
+|
+
+
+.. _reorder_sctx:
+
+Re-order subcortical regions
+------------------------------------
+The column order from ENIGMA-derived subcortical volume matrices does not match the order in the connectivity matrices nor
+the pre-requisite for our subcortical visualization tools. But, hey, don't you worry! To re-order ENIGMA-derived subcortical volume data, you may use 
+our ``reorder_sctx()`` function, which will re-order the columns of the subcortical volume dataset accordingly (*i.e.*, alphabetically,
+with all left hemisphere structures first followed by all right hemisphere structures). 
+
+.. tabs::
+
+   .. code-tab:: py **Python** | mega
+       
+        >>> from enigmatoolbox.utils.useful import reorder_sctx
+        
+        >>> # Re-order the subcortical data alphabetically and by hemisphere
+        >>> metr1_SubVol_r = reorder_sctx(metr1_SubVol)
+
+   .. code-tab:: matlab **Matlab** | mega
+
+        % Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
+        % Re-order the subcortical data alphabetically and by hemisphere
+        metr1_SubVol_r = reorder_sctx(metr1_SubVol);
+
+     
+|
+
+
+.. _zscore_data:
+
+Z-score data
+------------------------------------
+With our example data loaded and re-ordered, we can then z-score data in patients, relative to controls,
+so that lower values correspond to greater atrophy. For simplicity, we also compute the mean z-score across
+all left TLE patients. These mean, z-scored vectors will be used in subsequent tutorials as measures of subcortical 
+and cortical atrophy!
+
+.. tabs::
+
+   .. code-tab:: py **Python** | mega
+       
+        >>> from enigmatoolbox.utils.useful import zscore_matrix
+        
+        >>> # Z-score patients' data relative to controls (lower z-score = more atrophy)
+        >>> group = cov['Dx'].to_list()
+        >>> controlCode = 0
+        >>> sv = zscore_matrix(metr1_SubVol_r.iloc[:, 1:-1], group, controlCode)
+        >>> ct = zscore_matrix(metr2_CortThick.iloc[:, 1:-5], group, controlCode)
+        >>> sa = zscore_matrix(metr3_CortSurf.iloc[:, 1:-5], group, controlCode)
+
+        >>> # Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
+        >>> sv_tle = sv.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+        >>> ct_tle = ct.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+        >>> sa_tle = sa.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+
+   .. code-tab:: matlab **Matlab** | mega
+
+        % Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
+        % Z-score patients' data relative to controls (lower z-score = more atrophy)
+        group        = cov.Dx;
+        controlCode  = 0;
+        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
+        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
+        sa           = zscore_matrix(metr3_CortSurf(:, 2:end-1), group, controlCode);
+
+        % Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
+        sv_tle       = array2table(mean(sv{find(cov.SDx == 3), :}, 1), ...
+                                   'VariableNames', sv.Properties.VariableNames);
+        ct_tle       = array2table(mean(ct{find(cov.SDx == 3), :}, 1), ...
+                                   'VariableNames', ct.Properties.VariableNames);
+        sa_tle       = array2table(mean(sa{find(cov.SDx == 3), :}, 1), ...
+                                   'VariableNames', sa.Properties.VariableNames);

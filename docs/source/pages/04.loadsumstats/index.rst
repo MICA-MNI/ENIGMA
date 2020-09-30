@@ -22,7 +22,7 @@ several ENIGMA Working Groups!
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -38,9 +38,9 @@ several ENIGMA Working Groups!
         CortThick_psychP_vs_psychN
         CortSurf_psychP_vs_psychN
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-22q
@@ -63,7 +63,7 @@ Attention deficit hyperactivity disorder
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -83,9 +83,9 @@ Attention deficit hyperactivity disorder
         CortThick_case_vs_controls_pediatric
         CortSurf_case_vs_controls_pediatric
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-ADHD
@@ -112,7 +112,7 @@ Autism spectrum disorder
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -126,9 +126,9 @@ Autism spectrum disorder
         CortThick_case_vs_controls_meta_analysis
         CortThick_case_vs_controls_mega_analysis
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-Autism
@@ -149,7 +149,7 @@ Bipolar disorder
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -162,9 +162,9 @@ Bipolar disorder
 
         CortSurf_case_vs_controls
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-BD
@@ -184,7 +184,7 @@ Epilepsy
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -204,9 +204,9 @@ Epilepsy
         CortThick_case_vs_controls_rtle
         SubVol_case_vs_controls_rtle
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-Epilepsy
@@ -233,7 +233,7 @@ Major depressive disorder
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -249,9 +249,9 @@ Major depressive disorder
         CortThick_case_vs_controls_adolescent
         CortSurf_case_vs_controls_adolescent
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-MDD
@@ -274,7 +274,7 @@ Obsessive-compulsive disorder
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -294,9 +294,9 @@ Obsessive-compulsive disorder
         CortThick_medicatedcase_vs_controls_pediatric
         CortSurf_medicatedcase_vs_controls_pediatric
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-OCD
@@ -323,7 +323,7 @@ Schizophrenia
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
 
         >>> from enigmatoolbox.datasets import load_summary_stats
 
@@ -337,9 +337,9 @@ Schizophrenia
         CortThick_case_vs_controls
         CortSurf_case_vs_controls
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load summary statistics for ENIGMA-Schizophrenia

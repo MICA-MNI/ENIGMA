@@ -10,6 +10,8 @@ For details on HCP participants and data processing, please see our manuscript e
 `Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_
 
 
+.. _load_corticocortical:
+
 Load cortical connectivity matrices
 ----------------------------------------
 The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional 
@@ -27,10 +29,6 @@ Following the examples below, we can load connectivity data and extract seed-bas
        
         >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from nilearn import plotting
-
-        >>> # Let's use load_sc() and load_fc() functions to return:
-        >>> # 68 x 68 ndarray (fc/sc: cortico-cortical connectivity matrix)
-        >>> # 68 x 1 ndarray (fcl/scl: name of cortical areas)
 
         >>> # Load and plot functional connectivity data
         >>> fc, fcl, _, _ = load_fc()
@@ -50,10 +48,6 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Let's use load_sc() and load_fc() functions to return:
-        % 68 x 68 matrix (fc/sc: cortico-cortical connectivity matrix)
-        % 1 x 68 cell array (fcl/scl: name of cortical areas)  
 
         %% Load and plot functional connectivity data
         [fc, fcl, ~, ~] = load_fc();
@@ -85,6 +79,8 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
 |
 
+
+.. _load_subcorticocortical:
 
 Load subcortical connectivity matrices
 -------------------------------------------
