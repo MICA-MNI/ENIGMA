@@ -2,7 +2,7 @@
 
 .. title:: Load summary statistics! 📂
 
-Load summary statistics
+Summary statistics
 ======================================
 
 This page contains descriptions and examples to load case-control datasets from 
