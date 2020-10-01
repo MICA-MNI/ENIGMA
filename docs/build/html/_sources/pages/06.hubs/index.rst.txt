@@ -110,6 +110,19 @@ denotes increased hubness!
 
 .. tabs::
 
+   .. code-tab:: py **Python** | meta
+     
+          ello
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
+
    .. code-tab:: py **Python** | mega
 
         >>> import numpy as np
@@ -164,13 +177,26 @@ atrophy relative to controls).
 .. parsed-literal:: 
 
      **Dependent steps**
-     ↪ :ref:`Load example data <load_example_data>`
-     ↪ :ref:`Re-order subcortical data <reorder_sctx>`
-     ↪ :ref:`Z-score data <zscore_data>`
+     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
+     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
+     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
      ↪ Load :ref:`cortico-cortical <load_corticocortical>` and :ref:`subcortico-cortical <load_subcorticocortical>` connectivity matrices
      ↪ Compute :ref:`cortical-cortical <cortical_hubs>` and :ref:`subcortico-cortical <cortical_hubs>` degree centrality
      
 .. tabs::
+
+   .. code-tab:: py **Python** | meta
+     
+          ello
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
 
    .. code-tab:: py **Python** | mega
 
@@ -223,6 +249,19 @@ the empirical distribution determined by the ensemble of spatially permuted corr
 
 .. tabs::
 
+   .. code-tab:: py **Python** | meta
+     
+          ello
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
+
    .. code-tab:: py **Python** | mega
 
         >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
@@ -259,6 +298,19 @@ Here, a negative correlation indicates that greater atrophy (negative z-score va
 with the spatial distribution of hub regions (greater degree centrality).  
 
 .. tabs::
+
+   .. code-tab:: py **Python** | meta
+     
+          ello
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
 
    .. code-tab:: py **Python** | mega
 

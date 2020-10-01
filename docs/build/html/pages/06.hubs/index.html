@@ -323,7 +323,22 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
 <p><strong>Python</strong> | mega</p>
 </div>
@@ -334,7 +349,23 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
 
@@ -386,14 +417,29 @@ For simplicity, in the following example, we will spatially correlate degree cen
 <em>z</em>-scored cortical thickness and subcortical volume measures (with lower values indicating greater
 atrophy relative to controls).</p>
 <pre class="literal-block"><strong>Dependent steps</strong>
-↪ <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">Load example data</span></a>
-↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a>
-↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a>
+↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)
 ↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
 ↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-2-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
 <p><strong>Python</strong> | mega</p>
 </div>
@@ -404,7 +450,23 @@ atrophy relative to controls).</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
@@ -457,7 +519,22 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
 <p><strong>Python</strong> | mega</p>
 </div>
@@ -468,7 +545,23 @@ that subcortical labels were randomly shuffled as opposed to being projected ont
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.permutation_testing</span> <span class="kn">import</span> <span class="n">spin_test</span><span class="p">,</span> <span class="n">shuf_test</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Spin permutation testing for two cortical maps</span>
@@ -507,7 +600,22 @@ Here, a negative correlation indicates that greater atrophy (negative z-score va
 with the spatial distribution of hub regions (greater degree centrality).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
 <p><strong>Python</strong> | mega</p>
 </div>
@@ -518,7 +626,23 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">enigma_scatter</span>
