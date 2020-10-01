@@ -204,7 +204,7 @@
 <span id="hubs-susceptibility"></span><h1>Hub susceptibility<a class="headerlink" href="#hub-susceptibility" title="Permalink to this headline">¶</a></h1>
 <p>This page contains descriptions and examples to build hub susceptibility models!</p>
 <div class="section" id="cortical-hubs">
-<h2>Cortical hubs<a class="headerlink" href="#cortical-hubs" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Cortical hubs<a class="headerlink" href="#cortical-hubs" title="Permalink to this headline">¶</a></h2>
 <p>Using the <a class="reference internal" href="../05.HCP/index.html#hcp-connectivity"><span class="std std-ref">HCP connectivity data</span></a>, we can then compute weighted (optimal for unthresholded connectivity
 matrices) degree centrality to identify structural and functional hub regions. This is done by simply
 computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality
@@ -213,18 +213,49 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 ↪ <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">Load cortico-cortical connectivity matrices</span></a></pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | meta</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
@@ -246,7 +277,7 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
@@ -278,7 +309,7 @@ denotes increased hubness (<em>i.e.</em>, node with many connections).</p>
 </div>
 </div>
 <div class="section" id="subcortical-hubs">
-<h2>Subcortical hubs<a class="headerlink" href="#subcortical-hubs" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Subcortical hubs<a class="headerlink" href="#subcortical-hubs" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference internal" href="../12.visualization/index.html#surf-visualization"><span class="std std-ref">HCP connectivity data</span></a> can also be used to identify structural
 and functional subcortico-cortical hub regions. As above, we simply compute the sum of all weighted
 subcortico-cortical connections for every subcortical area. Once again, higher degree centrality
@@ -292,18 +323,18 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </div>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | mega</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
 
@@ -320,7 +351,7 @@ the “ventricles” flag to <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
@@ -358,78 +389,27 @@ atrophy relative to controls).</p>
 ↪ <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">Load example data</span></a>
 ↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a>
 ↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a>
-↪ <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">Load cortico-cortical connectivity matrices</span></a>
-↪ <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">Load subcortico-cortical connectivity matrices</span></a></pre>
+↪ Load <a class="reference internal" href="../05.HCP/index.html#load-corticocortical"><span class="std std-ref">cortico-cortical</span></a> and <a class="reference internal" href="../05.HCP/index.html#load-subcorticocortical"><span class="std std-ref">subcortico-cortical</span></a> connectivity matrices
+↪ Compute <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">cortical-cortical</span></a> and <a class="reference internal" href="#cortical-hubs"><span class="std std-ref">subcortico-cortical</span></a> degree centrality</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | mega</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">1 - Let&#39;s start by loading our example data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Here we need the covariates, cortical thickness, and subcortical volume data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so to match the order from the connectivity matrices</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LLatVent&#39;</span><span class="p">,</span> <span class="s1">&#39;RLatVent&#39;</span><span class="p">])</span>
 
-
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">2 - We can then z-score data in patients relative to controls, so that lower values</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    correspond to greater atrophy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ct</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mean z-score values across individuals with left TLE (SDx == 3)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ct_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_tle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sv</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">3 - Let&#39;s then load our functional and structural connectivity matrices</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    and compute degree centrality metrics to identify the spatial distribution</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    of hubs</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the functional connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Compute weighted degree centrality measures from the structural connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_sctx_dc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">4 - We can now perform spatial correlations between decreases in cortical thickness/</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">    subcortical volume and functional/structural degree centrality maps</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Perform spatial correlations between functional hubs and atrophy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_ctx_dc</span><span class="p">,</span> <span class="n">ct_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_sctx_r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">fc_sctx_dc</span><span class="p">,</span> <span class="n">sv_tle</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
@@ -440,54 +420,14 @@ atrophy relative to controls).</p>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% 1 - Let&#39;s start by loading our example data</span>
-<span class="c">% Here we need the covariates, cortical thickness, and subcortical volume data</span>
-<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-
-<span class="c">% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)</span>
-<span class="c">% so to match the order from the connectivity matrices</span>
-<span class="n">metr1_SubVol_r</span>                          <span class="s">=</span> <span class="s">reorder_sctx(metr1_SubVol)</span><span class="p">;</span>
-
-<span class="c">% We must also remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
+<span class="c">% Let&#39;s first remove subcortical values corresponding the ventricles (as we don&#39;t have connectivity values for them!)</span>
 <span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">LLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
 <span class="n">metr1_SubVol_r</span><span class="p">.</span><span class="n">RLatVent</span>                 <span class="p">=</span> <span class="p">[];</span>
 
-
-<span class="c">%% 2 - We can then z-score data in patients relative to controls, so that lower values</span>
-<span class="c">%      correspond to greater atrophy</span>
-<span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
-<span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
-<span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
-<span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
-<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
-
-<span class="c">% Mean z-score values across individuals with left TLE (SDx == 3)</span>
-<span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">mean(ct(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
-<span class="n">sv_tle</span>       <span class="s">=</span> <span class="s">mean(sv(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>
-
-
-<span class="c">%% 3 - Let&#39;s then load our functional and structural connectivity matrices</span>
-<span class="c">%      and compute degree centrality metrics to identify the spatial distribution</span>
-<span class="c">%      of hubs</span>
-<span class="c">% Load functional and structural cortico-cortical connectivity data (for simplicity, we won&#39;t load the regions&#39; labels)</span>
-<span class="p">[</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
-<span class="p">[</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span>   <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
-
-<span class="c">% Compute weighted degree centrality measures from the functional connectivity data</span>
-<span class="n">fc_ctx_dc</span>                 <span class="s">=</span> <span class="s">sum(fc_ctx,</span> <span class="s">1)</span><span class="p">;</span>
-<span class="n">fc_sctx_dc</span>                <span class="s">=</span> <span class="s">sum(fc_sctx,</span> <span class="s">2).&#39;;</span>
-
-<span class="s">% Compute weighted degree centrality measures from the structural connectivity data</span>
-<span class="s">sc_ctx_dc                 = sum(sc_ctx);</span>
-<span class="s">sc_sctx_dc                = sum(sc_sctx, 2).&#39;</span><span class="p">;</span>
-
-
-<span class="c">%% 4 - We can now perform spatial correlations between decreases in cortical thickness/</span>
-<span class="c">%      subcortical volume and functional/structural degree centrality maps</span>
 <span class="c">% Perform spatial correlations between functional hubs and atrophy</span>
 <span class="n">fc_ctx_r</span>     <span class="s">=</span> <span class="s">corrcoef(fc_ctx_dc,</span> <span class="s">ct_tle)</span><span class="p">;</span>
 <span class="n">fc_sctx_r</span>    <span class="s">=</span> <span class="s">corrcoef(fc_sctx_dc,</span> <span class="s">sv_tle)</span><span class="p">;</span>
@@ -567,18 +507,18 @@ Here, a negative correlation indicates that greater atrophy (negative z-score va
 with the spatial distribution of hub regions (greater degree centrality).</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | mega</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.gridspec</span> <span class="k">as</span> <span class="nn">gridspec</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">enigma_scatter</span>
@@ -612,7 +552,7 @@ with the spatial distribution of hub regions (greater degree centrality).</p>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 

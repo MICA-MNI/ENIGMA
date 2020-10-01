@@ -8,6 +8,8 @@ Hub susceptibility
 This page contains descriptions and examples to build hub susceptibility models!
 
 
+.. _cortical_hubs:
+
 Cortical hubs
 ------------------------------------------
 Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can then compute weighted (optimal for unthresholded connectivity
@@ -23,7 +25,20 @@ denotes increased hubness (*i.e.*, node with many connections).
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
+     
+          ello
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
+
+   .. code-tab:: py **Python** | mega
        
         >>> import numpy as np
         >>> from enigmatoolbox.plotting import plot_cortical
@@ -44,7 +59,7 @@ denotes increased hubness (*i.e.*, node with many connections).
         >>> plot_cortical(array_name=dc_s_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='Blues', color_bar=True, color_range=(100, 300))
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
@@ -75,6 +90,8 @@ denotes increased hubness (*i.e.*, node with many connections).
 |
 
 
+.. _subcortical_hubs:
+
 Subcortical hubs
 ---------------------------------------------
 The :ref:`HCP connectivity data <surf_visualization>` can also be used to identify structural 
@@ -93,7 +110,7 @@ denotes increased hubness!
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | mega
 
         >>> import numpy as np
         >>> from enigmatoolbox.plotting import plot_subcortical
@@ -109,7 +126,7 @@ denotes increased hubness!
         >>> plot_subcortical(array_name=dc_s, ventricles=False, size=(800, 400),
         ...                  cmap='Blues', color_bar=True, color_range=(100, 300))
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
@@ -150,69 +167,18 @@ atrophy relative to controls).
      ↪ :ref:`Load example data <load_example_data>`
      ↪ :ref:`Re-order subcortical data <reorder_sctx>`
      ↪ :ref:`Z-score data <zscore_data>`
-     ↪ :ref:`Load cortico-cortical connectivity matrices <load_corticocortical>`
-     ↪ :ref:`Load subcortico-cortical connectivity matrices <load_subcorticocortical>`
+     ↪ Load :ref:`cortico-cortical <load_corticocortical>` and :ref:`subcortico-cortical <load_subcorticocortical>` connectivity matrices
+     ↪ Compute :ref:`cortical-cortical <cortical_hubs>` and :ref:`subcortico-cortical <cortical_hubs>` degree centrality
      
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | mega
 
         >>> import numpy as np
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> from enigmatoolbox.utils.useful import zscore_matrix, reorder_sctx
-        >>> from enigmatoolbox.datasets import load_sc, load_fc
 
-        >>> """
-        >>> 1 - Let's start by loading our example data
-        >>> """
-        >>> # Here we need the covariates, cortical thickness, and subcortical volume data
-        >>> cov, metr1_SubVol, metr2_CortThick, _ = load_example_data()
-
-        >>> # After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)
-        >>> # so to match the order from the connectivity matrices
-        >>> metr1_SubVol_r = reorder_sctx(metr1_SubVol)
-
-        >>> # We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
+        >>> # Let's first remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
         >>> metr1_SubVol_r = metr1_SubVol_r.drop(columns=['LLatVent', 'RLatVent'])
 
-
-        >>> """
-        >>> 2 - We can then z-score data in patients relative to controls, so that lower values
-        >>>     correspond to greater atrophy          
-        >>> """
-        >>> # Z-score patients' data relative to controls (lower z-score = more atrophy)
-        >>> group = cov['Dx'].to_list()
-        >>> controlCode = 0
-        >>> sv = zscore_matrix(metr1_SubVol_r.iloc[:, 1:-1], group, controlCode)
-        >>> ct = zscore_matrix(metr2_CortThick.iloc[:, 1:-5], group, controlCode)
-
-        >>> # Mean z-score values across individuals with left TLE (SDx == 3)
-        >>> ct_tle = np.mean(ct.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
-        >>> sv_tle = np.mean(sv.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)
-
-
-        >>> """
-        >>> 3 - Let's then load our functional and structural connectivity matrices
-        >>>     and compute degree centrality metrics to identify the spatial distribution 
-        >>>     of hubs
-        >>> """
-        >>> # Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
-        >>> fc_ctx, _, fc_sctx, _ = load_fc()
-        >>> sc_ctx, _, sc_sctx, _ = load_sc()
-
-        >>> # Compute weighted degree centrality measures from the functional connectivity data
-        >>> fc_ctx_dc = np.sum(fc_ctx, axis=0)
-        >>> fc_sctx_dc = np.sum(fc_sctx, axis=1)
-
-        >>> # Compute weighted degree centrality measures from the structural connectivity data
-        >>> sc_ctx_dc = np.sum(sc_ctx, axis=0)
-        >>> sc_sctx_dc = np.sum(sc_sctx, axis=1)
-
-
-        >>> """
-        >>> 4 - We can now perform spatial correlations between decreases in cortical thickness/
-        >>>     subcortical volume and functional/structural degree centrality maps
-        >>> """
         >>> # Perform spatial correlations between functional hubs and atrophy
         >>> fc_ctx_r = np.corrcoef(fc_ctx_dc, ct_tle)[0, 1]
         >>> fc_sctx_r = np.corrcoef(fc_sctx_dc, sv_tle)[0, 1]
@@ -221,55 +187,15 @@ atrophy relative to controls).
         >>> sc_ctx_r = np.corrcoef(sc_ctx_dc, ct_tle)[0, 1]
         >>> sc_sctx_r = np.corrcoef(sc_sctx_dc, sv_tle)[0, 1]
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        %% 1 - Let's start by loading our example data
-        % Here we need the covariates, cortical thickness, and subcortical volume data
-        [cov, metr1_SubVol, metr2_CortThick, ~] = load_example_data();
-
-        % After loading our subcortical data, we must re-order them (alphabetically and by hemisphere)
-        % so to match the order from the connectivity matrices
-        metr1_SubVol_r                          = reorder_sctx(metr1_SubVol);
-
-        % We must also remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
+        % Let's first remove subcortical values corresponding the ventricles (as we don't have connectivity values for them!)
         metr1_SubVol_r.LLatVent                 = [];
         metr1_SubVol_r.RLatVent                 = [];
 
-
-        %% 2 - We can then z-score data in patients relative to controls, so that lower values
-        %      correspond to greater atrophy
-        % Z-score patients' data relative to controls (lower z-score = more atrophy)
-        group        = cov.Dx;
-        controlCode  = 0;
-        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
-        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
-
-        % Mean z-score values across individuals with left TLE (SDx == 3)
-        ct_tle       = mean(ct(find(cov.SDx == 3), :), 1);
-        sv_tle       = mean(sv(find(cov.SDx == 3), :), 1);
-
-
-        %% 3 - Let's then load our functional and structural connectivity matrices
-        %      and compute degree centrality metrics to identify the spatial distribution
-        %      of hubs
-        % Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
-        [fc_ctx, ~, fc_sctx, ~]   = load_fc();
-        [sc_ctx, ~, sc_sctx, ~]   = load_sc();
-
-        % Compute weighted degree centrality measures from the functional connectivity data
-        fc_ctx_dc                 = sum(fc_ctx, 1);
-        fc_sctx_dc                = sum(fc_sctx, 2).';
-
-        % Compute weighted degree centrality measures from the structural connectivity data
-        sc_ctx_dc                 = sum(sc_ctx);
-        sc_sctx_dc                = sum(sc_sctx, 2).';
-
-
-        %% 4 - We can now perform spatial correlations between decreases in cortical thickness/
-        %      subcortical volume and functional/structural degree centrality maps
         % Perform spatial correlations between functional hubs and atrophy
         fc_ctx_r     = corrcoef(fc_ctx_dc, ct_tle);
         fc_sctx_r    = corrcoef(fc_sctx_dc, sv_tle);
@@ -334,7 +260,7 @@ with the spatial distribution of hub regions (greater degree centrality).
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | mega
 
         >>> import matplotlib.pyplot as plt
         >>> import matplotlib.gridspec as gridspec
@@ -367,7 +293,7 @@ with the spatial distribution of hub regions (greater degree centrality).
         >>>                xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
         >>>                xlim=(90, 375), ylim=(-3.5, 0), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
