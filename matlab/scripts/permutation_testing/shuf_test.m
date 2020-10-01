@@ -1,8 +1,8 @@
-function p_shuf = shuf_test(map1, map2, n_rot, type)
+function [p_shuf, r_dist] = shuf_test(map1, map2, n_rot, type)
 
 % shuf_test(map1, map2, n_rot, type);
 % 
-% Usage: p_shuf = spin_test(map1, map2, [n_rot, [type]]);
+% Usage: [p_shuf, r_dist] = spin_test(map1, map2, [n_rot, [type]]);
 % 
 % INPUTS
 %    map1            = one of two subcortical map to be correlated
@@ -12,6 +12,7 @@ function p_shuf = shuf_test(map1, map2, n_rot, type)
 % 
 % OUTPUT
 %    p_shuf          = permutation p-value
+%    r_dist          = distribution of shuffled correlations (number of shuffles * 2)
 % 
 %  Sara Lariviere | a sunny September day 2020
 
@@ -48,7 +49,7 @@ while (r < n_rot)
     end
 end
 
-    rho_emp = corr(map1, map2, 'type', type);     % empirical correlation
+    rho_emp = corr(map1, map2, 'type', type, 'rows', 'pairwise');     % empirical correlation
     
     % permutation of measures
     x_perm = zeros(nroi, n_rot);
@@ -64,8 +65,8 @@ end
     rho_null_xy = zeros(n_rot, 1);
     rho_null_yx = zeros(n_rot, 1);
     for r = 1:n_rot
-        rho_null_xy(r) = corr(x_perm(:, r), map2, 'type', type); % correlate permuted x to unpermuted y
-        rho_null_yx(r) = corr(y_perm(:, r), map1, 'type', type); % correlate permuted y to unpermuted x
+        rho_null_xy(r) = corr(x_perm(:, r), map2, 'type', type, 'rows', 'pairwise'); % correlate permuted x to unpermuted y
+        rho_null_yx(r) = corr(y_perm(:, r), map1, 'type', type, 'rows', 'pairwise'); % correlate permuted y to unpermuted x
     end
 
     % p-value definition depends on the sign of the empirical correlation
@@ -76,6 +77,9 @@ end
         p_perm_xy = sum(rho_null_xy < rho_emp)/n_rot;
         p_perm_yx = sum(rho_null_yx < rho_emp)/n_rot;
     end
+    
+    % null distribution
+    r_dist = [rho_null_xy; rho_null_yx];
 
     % average p-values
     p_shuf = (p_perm_xy + p_perm_yx)/2;

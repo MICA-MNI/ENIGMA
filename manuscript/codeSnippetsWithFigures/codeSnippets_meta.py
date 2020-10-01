@@ -182,7 +182,7 @@ ax2.set_ylabel('Density')
 ax2.set_xlim(-0.8, 0.8)
 ax2.text(ax2.get_xlim()[1] - (((ax2.get_xlim()[1] - ax2.get_xlim()[0]) / 100) * 36),
          ax2.get_ylim()[1] - (((ax2.get_ylim()[1] - ax2.get_ylim()[0]) / 100) * 16),
-         '$p$$_{{{}}}$='.format('spin') + str(round(fc_sctx_p, 2)))
+         '$p$$_{{{}}}$='.format('shuf') + str(round(fc_sctx_p, 2)))
 
 
 

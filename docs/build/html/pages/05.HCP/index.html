@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Load connectivity data! ⏳ &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Free connectivity data! ⏳ &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -105,7 +105,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Network-based atrophy models</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Load connectivity data</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Connectivity data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#load-cortical-connectivity-matrices">Load cortical connectivity matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#load-subcortical-connectivity-matrices">Load subcortical connectivity matrices</a></li>
 </ul>
@@ -178,7 +178,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Load connectivity data! ⏳</li>
+      <li>Free connectivity data! ⏳</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -197,8 +197,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="load-connectivity-data">
-<span id="hcp-connectivity"></span><h1>Load connectivity data<a class="headerlink" href="#load-connectivity-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="connectivity-data">
+<span id="hcp-connectivity"></span><h1>Connectivity data<a class="headerlink" href="#connectivity-data" title="Permalink to this headline">¶</a></h1>
 <p>This page contains descriptions and examples to use HCP connectivity data!
 For details on HCP participants and data processing, please see our manuscript entitled
 <a class="reference external" href="https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1">Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study</a></p>
@@ -245,10 +245,10 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Load and plot functional connectivity data</span>
+<span class="c">% Load and plot functional connectivity data</span>
 <span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">imagesc</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.8</span><span class="p">]);</span>                    <span class="c">% change axis limits here</span>
@@ -257,7 +257,7 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
   <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fcl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
       <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fcl</span><span class="p">)</span>
 
-<span class="c">%% Load and plot structural connectivity data</span>
+<span class="c">% Load and plot structural connectivity data</span>
 <span class="p">[</span><span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">imagesc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                     <span class="c">% change axis limits here</span>
@@ -266,7 +266,7 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
   <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">scl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
       <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">scl</span><span class="p">)</span>
 
-<span class="c">%% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
+<span class="c">% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;L_middletemporal&#39;</span>
 <span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
 <span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>
@@ -303,10 +303,6 @@ from subcortical seeds!</div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s use load_sc() and load_fc() functions to return:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 14 x 68 ndarray (fc/sc: subcortico-cortical connectivity matrix)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 14 x 1 ndarray (fcl/scl: name of subcortical areas)</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot functional connectivity data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fcl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
@@ -323,14 +319,10 @@ from subcortical seeds!</div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Let&#39;s use load_sc() and load_fc() functions to return:</span>
-<span class="c">% 14 x 68 matrix (fc/sc: subcortico-cortical connectivity matrix)</span>
-<span class="c">% 1 x 14 cell array (fcl/scl: name of subcortical areas)</span>
-
-<span class="c">%% Load and plot functional connectivity data</span>
+<span class="c">% Load and plot functional connectivity data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">imagesc</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.5</span><span class="p">]);</span>                    <span class="c">% change axis limits here</span>
@@ -339,7 +331,7 @@ from subcortical seeds!</div>
   <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fcl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
       <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fcl</span><span class="p">)</span>
 
-<span class="c">%% Load and plot structural connectivity data</span>
+<span class="c">% Load and plot structural connectivity data</span>
 <span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
   <span class="n">imagesc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                     <span class="c">% change axis limits here</span>
@@ -348,7 +340,7 @@ from subcortical seeds!</div>
   <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">scl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
       <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">scl</span><span class="p">)</span>
 
-<span class="c">%% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
+<span class="c">% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;Lhippo&#39;</span>
 <span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
 <span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>

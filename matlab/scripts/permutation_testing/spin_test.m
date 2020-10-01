@@ -1,4 +1,4 @@
-function p_spin = spin_test(map1, map2, surface_name, parcellation_name, n_rot, type)
+function [p_spin, r_dist] = spin_test(map1, map2, surface_name, parcellation_name, n_rot, type)
 
 % spin_test(map1, map2, surface_name, n_rot, type);
 % 
@@ -14,7 +14,8 @@ function p_spin = spin_test(map1, map2, surface_name, parcellation_name, n_rot, 
 %
 % OUTPUT
 %   p_spin          = permutation p-value
-%
+%   r_dist          = distribution of shuffled correlations (number of spins * 2)
+% 
 %
 % *** Only works for parcellations in fsaverage5 for now ***
 %
@@ -58,7 +59,7 @@ perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot);
 % 3 - Generate spin permutated p-value
 if size(map1, 1) == 1; map1 = map1.'; end
 if size(map2, 1) == 1; map2 = map2.'; end
-p_spin = perm_sphere_p(map1, map2, perm_id, type);
+[p_spin, r_dist] = perm_sphere_p(map1, map2, perm_id, type);
 
 return
 
@@ -221,7 +222,7 @@ end
 
 return
 
-function p_perm = perm_sphere_p(x, y, perm_id, corr_type)
+function [p_perm null_dist] = perm_sphere_p(x, y, perm_id, corr_type)
 % Function to generate a p-value for the spatial correlation between two parcellated cortical surface maps, 
 % using a set of spherical permutations of regions of interest (which can be generated using the function "rotate_parcellation").
 % The function performs the permutation in both directions; i.e.: by permute both measures, 
@@ -246,7 +247,7 @@ end
 nroi = size(perm_id,1);  % number of regions
 nperm = size(perm_id,2); % number of permutations
 
-rho_emp = corr(x, y, 'type', corr_type);     % empirical correlation
+rho_emp = corr(x, y, 'type', corr_type, 'rows', 'pairwise');     % empirical correlation
 
 % permutation of measures
 x_perm = zeros(nroi,nperm);
@@ -261,8 +262,8 @@ end
 % corrrelation to unpermuted measures
 rho_null_xy = zeros(nperm,1);
 for r = 1:nperm
-    rho_null_xy(r) = corr(x_perm(:,r),y,'type',corr_type); % correlate permuted x to unpermuted y
-    rho_null_yx(r) = corr(y_perm(:,r),x,'type',corr_type); % correlate permuted y to unpermuted x
+    rho_null_xy(r) = corr(x_perm(:,r), y, 'type', corr_type, 'rows', 'pairwise'); % correlate permuted x to unpermuted y
+    rho_null_yx(r) = corr(y_perm(:,r), x, 'type', corr_type, 'rows', 'pairwise'); % correlate permuted y to unpermuted x
 end
 
 % p-value definition depends on the sign of the empirical correlation
@@ -273,6 +274,9 @@ else
     p_perm_xy = sum(rho_null_xy < rho_emp)/nperm;
     p_perm_yx = sum(rho_null_yx < rho_emp)/nperm;
 end
+
+% null distributions
+null_dist = [rho_null_xy; rho_null_yx.'];
 
 % average p-values
 p_perm = (p_perm_xy + p_perm_yx)/2;

@@ -2,7 +2,7 @@
 
 .. title:: Free connectivity data! ⏳
 
-Functional and structural connectivity data
+Connectivity data
 ==================================================
 
 This page contains descriptions and examples to use HCP connectivity data!
@@ -46,10 +46,10 @@ Following the examples below, we can load connectivity data and extract seed-bas
 
    .. code-tab:: matlab
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        %% Load and plot functional connectivity data
+        % Load and plot functional connectivity data
         [fc, fcl, ~, ~] = load_fc();
         f = figure,
           imagesc(fc, [0 0.8]);                    % change axis limits here
@@ -58,7 +58,7 @@ Following the examples below, we can load connectivity data and extract seed-bas
           set(gca, 'YTick', 1:1:length(fcl), ...   % display name of regions on y-axis
               'YTickLabel', fcl)    
 
-        %% Load and plot structural connectivity data
+        % Load and plot structural connectivity data
         [sc, scl, ~, ~] = load_sc();
         f = figure,
           imagesc(sc, [0 10]);                     % change axis limits here
@@ -67,7 +67,7 @@ Following the examples below, we can load connectivity data and extract seed-bas
           set(gca, 'YTick', 1:1:length(scl), ...   % display name of regions on y-axis
               'YTickLabel', scl)    
 
-        %% We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
+        % We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         seed = 'L_middletemporal'
         seed_conn_fc = fc(find(strcmp(scl, seed)), :)   % extract FC row corresponding to the seed
         seed_conn_sc = sc(find(strcmp(scl, seed)), :)   % extract SC row corresponding to the seed
@@ -95,10 +95,6 @@ Load subcortical connectivity matrices
         >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from nilearn import plotting
 
-        >>> # Let's use load_sc() and load_fc() functions to return:
-        >>> # 14 x 68 ndarray (fc/sc: subcortico-cortical connectivity matrix)
-        >>> # 14 x 1 ndarray (fcl/scl: name of subcortical areas)
-
         >>> # Load and plot functional connectivity data
         >>> _, _, fc, fcl = load_fc()
         >>> fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.5, vmin=0, cmap='Reds')
@@ -115,14 +111,10 @@ Load subcortical connectivity matrices
 
    .. code-tab:: matlab
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        %% Let's use load_sc() and load_fc() functions to return:
-        % 14 x 68 matrix (fc/sc: subcortico-cortical connectivity matrix)
-        % 1 x 14 cell array (fcl/scl: name of subcortical areas)  
-
-        %% Load and plot functional connectivity data
+        % Load and plot functional connectivity data
         [~, ~, fc, fcl] = load_fc();
         f = figure,
           imagesc(fc, [0 0.5]);                    % change axis limits here
@@ -131,7 +123,7 @@ Load subcortical connectivity matrices
           set(gca, 'YTick', 1:1:length(fcl), ...   % display name of regions on y-axis
               'YTickLabel', fcl)    
 
-        %% Load and plot structural connectivity data
+        % Load and plot structural connectivity data
         [~, ~, sc, scl] = load_sc();
         f = figure,
           imagesc(sc, [0 10]);                     % change axis limits here
@@ -140,7 +132,7 @@ Load subcortical connectivity matrices
           set(gca, 'YTick', 1:1:length(scl), ...   % display name of regions on y-axis
               'YTickLabel', scl)    
 
-        %% We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
+        % We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         seed = 'Lhippo'
         seed_conn_fc = fc(find(strcmp(scl, seed)), :)   % extract FC row corresponding to the seed
         seed_conn_sc = sc(find(strcmp(scl, seed)), :)   % extract SC row corresponding to the seed
