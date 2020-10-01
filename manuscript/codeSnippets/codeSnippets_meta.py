@@ -84,11 +84,14 @@ Figure 5d. Permutation testing
 from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
 # Spin permutation testing for two cortical maps
-fc_ctx_p = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=1000)
+fc_ctx_p = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=100)
 
 # Shuf permutation testing for two subcortical maps
 fc_sctx_p = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000)
 
+map1 = np.append(fc_ctx_dc, fc_sctx_dc)
+map2 = np.append(CT_d, SV_d_noVent)
+p, d = shuf_test(map1, map2, n_rot=1000, spin_dist=True)
 
 """
 Figure 6a. Disease epicenter mapping

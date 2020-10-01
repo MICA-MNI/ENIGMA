@@ -267,12 +267,14 @@ the empirical distribution determined by the ensemble of spatially permuted corr
         >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
         >>> # Spin permutation testing for two cortical maps
-        >>> fc_ctx_p = spin_test(fc_ctx_dc, ct_tle, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, type='pearson')
-        >>> sc_ctx_p = spin_test(sc_ctx_dc, ct_tle, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, type='pearson')
+        >>> fc_ctx_p, fc_ctx_d = spin_test(dc_f, ct_tle.to_numpy(), surface_name='fsa5', parcellation_name='aparc',
+        >>>                                n_rot=1000, type='pearson', spin_dist=True)
+        >>> sc_ctx_p, sc_ctx_d = spin_test(dc_s, ct_tle.to_numpy(), surface_name='fsa5', parcellation_name='aparc', 
+        >>>                                n_rot=100, type='pearson', spin_dist=True)
 
         >>> # Shuf permutation testing for two subcortical maps
-        >>> fc_sctx_p = shuf_test(fc_sctx_dc, sv_tle, n_rot=1000, type='pearson')
-        >>> sc_sctx_p = shuf_test(sc_sctx_dc, sv_tle, n_rot=1000, type='pearson')
+        >>> fc_sctx_p, fc_sctx_d = shuf_test(dc_f, sv_tle.to_numpy(), n_rot=1000, type='pearson', spin_dist=True)
+        >>> sc_sctx_p, sc_sctx_d = shuf_test(dc_s, sv_tle.to_numpy(), n_rot=1000, type='pearson', spin_dist=True)
 
    .. code-tab:: matlab **Matlab** | mega
 
@@ -280,12 +282,12 @@ the empirical distribution determined by the ensemble of spatially permuted corr
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Spin permutation testing for two cortical maps
-        fc_ctx_p  = spin_test(fc_ctx_dc, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
-        sc_ctx_p  = spin_test(sc_ctx_dc, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
+        [fc_ctx_p, fc_ctx_d]  = spin_test(dc_f, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
+        [sc_ctx_p, sc_ctx_d]  = spin_test(dc_s, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
 
         % Shuf permutation testing for two subcortical maps 
-        fc_sctx_p = shuf_test(fc_sctx_dc, sv_tle, 1000, 'pearson');
-        sc_sctx_p = shuf_test(sc_sctx_dc, sv_tle, 1000, 'pearson');
+        [fc_sctx_p, fc_sctx_d] = shuf_test(dc_f, sv_tle, 1000, 'pearson');
+        [sc_sctx_p, sc_sctx_d] = shuf_test(dc_s, sv_tle, 1000, 'pearson');
 
 
 |

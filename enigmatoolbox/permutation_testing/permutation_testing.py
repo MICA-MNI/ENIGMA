@@ -5,7 +5,7 @@ Permutation functions
 import os
 import nibabel as nb
 import numpy as np
-import scipy.stats
+import pandas as pd
 import warnings
 
 from ..datasets import load_fsa5, load_conte69
@@ -188,10 +188,8 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
     nroi = perm_id.shape[0]   # number of regions
     nperm = perm_id.shape[1]  # number of permutatons
 
-    if corr_type is 'pearson':       # empirical correlation
-        rho_emp = scipy.stats.pearsonr(x, y)[0]
-    elif corr_type is 'spearman':
-        rho_emp = scipy.stats.spearmanr(x, y)[0]
+    # empirical correlation
+    rho_emp = pd.Series(x).corr(pd.Series(y), method=corr_type)
 
     # permutation of measures
     x_perm = np.empty((0, nroi))
@@ -211,14 +209,9 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
     # correlation to unpermuted measures
     rho_null_xy = []
     rho_null_yx = []
-    if corr_type is 'pearson':
-        for rr in range(nperm):
-            rho_null_xy = np.append(rho_null_xy, scipy.stats.pearsonr(x_perm[:, rr], y)[0])
-            rho_null_yx = np.append(rho_null_yx, scipy.stats.pearsonr(x, y_perm[:, rr])[0])
-    elif corr_type is 'spearman':
-        for rr in range(nperm):
-            rho_null_xy = np.append(rho_null_xy, scipy.stats.spearmanr(x_perm[:, rr], y)[0])
-            rho_null_yx = np.append(rho_null_yx, scipy.stats.spearmanr(x, y_perm[:, rr])[0])
+    for rr in range(nperm):
+        rho_null_xy = np.append(rho_null_xy, pd.Series(x_perm[:, rr]).corr(pd.Series(y), method=corr_type))
+        rho_null_yx = np.append(rho_null_yx, pd.Series(x).corr(pd.Series(y_perm[:, rr]), method=corr_type))
 
     # p-value definition depends on the sign of the empirical correlation
     if rho_emp > 0:
@@ -250,7 +243,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
 
     OUTPUT
        p_spin          = permutation p-value
-       r_dist          = distribution of spinned correlations (number of spin rotations * 2)
+       r_dist          = distribution of spinned correlations (number of spins * 2)
 
 
     Functions above from here
@@ -278,7 +271,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot)
 
     # generate spin permuted p-value
-    p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, spin_dist=spin_dist)
+    p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, spin_dist=True)
 
     if spin_dist is True:
         return p_spin, r_dist
@@ -324,10 +317,7 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
             print('permutation ' + str(r) + ' of ' + str(n_rot))
 
     # empirical correlation
-    if type is 'pearson':
-        rho_emp = scipy.stats.pearsonr(map1, map2)[0]
-    elif type is 'spearman':
-        rho_emp = scipy.stats.spearmanr(map1, map2)[0]
+    rho_emp = pd.Series(map1).corr(pd.Series(map2), method=type)
 
     # permutation of measures
     x_perm = np.empty((0, nroi))
@@ -347,14 +337,9 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
     # correlation to unpermuted measures
     rho_null_xy = []
     rho_null_yx = []
-    if type is 'pearson':
-        for rr in range(n_rot):
-            rho_null_xy = np.append(rho_null_xy, scipy.stats.pearsonr(x_perm[:, rr], map2)[0])
-            rho_null_yx = np.append(rho_null_yx, scipy.stats.pearsonr(map1, y_perm[:, rr])[0])
-    elif type is 'spearman':
-        for rr in range(n_rot):
-            rho_null_xy = np.append(rho_null_xy, scipy.stats.spearmanr(x_perm[:, rr], map2)[0])
-            rho_null_yx = np.append(rho_null_yx, scipy.stats.spearmanr(map1, y_perm[:, rr])[0])
+    for rr in range(n_rot):
+        rho_null_xy = np.append(rho_null_xy, pd.Series(x_perm[:, rr]).corr(pd.Series(map2), method=type))
+        rho_null_yx = np.append(rho_null_yx, pd.Series(map1).corr(pd.Series(y_perm[:, rr]), method=type))
 
     # p-value definition depends on the sign of the empirical correlation
     if rho_emp > 0:
