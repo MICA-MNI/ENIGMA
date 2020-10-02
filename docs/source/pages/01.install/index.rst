@@ -3,7 +3,7 @@
 .. Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
     pip install enigmatoolbox
 
-.. title:: Install me! 👶🏽
+.. title:: Install me
 
 Installation
 ==============================
@@ -37,4 +37,4 @@ Installation
         To install the MATLAB toolbox simply `download <https://github.com/MICA-MNI/ENIGMA/archive/0.0.1.zip>`_ 
         and unzip the GitHub toolbox, and run the following command in MATLAB: ::
 
-            addpath('/path/to/ENIGMA/matlab/')
+            addpath(genpath('/path/to/ENIGMA/matlab/'))

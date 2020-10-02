@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Free connectivity data! ⏳ &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Load connectivity data &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -95,8 +95,8 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Usage notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Instructions for tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
@@ -178,7 +178,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Free connectivity data! ⏳</li>
+      <li>Load connectivity data</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -229,18 +229,18 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot functional connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fcl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot cortical functional connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">fc_ctx_labels</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fc_ctx_labels</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot structural connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot cortical structural connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">sc_ctx_labels</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">sc_ctx_labels</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed</span> <span class="o">=</span> <span class="s2">&quot;L_middletemporal&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fcl</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract FC row corresponding to the seed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scl</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract SC row corresponding to the seed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract FC row corresponding to the seed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract SC row corresponding to the seed</span>
 </pre></div>
 </div>
 </div>
@@ -249,27 +249,27 @@ the surface template! Simply follow our tutorial <a class="reference internal" h
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">% Load and plot functional connectivity data</span>
-<span class="p">[</span><span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="n">fc_ctx_labels</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">imagesc</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.8</span><span class="p">]);</span>                    <span class="c">% change axis limits here</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">fc_ctx</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.8</span><span class="p">]);</span>                <span class="c">% change axis limits here</span>
   <span class="n">colormap</span><span class="p">(</span><span class="n">Reds</span><span class="p">);</span>                          <span class="c">% change colormap here</span>
   <span class="n">colorbar</span><span class="p">;</span>                                <span class="c">% display colorbar</span>
-  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fcl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
-      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fcl</span><span class="p">)</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">),</span> <span class="c">...</span>
+      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fc_ctx_labels</span><span class="p">)</span>         <span class="c">% display name of regions on y-axis</span>
 
 <span class="c">% Load and plot structural connectivity data</span>
-<span class="p">[</span><span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+<span class="p">[</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="n">sc_ctx_labels</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">imagesc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                     <span class="c">% change axis limits here</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">sc_ctx</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                 <span class="c">% change axis limits here</span>
   <span class="n">colormap</span><span class="p">(</span><span class="n">Blues</span><span class="p">);</span>                         <span class="c">% change colormap here</span>
   <span class="n">colorbar</span><span class="p">;</span>                                <span class="c">% display colorbar</span>
-  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">scl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
-      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">scl</span><span class="p">)</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">),</span> <span class="c">...</span>
+      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">sc_ctx_labels</span><span class="p">)</span>         <span class="c">% display name of regions on y-axis</span>
 
 <span class="c">% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;L_middletemporal&#39;</span>
-<span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
-<span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>
+<span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc_ctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
+<span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc_ctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>
 </pre></div>
 </div>
 </div>
@@ -303,18 +303,18 @@ from subcortical seeds!</div>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_sc</span><span class="p">,</span> <span class="n">load_fc</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot functional connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fcl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot subcortical functional connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="n">fc_sctx_labels</span> <span class="o">=</span> <span class="n">load_fc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">fc_sctx_labels</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot structural connectivity data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">scl</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Load and plot subcortical structural connectivity data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="n">sc_sctx_labels</span> <span class="o">=</span> <span class="n">load_sc</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sc_plot</span> <span class="o">=</span> <span class="n">plotting</span><span class="o">.</span><span class="n">plot_matrix</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">labels</span><span class="o">=</span><span class="n">sc_sctx_labels</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># As above, we can also extract seed-based connectivity! Here, we chose the left hippocampus as example seed:</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed</span> <span class="o">=</span> <span class="s2">&quot;Lhippo&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fcl</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract FC row corresponding to the seed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scl</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract SC row corresponding to the seed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc_sctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fc_sctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract FC row corresponding to the seed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc_sctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sc_sctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>   <span class="c1"># extract SC row corresponding to the seed</span>
 </pre></div>
 </div>
 </div>
@@ -323,27 +323,27 @@ from subcortical seeds!</div>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
 <span class="c">% Load and plot functional connectivity data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">fcl</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">fc_sctx</span><span class="p">,</span> <span class="n">fc_sctx_labels</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_fc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">imagesc</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.5</span><span class="p">]);</span>                    <span class="c">% change axis limits here</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">fc_sctx</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.5</span><span class="p">]);</span>               <span class="c">% change axis limits here</span>
   <span class="n">colormap</span><span class="p">(</span><span class="n">Reds</span><span class="p">);</span>                          <span class="c">% change colormap here</span>
   <span class="n">colorbar</span><span class="p">;</span>                                <span class="c">% display colorbar</span>
-  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fcl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
-      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fcl</span><span class="p">)</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">fc_sctx_labels</span><span class="p">),</span> <span class="c">...</span>
+      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">fc_sctx_labels</span><span class="p">)</span>        <span class="c">% display name of regions on y-axis</span>
 
 <span class="c">% Load and plot structural connectivity data</span>
-<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc</span><span class="p">,</span> <span class="n">scl</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
+<span class="p">[</span><span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">sc_sctx</span><span class="p">,</span> <span class="n">sc_sctx_labels</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_sc</span><span class="p">();</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">imagesc</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                     <span class="c">% change axis limits here</span>
+  <span class="n">imagesc</span><span class="p">(</span><span class="n">sc_sctx</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">10</span><span class="p">]);</span>                <span class="c">% change axis limits here</span>
   <span class="n">colormap</span><span class="p">(</span><span class="n">Blues</span><span class="p">);</span>                         <span class="c">% change colormap here</span>
   <span class="n">colorbar</span><span class="p">;</span>                                <span class="c">% display colorbar</span>
-  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">scl</span><span class="p">),</span> <span class="c">...   % display name of regions on y-axis</span>
-      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">scl</span><span class="p">)</span>
+  <span class="n">set</span><span class="p">(</span><span class="n">gca</span><span class="p">,</span> <span class="s">&#39;YTick&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">sc_sctx_labels</span><span class="p">),</span> <span class="c">...</span>
+      <span class="s">&#39;YTickLabel&#39;</span><span class="p">,</span> <span class="n">sc_sctx_labels</span><span class="p">)</span>        <span class="c">% display name of regions on y-axis</span>
 
 <span class="c">% We can also extract seed-based connectivity! Let&#39;s pick the middle temporal gyrus as example seed:</span>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;Lhippo&#39;</span>
-<span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
-<span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">scl</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>
+<span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc_sctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">fc_sctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract FC row corresponding to the seed</span>
+<span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc_sctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">sc_sctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>   <span class="c">% extract SC row corresponding to the seed</span>
 </pre></div>
 </div>
 </div>
@@ -384,7 +384,7 @@ from subcortical seeds!</div>
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by @saratheriver 🤠 
 
 </footer>
 
@@ -421,7 +421,7 @@ from subcortical seeds!</div>
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by @saratheriver 🤠 
 
   </footer>
 

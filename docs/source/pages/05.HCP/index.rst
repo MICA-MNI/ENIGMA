@@ -1,6 +1,6 @@
 .. _hcp_connectivity:
 
-.. title:: Free connectivity data! ⏳
+.. title:: Load connectivity data
 
 Connectivity data
 ==================================================
@@ -30,18 +30,18 @@ Following the examples below, we can load connectivity data and extract seed-bas
         >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from nilearn import plotting
 
-        >>> # Load and plot functional connectivity data
-        >>> fc, fcl, _, _ = load_fc()
-        >>> fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.8, vmin=0, cmap='Reds')
+        >>> # Load and plot cortical functional connectivity data
+        >>> fc_ctx, fc_ctx_labels, _, _ = load_fc()
+        >>> fc_plot = plotting.plot_matrix(fc_ctx, figure=(9, 9), labels=fc_ctx_labels, vmax=0.8, vmin=0, cmap='Reds')
 
-        >>> # Load and plot structural connectivity data
-        >>> sc, scl, _, _ = load_sc()
-        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=10, vmin=0, cmap='Blues')
+        >>> # Load and plot cortical structural connectivity data
+        >>> sc_ctx, sc_ctx_labels, _, _ = load_sc()
+        >>> sc_plot = plotting.plot_matrix(sc_ctx, figure=(9, 9), labels=sc_ctx_labels, vmax=10, vmin=0, cmap='Blues')
 
         >>> # We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         >>> seed = "L_middletemporal"
-        >>> seed_conn_fc = fc[[i for i, item in enumerate(fcl) if seed in item],]   # extract FC row corresponding to the seed
-        >>> seed_conn_sc = sc[[i for i, item in enumerate(scl) if seed in item],]   # extract SC row corresponding to the seed
+        >>> seed_conn_fc = fc_ctx[[i for i, item in enumerate(fc_ctx_labels) if seed in item],]   # extract FC row corresponding to the seed
+        >>> seed_conn_sc = sc_ctx[[i for i, item in enumerate(sc_ctx_labels) if seed in item],]   # extract SC row corresponding to the seed
 
 
    .. code-tab:: matlab
@@ -50,27 +50,27 @@ Following the examples below, we can load connectivity data and extract seed-bas
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load and plot functional connectivity data
-        [fc, fcl, ~, ~] = load_fc();
+        [fc_ctx, fc_ctx_labels, ~, ~] = load_fc();
         f = figure,
-          imagesc(fc, [0 0.8]);                    % change axis limits here
+          imagesc(fc_ctx, [0 0.8]);                % change axis limits here
           colormap(Reds);                          % change colormap here
           colorbar;                                % display colorbar
-          set(gca, 'YTick', 1:1:length(fcl), ...   % display name of regions on y-axis
-              'YTickLabel', fcl)    
+          set(gca, 'YTick', 1:1:length(fc_ctx_labels), ...   
+              'YTickLabel', fc_ctx_labels)         % display name of regions on y-axis
 
         % Load and plot structural connectivity data
-        [sc, scl, ~, ~] = load_sc();
+        [sc_ctx, sc_ctx_labels, ~, ~] = load_sc();
         f = figure,
-          imagesc(sc, [0 10]);                     % change axis limits here
+          imagesc(sc_ctx, [0 10]);                 % change axis limits here
           colormap(Blues);                         % change colormap here
           colorbar;                                % display colorbar
-          set(gca, 'YTick', 1:1:length(scl), ...   % display name of regions on y-axis
-              'YTickLabel', scl)    
+          set(gca, 'YTick', 1:1:length(sc_ctx_labels), ...   
+              'YTickLabel', sc_ctx_labels)         % display name of regions on y-axis
 
         % We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         seed = 'L_middletemporal'
-        seed_conn_fc = fc(find(strcmp(scl, seed)), :)   % extract FC row corresponding to the seed
-        seed_conn_sc = sc(find(strcmp(scl, seed)), :)   % extract SC row corresponding to the seed
+        seed_conn_fc = fc_ctx(find(strcmp(fc_ctx_labels, seed)), :)   % extract FC row corresponding to the seed
+        seed_conn_sc = sc_ctx(find(strcmp(sc_ctx_labels, seed)), :)   % extract SC row corresponding to the seed
      
 
 .. image:: ./examples/example_figs/ctx_conn.png
@@ -95,18 +95,18 @@ Load subcortical connectivity matrices
         >>> from enigmatoolbox.datasets import load_sc, load_fc
         >>> from nilearn import plotting
 
-        >>> # Load and plot functional connectivity data
-        >>> _, _, fc, fcl = load_fc()
-        >>> fc_plot = plotting.plot_matrix(fc, figure=(9, 9), labels=fcl, vmax=0.5, vmin=0, cmap='Reds')
+        >>> # Load and plot subcortical functional connectivity data
+        >>> _, _, fc_sctx, fc_sctx_labels = load_fc()
+        >>> fc_plot = plotting.plot_matrix(fc_sctx, figure=(9, 9), labels=fc_sctx_labels, vmax=0.5, vmin=0, cmap='Reds')
 
-        >>> # Load and plot structural connectivity data
-        >>> _, _, sc, scl = load_sc()
-        >>> sc_plot = plotting.plot_matrix(sc, figure=(9, 9), labels=scl, vmax=10, vmin=0, cmap='Blues')
+        >>> # Load and plot subcortical structural connectivity data
+        >>> _, _, sc_sctx, sc_sctx_labels = load_sc()
+        >>> sc_plot = plotting.plot_matrix(sc_sctx, figure=(9, 9), labels=sc_sctx_labels, vmax=10, vmin=0, cmap='Blues')
 
         >>> # As above, we can also extract seed-based connectivity! Here, we chose the left hippocampus as example seed:
         >>> seed = "Lhippo"
-        >>> seed_conn_fc = fc[[i for i, item in enumerate(fcl) if seed in item],]   # extract FC row corresponding to the seed
-        >>> seed_conn_sc = sc[[i for i, item in enumerate(scl) if seed in item],]   # extract SC row corresponding to the seed
+        >>> seed_conn_fc = fc_sctx[[i for i, item in enumerate(fc_sctx_labels) if seed in item],]   # extract FC row corresponding to the seed
+        >>> seed_conn_sc = sc_sctx[[i for i, item in enumerate(sc_sctx_labels) if seed in item],]   # extract SC row corresponding to the seed
 
 
    .. code-tab:: matlab
@@ -115,27 +115,27 @@ Load subcortical connectivity matrices
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Load and plot functional connectivity data
-        [~, ~, fc, fcl] = load_fc();
+        [~, ~, fc_sctx, fc_sctx_labels] = load_fc();
         f = figure,
-          imagesc(fc, [0 0.5]);                    % change axis limits here
+          imagesc(fc_sctx, [0 0.5]);               % change axis limits here
           colormap(Reds);                          % change colormap here
           colorbar;                                % display colorbar
-          set(gca, 'YTick', 1:1:length(fcl), ...   % display name of regions on y-axis
-              'YTickLabel', fcl)    
+          set(gca, 'YTick', 1:1:length(fc_sctx_labels), ...   
+              'YTickLabel', fc_sctx_labels)        % display name of regions on y-axis
 
         % Load and plot structural connectivity data
-        [~, ~, sc, scl] = load_sc();
+        [~, ~, sc_sctx, sc_sctx_labels] = load_sc();
         f = figure,
-          imagesc(sc, [0 10]);                     % change axis limits here
+          imagesc(sc_sctx, [0 10]);                % change axis limits here
           colormap(Blues);                         % change colormap here
           colorbar;                                % display colorbar
-          set(gca, 'YTick', 1:1:length(scl), ...   % display name of regions on y-axis
-              'YTickLabel', scl)    
+          set(gca, 'YTick', 1:1:length(sc_sctx_labels), ...   
+              'YTickLabel', sc_sctx_labels)        % display name of regions on y-axis
 
         % We can also extract seed-based connectivity! Let's pick the middle temporal gyrus as example seed:
         seed = 'Lhippo'
-        seed_conn_fc = fc(find(strcmp(scl, seed)), :)   % extract FC row corresponding to the seed
-        seed_conn_sc = sc(find(strcmp(scl, seed)), :)   % extract SC row corresponding to the seed
+        seed_conn_fc = fc_sctx(find(strcmp(fc_sctx_labels, seed)), :)   % extract FC row corresponding to the seed
+        seed_conn_sc = sc_sctx(find(strcmp(sc_sctx_labels, seed)), :)   % extract SC row corresponding to the seed
 
 
 .. image:: ./examples/example_figs/sctx_conn.png

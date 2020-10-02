@@ -1,6 +1,6 @@
 .. _load_sumstats:
 
-.. title:: Load summary statistics! 📂
+.. title:: Load summary statistics
 
 Summary statistics
 ======================================
@@ -14,11 +14,15 @@ several ENIGMA Working Groups!
      Get in touch with us `here <https://github.com/MICA-MNI/ENIGMA/issues>`_!
 
 
-|
-
+\* 📸 *indicates case-control tables used in the code snippets.*
 
 22q11.2 deletion syndrome
 -----------------------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls 📸
+| ↪ CortSurf_case_vs_controls 📸
+| ↪ CortThick_psychP_vs_psychN
+| ↪ CortSurf_psychP_vs_psychN
 
 .. tabs::
 
@@ -29,14 +33,13 @@ several ENIGMA Working Groups!
         >>> # Load summary statistics for ENIGMA-22q
         >>> sum_stats = load_summary_stats('22q')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness and surface area tables
+        >>> CT = sum_stats['CortThick_case_vs_controls']
+        >>> SA = sum_stats['CortSurf_case_vs_controls']
 
-        CortThick_case_vs_controls
-        CortSurf_case_vs_controls
-        CortThick_psychP_vs_psychN
-        CortSurf_psychP_vs_psychN
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+        >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -46,13 +49,13 @@ several ENIGMA Working Groups!
         % Load summary statistics for ENIGMA-22q
         sum_stats = load_summary_stats('22q');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control cortical thickness and surface area tables
+        CT = sum_stats.CortThick_case_vs_controls;
+        SA = sum_stats.CortSurf_case_vs_controls;
 
-        CortThick_case_vs_controls: [68×10 table]
-        CortSurf_case_vs_controls: [68×10 table]
-        CortThick_psychP_vs_psychN: [68×10 table]
-        CortSurf_psychP_vs_psychN: [68×10 table]
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+        SA_d = SA.d_icv;
 
 
 |
@@ -60,6 +63,15 @@ several ENIGMA Working Groups!
 
 Attention deficit hyperactivity disorder
 ------------------------------------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls_allages 
+| ↪ CortSurf_case_vs_controls_allages
+| ↪ CortThick_case_vs_controls_adult 📸
+| ↪ CortSurf_case_vs_controls_adult 📸
+| ↪ CortThick_case_vs_controls_adolescent
+| ↪ CortSurf_case_vs_controls_adolescent
+| ↪ CortThick_case_vs_controls_pediatric
+| ↪ CortSurf_case_vs_controls_pediatric
 
 .. tabs::
 
@@ -70,18 +82,13 @@ Attention deficit hyperactivity disorder
         >>> # Load summary statistics for ENIGMA-ADHD
         >>> sum_stats = load_summary_stats('adhd')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness and surface area tables
+        >>> CT = sum_stats['CortThick_case_vs_controls_adult']
+        >>> SA = sum_stats['CortSurf_case_vs_controls_adult']
 
-        CortThick_case_vs_controls_allages
-        CortSurf_case_vs_controls_allages
-        CortThick_case_vs_controls_adult
-        CortSurf_case_vs_controls_adult
-        CortThick_case_vs_controls_adolescent
-        CortSurf_case_vs_controls_adolescent
-        CortThick_case_vs_controls_pediatric
-        CortSurf_case_vs_controls_pediatric
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+        >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -91,17 +98,13 @@ Attention deficit hyperactivity disorder
         % Load summary statistics for ENIGMA-ADHD
         sum_stats = load_summary_stats('adhd');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control cortical thickness and surface area tables
+        CT = sum_stats.CortThick_case_vs_controls_adult;
+        SA = sum_stats.CortSurf_case_vs_controls_adult;
 
-        CortThick_case_vs_controls_allages: [68×10 table]
-        CortSurf_case_vs_controls_allages: [68×10 table]
-        CortThick_case_vs_controls_adult: [68×10 table]
-        CortSurf_case_vs_controls_adult: [68×10 table]
-        CortThick_case_vs_controls_adolescent: [68×10 table]
-        CortSurf_case_vs_controls_adolescent: [68×10 table]
-        CortThick_case_vs_controls_pediatric: [68×10 table]
-        CortSurf_case_vs_controls_pediatric: [68×10 table]
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+        SA_d = SA.d_icv;
 
 
 |
@@ -109,6 +112,9 @@ Attention deficit hyperactivity disorder
 
 Autism spectrum disorder
 -------------------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls_meta_analysis 📸
+| ↪ CortThick_case_vs_controls_mega_analysis
 
 .. tabs::
 
@@ -119,12 +125,11 @@ Autism spectrum disorder
         >>> # Load summary statistics for ENIGMA-Autism
         >>> sum_stats = load_summary_stats('asd')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness table
+        >>> CT = sum_stats['CortThick_case_vs_controls_meta_analysis']
 
-        CortThick_case_vs_controls_meta_analysis
-        CortThick_case_vs_controls_mega_analysis
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -134,11 +139,11 @@ Autism spectrum disorder
         % Load summary statistics for ENIGMA-Autism
         sum_stats = load_summary_stats('asd');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control cortical thickness table
+        CT = sum_stats.CortThick_case_vs_controls_meta_analysis;
 
-        CortThick_case_vs_controls_meta_analysis: [68×10 table]
-        CortThick_case_vs_controls_mega_analysis: [68×10 table]
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
 
 
 |
@@ -146,6 +151,8 @@ Autism spectrum disorder
 
 Bipolar disorder
 ----------------------------
+| **Available summary statistics tables**
+| ↪ CortSurf_case_vs_controls 📸
 
 .. tabs::
 
@@ -156,11 +163,8 @@ Bipolar disorder
         >>> # Load summary statistics for ENIGMA-BD
         >>> sum_stats = load_summary_stats('bipolar')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
-
-        CortSurf_case_vs_controls
+        >>> # Get case-control surface area table
+        >>> SA = sum_stats['CortSurf_case_vs_controls']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -170,10 +174,11 @@ Bipolar disorder
         % Load summary statistics for ENIGMA-BD
         sum_stats = load_summary_stats('bipolar');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control surface area table
+        SA = sum_stats.CortSurf_case_vs_controls;
 
-        CortSurf_case_controls: [68×10 table]
+        % Extract Cohen's d values
+        SA_d = SA.d_icv;
 
 
 |
@@ -181,6 +186,15 @@ Bipolar disorder
 
 Epilepsy
 ----------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls_allepilepsy
+| ↪ SubVol_case_vs_controls_allepilepsy
+| ↪ CortThick_case_vs_controls_gge
+| ↪ SubVol_case_vs_controls_gge
+| ↪ CortThick_case_vs_controls_ltle 📸
+| ↪ SubVol_case_vs_controls_ltle 📸
+| ↪ CortThick_case_vs_controls_rtle
+| ↪ SubVol_case_vs_controls_rtle
 
 .. tabs::
 
@@ -191,18 +205,13 @@ Epilepsy
         >>> # Load summary statistics for ENIGMA-Epilepsy
         >>> sum_stats = load_summary_stats('epilepsy')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control subcortical volume and cortical thickness tables
+        >>> SV = sum_stats['SubVol_case_vs_controls_ltle']
+        >>> CT = sum_stats['CortThick_case_vs_controls_ltle']
 
-        CortThick_case_vs_controls_allepilepsy
-        SubVol_case_vs_controls_allepilepsy
-        CortThick_case_vs_controls_gge
-        SubVol_case_vs_controls_gge
-        CortThick_case_vs_controls_ltle
-        SubVol_case_vs_controls_ltle
-        CortThick_case_vs_controls_rtle
-        SubVol_case_vs_controls_rtle
+        >>> # Extract Cohen's d values
+        >>> SV_d = SV['d_icv']
+        >>> CT_d = CT['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -212,17 +221,13 @@ Epilepsy
         % Load summary statistics for ENIGMA-Epilepsy
         sum_stats = load_summary_stats('epilepsy');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control subcortical volume and cortical thickness tables
+        SV = sum_stats.SubVol_case_vs_controls_ltle;
+        CT = sum_stats.CortThick_case_vs_controls_ltle;
 
-        CortThick_case_vs_controls_allepilepsy: [68×10 table]
-        SubVol_case_vs_controls_allepilepsy: [16×10 table]
-        CortThick_case_vs_controls_gge: [68×10 table]
-        SubVol_case_vs_controls_gge: [16×10 table]
-        CortThick_case_vs_controls_ltle: [68×10 table]
-        SubVol_case_vs_controls_ltle: [16×10 table]
-        CortThick_case_vs_controls_rtle: [68×10 table]
-        SubVol_case_vs_controls_rtle: [16×10 table]
+        % Extract Cohen's d values
+        SV_d = SV.d_icv;
+        CT_d = CT.d_icv;
 
 
 |
@@ -230,6 +235,11 @@ Epilepsy
 
 Major depressive disorder
 ----------------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls_adult 📸
+| ↪ CortSurf_case_vs_controls_adult 📸
+| ↪ CortThick_case_vs_controls_adolescent
+| ↪ CortSurf_case_vs_controls_adolescent
 
 .. tabs::
 
@@ -240,14 +250,13 @@ Major depressive disorder
         >>> # Load summary statistics for ENIGMA-MDD
         >>> sum_stats = load_summary_stats('depression')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness and surface area tables
+        >>> CT = sum_stats['CortThick_case_vs_controls_adult']
+        >>> SA = sum_stats['CortSurf_case_vs_controls_adult']
 
-        CortThick_case_vs_controls_adult
-        CortSurf_case_vs_controls_adult
-        CortThick_case_vs_controls_adolescent
-        CortSurf_case_vs_controls_adolescent
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+        >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -257,13 +266,13 @@ Major depressive disorder
         % Load summary statistics for ENIGMA-MDD
         sum_stats = load_summary_stats('depression');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control cortical thickness and surface area tables
+        CT = sum_stats.CortThick_case_vs_controls_adult;
+        SA = sum_stats.CortSurf_case_vs_controls_adult;
 
-        CortThick_case_vs_controls_adult: [68×10 table]
-        CortSurf_case_vs_controls_adult: [68×10 table]
-        CortThick_case_vs_controls_adolescent: [68×10 table]
-        CortSurf_case_vs_controls_adolescent: [68×10 table]
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+        SA_d = SA.d_icv;
 
 
 |
@@ -271,6 +280,15 @@ Major depressive disorder
 
 Obsessive-compulsive disorder
 -----------------------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls_adult 📸
+| ↪ CortSurf_case_vs_controls_adult 📸
+| ↪ CortThick_medicatedcase_vs_controls_adult
+| ↪ CortSurf_medicatedcase_vs_controls_adult
+| ↪ CortThick_case_vs_controls_pediatric
+| ↪ CortSurf_case_vs_controls_pediatric
+| ↪ CortThick_medicatedcase_vs_controls_pediatric
+| ↪ CortSurf_medicatedcase_vs_controls_pediatric
 
 .. tabs::
 
@@ -281,18 +299,13 @@ Obsessive-compulsive disorder
         >>> # Load summary statistics for ENIGMA-OCD
         >>> sum_stats = load_summary_stats('ocd')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness and surface area tables
+        >>> CT = sum_stats['CortThick_case_vs_controls_adult']
+        >>> SA = sum_stats['CortSurf_case_vs_controls_adult']
 
-        CortThick_case_vs_controls_adult
-        CortSurf_case_vs_controls_adult
-        CortThick_medicatedcase_vs_controls_adult
-        CortSurf_medicatedcase_vs_controls_adult
-        CortThick_case_vs_controls_pediatric
-        CortSurf_case_vs_controls_pediatric
-        CortThick_medicatedcase_vs_controls_pediatric
-        CortSurf_medicatedcase_vs_controls_pediatric
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+        >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -302,17 +315,13 @@ Obsessive-compulsive disorder
         % Load summary statistics for ENIGMA-OCD
         sum_stats = load_summary_stats('ocd');
 
-        % List available summary statistic tables
-        sum_stats
+        % Get case-control cortical thickness and surface area tables
+        CT = sum_stats.CortThick_case_vs_controls_adult;
+        SA = sum_stats.CortSurf_case_vs_controls_adult;
 
-        CortThick_case_vs_controls_adult: [68×10 table]
-        CortSurf_case_vs_controls_adult: [68×10 table]
-        CortThick_medicatedcase_vs_controls_adult: [68×10 table]
-        CortSurf_medicatedcase_vs_controls_adult: [68×10 table]
-        CortThick_case_vs_controls_pediatric: [68×10 table]
-        CortSurf_case_vs_controls_pediatric: [68×10 table]
-        CortThick_medicatedcase_vs_controls_pediatric: [68×10 table]
-        CortSurf_medicatedcase_vs_controls_pediatric: [68×10 table]
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+        SA_d = SA.d_icv;
 
 
 |
@@ -320,6 +329,9 @@ Obsessive-compulsive disorder
 
 Schizophrenia
 ----------------------------
+| **Available summary statistics tables**
+| ↪ CortThick_case_vs_controls 📸
+| ↪ CortSurf_case_vs_controls 📸
 
 .. tabs::
 
@@ -330,23 +342,24 @@ Schizophrenia
         >>> # Load summary statistics for ENIGMA-Schizophrenia
         >>> sum_stats = load_summary_stats('schizophrenia')
 
-        >>> # List available summary statistic tables
-        >>> for table_name in sum_stats:
-        >>>     print(table_name)
+        >>> # Get case-control cortical thickness and surface area tables
+        >>> CT = sum_stats['CortThick_case_vs_controls']
+        >>> SA = sum_stats['CortSurf_case_vs_controls']
 
-        CortThick_case_vs_controls
-        CortSurf_case_vs_controls
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+        >>> SA_d = SA['d_icv']
 
    .. code-tab:: matlab **Matlab** | meta
 
         % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
 
-        % Load summary statistics for ENIGMA-Schizophrenia
-        sum_stats = load_summary_stats('schizophrenia');
+        % Get case-control cortical thickness and surface area tables
+        CT = sum_stats.CortThick_case_vs_controls;
+        SA = sum_stats.CortSurf_case_vs_controls;
 
-        % List available summary statistic tables
-        sum_stats
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+        SA_d = SA.d_icv;
 
-        CortThick_case_vs_controls: [68×10 table]
-        CortSurf_case_vs_controls: [68×10 table]

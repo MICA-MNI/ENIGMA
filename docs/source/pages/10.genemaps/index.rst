@@ -1,6 +1,6 @@
 .. _gene_maps:
 
-.. title:: Gene expression data! 🧬
+.. title:: Gene expression data
 
 Gene expression data
 ======================================
@@ -26,11 +26,14 @@ Following the examples below, we can fetch microarray expression data.
      Please note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were 
      not matched to any tissue sample and thus are filled with NaN values in the data matrix.
 
-.. Warning::
+.. admonition:: Slow internet connection? 🐌
+
      The command ``fetch_ahba()`` fetches a large (~24 MB) microarray dataset from the internet and may thus be 
      incredibly slow to load if you lack a good connection. But don't you worry: you can download the
      relevant file by typing this command in your terminal ``wget https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv``
      and specifying its path in the ``fetch_ahba()`` function as follows:``fetch_ahba('/path/to/allgenes.csv')``
+
+.. _fetch_genes:
 
 .. tabs::
 
@@ -39,29 +42,21 @@ Following the examples below, we can fetch microarray expression data.
         >>> from enigmatoolbox.datasets import fetch_ahba
 
         >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
-        >>> df = fetch_ahba()
-
-        >>> # However, if you prefer to use numpy, you can also extract the data as follows:
-        >>> genex = df.iloc[:, 1:].to_numpy()
+        >>> genes = fetch_ahba()
 
         >>> # Obtain the region labels
-        >>> reglabels = df.iloc[:,0].to_list()
+        >>> reglabels = genes.iloc[:,0].to_list()
 
         >>> # As well as the gene labels
-        >>> glabels = df.columns.values[1:].tolist()
+        >>> genelabels = genes.columns.values[1:].tolist()
 
    .. code-tab:: matlab
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
+        % Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
         
-        %% Fetch gene expression data
-        %    gx          = matrix of gene expression data (82 x 15633)
-        %    reglabels   = name of cortical regions in same order as gx
-        %                  (82 x 1 cell array)
-        %    genelabels  = name of genes in same order as gx
-        %                  (1 x 15633 cell array)
-        [gx, reglabels, genelabels] = fetch_ahba();  
+        % Fetch gene expression data
+        [genes, reglabels, genelabels] = fetch_ahba();  
 
 .. image:: ./examples/example_figs/gx.png
     :align: center

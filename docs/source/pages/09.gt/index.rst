@@ -1,6 +1,6 @@
 .. _gt_analyses:
 
-.. title:: Grap theory! 📈
+.. title:: Grap theory
 
 Graph theory analyses
 ======================================

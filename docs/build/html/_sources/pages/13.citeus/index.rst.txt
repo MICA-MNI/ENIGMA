@@ -1,6 +1,6 @@
 .. _cite_us:
 
-.. title:: Please cite us! 🙏🏼
+.. title:: How to cite our toolbox
 
 Citing the ENIGMA TOOLBOX
 ======================================

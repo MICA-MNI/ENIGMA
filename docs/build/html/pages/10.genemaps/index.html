@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gene expression data! 🧬 &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Gene expression data &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -95,8 +95,8 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Usage notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Instructions for tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
@@ -177,7 +177,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Gene expression data! 🧬</li>
+      <li>Gene expression data</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -215,14 +215,14 @@ used in ENIGMA-derived data matrices! For more flexibility, check our their tool
 <p>Please note that two regions (right frontal pole and right temporal pole) in the Desikan-Killiany atlas were
 not matched to any tissue sample and thus are filled with NaN values in the data matrix.</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition-slow-internet-connection admonition">
+<p class="admonition-title">Slow internet connection? 🐌</p>
 <p>The command <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> fetches a large (~24 MB) microarray dataset from the internet and may thus be
 incredibly slow to load if you lack a good connection. But don’t you worry: you can download the
 relevant file by typing this command in your terminal <code class="docutils literal notranslate"><span class="pre">wget</span> <span class="pre">https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv</span></code>
 and specifying its path in the <code class="docutils literal notranslate"><span class="pre">fetch_ahba()</span></code> function as follows:<code class="docutils literal notranslate"><span class="pre">fetch_ahba('/path/to/allgenes.csv')</span></code></p>
 </div>
-<div class="sphinx-tabs docutils container">
+<div class="sphinx-tabs docutils container" id="fetch-genes">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-UHl0aG9u docutils container">
 <div class="docutils container">
@@ -239,30 +239,22 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">fetch_ahba</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch gene expression data (output of fetch_ahba() is a dataframe)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># However, if you prefer to use numpy, you can also extract the data as follows:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">genex</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genes</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain the region labels</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># As well as the gene labels</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">glabels</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genelabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
-<span class="c">%% Fetch gene expression data</span>
-<span class="c">%    gx          = matrix of gene expression data (82 x 15633)</span>
-<span class="c">%    reglabels   = name of cortical regions in same order as gx</span>
-<span class="c">%                  (82 x 1 cell array)</span>
-<span class="c">%    genelabels  = name of genes in same order as gx</span>
-<span class="c">%                  (1 x 15633 cell array)</span>
-<span class="p">[</span><span class="n">gx</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
+<span class="c">% Fetch gene expression data</span>
+<span class="p">[</span><span class="n">genes</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -303,7 +295,7 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by @saratheriver 🤠 
 
 </footer>
 
@@ -340,7 +332,7 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by @saratheriver 🤠 
 
   </footer>
 

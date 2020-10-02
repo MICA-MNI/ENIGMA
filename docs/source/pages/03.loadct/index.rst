@@ -1,6 +1,6 @@
 .. _load_ct:
 
-.. title:: Load example data! ⏳
+.. title:: Load example data
 
 Individual site data
 ======================================
@@ -16,25 +16,21 @@ Load example data
 This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with 
 epilepsy (7 females, age±SD=39.8±14.8 years).
 
-**Covariates**
-     As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subjectID),
-     **Dx** (diagnosis, 0=controls, 1=patients), **SDx** (sub-diagnosis, 0=controls,
-     1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
-     4=right TLE), **Age** (in years), **Sex** (1=males, 2=females), **Handedness** (1=right, 2=left),
-     **AO** (age at onset in years, patients only), **DURILL** (duration of illness in years, patients only),
-     and **ICV** (intracranial volume).
+**Covariates** | As per ENIGMA-Epilepsy protocol, covariate information includes **SubjID** (subjectID),
+**Dx** (diagnosis, 0=controls, 1=patients), **SDx** (sub-diagnosis, 0=controls,
+1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
+4=right TLE), **Age** (in years), **Sex** (1=males, 2=females), **Handedness** (1=right, 2=left),
+**AO** (age at onset in years, patients only), **DURILL** (duration of illness in years, patients only),
+and **ICV** (intracranial volume).
 
-**Subcortical volume**
-     Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
+**Subcortical volume** | Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.
 
 
-**Cortical thickness**
-     Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
-     and subsequently averaged within each of the Desikan-Killiany parcels.
+**Cortical thickness** | Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+and subsequently averaged within each of the Desikan-Killiany parcels.
 
-**Cortical surface area**
-     The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
-     this morphological measure is defined by the sum of the area of each of the triangles within the parcel.
+**Cortical surface area** | The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+this morphological measure is defined by the sum of the area of each of the triangles within the parcel.
 
 .. tabs::
 
@@ -105,14 +101,14 @@ and cortical atrophy!
         >>> # Z-score patients' data relative to controls (lower z-score = more atrophy)
         >>> group = cov['Dx'].to_list()
         >>> controlCode = 0
-        >>> sv = zscore_matrix(metr1_SubVol_r.iloc[:, 1:-1], group, controlCode)
-        >>> ct = zscore_matrix(metr2_CortThick.iloc[:, 1:-5], group, controlCode)
-        >>> sa = zscore_matrix(metr3_CortSurf.iloc[:, 1:-5], group, controlCode)
+        >>> SV_z = zscore_matrix(metr1_SubVol_r.iloc[:, 1:-1], group, controlCode)
+        >>> CT_z = zscore_matrix(metr2_CortThick.iloc[:, 1:-5], group, controlCode)
+        >>> SA_z = zscore_matrix(metr3_CortSurf.iloc[:, 1:-5], group, controlCode)
 
         >>> # Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
-        >>> sv_tle = sv.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
-        >>> ct_tle = ct.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
-        >>> sa_tle = sa.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+        >>> SV_z_mean = SV_z.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+        >>> CT_z_mean = CT_z.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
+        >>> SA_z_mean = SA_z.iloc[cov[cov['SDx'] == 3].index, :].mean(axis=0)
 
    .. code-tab:: matlab **Matlab** | mega
 
@@ -122,14 +118,14 @@ and cortical atrophy!
         % Z-score patients' data relative to controls (lower z-score = more atrophy)
         group        = cov.Dx;
         controlCode  = 0;
-        sv           = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
-        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
-        sa           = zscore_matrix(metr3_CortSurf(:, 2:end-1), group, controlCode);
+        SV_z         = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
+        CT_z         = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
+        SA_z         = zscore_matrix(metr3_CortSurf(:, 2:end-1), group, controlCode);
 
         % Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
-        sv_tle       = array2table(mean(sv{find(cov.SDx == 3), :}, 1), ...
+        SV_z_mean    = array2table(mean(SV_z{find(cov.SDx == 3), :}, 1), ...
                                    'VariableNames', sv.Properties.VariableNames);
-        ct_tle       = array2table(mean(ct{find(cov.SDx == 3), :}, 1), ...
+        CT_z_mean    = array2table(mean(CT_z{find(cov.SDx == 3), :}, 1), ...
                                    'VariableNames', ct.Properties.VariableNames);
-        sa_tle       = array2table(mean(sa{find(cov.SDx == 3), :}, 1), ...
+        SA_z_mean    = array2table(mean(SA_z{find(cov.SDx == 3), :}, 1), ...
                                    'VariableNames', sa.Properties.VariableNames);

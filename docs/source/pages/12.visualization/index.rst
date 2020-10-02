@@ -1,6 +1,6 @@
 .. _surf_visualization:
 
-.. title:: Visualization tools! 👀
+.. title:: Visualization tools
 
 Surface data visualization
 ======================================
@@ -12,13 +12,12 @@ Cortical surface visualization
 -----------------------------------
 **ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!   
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
-In the following example, we will display mean subcortical volume reductions in individuals with left TLE (*z*-scored to healthy controls).
+In the following example, we will display cortical atrophy in individuals with left TLE.
 
-.. admonition:: Parcellations, parcellations for everyone! 🧩
+.. admonition:: Our visualizaton tools work with ENIGMA and non-ENIGMA datasets 👀
 
-     Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-Killiany 
-     cortical parcels). Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
-     other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, and so on ...), so you can take advantage of
+     Mapping parcellated data to the surface has never been easier! Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA datasets. Our toolbox include several
+     other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, ...), so you can take advantage of
      our visualization tools for all your other projects!
 
 .. admonition:: Don't like fsaverage5? Relax, we got you covered! 🛀🏾
@@ -26,9 +25,36 @@ In the following example, we will display mean subcortical volume reductions in 
      The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of 'fsa5' with 'conte69'!
      Easy peasy lemon squeezy 🍋
 
+.. parsed-literal:: 
+
+     **Prerequisites**
+     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
+     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+     
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
+        >>> from enigmatoolbox.plotting import plot_cortical
+
+        >>> # Map parcellated data to the surface (cortical values only)
+        >>> CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5')
+
+        >>> # Project Cohen's d values to the surface template
+        >>> plot_cortical(array_name=CT_d_fsa5, surface_name="fsa5", size=(800, 400),
+        ...               cmap='RdBu_r', color_bar=True, color_range=(-0.5, 0.5))
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
+
+   .. code-tab:: py **Python** | mega
        
         >>> import numpy as np
         >>> from enigmatoolbox.datasets import load_example_data
@@ -55,7 +81,7 @@ In the following example, we will display mean subcortical volume reductions in 
         >>> plot_cortical(array_name=Z_TLE_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='Blues_r', color_bar=True, color_range=(-2, 0))
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | mega
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));
@@ -92,7 +118,7 @@ Subcortical surface visualization
 ---------------------------------------
 The **ENIGMA TOOLBOX**'s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). 
 Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
-we will display subcortical volume reductions (*z*-scored to healthy controls) in individuals with left TLE.
+we will display subcortical atrophy in individuals with left TLE.
 
 .. admonition:: We've mentioned this already, but don't forget that...
 
@@ -101,10 +127,33 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
      right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our ``reorder_sctx()`` function! 
      \*Ventricles are optional.
 
+.. parsed-literal:: 
+
+     **Prerequisites**
+     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
+     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
+     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
 
 .. tabs::
 
-   .. code-tab:: py
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.plotting import plot_subcortical
+
+        >>> # Project Cohen's d values to the surface template
+        >>> plot_subcortical(array_name=SV_d, size=(800, 400),
+        ...                  cmap='RdBu_r', color_bar=True, color_range=(-0.5, 0.5))
+
+   .. code-tab:: matlab **Matlab** | meta
+
+          ello
+
+   .. tab:: ⤎ ⤏
+
+          | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
+          | ⤏ If you have individual site or **mega**-analysis data
+
+   .. code-tab:: py **Python** | mega
 
         >>> import numpy as np
         >>> from enigmatoolbox.datasets import load_example_data
@@ -128,7 +177,7 @@ we will display subcortical volume reductions (*z*-scored to healthy controls) i
         >>> plot_subcortical(array_name=Z_LTLE, size=(800, 400),
         >>>                  cmap='Blues_r', color_bar=True, color_range=(-3, 0))
 
-   .. code-tab:: matlab
+   .. code-tab:: matlab **Matlab** | meta
 
         %% Add the path to the ENIGMA TOOLBOX matlab folder
         addpath(genpath('/path/to/ENIGMA/matlab/'));

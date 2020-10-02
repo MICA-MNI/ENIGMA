@@ -55,6 +55,7 @@ html_theme_options = { 'style_nav_header_background': '#259595'}
 from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
+
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
 

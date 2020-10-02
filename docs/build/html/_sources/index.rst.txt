@@ -8,7 +8,7 @@
    *An open source repository for the sharing of neuroimaging and genetics data, analytical
    codes, and visualization tools that are 100% ENIGMA-friendly and -focused.*
 
-.. title:: Introducing the ENIGMA TOOLBOX 🧰
+.. title:: ENIGMA TOOLBOX
 
 .. raw:: html
 
@@ -100,8 +100,8 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :caption: Getting started
    
    pages/01.install/index
-   pages/02.whatsnew/index
    pages/02.01.tutorialsinstructions/index
+   pages/02.whatsnew/index
 
 .. toctree::
    :maxdepth: 1

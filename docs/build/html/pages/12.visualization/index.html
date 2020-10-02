@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Visualization tools! 👀 &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Visualization tools &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -95,8 +95,8 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Usage notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Instructions for tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul>
@@ -178,7 +178,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Visualization tools! 👀</li>
+      <li>Visualization tools</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -204,12 +204,11 @@
 <h2>Cortical surface visualization<a class="headerlink" href="#cortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <p><strong>ENIGMA TOOLBOX</strong> comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!
 Following the examples below, we can easily map parcellated data (<em>e.g.</em>, Desikan-Killiany) to fsaverage5 surface space (<em>i.e.</em>, vertices).
-In the following example, we will display mean subcortical volume reductions in individuals with left TLE (<em>z</em>-scored to healthy controls).</p>
-<div class="admonition-parcellations-parcellations-for-everyone admonition">
-<p class="admonition-title">Parcellations, parcellations for everyone! 🧩</p>
-<p>Mapping parcellated data to the surface has never been easier - even for ENIGMA datasets (yes, those datasets with 68, as opposed to 71, Desikan-Killiany
-cortical parcels). Our <code class="docutils literal notranslate"><span class="pre">parcel_to_surface()</span></code> function works with ENIGMA- and non-ENIGMA-derived datasets. We also included several
-other parcellations (<em>e.g.</em>, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, and so on …), so you can take advantage of
+In the following example, we will display cortical atrophy in individuals with left TLE.</p>
+<div class="admonition-our-visualizaton-tools-work-with-enigma-and-non-enigma-datasets admonition">
+<p class="admonition-title">Our visualizaton tools work with ENIGMA and non-ENIGMA datasets 👀</p>
+<p>Mapping parcellated data to the surface has never been easier! Our <code class="docutils literal notranslate"><span class="pre">parcel_to_surface()</span></code> function works with ENIGMA- and non-ENIGMA datasets. Our toolbox include several
+other parcellations (<em>e.g.</em>, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, …), so you can take advantage of
 our visualization tools for all your other projects!</p>
 </div>
 <div class="admonition-don-t-like-fsaverage5-relax-we-got-you-covered admonition">
@@ -217,20 +216,62 @@ our visualization tools for all your other projects!</p>
 <p>The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of ‘fsa5’ with ‘conte69’!
 Easy peasy lemon squeezy 🍋</p>
 </div>
+<pre class="literal-block"><strong>Prerequisites</strong>
+↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | meta</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | mega</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface (cortical values only)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CT_d_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">CT_d</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project Cohen&#39;s d values to the surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">CT_d_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
@@ -258,7 +299,7 @@ Easy peasy lemon squeezy 🍋</p>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
@@ -295,7 +336,7 @@ Easy peasy lemon squeezy 🍋</p>
 <h2>Subcortical surface visualization<a class="headerlink" href="#subcortical-surface-visualization" title="Permalink to this headline">¶</a></h2>
 <p>The <strong>ENIGMA TOOLBOX</strong>’s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz).
 Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
-we will display subcortical volume reductions (<em>z</em>-scored to healthy controls) in individuals with left TLE.</p>
+we will display subcortical atrophy in individuals with left TLE.</p>
 <div class="admonition-we-ve-mentioned-this-already-but-don-t-forget-that admonition">
 <p class="admonition-title">We’ve mentioned this already, but don’t forget that…</p>
 <p>Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus,
@@ -303,20 +344,59 @@ left-pallidum, left-putamen, left-thalamus, left-ventricles, right-accumbens, ri
 right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our <code class="docutils literal notranslate"><span class="pre">reorder_sctx()</span></code> function!
 *Ventricles are optional.</p>
 </div>
+<pre class="literal-block"><strong>Prerequisites</strong>
+↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
+↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Python</p>
+<p><strong>Python</strong> | meta</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-TWF0bGFi docutils container">
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
 <div class="docutils container">
-<p>Matlab</p>
+<p><strong>Matlab</strong> | meta</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>⤎ ⤏</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
+<div class="docutils container">
+<p><strong>Python</strong> | mega</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE=-1 docutils container">
+<div class="docutils container">
+<p><strong>Matlab</strong> | meta</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project Cohen&#39;s d values to the surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">SV_d</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 docutils container">
+<div class="line-block">
+<div class="line">⤎ If you have <strong>meta</strong>-analysis data (<em>e.g.</em>, summary statistics)</div>
+<div class="line">⤏ If you have individual site or <strong>mega</strong>-analysis data</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
@@ -341,7 +421,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE=-1 docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
 <span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
 
@@ -403,7 +483,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by @saratheriver 🤠 
 
 </footer>
 
@@ -440,7 +520,7 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by @saratheriver 🤠 
 
   </footer>
 

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Load example data! ⏳ &mdash; ENIGMA TOOLBOX  documentation</title>
+  <title>Load example data &mdash; ENIGMA TOOLBOX  documentation</title>
   
 
   
@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Summary statistics" href="../04.loadsumstats/index.html" />
-    <link rel="prev" title="Instructions for tutorials" href="../02.01.tutorialsinstructions/index.html" /> 
+    <link rel="prev" title="What’s new?" href="../02.whatsnew/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -95,8 +95,8 @@
               <p class="caption"><span class="caption-text">Getting started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../01.install/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Usage notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../02.whatsnew/index.html">What’s new?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../02.01.tutorialsinstructions/index.html">Instructions for tutorials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ENIGMA datasets</span></p>
 <ul class="current">
@@ -179,7 +179,7 @@
     
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Load example data! ⏳</li>
+      <li>Load example data</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -205,23 +205,17 @@
 <span id="id1"></span><h2>Load example data<a class="headerlink" href="#load-example-data" title="Permalink to this headline">¶</a></h2>
 <p>This is an example dataset that includes 10 healthy controls (7 females, age±SD=33.3±8.8 years) and 10 individuals with
 epilepsy (7 females, age±SD=39.8±14.8 years).</p>
-<dl class="simple">
-<dt><strong>Covariates</strong></dt><dd><p>As per ENIGMA-Epilepsy protocol, covariate information includes <strong>SubjID</strong> (subjectID),
+<p><strong>Covariates</strong> | As per ENIGMA-Epilepsy protocol, covariate information includes <strong>SubjID</strong> (subjectID),
 <strong>Dx</strong> (diagnosis, 0=controls, 1=patients), <strong>SDx</strong> (sub-diagnosis, 0=controls,
 1=non-lesional patients, 2=genetic generalized epilepsy (IGE/GGE) patients, 3=left TLE,
 4=right TLE), <strong>Age</strong> (in years), <strong>Sex</strong> (1=males, 2=females), <strong>Handedness</strong> (1=right, 2=left),
 <strong>AO</strong> (age at onset in years, patients only), <strong>DURILL</strong> (duration of illness in years, patients only),
 and <strong>ICV</strong> (intracranial volume).</p>
-</dd>
-<dt><strong>Subcortical volume</strong></dt><dd><p>Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
-</dd>
-<dt><strong>Cortical thickness</strong></dt><dd><p>Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
+<p><strong>Subcortical volume</strong> | Subcortical grey matter volumes regroup data from 12 subcortical regions, bilateral hippocampus, and bilateral ventricles.</p>
+<p><strong>Cortical thickness</strong> | Cortical thickness was measured at each vertex as the Euclidean distance between white and pial surfaces,
 and subsequently averaged within each of the Desikan-Killiany parcels.</p>
-</dd>
-<dt><strong>Cortical surface area</strong></dt><dd><p>The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
+<p><strong>Cortical surface area</strong> | The cortical surface area of every Desikan-Killiany parcel is also provided as part of ENIGMA imaging protocols;
 this morphological measure is defined by the sum of the area of each of the triangles within the parcel.</p>
-</dd>
-</dl>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
@@ -323,14 +317,14 @@ and cortical atrophy!</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">group</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">controlCode</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sv</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ct</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sa</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr3_CortSurf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CT_z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SA_z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">metr3_CortSurf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="n">group</span><span class="p">,</span> <span class="n">controlCode</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sv_tle</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ct_tle</span> <span class="o">=</span> <span class="n">ct</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sa_tle</span> <span class="o">=</span> <span class="n">sa</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SV_z_mean</span> <span class="o">=</span> <span class="n">SV_z</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CT_z_mean</span> <span class="o">=</span> <span class="n">CT_z</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">SA_z_mean</span> <span class="o">=</span> <span class="n">SA_z</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -341,16 +335,16 @@ and cortical atrophy!</p>
 <span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
 <span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
 <span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
-<span class="n">sv</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
-<span class="n">ct</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
-<span class="n">sa</span>           <span class="s">=</span> <span class="s">zscore_matrix(metr3_CortSurf(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">SV_z</span>         <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">CT_z</span>         <span class="s">=</span> <span class="s">zscore_matrix(metr2_CortThick(:,</span> <span class="s">2:end-5),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
+<span class="n">SA_z</span>         <span class="s">=</span> <span class="s">zscore_matrix(metr3_CortSurf(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
 
 <span class="c">% Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)</span>
-<span class="n">sv_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(sv{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+<span class="n">SV_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(SV_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
                            <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sv</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
-<span class="n">ct_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(ct{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+<span class="n">CT_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(CT_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
                            <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">ct</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
-<span class="n">sa_tle</span>       <span class="s">=</span> <span class="s">array2table(mean(sa{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
+<span class="n">SA_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(SA_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
                            <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -370,7 +364,7 @@ and cortical atrophy!</p>
         <a href="../04.loadsumstats/index.html" class="btn btn-neutral float-right" title="Summary statistics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../02.01.tutorialsinstructions/index.html" class="btn btn-neutral float-left" title="Instructions for tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../02.whatsnew/index.html" class="btn btn-neutral float-left" title="What’s new?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -391,7 +385,7 @@ and cortical atrophy!</p>
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by @saratheriver 🤠 
 
 </footer>
 
@@ -428,7 +422,7 @@ and cortical atrophy!</p>
     
     <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by SL 🤠 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. Modified by @saratheriver 🤠 
 
   </footer>
 
