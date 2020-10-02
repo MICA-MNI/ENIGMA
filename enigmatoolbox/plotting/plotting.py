@@ -55,7 +55,7 @@ def enigma_scatter(ax, x, y, scatter_color='#000000', linear_fit=False, fit_colo
     if corr_value is not None and p_value is not None:                                        # Add correlation and p values
         ax.text(ax.get_xlim()[0] + (((ax.get_xlim()[1] - ax.get_xlim()[0]) / 100) * 5),
                 ax.get_ylim()[0] + (((ax.get_ylim()[1] - ax.get_ylim()[0]) / 100) * 5),
-                '$r$=' + str(round(corr_value, 2)) + ', $p$$_{{{}}}$='.format(p_type) + str(round(p_value, 2)))
+                '$r$=' + str(round(corr_value, 2)) + ', $p$$_{{{}}}$='.format(p_type) + str(round(p_value, 4)))
     elif corr_value is not None and p_value is None:                                         # Add correlation value only
         ax.text(ax.get_xlim()[0] + (((ax.get_xlim()[1] - ax.get_xlim()[0]) / 100) * 5),
                 ax.get_ylim()[0] + (((ax.get_ylim()[1] - ax.get_ylim()[0]) / 100) * 5),
@@ -63,7 +63,7 @@ def enigma_scatter(ax, x, y, scatter_color='#000000', linear_fit=False, fit_colo
     elif corr_value is None and p_value is not None:                                          # Add p-value only
         ax.text(ax.get_xlim()[0] + (((ax.get_xlim()[1] - ax.get_xlim()[0]) / 100) * 5),
                 ax.get_ylim()[0] + (((ax.get_ylim()[1] - ax.get_ylim()[0]) / 100) * 5),
-                '$p$$_{{{}}}$='.format(p_type) + str(round(p_value, 2)))
+                '$p$$_{{{}}}$='.format(p_type) + str(round(p_value, 4)))
 
     # hide the right and top spines
     ax.spines['right'].set_visible(False)

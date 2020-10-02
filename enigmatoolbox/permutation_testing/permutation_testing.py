@@ -271,6 +271,12 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot)
 
     # generate spin permuted p-value
+    if isinstance(map1, pd.DataFrame) or isinstance(map1, pd.Series):
+        map1 = map1.to_numpy()
+
+    if isinstance(map2, pd.DataFrame) or isinstance(map2, pd.Series):
+        map2 = map2.to_numpy()
+
     p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, spin_dist=True)
 
     if spin_dist is True:
