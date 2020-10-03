@@ -50,7 +50,7 @@ def enigma_scatter(ax, x, y, scatter_color='#000000', linear_fit=False, fit_colo
         ax.set_xlabel(xlabel)       # Add x-axis label
 
     if ylabel is not None:
-        ax.set_ylabel(xlabel)             # Add y-axis label
+        ax.set_ylabel(ylabel)       # Add y-axis label
 
     if corr_value is not None and p_value is not None:                                        # Add correlation and p values
         ax.text(ax.get_xlim()[0] + (((ax.get_xlim()[1] - ax.get_xlim()[0]) / 100) * 5),
