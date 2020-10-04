@@ -36,8 +36,15 @@ addParameter(p, 'p_type', 'spin', @ischar);
 parse(p, varargin{:});
 in = p.Results;
 
+% check dimensions
+if size(y, 2) ~= size(x, 2)
+    x = x.';
+end
+
 % scatter plot
 s1      = scatter(x, y, 88, in.scatter_color, 'filled');  
+xlim(in.xlim);
+ylim(in.ylim);
 
 % linear fit
 if in.linear_fit == 1
