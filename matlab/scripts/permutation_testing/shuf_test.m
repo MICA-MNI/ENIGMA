@@ -1,12 +1,14 @@
-function [p_shuf, r_dist] = shuf_test(map1, map2, n_rot, type)
+function [p_shuf, r_dist] = shuf_test(map1, map2, varargin)
 
-% shuf_test(map1, map2, n_rot, type);
+% shuf_test(map1, map2, varargin);
 % 
-% Usage: [p_shuf, r_dist] = spin_test(map1, map2, [n_rot, [type]]);
+% Usage: [p_shuf, r_dist] = spin_test(map1, map2, varargin);
 % 
 % INPUTS
 %    map1            = one of two subcortical map to be correlated
 %    map2            = the other subcortical map to be correlated
+%
+% OPTIONAL INPUTS
 %    n_rot           = number of shuffles (default 100)
 %    type            = correlation type, 'pearson' (default), 'spearman'
 % 
@@ -17,21 +19,22 @@ function [p_shuf, r_dist] = shuf_test(map1, map2, n_rot, type)
 %  Sara Lariviere | a sunny September day 2020
 
 
-if nargin<3
-    n_rot=1000;
-end
-if nargin<4
-    type='pearson';
-end
+p = inputParser;
+addParameter(p, 'n_rot', 100, @isnumeric);
+addParameter(p, 'type', 'pearson', @ischar);
+
+% Parse the input
+parse(p, varargin{:});
+in = p.Results;
 
 if size(map1, 1) == 1; map1 = map1.'; end
 if size(map2, 1) == 1; map2 = map2.'; end
 
 nroi = length(map1);
 r = 0; c = 0; % count successful (r) and unsuccessful (c) iterations
-perm_id = zeros(nroi, n_rot); % initialise output array
+perm_id = zeros(nroi, in.n_rot); % initialise output array
 
-while (r < n_rot)
+while (r < in.n_rot)
     rot_lr_sort = randperm(nroi);
     
     % verify that permutation does not map to itself
@@ -45,16 +48,16 @@ while (r < n_rot)
     
     % track progress
     if mod(r,100)==0; 
-        disp(['permutation ' num2str(r) ' of ' num2str(n_rot)]); 
+        disp(['permutation ' num2str(r) ' of ' num2str(in.n_rot)]); 
     end
 end
 
-    rho_emp = corr(map1, map2, 'type', type, 'rows', 'pairwise');     % empirical correlation
+    rho_emp = corr(map1, map2, 'type', in.type, 'rows', 'pairwise');     % empirical correlation
     
     % permutation of measures
-    x_perm = zeros(nroi, n_rot);
-    y_perm = zeros(nroi, n_rot);
-    for r = 1:n_rot
+    x_perm = zeros(nroi, in.n_rot);
+    y_perm = zeros(nroi, in.n_rot);
+    for r = 1:in.n_rot
         for i = 1:nroi
             x_perm(i, r) = map1(perm_id(i, r)); % permute x
             y_perm(i, r) = map2(perm_id(i, r)); % permute y
@@ -62,20 +65,20 @@ end
     end
 
     % corrrelation to unpermuted measures
-    rho_null_xy = zeros(n_rot, 1);
-    rho_null_yx = zeros(n_rot, 1);
-    for r = 1:n_rot
-        rho_null_xy(r) = corr(x_perm(:, r), map2, 'type', type, 'rows', 'pairwise'); % correlate permuted x to unpermuted y
-        rho_null_yx(r) = corr(y_perm(:, r), map1, 'type', type, 'rows', 'pairwise'); % correlate permuted y to unpermuted x
+    rho_null_xy = zeros(in.n_rot, 1);
+    rho_null_yx = zeros(in.n_rot, 1);
+    for r = 1:in.n_rot
+        rho_null_xy(r) = corr(x_perm(:, r), map2, 'type', in.type, 'rows', 'pairwise'); % correlate permuted x to unpermuted y
+        rho_null_yx(r) = corr(y_perm(:, r), map1, 'type', in.type, 'rows', 'pairwise'); % correlate permuted y to unpermuted x
     end
 
     % p-value definition depends on the sign of the empirical correlation
     if rho_emp > 0
-        p_perm_xy = sum(rho_null_xy > rho_emp)/n_rot;
-        p_perm_yx = sum(rho_null_yx > rho_emp)/n_rot;
+        p_perm_xy = sum(rho_null_xy > rho_emp)/in.n_rot;
+        p_perm_yx = sum(rho_null_yx > rho_emp)/in.n_rot;
     else
-        p_perm_xy = sum(rho_null_xy < rho_emp)/n_rot;
-        p_perm_yx = sum(rho_null_yx < rho_emp)/n_rot;
+        p_perm_xy = sum(rho_null_xy < rho_emp)/in.n_rot;
+        p_perm_yx = sum(rho_null_yx < rho_emp)/in.n_rot;
     end
     
     % null distribution
