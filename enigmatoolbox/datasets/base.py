@@ -40,8 +40,8 @@ def load_parcellation(name, scale=400, join=False):
     return x[:x.size//2], x[x.size//2:]
 
 
-def load_mask(name='midline', join=False):
-    """ Load mask for conte69.
+def load_mask(name='midline', surface_name="fsa5", join=False):
+    """ Load mask for conte69, fsa5 (default), and fsa5_with_sctx.
 
     Parameters
     ----------
@@ -61,15 +61,28 @@ def load_mask(name='midline', join=False):
     """
 
     root_pth = os.path.dirname(__file__)
-    ipth = os.path.join(root_pth, 'surfaces', 'conte69_32k_{0}{1}_mask.csv')
-    if name == 'midline':
-        name = ''
+    if surface_name is "conte69":
+        ipth = os.path.join(root_pth, 'surfaces', 'conte69_32k_{0}{1}_mask.csv')
+        if name == 'midline':
+            name = ''
+        else:
+            name = '_' + name
+        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=np.bool)
+        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=np.bool)
+        if join:
+            return np.concatenate([mask_lh, mask_rh])
+
     else:
-        name = '_' + name
-    mask_lh = np.loadtxt(ipth.format('lh', name), dtype=np.bool)
-    mask_rh = np.loadtxt(ipth.format('rh', name), dtype=np.bool)
-    if join:
-        return np.concatenate([mask_lh, mask_rh])
+        ipth = os.path.join(root_pth, 'surfaces', surface_name + '_{0}{1}_mask.csv')
+        if name == 'midline':
+            name = ''
+        else:
+            print('sorry there\'s no other option for now')
+        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=np.bool)
+        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=np.bool)
+        if join:
+            return np.concatenate([mask_lh, mask_rh])
+
     return mask_lh, mask_rh
 
 
@@ -114,7 +127,7 @@ def load_conte69(as_sphere=False, with_normals=True, join=False):
     return surfs[0], surfs[1]
 
 
-def load_fsa5(as_sphere=False, with_normals=True, join=False):
+def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
     """ Load fsaverage5 surfaces.
 
     Parameters
@@ -127,6 +140,9 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False):
         If False, return one surface for left and right hemispheres. Otherwise,
         return a single surface as a combination of both left and right
         surfaces. Default is False.
+    with_sctx : bool, optional
+        If False, returns cortical spheres, if True, returns combined
+        cortical+subcortical surface (spheres only at this moment)
 
     Returns
     -------
@@ -136,10 +152,14 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False):
     """
 
     root_pth = os.path.dirname(__file__)
-    if as_sphere:
+    if as_sphere is True and with_sctx is not True:
         fname = 'fsa5_sphere_{}.gii'
-    else:
+    elif as_sphere is True and with_sctx is True:
+        fname = 'fsa5_with_sctx_sphere_{}.gii'
+    elif as_sphere is not True and with_sctx is not True:
         fname = 'fsa5_{}.gii'
+    elif as_sphere is not True and with_sctx is True:
+        fname = 'fsa5_with_sctx_{}.gii'
 
     ipth = os.path.join(root_pth, 'surfaces', fname)
     surfs = [None] * 2
