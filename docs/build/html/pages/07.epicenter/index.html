@@ -251,19 +251,20 @@ to low-atrophy cortical regions.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Identify cortical epicenters</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Identify cortical epicenters (from functional connectivity)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fc_ctx_epi</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fc_ctx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
 <span class="gp">... </span>    <span class="n">seed_con</span> <span class="o">=</span> <span class="n">fc_ctx</span><span class="p">[:,</span> <span class="n">seed</span><span class="p">]</span>
 <span class="gp">... </span>    <span class="n">fc_ctx_epi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fc_ctx_epi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">seed_con</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Identify cortical epicenters (from structural connectivity)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sc_ctx_epi</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">seed</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sc_ctx</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
 <span class="gp">... </span>    <span class="n">seed_con</span> <span class="o">=</span> <span class="n">sc_ctx</span><span class="p">[:,</span> <span class="n">seed</span><span class="p">]</span>
 <span class="gp">... </span>    <span class="n">sc_ctx_epi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sc_ctx_epi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">seed_con</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># And project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">fc_ctx_epi</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">),</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span>
 
@@ -273,7 +274,41 @@ to low-atrophy cortical regions.</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
+<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
+
+<span class="c">% Identify cortical epicenters (from functional connectivity)</span>
+<span class="n">fc_ctx_epi</span>              <span class="s">=</span> <span class="s">zeros(size(fc_ctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">fc_ctx_epi_p</span>            <span class="s">=</span> <span class="s">zeros(size(fc_ctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">for</span> <span class="s">seed</span> <span class="s">=</span> <span class="s">1:size(fc_ctx,</span> <span class="s">1)</span>
+    <span class="n">seed_conn</span>           <span class="s">=</span> <span class="s">fc_ctx(:,</span> <span class="s">seed)</span><span class="p">;</span>
+    <span class="n">r_tmp</span>               <span class="s">=</span> <span class="s">corrcoef(seed_conn,</span> <span class="s">CT_d)</span><span class="p">;</span>
+    <span class="n">fc_ctx_epi</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>    <span class="p">=</span> <span class="n">r_tmp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">fc_ctx_epi_p</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>  <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">seed_conn</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="n">end</span>
+
+<span class="s">%</span> <span class="s">Identify</span> <span class="s">cortical</span> <span class="s">epicenters</span> <span class="s">(from</span> <span class="s">structural</span> <span class="s">connectivity)</span>
+<span class="n">sc_ctx_epi</span>              <span class="s">=</span> <span class="s">zeros(size(sc_ctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">sc_ctx_epi_p</span>            <span class="s">=</span> <span class="s">zeros(size(sc_ctx,</span> <span class="s">1),</span> <span class="s">1)</span><span class="p">;</span>
+<span class="n">for</span> <span class="s">seed</span> <span class="s">=</span> <span class="s">1:size(sc_ctx,</span> <span class="s">1)</span>
+    <span class="n">seed_conn</span>           <span class="s">=</span> <span class="s">sc_ctx(:,</span> <span class="s">seed)</span><span class="p">;</span>
+    <span class="n">r_tmp</span>               <span class="s">=</span> <span class="s">corrcoef(seed_conn,</span> <span class="s">CT_d)</span><span class="p">;</span>
+    <span class="n">sc_ctx_epi</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>    <span class="p">=</span> <span class="n">r_tmp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="n">sc_ctx_epi_p</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>  <span class="p">=</span> <span class="n">spin_test</span><span class="p">(</span><span class="n">seed_conn</span><span class="p">,</span> <span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="c">...</span>
+                                   <span class="s">&#39;aparc&#39;</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s">&#39;pearson&#39;</span><span class="p">);</span>
+<span class="n">end</span>
+
+<span class="s">%</span> <span class="s">Project</span> <span class="s">the</span> <span class="s">results</span> <span class="s">on</span> <span class="s">the</span> <span class="s">surface</span> <span class="s">brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">fc_ctx_epi</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">),</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;functional cortical epicenters&#39;</span><span class="p">)</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">])</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Reds</span><span class="p">))</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">sc_ctx_epi</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">),</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;structural cortical epicenters&#39;</span><span class="p">)</span>
+    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>

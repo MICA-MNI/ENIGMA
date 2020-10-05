@@ -39,19 +39,20 @@ derived from cortical thickness decreases in individuals with left TLE.
         >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
         >>> from enigmatoolbox.plotting import plot_cortical
 
-        >>> # Identify cortical epicenters
+        >>> # Identify cortical epicenters (from functional connectivity)
         >>> fc_ctx_epi = []
         >>> for seed in range(fc_ctx.shape[0]):
         ...     seed_con = fc_ctx[:, seed]
         ...     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
 
+        >>> # Identify cortical epicenters (from structural connectivity)
         >>> sc_ctx_epi = []
         >>> for seed in range(sc_ctx.shape[0]):
         ...     seed_con = sc_ctx[:, seed]
         ...     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
 
 
-        >>> # And project the results on the surface brain
+        >>> # Project the results on the surface brain
         >>> plot_cortical(array_name=parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
         ...               cmap='Reds_r', color_bar=True, color_range=(-0.5, -0.2))
 
@@ -60,7 +61,41 @@ derived from cortical thickness decreases in individuals with left TLE.
 
    .. code-tab:: matlab **Matlab** | meta
 
-          ello
+        % Add the path to the ENIGMA TOOLBOX matlab folder
+        addpath(genpath('/path/to/ENIGMA/matlab/'));
+
+        % Identify cortical epicenters (from functional connectivity)
+        fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
+        fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
+        for seed = 1:size(fc_ctx, 1)
+            seed_conn           = fc_ctx(:, seed);
+            r_tmp               = corrcoef(seed_conn, CT_d);
+            fc_ctx_epi(seed)    = r_tmp(1, 2);
+            fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'fsa5', ...
+                                           'aparc', 1000, 'pearson');
+        end
+
+        % Identify cortical epicenters (from structural connectivity)
+        sc_ctx_epi              = zeros(size(sc_ctx, 1), 1);
+        sc_ctx_epi_p            = zeros(size(sc_ctx, 1), 1);
+        for seed = 1:size(sc_ctx, 1)
+            seed_conn           = sc_ctx(:, seed);
+            r_tmp               = corrcoef(seed_conn, CT_d);
+            sc_ctx_epi(seed)    = r_tmp(1, 2);
+            sc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'fsa5', ...
+                                           'aparc', 1000, 'pearson');
+        end
+
+        % Project the results on the surface brain
+        f = figure,
+            plot_cortical(parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'functional cortical epicenters')
+            colorbar_range([-0.5 -0.2])
+            colormap(flipud(Reds))
+
+        f = figure,
+            plot_cortical(parcel_to_surface(sc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'structural cortical epicenters')
+            colorbar_range([-0.5 0])
+            colormap(flipud(Blues))
 
    .. tab:: ⤎ ⤏
 
