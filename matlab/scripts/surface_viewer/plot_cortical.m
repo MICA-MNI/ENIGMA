@@ -13,7 +13,7 @@ function [a,cb]=plot_cortical(data, varargin);
 %   background      = background colour, any matlab ColorSpec, such as 
 %                     'white' (default), 'black'=='k', 'r'==[1 0 0], [1 0.4 0.6] (pink) etc.
 %   color_range     = range of colorbar, default is [min(data max(data)]
-%   cmap            = colormap name (default is viridis)
+%   cmap            = colormap name (default is RdBu_r)
 %
 %   Letter and line colours are inverted if background is dark (mean<0.5).
 %
@@ -32,7 +32,7 @@ addParameter(p, 'surface_name', 'fsa5', @ischar);
 addParameter(p, 'label_text', "", @ischar);
 addParameter(p, 'background', 'white', @ischar);
 addParameter(p, 'color_range', [min(data) max(data)], @isnumeric);
-addParameter(p, 'cmap', 'viridis', @ischar);
+addParameter(p, 'cmap', 'RdBu_r', @ischar);
 
 % Parse the input
 parse(p, varargin{:});
