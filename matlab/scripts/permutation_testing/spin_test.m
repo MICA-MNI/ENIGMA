@@ -8,7 +8,7 @@ function [p_spin, r_dist] = spin_test(map1, map2, surface_name, parcellation_nam
 %   map1               = one of two maps to be correlated
 %   map2               = the other map to be correlated
 %   surface_name       = 'fsa5' (default) or 'conte69'
-%   parcellation_name  = 'aparc' (default)'
+%   parcellation_name  = 'aparc' (default)', 'aparc_aseg' (ctx + sctx)
 %   n_rot              = number of spin rotations (default 100)
 %   type               = correlation type, 'pearson' (default), 'spearman'
 %
@@ -42,6 +42,11 @@ end
 if strcmp(surface_name, 'fsa5')
     lsphere = SurfStatReadSurf1('fsa5_sphere_lh');
     rsphere = SurfStatReadSurf1('fsa5_sphere_rh');
+    
+elseif strcmp(surface_name, 'fsa5_with_sctx')
+    lsphere = SurfStatReadSurf1('fsa5_with_sctx_sphere_lh');
+    rsphere = SurfStatReadSurf1('fsa5_with_sctx_sphere_rh');
+    
 elseif strcmp(surface_name, 'conte69')
     error('Not yet implemented :/')
     lsphere = SurfStatReadSurf1('conte69_sphere_lh');
@@ -50,8 +55,13 @@ end
 
 
 % 1 - get sphere coordinates of parcels
-lh_centroid = centroid_extraction_sphere(lsphere.coord.', [surface_name '_lh_' parcellation_name '.annot']);
-rh_centroid = centroid_extraction_sphere(rsphere.coord.', [surface_name '_rh_' parcellation_name '.annot']);
+if strcmp(parcellation_name, 'aparc_aseg')
+    lh_centroid = centroid_extraction_sphere(lsphere.coord.', [surface_name '_lh_' parcellation_name '.mat']);
+    rh_centroid = centroid_extraction_sphere(rsphere.coord.', [surface_name '_lh_' parcellation_name '.mat']);
+else
+    lh_centroid = centroid_extraction_sphere(lsphere.coord.', [surface_name '_lh_' parcellation_name '.annot']);
+    rh_centroid = centroid_extraction_sphere(rsphere.coord.', [surface_name '_rh_' parcellation_name '.annot']);
+end
 
 % 2 - Generate permutation maps
 perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot);
@@ -72,7 +82,7 @@ function centroid = centroid_extraction_sphere(sphere_coords, annotfile)
 %
 % Inputs:
 % sphere_coords   sphere coordinates (n x 3)
-% annot_file      'fsa5_lh_aparc.annot' (string)
+% annot_file      e.g., 'fsa5_lh_aparc.annot' (string)
 %
 % Output:
 % centroid      coordinates of the centroid of each region on the sphere
@@ -80,18 +90,38 @@ function centroid = centroid_extraction_sphere(sphere_coords, annotfile)
 % Rafael Romero-Garcia, 2017
 % Modified by Sara Lariviere (for ENIGMA), September 2020
 
-[~, label_annot, colortable] = read_annotation(annotfile);                       % read in parcel membership of vertices
+% for cortical annotation files only
+if ~contains(annotfile, 'aparc_aseg')
+    [~, label_annot, colortable] = read_annotation(annotfile);                       % read in parcel membership of vertices
 
-ind = 0;                                                                         % iteration counter
-centroid = [];                                                                   % initialisation of centroid array
-for ic = 1:colortable.numEntries                                                 % loop over parcellated structures
-    if isempty(strfind(colortable.struct_names{ic},'unknown')) && ...
-       isempty(strfind(colortable.struct_names{ic},'corpus'))                    % exclude "unknown" structures and corpus callosum from the parcellation 
-        ind = ind + 1;                                                           % increment counter for every valid region
-        label = colortable.table(ic,5);                                          % ID of current parcel
-        centroid(ind,:) = mean(sphere_coords(label_annot == label, :));          % average coordinates of all vertices within the current parcel to generate the centroid
+    ind = 0;                                                                         % iteration counter
+    centroid = [];                                                                   % initialisation of centroid array
+    for ic = 1:colortable.numEntries                                                 % loop over parcellated structures
+        if isempty(strfind(colortable.struct_names{ic},'unknown')) && ...
+           isempty(strfind(colortable.struct_names{ic},'corpus'))                    % exclude "unknown" structures and corpus callosum from the parcellation 
+            ind = ind + 1;                                                           % increment counter for every valid region
+            label = colortable.table(ic,5);                                          % ID of current parcel
+            centroid(ind,:) = mean(sphere_coords(label_annot == label, :));          % average coordinates of all vertices within the current parcel to generate the centroid
+        end
+    end
+
+% for combined cortical and subcortical
+elseif contains(annotfile, 'aparc_aseg')
+    annot_sctx = load(annotfile);
+  
+    ind = 0;                                                                         
+    centroid = [];     
+    for ic = 1:length(annot_sctx.label)
+        if isempty(strfind(annot_sctx.structure{ic},'unknown')) && ...
+           isempty(strfind(annot_sctx.structure{ic},'corpus')) && ...
+           isempty(strfind(annot_sctx.structure{ic}, 'vent'))                   
+            ind = ind + 1;                                                         
+            label = annot_sctx.label(ic);                                          
+            centroid(ind,:) = mean(sphere_coords(annot_sctx.label_annot == label, :));          
+        end
     end
 end
+
 return
 
 function perm_id = rotate_parcellation(coord_l, coord_r, nrot)

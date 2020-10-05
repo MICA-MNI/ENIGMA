@@ -43,7 +43,7 @@ end
 
 % load subcortical templates
 surf_lh = SurfStatReadSurf('sctx_lh');
-surf_rh = SurfStatReadSurf('sctx_rh')
+surf_rh = SurfStatReadSurf('sctx_rh');
 
 % super inefficient way to attribute vertices to subcortical areas
 if strcmp(ventricles, 'True')

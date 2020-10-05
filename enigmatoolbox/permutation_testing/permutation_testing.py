@@ -10,7 +10,7 @@ import warnings
 
 from ..datasets import load_fsa5, load_conte69
 
-def centroid_extraction_sphere(sphere_coords, annotfile):
+def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
     """
     Function to extract centroids of a cortical parcellation on the
     Freesurfer sphere, for subsequent input to code for the performance of a
@@ -19,6 +19,7 @@ def centroid_extraction_sphere(sphere_coords, annotfile):
     Inputs:
     sphere_coords   sphere coordinates (n x 3)
     annot_file      'fsa5_lh_aparc.annot' (string)
+    ventricles      boolean, False (default, no ventricle data), only for 'aparc_aseg' parcellation
 
     Output:
     centroid      coordinates of the centroid of each region on the sphere
@@ -27,15 +28,35 @@ def centroid_extraction_sphere(sphere_coords, annotfile):
     Ported to Python by Sara Larivière, rainy September 2020 evening
     """
 
-    labels, ctab, names = nb.freesurfer.io.read_annot(annotfile, orig_ids=True)
+    # for cortical annotation files only
+    if "aparc_aseg" not in annotfile:
+        labels, ctab, names = nb.freesurfer.io.read_annot(annotfile, orig_ids=True)
 
-    ind = 0
-    centroid = np.empty((0, 3))
-    for ic in range(ctab.shape[0]):
-        if not names[ic].decode("utf-8") == 'unknown' and not names[ic].decode("utf-8") == 'corpuscallosum':
-            ind = ind + 1
-            label = ctab[ic, -1]
-            centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[labels == label, :], axis=0))))
+        centroid = np.empty((0, 3))
+        for ic in range(ctab.shape[0]):
+            if not names[ic].decode("utf-8") == 'unknown' and not names[ic].decode("utf-8") == 'corpuscallosum':
+                label = ctab[ic, -1]
+                centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[labels == label, :], axis=0))))
+
+    elif "aparc_aseg" in annotfile and ventricles is not True:
+        annot = pd.read_csv(annotfile)
+
+        centroid = np.empty((0, 3))
+        for ic in range(annot['structure'][:44].shape[0]):
+            if not annot['structure'][:44][ic] == "'unknown'" and not annot['structure'][:44][ic] == "'corpuscallosum'" and not annot['structure'][:44][ic] == "'vent'":
+                label = annot['label'][ic]
+                centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[annot[annot['label_annot'] ==
+                                                                                     label].index.values, :], axis=0))))
+
+    elif "aparc_aseg" in annotfile and ventricles is True:
+        annot = pd.read_csv(annotfile)
+
+        centroid = np.empty((0, 3))
+        for ic in range(annot['structure'][:44].shape[0]):
+            if not annot['structure'][:44][ic] == "'unknown'" and not annot['structure'][:44][ic] == "'corpuscallosum'":
+                label = annot['label'][ic]
+                centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[annot[annot['label_annot'] ==
+                                                                                     label].index.values, :], axis=0))))
 
     return centroid
 
@@ -186,7 +207,7 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
     """
 
     nroi = perm_id.shape[0]   # number of regions
-    nperm = perm_id.shape[1]  # number of permutatons
+    nperm = perm_id.shape[1]  # number of permutations
 
     # empirical correlation
     rho_emp = pd.Series(x).corr(pd.Series(y), method=corr_type)
@@ -230,16 +251,18 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
         return p_perm
 
 
-def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100, type='pearson', spin_dist=False):
+def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100,
+              type='pearson', spin_dist=False, ventricles=False):
     """
     INPUTS
        map1               = one of two cortical map to be correlated
        map2               = the other cortical map to be correlated
        surface_name       = 'fsa5' (default) or 'conte69'
-       parcellation_name  = 'aparc' (default)
+       parcellation_name  = 'aparc' (default), 'aparc_aseg' (ctx+sctx)
        n_rot              = number of spin rotations (default 100)
        type               = correlation type, 'pearson' (default), 'spearman'
        spin_dist          = save distribution of spinned correlations (null model)
+       ventricles         = boolean, False (default, no ventricle data), only for 'aparc_aseg' parcellation
 
     OUTPUT
        p_spin          = permutation p-value
@@ -251,21 +274,31 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
 
      Last modifications:
      SL | a rainy September day 2020
+     SL | beautiful Fall day, October 2020 | added option for combined ctx+sctx
     """
 
     if surface_name is "fsa5":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True)
+    elif surface_name is "fsa5_with_sctx":
+        sphere_lh, sphere_rh = load_fsa5(as_sphere=True, with_sctx=True)
     elif surface_name is "conte69":
         raise ValueError('Not yet implemented :/')
         sphere_lh, sphere_rh = load_conte69(as_sphere=True)
 
     root_pth = os.path.dirname(__file__)
-    annotfile_lh = os.path.join(root_pth, 'annot', surface_name+'_lh_'+parcellation_name+'.annot')
-    annotfile_rh = os.path.join(root_pth, 'annot', surface_name+'_rh_'+parcellation_name+'.annot')
-
     # get sphere coordinates of parcels
-    lh_centroid = centroid_extraction_sphere(sphere_lh.Points, annotfile_lh)
-    rh_centroid = centroid_extraction_sphere(sphere_rh.Points, annotfile_rh)
+    if surface_name is "fsa5_with_sctx" and parcellation_name is "aparc_aseg":
+        annotfile_lh = os.path.join(root_pth, 'annot', surface_name + '_lh_' + parcellation_name + '.csv')
+        annotfile_rh = os.path.join(root_pth, 'annot', surface_name + '_rh_' + parcellation_name + '.csv')
+
+        lh_centroid = centroid_extraction_sphere(sphere_lh.Points, annotfile_lh, ventricles=ventricles)
+        rh_centroid = centroid_extraction_sphere(sphere_rh.Points, annotfile_rh, ventricles=ventricles)
+    else:
+        annotfile_lh = os.path.join(root_pth, 'annot', surface_name + '_lh_' + parcellation_name + '.annot')
+        annotfile_rh = os.path.join(root_pth, 'annot', surface_name + '_rh_' + parcellation_name + '.annot')
+
+        lh_centroid = centroid_extraction_sphere(sphere_lh.Points, annotfile_lh)
+        rh_centroid = centroid_extraction_sphere(sphere_rh.Points, annotfile_rh)
 
     # generate permutation maps
     perm_id = rotate_parcellation(lh_centroid, rh_centroid, n_rot)
