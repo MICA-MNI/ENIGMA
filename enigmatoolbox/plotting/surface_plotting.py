@@ -446,7 +446,7 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
 @wrap_input(0, 1)
 def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
                   color_range=None, label_text=None,
-                  cmap='viridis', nan_color=(1, 1, 1, 0), zoom=1,
+                  cmap='RdBu_r', nan_color=(1, 1, 1, 0), zoom=1,
                   background=(1, 1, 1), size=(400, 400), interactive=True,
                   embed_nb=False, screenshot=False, filename=None,
                   scale=(1, 1), transparent_bg=True, **kwargs):
@@ -558,7 +558,7 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
 
 def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
                     color_range=None, label_text=None,
-                    cmap='viridis', nan_color=(1, 1, 1, 0), zoom=1,
+                    cmap='RdBu_r', nan_color=(1, 1, 1, 0), zoom=1,
                     background=(1, 1, 1), size=(400, 400), interactive=True,
                     embed_nb=False, screenshot=False, filename=None,
                     scale=(1, 1), transparent_bg=True, **kwargs):
