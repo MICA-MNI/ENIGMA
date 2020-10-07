@@ -7,6 +7,7 @@ import nibabel as nb
 import numpy as np
 import pandas as pd
 import warnings
+from scipy.spatial.distance import cdist
 
 from ..datasets import load_fsa5, load_conte69
 
@@ -116,20 +117,10 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
         # after rotation, find "best" match between rotated and unrotated coordinates
         # first, calculate distance between initial coordinates and rotated ones
         # left hemisphere
-        dist_l = np.empty((0, nroi_l))
-        for ii in range(nroi_l):
-            dist_l2 = []
-            for jj in range(nroi_l):
-                dist_l2 = np.append(dist_l2, np.sqrt(np.sum((coord_l[ii, :]-coord_l_rot[jj, :])**2)))
-            dist_l = np.vstack((dist_l, dist_l2))
+        dist_l = cdist(coord_l, coord_l_rot)
 
         # right hemisphere
-        dist_r = np.empty((0, nroi_r))
-        for ii in range(nroi_r):
-            dist_r2 = []
-            for jj in range(nroi_r):
-                dist_r2 = np.append(dist_r2, np.sqrt(np.sum((coord_r[ii, :] - coord_r_rot[jj, :]) ** 2)))
-            dist_r = np.vstack((dist_r, dist_r2))
+        dist_r = cdist(coord_r, coord_r_rot)
 
         # LEFT
         # calculate distances, proceed in order of "most distant minimum"
@@ -140,8 +131,10 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
         ref_l = []
         for ii in range(nroi_l):
             # max(min) (described above)
-            ref_ix = [i for i, e in enumerate(np.nanmin(temp_dist_l, axis=1)) if e == np.nanmax(np.nanmin(temp_dist_l, axis=1))]  # "furthest" row
-            rot_ix = [i for i, e in enumerate(temp_dist_l[ref_ix, :][0]) if e == np.nanmin(temp_dist_l[ref_ix, :], axis=1)]    # closest region
+            ref_ix = np.argwhere(np.nanmin(temp_dist_l, axis=1) == np.nanmax(np.nanmin(temp_dist_l, axis=1)))[0]
+            rot_ix = np.argwhere(temp_dist_l[ref_ix, :][0] == np.nanmin(temp_dist_l[ref_ix, :], axis=1))[0]
+            #ref_ix = [i for i, e in enumerate(np.nanmin(temp_dist_l, axis=1)) if e == np.nanmax(np.nanmin(temp_dist_l, axis=1))]  # "furthest" row
+            #rot_ix = [i for i, e in enumerate(temp_dist_l[ref_ix, :][0]) if e == np.nanmin(temp_dist_l[ref_ix, :], axis=1)]    # closest region
             ref_l = np.append(ref_l, ref_ix)                                           # store reference and rotated indices
             rot_l = np.append(rot_l, rot_ix)
             temp_dist_l[:, rot_ix] = np.nan                                            # set temporary indices to NaN, to be disregarded in next iteration
@@ -156,8 +149,10 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
         ref_r = []
         for ii in range(nroi_r):
             # max(min) (described above)
-            ref_ix = [i for i, e in enumerate(np.nanmin(temp_dist_r, axis=1)) if e == np.nanmax(np.nanmin(temp_dist_r, axis=1))]  # "furthest" row
-            rot_ix = [i for i, e in enumerate(temp_dist_r[ref_ix, :][0]) if e == np.nanmin(temp_dist_r[ref_ix, :], axis=1)]    # closest region
+            ref_ix = np.argwhere(np.nanmin(temp_dist_r, axis=1) == np.nanmax(np.nanmin(temp_dist_r, axis=1)))[0]
+            rot_ix = np.argwhere(temp_dist_r[ref_ix, :][0] == np.nanmin(temp_dist_r[ref_ix, :], axis=1))[0]
+            #ref_ix = [i for i, e in enumerate(np.nanmin(temp_dist_r, axis=1)) if e == np.nanmax(np.nanmin(temp_dist_r, axis=1))]  # "furthest" row
+            #rot_ix = [i for i, e in enumerate(temp_dist_r[ref_ix, :][0]) if e == np.nanmin(temp_dist_r[ref_ix, :], axis=1)]    # closest region
             ref_r = np.append(ref_r, ref_ix)                                           # store reference and rotated indices
             rot_r = np.append(rot_r, rot_ix)
             temp_dist_r[:, rot_ix] = np.nan                                            # set temporary indices to NaN, to be disregarded in next iteration
