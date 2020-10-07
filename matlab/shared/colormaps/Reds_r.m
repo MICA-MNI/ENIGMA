@@ -1,4 +1,4 @@
-function cm_data=Reds(m)
+function cm_data=Reds_r(m)
 cm = [0.4039         0    0.0510
     0.4141    0.0025    0.0529
     0.4240    0.0051    0.0546
