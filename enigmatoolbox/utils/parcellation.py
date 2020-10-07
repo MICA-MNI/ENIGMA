@@ -204,8 +204,7 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
         If mask is not None, only consider target labels in mask.
         Default is None.
     fill : float, optional
-        Value used to fill elements outside the mask. Only used if mask is not
-        None. Default is 0.
+        Value used to fill elements outside the mask. Default is 0.
     source_lab : ndarray, shape = (n_val,), optional
         Source labels for source values. If None, use unique labels in
         `target_lab` in ascending order. Default is None.
@@ -224,7 +223,7 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
 
     if source_val.size == 68 and np.unique(target_lab).size == 71:
         a_idx = list(range(1, 4)) + list(range(5, 39)) + list(range(40, 71))
-        ddk = np.zeros(71)
+        ddk = np.ones(71) * fill
         ddk[a_idx] = source_val
         source_val = ddk
 
