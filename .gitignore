@@ -4,7 +4,7 @@
 tmp.py
 
 docs/_build
-docs/generated
+docs/source/pages/13.01.apireference/generated
 
 .pytest_cache
 .ipynb_checkpoints
