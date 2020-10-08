@@ -470,15 +470,24 @@ def risk_genes(disorder=None):
 
 
 def load_example_data():
-    """ Loads ENIGMA example dataset (from one site - MICA-MNI Montreal)
-            Processed according to ENIGMA protocols
+    """
+    Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal)
+    that was processed according to ENIGMA protocols
 
-        Returns
-        -------
-        cov   : contains information on covariates (panda dataframe)
-        metr1 : contains information on subcortical volume
-        metr2 : contains information on cortical thickness
-        metr3 : contains information on surface area
+    Returns
+    -------
+    cov : pandas.DataFrame
+        contains information on covariates
+    metr1 : pandas.DataFrame
+        contains information on subcortical volume
+    metr2 :  pandas.DataFrame
+        contains information on cortical thickness
+    metr3 :  pandas.DataFrame
+        contains information on surface area
+
+    Author
+    ------
+    @saratheriver
     """
     root_pth = os.path.dirname(__file__)
 
