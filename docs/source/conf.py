@@ -58,17 +58,7 @@ autoclass_content = "class"
 #napoleon_include_private_with_doc = False
 ## napoleon_include_special_with_doc = False
 
-autodoc_default_options = {
-    'members': None,
-    'member_order': 'bysource',
-    'inherited-members': None,
-    'no-special-members': None,
-    'exclude-members': 'get_params,set_params',
-    'undoc-members': None,
-}
 
-autoclass_content = 'class'
-# autodoc_default_flags = ['members']
 
 
 
