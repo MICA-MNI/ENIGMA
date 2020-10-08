@@ -43,9 +43,6 @@ this morphological measure is defined by the sum of the area of each of the tria
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
         % Load all example data from an individual site
         [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data();
 
@@ -72,9 +69,6 @@ with all left hemisphere structures first followed by all right hemisphere struc
         >>> metr1_SubVol_r = reorder_sctx(metr1_SubVol)
 
    .. code-tab:: matlab **Matlab** | mega
-
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
 
         % Re-order the subcortical data alphabetically and by hemisphere
         metr1_SubVol_r = reorder_sctx(metr1_SubVol);
@@ -112,9 +106,6 @@ and cortical atrophy!
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
         % Z-score patients' data relative to controls (lower z-score = more atrophy)
         group        = cov.Dx;
         controlCode  = 0;
@@ -124,8 +115,8 @@ and cortical atrophy!
 
         % Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
         SV_z_mean    = array2table(mean(SV_z{find(cov.SDx == 3), :}, 1), ...
-                                   'VariableNames', sv.Properties.VariableNames);
+                                   'VariableNames', SV_z.Properties.VariableNames);
         CT_z_mean    = array2table(mean(CT_z{find(cov.SDx == 3), :}, 1), ...
-                                   'VariableNames', ct.Properties.VariableNames);
+                                   'VariableNames', CT_z.Properties.VariableNames);
         SA_z_mean    = array2table(mean(SA_z{find(cov.SDx == 3), :}, 1), ...
-                                   'VariableNames', sa.Properties.VariableNames);
+                                   'VariableNames', SA_z.Properties.VariableNames);

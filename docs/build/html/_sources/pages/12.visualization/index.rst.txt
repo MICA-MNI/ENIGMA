@@ -29,7 +29,7 @@ In the following example, we will display cortical atrophy in individuals with l
 
      **Prerequisites**
      ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+     ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
      
 .. tabs::
 
@@ -38,16 +38,21 @@ In the following example, we will display cortical atrophy in individuals with l
         >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
         >>> from enigmatoolbox.plotting import plot_cortical
 
-        >>> # Map parcellated data to the surface (cortical values only)
+        >>> # Map parcellated data to the surface
         >>> CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5')
 
-        >>> # Project Cohen's d values to the surface template
+        >>> # Project the results on the surface brain
         >>> plot_cortical(array_name=CT_d_fsa5, surface_name="fsa5", size=(800, 400),
         ...               cmap='RdBu_r', color_bar=True, color_range=(-0.5, 0.5))
 
    .. code-tab:: matlab **Matlab** | meta
 
-          ello
+        % Map parcellated data to the surface
+        CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5');
+
+        % Project the results on the surface brain
+        f = figure,
+            plot_cortical(CT_d_fsa5, 'color_range', [-0.5 0.5], 'cmap', 'RdBu_r') 
 
    .. tab:: ⤎ ⤏
 
@@ -56,56 +61,21 @@ In the following example, we will display cortical atrophy in individuals with l
 
    .. code-tab:: py **Python** | mega
        
-        >>> import numpy as np
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> from enigmatoolbox.utils.useful import zscore_matrix
         >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
         >>> from enigmatoolbox.plotting import plot_cortical
 
-        >>> # Let's first load our example data. Here we only need the covariates and the cortical thickness data
-        >>> cov, _, metr2_CortThick, _ = load_example_data()
-
-        >>> # We can z-score the data in patients relative to controls (lower z-score = more atrophy)
-        >>> data = metr2_CortThick.iloc[:, 1:-5]            # Selecting only columns with cortical thickness values
-        >>> groups = cov['Dx'].to_list()                    # Selecting the group assignment column for all participants
-        >>> controlGroup = 0                                # Specifying that controls are coded as 0
-        >>> Z = zscore_matrix(data, groups, controlGroup)
-
-        >>> # As a quick example, let's choose data from individuals with left TLE
-        >>> Z_TLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
-
         >>> # Before visualizing the data, we need to map the parcellated data to the surface
-        >>> Z_TLE_fsa5 = parcel_to_surface(Z_TLE, 'aparc_fsa5')
+        >>> CT_z_mean_fsa5 = parcel_to_surface(CT_z_mean, 'aparc_fsa5')
 
-        >>> # We can now project cortical thickness descreases in left TLE to the cortical surface!
-        >>> plot_cortical(array_name=Z_TLE_fsa5, surface_name="fsa5", size=(800, 400),
-        ...               cmap='Blues_r', color_bar=True, color_range=(-2, 0))
+        >>> # Project the results on the surface brain
+        >>> plot_cortical(array_name=CT_z_mean_fsa5, surface_name="fsa5", size=(800, 400),
+        >>>               cmap='Blues_r', color_bar=True, color_range=(-2, 0))
 
    .. code-tab:: matlab **Matlab** | mega
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Let's first load our example data. Here we only need the covariates and the cortical thickness data
-        [cov, ~, metr2_CortThick, ~] = load_example_data();
-
-        %% We can z-score the data in patients relative to controls (lower z-score = more atrophy)
-        data           = metr2_CortThick(:, 2:end-5);         % Selecting only columns with cortical thickness values
-        groups         = cov.Dx;                              % Selecting the group assignment column for all participants
-        controlGroup   = 0;                                   % Specifying that controls are coded as 0
-        Z              = zscore_matrix(data, groups, controlGroup);
-        
-        %% As a quick example, let's choose data from individuals with left TLE
-        Z_TLE          = mean(Z(find(cov.SDx == 3), :), 1);   % Mean z-score values for left TLE patients (SDx == 3)
-
-        %% Before visualizing the data, we need to map the parcellated data to the surface
-        Z_TLE_fsa5     = parcel_to_surface(Z_TLE, 'aparc_fsa5');
-
-        %% Plot cortical values
+        % Project the results on the surface brain
         f = figure,
-            plot_cortical(Z_TLE_fsa5, 'fsa5')
-            colormap(flipud(Blues));                          % change colormap here 
-            colorbar_range([-2, 0])                           % change colorbar limits here
+            plot_cortical(CT_z_mean_fsa5, 'color_range', [-2 0], 'cmap', 'Blues_r')
 
 .. image:: ./examples/example_figs/ctx_py.png
     :align: center
@@ -131,8 +101,8 @@ we will display subcortical atrophy in individuals with left TLE.
 
      **Prerequisites**
      ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
-     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*mega only*)
+     ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
 
 .. tabs::
 
@@ -140,13 +110,15 @@ we will display subcortical atrophy in individuals with left TLE.
 
         >>> from enigmatoolbox.plotting import plot_subcortical
 
-        >>> # Project Cohen's d values to the surface template
+        >>> # Project the results on the surface brain
         >>> plot_subcortical(array_name=SV_d, size=(800, 400),
         ...                  cmap='RdBu_r', color_bar=True, color_range=(-0.5, 0.5))
 
    .. code-tab:: matlab **Matlab** | meta
 
-          ello
+        % Project the results on the surface brain
+        f = figure,
+            plot_subcortical(SV_d, 'color_range', [-0.5 0.5], 'cmap', 'RdBu_r')
 
    .. tab:: ⤎ ⤏
 
@@ -155,51 +127,17 @@ we will display subcortical atrophy in individuals with left TLE.
 
    .. code-tab:: py **Python** | mega
 
-        >>> import numpy as np
-        >>> from enigmatoolbox.datasets import load_example_data
-        >>> from enigmatoolbox.utils.useful import zscore_matrix, reorder_sctx
         >>> from enigmatoolbox.plotting import plot_subcortical
 
-        >>> # Let's first load our example data; here we only need the covariates and the subcortical volumes
-        >>> cov, metr1_SubVol, _, _ = load_example_data()
-
-        >>> # After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!
-        >>> metr1_SubVol_r = reorder_sctx(metr1_SubVol)
-
-        >>> # Let's also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy
-        >>> data = metr1_SubVol_r.iloc[:, 1:-1]             # Selecting only columns with subcortical volume values
-        >>> groups = cov['Dx'].to_list()                    # Selecting the group assignment column for all participants
-        >>> controlGroup = 0                                # Specifying that controls are coded as 0
-        >>> Z = zscore_matrix(data, groups, controlGroup)
-
-        >>> # As a quick example, let's project data from individuals with left TLE to the subcortical surface template
-        >>> Z_LTLE = np.mean(Z.to_numpy()[cov[cov['SDx'] == 3].index, :], axis=0)   # Mean z-score values for left TLE patients (SDx == 3)
-        >>> plot_subcortical(array_name=Z_LTLE, size=(800, 400),
+        >>> # Project the results on the surface brain
+        >>> plot_subcortical(array_name=SV_z_mean, size=(800, 400),
         >>>                  cmap='Blues_r', color_bar=True, color_range=(-3, 0))
 
    .. code-tab:: matlab **Matlab** | meta
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% Let's first load our example data; here we only need the covariates and the subcortical volumes
-        [cov, metr1_SubVol, ~, ~] = load_example_data();
-
-        %% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!
-        metr1_SubVol_r = reorder_sctx(metr1_SubVol);
-
-        %% Let's also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy
-        data           = metr1_SubVol_r(:, 2:end-1);   % Selecting only columns with subcortical volume values
-        groups         = cov.Dx;                       % Selecting the group assignment column for all participants
-        controlGroup   = 0;                            % Specifying that controls are coded as 0
-        Z              = zscore_matrix(data, group, controlGroup);  
-
-        %% As a quick example, let's project data from individuals with left TLE to the subcortical surface template
-        Z_TLE = mean(Z(find(cov.SDx == 3), :), 1);     % Mean z-score values for left TLE patients (SDx == 3)
+        % Project the results on the surface brain
         f = figure,
-            plot_subcortical(Z_TLE);
-            colormap(flipud(Blues))                    % change colormap here
-            colorbar_range([-3, 0])                    % change colorbar limits here
+            plot_subcortical(SV_z_mean{:, :}, 'color_range', [-2 1], 'cmap', 'Blues_r')
 
 .. image:: ./examples/example_figs/sctx_py.png
     :align: center

@@ -218,7 +218,7 @@ Easy peasy lemon squeezy 🍋</p>
 </div>
 <pre class="literal-block"><strong>Prerequisites</strong>
 ↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
-↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)</pre>
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>mega only</em>)</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
@@ -251,17 +251,22 @@ Easy peasy lemon squeezy 🍋</p>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface (cortical values only)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">CT_d_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">CT_d</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project Cohen&#39;s d values to the surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">CT_d_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Map parcellated data to the surface</span>
+<span class="n">CT_d_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">CT_d</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
+
+<span class="c">% Project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">CT_d_fsa5</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -272,57 +277,22 @@ Easy peasy lemon squeezy 🍋</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr2_CortThick</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">]</span>            <span class="c1"># Selecting only columns with cortical thickness values</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">groups</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                    <span class="c1"># Selecting the group assignment column for all participants</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">controlGroup</span> <span class="o">=</span> <span class="mi">0</span>                                <span class="c1"># Specifying that controls are coded as 0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">controlGroup</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s choose data from individuals with left TLE</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
-
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Before visualizing the data, we need to map the parcellated data to the surface</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_TLE_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">CT_z_mean_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">CT_z_mean</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can now project cortical thickness descreases in left TLE to the cortical surface!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
-<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">CT_z_mean_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Let&#39;s first load our example data. Here we only need the covariates and the cortical thickness data</span>
-<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-
-<span class="c">%% We can z-score the data in patients relative to controls (lower z-score = more atrophy)</span>
-<span class="n">data</span>           <span class="s">=</span> <span class="s">metr2_CortThick(:,</span> <span class="s">2:end-5)</span><span class="p">;</span>         <span class="c">% Selecting only columns with cortical thickness values</span>
-<span class="n">groups</span>         <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                              <span class="c">% Selecting the group assignment column for all participants</span>
-<span class="n">controlGroup</span>   <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                                   <span class="c">% Specifying that controls are coded as 0</span>
-<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">groups,</span> <span class="s">controlGroup)</span><span class="p">;</span>
-
-<span class="c">%% As a quick example, let&#39;s choose data from individuals with left TLE</span>
-<span class="n">Z_TLE</span>          <span class="s">=</span> <span class="s">mean(Z(find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:),</span> <span class="s">1)</span><span class="p">;</span>   <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
-
-<span class="c">%% Before visualizing the data, we need to map the parcellated data to the surface</span>
-<span class="n">Z_TLE_fsa5</span>     <span class="s">=</span> <span class="s">parcel_to_surface(Z_TLE,</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
-
-<span class="c">%% Plot cortical values</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Project the results on the surface brain</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">Z_TLE_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">)</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">));</span>                          <span class="c">% change colormap here</span>
-    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                           <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">CT_z_mean_fsa5</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="mi">0</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues_r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -346,8 +316,8 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 </div>
 <pre class="literal-block"><strong>Prerequisites</strong>
 ↪ Load <a class="reference internal" href="../04.loadsumstats/index.html#load-sumstats"><span class="std std-ref">summary statistics</span></a> <strong>or</strong> <a class="reference internal" href="../03.loadct/index.html#load-example-data"><span class="std std-ref">example data</span></a>
-↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>individual site/mega-analysis data only</em>)
-↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>individual site/mega-analysis data only</em>)</pre>
+↪ <a class="reference internal" href="../03.loadct/index.html#reorder-sctx"><span class="std std-ref">Re-order subcortical data</span></a> (<em>mega only</em>)
+↪ <a class="reference internal" href="../03.loadct/index.html#zscore-data"><span class="std std-ref">Z-score data</span></a> (<em>mega only</em>)</pre>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= docutils container">
@@ -379,14 +349,16 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1ldGE= active docutils container">
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project Cohen&#39;s d values to the surface template</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">SV_d</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">... </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">ello</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">SV_d</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.5</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;RdBu_r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -397,52 +369,18 @@ right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-orde
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipQeXRob24qKiB8IG1lZ2E= docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.datasets</span> <span class="kn">import</span> <span class="n">load_example_data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.useful</span> <span class="kn">import</span> <span class="n">zscore_matrix</span><span class="p">,</span> <span class="n">reorder_sctx</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_subcortical</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_example_data</span><span class="p">()</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">metr1_SubVol_r</span> <span class="o">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">metr1_SubVol_r</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>             <span class="c1"># Selecting only columns with subcortical volume values</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">groups</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;Dx&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>                    <span class="c1"># Selecting the group assignment column for all participants</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">controlGroup</span> <span class="o">=</span> <span class="mi">0</span>                                <span class="c1"># Specifying that controls are coded as 0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">zscore_matrix</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">controlGroup</span><span class="p">)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Z_LTLE</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;SDx&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="p">:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># Mean z-score values for left TLE patients (SDx == 3)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">Z_LTLE</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">SV_z_mean</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
 <span class="gp">&gt;&gt;&gt; </span>                 <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1ldGE=-1 docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">%% Let&#39;s first load our example data; here we only need the covariates and the subcortical volumes</span>
-<span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="o">~</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
-
-<span class="c">%% After loading our subcortical data, we must re-order them (alphabetically and by hemisphere) as a requisite for plot_subcortical!</span>
-<span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
-
-<span class="c">%% Let&#39;s also z-score the data in patients, relative to controls, so that lower z-score indexes more atrophy</span>
-<span class="n">data</span>           <span class="s">=</span> <span class="s">metr1_SubVol_r(:,</span> <span class="s">2:end-1)</span><span class="p">;</span>   <span class="c">% Selecting only columns with subcortical volume values</span>
-<span class="n">groups</span>         <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>                       <span class="c">% Selecting the group assignment column for all participants</span>
-<span class="n">controlGroup</span>   <span class="s">=</span> <span class="s">0</span><span class="p">;</span>                            <span class="c">% Specifying that controls are coded as 0</span>
-<span class="n">Z</span>              <span class="s">=</span> <span class="s">zscore_matrix(data,</span> <span class="s">group,</span> <span class="s">controlGroup)</span><span class="p">;</span>
-
-<span class="c">%% As a quick example, let&#39;s project data from individuals with left TLE to the subcortical surface template</span>
-<span class="n">Z_TLE</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">Z</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">cov</span><span class="p">.</span><span class="n">SDx</span> <span class="o">==</span> <span class="mi">3</span><span class="p">),</span> <span class="p">:),</span> <span class="mi">1</span><span class="p">);</span>     <span class="c">% Mean z-score values for left TLE patients (SDx == 3)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Project the results on the surface brain</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">Z_TLE</span><span class="p">);</span>
-    <span class="n">colormap</span><span class="p">(</span><span class="nb">flipud</span><span class="p">(</span><span class="n">Blues</span><span class="p">))</span>                    <span class="c">% change colormap here</span>
-    <span class="n">colorbar_range</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>                    <span class="c">% change colorbar limits here</span>
+    <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">SV_z_mean</span><span class="p">{:,</span> <span class="p">:},</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues_r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

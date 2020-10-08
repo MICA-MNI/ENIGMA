@@ -238,10 +238,7 @@ this morphological measure is defined by the sum of the area of each of the tria
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Load all example data from an individual site</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Load all example data from an individual site</span>
 <span class="p">[</span><span class="n">cov</span><span class="p">,</span> <span class="n">metr1_SubVol</span><span class="p">,</span> <span class="n">metr2_CortThick</span><span class="p">,</span> <span class="n">metr3_CortSurf</span><span class="p">]</span> <span class="p">=</span> <span class="n">load_example_data</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -279,10 +276,7 @@ with all left hemisphere structures first followed by all right hemisphere struc
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Re-order the subcortical data alphabetically and by hemisphere</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Re-order the subcortical data alphabetically and by hemisphere</span>
 <span class="n">metr1_SubVol_r</span> <span class="p">=</span> <span class="n">reorder_sctx</span><span class="p">(</span><span class="n">metr1_SubVol</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -329,10 +323,7 @@ and cortical atrophy!</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-KipNYXRsYWIqKiB8IG1lZ2E= docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Z-score patients&#39; data relative to controls (lower z-score = more atrophy)</span>
 <span class="n">group</span>        <span class="s">=</span> <span class="s">cov.Dx</span><span class="p">;</span>
 <span class="n">controlCode</span>  <span class="s">=</span> <span class="s">0</span><span class="p">;</span>
 <span class="n">SV_z</span>         <span class="s">=</span> <span class="s">zscore_matrix(metr1_SubVol_r(:,</span> <span class="s">2:end-1),</span> <span class="s">group,</span> <span class="s">controlCode)</span><span class="p">;</span>
@@ -341,11 +332,11 @@ and cortical atrophy!</p>
 
 <span class="c">% Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)</span>
 <span class="n">SV_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(SV_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
-                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sv</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">SV_z</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
 <span class="n">CT_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(CT_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
-                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">ct</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">CT_z</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
 <span class="n">SA_z_mean</span>    <span class="s">=</span> <span class="s">array2table(mean(SA_z{find(cov.SDx</span> <span class="s">==</span> <span class="s">3),</span> <span class="s">:},</span> <span class="s">1),</span> <span class="s">...</span>
-                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">sa</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
+                           <span class="s">&#39;VariableNames&#39;</span><span class="p">,</span> <span class="n">SA_z</span><span class="p">.</span><span class="n">Properties</span><span class="p">.</span><span class="n">VariableNames</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>

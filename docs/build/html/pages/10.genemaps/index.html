@@ -241,19 +241,16 @@ and specifying its path in the <code class="docutils literal notranslate"><span 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Fetch gene expression data (output of fetch_ahba() is a dataframe)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">genes</span> <span class="o">=</span> <span class="n">fetch_ahba</span><span class="p">()</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain the region labels</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain region labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">reglabels</span> <span class="o">=</span> <span class="n">genes</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># As well as the gene labels</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">genelabels</span> <span class="o">=</span> <span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Obtain gene labels</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">genelabels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">genes</span><span class="o">.</span><span class="n">columns</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Fetch gene expression data</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Fetch gene expression data</span>
 <span class="p">[</span><span class="n">genes</span><span class="p">,</span> <span class="n">reglabels</span><span class="p">,</span> <span class="n">genelabels</span><span class="p">]</span> <span class="p">=</span> <span class="n">fetch_ahba</span><span class="p">();</span>
 </pre></div>
 </div>

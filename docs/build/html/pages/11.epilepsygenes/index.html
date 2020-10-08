@@ -207,14 +207,15 @@ sclerosis) as an example, but feel free to replace <em>epilepsy</em> with any ot
 <div class="line-block">
 <div class="line">Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined
 disease-related genes, including:</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-018-0269-7">attention deficit/hyperactivity disorder</a>,</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-019-0344-8">autism spectrum disorder</a>,</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-019-0397-8">bipolar disorder</a>,</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41593-018-0326-7">depression</a>,</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41467-018-07524-z">common epilepsies</a>,</div>
-<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-018-0059-2">schizophrenia</a>,</div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-018-0269-7">attention deficit/hyperactivity disorder</a></div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-019-0344-8">autism spectrum disorder</a></div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-019-0397-8">bipolar disorder</a></div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41593-018-0326-7">depression</a></div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41467-018-07524-z">common epilepsies</a> 📸</div>
+<div class="line">↪ <a class="reference external" href="https://www.nature.com/articles/s41588-018-0059-2">schizophrenia</a></div>
 <div class="line">↪ <a class="reference external" href="https://ajp.psychiatryonline.org/doi/10.1176/appi.ajp.2018.18070857?url_ver=Z39.88-2003&amp;rfr_id=ori:rid:crossref.org&amp;rfr_dat=cr_pub%20%200pubmed">tourette’s syndrome</a></div>
 </div>
+<p>* 📸 <em>indicates disease-related genes used in the code snippets.</em></p>
 <div class="admonition-caution admonition">
 <p class="admonition-title">Caution ⚠️</p>
 <p>Pre-defined gene sets are obtained from individual studies and are liable to be changed!
@@ -249,10 +250,7 @@ happy to expand this function to include other interesting disorders! Get in tou
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Get the names of genes associated with a specific epilepsy subtype (e.g., Focal HS)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Get the names of genes associated with a specific epilepsy subtype (e.g., Focal HS)</span>
 <span class="n">epilepsy_genes</span> <span class="p">=</span> <span class="n">risk_genes</span><span class="p">(</span><span class="s">&#39;epilepsy&#39;</span><span class="p">);</span>
 <span class="n">epilepsy_genes</span> <span class="p">=</span> <span class="nb">find</span><span class="p">(</span><span class="n">ismember</span><span class="p">(</span><span class="n">genelabels</span><span class="p">,</span> <span class="n">epilepsy_genes</span><span class="p">.</span><span class="n">focalhs</span><span class="p">));</span>
 
@@ -298,42 +296,37 @@ Once again, we use Focal HS (epilepsy) genes as an example.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_ctx</span> <span class="o">=</span> <span class="n">mean_epilepsy_genes</span><span class="p">[:</span><span class="mi">68</span><span class="p">]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_sctx</span> <span class="o">=</span> <span class="n">mean_epilepsy_genes</span><span class="p">[</span><span class="mi">68</span><span class="p">:]</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map the parcellated gene expression data to our surface template (ctx only)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map the parcellated gene expression data to our surface template (cortical values only)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mean_epilepsy_genes_ctx_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">mean_epilepsy_genes_ctx</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">mean_epilepsy_genes_ctx_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span> <span class="n">nan_color</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
-<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">))</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">))</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plot_subcortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">mean_epilepsy_genes_sctx</span><span class="p">,</span> <span class="n">ventricles</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
-<span class="gp">... </span>                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">))</span>
+<span class="gp">... </span>                <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-TWF0bGFi docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Add the path to the ENIGMA TOOLBOX matlab folder</span>
-<span class="n">addpath</span><span class="p">(</span><span class="n">genpath</span><span class="p">(</span><span class="s">&#39;/path/to/ENIGMA/matlab/&#39;</span><span class="p">));</span>
-
-<span class="c">% Compute the mean co-expression across all Focal HS genes</span>
-<span class="n">mean_fh_gx</span>           <span class="s">=</span> <span class="s">mean(fh_gx,</span> <span class="s">2)</span><span class="p">;</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% Compute the mean co-expression across all Focal HS genes</span>
+<span class="n">mean_epilepsy_genes</span> <span class="p">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">epilepsy_gene_data</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
 <span class="c">% Separate cortical (ctx) from subcortical (sctx) regions</span>
-<span class="n">fh_gx_ctx</span>            <span class="s">=</span> <span class="s">mean_fh_gx(1:68)</span><span class="p">;</span>
-<span class="n">fh_gx_sctx</span>           <span class="s">=</span> <span class="s">mean_fh_gx(69:end)</span><span class="p">;</span>
+<span class="n">mean_epilepsy_genes_ctx</span>  <span class="s">=</span> <span class="s">mean_epilepsy_genes(1:68)</span><span class="p">;</span>
+<span class="n">mean_epilepsy_genes_sctx</span> <span class="p">=</span> <span class="n">mean_epilepsy_genes</span><span class="p">(</span><span class="mi">69</span><span class="p">:</span><span class="k">end</span><span class="p">);</span>
 
-<span class="c">% Map the parcellated gene expression data to our surface template (ctx only)</span>
-<span class="n">fh_gx_ctx_fsa5</span>       <span class="s">=</span> <span class="s">parcel_to_surface(fh_gx_ctx(1:68),</span> <span class="s">&#39;aparc_fsa5&#39;)</span><span class="p">;</span>
+<span class="c">% Map the parcellated gene expression data to our surface template (cortical values only)</span>
+<span class="n">mean_epilepsy_genes_ctx_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">mean_epilepsy_genes_ctx</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
 
 <span class="c">% Project the results on the surface brain</span>
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">plot_cortical</span><span class="p">(</span><span class="n">fh_gx_ctx_fsa5</span><span class="p">,</span> <span class="s">&#39;fsa5&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
-  <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
-  <span class="n">colorbar_range</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.55</span><span class="p">])</span>
+<span class="n">plot_cortical</span><span class="p">(</span><span class="n">mean_epilepsy_genes_ctx_fsa5</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="c">...</span>
+              <span class="p">[</span><span class="mf">0.4</span> <span class="mf">0.6</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Greys&#39;</span><span class="p">)</span>
 
 <span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
-  <span class="n">plot_subcortical</span><span class="p">(</span><span class="n">fh_gx_sctx</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="s">&#39;focal hs-related gene expression&#39;</span><span class="p">)</span>
-  <span class="n">colormap</span><span class="p">([</span><span class="n">Greys</span><span class="p">])</span>
-  <span class="n">colorbar_range</span><span class="p">([</span><span class="mf">.4</span> <span class="mf">.65</span><span class="p">])</span>
+<span class="n">plot_subcortical</span><span class="p">(</span><span class="n">mean_epilepsy_genes_sctx</span><span class="p">,</span> <span class="s">&#39;ventricles&#39;</span><span class="p">,</span> <span class="s">&#39;False&#39;</span><span class="p">,</span> <span class="c">...</span>
+                 <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.4</span> <span class="mf">0.6</span><span class="p">],</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Greys&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

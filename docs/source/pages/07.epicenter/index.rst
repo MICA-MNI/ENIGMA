@@ -28,74 +28,61 @@ derived from cortical thickness decreases in individuals with left TLE.
 
     **Prerequisites**
     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-    ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+    ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
     ↪ Load :ref:`cortico-cortical connectivity matrices <load_corticocortical>` 
+
+.. _ctx_epi:
 
 .. tabs::
 
    .. code-tab:: py **Python** | meta
      
         >>> import numpy as np
-        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
-        >>> from enigmatoolbox.plotting import plot_cortical
+        >>> from enigmatoolbox.permutation_testing import spin_test
 
         >>> # Identify cortical epicenters (from functional connectivity)
         >>> fc_ctx_epi = []
+        >>> fc_ctx_epi_p = []
         >>> for seed in range(fc_ctx.shape[0]):
-        ...     seed_con = fc_ctx[:, seed]
-        ...     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     seed_con = fc_ctx[:, seed]
+        >>>     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     fc_ctx_epi_p = np.append(fc_ctx_epi_p,
+        ...                              spin_test(seed_con, CT_d, surface_name='fsa5', parcellation_name='aparc',
+        ...                                        type='pearson', n_rot=1000))
 
         >>> # Identify cortical epicenters (from structural connectivity)
         >>> sc_ctx_epi = []
+        >>> sc_ctx_epi_p = []
         >>> for seed in range(sc_ctx.shape[0]):
-        ...     seed_con = sc_ctx[:, seed]
-        ...     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
-
-
-        >>> # Project the results on the surface brain
-        >>> plot_cortical(array_name=parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
-        ...               cmap='Reds_r', color_bar=True, color_range=(-0.5, -0.2))
-
-        >>> plot_cortical(array_name=parcel_to_surface(sc_ctx_epi, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
-        ...               cmap='Blues_r', color_bar=True, color_range=(-0.5, 0))
+        >>>     seed_con = sc_ctx[:, seed]
+        >>>     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     sc_ctx_epi_p = np.append(sc_ctx_epi_p,
+        ...                              spin_test(seed_con, CT_d, surface_name='fsa5', parcellation_name='aparc',
+        ...                                        type='pearson', n_rot=1000))
 
    .. code-tab:: matlab **Matlab** | meta
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        % Identify cortical epicenters (from functional connectivity)
+        % Computing cortical epicenter values (from functional connectivity)
         fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
         fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
         for seed = 1:size(fc_ctx, 1)
             seed_conn           = fc_ctx(:, seed);
             r_tmp               = corrcoef(seed_conn, CT_d);
             fc_ctx_epi(seed)    = r_tmp(1, 2);
-            fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'fsa5', ...
-                                           'aparc', 1000, 'pearson');
+            fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'surface_name', 'fsa5', 'parcellation_name', ...
+                                            'aparc', 'n_rot', 100, 'type', 'pearson');
         end
 
-        % Identify cortical epicenters (from structural connectivity)
+        % Computing cortical epicenter values (from structural connectivity)
         sc_ctx_epi              = zeros(size(sc_ctx, 1), 1);
         sc_ctx_epi_p            = zeros(size(sc_ctx, 1), 1);
         for seed = 1:size(sc_ctx, 1)
             seed_conn           = sc_ctx(:, seed);
             r_tmp               = corrcoef(seed_conn, CT_d);
             sc_ctx_epi(seed)    = r_tmp(1, 2);
-            sc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'fsa5', ...
-                                           'aparc', 1000, 'pearson');
+            sc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'surface_name', 'fsa5', 'parcellation_name', ...
+                                            'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
-
-        % Project the results on the surface brain
-        f = figure,
-            plot_cortical(parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'functional cortical epicenters')
-            colorbar_range([-0.5 -0.2])
-            colormap(flipud(Reds))
-
-        f = figure,
-            plot_cortical(parcel_to_surface(sc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'structural cortical epicenters')
-            colorbar_range([-0.5 0])
-            colormap(flipud(Blues))
 
    .. tab:: ⤎ ⤏
 
@@ -105,66 +92,103 @@ derived from cortical thickness decreases in individuals with left TLE.
    .. code-tab:: py **Python** | mega
        
         >>> import numpy as np
-        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
-        >>> from enigmatoolbox.plotting import plot_cortical
+        >>> from enigmatoolbox.permutation_testing import spin_test
 
-        >>> # Identify cortical epicenters
+        >>> # Identify cortical epicenters (from functional connectivity)
         >>> fc_ctx_epi = []
+        >>> fc_ctx_epi_p = []
         >>> for seed in range(fc_ctx.shape[0]):
-        ...     seed_con = fc_ctx[:, seed]
-        ...     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
+        >>>     seed_con = fc_ctx[:, seed]
+        >>>     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
+        >>>     fc_ctx_epi_p = np.append(fc_ctx_epi_p,
+        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5',
+        ...                                        parcellation_name='aparc', type='pearson', n_rot=1000))
 
+        >>> # Identify cortical epicenters (from structural connectivity)
         >>> sc_ctx_epi = []
+        >>> sc_ctx_epi_p = []
         >>> for seed in range(sc_ctx.shape[0]):
-        ...     seed_con = sc_ctx[:, seed]
-        ...     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
-
-
-        >>> # And project the results on the surface brain
-        >>> plot_cortical(array_name=parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
-        ...               cmap='Reds_r', color_bar=True, color_range=(-0.5, 0))
-
-        >>> plot_cortical(array_name=parcel_to_surface(sc_ctx_epi, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
-        ...               cmap='Blues_r', color_bar=True, color_range=(-0.5, 0))
-
+        >>>     seed_con = sc_ctx[:, seed]
+        >>>     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
+        >>>     sc_ctx_epi_p = np.append(sc_ctx_epi_p,
+        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5',
+        ...                                        parcellation_name='aparc', type='pearson', n_rot=1000))
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        % Functional cortical epicenters 
-        fc_ctx_epi             = zeros(size(fc_ctx, 1), 1); % 68 x 1
+        % Computing cortical epicenter values (from functional connectivity)
+        fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
+        fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
         for seed = 1:size(fc_ctx, 1)
-            seed_conn          = fc_ctx(:, seed);
-            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
-            fc_ctx_epi(seed)   = r_tmp(1, 2);
+            seed_conn           = fc_ctx(:, seed);
+            r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
+            fc_ctx_epi(seed)    = r_tmp(1, 2);
+            fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
+                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
         end
 
-        sc_ctx_epi             = zeros(size(sc_ctx, 1), 1); % 68 x 1
+        % Computing cortical epicenter values (from structural connectivity)
+        sc_ctx_epi              = zeros(size(sc_ctx, 1), 1);
+        sc_ctx_epi_p            = zeros(size(sc_ctx, 1), 1);
         for seed = 1:size(sc_ctx, 1)
-            seed_conn          = sc_ctx(:, seed);
-            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
-            sc_ctx_epi(seed)   = r_tmp(1, 2);
+            seed_conn           = sc_ctx(:, seed);
+            r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
+            sc_ctx_epi(seed)    = r_tmp(1, 2);
+            sc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
+                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
         end
 
+As we have assessed the significance of every spatial correlation between seed-based cortico-cortical connectivity and cortical atrophy measures
+using spin permutation tests, we can set a significance threshold to identify disease epicenters. In the following example,
+we set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
+were greater than 0.1). As such, we are displaying the correlation coefficients of mdoerate-to-strong connectivity-atrophy 
+associations.
 
-        % Functional cortical epicenters
-        f = figure,
-            plot_cortical(parcel_to_surface(fc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'functional cortical epicenters')
-            colorbar_range([-0.5 0])
-            colormap(flipud(Reds))
+.. tabs::
 
+   .. code-tab:: py
+     
+        >>> import numpy as np
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
+        >>> from enigmatoolbox.plotting import plot_cortical
+
+        >>> # Project the results on the surface brain
+        >>> # Selecting only regions with p < 0.1 (functional epicenters)
+        >>> fc_ctx_epi_p_sig = np.zeros_like(fc_ctx_epi_p)
+        >>> fc_ctx_epi_p_sig[np.argwhere(fc_ctx_epi_p < 0.1)] = fc_ctx_epi[np.argwhere(fc_ctx_epi_p < 0.1)]
+
+        >>> plot_cortical(array_name=parcel_to_surface(fc_ctx_epi_p_sig, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
+        ...               cmap='GyRd_r', color_bar=True, color_range=(-0.5, 0.5))
+
+        >>> # Selecting only regions with p < 0.1 (structural epicenters)
+        >>> sc_ctx_epi_p_sig = np.zeros_like(sc_ctx_epi_p)
+        >>> sc_ctx_epi_p_sig[np.argwhere(sc_ctx_epi_p < 0.1)] = sc_ctx_epi[np.argwhere(sc_ctx_epi_p < 0.1)]
+        >>> plot_cortical(array_name=parcel_to_surface(sc_ctx_epi_p_sig, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
+        ...               cmap='GyBu_r', color_bar=True, color_range=(-0.5, 0.5))
+
+   .. code-tab:: matlab
+
+        % Project the results on the surface brain
+        % Selecting only regions with p < 0.1 (functional epicenters)
+        fc_ctx_epi_p_sig = zeros(length(fc_ctx_epi_p), 1);
+        fc_ctx_epi_p_sig(find(fc_ctx_epi_p < 0.1)) = fc_ctx_epi(fc_ctx_epi_p<0.1);
         f = figure,
-            plot_cortical(parcel_to_surface(sc_ctx_epi, 'aparc_fsa5'), 'fsa5', 'structural cortical epicenters')
-            colorbar_range([-0.5 0])
-            colormap(flipud(Blues))
+            plot_cortical(parcel_to_surface(fc_ctx_epi_p_sig, 'aparc_fsa5'), ...
+                        'color_range', [-0.5 0.5], 'cmap', 'GyRd_r')
+              
+        % Selecting only regions with p < 0.1 (structural epicenters)
+        sc_ctx_epi_p_sig = zeros(length(sc_ctx_epi_p), 1);
+        sc_ctx_epi_p_sig(find(sc_ctx_epi_p < 0.1)) = sc_ctx_epi(sc_ctx_epi_p<0.1);
+        f = figure,
+            plot_cortical(parcel_to_surface(sc_ctx_epi_p_sig, 'aparc_fsa5'), ...
+                        'color_range', [-0.5 0.5], 'cmap', 'GyBu_r')
 
 .. image:: ./examples/example_figs/epi_ctx.png
     :align: center
 
 
 |
+
 
 
 Subcortical epicenters
@@ -178,7 +202,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
     **Prerequisites**
     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-    ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+    ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
     ↪ Load :ref:`subcortico-cortical connectivity matrices <load_subcorticocortical>` 
 
 .. tabs::
@@ -186,29 +210,49 @@ derived from cortical thickness decreases in individuals with left TLE.
    .. code-tab:: py **Python** | meta
      
         >>> import numpy as np
-        >>> from enigmatoolbox.plotting import plot_subcortical
+        >>> from enigmatoolbox.permutation_testing import spin_test
 
-        >>> # Identify subcortical epicenters
+        >>> # Identify subcortical epicenters (from functional connectivity)
         >>> fc_sctx_epi = []
+        >>> fc_sctx_epi_p = []
         >>> for seed in range(fc_sctx.shape[0]):
-        ...     seed_con = fc_sctx[seed, :]
-        ...     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     seed_con = fc_sctx[seed, :]
+        >>>     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     fc_sctx_epi_p = np.append(fc_sctx_epi_p,
+        ...                               spin_test(seed_con, CT_d, surface_name='fsa5', n_rot=1000))
 
+        >>> # Identify subcortical epicenters (from structural connectivity)
         >>> sc_sctx_epi = []
+        >>> sc_sctx_epi_p = []
         >>> for seed in range(sc_sctx.shape[0]):
-        ...     seed_con = sc_sctx[seed, :]
-        ...     sc_sctx_epi = np.append(sc_sctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
-
-        >>> # And project the results on the surface brain
-        >>> plot_subcortical(fc_sctx_epi, ventricles=False, size=(800, 400),
-        ...                  cmap='Reds_r', color_bar=True, color_range=(-0.5, -0.2))
-
-        >>> plot_subcortical(sc_sctx_epi, ventricles=False, size=(800, 400),
-        ...                  cmap='Blues_r', color_bar=True, color_range=(-0.5, 0))
+        >>>     seed_con = sc_sctx[seed, :]
+        >>>     sc_sctx_epi = np.append(sc_sctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
+        >>>     sc_sctx_epi_p = np.append(sc_sctx_epi_p,
+        ...                               spin_test(seed_con, CT_d, surface_name='fsa5', n_rot=1000))
 
    .. code-tab:: matlab **Matlab** | meta
 
-          ello
+        % Computing subcortical epicenter values (from functional connectivity)
+        fc_sctx_epi             = zeros(size(fc_sctx, 1), 1);
+        fc_sctx_epi_p           = zeros(size(fc_sctx, 1), 1);
+        for seed = 1:size(fc_sctx, 1)
+            seed_conn           = fc_sctx(seed, :);
+            r_tmp               = corrcoef(seed_conn, CT_d);
+            fc_sctx_epi(seed)   = r_tmp(1, 2);
+            fc_sctx_epi_p(seed) = spin_test(seed_conn, CT_d, 'surface_name', 'fsa5', 'parcellation_name', ...
+                                            'aparc', 'n_rot', 1000, 'type', 'pearson');
+        end
+
+        % Computing subcortical epicenter values (from structural connectivity)
+        sc_sctx_epi             = zeros(size(sc_sctx, 1), 1);
+        sc_sctx_epi_p           = zeros(size(sc_sctx, 1), 1);
+        for seed = 1:size(sc_sctx, 1)
+            seed_conn           = sc_sctx(seed, :);
+            r_tmp               = corrcoef(seed_conn, CT_d);
+            sc_sctx_epi(seed)   = r_tmp(1, 2);
+            sc_sctx_epi_p(seed) = spin_test(seed_conn, CT_d, 'surface_name', 'fsa5', 'parcellation_name', ...
+                                            'aparc', 'n_rot', 1000, 'type', 'pearson');
+        end
 
    .. tab:: ⤎ ⤏
 
@@ -218,85 +262,92 @@ derived from cortical thickness decreases in individuals with left TLE.
    .. code-tab:: py **Python** | mega
 
         >>> import numpy as np
-        >>> from enigmatoolbox.plotting import plot_subcortical
+        >>> from enigmatoolbox.permutation_testing import spin_test
 
-        >>> # Identify subcortical epicenters
+        >>> # Identify subcortical epicenters (from functional connectivity)
         >>> fc_sctx_epi = []
+        >>> fc_sctx_epi_p = []
         >>> for seed in range(fc_sctx.shape[0]):
-        ...     seed_con = fc_sctx[seed, :]
-        ...     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
+        >>>     seed_con = fc_sctx[seed, :]
+        >>>     fc_sctx_epi = np.append(fc_sctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
+        >>>     fc_sctx_epi_p = np.append(fc_sctx_epi_p,
+        ...                               spin_test(seed_con, CT_z_mean, surface_name='fsa5', n_rot=1000))
 
+        >>> # Identify subcortical epicenters (from structural connectivity)
         >>> sc_sctx_epi = []
+        >>> sc_sctx_epi_p = []
         >>> for seed in range(sc_sctx.shape[0]):
-        ...     seed_con = sc_sctx[seed, :]
-        ...     sc_sctx_epi = np.append(sc_sctx_epi, np.corrcoef(seed_con, ct_tle)[0, 1])
-
-        >>> # And project the results on the surface brain
-        >>> plot_subcortical(fc_sctx_epi, ventricles=False, size=(800, 400),
-        ...                  cmap='Reds_r', color_bar=True, color_range=(-0.5, 0))
-
-        >>> plot_subcortical(sc_sctx_epi, ventricles=False, size=(800, 400),
-        ...                  cmap='Blues_r', color_bar=True, color_range=(-0.5, 0))
+        >>>     seed_con = sc_sctx[seed, :]
+        >>>     sc_sctx_epi = np.append(sc_sctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
+        >>>     sc_sctx_epi_p = np.append(sc_sctx_epi_p,
+        ...                               spin_test(seed_con, CT_z_mean, surface_name='fsa5', n_rot=1000))
 
    .. code-tab:: matlab **Matlab** | mega
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        %% 1 - Let's start by loading our example data
-        % Here we need the covariates and the cortical thickness data
-        [cov, ~, metr2_CortThick, ~] = load_example_data();
-
-
-        %% 2 - We can then and z-score data in patients relative to controls, so that lower values
-        %      correspond to greater atrophy
-        % Z-score patients' data relative to controls (lower z-score = more atrophy)
-        group        = cov.Dx;
-        controlCode  = 0;
-        ct           = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
-
-        % Mean z-score values across individuals with left TLE (SDx == 3)
-        ct_tle       = mean(ct(find(cov.SDx == 3), :), 1);
-
-
-        %% 3 - Let's then load our functional and structural connectivity matrices
-        % Load functional and structural cortico-cortical connectivity data (for simplicity, we won't load the regions' labels)
-        [~, ~, fc_sctx, ~]   = load_fc();
-        [~, ~, sc_sctx, ~]   = load_sc();
-
-
-        %% 4 - Functional/structural subcortical disease epicenters
-        %      Correlations between seed-based connectivity (looping over
-        %      all subcortical regions) and cortical thickness decreases in left TLE
-        % Functional subcortical epicenters
-        fc_sctx_epi            = zeros(size(fc_sctx, 1), 1); % 14 x 1
+        % Computing subcortical epicenter values (from functional connectivity)
+        fc_sctx_epi             = zeros(size(fc_sctx, 1), 1);
+        fc_sctx_epi_p           = zeros(size(fc_sctx, 1), 1);
         for seed = 1:size(fc_sctx, 1)
-            seed_conn          = fc_sctx(seed, :);
-            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
-            fc_sctx_epi(seed)  = r_tmp(1, 2);
+            seed_conn           = fc_sctx(seed, :);
+            r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
+            fc_sctx_epi(seed)   = r_tmp(1, 2);
+            fc_sctx_epi_p(seed) = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
+                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
         end
 
-        % Structural subcortical epicenters
-        sc_sctx_epi            = zeros(size(sc_sctx, 1), 1); % 14 x 1
+        % Computing subcortical epicenter values (from structural connectivity)
+        sc_sctx_epi             = zeros(size(sc_sctx, 1), 1);
+        sc_sctx_epi_p           = zeros(size(sc_sctx, 1), 1);
         for seed = 1:size(sc_sctx, 1)
-            seed_conn          = sc_sctx(seed, :);
-            r_tmp              = corrcoef(transpose(seed_conn), ct_tle);
-            sc_sctx_epi(seed)  = r_tmp(1, 2);
+            seed_conn           = sc_sctx(seed, :);
+            r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
+            sc_sctx_epi(seed)   = r_tmp(1, 2);
+            sc_sctx_epi_p(seed) = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
+                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
         end
 
+As in the :ref:`cortical epicenters <ctx_epi>` example above, we have assessed the significance of every spatial correlation between 
+seed-based subcortico-cortical connectivity and cortical atrophy measures
+using spin permutation tests, and set a lenient threshold of *p*<0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
+were greater than 0.1). As such, we are displaying the correlation coefficients of mdoerate-to-strong connectivity-atrophy 
+associations.
 
-        %% 5 - Project our findings onto subcortical surfaces
-        % Functional subcortical epicenters
-        f = figure,
-            plot_subcortical(fc_sctx_epi, 'False', 'functional subcortical epicenters')
-            colorbar_range([-0.5 0])
-            colormap(flipud(Reds))
+.. tabs::
 
-        % Structural subcortical epicenters
+   .. code-tab:: py 
+     
+        >>> import numpy as np
+        >>> from enigmatoolbox.plotting import plot_subcortical
+
+        >>> # Project the results on the surface brain
+        >>> # Selecting only regions with p < 0.1 (functional epicenters)
+        >>> fc_sctx_epi_p_sig = np.zeros_like(fc_sctx_epi_p)
+        >>> fc_sctx_epi_p_sig[np.argwhere(fc_sctx_epi_p < 0.1)] = fc_sctx_epi[np.argwhere(fc_sctx_epi_p < 0.1)]
+        >>> plot_subcortical(fc_sctx_epi_p_sig, ventricles=False, size=(800, 400),
+        ...                  cmap='GyRd_r', color_bar=True, color_range=(-0.5, 0.5))
+
+        >>> # Selecting only regions with p < 0.1 (functional epicenters)
+        >>> sc_sctx_epi_p_sig = np.zeros_like(sc_sctx_epi_p)
+        >>> sc_sctx_epi_p_sig[np.argwhere(sc_sctx_epi_p < 0.1)] = sc_sctx_epi[np.argwhere(sc_sctx_epi_p < 0.1)]
+        >>> plot_subcortical(sc_sctx_epi_p_sig, ventricles=False, size=(800, 400),
+        ...                  cmap='GyBu_r', color_bar=True, color_range=(-0.5, 0.5))
+
+   .. code-tab:: matlab 
+
+        % Project the results on the surface brain
+        % Selecting only regions with p < 0.1 (functional epicenters)
+        fc_sctx_epi_p_sig = zeros(length(fc_sctx_epi_p), 1);
+        fc_sctx_epi_p_sig(find(fc_sctx_epi_p < 0.1)) = fc_sctx_epi(fc_sctx_epi_p<0.1);
         f = figure,
-            plot_subcortical(sc_sctx_epi, 'False', 'structural subcortical epicenters')
-            colorbar_range([-0.5 0])
-            colormap(flipud(Blues))
+            plot_subcortical(fc_sctx_epi_p_sig, 'ventricles', 'False', ...
+                            'color_range', [-0.5 0.5], 'cmap', 'GyRd_r')
+                        
+        % Selecting only regions with p < 0.1 (structural epicenters)
+        sc_sctx_epi_p_sig = zeros(length(sc_sctx_epi_p), 1);
+        sc_sctx_epi_p_sig(find(sc_sctx_epi_p < 0.1)) = sc_sctx_epi(sc_sctx_epi_p<0.1);
+        f = figure,
+            plot_subcortical(sc_sctx_epi_p_sig, 'ventricles', 'False', ...
+                            'color_range', [-0.5 0.5], 'cmap', 'GyBu_r')
 
 .. image:: ./examples/example_figs/epi_sctx.png
     :align: center

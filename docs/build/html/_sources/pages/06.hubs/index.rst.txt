@@ -48,9 +48,6 @@ denotes increased hubness (*i.e.*, node with many connections).
 
    .. code-tab:: matlab
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
         % Compute weighted degree centrality measures from the connectivity data
         fc_ctx_dc           = sum(fc_ctx);
         sc_ctx_dc           = sum(sc_ctx);
@@ -61,14 +58,12 @@ denotes increased hubness (*i.e.*, node with many connections).
 
         % Project the results on the surface brain
         f = figure,
-          plot_cortical(fc_ctx_dc_fsa5, 'fsa5', 'functional degree centrality')
-          colormap([Reds])
-          colorbar_range([20 30])
+          plot_cortical(fc_ctx_dc_fsa5, 'surface_name', 'fsa5', 'color_range', [20 30], ...
+                        'cmap', 'Reds', 'label_text', 'Functional degree centrality')
      
         f = figure,
-          plot_cortical(sc_ctx_dc_fsa5, 'fsa5', 'structural degree centrality')
-          colormap([Blues])
-          colorbar_range([100 300]) 
+          plot_cortical(sc_ctx_dc_fsa5, 'surface_name', 'fsa5', 'color_range', [100 300], ...
+                        'cmap', 'Blues', 'label_text', 'Structural degree centrality')
 
 .. image:: ./examples/example_figs/hubs_ctx.png
     :align: center
@@ -107,7 +102,7 @@ denotes increased hubness!
         >>> fc_sctx_dc = np.sum(fc_sctx, axis=1)
         >>> sc_sctx_dc = np.sum(sc_sctx, axis=1)
 
-        >>> # Project the results on the subcortical surfaces (don't forget to set the ventricles flag to False!)
+        >>> # Project the results on the surface brain
         >>> plot_subcortical(array_name=fc_sctx_dc, ventricles=False, size=(800, 400),
         ...                  cmap='Reds', color_bar=True, color_range=(5, 10))
 
@@ -116,23 +111,18 @@ denotes increased hubness!
 
    .. code-tab:: matlab 
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
         % Compute weighted degree centrality measures from the connectivity data
         fc_sctx_dc          = sum(fc_sctx, 2);
         sc_sctx_dc          = sum(sc_sctx, 2);
 
-        % Project the results on the subcortical surfaces (don't forget to set the ventricles flag to 'False'!
+        % Project the results on the surface brain
         f = figure,
-          plot_subcortical(fc_sctx_dc, 'False', 'functional degree centrality')
-          colormap([Reds])
-          colorbar_range([5 10])
+          plot_subcortical(fc_sctx_dc, 'ventricles', 'False', 'color_range', [5 10], ...
+                           'cmap', 'Reds', 'label_text', 'Functional degree centrality')
      
         f = figure,
-          plot_subcortical(sc_sctx_dc, 'False', 'structural degree centrality')
-          colormap([Blues])
-          colorbar_range([100 300])
+          plot_subcortical(sc_sctx_dc, 'ventricles', 'False', 'color_range', [100 300], ...
+                           'cmap', 'Blues', 'label_text', 'Structural degree centrality') 
 
 .. image:: ./examples/example_figs/hubs_sctx.png
     :align: center
@@ -152,8 +142,8 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 
      **Prerequisites**
      ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
-     ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+     ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*mega only*)
+     ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
      ↪ Load :ref:`cortico-cortical <load_corticocortical>` and :ref:`subcortico-cortical <load_subcorticocortical>` connectivity matrices
      ↪ Compute :ref:`cortical-cortical <cortical_hubs>` and :ref:`subcortico-cortical <subcortical_hubs>` degree centrality
      
@@ -163,11 +153,10 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
      
         >>> import numpy as np
         
-        >>> # Remove subcortical values corresponding the ventricles 
+        >>> # Remove subcortical values corresponding to the ventricles 
         >>> # (as we don't have connectivity values for them!)
         >>> SV_d_noVent = SV_d.drop([np.where(SV['Structure'] == 'LLatVent')[0][0],
-        ...                         np.where(SV['Structure'] == 'RLatVent')[0][0]])
-        >>> SV_d_noVent = SV_d_noVent.reset_index(drop=True)
+        ...                         np.where(SV['Structure'] == 'RLatVent')[0][0]]).reset_index(drop=True)
 
         >>> # Perform spatial correlations between functional hubs and Cohen's d
         >>> fc_ctx_r = np.corrcoef(fc_ctx_dc, CT_d)[0, 1]
@@ -177,11 +166,12 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
         >>> sc_ctx_r = np.corrcoef(sc_ctx_dc, CT_d)[0, 1]
         >>> sc_sctx_r = np.corrcoef(sc_sctx_dc, SV_d_noVent)[0, 1]
 
+        >>> # Store correlation coefficients
+        >>> rvals = {'functional cortical hubs': fc_ctx_r, 'functional subcortical hubs': fc_sctx_r,
+        ...          'structural cortical hubs': sc_ctx_r, 'structural subcortical hubs': sc_sctx_r}
+
    .. code-tab:: matlab **Matlab** | meta
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-        
         % Remove subcortical values corresponding the ventricles
         % (as we don't have connectivity values for them!)
         SV_d_noVent = SV_d;
@@ -196,6 +186,11 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
         fc_sctx_r = corrcoef(fc_sctx_dc, SV_d_noVent);
         sc_sctx_r = corrcoef(sc_sctx_dc, SV_d_noVent);
 
+        % Store correlation coefficients
+        rvals = cell2struct({fc_ctx_r(1, 2), fc_sctx_r(1, 2), sc_ctx_r(1, 2), sc_sctx_r(1, 2)}, ...
+                            {'functional_cortical_hubs', 'functional_subcortical_hubs', ...
+                             'structural_cortical_hubs', 'structural_subcortical_hubs'}, 2);
+
    .. tab:: ⤎ ⤏
 
           | ⤎ If you have **meta**-analysis data (*e.g.*, summary statistics)
@@ -205,36 +200,42 @@ cortical and subcortical atrophy (where lower values indicating greater atrophy 
 
         >>> import numpy as np
 
-        >>> # Remove subcortical values corresponding the ventricles 
+        >>> # Remove subcortical values corresponding to the ventricles
         >>> # (as we don't have connectivity values for them!)
-        >>> SV_z_mean_noVent = SV_z_mean.drop(columns=['LLatVent', 'RLatVent'])
+        >>> SV_z_mean_noVent = SV_z_mean.drop(['LLatVent', 'RLatVent']).reset_index(drop=True)
 
-        >>> # Perform spatial correlations between cortical hubs and atrophy
-        >>> fc_sctx_r = np.corrcoef(fc_sctx_dc, SV_z_mean_noVent)[0, 1]
-        >>> sc_ctx_r = np.corrcoef(sc_ctx_dc, CT_z_mean)[0, 1]
-
-        >>> # Perform spatial correlations between subcortical hubs and atrophy
+        >>> # Perform spatial correlations between functional hubs and z-scores
         >>> fc_ctx_r = np.corrcoef(fc_ctx_dc, CT_z_mean)[0, 1]
+        >>> fc_sctx_r = np.corrcoef(fc_sctx_dc, SV_z_mean_noVent)[0, 1]
+
+        >>> # Perform spatial correlations between structural hubs and z-scores
+        >>> sc_ctx_r = np.corrcoef(sc_ctx_dc, CT_z_mean)[0, 1]
         >>> sc_sctx_r = np.corrcoef(sc_sctx_dc, SV_z_mean_noVent)[0, 1]
+
+        >>> # Store correlation coefficients
+        >>> rvals = {'functional cortical hubs': fc_ctx_r, 'functional subcortical hubs': fc_sctx_r,
+        ...          'structural cortical hubs': sc_ctx_r, 'structural subcortical hubs': sc_sctx_r}
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        % Remove subcortical values corresponding the ventricles 
+        % Remove subcortical values corresponding the ventricles
         % (as we don't have connectivity values for them!)
-        SV_z_mean_noVent           = SV_z_mean;
-        SV_z_mean_noVent.LLatVent  = [];
-        SV_z_mean_noVent.RLatVent  = [];
+        SV_z_mean_noVent = SV_z_mean;
+        SV_z_mean_noVent.LLatVent = [];
+        SV_z_mean_noVent.RLatVent = [];
 
-        % Perform spatial correlations between cortical hubs and atrophy
-        fc_ctx_r    = corrcoef(fc_ctx_dc, CT_z_mean);
-        sc_ctx_r    = corrcoef(sc_ctx_dc, CT_z_mean);
+        % Perform spatial correlations between cortical hubs and Cohen's d
+        fc_ctx_r = corrcoef(fc_ctx_dc, CT_z_mean{:, :});
+        sc_ctx_r = corrcoef(sc_ctx_dc, CT_z_mean{:, :});
 
-        % Perform spatial correlations between subcortical hubs and atrophy
-        fc_sctx_r   = corrcoef(fc_sctx_dc, SV_z_mean_noVent);
-        sc_sctx_r   = corrcoef(sc_sctx_dc, SV_z_mean_noVent);
+        % Perform spatial correlations between structural hubs and Cohen's d
+        fc_sctx_r = corrcoef(fc_sctx_dc, SV_z_mean_noVent{:, :});
+        sc_sctx_r = corrcoef(sc_sctx_dc, SV_z_mean_noVent{:, :});
+
+        % Store correlation coefficients
+        rvals = cell2struct({fc_ctx_r(1, 2), fc_sctx_r(1, 2), sc_ctx_r(1, 2), sc_sctx_r(1, 2)}, ...
+                            {'functional_cortical_hubs', 'functional_subcortical_hubs', ...
+                             'structural_cortical_hubs', 'structural_subcortical_hubs'}, 2);
 
 
 |
@@ -261,8 +262,8 @@ the empirical distribution determined by the ensemble of spatially permuted corr
      Two brain maps from which you want to assess the signifcance of their correlations, as for example: 
      degree centrality *vs*. atrophy
           ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-          ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
-          ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+          ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*mega only*)
+          ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
           ↪ Load :ref:`cortico-cortical <load_corticocortical>` and :ref:`subcortico-cortical <load_subcorticocortical>` connectivity matrices
           ↪ Compute :ref:`cortical-cortical <cortical_hubs>` and :ref:`subcortico-cortical <subcortical_hubs>` degree centrality     
 
@@ -272,11 +273,10 @@ the empirical distribution determined by the ensemble of spatially permuted corr
      
         >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
-        >>> # Remove subcortical values corresponding the ventricles
+        >>> # Remove subcortical values corresponding to the ventricles
         >>> # (as we don't have connectivity values for them!)
         >>> SV_d_noVent = SV_d.drop([np.where(SV['Structure'] == 'LLatVent')[0][0],
-        ...                         np.where(SV['Structure'] == 'RLatVent')[0][0]])
-        >>> SV_d_noVent = SV_d_noVent.reset_index(drop=True)
+        ...                         np.where(SV['Structure'] == 'RLatVent')[0][0]]).reset_index(drop=True)
 
         >>> # Spin permutation testing for two cortical maps
         >>> fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc',
@@ -290,28 +290,36 @@ the empirical distribution determined by the ensemble of spatially permuted corr
         >>> sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_d_noVent, n_rot=1000,
         ...                                  type='pearson', spin_dist=True)
 
+        >>> # Store p-values and null distributions
+        >>> p_and_d = {'functional cortical hubs': [fc_ctx_p, fc_ctx_d], 'functional subcortical hubs': [fc_sctx_p, fc_sctx_d],
+        ...            'structural cortical hubs': [sc_ctx_p, sc_ctx_d], 'structural subcortical hubs': [sc_sctx_p, sc_sctx_d]}
+
    .. code-tab:: matlab **Matlab** | meta
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
-
-        % Remove subcortical values corresponding the ventricles
+        % Remove subcortical values corresponding to the ventricles
         % (as we don't have connectivity values for them!)
         SV_d_noVent = SV_d;
         SV_d_noVent([find(strcmp(SV.Structure, 'LLatVent')); ...
                     find(strcmp(SV.Structure, 'RLatVent'))], :) = [];
         
         % Spin permutation testing for two cortical maps
-        [fc_ctx_p, fc_ctx_d]   = spin_test(fc_ctx_dc, CT_d, 'fsa5', ...
-                                           'aparc', 1000, 'pearson');
-        [sc_ctx_p, sc_ctx_d]   = spin_test(sc_ctx_dc, CT_d, 'fsa5', ...
-                                           'aparc', 1000, 'pearson');
+        [fc_ctx_p, fc_ctx_d]   = spin_test(fc_ctx_dc, CT_d, 'surface_name', 'fsa5', ...
+                                           'parcellation_name', 'aparc', 'n_rot', 1000, ... 
+                                           'type', 'pearson');
+        [sc_ctx_p, sc_ctx_d]   = spin_test(sc_ctx_dc, CT_d, 'surface_name', 'fsa5', ...
+                                           'parcellation_name', 'aparc', 'n_rot', 1000, ... 
+                                           'type', 'pearson');
                                
         % Shuf permutation testing for two subcortical maps 
         [fc_sctx_p, fc_sctx_d] = shuf_test(fc_sctx_dc, SV_d_noVent, ...
-                                           1000, 'pearson');
+                                           'n_rot', 1000, 'type', 'pearson');
         [sc_sctx_p, sc_sctx_d] = shuf_test(sc_sctx_dc, SV_d_noVent, ...
-                                           1000, 'pearson');
+                                           'n_rot', 1000, 'type', 'pearson');
+
+        % Store p-values and null distributions                               
+        p_and_d =  cell2struct({[fc_ctx_p; fc_ctx_d], [fc_sctx_p; fc_sctx_d], [sc_ctx_p; sc_ctx_d], [sc_sctx_p; sc_sctx_d]}, ...
+                               {'functional_cortical_hubs', 'functional_subcortical_hubs', ...
+                                'structural_cortical_hubs', 'structural_subcortical_hubs'}, 2);                              
 
    .. tab:: ⤎ ⤏
 
@@ -322,30 +330,108 @@ the empirical distribution determined by the ensemble of spatially permuted corr
 
         >>> from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
+        >>> # Remove subcortical values corresponding to the ventricles
+        >>> # (as we don't have connectivity values for them!)
+        >>> SV_z_mean_noVent = SV_z_mean.drop(['LLatVent', 'RLatVent']).reset_index(drop=True)
+
         >>> # Spin permutation testing for two cortical maps
-        >>> fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_z_mean.to_numpy(), surface_name='fsa5', 
-        ...                                parcellation_name='aparc', n_rot=1000, type='pearson', spin_dist=True)
-        >>> sc_ctx_p, sc_ctx_d = spin_test(sc_ctx_dc, CT_z_mean.to_numpy(), surface_name='fsa5', 
-        ...                                parcellation_name='aparc', n_rot=1000, type='pearson', spin_dist=True)
+        >>> fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
+        ...                                type='pearson', n_rot=1000, spin_dist=True)
+        >>> sc_ctx_p, sc_ctx_d = spin_test(sc_ctx_dc, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
+        ...                                type='pearson', n_rot=1000, spin_dist=True)
 
         >>> # Shuf permutation testing for two subcortical maps
-        >>> fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_z_mean_noVent.to_numpy(), n_rot=1000, 
+        >>> fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_z_mean_noVent, n_rot=1000,
         ...                                  type='pearson', spin_dist=True)
-        >>> sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_z_mean_noVent.to_numpy(), n_rot=1000, 
+        >>> sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_z_mean_noVent, n_rot=1000,
         ...                                  type='pearson', spin_dist=True)
+
+        >>> # Store p-values and null distributions
+        >>> p_and_d = {'functional cortical hubs': [fc_ctx_p, fc_ctx_d], 'functional subcortical hubs': [fc_sctx_p, fc_sctx_d],
+        ...            'structural cortical hubs': [sc_ctx_p, sc_ctx_d], 'structural subcortical hubs': [sc_sctx_p, sc_sctx_d]}
 
    .. code-tab:: matlab **Matlab** | mega
 
-        %% Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
+        % Remove subcortical values corresponding to the ventricles
+        % (as we don't have connectivity values for them!)
+        SV_z_mean_noVent = SV_z_mean;
+        SV_z_mean_noVent.LLatVent = [];
+        SV_z_mean_noVent.RLatVent = [];
 
         % Spin permutation testing for two cortical maps
-        [fc_ctx_p, fc_ctx_d]  = spin_test(dc_f, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
-        [sc_ctx_p, sc_ctx_d]  = spin_test(dc_s, ct_tle, 'fsa5', 'aparc', 1000, 'pearson');
+        [fc_ctx_p, fc_ctx_d]   = spin_test(fc_ctx_dc, CT_z_mean{:, :}, 'surface_name', ...
+                                           'fsa5', 'parcellation_name', 'aparc', 'n_rot', ... 
+                                           1000, 'type', 'pearson');
+        [sc_ctx_p, sc_ctx_d]   = spin_test(sc_ctx_dc, CT_z_mean{:, :}, 'surface_name', ...
+                                           'fsa5', 'parcellation_name', 'aparc', 'n_rot', ... 
+                                           1000, 'type', 'pearson');
 
-        % Shuf permutation testing for two subcortical maps 
-        [fc_sctx_p, fc_sctx_d] = shuf_test(dc_f, sv_tle, 1000, 'pearson');
-        [sc_sctx_p, sc_sctx_d] = shuf_test(dc_s, sv_tle, 1000, 'pearson');
+        % Shuf permutation testing for two subcortical maps
+        [fc_sctx_p, fc_sctx_d] = shuf_test(fc_sctx_dc, SV_z_mean_noVent{:, :}, ...
+                                           'n_rot', 1000, 'type', 'pearson');
+        [sc_sctx_p, sc_sctx_d] = shuf_test(sc_sctx_dc, SV_z_mean_noVent{:, :}, ...
+                                           'n_rot', 1000, 'type', 'pearson');
+
+        % Store p-values and null distributions
+        p_and_d =  cell2struct({[fc_ctx_p; fc_ctx_d], [fc_sctx_p; fc_sctx_d], [sc_ctx_p; sc_ctx_d], [sc_sctx_p; sc_sctx_d]}, ...
+                               {'functional_cortical_hubs', 'functional_subcortical_hubs', ...
+                                'structural_cortical_hubs', 'structural_subcortical_hubs'}, 2);
+
+To better interpret statistical significance, we can plot the null distribution of generated correlations
+(*i.e.*, "spun" or "shuffled" correlations) and overlay the correlation coefficient obtained from the empirical 
+(*i.e.*, real) brain maps.
+
+.. tabs::
+
+   .. code-tab:: py
+     
+        >>> import matplotlib.pyplot as plt
+
+        >>> fig, axs = plt.subplots(1, 4, figsize=(15, 3))
+
+        >>> for k, (fn, dd) in enumerate(p_and_d.items()):
+        >>>     # Define plot colors
+        >>>     if k <= 1:
+        >>>         col = '#A8221C'     # red for functional hubs
+        >>>     else:
+        >>>         col = '#324F7D'     # blue for structural hubs
+
+        >>>     # Plot null distributions
+        >>>     axs[k].hist(dd[1], bins=50, density=True, color=col, edgecolor='white', lw=0.5)
+        >>>     axs[k].axvline(rvals[fn], lw=1.5, ls='--', color='k', dashes=(2, 3),
+        ...                    label='$r$={:.2f}'.format(rvals[fn]) + '\n$p$={:.2f}'.format(dd[0]))
+        >>>     axs[k].set_xlabel('Null correlations \n ({})'.format(fn))
+        >>>     axs[k].set_ylabel('Density')
+        >>>     axs[k].spines['top'].set_visible(False)
+        >>>     axs[k].spines['right'].set_visible(False)
+        >>>     axs[k].legend(loc=1, frameon=False)
+
+        >>> fig.tight_layout()
+        >>> plt.show()
+
+   .. code-tab:: matlab
+
+        f = figure,
+            set(gcf,'color','w');
+            set(gcf,'units','normalized','position',[0 0 1 0.3])
+            fns = fieldnames(p_and_d);
+    
+            for k = 1:numel(fieldnames(rvals))
+                % Define plot colors
+                if k <= 2; col = [0.66 0.13 0.11]; else; col = [0.2 0.33 0.49]; end
+        
+                % Plot null distributions
+                axs = subplot(1, 4, k); hold on
+                h = histogram(p_and_d.(fns{k})(2:end), 50, 'Normalization', 'pdf', 'edgecolor', 'w', ...
+                              'facecolor', col, 'facealpha', 1, 'linewidth', 0.5); 
+                l = line([rvals.(fns{k}) rvals.(fns{k})], get(gca, 'ylim'), 'linestyle', '--', ...
+                         'color', 'k', 'linewidth', 1.5);
+                xlabel(['Null correlations' newline '(' strrep(fns{k}, '_', ' ') ')'])
+                ylabel('Density')
+                legend(l,['{\it r}=' num2str(round(rvals.(fns{k}), 2)) newline ...
+                          '{\it p}=' num2str(round(p_and_d.(fns{k})(1), 2))])
+                legend boxoff
+            end
 
 
 |
@@ -354,7 +440,7 @@ the empirical distribution determined by the ensemble of spatially permuted corr
 Plot hub-atrophy correlations
 ------------------------------------------------------------------------
 Now that we have done all the necessary analyses, we can finally display our correlations! 
-Here, a negative correlation indicates that greater atrophy (negative z-score values) correlates 
+Here, a negative correlation indicates that greater atrophy correlates 
 with the spatial distribution of hub regions (greater degree centrality).  
 
 .. parsed-literal:: 
@@ -363,85 +449,85 @@ with the spatial distribution of hub regions (greater degree centrality).
           The script below can be used to show relationships between any two variables, as for example: 
           degree centrality *vs*. atrophy
                ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
-               ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*individual site/mega-analysis data only*)
-               ↪ :ref:`Z-score data <zscore_data>` (*individual site/mega-analysis data only*)
+               ↪ :ref:`Re-order subcortical data <reorder_sctx>` (*mega only*)
+               ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
                ↪ Load :ref:`cortico-cortical <load_corticocortical>` and :ref:`subcortico-cortical <load_subcorticocortical>` connectivity matrices
                ↪ Compute :ref:`cortical-cortical <cortical_hubs>` and :ref:`subcortico-cortical <subcortical_hubs>` degree centrality     
-               ↪ :ref:`Assess statistical significance <spin_perm>`
+               ↪ Assess statistical significance via :ref:`spin permutation tests <spin_perm>`
 
 .. tabs::
 
    .. code-tab:: py **Python** | meta
      
         >>> import matplotlib.pyplot as plt
-        >>> import matplotlib.gridspec as gridspec
-        >>> from enigmatoolbox.plotting import enigma_scatter
+        >>> import numpy as np
+        
+        >>> # Store degree centrality and atrophy measures
+        >>> meas = {('functional cortical hubs', 'cortical thickness'): [fc_ctx_dc, CT_d],
+        ...         ('functional subcortical hubs', 'subcortical volume'): [fc_sctx_dc, SV_d_noVent],
+        ...         ('structural cortical hubs', 'cortical thickness'): [sc_ctx_dc, CT_d],
+        ...         ('structural subcortical hubs', 'subcortical volume'): [sc_sctx_dc, SV_d_noVent]}
 
-        >>> # Create figure
-        >>> fig = plt.figure(constrained_layout=True, figsize=(15, 3))
-        >>> gs = gridspec.GridSpec(1, 4, figure=fig)
+        >>> fig, axs = plt.subplots(1, 4, figsize=(15, 3))
 
-        >>> # Functional cortical hubs and cortical thickness
-        >>> ax1 = fig.add_subplot(gs[0, 0])
-        >>> enigma_scatter(ax1, fc_ctx_dc, CT_d, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        ...                xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (Cohen\'s d)',
-        ...                xlim=(5, 30), ylim=(-1, 0.5), corr_value=fc_ctx_r, p_value=fc_ctx_p)
+        >>> for k, (fn, dd) in enumerate(meas.items()):
+        >>>     # Define scatter colors
+        >>>     if k <= 1:
+        >>>         col = '#A8221C'
+        >>>     else:
+        >>>         col = '#324F7D'
 
-        >>> # Functional subcortical hubs and subcortical volume
-        >>> ax2 = fig.add_subplot(gs[0, 1])
-        >>> enigma_scatter(ax2, fc_sctx_dc, SV_d_noVent, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        ...                xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (Cohen\'s d)',
-        ...                xlim=(1, 13), ylim=(-1, 0.5), corr_value=fc_sctx_r, p_value=fc_sctx_p, p_type='shuf')
+        >>>     # Plot relationships between hubs and atrophy
+        >>>     axs[k].scatter(meas[fn][0], meas[fn][1], color=col,
+        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.2f}'.format(pvals[fn[0]]))
+        >>>     m, b = np.polyfit(meas[fn][0], meas[fn][1], 1)
+        >>>     axs[k].plot(meas[fn][0], m * meas[fn][0] + b, color=col)
+        >>>     axs[k].set_ylim((-1, 0.5))
+        >>>     axs[k].set_xlabel('{}'.format(fn[0].capitalize()))
+        >>>     axs[k].set_ylabel('{}'.format(fn[1].capitalize()))
+        >>>     axs[k].spines['top'].set_visible(False)
+        >>>     axs[k].spines['right'].set_visible(False)
+        >>>     axs[k].legend(loc=1, frameon=False)
 
-        >>> # Structural cortical hubs and cortical thickness
-        >>> ax3 = fig.add_subplot(gs[0, 2])
-        >>> enigma_scatter(ax3, sc_ctx_dc, CT_d, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        ...                xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (Cohen\'s d)',
-        ...                xlim=(0, 350), ylim=(-1, 0.5), corr_value=sc_ctx_r, p_value=sc_ctx_p)
-
-        >>> # Structural subcortical hubs and subcortical volume
-        >>> ax4 = fig.add_subplot(gs[0, 3])
-        >>> enigma_scatter(ax4, sc_sctx_dc, SV_d_noVent, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        ...                xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (Cohen\'s d)',
-        ...                xlim=(90, 375), ylim=(-1, 0.5), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')
+        >>> fig.tight_layout()
+        >>> plt.show()
 
    .. code-tab:: matlab **Matlab** | meta
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/')); 
+        % Store degree centrality measures
+        meas  =  cell2struct({fc_ctx_dc.', fc_sctx_dc, sc_ctx_dc.', sc_sctx_dc}, ...
+                             {'Functional_cortical_hubs', 'Functional_subcortical_hubs', ...
+                             'Structural_cortical_hubs', 'Structural_subcortical_hubs'}, 2);
+        fns   = fieldnames(meas);
 
-        % Create figure
+        % Store atrophy measures
+        meas2 =  cell2struct({CT_d, SV_d_noVent}, {'Cortical_thickness', 'Subcortical_volume'}, 2);
+        fns2  = fieldnames(meas2);
+
         f = figure,
             set(gcf,'color','w');
             set(gcf,'units','normalized','position',[0 0 1 0.3])
-
-            % Functional cortical hubs and cortical thickness
-            ax1 = subplot(1, 4, 1); hold on
-            enigma_scatter(ax1, fc_ctx_dc, CT_d, 'scatter_color', [0.66 0.13 0.11], 'linear_fit', 1, ...
-                           'fit_color', [0.66 0.13 0.11], 'xlabel', 'Cortico-cortical degree centrality', ...
-                           'ylabel', 'Cortical thickness (Cohen''s d)', 'xlim', [5 30], 'ylim', [-1 0.5], ...
-                           'corr_value', fc_ctx_r(1, 2), 'p_value', fc_ctx_p, 'p_type', 'spin')
-
-            % Functional subcortical hubs and subcortical volume
-            ax2 = subplot(1, 4, 2); hold on
-            enigma_scatter(ax2, fc_sctx_dc.', SV_d_noVent, 'scatter_color', [0.66 0.13 0.11], 'linear_fit', 1,...
-                           'fit_color', [0.66 0.13 0.11], 'xlabel', 'Subcortico-cortical degree centrality', ...
-                           'ylabel', 'Subcortical volume (Cohen''s d)', 'xlim', [1 13], 'ylim', [-1 0.5], ...
-                           'corr_value', fc_sctx_r(1, 2), 'p_value', fc_sctx_p, 'p_type', 'shuf')
-
-            % Structural cortical hubs and cortical thickness
-            ax3 = subplot(1, 4, 3); hold on
-            enigma_scatter(ax3, sc_ctx_dc, CT_d, 'scatter_color', [0.20 0.33 0.49],'linear_fit', 1, ...
-                           'fit_color', [0.20 0.33 0.49], 'xlabel', 'Cortico-cortical degree centrality', ...
-                           'ylabel', 'Cortical thickness (Cohen''s d)', 'xlim', [0 350], 'ylim', [-1 0.5], ...
-                           'corr_value', sc_ctx_r(1, 2), 'p_value', sc_ctx_p, 'p_type', 'spin')
-
-            % Structural subcortical hubs and subcortical volume
-            ax4 = subplot(1, 4, 4); hold on
-            enigma_scatter(ax4, sc_sctx_dc.', SV_d_noVent, 'scatter_color', [0.20 0.33 0.49], 'linear_fit', 1,...
-                           'fit_color', [0.20 0.33 0.49], 'xlabel', 'Subcortico-cortical degree centrality', ...
-                           'ylabel', 'Subcortical volume (Cohen''s d)', 'xlim', [90 375], 'ylim', [-1 0.5], ...
-                           'corr_value', sc_sctx_r(1, 2), 'p_value', sc_sctx_p, 'p_type', 'shuf')
+            k2 = [1 2 1 2];
+    
+            for k = 1:numel(fieldnames(meas))
+                j = k2(k);
+        
+                % Define plot colors
+                if k <= 2; col = [0.66 0.13 0.11]; else; col = [0.2 0.33 0.49]; end
+        
+                % Plot relationships between hubs and atrophy
+                axs = subplot(1, 4, k); hold on
+                s   = scatter(meas.(fns{k}), meas2.(fns2{j}), 88, col, 'filled'); 
+                P1      = polyfit(meas.(fns{k}), meas2.(fns2{j}), 1);                               
+                yfit_1  = P1(1) * meas.(fns{k}) + P1(2);
+                plot(meas.(fns{k}), yfit_1, 'color',col, 'LineWidth', 3) 
+                ylim([-1 0.5])
+                xlabel(strrep(fns{k}, '_', ' '))
+                ylabel(strrep(fns2{j}, '_', ' '))
+                legend(s, ['{\it r}=' num2str(round(rvals.(lower(fns{k})), 2)) newline ...
+                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 2))])
+                legend boxoff
+            end
 
    .. tab:: ⤎ ⤏
 
@@ -451,74 +537,75 @@ with the spatial distribution of hub regions (greater degree centrality).
    .. code-tab:: py **Python** | mega
 
         >>> import matplotlib.pyplot as plt
-        >>> import matplotlib.gridspec as gridspec
-        >>> from enigmatoolbox.plotting import enigma_scatter
+        >>> import numpy as np
 
-        >>> # Create figure
-        >>> fig = plt.figure(constrained_layout=True, figsize=(15, 3))
-        >>> gs = gridspec.GridSpec(1, 4, figure=fig)
+        >>> # Store degree centrality and atrophy measures
+        >>> meas = {('functional cortical hubs', 'cortical thickness'): [fc_ctx_dc, CT_z_mean],
+        ...         ('functional subcortical hubs', 'subcortical volume'): [fc_sctx_dc, SV_z_mean_noVent],
+        ...         ('structural cortical hubs', 'cortical thickness'): [sc_ctx_dc, CT_z_mean],
+        ...         ('structural subcortical hubs', 'subcortical volume'): [sc_sctx_dc, SV_z_mean_noVent]}
 
-        >>> # Functional cortical hubs and cortical thickness
-        >>> ax1 = fig.add_subplot(gs[0, 0])
-        >>> enigma_scatter(ax1, fc_ctx_dc, ct_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        ...                xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-        ...                xlim=(5, 30), ylim=(-2, 1), corr_value=fc_ctx_r, p_value=fc_ctx_p)
+        >>> fig, axs = plt.subplots(1, 4, figsize=(15, 3))
 
-        >>> # Functional subcortical hubs and subcortical volume
-        >>> ax2 = fig.add_subplot(gs[0, 1])
-        >>> enigma_scatter(ax2, fc_sctx_dc, sv_tle, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-        ...                xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-        ...                xlim=(1, 13), ylim=(-3.5, 0), corr_value=fc_sctx_r, p_value=fc_sctx_p, p_type='shuf')
+        >>> for k, (fn, dd) in enumerate(meas.items()):
+        >>>     # Define scatter colors
+        >>>     if k <= 1:
+        >>>         col = '#A8221C'
+        >>>     else:
+        >>>         col = '#324F7D'
 
-        >>> # Structural cortical hubs and cortical thickness
-        >>> ax3 = fig.add_subplot(gs[0, 2])
-        >>> enigma_scatter(ax3, sc_ctx_dc, ct_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        >>>                xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-        >>>                xlim=(0, 350), ylim=(-2, 1), corr_value=sc_ctx_r, p_value=sc_ctx_p)
+        >>>     # Plot relationships between hubs and atrophy
+        >>>     axs[k].scatter(meas[fn][0], meas[fn][1], color=col,
+        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.2f}'.format(p_and_d[fn[0]][0]))
+        >>>     m, b = np.polyfit(meas[fn][0], meas[fn][1], 1)
+        >>>     axs[k].plot(meas[fn][0], m * meas[fn][0] + b, color=col)
+        >>>     axs[k].set_ylim((-3.5, 1.5))
+        >>>     axs[k].set_xlabel('{}'.format(fn[0].capitalize()))
+        >>>     axs[k].set_ylabel('{}'.format(fn[1].capitalize()))
+        >>>     axs[k].spines['top'].set_visible(False)
+        >>>     axs[k].spines['right'].set_visible(False)
+        >>>     axs[k].legend(loc=1, frameon=False)
 
-        >>> # Structural subcortical hubs and subcortical volume
-        >>> ax4 = fig.add_subplot(gs[0, 3])
-        >>> enigma_scatter(ax4, sc_sctx_dc, sv_tle, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-        ...                xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-        ...                xlim=(90, 375), ylim=(-3.5, 0), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')
+        >>> fig.tight_layout()
+        >>> plt.show()
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Add the path to the ENIGMA TOOLBOX matlab folder
-        addpath(genpath('/path/to/ENIGMA/matlab/'));
+        % Store degree centrality measures
+        meas  =  cell2struct({fc_ctx_dc, fc_sctx_dc.', sc_ctx_dc, sc_sctx_dc.'}, ...
+                             {'Functional_cortical_hubs', 'Functional_subcortical_hubs', ...
+                     'Structural_cortical_hubs', 'Structural_subcortical_hubs'}, 2);
+        fns   = fieldnames(meas);
 
-        % Create figure
+        % Store atrophy measures
+        meas2 =  cell2struct({CT_z_mean{:, :}, SV_z_mean_noVent{:, :}}, ...
+                             {'Cortical_thickness', 'Subcortical_volume'}, 2);
+        fns2  = fieldnames(meas2);
+
         f = figure,
             set(gcf,'color','w');
             set(gcf,'units','normalized','position',[0 0 1 0.3])
-    
-            % Functional cortical hubs and cortical thickness
-            ax1 = subplot(1, 4, 1); hold on
-            enigma_scatter(ax1, fc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, 'scatter_color', [0.66 0.13 0.11], ...
-                           'linear_fit', 1, 'fit_color', [0.66 0.13 0.11], 'xlabel', 'Cortico-cortical degree centrality', ...
-                           'ylabel', 'Cortical thickness (z-score)', 'xlim', [5 30], 'ylim', [-2 1], ...
-                           'corr_value', fc_ctx_r(1, 2), 'p_value', fc_ctx_p, 'p_type', 'spin')
-        
-            % Functional subcortical hubs and subcortical volume
-            ax2 = subplot(1, 4, 2); hold on
-            enigma_scatter(ax2, fc_sctx_dc.', SubVol_Z_LTLE_r_mean_noVent{:, :}, 'scatter_color', [0.66 0.13 0.11], ...
-                           'linear_fit', 1, 'fit_color', [0.66 0.13 0.11], 'xlabel', 'Subcortico-cortical degree centrality', ...
-                           'ylabel', 'Subcortical volume (z-score)', 'xlim', [1 13], 'ylim', [-3.5 0], ...
-                           'corr_value', fc_sctx_r(1, 2), 'p_value', fc_sctx_p, 'p_type', 'shuf')
-        
-            % Structural cortical hubs and cortical thickness
-            ax3 = subplot(1, 4, 3); hold on
-            enigma_scatter(ax3, sc_ctx_dc, CortThick_Z_LTLE_mean{:, :}, 'scatter_color', [0.20 0.33 0.49], ...
-                           'linear_fit', 1, 'fit_color', [0.20 0.33 0.49], 'xlabel', 'Cortico-cortical degree centrality', ...
-                           'ylabel', 'Cortical thickness (z-score)', 'xlim', [0 350], 'ylim', [-2 1], ...
-                           'corr_value', sc_ctx_r(1, 2), 'p_value', sc_ctx_p, 'p_type', 'spin')
-        
-            % Structural subcortical hubs and subcortical volume
-            ax4 = subplot(1, 4, 4); hold on
-            enigma_scatter(ax4, sc_sctx_dc.', SubVol_Z_LTLE_r_mean_noVent{:, :}, 'scatter_color', [0.20 0.33 0.49], ...
-                           'linear_fit', 1, 'fit_color', [0.20 0.33 0.49], 'xlabel', 'Subcortico-cortical degree centrality', ...
-                           'ylabel', 'Subcortical volume (z-score)', 'xlim', [90 375], 'ylim', [-3.5 0], ...
-                           'corr_value', sc_sctx_r(1, 2), 'p_value', sc_sctx_p, 'p_type', 'shuf')
+            k2 = [1 2 1 2];
+
+            for k = 1:numel(fieldnames(meas))
+                j = k2(k);
+
+                % Define plot colors
+                if k <= 2; col = [0.66 0.13 0.11]; else; col = [0.2 0.33 0.49]; end
+
+                % Plot relationships between hubs and atrophy
+                axs = subplot(1, 4, k); hold on
+                s   = scatter(meas.(fns{k}), meas2.(fns2{j}), 88, col, 'filled');
+                P1      = polyfit(meas.(fns{k}), meas2.(fns2{j}), 1);
+                yfit_1  = P1(1) * meas.(fns{k}) + P1(2);
+                plot(meas.(fns{k}), yfit_1, 'color',col, 'LineWidth', 3)
+                ylim([-3 1.5])
+                xlabel(strrep(fns{k}, '_', ' '))
+                ylabel(strrep(fns2{j}, '_', ' '))
+                legend(s, ['{\it r}=' num2str(round(rvals.(lower(fns{k})), 2)) newline ...
+                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 2))])
+                legend boxoff
+            end
     
 .. image:: ./examples/example_figs/hubs_atrophy.png
     :align: center

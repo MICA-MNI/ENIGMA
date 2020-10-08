@@ -48,8 +48,8 @@
 Data archiving and data sharing 💌
 ----------------------------------
 The **ENIGMA TOOLBOX** provides a platform for archiving meta- and mega-analytical :ref:`case-control 
-comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are a
-lso making several data matrices openly available! As of now, these include :ref:`functional and structural 
+comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are 
+also making several data matrices openly available! As of now, these include :ref:`functional and structural 
 connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
 
 .. raw:: html
