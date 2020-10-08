@@ -340,6 +340,10 @@ def structural_covariance(zdata):
 
 def fetch_ahba(csvfile=None):
     """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes
+
+            Parameters
+            ----------
+
             Parcellated using Desikan Killiany
                 68 cortical regions and 14 subcortical structures (ventricles are excluded)
 
