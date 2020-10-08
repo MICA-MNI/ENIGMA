@@ -15,6 +15,9 @@ import sys
 import warnings
 sys.path.insert(0, os.path.abspath('..'))
 
+
+import enigmatoolbox
+
 # -- Project information -----------------------------------------------------
 
 project = 'ENIGMA TOOLBOX'
