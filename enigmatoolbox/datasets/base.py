@@ -472,7 +472,7 @@ def risk_genes(disorder=None):
 def load_example_data():
     """
     Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal)
-    that was processed according to ENIGMA protocols
+        that was processed according to ENIGMA protocols (author: @saratheriver)
 
     Returns
     -------
@@ -484,10 +484,6 @@ def load_example_data():
         contains information on cortical thickness
     metr3 :  pandas.DataFrame
         contains information on surface area
-
-    Author
-    ------
-    @saratheriver
     """
     root_pth = os.path.dirname(__file__)
 
