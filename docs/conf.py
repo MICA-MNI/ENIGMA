@@ -52,7 +52,7 @@ autoclass_content = "class"
 templates_path = ['source/_templates']
 
 # The master toctree document.
-master_doc = 'source/index'
+master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -81,7 +81,7 @@ pygments_style = 'enigmalexer'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['source/_static']
+html_static_path = ['_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)

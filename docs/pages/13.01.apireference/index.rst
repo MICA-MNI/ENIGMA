@@ -21,12 +21,10 @@ Python API
    :no-members:
    :no-inherited-members:
 
-.. currentmodule:: enigmatoolbox
+.. currentmodule:: enigmatoolbox.datasets
 
 ENIGMA datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. autofunction:: load_example_data
 
 .. autosummary::
    :template: function.rst

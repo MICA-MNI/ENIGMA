@@ -4,3 +4,4 @@ vtk>=8.1.0
 nibabel
 pillow
 pandas
+scipy>=0.17.0
