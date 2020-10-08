@@ -33,7 +33,13 @@ author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
 extensions = ['sphinx_tabs.tabs', 
               'sphinx.ext.autodoc',
               'sphinx.ext.autosectionlabel', 
-              'sphinx.ext.autosummary']
+              'sphinx.ext.autosummary',
+              'sphinx.ext.doctest',
+              'sphinx.ext.intersphinx',
+              'sphinx.ext.mathjax',
+              'sphinx.ext.napoleon',
+              'sphinx.ext.viewcode',
+              'sphinxarg.ext']
 
 autosummary_generate = True
 autodoc_default_options = {'members': True, 'inherited-members': True}
