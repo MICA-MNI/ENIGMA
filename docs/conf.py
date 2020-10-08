@@ -13,7 +13,6 @@
 import os
 import sys
 import warnings
-sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('..'))
 
 import enigmatoolbox
@@ -47,27 +46,13 @@ autodoc_default_options = {'members': True, 'inherited-members': True}
 numpydoc_show_class_members = False
 autoclass_content = "class"
 
-#napoleon_google_docstring = False
-#napoleon_numpy_docstring = True
-#napoleon_include_init_with_doc = False
-#napoleon_include_special_with_doc = False
-#napoleon_use_param = True
-#napoleon_use_ivar = True
-#napoleon_use_rtype = False
-
-#napoleon_include_private_with_doc = False
-## napoleon_include_special_with_doc = False
-
-
-
-
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['source/_templates']
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'source/index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -96,14 +81,14 @@ pygments_style = 'enigmalexer'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['source/_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-html_css_files = ['css/saratheriver_enigma.css']
+html_css_files = ['source/css/saratheriver_enigma.css']
 
 #html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
-   app.add_css_file("css/saratheriver_tabs.css")
+   app.add_css_file("source/css/saratheriver_tabs.css")
