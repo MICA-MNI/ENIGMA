@@ -52,7 +52,8 @@ In the following example, we will display cortical atrophy in individuals with l
 
         % Project the results on the surface brain
         f = figure,
-            plot_cortical(CT_d_fsa5, 'color_range', [-0.5 0.5], 'cmap', 'RdBu_r') 
+            plot_cortical(CT_d_fsa5, 'surface_name', 'fsa5', 'color_range', ...
+                          [-0.5 0.5], 'cmap', 'RdBu_r') 
 
    .. tab:: ⤎ ⤏
 
@@ -75,7 +76,8 @@ In the following example, we will display cortical atrophy in individuals with l
 
         % Project the results on the surface brain
         f = figure,
-            plot_cortical(CT_z_mean_fsa5, 'color_range', [-2 0], 'cmap', 'Blues_r')
+            plot_cortical(CT_z_mean_fsa5, 'surface_name', 'fsa5', 'color_range', ...
+                          [-2 0], 'cmap', 'Blues_r')
 
 .. image:: ./examples/example_figs/ctx_py.png
     :align: center

@@ -67,17 +67,42 @@ left middle temporal gyrus as example seed.
 
    .. code-tab:: py
        
+        >>> from enigmatoolbox.utils.parcellation import parcel_to_surface
+        >>> from enigmatoolbox.plotting import plot_cortical
+
         >>> # Extract seed-based connectivity
         >>> seed = "L_middletemporal"
-        >>> seed_conn_fc = fc_ctx[[i for i, item in enumerate(fc_ctx_labels) if seed in item],]   
-        >>> seed_conn_sc = sc_ctx[[i for i, item in enumerate(sc_ctx_labels) if seed in item],]   
+        >>> seed_conn_fc = fc_ctx[[i for i, item in enumerate(fc_ctx_labels) if seed in item], ]
+        >>> seed_conn_sc = sc_ctx[[i for i, item in enumerate(sc_ctx_labels) if seed in item], ]
+
+        >>> # Map parcellated data to the surface
+        >>> seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5')
+        >>> seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5')
+
+        >>> # Project the results on the surface brain
+        >>> plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
+        >>>               cmap='Reds', color_bar=True, color_range=(0.2, 0.7))
+
+        >>> plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
+                      >>> cmap='Blues', color_bar=True, color_range=(2, 10))
 
    .. code-tab:: matlab
 
         % Extract seed-based connectivity
         seed = 'L_middletemporal'
-        seed_conn_fc = fc_ctx(find(strcmp(fc_ctx_labels, seed)), :)  
-        seed_conn_sc = sc_ctx(find(strcmp(sc_ctx_labels, seed)), :)   
+        seed_conn_fc = fc_ctx(find(strcmp(fc_ctx_labels, seed)), :)
+        seed_conn_sc = sc_ctx(find(strcmp(sc_ctx_labels, seed)), :)
+
+        % Map parcellated data to the surface
+        seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5');
+        seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5');
+
+        % Project the results on the surface brain
+        f = figure,
+            plot_cortical(seed_conn_fc_fsa5, 'cmap', 'Reds', 'color_range', [0.2 0.7])
+
+        f = figure,
+            plot_cortical(seed_conn_sc_fsa5, 'cmap', 'Blues', 'color_range', [2 10])  
 
 
 |
@@ -141,14 +166,38 @@ as example seed.
 
    .. code-tab:: py
 
+        >>> from enigmatoolbox.plotting import plot_cortical
+
         >>> # Extract seed-based connectivity
         >>> seed = "Lhippo"
-        >>> seed_conn_fc = fc_sctx[[i for i, item in enumerate(fc_sctx_labels) if seed in item],]   
-        >>> seed_conn_sc = sc_sctx[[i for i, item in enumerate(sc_sctx_labels) if seed in item],] 
+        >>> seed_conn_fc = fc_sctx[[i for i, item in enumerate(fc_sctx_labels) if seed in item],]
+        >>> seed_conn_sc = sc_sctx[[i for i, item in enumerate(sc_sctx_labels) if seed in item],]
+
+        >>> # Map parcellated data to the surface
+        >>> seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5')
+        >>> seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5')
+
+        >>> # Project the results on the surface brain
+        >>> plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
+                      >>> cmap='Reds', color_bar=True, color_range=(0.1, 0.3))
+
+        >>> plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
+                      >>> cmap='Blues', color_bar=True, color_range=(1, 10))
 
    .. code-tab:: matlab    
 
         % Extract seed-based connectivity
         seed = 'Lhippo'
-        seed_conn_fc = fc_sctx(find(strcmp(fc_sctx_labels, seed)), :)   
-        seed_conn_sc = sc_sctx(find(strcmp(sc_sctx_labels, seed)), :)   
+        seed_conn_fc = fc_sctx(find(strcmp(fc_sctx_labels, seed)), :)
+        seed_conn_sc = sc_sctx(find(strcmp(sc_sctx_labels, seed)), :)
+
+        % Map parcellated data to the surface
+        seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5');
+        seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5');
+
+        % Project the results on the surface brain
+        f = figure,
+            plot_cortical(seed_conn_fc_fsa5, 'cmap', 'Reds', 'color_range', [0.1 0.3])
+
+        f = figure,
+            plot_cortical(seed_conn_sc_fsa5, 'cmap', 'Blues', 'color_range', [1 10])

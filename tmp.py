@@ -1,103 +1,62 @@
-from enigmatoolbox.datasets import load_summary_stats
-
-# Load summary statistics for ENIGMA-Epilepsy
-sum_stats = load_summary_stats('epilepsy')
-
-# Get case-control subcortical volume and cortical thickness tables
-SV = sum_stats['SubVol_case_vs_controls_ltle']
-CT = sum_stats['CortThick_case_vs_controls_ltle']
-
-# Extract Cohen's d values
-SV_d = SV['d_icv']
-CT_d = CT['d_icv']
-
-
 from enigmatoolbox.datasets import load_sc, load_fc
-# Load and plot cortical functional connectivity data
+from nilearn import plotting
+
+# Load cortico-cortical functional connectivity data
 fc_ctx, fc_ctx_labels, _, _ = load_fc()
 
-# Load and plot cortical structural connectivity data
+# Load cortico-cortical structural connectivity data
 sc_ctx, sc_ctx_labels, _, _ = load_sc()
+
+# Plot cortico-cortical connectivity matrices
+fc_plot = plotting.plot_matrix(fc_ctx, figure=(11, 10.5), labels=fc_ctx_labels, vmax=0.8, vmin=0, cmap='Reds')
+
+sc_plot = plotting.plot_matrix(sc_ctx, figure=(11, 10.5), labels=sc_ctx_labels, vmax=10, vmin=0, cmap='Blues')
+
+
+from enigmatoolbox.utils.parcellation import parcel_to_surface
+from enigmatoolbox.plotting import plot_cortical
+
+# Extract seed-based connectivity
+seed = "L_middletemporal"
+seed_conn_fc = fc_ctx[[i for i, item in enumerate(fc_ctx_labels) if seed in item], ]
+seed_conn_sc = sc_ctx[[i for i, item in enumerate(sc_ctx_labels) if seed in item], ]
+
+# Map parcellated data to the surface
+seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5')
+seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5')
+
+# Project the results on the surface brain
+plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
+              cmap='Reds', color_bar=True, color_range=(0.2, 0.7))
+
+plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
+              cmap='Blues', color_bar=True, color_range=(2, 10))
+
 
 
 from enigmatoolbox.datasets import load_sc, load_fc
-# Load and plot subcortical functional connectivity data
+
+# Load subcortico-cortical functional connectivity data
 _, _, fc_sctx, fc_sctx_labels = load_fc()
 
-# Load and plot subcortical structural connectivity data
+# Load subcortico-cortical structural connectivity data
 _, _, sc_sctx, sc_sctx_labels = load_sc()
 
 
-import numpy as np
-# Compute weighted degree centrality measures from the connectivity data
-fc_ctx_dc = np.sum(fc_ctx, axis=0)
-sc_ctx_dc = np.sum(sc_ctx, axis=0)
+from enigmatoolbox.plotting import plot_cortical
 
+# Extract seed-based connectivity
+seed = "Lhippo"
+seed_conn_fc = fc_sctx[[i for i, item in enumerate(fc_sctx_labels) if seed in item],]
+seed_conn_sc = sc_sctx[[i for i, item in enumerate(sc_sctx_labels) if seed in item],]
 
-import numpy as np
-# Compute weighted degree centrality measures from the connectivity data
-fc_sctx_dc = np.sum(fc_sctx, axis=1)
-sc_sctx_dc = np.sum(sc_sctx, axis=1)
+# Map parcellated data to the surface
+seed_conn_fc_fsa5 = parcel_to_surface(seed_conn_fc, 'aparc_fsa5')
+seed_conn_sc_fsa5 = parcel_to_surface(seed_conn_sc, 'aparc_fsa5')
 
+# Project the results on the surface brain
+plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
+              cmap='Reds', color_bar=True, color_range=(0.1, 0.3))
 
-import numpy as np
-# Remove subcortical values corresponding the ventricles
-# (as we don't have connectivity values for them!)
-SV_d_noVent = SV_d.drop([np.where(SV['Structure'] == 'LLatVent')[0][0],
-                        np.where(SV['Structure'] == 'RLatVent')[0][0]])
-SV_d_noVent = SV_d_noVent.reset_index(drop=True)
-
-# Perform spatial correlations between cortical hubs and Cohen's d
-fc_ctx_r = np.corrcoef(fc_ctx_dc, CT_d)[0, 1]
-sc_ctx_r = np.corrcoef(sc_ctx_dc, CT_d)[0, 1]
-
-# Perform spatial correlations between subcortical hubs and Cohen's d
-fc_sctx_r = np.corrcoef(fc_sctx_dc, SV_d_noVent)[0, 1]
-sc_sctx_r = np.corrcoef(sc_sctx_dc, SV_d_noVent)[0, 1]
-
-
-from enigmatoolbox.permutation_testing import spin_test, shuf_test
-
-# Spin permutation testing for two cortical maps
-fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc',
-                               type='pearson', n_rot=1000, spin_dist=True)
-sc_ctx_p, sc_ctx_d = spin_test(sc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc',
-                               type='pearson', n_rot=1000, spin_dist=True)
-
-# Shuf permutation testing for two subcortical maps
-fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000,
-                                 type='pearson', spin_dist=True)
-sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_d_noVent, n_rot=1000,
-                                 type='pearson', spin_dist=True)
-
-
-import matplotlib.pyplot as plt
-import matplotlib.gridspec as gridspec
-from enigmatoolbox.plotting import enigma_scatter
-
-fig = plt.figure(constrained_layout=True, figsize=(15, 3))
-gs = gridspec.GridSpec(1, 4, figure=fig)
-
-# Functional cortical hubs and cortical thickness
-ax1 = fig.add_subplot(gs[0, 0])
-enigma_scatter(ax1, fc_ctx_dc, CT_d, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-               xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-               xlim=(5, 30), ylim=(-1, 0.5), corr_value=fc_ctx_r, p_value=fc_ctx_p)
-
-# Functional subcortical hubs and subcortical volume
-ax2 = fig.add_subplot(gs[0, 1])
-enigma_scatter(ax2, fc_sctx_dc, SV_d_noVent, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-               xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-               xlim=(1, 13), ylim=(-1, 0.5), corr_value=fc_sctx_r, p_value=fc_sctx_p, p_type='shuf')
-
-# Structural cortical hubs and cortical thickness
-ax3 = fig.add_subplot(gs[0, 2])
-enigma_scatter(ax3, sc_ctx_dc, CT_d, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-               xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-               xlim=(0, 350), ylim=(-1, 0.5), corr_value=sc_ctx_r, p_value=sc_ctx_p)
-
-# Functional subcortical hubs and subcortical volume
-ax4 = fig.add_subplot(gs[0, 3])
-enigma_scatter(ax4, sc_sctx_dc, SV_d_noVent, scatter_color='#324F7D', linear_fit=True, fit_color='#324F7D',
-               xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-               xlim=(90, 375), ylim=(-1, 0.5), corr_value=sc_sctx_r, p_value=sc_sctx_p, p_type='shuf')
+plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
+              cmap='Blues', color_bar=True, color_range=(1, 10))
