@@ -85,10 +85,10 @@ html_static_path = ['source/_static']
 
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
-html_css_files = ['source/css/saratheriver_enigma.css']
+html_css_files = ['css/saratheriver_enigma.css']
 
 #html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
-   app.add_css_file("source/css/saratheriver_tabs.css")
+   app.add_css_file('css/saratheriver_tabs.css')
