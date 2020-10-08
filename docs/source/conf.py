@@ -13,7 +13,7 @@
 import os
 import sys
 import warnings
-sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.abspath('../../enigmatoolbox'))
 
 
 import enigmatoolbox
@@ -42,22 +42,22 @@ extensions = ['sphinx_tabs.tabs',
               #'sphinxarg.ext',
               ]
 
-#autosummary_generate = True
-#autodoc_default_options = {'members': True, 'inherited-members': True}
-#numpydoc_show_class_members = False
-#autoclass_content = "class"
+autosummary_generate = True
+autodoc_default_options = {'members': True, 'inherited-members': True}
+numpydoc_show_class_members = False
+autoclass_content = "class"
 
 
-napoleon_google_docstring = False
-napoleon_numpy_docstring = True
-napoleon_include_init_with_doc = False
-napoleon_include_special_with_doc = False
-napoleon_use_param = True
-napoleon_use_ivar = True
-napoleon_use_rtype = False
+#napoleon_google_docstring = False
+#napoleon_numpy_docstring = True
+#napoleon_include_init_with_doc = False
+#napoleon_include_special_with_doc = False
+#napoleon_use_param = True
+#napoleon_use_ivar = True
+#napoleon_use_rtype = False
 
-napoleon_include_private_with_doc = False
-# napoleon_include_special_with_doc = False
+#napoleon_include_private_with_doc = False
+## napoleon_include_special_with_doc = False
 
 autodoc_default_options = {
     'members': None,

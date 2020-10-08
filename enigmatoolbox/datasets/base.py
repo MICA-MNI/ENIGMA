@@ -343,9 +343,8 @@ def fetch_ahba(csvfile=None):
 
             Parameters
             ----------
-
-            Parcellated using Desikan Killiany
-                68 cortical regions and 14 subcortical structures (ventricles are excluded)
+            Parcellated using Desikan Killiany 68 cortical regions and
+                14 subcortical structures (ventricles are excluded)
 
             Returns
             -------
@@ -361,7 +360,7 @@ def fetch_ahba(csvfile=None):
 def risk_genes(disorder=None):
     """ Outputs names of GWAS-derived risk genes for specific diseases/disorders
 
-        Parameters (pick one)
+        Parameters
         ---------------------
         'adhd'               : Demontis et al., 2018, Nat Genet
         'asd'                : Grove et al., 2019, Nat Genet
@@ -497,8 +496,8 @@ def load_example_data():
 def load_summary_stats(disorder=None):
     """ Outputs summary statistics for specific diseases/disorders
 
-        Parameters (pick one)
-        ---------------------
+        Parameters
+        -----------
         '22q'
         'adhd'
         'asd'
