@@ -39,7 +39,8 @@ extensions = ['sphinx_tabs.tabs',
               'sphinx.ext.mathjax',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
-              'sphinxarg.ext']
+              #'sphinxarg.ext',
+              ]
 
 autosummary_generate = True
 autodoc_default_options = {'members': True, 'inherited-members': True}
