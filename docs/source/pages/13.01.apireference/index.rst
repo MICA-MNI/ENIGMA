@@ -21,8 +21,6 @@ Python API
    :no-members:
    :no-inherited-members:
 
-Functions to do stuff
-
 .. currentmodule:: enigmatoolbox.datasets
 
 ENIGMA datasets
