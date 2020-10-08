@@ -27,7 +27,6 @@ ENIGMA datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. autosummary::
-   :template: function.rst
    :toctree: generated/
 
    enigmatoolbox.datasets.load_example_data
