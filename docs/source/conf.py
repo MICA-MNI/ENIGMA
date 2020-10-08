@@ -46,7 +46,6 @@ autodoc_default_options = {'members': True, 'inherited-members': True}
 numpydoc_show_class_members = False
 autoclass_content = "class"
 
-
 #napoleon_google_docstring = False
 #napoleon_numpy_docstring = True
 #napoleon_include_init_with_doc = False
