@@ -26,10 +26,10 @@ CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5')
 
 # Project Cohen's d values to the surface templates
 plot_cortical(array_name=CT_d_fsa5, surface_name="fsa5",
-              size=(800, 400), cmap='TealRd', color_bar=True, color_range=(-0.5, 0.5))
+              size=(800, 400), color_bar=True, color_range=(-0.5, 0.5))
 
 plot_subcortical(array_name=SV_d, size=(800, 400),
-                 cmap='TealRd', color_bar=True, color_range=(-0.5, 0.5))
+                 color_bar=True, color_range=(-0.5, 0.5))
 
 
 """
@@ -84,14 +84,13 @@ Figure 5d. Permutation testing
 from enigmatoolbox.permutation_testing import spin_test, shuf_test
 
 # Spin permutation testing for two cortical maps
-fc_ctx_p = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=100)
+fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5',
+                               parcellation_name='aparc', type='pearson', n_rot=1000)
 
 # Shuf permutation testing for two subcortical maps
-fc_sctx_p = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000)
+fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000,
+                                 type='pearson', spin_dist=True)
 
-map1 = np.append(fc_ctx_dc, fc_sctx_dc)
-map2 = np.append(CT_d, SV_d_noVent)
-p, d = shuf_test(map1, map2, n_rot=1000, spin_dist=True)
 
 """
 Figure 6a. Disease epicenter mapping

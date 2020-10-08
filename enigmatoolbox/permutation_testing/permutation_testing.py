@@ -230,7 +230,7 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
         rho_null_yx = np.append(rho_null_yx, pd.Series(x).corr(pd.Series(y_perm[:, rr]), method=corr_type))
 
     # p-value definition depends on the sign of the empirical correlation
-    if rho_emp > 0:
+    if rho_emp >= 0:
         p_perm_xy = np.sum((rho_null_xy > rho_emp).astype(int)) / nperm
         p_perm_yx = np.sum((rho_null_yx > rho_emp).astype(int)) / nperm
     elif rho_emp < 0:
@@ -376,10 +376,10 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
         rho_null_yx = np.append(rho_null_yx, pd.Series(map1).corr(pd.Series(y_perm[:, rr]), method=type))
 
     # p-value definition depends on the sign of the empirical correlation
-    if rho_emp > 0:
+    if rho_emp >= 0:
         p_perm_xy = np.sum((rho_null_xy > rho_emp).astype(int)) / n_rot
         p_perm_yx = np.sum((rho_null_yx > rho_emp).astype(int)) / n_rot
-    elif rho_emp < 0:
+    else:
         p_perm_xy = np.sum((rho_null_xy < rho_emp).astype(int)) / n_rot
         p_perm_yx = np.sum((rho_null_yx < rho_emp).astype(int)) / n_rot
 

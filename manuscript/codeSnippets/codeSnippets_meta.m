@@ -20,13 +20,15 @@ CT_d_fsa5 = parcel_to_surface(CT_d, 'aparc_fsa5');
 
 % Project Cohen's d values to the surface templates
 f = figure,
-    plot_cortical(CT_d_fsa5, 'fsa5')
-    colormap(TealRd); colorbar_range([-0.5, 0.5]) 
+  plot_cortical(fc_ctx_dc_fsa5, 'color_range', [20 30], 'cmap', 'Reds')
     
 f = figure,
-    plot_subcortical(SV_d)
-    colormap(TealRd); colorbar_range([-0.5, 0.5]) 
-                 
+  plot_subcortical(fc_sctx_dc, 'ventricles', 'False', 'color_range', [5 10], ...
+                   'cmap', 'Reds', 'label_text', 'Structural degree centrality')
+
+f = figure,
+  plot_subcortical(sc_sctx_dc, 'ventricles', 'False', 'color_range', [100 300], ...
+                   'cmap', 'Blues', 'label_text', 'Structural degree centrality')                 
                  
 %% Figure 3b. Fetch disease-related gene expression data
 % Fetch gene expression data
