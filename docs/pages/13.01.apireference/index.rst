@@ -23,9 +23,6 @@ Python API
 
 .. currentmodule:: enigmatoolbox.datasets
 
-ENIGMA datasets
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. autosummary::
    :template: function.rst
    :toctree: generated/
