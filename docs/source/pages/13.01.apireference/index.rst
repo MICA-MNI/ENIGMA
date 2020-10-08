@@ -26,6 +26,8 @@ Python API
 ENIGMA datasets
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. autofunction:: load_example_data
+
 .. autosummary::
    :template: function.rst
    :toctree: generated/
