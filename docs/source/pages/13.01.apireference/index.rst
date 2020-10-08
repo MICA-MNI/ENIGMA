@@ -30,7 +30,7 @@ ENIGMA datasets
    :template: function.rst
    :toctree: generated/
 
-   load_example_data
+   enigmatoolbox.datasets.load_example_data
    enigmatoolbox.datasets.load_summary_stats
 
 Connectivity matrices
