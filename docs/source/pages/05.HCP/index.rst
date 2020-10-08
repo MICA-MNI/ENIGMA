@@ -81,10 +81,10 @@ left middle temporal gyrus as example seed.
 
         >>> # Project the results on the surface brain
         >>> plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
-        >>>               cmap='Reds', color_bar=True, color_range=(0.2, 0.7))
+        ...               cmap='Reds', color_bar=True, color_range=(0.2, 0.7))
 
         >>> plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
-                      >>> cmap='Blues', color_bar=True, color_range=(2, 10))
+        ...               cmap='Blues', color_bar=True, color_range=(2, 10))
 
    .. code-tab:: matlab
 
@@ -104,6 +104,8 @@ left middle temporal gyrus as example seed.
         f = figure,
             plot_cortical(seed_conn_sc_fsa5, 'cmap', 'Blues', 'color_range', [2 10])  
 
+.. image:: ./examples/example_figs/ctx_sbconn.png
+    :align: center
 
 |
 
@@ -179,10 +181,10 @@ as example seed.
 
         >>> # Project the results on the surface brain
         >>> plot_cortical(array_name=seed_conn_fc_fsa5, surface_name="fsa5", size=(800, 400),
-                      >>> cmap='Reds', color_bar=True, color_range=(0.1, 0.3))
+        ...               cmap='Reds', color_bar=True, color_range=(0.1, 0.3))
 
         >>> plot_cortical(array_name=seed_conn_sc_fsa5, surface_name="fsa5", size=(800, 400),
-                      >>> cmap='Blues', color_bar=True, color_range=(1, 10))
+        ...               cmap='Blues', color_bar=True, color_range=(1, 10))
 
    .. code-tab:: matlab    
 
@@ -201,3 +203,6 @@ as example seed.
 
         f = figure,
             plot_cortical(seed_conn_sc_fsa5, 'cmap', 'Blues', 'color_range', [1 10])
+
+.. image:: ./examples/example_figs/sctx_sbconn.png
+    :align: center

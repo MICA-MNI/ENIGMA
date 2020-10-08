@@ -40,6 +40,6 @@ Installation
             git clone https://github.com/MICA-MNI/ENIGMA.git
         
         
-        Once you have the toolbox on your computer, run the following command in MATLAB: ::
+        Once you have the toolbox on your computer, simply run the following command in MATLAB: ::
 
             addpath(genpath('/path/to/ENIGMA/matlab/'))

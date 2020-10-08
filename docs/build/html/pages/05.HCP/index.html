@@ -129,6 +129,7 @@
 </ul>
 <p class="caption"><span class="caption-text">References &amp; acknowledgements</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../13.01.apireference/index.html">API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../13.citeus/index.html">Citing the ENIGMA TOOLBOX</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../14.refs/index.html">References</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../15.funding/index.html">Acknowledgements</a></li>
@@ -277,10 +278,24 @@ left middle temporal gyrus as example seed.</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract seed-based connectivity</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.utils.parcellation</span> <span class="kn">import</span> <span class="n">parcel_to_surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract seed-based connectivity</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed</span> <span class="o">=</span> <span class="s2">&quot;L_middletemporal&quot;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],</span> <span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc_ctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],</span> <span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_fc</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_sc</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">seed_conn_fc_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">seed_conn_sc_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -289,10 +304,22 @@ left middle temporal gyrus as example seed.</p>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;L_middletemporal&#39;</span>
 <span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc_ctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">fc_ctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>
 <span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc_ctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">sc_ctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>
+
+<span class="c">% Map parcellated data to the surface</span>
+<span class="n">seed_conn_fc_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_fc</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
+<span class="n">seed_conn_sc_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_sc</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
+
+<span class="c">% Project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">seed_conn_fc_fsa5</span><span class="p">,</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Reds&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2</span> <span class="mf">0.7</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">seed_conn_sc_fsa5</span><span class="p">,</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<img alt="../../_images/ctx_sbconn.png" class="align-center" src="../../_images/ctx_sbconn.png" />
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -375,10 +402,23 @@ as example seed.</p>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u active docutils container">
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract seed-based connectivity</span>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">enigmatoolbox.plotting</span> <span class="kn">import</span> <span class="n">plot_cortical</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Extract seed-based connectivity</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed</span> <span class="o">=</span> <span class="s2">&quot;Lhippo&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc</span> <span class="o">=</span> <span class="n">fc_sctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fc_sctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc</span> <span class="o">=</span> <span class="n">sc_sctx</span><span class="p">[[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sc_sctx_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">seed</span> <span class="ow">in</span> <span class="n">item</span><span class="p">],]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Map parcellated data to the surface</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_fc_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_fc</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed_conn_sc_fsa5</span> <span class="o">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_sc</span><span class="p">,</span> <span class="s1">&#39;aparc_fsa5&#39;</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Project the results on the surface brain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">seed_conn_fc_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plot_cortical</span><span class="p">(</span><span class="n">array_name</span><span class="o">=</span><span class="n">seed_conn_sc_fsa5</span><span class="p">,</span> <span class="n">surface_name</span><span class="o">=</span><span class="s2">&quot;fsa5&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">400</span><span class="p">),</span>
+<span class="gp">... </span>              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">color_bar</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -387,11 +427,22 @@ as example seed.</p>
 <span class="n">seed</span> <span class="p">=</span> <span class="s">&#39;Lhippo&#39;</span>
 <span class="n">seed_conn_fc</span> <span class="p">=</span> <span class="n">fc_sctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">fc_sctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>
 <span class="n">seed_conn_sc</span> <span class="p">=</span> <span class="n">sc_sctx</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">strcmp</span><span class="p">(</span><span class="n">sc_sctx_labels</span><span class="p">,</span> <span class="n">seed</span><span class="p">)),</span> <span class="p">:)</span>
+
+<span class="c">% Map parcellated data to the surface</span>
+<span class="n">seed_conn_fc_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_fc</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
+<span class="n">seed_conn_sc_fsa5</span> <span class="p">=</span> <span class="n">parcel_to_surface</span><span class="p">(</span><span class="n">seed_conn_sc</span><span class="p">,</span> <span class="s">&#39;aparc_fsa5&#39;</span><span class="p">);</span>
+
+<span class="c">% Project the results on the surface brain</span>
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">seed_conn_fc_fsa5</span><span class="p">,</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Reds&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span> <span class="mf">0.3</span><span class="p">])</span>
+
+<span class="n">f</span> <span class="p">=</span> <span class="n">figure</span><span class="p">,</span>
+    <span class="n">plot_cortical</span><span class="p">(</span><span class="n">seed_conn_sc_fsa5</span><span class="p">,</span> <span class="s">&#39;cmap&#39;</span><span class="p">,</span> <span class="s">&#39;Blues&#39;</span><span class="p">,</span> <span class="s">&#39;color_range&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<img alt="../../_images/sctx_conn.png" class="align-center" src="../../_images/sctx_conn.png" />
+<img alt="../../_images/sctx_sbconn.png" class="align-center" src="../../_images/sctx_sbconn.png" />
 </div>
 </div>
 

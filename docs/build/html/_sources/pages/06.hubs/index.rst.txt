@@ -399,7 +399,7 @@ To better interpret statistical significance, we can plot the null distribution 
         >>>     # Plot null distributions
         >>>     axs[k].hist(dd[1], bins=50, density=True, color=col, edgecolor='white', lw=0.5)
         >>>     axs[k].axvline(rvals[fn], lw=1.5, ls='--', color='k', dashes=(2, 3),
-        ...                    label='$r$={:.2f}'.format(rvals[fn]) + '\n$p$={:.2f}'.format(dd[0]))
+        ...                    label='$r$={:.2f}'.format(rvals[fn]) + '\n$p$={:.3f}'.format(dd[0]))
         >>>     axs[k].set_xlabel('Null correlations \n ({})'.format(fn))
         >>>     axs[k].set_ylabel('Density')
         >>>     axs[k].spines['top'].set_visible(False)
@@ -429,9 +429,12 @@ To better interpret statistical significance, we can plot the null distribution 
                 xlabel(['Null correlations' newline '(' strrep(fns{k}, '_', ' ') ')'])
                 ylabel('Density')
                 legend(l,['{\it r}=' num2str(round(rvals.(fns{k}), 2)) newline ...
-                          '{\it p}=' num2str(round(p_and_d.(fns{k})(1), 2))])
+                          '{\it p}=' num2str(round(p_and_d.(fns{k})(1), 3))])
                 legend boxoff
             end
+
+.. image:: ./examples/example_figs/nulldist.png
+    :align: center
 
 
 |
@@ -479,7 +482,7 @@ with the spatial distribution of hub regions (greater degree centrality).
 
         >>>     # Plot relationships between hubs and atrophy
         >>>     axs[k].scatter(meas[fn][0], meas[fn][1], color=col,
-        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.2f}'.format(pvals[fn[0]]))
+        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.3f}'.format(p_and_d[fn[0]][0]))
         >>>     m, b = np.polyfit(meas[fn][0], meas[fn][1], 1)
         >>>     axs[k].plot(meas[fn][0], m * meas[fn][0] + b, color=col)
         >>>     axs[k].set_ylim((-1, 0.5))
@@ -525,7 +528,7 @@ with the spatial distribution of hub regions (greater degree centrality).
                 xlabel(strrep(fns{k}, '_', ' '))
                 ylabel(strrep(fns2{j}, '_', ' '))
                 legend(s, ['{\it r}=' num2str(round(rvals.(lower(fns{k})), 2)) newline ...
-                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 2))])
+                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 3))])
                 legend boxoff
             end
 
@@ -556,7 +559,7 @@ with the spatial distribution of hub regions (greater degree centrality).
 
         >>>     # Plot relationships between hubs and atrophy
         >>>     axs[k].scatter(meas[fn][0], meas[fn][1], color=col,
-        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.2f}'.format(p_and_d[fn[0]][0]))
+        ...                    label='$r$={:.2f}'.format(rvals[fn[0]]) + '\n$p$={:.3f}'.format(p_and_d[fn[0]][0]))
         >>>     m, b = np.polyfit(meas[fn][0], meas[fn][1], 1)
         >>>     axs[k].plot(meas[fn][0], m * meas[fn][0] + b, color=col)
         >>>     axs[k].set_ylim((-3.5, 1.5))
@@ -603,9 +606,9 @@ with the spatial distribution of hub regions (greater degree centrality).
                 xlabel(strrep(fns{k}, '_', ' '))
                 ylabel(strrep(fns2{j}, '_', ' '))
                 legend(s, ['{\it r}=' num2str(round(rvals.(lower(fns{k})), 2)) newline ...
-                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 2))])
+                          '{\it p}=' num2str(round(p_and_d.(lower(fns{k}))(1), 3))])
                 legend boxoff
             end
     
-.. image:: ./examples/example_figs/hubs_atrophy.png
+.. image:: ./examples/example_figs/scatter.png
     :align: center

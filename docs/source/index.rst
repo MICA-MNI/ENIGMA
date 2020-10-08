@@ -152,6 +152,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :hidden:
    :caption: References & acknowledgements
 
+   pages/13.01.apireference/index
    pages/13.citeus/index
    pages/14.refs/index
    pages/15.funding/index
