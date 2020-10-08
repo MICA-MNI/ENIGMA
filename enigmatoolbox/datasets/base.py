@@ -477,13 +477,13 @@ def load_example_data():
     Returns
     -------
     cov : pandas.DataFrame
-        contains information on covariates
+        Contains information on covariates
     metr1 : pandas.DataFrame
-        contains information on subcortical volume
+        Contains information on subcortical volume
     metr2 :  pandas.DataFrame
         contains information on cortical thickness
     metr3 :  pandas.DataFrame
-        contains information on surface area
+        Contains information on surface area
     """
     root_pth = os.path.dirname(__file__)
 
