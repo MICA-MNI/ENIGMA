@@ -33,10 +33,10 @@ extensions = ['sphinx_tabs.tabs',
               'sphinx.ext.autodoc',
               'sphinx.ext.autosectionlabel', 
               'sphinx.ext.autosummary',
-              'sphinx.ext.doctest',
-              'sphinx.ext.intersphinx',
-              'sphinx.ext.mathjax',
-              'sphinx.ext.napoleon',
+              #'sphinx.ext.doctest',
+              #'sphinx.ext.intersphinx',
+              #sphinx.ext.mathjax',
+              #'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
               #'sphinxarg.ext',
               ]
@@ -58,6 +58,7 @@ master_doc = 'index'
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+highlight_language ='none'
 
 # -- Options for HTML output -------------------------------------------------
 
