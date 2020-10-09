@@ -7,15 +7,15 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = build
-GENERATEDDIR  = source/pages/13.01.apireference/generated
+GENERATEDDIR  = pages/13.01.apireference/generated
 
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-#clean:
-#	rm -rf $(BUILDDIR)/*
-#	rm -rf $(GENERATEDDIR)/*
+clean:
+	rm -rf $(BUILDDIR)/* 
+	rm -rf $(GENERATEDDIR)/*
 
 .PHONY: help Makefile
 
