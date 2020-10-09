@@ -48,7 +48,7 @@ autoclass_content = "class"
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['source/_templates']
+templates_path = ['_templates']
 
 # The master toctree document.
 master_doc = 'index'
