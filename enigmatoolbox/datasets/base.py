@@ -479,7 +479,7 @@ def load_example_data():
     metr1 : pandas.DataFrame
         Contains information on subcortical volume
     metr2 : pandas.DataFrame
-        contains information on cortical thickness
+        Contains information on cortical thickness
     metr3 : pandas.DataFrame
         Contains information on surface area
     """
