@@ -286,17 +286,19 @@ def load_sc():
 
 
 def load_fc():
-    """ Load functional connectivity data from 207 HCP subjects
-        Parcellated using Desikan Killiany (68 cortical regions and 16 subcortical structures)
+    """ Load functional connectivity data from 207 HCP subjects parcellated using Desikan Killiany
+    (68 cortical regions and 16 subcortical structures; author: @saratheriver)
 
         Returns
         -------
-        strucMatrix_ctx : 68 x 68 ndarray representing cortico-cortical connectivity
-        strucLabels_ctx : 68 x 1 ndarray representing cortical labels
-        strucMatrix_sctx : 14 x 68 ndarray representing subcortico-cortical connectivity
-        strucLabels_sctx : 14 x 1 ndarray representing subcortical labels *
-
-        * ventricles are excluded
+        strucMatrix_ctx : 2D ndarray
+            Cortico-cortical connectivity, shape = (68, 68)
+        strucLabels_ctx : 1D ndarray
+            Cortical labels, shape (68,)
+        strucMatrix_sctx : 2D ndarray
+            Subcortico-cortical connectivity, shape = (14, 68)
+        strucLabels_sctx : 1D ndarray
+            Subcortical labels, shape = (14,)
     """
     root_pth = os.path.dirname(__file__)
 
@@ -497,7 +499,7 @@ def load_example_data():
 
 
 def load_summary_stats(disorder=None):
-    """ Outputs summary statistics for a given disorder
+    """ Outputs summary statistics for a given disorder (author: @saratheriver)
 
         Parameters
         ----------
@@ -508,8 +510,6 @@ def load_summary_stats(disorder=None):
         -------
         summary_stats : pandas.DataFrame
             Available summary statistics
-
-
     """
     root_pth = os.path.dirname(__file__)
 
