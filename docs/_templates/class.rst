@@ -1,4 +1,9 @@
 {{ fullname }}
+
+.. raw:: html
+
+    <div style='clear:both'></div>
+
 {{ underline }}
 
 .. currentmodule:: {{ module }}

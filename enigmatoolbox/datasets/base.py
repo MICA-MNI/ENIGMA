@@ -497,22 +497,17 @@ def load_example_data():
 
 
 def load_summary_stats(disorder=None):
-    """ Outputs summary statistics for specific diseases/disorders
+    """ Outputs summary statistics for a given disorder
 
         Parameters
-        -----------
-        '22q'
-        'adhd'
-        'asd'
-        'bipolar'
-        'depression'
-        'epilepsy'
-        'ocd'
-        'schizophrenia'
+        ----------
+        disorder : {'22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia'}
+            Disorder name
 
         Returns
         -------
-        summary stats        : available summary statistics (pd dataframe)
+        summary_stats : pandas.DataFrame
+            Available summary statistics
 
 
     """
