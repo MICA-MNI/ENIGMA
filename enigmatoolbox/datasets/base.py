@@ -343,7 +343,7 @@ def structural_covariance(zdata):
 
 
 def fetch_ahba(csvfile=None):
-    """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes
+    """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes (author: @saratheriver)
 
             Parameters
             ----------
@@ -364,19 +364,12 @@ def fetch_ahba(csvfile=None):
 
 
 def risk_genes(disorder=None):
-    """ Outputs names of GWAS-derived risk genes for specific diseases/disorders
+    """ Outputs names of GWAS-derived risk genes for a given disorder
 
         Parameters
-        ---------------------
-        'adhd'               : Demontis et al., 2018, Nat Genet
-        'asd'                : Grove et al., 2019, Nat Genet
-        'bipolar'            : Stahl et al., 2019, Nat Genet
-        'depression'         : Howard et al., 2019, Nat Genet
-        'epilepsy'           : ILAE on Complex Epilepsies, 2018, Nat Commun
-        'hippocampal_volume' : Horgusluoglu-Moloch, 2019, Sci Rep
-        'ocd'                : n/a
-        'schizophrenia'      : Pardiñas et al., 2018, Nat Genet
-        'tourette'           : Yu et al., 2019 Am J Psychiatry
+        ----------
+        disorder = {'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia',
+        'tourette'}
 
         Returns
         -------
@@ -508,7 +501,7 @@ def load_summary_stats(disorder=None):
         Parameters
         ----------
         disorder : {'22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia'}
-            Disorder name
+            Disorder name, default is None
 
         Returns
         -------

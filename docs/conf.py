@@ -36,7 +36,7 @@ extensions = ['sphinx_tabs.tabs',
               #'sphinx.ext.doctest',
               #'sphinx.ext.intersphinx',
               #sphinx.ext.mathjax',
-              #'sphinx.ext.napoleon',
+              'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
               #'sphinxarg.ext',
               ]
