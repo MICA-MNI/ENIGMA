@@ -11,22 +11,40 @@ from scipy.spatial.distance import cdist
 
 from ..datasets import load_fsa5, load_conte69
 
+
 def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
     """
-    Function to extract centroids of a cortical parcellation on the
-    Freesurfer sphere, for subsequent input to code for the performance of a
-    spherical permutation. Runs on individual hemispheres.
+    Extract centroids of a cortical parcellation on a surface sphere (author: @saratheriver)
 
-    Inputs:
-    sphere_coords   sphere coordinates (n x 3)
-    annot_file      'fsa5_lh_aparc.annot' (string)
-    ventricles      boolean, False (default, no ventricle data), only for 'aparc_aseg' parcellation
+    Parameters
+    ----------
+    sphere_coords : ndarray
+        Sphere coordinates, shape = (n, 3)
+    annotfile : string
+        Name of annotation file {'fsa5_lh_aparc.annot', 'fsa5_rh_aparc.annot, 'fsa5_with_sctx_lh_aparc_aseg.csv', etc.}
+    ventricles : bool, optional
+        Whether ventricle data are present. Only used when 'annotfile' is fsa5_with_sctx_lh_aparc_aseg or
+        fsa5_with_sctx_lh_aparc_aseg``. Default is False.
 
-    Output:
-    centroid      coordinates of the centroid of each region on the sphere
+    Returns
+    -------
+    coord : ndarray
+        Coordinates of the centroid of each region on the sphere, shape = (m, 3).
 
-    Rafael Romero-Garcia, 2017
-    Ported to Python by Sara Larivière, rainy September 2020 evening
+    See Also
+    --------
+    :func:`spin_test`
+
+    References
+    ----------
+    * Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC,
+      Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial
+      correspondence between maps of human brain structure and function.
+      NeuroImage, 178:540-51.
+    * Váša F, Seidlitz J, Romero-Garcia R, Whitaker KJ, Rosenthal G, Vértes PE,
+      Shinn M, Alexander-Bloch A, Fonagy P, Dolan RJ, Goodyer IM, the NSPN consortium,
+      Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
+      structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
 
     # for cortical annotation files only
@@ -64,24 +82,36 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
 
 def rotate_parcellation(coord_l, coord_r, nrot=100):
     """
-    Function to generate a permutation map from a set of cortical regions of interest to itself,
-    while (approximately) preserving contiguity and hemispheric symmetry.
-    The function is based on a rotation of the FreeSurfer projection of coordinates
-    of a set of regions of interest on the sphere.
+    Rotate parcellation (author: @saratheriver)
 
-    Inputs:
-    coord_l       coordinates of left hemisphere regions on the sphere        array of size [n(LH regions) x 3]
-    coord_r       coordinates of right hemisphere regions on the sphere       array of size [n(RH regions) x 3]
-    nrot          number of rotations (default = 10'000)                      scalar
+    Parameters
+    ----------
+    coord_l : ndarray
+        Coordinates of left hemisphere regions on the sphere, shape = (m, 3)
+    coord_l : ndarray
+        Coordinates of right hemisphere regions on the sphere, shape = (m, 3)
+    nrot : int, optional
+        Number of rotations. Default is 100.
 
-    Output:
-    perm_id      array of permutations, from set of regions to itself        array of size [n(total regions) x nrot]
+    Returns
+    -------
+    perm_id : ndarray
+        Array of permutations, shape = (m, nrot)
 
-    FrantiÅ¡ek VÃ¡Å¡a, fv247@cam.ac.uk, June 2017 - June 2018
-          Updated on 5/9/2019 with permutation scheme that uniformly samples the space of permutations on the sphere
-          See github repo (@frantisekvasa) and references within for details
+    See Also
+    --------
+    :func:`spin_test`
 
-    Ported to Python by Sara Larivière, rainy September 2020 evening
+    References
+    ----------
+    * Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC,
+      Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial
+      correspondence between maps of human brain structure and function.
+      NeuroImage, 178:540-51.
+    * Váša F, Seidlitz J, Romero-Garcia R, Whitaker KJ, Rosenthal G, Vértes PE,
+      Shinn M, Alexander-Bloch A, Fonagy P, Dolan RJ, Goodyer IM, the NSPN consortium,
+      Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
+      structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
     warnings.filterwarnings('ignore')
 
@@ -180,25 +210,44 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
     return perm_id
 
 
-def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
+def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
     """
-    Function to generate a p-value for the spatial correlation between two parcellated cortical surface maps,
-    using a set of spherical permutations of regions of interest (which can be generated using the function "rotate_parcellation").
-    The function performs the permutation in both directions; i.e.: by permute both measures,
-    before correlating each permuted measure to the unpermuted version of the other measure
+    Generate a p-value for the spatial correlation between two parcellated cortical surface maps (author: @saratheriver)
 
-    Inputs:
-    x                 one of two maps to be correlated                                                                    vector
-    y                 second of two maps to be correlated                                                                 vector
-    perm_id           array of permutations, from set of regions to itself (as generated by "rotate_parcellation")        array of size [n(total regions) x nrot]
-    corr_type         type of correlation                                                                                 "spearman" or "pearson" (default)
+    Parameters
+    ----------
+    x : narray, ndarray, or pandas.Series
+        One of two map to be correlated
+    y : narray, ndarray, or pandas.Series
+        The other map to be correlated
+    perm_id : ndarray
+        Array of permutations, shape = (m, nrot)
+    corr_type : string, optional
+        Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
+    null_dist = bool, optional
+        Output null correlations. Default is False.
 
-    Output:
-    p_perm            permutation p-value
+    Returns
+    -------
+    p_perm : float
+        Permutation p-value
+    r_dist : 1D ndarray
+        Null correlations, shape = (n_rot*2,). Only if ``null_dist is True``.
 
-    FrantiÅ¡ek VÃ¡Å¡a, fv247@cam.ac.uk, June 2017 - June 2018
+    See Also
+    --------
+    :func:`spin_test`
 
-    Ported to Python by Sara Larivière, rainy September 2020 evening
+    References
+    ----------
+    * Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC,
+      Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial
+      correspondence between maps of human brain structure and function.
+      NeuroImage, 178:540-51.
+    * Váša F, Seidlitz J, Romero-Garcia R, Whitaker KJ, Rosenthal G, Vértes PE,
+      Shinn M, Alexander-Bloch A, Fonagy P, Dolan RJ, Goodyer IM, the NSPN consortium,
+      Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
+      structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
 
     nroi = perm_id.shape[0]   # number of regions
@@ -240,36 +289,60 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', spin_dist=False):
     # average p-values
     p_perm = (p_perm_xy + p_perm_yx) / 2
 
-    if spin_dist is True:
+    if null_dist is True:
         return p_perm, np.append(rho_null_xy, rho_null_yx)
-    elif spin_dist is not True:
+    elif null_dist is not True:
         return p_perm
 
 
 def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100,
-              type='pearson', spin_dist=False, ventricles=False):
+              type='pearson', null_dist=False, ventricles=False):
     """
-    INPUTS
-       map1               = one of two cortical map to be correlated
-       map2               = the other cortical map to be correlated
-       surface_name       = 'fsa5' (default) or 'conte69'
-       parcellation_name  = 'aparc' (default), 'aparc_aseg' (ctx+sctx)
-       n_rot              = number of spin rotations (default 100)
-       type               = correlation type, 'pearson' (default), 'spearman'
-       spin_dist          = save distribution of spinned correlations (null model)
-       ventricles         = boolean, False (default, no ventricle data), only for 'aparc_aseg' parcellation
+    Spin permutation (author: @saratheriver)
 
-    OUTPUT
-       p_spin          = permutation p-value
-       r_dist          = distribution of spinned correlations (number of spins * 2)
+    Parameters
+    ----------
+    map1 : narray, ndarray, or pandas.Series
+        One of two map to be correlated
+    map2 : narray, ndarray, or pandas.Series
+        The other map to be correlated
+    surface_name : string, optional
+        Surface name {'fsa5', 'fsa5_with_sctx', 'conte69'}. Default is 'fsa5'.
+    parcellation_name : string, optional
+        Parcellation name {'aparc', 'aparc_aseg'}. Default is 'aparc'.
+    n_rot : int, optional
+        Number of spin rotations. Default is 100.
+    type : string, optional
+        Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
+    null_dist : bool, optional
+        Output null correlations. Default is False.
+    ventricles : bool, optional
+        Whether ventricles are present in map1, map2. Only used when ``parcellation_name is 'aparc_aseg'``.
+        Default is False.
 
+    Returns
+    -------
+    p_spin : float
+        Permutation p-value
+    r_dist : 1D ndarray
+        Null correlations, shape = (n_rot*2,). Only if ``null_dist is True``.
 
-    Functions above from here
-           https://github.com/frantisekvasa/rotate_parcellation
+    See Also
+    --------
+    :func:`centroid_extraction_sphere`
+    :func:`rotate_parcellation`
+    :func:`perm_sphere_p`
 
-     Last modifications:
-     SL | a rainy September day 2020
-     SL | beautiful Fall day, October 2020 | added option for combined ctx+sctx
+    References
+    ----------
+    * Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC,
+      Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial
+      correspondence between maps of human brain structure and function.
+      NeuroImage, 178:540-51.
+    * Váša F, Seidlitz J, Romero-Garcia R, Whitaker KJ, Rosenthal G, Vértes PE,
+      Shinn M, Alexander-Bloch A, Fonagy P, Dolan RJ, Goodyer IM, the NSPN consortium,
+      Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
+      structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
 
     if surface_name is "fsa5":
@@ -305,28 +378,37 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     if isinstance(map2, pd.DataFrame) or isinstance(map2, pd.Series):
         map2 = map2.to_numpy()
 
-    p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, spin_dist=True)
+    p_spin, r_dist = perm_sphere_p(map1, map2, perm_id, type, null_dist=True)
 
-    if spin_dist is True:
+    if null_dist is True:
         return p_spin, r_dist
-    elif spin_dist is not True:
+    elif null_dist is not True:
         return p_spin
 
 
-def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
+def shuf_test(map1, map2, n_rot=100, type='pearson', null_dist=False):
     """
-    INPUTS
-       map1            = one of two subcortical map to be correlated
-       map2            = the other subcortical map to be correlated
-       n_rot           = number of shuffles (default 100)
-       type            = correlation type, 'pearson' (default), 'spearman'
-       spin_dist       = save distribution of spinned correlations (null model)
+    Shuf permuation (author: @saratheriver)
 
-    OUTPUT
-       p_shuf          = permutation p-value
-       r_dist          = distribution of shuffled correlations (number of shuffles * 2)
+    Parameters
+    ----------
+    map1 : narray, ndarray, or pandas.Series
+        One of two map to be correlated
+    map2 : narray, ndarray, or pandas.Series
+        The other map to be correlated
+    n_rot : int, optional
+        Number of spin rotations. Default is 100.
+    type : string, optional
+        Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
+    null_dist : bool, optional
+        Output null correlations. Default is False.
 
-     Sara Lariviere | a sunny September day 2020
+    Returns
+    -------
+    p_shuf : float
+        Permutation p-value
+    r_dist : 1D ndarray
+        Null correlations, shape = (n_rot*2,). Only if ``null_dist is True``.
     """
 
     r = 0  # count successful (r) iterations unsuccessful (c) iterations
@@ -389,7 +471,7 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', spin_dist=False):
     # null distribution
     r_dist = np.append(rho_null_xy, rho_null_yx)
 
-    if spin_dist is True:
+    if null_dist is True:
         return p_shuf, r_dist
-    elif spin_dist is not True:
+    elif null_dist is not True:
         return p_shuf

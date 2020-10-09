@@ -95,7 +95,7 @@ def build_plotter(surfs, layout, array_name=None, view=None, color_bar=None,
                   color_range=None, share=False, label_text=None,
                   cmap='viridis', nan_color=(0, 0, 0, 1), zoom=1,
                   background=(1, 1, 1), size=(400, 400), **kwargs):
-    """Build plotter arranged according to the `layout`.
+    """Build plotter arranged according to the `layout` (author: @OualidBenkarim)
 
     Parameters
     ----------
@@ -138,15 +138,7 @@ def build_plotter(surfs, layout, array_name=None, view=None, color_bar=None,
         Window size. Default is (400, 400).
     kwargs : keyword-valued args
         Additional arguments passed to the renderers, actors, mapper, color_bar
-        or plotter. Keywords starting with:
-
-        - 'renderer__' are passed to the renderers.
-        - 'actor__' are passed to the actors.
-        - 'mapper__' are passed to the mappers.
-        - 'cb__' are passed to color bar actors.
-        - 'text__' are passed to color text actors.
-
-        The rest of keywords are passed to the plotter.
+        or plotter.
 
     Returns
     -------
@@ -156,7 +148,8 @@ def build_plotter(surfs, layout, array_name=None, view=None, color_bar=None,
     See Also
     --------
     :func:`plot_surf`
-    :func:`plot_hemispheres`
+    :func:`plot_cortical`
+    :func:`plot_subcortical`
 
     Notes
     -----
@@ -168,7 +161,6 @@ def build_plotter(surfs, layout, array_name=None, view=None, color_bar=None,
     broadcastable to the shape of `array_name`, including the number of array
     names per entry. Actor and mapper keywords must also be broadcastable to
     the shape of `array_name`.
-
     """
 
     # Layout
@@ -332,7 +324,7 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
               transparent_bg=True, screenshot=False, filename=None,
               return_plotter=False, **kwargs):
 
-    """Plot surfaces arranged according to the `layout`.
+    """Plot surfaces arranged according to the `layout` (author: @OualidBenkarim)
 
     Parameters
     ----------
@@ -390,13 +382,7 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
         Default is None.
     kwargs : keyword-valued args
         Additional arguments passed to the renderers, actors, mapper or
-        plotter. Keywords starting with:
-
-        - 'renderer__' are passed to the renderers.
-        - 'actor__' are passed to the actors.
-        - 'mapper__' are passed to the mappers.
-
-        The rest of keywords are passed to the plotter.
+        plotter.
 
     Returns
     -------
@@ -407,7 +393,8 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
     See Also
     --------
     :func:`build_plotter`
-    :func:`plot_hemispheres`
+    :func:`plot_cortical`
+    :func:`plot_subcortical`
 
     Notes
     -----
@@ -419,7 +406,6 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
     broadcastable to the shape of `array_name`, including the number of array
     names per entry. Actor and mapper keywords must also be broadcastable to
     the shape of `array_name`.
-
     """
 
     if screenshot and filename is None:
@@ -444,13 +430,13 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
 
 
 @wrap_input(0, 1)
-def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
+def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
                   color_range=None, label_text=None,
                   cmap='RdBu_r', nan_color=(1, 1, 1, 0), zoom=1,
                   background=(1, 1, 1), size=(400, 400), interactive=True,
                   embed_nb=False, screenshot=False, filename=None,
                   scale=(1, 1), transparent_bg=True, **kwargs):
-    """Plot left and right hemispheres in lateral and medial views.
+    """Plot cortical surface with lateral and medial views (authors: @OualidBenkarim, @saratheriver)
 
     Parameters
     ----------
@@ -458,7 +444,8 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
         Name of point data array to plot. If ndarray, the array is split for
         the left and right hemispheres. If list, plot one row per array.
         Default is None.
-    surface_name : "fsa5" (default) or "conte69"
+    surface_name : str, optional
+        Name of surface {'fsa5', 'conte69}. Default is 'fsa5'.
     color_bar : bool, optional
         Plot color bar for each array (row). Default is False.
     color_range : {'sym'}, tuple or sequence.
@@ -468,15 +455,15 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
         Label text for column/row. Possible keys are {'left', 'right',
         'top', 'bottom'}, which indicate the location. Default is None.
     nan_color : tuple
-        Color for nan values. Default is (0, 0, 0, 1).
+        Color for nan values. Default is (1, 1, 1, 0).
     zoom : float or sequence of float, optional
         Zoom applied to the surfaces in each layout entry.
     background : tuple
         Background color. Default is (1, 1, 1).
     cmap : str, optional
-        Color map name (from matplotlib). Default is 'viridis'.
+        Colormap name (from matplotlib). Default is 'RdBu_r'.
     size : tuple, optional
-        Window size. Default is (800, 200).
+        Window size. Default is (400, 400).
     interactive : bool, optional
         Whether to enable interaction. Default is True.
     embed_nb : bool, optional
@@ -495,7 +482,6 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
     kwargs : keyword-valued args
         Additional arguments passed to the plotter.
 
-
     Returns
     -------
     figure : Ipython Image or None
@@ -506,7 +492,6 @@ def plot_cortical(array_name=None, surface_name="fsa5", color_bar=False,
     --------
     :func:`build_plotter`
     :func:`plot_surf`
-
     """
 
     if color_bar is True:
@@ -562,7 +547,7 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
                     background=(1, 1, 1), size=(400, 400), interactive=True,
                     embed_nb=False, screenshot=False, filename=None,
                     scale=(1, 1), transparent_bg=True, **kwargs):
-    """Plot left and right hemispheres in lateral and medial views.
+    """Plot subcortical surface with lateral and medial views (author: @saratheriver)
 
     Parameters
     ----------
@@ -570,8 +555,10 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
         Name of point data array to plot. If ndarray, the array is split for
         the left and right hemispheres. If list, plot one row per array.
         Default is None.
-    ventricles : True (default) includes ventricles (array_name must have 16 values
-                 False does not include ventricles (e.g., connectivity; array must have 14 values)
+    ventricles : bool, optional
+        Whether to include ventricles (i.e., array_name must have 16 values).
+        False does not include ventricles (e.g., array_name must have 14 values).
+        Default is True.
     color_bar : bool, optional
         Plot color bar for each array (row). Default is False.
     color_range : {'sym'}, tuple or sequence.
@@ -587,9 +574,9 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     background : tuple
         Background color. Default is (1, 1, 1).
     cmap : str, optional
-        Color map name (from matplotlib). Default is 'viridis'.
+        Color map name (from matplotlib). Default is 'RdBu_r'.
     size : tuple, optional
-        Window size. Default is (800, 200).
+        Window size. Default is (400, 400).
     interactive : bool, optional
         Whether to enable interaction. Default is True.
     embed_nb : bool, optional
@@ -608,7 +595,6 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     kwargs : keyword-valued args
         Additional arguments passed to the plotter.
 
-
     Returns
     -------
     figure : Ipython Image or None
@@ -619,7 +605,6 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     --------
     :func:`build_plotter`
     :func:`plot_surf`
-
     """
 
     if color_bar is True:

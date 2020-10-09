@@ -61,7 +61,7 @@ def _select_writer(otype):
 
 
 def read_surface(ipth, itype=None, return_data=True, update=True):
-    """Read surface data.
+    """Read surface data (author: @OualidBenkarim)
 
     See `itype` for supported file types.
 
@@ -103,7 +103,7 @@ def read_surface(ipth, itype=None, return_data=True, update=True):
 
 
 def write_surface(ifilter, opth, oformat=None, otype=None):
-    """Write surface data.
+    """Write surface data (author: @OualidBenkarim)
 
     See `otype` for supported file types.
 

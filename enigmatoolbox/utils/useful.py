@@ -11,17 +11,21 @@ import numpy.matlib as npm
 
 def zscore_matrix(data, group, controlCode):
     """
-    z-scores data w.r.t. a specific group
+    Z-score data w.r.t. a given group (author: @saratheriver)
 
-    Parameters:
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Data matrix (e.g. thickness data), shape = (n_subject, n_region)
+    group : list
+        Group assignment (e.g, 1=grp1, 2=grp2), length = n_subject
+    controlCode : int
+    Int that corresponds to control subjects
+
+    Returns
     -------
-      data         = data matrix (e.g. thickness data, #subjects x #parcels)
-      group        = vector of values (i.e., grp assignment) same length as #subjects
-      controlCode  = value that corresponds to control subjects
-
-    Outputs:
-    --------
-       Z           = z-scored data relative to control code (e.g., HCs)
+    Z : pandas.DataFrame
+        Z-scored data relative to control code
     """
     C = [i for i, x in enumerate(group) if x == controlCode]
     n = len(group)
@@ -31,15 +35,17 @@ def zscore_matrix(data, group, controlCode):
 
 def reorder_sctx(data):
     """
-    re-orders subcortical volume data alphabetically, and by hemisphere (left, then right)
+    Re-order subcortical volume data alphabetically and by hemisphere (left then rightl; author: @saratheriver)
 
-    Parameters:
+    Parameters
+    ----------
+    data : pandas.DataFrame
+        Data matrix
+
+    Returns
     -------
-      data         = data matrix (e.g. metr1_SubVol)
-
-    Outputs:
-    --------
-       data_r      = re-ordered data (L-acc, L-amyg, L-caud, L-hip ... R-thalamus, R-ventricle)
+    data_r : pandas.DataFrame
+        Re-ordered data
     """
     if data.shape[1] == 18:
         new_order = [0, 15, 13, 5, 11, 9, 7, 3, 1, 16, 14, 6, 12, 10, 8, 4, 2, 17]

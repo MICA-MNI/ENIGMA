@@ -153,6 +153,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :caption: References & acknowledgements
 
    pages/13.01.apireference/index
+   pages/13.02.apireferencematlab/index
    pages/13.citeus/index
    pages/14.refs/index
    pages/15.funding/index
@@ -161,13 +162,12 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
 
 ___________________________________________________________________________________________________
 
-Enigmators 🦀
+.. raw:: html
+
+   <br>
+
+Core developers 👩🏻‍💻
 -------------------------
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
-- **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
-- **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
-- **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
-- **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
 - **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
-

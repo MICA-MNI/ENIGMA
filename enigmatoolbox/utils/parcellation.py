@@ -188,7 +188,7 @@ def map_to_mask(values, mask, fill=0, axis=0):
 
 
 def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None):
-    """Map data in source to target according to their labels.
+    """Map data in source to target according to their labels (author: @Oualid Benkarim)
 
     Target labels are sorted in ascending order, such that the smallest label
     indexes the value at position 0 in `source_val`. If `source_lab` is
@@ -213,7 +213,6 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
     -------
     target_val : ndarray, shape = (n_lab,)
         Target array with corresponding source values.
-
     """
 
     if isinstance(target_lab, str):
@@ -273,7 +272,7 @@ def _get_redop(red_op, weights=None, axis=None):
 
 def surface_to_parcel(values, labels, weights=None, target_labels=None,
                      red_op='mean', axis=0, dtype=np.float):
-    """Summarize data in `values` according to `labels`.
+    """Summarize data in `values` according to `labels` (author: @OualidBenkarim)
 
     Parameters
     ----------
@@ -358,19 +357,19 @@ def surface_to_parcel(values, labels, weights=None, target_labels=None,
 
 def subcorticalvertices(subcortical_values=None):
     """
-    Transforms one value per subcortical area to vertices
+    Map one value per subcortical area to surface vertices (author: @saratheriver)
 
     Parameters
     ----------
-    subcortical_values : 1D ndarray (16 values)
-                                order of subcortical structure is:
-                                    L_accumbens, L_amygdala, L_caudate, L_hippocampus, L_pallidun, L_putamen, L_thalamus,
-                                    L_ventricles, R_accumbens, R_amygdala, R_caudate, R_hippocampus, R_pallidun, R_putamen,
-                                    R_thalamus, R_ventricles
+    subcortical_values : 1D ndarray
+        Shape = (16,), order of subcortical structure must be = L_accumbens, L_amygdala, L_caudate, L_hippocampus,
+        L_pallidun, L_putamen, L_thalamus, L_ventricles, R_accumbens, R_amygdala, R_caudate, R_hippocampus,
+        R_pallidun, R_putamen, R_thalamus, R_ventricles
+
     Returns
-    ----------
-    data : ndarray (51278 values)
-           serves as input (array_name) for plot_hemisphere
+    -------
+    data : 1D ndarray
+        Transformed data, shape = (51278,)
     """
     numvertices = [867, 1419, 3012, 3784, 1446, 4003, 3726, 7653, 838, 1457, 3208, 3742, 1373, 3871, 3699, 7180]
     data = []

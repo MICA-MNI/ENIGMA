@@ -9,37 +9,6 @@ from ..mesh.mesh_operations import combine_surfaces
 from ..vtk_interface import wrap_vtk, serial_connect
 
 
-def load_parcellation(name, scale=400, join=False):
-    """ Load parcellation for conte69.
-
-    Parameters
-    ----------
-    name : {'schaefer', 'vosdewael'}
-        Parcellation name, either 'schaefer' for Schaefer (functional)
-        parcellations or 'vosdewael' for a subparcellation of aparc.
-    scale : {100, 200, 300, 400}, optional
-        Number of parcels. Default is 400.
-    join : bool, optional
-        If False, return one array for each hemisphere. Otherwise,
-        return a single array for both left and right hemisphere.
-        Default is False.
-
-    Returns
-    -------
-    parcellation : tuple of ndarrays or ndarray
-        Parcellations for left and right hemispheres. If ``join == True``, one
-        parcellation with both hemispheres.
-    """
-
-    root_pth = os.path.dirname(__file__)
-    fname = '{name}_{np}_conte69.csv'.format(name=name, np=scale)
-    ipth = os.path.join(root_pth, 'parcellations', fname)
-    x = np.loadtxt(ipth, dtype=np.int)
-    if join:
-        return x
-    return x[:x.size//2], x[x.size//2:]
-
-
 def load_mask(name='midline', surface_name="fsa5", join=False):
     """ Load mask for surface template (authors: @OualidBenkarim, @saratheriver)
 
@@ -89,7 +58,7 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
 
 
 def load_conte69(as_sphere=False, with_normals=True, join=False):
-    """ Load conte69 surfaces.
+    """ Load conte69 surfaces (author: @OualidBenkarim)
 
     Parameters
     ----------
@@ -98,15 +67,13 @@ def load_conte69(as_sphere=False, with_normals=True, join=False):
     with_normals : bool, optional
         Whether to compute surface normals. Default is True.
     join : bool, optional
-        If False, return one surface for left and right hemispheres. Otherwise,
-        return a single surface as a combination of both left and right
-        surfaces. Default is False.
+        If False, return one surface for left and right hemispheres. Otherwise, return a single surface
+        as a combination of both left and right surfaces. Default is False.
 
     Returns
     -------
     surf : tuple of BSPolyData or BSPolyData
-        Surfaces for left and right hemispheres. If ``join == True``, one
-        surface with both hemispheres.
+        Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
 
     root_pth = os.path.dirname(__file__)
@@ -130,7 +97,7 @@ def load_conte69(as_sphere=False, with_normals=True, join=False):
 
 
 def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
-    """ Load fsaverage5 surfaces.
+    """ Load fsaverage5 surfaces (author: @saratheriver)
 
     Parameters
     ----------
@@ -143,14 +110,13 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
         return a single surface as a combination of both left and right
         surfaces. Default is False.
     with_sctx : bool, optional
-        If False, returns cortical spheres, if True, returns combined
-        cortical+subcortical surface (spheres only at this moment)
+        If False, returns cortical surfaces/spheres only, if True, returns combined
+        cortical+subcortical surfaces. Default is False
 
     Returns
     -------
     surf : tuple of BSPolyData or BSPolyData
-        Surfaces for left and right hemispheres. If ``join == True``, one
-        surface with both hemispheres.
+        Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
 
     root_pth = os.path.dirname(__file__)
@@ -178,7 +144,7 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
 
 
 def load_subcortical(with_normals=False, join=False):
-    """ Load subcortical surfaces.
+    """ Load subcortical surfaces (author: @saratheriver)
 
     Parameters
     ----------
@@ -187,13 +153,12 @@ def load_subcortical(with_normals=False, join=False):
     join : bool, optional
         If False, return one surface for left and right hemispheres. Otherwise,
         return a single surface as a combination of both left and right
-        surfaces. Default is False.
+        surfaces. Default is False
 
     Returns
     -------
     surf : tuple of BSPolyData or BSPolyData
-        Surfaces for left and right hemispheres. If ``join == True``, one
-        surface with both hemispheres.
+        Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
 
     root_pth = os.path.dirname(__file__)

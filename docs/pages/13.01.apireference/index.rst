@@ -2,22 +2,32 @@
 
 .. title:: List of every function
 
-API reference
-======================================
 
-This is the function reference of the **ENIGMA TOOLBOX**
+.. raw:: html
+
+   <style type="text/css">
+      hr {
+      width: 100%;
+      height: 1px;
+      background-color: #259595;
+      margin-top: 24px;
+      }
+   </style>
 
 
 Python API
-------------------
+======================
 
-.. contents:: **List of modules**
-   :local:
+This is the function reference of the **ENIGMA TOOLBOX**
+
+.. raw:: html
+
+   <hr>
 
 .. _pyref_datasets:
 
 :mod:`enigmatoolbox.datasets`
-------------------------------------
+-------------------------------------------------
 .. automodule:: enigmatoolbox.datasets
    :no-members:
    :no-inherited-members:
@@ -62,7 +72,6 @@ Surface data
    :toctree: generated/
 
    enigmatoolbox.datasets.load_mask
-   enigmatoolbox.datasets.load_parcellation
 
 Surface templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,32 +80,143 @@ Surface templates
    :template: function.rst
    :toctree: generated/
 
-   enigmatoolbox.datasets.load_conte69
    enigmatoolbox.datasets.load_fsa5
+   enigmatoolbox.datasets.load_conte69
    enigmatoolbox.datasets.load_subcortical
 
+.. raw:: html
 
-|
+   <hr>
 
 .. _pyref_mesh:
 
 :mod:`enigmatoolbox.mesh`
-------------------------------------
+-------------------------------------------------
 .. automodule:: enigmatoolbox.mesh
    :no-members:
    :no-inherited-members:
 
 .. currentmodule:: enigmatoolbox.mesh
 
+Read/write functionality
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. autosummary::
    :template: function.rst
    :toctree: generated/
 
    enigmatoolbox.mesh.mesh_io.read_surface
+   enigmatoolbox.mesh.mesh_io.write_surface
 
-|
+.. raw:: html
+
+   <hr>
+
+.. _pyref_permtesting:
+
+:mod:`enigmatoolbox.permutation_testing`
+-------------------------------------------------
+.. automodule:: enigmatoolbox.permutation_testing
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: enigmatoolbox.permutation_testing
+
+Spin permutations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.permutation_testing.spin_test
+   enigmatoolbox.permutation_testing.centroid_extraction_sphere
+   enigmatoolbox.permutation_testing.rotate_parcellation
+   enigmatoolbox.permutation_testing.perm_sphere_p
+
+Shuf permutation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.permutation_testing.shuf_test
+ 
+.. raw:: html
+
+   <hr>
 
 
+.. _pyref_surfplot:
 
-Matlab API
-----------------
+:mod:`enigmatoolbox.plotting.surface_plotting`
+-------------------------------------------------
+.. automodule:: enigmatoolbox.plotting.surface_plotting
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: enigmatoolbox.plotting.surface_plotting
+
+Surface plotting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.plotting.surface_plotting.plot_cortical
+   enigmatoolbox.plotting.surface_plotting.plot_subcortical
+   enigmatoolbox.plotting.surface_plotting.build_plotter
+   enigmatoolbox.plotting.surface_plotting.plot_surf
+
+.. raw:: html
+
+   <hr>
+
+
+.. _pyref_utils:
+
+:mod:`enigmatoolbox.utils`
+-------------------------------------------------
+.. automodule:: enigmatoolbox.utils
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: enigmatoolbox.utils
+
+Z-score data matrix
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.utils.useful.zscore_matrix
+
+
+Re-order subcortical data matrix
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.utils.useful.reorder_sctx
+
+
+Parcellation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.utils.parcellation.parcel_to_surface
+   enigmatoolbox.utils.parcellation.surface_to_parcel
+   enigmatoolbox.utils.parcellation.subcorticalvertices
+
+
+.. raw:: html
+
+   <hr>

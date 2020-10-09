@@ -21,7 +21,7 @@ import enigmatoolbox
 
 project = 'ENIGMA TOOLBOX'
 copyright = '2020, enigmators'
-author = 'Sara Lariviere, Raul-Rodriguez-Cruces, Bo-Yong Park, Boris Bernhardt'
+author = 'Sara Larivière, Boris Bernhardt'
 
 
 # -- General configuration ---------------------------------------------------

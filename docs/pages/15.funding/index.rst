@@ -1,6 +1,6 @@
 .. _funding:
 
-.. title:: Thank you to our funders! 💙
+.. title:: Thank you to our funders and collaborators! 💙
 
 Acknowledgements
 ======================================
@@ -68,3 +68,13 @@ We would also like to recognise funding support from the Canadian Institutes of 
 Core funding for ENIGMA was provided by the NIH Big Data to Knowledge (BD2K) program under consortium grant U54
 EB020403, by the ENIGMA World Aging Center (R56 AG058854), and
 by the ENIGMA Sex Differences Initiative (R01 MH116147).
+
+.. raw:: html
+
+   <br>
+
+| And finally, a many thanks to our wonderful enigmator collaborators 🦀
+| - **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+| - **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
+| - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
+| - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
