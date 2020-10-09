@@ -253,17 +253,19 @@ def load_marker(name, join=False):
 
 
 def load_sc():
-    """ Load structural connectivity data from 207 HCP subjects
-        Parcellated using Desikan Killiany (68 cortical regions and 16 subcortical structures)
+    """ Load structural connectivity data from 207 HCP subjects parcellated using Desikan Killiany
+    (68 cortical regions and 16 subcortical structures; author: @saratheriver)
 
         Returns
         -------
-        strucMatrix_ctx : 68 x 68 ndarray representing cortico-cortical connectivity
-        strucLabels_ctx : 68 x 1 ndarray representing cortical labels
-        strucMatrix_sctx : 14 x 68 ndarray representing subcortico-cortical connectivity
-        strucLabels_sctx : 14 x 1 ndarray representing subcortical labels *
-
-        * ventricles are excluded
+        strucMatrix_ctx : 2D ndarray
+            Cortico-cortical connectivity, shape = (68, 68)
+        strucLabels_ctx : 1D ndarray
+            Cortical labels, shape (68,)
+        strucMatrix_sctx : 2D ndarray
+            Subcortico-cortical connectivity, shape = (14, 68)
+        strucLabels_sctx : 1D ndarray
+            Subcortical labels, shape = (14,)
     """
     root_pth = os.path.dirname(__file__)
 
@@ -291,13 +293,13 @@ def load_fc():
 
         Returns
         -------
-        strucMatrix_ctx : 2D ndarray
+        funcMatrix_ctx : 2D ndarray
             Cortico-cortical connectivity, shape = (68, 68)
-        strucLabels_ctx : 1D ndarray
+        funcLabels_ctx : 1D ndarray
             Cortical labels, shape (68,)
-        strucMatrix_sctx : 2D ndarray
+        funcMatrix_sctx : 2D ndarray
             Subcortico-cortical connectivity, shape = (14, 68)
-        strucLabels_sctx : 1D ndarray
+        funcLabels_sctx : 1D ndarray
             Subcortical labels, shape = (14,)
     """
     root_pth = os.path.dirname(__file__)
@@ -345,12 +347,14 @@ def fetch_ahba(csvfile=None):
 
             Parameters
             ----------
-            Parcellated using Desikan Killiany 68 cortical regions and
-                14 subcortical structures (ventricles are excluded)
+            csvfile : None or string
+                Path to downloaded csvfile
+                If None (default), fetches microarray expression data from the internet
 
             Returns
             -------
-            g : gene expression matrix, 82 x 15633 panda dataframe
+            genes : pandas.DataFrame
+                Table of gene co-expression data, shape = (82, 15633)
         """
     if csvfile is None:
         url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
