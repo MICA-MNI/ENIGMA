@@ -41,23 +41,25 @@ def load_parcellation(name, scale=400, join=False):
 
 
 def load_mask(name='midline', surface_name="fsa5", join=False):
-    """ Load mask for conte69, fsa5 (default), and fsa5_with_sctx.
+    """ Load mask for surface template (authors: @OualidBenkarim, @saratheriver)
 
     Parameters
     ----------
-    name : {'midline', 'temporal'} or None, optional
+    name : {'midline'} or None, optional
         Region name. If 'midline', load mask for all cortex.
-        Default is 'midline'.
+        Default is 'midline'
+    surface_name : {'fsa5', 'fsa5_with_sctx', 'conte69'}
+        Default is fsa5
     join : bool, optional
         If False, return one array for each hemisphere. Otherwise,
         return a single array for both left and right hemispheres.
-        Default is False.
+        Default is False
 
     Returns
     -------
     mask : tuple of ndarrays or ndarray
         Boolean masks for left and right hemispheres. If ``join == True``, one
-        mask with both hemispheres.
+        mask with both hemispheres
     """
 
     root_pth = os.path.dirname(__file__)
@@ -211,47 +213,6 @@ def load_subcortical(with_normals=False, join=False):
     return surfs[0], surfs[1]
 
 
-def _load_feat(feat_name, parcellation=None, mask=None):
-    root_pth = os.path.dirname(__file__)
-    ipth = os.path.join(root_pth, 'matrices', 'main_group',
-                        '{0}.csv'.format(feat_name))
-    x = np.loadtxt(ipth, dtype=np.float)
-    if mask is not None:
-        x = x[mask]
-
-    if parcellation is not None:
-        if mask is not None:
-            parcellation = parcellation[mask]
-        x = reduce_by_labels(x, parcellation, red_op='mean')
-    return x
-
-
-def load_marker(name, join=False):
-    """ Load cortical data for conte69.
-
-    Parameters
-    ----------
-    name : {'curvature', 'thickness', 't1wt2w'}
-        Marker name.
-    join : bool, optional
-        If False, return one array for each hemisphere. Otherwise,
-        return a single array for both left and right hemispheres.
-        Default is False.
-
-    Returns
-    -------
-    marker : tuple of ndarrays or ndarray
-        Marker data for left and right hemispheres. If ``join == True``, one
-        array with both hemispheres.
-    """
-
-    feat_name = 'conte69_32k_{0}'.format(name)
-    x = _load_feat(feat_name)
-    if join:
-        return x
-    return x[:x.size//2], x[x.size//2:]
-
-
 def load_sc():
     """ Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 
@@ -366,8 +327,7 @@ def risk_genes(disorder=None):
 
         Parameters
         ----------
-        disorder : {'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia',
-        'tourette'}
+        disorder : {'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia', 'tourette'}
             Name of disorder, default is None
 
         Returns
