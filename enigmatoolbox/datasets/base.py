@@ -470,9 +470,7 @@ def risk_genes(disorder=None):
 
 
 def load_example_data():
-    """
-    Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal)
-    that was processed according to ENIGMA protocols (author: @saratheriver)
+    """ Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
 
     Returns
     -------
