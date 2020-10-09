@@ -8,6 +8,7 @@ API reference
 This is the function reference of the **ENIGMA TOOLBOX**
 
 .. glossary::
+
    ello
 
 

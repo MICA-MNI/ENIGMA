@@ -5,6 +5,10 @@
 
 .. title:: Install me
 
+.. glossary::
+
+   ello
+
 Installation
 ==============================
 
