@@ -31,7 +31,7 @@ Some scripts and analyses have been used in a previous ENIGMA publication. Make 
     Larivière S, Rodríguez-Cruces, Royer J, ..., Whelan CD, Thompson PM, Sisodiya SM, Bernasconi A, Labate A, McDonald CR, Bernasconi N, Bernhardt BC (2020). 
     *Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study*, bioRxiv.
 
-.. image:: ./docs/source/pages/extrafigs/rdme_epi.png
+.. image:: ./docs/pages/extrafigs/rdme_epi.png
     :scale: 50%
     :align: center
 
