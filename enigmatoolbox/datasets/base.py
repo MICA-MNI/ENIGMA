@@ -253,8 +253,7 @@ def load_marker(name, join=False):
 
 
 def load_sc():
-    """ Load structural connectivity data from 207 HCP subjects parcellated using Desikan Killiany
-    (68 cortical regions and 16 subcortical structures; author: @saratheriver)
+    """ Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 
         Returns
         -------
@@ -288,8 +287,7 @@ def load_sc():
 
 
 def load_fc():
-    """ Load functional connectivity data from 207 HCP subjects parcellated using Desikan Killiany
-    (68 cortical regions and 16 subcortical structures; author: @saratheriver)
+    """ Load functional connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 
         Returns
         -------
@@ -368,12 +366,14 @@ def risk_genes(disorder=None):
 
         Parameters
         ----------
-        disorder = {'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia',
+        disorder : {'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia',
         'tourette'}
+            Name of disorder, default is None
 
         Returns
         -------
-        dx_gx : names of genes for specified disorder
+        risk_genes : set
+            Names of genes for a given disorder
     """
     if disorder is "adhd":
         return {'ST3GAL3', 'KDM4A', 'KDM4A-AS1', 'PTPRF', 'SLC6A9', 'ARTN', 'DPH2',
