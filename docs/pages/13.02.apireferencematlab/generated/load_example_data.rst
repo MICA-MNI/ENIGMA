@@ -7,10 +7,14 @@
 load_example_data()
 ------------------------------
 
-.. glossary::
+**Usage:**
+    [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data()
 
-[cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data()
+**Description:**
     Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
 
-**Returns:**
-                - **cov** (*matrix*) – Contains information on covariates
+**Outputs:**
+    - **cov** (*table*) – Contains information on covariates
+    - **metr1** (*table*) – Contains information on subcortical volume
+    - **metr2** (*table*) – Contains information on cortical thickness
+    - **metr3** (*table*) – Contains information on surface area

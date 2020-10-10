@@ -28,7 +28,21 @@ Matlab API
 :mod:`enigma datasets`
 ------------------------------------
 
-:term:`api_load_example_data`
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/load_example_data.rst
+   generated/load_summary_stats.rst
+
+.. list-table::
+   :widths: 100 200
+   :header-rows: 0
+
+   * - :ref:`load_example_data()<load_example_data_mat>`
+     - Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
+   * - :ref:`load_summary_stats(disorder)<load_sumstats_mat>`
+     - Outputs summary statistics for a given disorder (author: @saratheriver)
 
 
 .. _matlabref_connmatrix:
