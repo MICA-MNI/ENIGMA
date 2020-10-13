@@ -7,9 +7,9 @@
 load_example_data()
 ------------------------------
 
-**Usage:**
-    :mod:`[cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data()`
-    [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/example_data/load_example_data.m>`_]
+**Usage** [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/example_data/load_example_data.m>`_]:
+    .. function:: 
+        [cov, metr1_SubVol, metr2_CortThick, metr3_CortSurf] = load_example_data()
 
 **Description:**
     Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)

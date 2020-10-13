@@ -7,15 +7,15 @@
 load_summary_stats(disorder)
 ------------------------------------
 
-**Usage:**
-    :mod:`summary_stats = load_summary_stats(disorder)`
-    [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/summary_statistics/load_summary_stats.m>`_]
+**Usage** [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/summary_statistics/load_summary_stats.m>`_]:
+    .. function:: 
+        summary_stats = load_summary_stats(disorder)
 
-**Description:**
+**Description**:
     Outputs summary statistics for a given disorder (author: @saratheriver)
 
-**Inputs:**
+**Inputs**:
     **disorder** ({'22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia'}) – Disorder name, default is None
 
-**Outputs:**
+**Outputs**:
     - **summary_stats** (*table*) – Available summary statistics

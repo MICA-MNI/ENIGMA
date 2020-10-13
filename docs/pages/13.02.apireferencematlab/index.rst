@@ -52,6 +52,9 @@ Matlab API
 
 ...
 
+.. function:: ello.byebye
+
+
 .. _matlabref_genedata:
 
 :mod:`gene co-expression data`
