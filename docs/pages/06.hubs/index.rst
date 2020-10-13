@@ -280,15 +280,15 @@ the empirical distribution determined by the ensemble of spatially permuted corr
 
         >>> # Spin permutation testing for two cortical maps
         >>> fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc',
-        ...                                type='pearson', n_rot=1000, spin_dist=True)
+        ...                                type='pearson', n_rot=1000, null_dist=True)
         >>> sc_ctx_p, sc_ctx_d = spin_test(sc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc',
-        ...                                type='pearson', n_rot=1000, spin_dist=True)
+        ...                                type='pearson', n_rot=1000, null_dist=True)
 
         >>> # Shuf permutation testing for two subcortical maps
         >>> fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000,
-        ...                                  type='pearson', spin_dist=True)
+        ...                                  type='pearson', null_dist=True)
         >>> sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_d_noVent, n_rot=1000,
-        ...                                  type='pearson', spin_dist=True)
+        ...                                  type='pearson', null_dist=True)
 
         >>> # Store p-values and null distributions
         >>> p_and_d = {'functional cortical hubs': [fc_ctx_p, fc_ctx_d], 'functional subcortical hubs': [fc_sctx_p, fc_sctx_d],
@@ -336,15 +336,15 @@ the empirical distribution determined by the ensemble of spatially permuted corr
 
         >>> # Spin permutation testing for two cortical maps
         >>> fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
-        ...                                type='pearson', n_rot=1000, spin_dist=True)
+        ...                                type='pearson', n_rot=1000, null_dist=True)
         >>> sc_ctx_p, sc_ctx_d = spin_test(sc_ctx_dc, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
-        ...                                type='pearson', n_rot=1000, spin_dist=True)
+        ...                                type='pearson', n_rot=1000, null_dist=True)
 
         >>> # Shuf permutation testing for two subcortical maps
         >>> fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_z_mean_noVent, n_rot=1000,
-        ...                                  type='pearson', spin_dist=True)
+        ...                                  type='pearson', null_dist=True)
         >>> sc_sctx_p, sc_sctx_d = shuf_test(sc_sctx_dc, SV_z_mean_noVent, n_rot=1000,
-        ...                                  type='pearson', spin_dist=True)
+        ...                                  type='pearson', null_dist=True)
 
         >>> # Store p-values and null distributions
         >>> p_and_d = {'functional cortical hubs': [fc_ctx_p, fc_ctx_d], 'functional subcortical hubs': [fc_sctx_p, fc_sctx_d],

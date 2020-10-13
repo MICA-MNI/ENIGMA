@@ -47,9 +47,6 @@ numpydoc_show_class_members = False
 autoclass_content = "class"
 
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
-
 # The master toctree document.
 master_doc = 'index'
 
@@ -75,6 +72,9 @@ from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
 
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
 
@@ -88,7 +88,7 @@ html_static_path = ['_static']
 html_css_files = ['css/saratheriver_enigma.css', 
                   'css/saratheriver_nomaxwidth.css']
 
-#html_style = 'css/saratheriver_enigma.css'
+html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
