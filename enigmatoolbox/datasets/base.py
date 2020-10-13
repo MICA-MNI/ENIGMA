@@ -186,7 +186,7 @@ def load_sc():
         strucMatrix_ctx : 2D ndarray
             Cortico-cortical connectivity, shape = (68, 68)
         strucLabels_ctx : 1D ndarray
-            Cortical labels, shape (68,)
+            Cortical labels, shape = (68,)
         strucMatrix_sctx : 2D ndarray
             Subcortico-cortical connectivity, shape = (14, 68)
         strucLabels_sctx : 1D ndarray
@@ -220,7 +220,7 @@ def load_fc():
         funcMatrix_ctx : 2D ndarray
             Cortico-cortical connectivity, shape = (68, 68)
         funcLabels_ctx : 1D ndarray
-            Cortical labels, shape (68,)
+            Cortical labels, shape = (68,)
         funcMatrix_sctx : 2D ndarray
             Subcortico-cortical connectivity, shape = (14, 68)
         funcLabels_sctx : 1D ndarray
@@ -271,14 +271,14 @@ def fetch_ahba(csvfile=None):
 
             Parameters
             ----------
-            csvfile : None or string
-                Path to downloaded csvfile
-                If None (default), fetches microarray expression data from the internet
+            csvfile : None or string, optional
+                Path to downloaded csvfile.
+                If None (default), fetches microarray expression data from the internet.
 
             Returns
             -------
             genes : pandas.DataFrame
-                Table of gene co-expression data, shape = (82, 15633)
+                Table of gene co-expression data, shape = (82, 15634)
         """
     if csvfile is None:
         url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv'
@@ -288,7 +288,7 @@ def fetch_ahba(csvfile=None):
 
 
 def risk_genes(disorder=None):
-    """ Outputs names of GWAS-derived risk genes for a given disorder
+    """ Outputs names of GWAS-derived risk genes for a given disorder (author: @saratheriver)
 
         Parameters
         ----------

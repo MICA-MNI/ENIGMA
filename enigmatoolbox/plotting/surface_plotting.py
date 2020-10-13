@@ -1,6 +1,3 @@
-"""
-Surface plotting functions.
-"""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause

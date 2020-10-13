@@ -6,25 +6,14 @@ function summary_stats = load_summary_stats(disorder)
 % Description:
 %   Outputs summary statistics for a given disorder (author: @saratheriver)
 % 
-%     Input (pick one)
-%     ---------------------
-%     '22q'
-%     'adhd'
-%     'asd'
-%     'bipolar'
-%     'depression'
-%     'epilepsy'
-%     'ocd'
-%     'schizophrenia'
+% Inputs:
+%   disorder ({?22q?, ?adhd?, ?asd?, ?bipolar?, ?depression?, ?epilepsy?,
+%   ?ocd?, ?schizophrenia?}) ? Disorder name, must pick one.
 % 
-%     Returns
-%     -------
-%     summary stats (table) - Available summary statistics
+% Outputs:
+%	summary stats (table) - Available summary statistics
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | cold September day 2020
 
 if nargin < 1
     disp('must specify a valid disorder...!')

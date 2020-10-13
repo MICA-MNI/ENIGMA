@@ -1,28 +1,24 @@
-function [fc, fcl, fcs, fcsl] = load_fc()
+function [funcMatrix_ctx, funcLabels_ctx, funcMatrix_sctx, funcLabels_sctx] = load_fc()
 %
-% Usage: [fc, fcl, fcs, fcsl] = load_fc()
+% Usage: 
+%   [funcMatrix_ctx, funcLabels_ctx, funcMatrix_sctx, funcLabels_sctx] = load_fc()
 %
-% Simple script to load functional connectivity data
-%   Outputs:
-%       fc    = functional cortico-cortical connectivity matrix (68 x 68)
-%       fcl   = name of cortical regions (in same order as fc; 1 x 68)
-%       fcs   = functional subcortico-cortical connectivity matrix (14 x 68)
-%       fcsl  = name of subcortical regions (in same order as fcs; 1 x 14)
+% Description:
+%   Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 %
-% Please see Lariviere et al., 2020, bioRxiv for details on HCP
-% participants, data processing, and connectivity matrix generation
-%
+% Outputs:
+%   funcMatrix_ctx (double array) ? Cortico-cortical connectivity, size = [68 x 68]
+%   funcLabels_ctx (cell array) ? Cortical labels, size = [1 x 68]
+%   funcMatrix_sctx (double array) ? Subcortico-cortical connectivity, size = [14 x 68]
+%   funcLabels_sctx (cell array) ? Subcortical labels, size = [1 x 14]
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | a hot and humid July day 2020
 
 fctmp = load('hcp_functional_data.mat');
 
-fc    = fctmp.fc.funcMatrix_ctx;
-fcl   = fctmp.fc.funcLabels_ctx;
-fcs   = fctmp.fc.funcMatrix_sctx;
-fcsl  = fctmp.fc.funcLabels_sctx;
+funcMatrix_ctx   = fctmp.fc.funcMatrix_ctx;
+funcLabels_ctx   = fctmp.fc.funcLabels_ctx;
+funcMatrix_sctx  = fctmp.fc.funcMatrix_sctx;
+funcLabels_sctx  = fctmp.fc.funcLabels_sctx;
 
 return

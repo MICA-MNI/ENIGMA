@@ -1,33 +1,19 @@
-function [gx, reglabels, genelabels] = fetch_ahba(csvfile)
+function genes = fetch_ahba()
 %
-% Usage: [gx, reglabels, genelabels] = fetch_ahba();
+% Usage: genes = fetch_ahba();
 %
-% Simple script to fetch microarray expression data (pre-computed)
-%   Input (OPTIONAL):
-%       If the allgenes.csv file is already downloaded locally, then
-%       specific its path as follows: 
-%       [gx, reglabels, genelabels] = fetch_ahba('/path/to/allgenes.csv');
+% Description
+%   Fetch Allen Human Brain Atlas microarray expression data from all 
+%   donors and all genes (author: @saratheriver)
 %
-%       Leave empty to fetch data file from the internet (requires a good
-%       connection!)
+% Inputs:
+%   csvfile (empty or string, optional) ? Path to downloaded csvfile. 
+%   If empty (default), fetches microarray expression data from the internet.
 %
-%   Outputs:
-%       gx          = matrix of gene expression data (82 x 15633)
-%       reglabels   = name of cortical regions in same order as gx
-%                     (82 x 1 cell array)
-%       genelabels  = name of genes in same order as gx
-%                     (1 x 15633 cell array)
-%
-% Data pre-computed using the abagen toolbox (https://github.com/rmarkello/abagen)
-%   - includes all donors
-%   - all genes
-%   - re-ordered Desikan-Killiany labels to match ENIGMA-derived matrices
+% Outputs: 
+%   genes (table) - Gene co-expression data, size = [82 x 15634]
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | a rainy July day 2020
-% SL | the day after the rainy day (it's now sunny)
 
 if nargin < 1
     % Fetch the csv table from github and load it locally | option 1
@@ -36,7 +22,7 @@ if nargin < 1
     g = readtable('.gtmp.csv');
 
     % Extract relevant information
-    gx          = table2array(g(:, 2:end));
+    genes          = table2array(g(:, 2:end));
     reglabels   = table2array(g(:, 1));
     genelabels  = g.Properties.VariableNames(2:end);
 
@@ -44,10 +30,7 @@ if nargin < 1
     delete('.gtmp.csv');
 
 else
-    g = readtable(csvfile);
-    gx          = table2array(g(:, 2:end));
-    reglabels   = table2array(g(:, 1));
-    genelabels  = g.Properties.VariableNames(2:end);
+    genes = readtable(csvfile);
 end
     
 return

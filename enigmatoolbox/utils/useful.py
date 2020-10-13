@@ -11,7 +11,7 @@ import numpy.matlib as npm
 
 def zscore_matrix(data, group, controlCode):
     """
-    Z-score data w.r.t. a given group (author: @saratheriver)
+    Z-score data relative to a given group (author: @saratheriver)
 
     Parameters
     ----------

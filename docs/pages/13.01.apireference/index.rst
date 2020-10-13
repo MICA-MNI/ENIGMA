@@ -64,14 +64,12 @@ Gene co-expression data
    enigmatoolbox.datasets.fetch_ahba
    enigmatoolbox.datasets.risk_genes
 
-Surface data
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. autosummary::
-   :template: function.rst
-   :toctree: generated/
-
-   enigmatoolbox.datasets.load_mask
+.. Surface data
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   .. autosummary::
+      :template: function.rst
+      :toctree: generated/
+      enigmatoolbox.datasets.load_mask
 
 Surface templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -134,7 +132,7 @@ Spin permutations
    enigmatoolbox.permutation_testing.rotate_parcellation
    enigmatoolbox.permutation_testing.perm_sphere_p
 
-Shuf permutation
+Shuf permutations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. autosummary::
