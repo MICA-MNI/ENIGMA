@@ -18,3 +18,5 @@ dist
 .vscode
 
 .test*
+
+.readthedocs.yml
