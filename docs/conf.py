@@ -88,7 +88,7 @@ html_static_path = ['_static']
 html_css_files = ['css/saratheriver_enigma.css', 
                   'css/saratheriver_nomaxwidth.css']
 
-html_style = 'css/saratheriver_enigma.css'
+#html_style = 'css/saratheriver_enigma.css'
 
 # add custom files that are stored in _static
 def setup(app):
