@@ -28,7 +28,7 @@ end
 
 % default number of rotations
 if nargin < 3
-    nrot = 10000;
+    nrot = 100;
 end
 
 nroi_l = size(coord_l,1);   % n(regions) in the left hemisphere

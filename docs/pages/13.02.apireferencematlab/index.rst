@@ -85,7 +85,7 @@ Matlab API
 
    * - :ref:`fetch_ahba()<fetch_ahba_mat>`
      - Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes (author: @saratheriver)
-   * - :ref:`risk_genes()<risk_genes_mat>`
+   * - :ref:`risk_genes(disease)<risk_genes_mat>`
      - Outputs names of GWAS-derived risk genes for a given disorder
 
 
@@ -152,14 +152,14 @@ Matlab API
    :widths: 50 400
    :header-rows: 0
 
-   * - :ref:`spin_test(...)<spin_test_mat>`
+   * - :ref:`spin_test(map1, map2, varargin)<spin_test_mat>`
      - Spin permutation (author: @saratheriver)
-   * - :ref:`centroid_extraction_sphere(...)<centroid_extraction_sphere_mat>`
-     - Extract centroids of a cortical parcellation on a surface sphere (author: @saratheriver)
-   * - :ref:`rotate_parcellation(...)<rotate_parcellation_mat>`
-     - Rotate parcellation (author: @saratheriver)
-   * - :ref:`perm_sphere_p(...)<perm_sphere_p_mat>`
-     - Generate a p-value for the spatial correlation between two parcellated cortical surface maps (author: @saratheriver)
+   * - :ref:`centroid_extraction_sphere(sphere_coords, annotfile)<centroid_extraction_sphere_mat>`
+     - Extract centroids of a cortical parcellation on a surface sphere (authors: @frantisekvasa, @saratheriver)
+   * - :ref:`rotate_parcellation(coord_l, coord_r, nrot)<rotate_parcellation_mat>`
+     - Rotate parcellation (authors: @frantisekvasa, @saratheriver)
+   * - :ref:`perm_sphere_p(x, y, perm_id, corr_type)<perm_sphere_p_mat>`
+     - Generate a p-value for the spatial correlation between two parcellated cortical surface maps (authors: @frantisekvasa, @saratheriver)
 
 
 .. _matlabref_shufperm:
@@ -177,7 +177,7 @@ Matlab API
    :widths: 50 400
    :header-rows: 0
 
-   * - :ref:`shuf_test(...)<shuf_test_mat>`
+   * - :ref:`shuf_test(map1, map2, varargin)<shuf_test_mat>`
      - Shuf permuation (author: @saratheriver)
 
 
@@ -201,32 +201,14 @@ Matlab API
    :widths: 50 400
    :header-rows: 0
 
-   * - :ref:`plot_cortical()<plot_cortical_mat>`
+   * - :ref:`plot_cortical(data, varargin)<plot_cortical_mat>`
      - Plot cortical surface with lateral and medial views (authors: @MICA-MNI, @saratheriver)
-   * - :ref:`plot_subcortical()<plot_subcortical_mat>`
+   * - :ref:`plot_subcortical(data, varargin)<plot_subcortical_mat>`
      - Plot subcortical surface with lateral and medial views (author: @saratheriver)
 
 .. raw:: html
 
    <hr>
-
-.. _matlabref_zscore:
-
-:mod:`z-score data matrix`
-------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   generated/zscore_matrix.rst
-
-.. list-table::
-   :widths: 50 400
-   :header-rows: 0
-
-   * - :ref:`zscore_matrix()<zscore_matrix_mat>`
-     - Z-score data relative to a given group (author: @saratheriver)
 
 
 .. _matlabref_reordsctx:
@@ -244,8 +226,27 @@ Matlab API
    :widths: 50 400
    :header-rows: 0
 
-   * - :ref:`reorder_sctx()<reorder_sctx_mat>`
+   * - :ref:`reorder_sctx(data)<reorder_sctx_mat>`
      - Re-order subcortical volume data alphabetically and by hemisphere (left then rightl; author: @saratheriver)
+
+
+.. _matlabref_zscore:
+
+:mod:`z-score data matrix`
+------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/zscore_matrix.rst
+
+.. list-table::
+   :widths: 50 400
+   :header-rows: 0
+
+   * - :ref:`zscore_matrix(data, group, controlCode)<zscore_matrix_mat>`
+     - Z-score data relative to a given group (author: @saratheriver)
 
 
 .. _matlabref_parcellation:
@@ -264,10 +265,10 @@ Matlab API
    :widths: 50 400
    :header-rows: 0
 
-   * - :ref:`parcel_to_surface()<parcel_to_surface_mat>`
-     - Map data in source to target according to their labels (author: @MICA-MNI)
-   * - :ref:`surface_to_parcel()<surface_to_parcel_mat>`
-     - Summarize data in values according to labels (author: @MICA-MNI)
+   * - :ref:`parcel_to_surface(parcel_data, parcellation, fill)<parcel_to_surface_mat>`
+     - Map parcellated data to the surface (authors : @MICA-MNI, @saratheriver)
+   * - :ref:`surface_to_parcel(surf_data, parcellation)<surface_to_parcel_mat>`
+     - Map surface data to a parcellation (authors : @MICA-MNI, @saratheriver)
 
 
 

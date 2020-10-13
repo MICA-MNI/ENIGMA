@@ -188,7 +188,7 @@ def map_to_mask(values, mask, fill=0, axis=0):
 
 
 def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None):
-    """Map data in source to target according to their labels (author: @OualidBenkarim)
+    """Map data in source to target according to their labels (authors: @OualidBenkarim, @saratheriver)
 
     Target labels are sorted in ascending order, such that the smallest label
     indexes the value at position 0 in `source_val`. If `source_lab` is

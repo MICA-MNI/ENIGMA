@@ -15,21 +15,19 @@ spin_test()
     Spin permutation (author: @saratheriver)
 
 **Inputs**:
-    **map1** (array) – One of two map to be correlated
-    **map2** (array) – The other map to be correlated
+    - **map1** (*double array*) – One of two map to be correlated
+    - **map2** (*double array*) – The other map to be correlated
 
 **Name/value pairs**:
-    **surface_name** (string, optional) – Surface name {‘fsa5’, ‘fsa5_with_sctx’, ‘conte69’}. Default is ‘fsa5’.
-    **parcellation_name** (string, optional) – Parcellation name {‘aparc’, ‘aparc_aseg’}. Default is ‘aparc’.
-    **n_rot** (int, optional) – Number of spin rotations. Default is 100.
-    **type** (string, optional) – Correlation type {‘pearson’, ‘spearman’}. Default is ‘pearson’.
-    **null_dist** (string, optional) – If 'True', output null correlations. Default is 'False'.
-    **ventricles** (string, optional) – Whether ventricles are present in map1, map2. Only used when ``parcellation_name is 
-    'aparc_aseg'``. Default is 'False' (other option is 'True')
+    - **surface_name** (*string, optional*) – Surface name {‘fsa5’, ‘fsa5_with_sctx’, ‘conte69’}. Default is ‘fsa5’.
+    - **parcellation_name** (*string, optional*) – Parcellation name {‘aparc’, ‘aparc_aseg’}. Default is ‘aparc’.
+    - **n_rot** (*int, optional*) – Number of spin rotations. Default is 100.
+    - **type** (*string, optional*) – Correlation type {‘pearson’, ‘spearman’}. Default is ‘pearson’.
+    - **ventricles** (*string, optional*) – Whether ventricles are present in map1, map2. Only used when ``parcellation_name is 'aparc_aseg'``. Default is 'False' (other option is 'True')
 
 **Outputs**:
     - **p_spin** (*double*) – Permutation p-value
-    - **r_dist** (*double array*) - Null correlations, size = [n_rot*2 x 1]. Only if ``null_dist is 'True'``.
+    - **r_dist** (*double array*) - Null correlations, size = [n_rot*2 x 1].
 
 **References**:
     - Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC, Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial correspondence between maps of human brain structure and function. NeuroImage, 178:540-51.

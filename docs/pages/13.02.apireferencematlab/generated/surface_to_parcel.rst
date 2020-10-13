@@ -7,15 +7,16 @@
 surface_to_parcel()
 ------------------------------------
 
-**Usage** [`source <>>`_]:
+**Usage** [`source <>`_]:
     .. function:: 
-        surface_to_parcel = surface_to_parcel()
+        surf2parcel = surface_to_parcel(surf_data, parcellation)
 
 **Description**:
-    ...
+    Map surface data to a parcellation (authors : @MICA-MNI, @saratheriver)
 
 **Inputs**:
-    **...** ...
+    - **surf_data** (*double array*) - Surface vector, size = [v x 1].
+    - **parcellation** (*string, optional*) - Default is 'aparc_fsa5'
 
 **Outputs**:
-    **...** (*...*) – ...
+    **surf2parcel** (*double array*) – Vector of values mapped from a surface to a parcellation

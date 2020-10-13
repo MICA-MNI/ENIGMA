@@ -1,4 +1,4 @@
-function [a,cb]=plot_cortical(data, varargin);
+function [a, cb] = plot_cortical(data, varargin);
 
 % plot_cortical(data, varargin);
 % 

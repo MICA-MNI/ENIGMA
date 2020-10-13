@@ -88,7 +88,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
     ----------
     coord_l : ndarray
         Coordinates of left hemisphere regions on the sphere, shape = (m, 3)
-    coord_l : ndarray
+    coord_r : ndarray
         Coordinates of right hemisphere regions on the sphere, shape = (m, 3)
     nrot : int, optional
         Number of rotations. Default is 100.
@@ -224,7 +224,7 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
         Array of permutations, shape = (m, nrot)
     corr_type : string, optional
         Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
-    null_dist = bool, optional
+    null_dist : bool, optional
         Output null correlations. Default is False.
 
     Returns
@@ -397,7 +397,7 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', null_dist=False):
     map2 : narray, ndarray, or pandas.Series
         The other map to be correlated
     n_rot : int, optional
-        Number of spin rotations. Default is 100.
+        Number of shuffles. Default is 100.
     type : string, optional
         Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
     null_dist : bool, optional

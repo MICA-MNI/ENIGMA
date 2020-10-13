@@ -7,15 +7,15 @@
 reorder_sctx()
 ------------------------------------
 
-**Usage** [`source <>>`_]:
+**Usage** [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/useful/reorder_sctx.m>`_]:
     .. function:: 
-        reorder_sctx = reorder_sctx()
+        data_r = reorder_sctx(data)
 
 **Description**:
-    ...
+    Re-order subcortical volume data alphabetically and by hemisphere (left then right; author: @saratheriver)
 
 **Inputs**:
-    **...** ...
+    **data** (*table*) - Data matrix
 
 **Outputs**:
-    **...** (*...*) – ...
+    **data_r** (*table*) – Re-ordered data

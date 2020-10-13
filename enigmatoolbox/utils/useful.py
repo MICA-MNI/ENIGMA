@@ -18,9 +18,9 @@ def zscore_matrix(data, group, controlCode):
     data : pandas.DataFrame
         Data matrix (e.g. thickness data), shape = (n_subject, n_region)
     group : list
-        Group assignment (e.g, 1=grp1, 2=grp2), length = n_subject
+        Group assignment (e.g, [0, 0, 0, 1, 1, 1], same length as n_subject.
     controlCode : int
-    Int that corresponds to control subjects
+        Value that corresponds to "baseline" group
 
     Returns
     -------
@@ -35,7 +35,7 @@ def zscore_matrix(data, group, controlCode):
 
 def reorder_sctx(data):
     """
-    Re-order subcortical volume data alphabetically and by hemisphere (left then rightl; author: @saratheriver)
+    Re-order subcortical volume data alphabetically and by hemisphere (left then right; author: @saratheriver)
 
     Parameters
     ----------

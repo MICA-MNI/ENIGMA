@@ -183,15 +183,6 @@ Surface plotting
 
 .. currentmodule:: enigmatoolbox.utils
 
-Z-score data matrix
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. autosummary::
-   :template: function.rst
-   :toctree: generated/
-
-   enigmatoolbox.utils.useful.zscore_matrix
-
 
 Re-order subcortical data matrix
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -201,6 +192,16 @@ Re-order subcortical data matrix
    :toctree: generated/
 
    enigmatoolbox.utils.useful.reorder_sctx
+
+
+Z-score data matrix
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.utils.useful.zscore_matrix
 
 
 Parcellation

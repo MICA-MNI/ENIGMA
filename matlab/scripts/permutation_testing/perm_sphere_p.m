@@ -1,4 +1,4 @@
-function [p_perm null_dist] = perm_sphere_p(x, y, perm_id, corr_type)
+function [p_perm, null_dist] = perm_sphere_p(x, y, perm_id, corr_type)
 % Function to generate a p-value for the spatial correlation between two parcellated cortical surface maps, 
 % using a set of spherical permutations of regions of interest (which can be generated using the function "rotate_parcellation").
 % The function performs the permutation in both directions; i.e.: by permute both measures, 
