@@ -7,7 +7,7 @@
 surface_to_parcel()
 ------------------------------------
 
-**Usage** [`source <>`_]:
+**Usage** [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/useful/surface_to_parcel.m>`_]:
     .. function:: 
         surf2parcel = surface_to_parcel(surf_data, parcellation)
 
