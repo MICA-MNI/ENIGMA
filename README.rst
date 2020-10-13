@@ -39,13 +39,9 @@ Some scripts and analyses have been used in a previous ENIGMA publication. Make 
 |
 
 
-Contributors 🦀
+Core developers 👩🏻‍💻
 -----------------------
 
 - **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
-- **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
-- **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
-- **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
-- **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
 - **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
 
