@@ -1,8 +1,10 @@
 function summary_stats = load_summary_stats(disorder)
 %
-% Usage: sum_stats = load_summary_stats(disorder)
+% Usage: 
+%   summary_stats = load_summary_stats(disorder)
 %
-% Outputs summary statistics for specific diseases/disorders
+% Description:
+%   Outputs summary statistics for a given disorder (author: @saratheriver)
 % 
 %     Input (pick one)
 %     ---------------------
@@ -17,7 +19,7 @@ function summary_stats = load_summary_stats(disorder)
 % 
 %     Returns
 %     -------
-%     summary stats        = available summary statistics (table)
+%     summary stats (table) - Available summary statistics
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 %

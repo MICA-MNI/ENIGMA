@@ -8,7 +8,8 @@ load_summary_stats(disorder)
 ------------------------------------
 
 **Usage:**
-    summary_stats = load_summary_stats(disorder)
+    :mod:`summary_stats = load_summary_stats(disorder)`
+    [`source <https://github.com/MICA-MNI/ENIGMA/blob/master/matlab/scripts/summary_statistics/load_summary_stats.m>`_]
 
 **Description:**
     Outputs summary statistics for a given disorder (author: @saratheriver)

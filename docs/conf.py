@@ -57,6 +57,9 @@ exclude_patterns = []
 
 highlight_language ='none'
 
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ['_templates']
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -72,8 +75,7 @@ from pygments.styles import get_all_styles
 pygments_style = 'enigmalexer'
 
 
-# Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+
 
 #def setup(app):
 #    app.add_stylesheet('css/saratheriver_enigma.css')  # may also be an URL
