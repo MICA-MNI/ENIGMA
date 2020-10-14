@@ -1,21 +1,29 @@
 function perm_id = rotate_parcellation(coord_l, coord_r, nrot)
-
-% Function to generate a permutation map from a set of cortical regions of interest to itself, 
-% while (approximately) preserving contiguity and hemispheric symmetry.
-% The function is based on a rotation of the FreeSurfer projection of coordinates
-% of a set of regions of interest on the sphere.
+%
+% Usage:
+%   perm_id = rotate_parcellation(coord_l, coord_r, nrot)
+%
+% Description:
+%   Rotate parcellation (authors: @frantisekvasa, @saratheriver)
 %
 % Inputs:
-% coord_l       coordinates of left hemisphere regions on the sphere        array of size [n(LH regions) x 3]
-% coord_r       coordinates of right hemisphere regions on the sphere       array of size [n(RH regions) x 3]
-% nrot          number of rotations (default = 10'000)                      scalar
+%   coord_l (double array) - Coordinates of left hemisphere regions on the sphere, size = [m x 3]
+%   coord_r (double array) - Coordinates of right hemisphere regions on the sphere, size = [m x 3]
+%   nrot (int, optional) - Number of rotations. Default is 100.
 %
-% Output:
-% perm_id      array of permutations, from set of regions to itself        array of size [n(total regions) x nrot]
+% Outputs:
+%   perm_id (double array) - Array of permutations, size = [m x nrot]
 %
-% Franti≈°ek V√°≈°a, fv247@cam.ac.uk, June 2017 - June 2018
-%       Updated on 5/9/2019 with permutation scheme that uniformly samples the space of permutations on the sphere
-%       See github repo (@frantisekvasa) and references within for details
+% References:
+%   Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC, Shinohara RT, 
+%       Vandekar SN and Raznahan A (2018). On testing for spatial correspondence 
+%       between maps of human brain structure and function. NeuroImage, 178:540-51.
+%   V·sa F, Seidlitz J, Romero-Garcia R, Whitaker KJ, Rosenthal G, VÈrtes PE, 
+%       Shinn M, Alexander-Bloch A, Fonagy P, Dolan RJ, Goodyer IM, the NSPN 
+%       consortium, Sporns O, Bullmore ET (2017). Adolescent tuning of association 
+%       cortex in human structural brain networks. Cerebral Cortex, 28(1):281?294.
+%
+% Sara Lariviere  |  saratheriver@gmail.com
 
 % check that coordinate dimensions are correct
 if or(size(coord_l,2)~=3,size(coord_r,2)~=3)

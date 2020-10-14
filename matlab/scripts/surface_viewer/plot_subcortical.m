@@ -1,39 +1,30 @@
 function [a, cb] = plot_subcortical(data, varargin);
-
-% plot_subcortical is a simple viewer for subcortical surface data
-% 
-% Usage: [a, cb] = plot_subcortical(data, varargin);
-% 
-% INPUT
-%   data        = 1 x v vector of data, v=# of subcortical structures (16)
-%                 one value per subcortical structure
-%                   order is L-accumbens, L-amygdala, L-caudate, L-hippocampus, L-pallidum
-%                   L-putamen, L-thalamus, L-ventricle, R-accumbens, R-amygdala, R-caudate,
-%                   R-hippocampus, R-pallidum, R-putamen, R-thalamus,
-%                   R-ventricle
 %
-% OPTIONAL INPUTS
-%   ventricles  = boolean 'True' (default) shows the ventricles (data must be
-%                 a 1 x 16 vector). If 'False', then ventricles are not shown
-%                 and data must be a 1 x 14 vector
-%   label_text  = any string, data name by default
-%   background  = background colour, any matlab ColorSpec, such as 
-%                 'white' (default), 'black'=='k', 'r'==[1 0 0], [1 0.4 0.6] (pink) etc.
-%   color_range = range of colorbar, default is [min(data max(data)]
-%   cmap        = colormap name (default is RdBu_r)
+% Usage:
+%   [a, cb] = plot_subcortical(data, varargin);   
 %
-%   Letter and line colours are inverted if background is dark (mean<0.5).
+% Description:
+%   Plot subcortical surface with lateral and medial views (authors: @saratheriver)
 %
-% OUTPUTS
-% a             = vector of handles to the axes, left to right, top to bottom. 
-% cb            = handle to the colorbar.
+% Inputs:
+%   data (double array) - vector of data, size = [1 x v]. One value per 
+%       subcortical structure, in this order: L-accumbens, L-amygdala, 
+%       L-caudate, L-hippocampus, L-pallidum L-putamen, L-thalamus, 
+%       L-ventricle, R-accumbens, R-amygdala, R-caudate, R-hippocampus, 
+%       R-pallidum, R-putamen, R-thalamus, R-ventricle
+%
+% Outputs:
+%   ventricles (string, optional) - If 'True' (default) shows the ventricles 
+%       (data must be size = [1 x 16]). If 'False', then ventricles are not 
+%       shown and data must be size = [1 x 14].
+%   label_text (string, optional) - Label text for colorbar. Default is empty.
+%   background (string, double array, optional) - Background color. 
+%       Default is 'white'.
+%   color_range (double array, optional) - Range of colorbar. Default is 
+%       [min(data) max(data)].
+%   cmap (string, double array, optional) - Colormap name. Default is 'RdBu_r'.
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | a rainy November night 2019
-% SL | added ventricles on a sunny July 2020 morning
-% SL | changed to name-value pairs on a Fall day, October 2020
 
 p = inputParser;
 addParameter(p, 'ventricles', 'True', @ischar);

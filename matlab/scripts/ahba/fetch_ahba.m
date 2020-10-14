@@ -7,7 +7,7 @@ function genes = fetch_ahba()
 %   donors and all genes (author: @saratheriver)
 %
 % Inputs:
-%   csvfile (empty or string, optional) ? Path to downloaded csvfile. 
+%   csvfile (empty or string, optional) - Path to downloaded csvfile. 
 %   If empty (default), fetches microarray expression data from the internet.
 %
 % Outputs: 

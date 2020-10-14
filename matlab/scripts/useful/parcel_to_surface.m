@@ -1,20 +1,23 @@
 function parcel2surf = parcel_to_surface(parcel_data, parcellation, fill)
 %
-% map2surf = parcel_to_surface(parcel_data, parcellation)
+% Usage:
+%   parcel2surf = parcel_to_surface(parcel_data, parcellation, fill)
 %
-% INPUTS
-%   parcel_data  = p x 1 parcel vector (e.g., if Desikan Killiany from ENIGMA data, then 68 x 1)
-%   parcellation = 'aparc_fsa5' (default)
-%   fill         = value for mask (default is 0)
+% Description:
+%   Map parcellated data to the surface (authors : @MICA-MNI, @saratheriver)
 %
-% OUTPUTS
-%   maps a 1 x p parcellation vector to a 1 x m surface vector 
+% Inputs:
+%   parcel_data (double array) - Parcel vector, size = [p x 1]. For example, 
+%       if Desikan Killiany from ENIGMA data, then parcel_data is size = [68 x 1].
+%   parcellation (string, optional) - Default is 'aparc_fsa5?
+%   fill (double, optional) - Value for mask. Default is 0.
 %
-% author: boris@bic.mni.mcgill.ca
+% Outputs
+%   parcel2surf (double array) - Vector of values mapped from a parcellation 
+%       to the surface
 %
-% Last modifications
-% SL  |  July July July 2020 
-
+%
+% Sara Lariviere  |  saratheriver@gmail.com
 
 if nargin < 2
     parcellation = 'aparc_fsa5';

@@ -1,22 +1,25 @@
 function [p_shuf, r_dist] = shuf_test(map1, map2, varargin)
-
-% shuf_test(map1, map2, varargin);
-% 
-% Usage: [p_shuf, r_dist] = spin_test(map1, map2, varargin);
-% 
-% INPUTS
-%    map1            = one of two subcortical map to be correlated
-%    map2            = the other subcortical map to be correlated
 %
-% OPTIONAL INPUTS
-%    n_rot           = number of shuffles (default 100)
-%    type            = correlation type, 'pearson' (default), 'spearman'
-% 
-% OUTPUT
-%    p_shuf          = permutation p-value
-%    r_dist          = distribution of shuffled correlations (number of shuffles * 2)
-% 
-%  Sara Lariviere | a sunny September day 2020
+% Usage:
+%   [p_shuf, r_dist] = shuf_test(map1, map2, varargin)
+%
+% Description:
+%   Shuf permuation (author: @saratheriver)  
+%
+% Inputs:
+%   map1 (double array) - One of two map to be correlated
+%   map2 (double array) - The other map to be correlated
+%
+% Name/value pairs:
+%   n_rot (int, optional) - Number of spin rotations. Default is 100.
+%   type (string, optional) - Correlation type {'pearson', 'spearman'}. 
+%       Default is 'pearson'.
+%
+% Outputs:
+%   p_shuf (double) - Permutation p-value
+%   r_dist (double array) - Null correlations, size = [n_rot*2 x 1].     
+%
+% Sara Lariviere  |  saratheriver@gmail.com
 
 
 p = inputParser;

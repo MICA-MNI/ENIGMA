@@ -7,10 +7,10 @@ function [funcMatrix_ctx, funcLabels_ctx, funcMatrix_sctx, funcLabels_sctx] = lo
 %   Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 %
 % Outputs:
-%   funcMatrix_ctx (double array) ? Cortico-cortical connectivity, size = [68 x 68]
-%   funcLabels_ctx (cell array) ? Cortical labels, size = [1 x 68]
-%   funcMatrix_sctx (double array) ? Subcortico-cortical connectivity, size = [14 x 68]
-%   funcLabels_sctx (cell array) ? Subcortical labels, size = [1 x 14]
+%   funcMatrix_ctx (double array) - Cortico-cortical connectivity, size = [68 x 68]
+%   funcLabels_ctx (cell array) - Cortical labels, size = [1 x 68]
+%   funcMatrix_sctx (double array) - Subcortico-cortical connectivity, size = [14 x 68]
+%   funcLabels_sctx (cell array) - Subcortical labels, size = [1 x 14]
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 

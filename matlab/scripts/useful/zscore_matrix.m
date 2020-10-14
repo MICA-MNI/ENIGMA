@@ -1,22 +1,22 @@
 function Z = zscore_matrix(data, group, controlCode)
 %
-% Usage: Z = zscore_matrix(values, group, controlCode)
+% Usage:
+%   Z = zscore_matrix(data, group, controlCode)
 %
-% z-scores data w.r.t. a specific group
+% Description:
+%   Z-score data relative to a given group (author: @saratheriver)
 %
-%   Inputs:
-%      data         = data matrix (e.g. thickness data, #subjects x #parcels)
-%      group        = vector of values (i.e., grp assignment) same length as #subjects
-%      controlCode  = value that corresponds to control subjects
+% Inputs:
+%   data (double array) - Data matrix (e.g., thickness data), 
+%       size = [n_subject x n_region] group (double array) - Vector of 
+%       values for group assignment (e.g, [0 0 0 1 1 1], same length as 
+%       n_subject. controlCode (int) - Value that corresponds to 
+%       "baseline" group.
 %
-%   Outputs:
-%       Z           = z-scored data relative to control code (e.g., HCs)
-%
+% Outputs:
+%   Z (doule array) - Z-scored data relative to control code   
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | still a hot and humid day in August 2020 (whatta summer we've been having!)
 
 data_orig = data;
 if istable(data_orig)

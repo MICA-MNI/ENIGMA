@@ -7,8 +7,8 @@ function summary_stats = load_summary_stats(disorder)
 %   Outputs summary statistics for a given disorder (author: @saratheriver)
 % 
 % Inputs:
-%   disorder ({?22q?, ?adhd?, ?asd?, ?bipolar?, ?depression?, ?epilepsy?,
-%   ?ocd?, ?schizophrenia?}) ? Disorder name, must pick one.
+%   disorder ({'22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy',
+%   'ocd', 'schizophrenia'}) - Disorder name, must pick one.
 % 
 % Outputs:
 %	summary stats (table) - Available summary statistics

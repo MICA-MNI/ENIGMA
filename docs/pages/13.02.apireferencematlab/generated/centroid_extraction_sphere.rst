@@ -17,7 +17,7 @@ centroid_extraction_sphere()
 **Inputs**:
     - **sphere_coords** (*double array*) – Sphere coordinates, size = [n x 3]
     - **annotfile** (*string*) – Name of annotation file {‘fsa5_lh_aparc.annot’, ‘fsa5_rh_aparc.annot, ‘fsa5_with_sctx_lh_aparc_aseg.csv’, etc.}
-    - **ventricles** (*string, optional*) – Whether ventricle data are present. Only used when ‘annotfile’ is fsa5_with_sctx_lh_aparc_aseg or fsa5_with_sctx_lh_aparc_aseg``. Default is 'False'.
+    - **ventricles** (*string, optional*) – Whether ventricle data are present. Only used when ‘annotfile’ is fsa5_with_sctx_lh_aparc_aseg or fsa5_with_sctx_lh_aparc_aseg. Default is 'False'.
 
 **Outputs**:
     **coord** (*double array*) – Coordinates of the centroid of each region on the sphere, size = [m x 3].

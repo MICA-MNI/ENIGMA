@@ -1,31 +1,25 @@
 function [a, cb] = plot_cortical(data, varargin);
-
-% plot_cortical(data, varargin);
-% 
-% Usage: [a,cb] = plot_cortical(data, varargin);
-% 
-% INPUT
-%   data            = 1 x v vector of data, v=#vertices
 %
-% OPTIONAL INPUTS
-%   surface_name    = 'fsa5' (default) or 'conte69'
-%   label_text      = any string, data name by default.
-%   background      = background colour, any matlab ColorSpec, such as 
-%                     'white' (default), 'black'=='k', 'r'==[1 0 0], [1 0.4 0.6] (pink) etc.
-%   color_range     = range of colorbar, default is [min(data max(data)]
-%   cmap            = colormap name (default is RdBu_r)
+% Usage:
+%   [a, cb] = plot_cortical(data, varargin);   
 %
-%   Letter and line colours are inverted if background is dark (mean<0.5).
+% Description:
+%   Plot cortical surface with lateral and medial views (authors: @MICA-MNI, @saratheriver)
 %
-% OUTPUTS
-%   a               = vector of handles to the axes, left to right, top to bottom. 
-%   cb              = handle to the colorbar.
+% Inputs:
+%   data (double array) - vector of data, size = [1 x v]
+%
+% Outputs:
+%   surface_name (string, optional) - Name of surface {'fsa5', 'conte69}. 
+%       Default is 'fsa5'.
+%   label_text (string, optional) - Label text for colorbar. Default is empty.
+%   background (string, double array, optional) - Background color. 
+%       Default is 'white'.
+%   color_range (double array, optional) - Range of colorbar. Default is 
+%       [min(data) max(data)].
+%   cmap (string, double array, optional) - Colormap name. Default is 'RdBu_r'.
 %
 % Sara Lariviere  |  saratheriver@gmail.com
-%
-% Last modifications:
-% SL | a humid July day 2020
-% SL | changed to name-value pairs on a Fall day, October 2020
 
 p = inputParser;
 addParameter(p, 'surface_name', 'fsa5', @ischar);
