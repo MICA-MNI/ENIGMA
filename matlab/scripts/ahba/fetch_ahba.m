@@ -17,14 +17,9 @@ function genes = fetch_ahba()
 
 if nargin < 1
     % Fetch the csv table from github and load it locally | option 1
-    url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv';
+    url   = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv';
     urlwrite(url, '.gtmp.csv');
-    g = readtable('.gtmp.csv');
-
-    % Extract relevant information
-    genes          = table2array(g(:, 2:end));
-    reglabels   = table2array(g(:, 1));
-    genelabels  = g.Properties.VariableNames(2:end);
+    genes = readtable('.gtmp.csv');
 
     % remove table locally | option 1
     delete('.gtmp.csv');

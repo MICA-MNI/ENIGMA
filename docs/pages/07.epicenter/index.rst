@@ -156,7 +156,6 @@ associations.
         >>> # Selecting only regions with p < 0.1 (functional epicenters)
         >>> fc_ctx_epi_p_sig = np.zeros_like(fc_ctx_epi_p)
         >>> fc_ctx_epi_p_sig[np.argwhere(fc_ctx_epi_p < 0.1)] = fc_ctx_epi[np.argwhere(fc_ctx_epi_p < 0.1)]
-
         >>> plot_cortical(array_name=parcel_to_surface(fc_ctx_epi_p_sig, 'aparc_fsa5'), surface_name="fsa5", size=(800, 400),
         ...               cmap='GyRd_r', color_bar=True, color_range=(-0.5, 0.5))
 
@@ -308,7 +307,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
 As in the :ref:`cortical epicenters <ctx_epi>` example above, we have assessed the significance of every spatial correlation between 
 seed-based subcortico-cortical connectivity and cortical atrophy measures
-using spin permutation tests, and set a lenient threshold of *p*<0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
+using spin permutation tests, and set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
 were greater than 0.1). As such, we are displaying the correlation coefficients of mdoerate-to-strong connectivity-atrophy 
 associations.
 

@@ -54,10 +54,11 @@ Extract disease-related genes
 
         % Get the names of genes associated with a specific epilepsy subtype (e.g., Focal HS)
         epilepsy_genes = risk_genes('epilepsy');
-        epilepsy_genes = find(ismember(genelabels, epilepsy_genes.focalhs));
+        epilepsy_genes = epilepsy_genes.focalhs
 
         % Extract the gene expression data for these Focal HS genes
-        epilepsy_gene_data = genes(:, epilepsy_genes);
+        epilepsy_gene_data = genes(:, contains(genes.Properties.VariableNames, ...
+                                   epilepsy_genes));
 
 
 |
@@ -102,7 +103,7 @@ Once again, we use Focal HS (epilepsy) genes as an example.
    .. code-tab:: matlab
 
         % Compute the mean co-expression across all Focal HS genes
-        mean_epilepsy_genes = mean(epilepsy_gene_data, 2);
+        mean_epilepsy_genes = mean(epilepsy_gene_data{:, :}, 2);
 
         % Separate cortical (ctx) from subcortical (sctx) regions
         mean_epilepsy_genes_ctx  = mean_epilepsy_genes(1:68);
@@ -113,12 +114,12 @@ Once again, we use Focal HS (epilepsy) genes as an example.
 
         % Project the results on the surface brain
         f = figure,
-        plot_cortical(mean_epilepsy_genes_ctx_fsa5, 'color_range', ...
-                      [0.4 0.6], 'cmap', 'Greys')
+            plot_cortical(mean_epilepsy_genes_ctx_fsa5, 'color_range', ...
+                          [0.4 0.6], 'cmap', 'Greys')
 
         f = figure,
-        plot_subcortical(mean_epilepsy_genes_sctx, 'ventricles', 'False', ...
-                         'color_range', [0.4 0.6], 'cmap', 'Greys')
+            plot_subcortical(mean_epilepsy_genes_sctx, 'ventricles', 'False', ...
+                             'color_range', [0.4 0.6], 'cmap', 'Greys')
 
 .. image:: ./examples/example_figs/epigx.png
     :align: center

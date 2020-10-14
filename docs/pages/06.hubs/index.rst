@@ -490,7 +490,7 @@ with the spatial distribution of hub regions (greater degree centrality).
         >>>     axs[k].set_ylabel('{}'.format(fn[1].capitalize()))
         >>>     axs[k].spines['top'].set_visible(False)
         >>>     axs[k].spines['right'].set_visible(False)
-        >>>     axs[k].legend(loc=1, frameon=False)
+        >>>     axs[k].legend(loc=1, frameon=False, markerscale=0)
 
         >>> fig.tight_layout()
         >>> plt.show()
@@ -567,7 +567,7 @@ with the spatial distribution of hub regions (greater degree centrality).
         >>>     axs[k].set_ylabel('{}'.format(fn[1].capitalize()))
         >>>     axs[k].spines['top'].set_visible(False)
         >>>     axs[k].spines['right'].set_visible(False)
-        >>>     axs[k].legend(loc=1, frameon=False)
+        >>>     axs[k].legend(loc=1, frameon=False, markerscale=0)
 
         >>> fig.tight_layout()
         >>> plt.show()

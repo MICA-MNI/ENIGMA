@@ -53,7 +53,13 @@ Following the examples below, we can fetch microarray expression data.
    .. code-tab:: matlab
 
         % Fetch gene expression data
-        [genes, reglabels, genelabels] = fetch_ahba();  
+        genes = fetch_ahba();
+
+        % Obtain region labels
+        reglabels = genes.label;
+
+        % Obtain gene labels
+        genelabels = genes.Properties.VariableNames(2:end);  
 
 .. image:: ./examples/example_figs/gx.png
     :align: center

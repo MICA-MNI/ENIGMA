@@ -50,9 +50,6 @@ if clim(1)==clim(2)
     clim=clim(1)+[-1 0];
 end
 
-% clf;
-colormap(spectral(256));
-
 
 h=0.25;
 w=0.20;

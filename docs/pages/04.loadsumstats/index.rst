@@ -157,6 +157,9 @@ Bipolar disorder
         >>> # Get case-control surface area table
         >>> SA = sum_stats['CortSurf_case_vs_controls']
 
+        >>> # Extract Cohen's d values
+        >>> SA_d = SA['d_icv']
+
    .. code-tab:: matlab **Matlab** | meta
 
         % Load summary statistics for ENIGMA-BD

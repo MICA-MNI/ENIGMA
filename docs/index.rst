@@ -121,11 +121,10 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    pages/07.epicenter/index
 
 
-.. toctree::
+.. .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: Structural covariance networks
-
    pages/08.covariance/index
    pages/09.gt/index
 
