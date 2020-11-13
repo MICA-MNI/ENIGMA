@@ -14,7 +14,7 @@ Cortical surface visualization
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
 In the following example, we will display cortical atrophy in individuals with left TLE.
 
-.. admonition:: Our visualizaton tools work with ENIGMA and non-ENIGMA datasets 👀
+.. admonition:: Our visualization tools work with ENIGMA and non-ENIGMA datasets 👀
 
      Mapping parcellated data to the surface has never been easier! Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA datasets. Our toolbox include several
      other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, ...), so you can take advantage of
@@ -73,6 +73,9 @@ In the following example, we will display cortical atrophy in individuals with l
         >>>               cmap='Blues_r', color_bar=True, color_range=(-2, 0))
 
    .. code-tab:: matlab **Matlab** | mega
+
+        % Map parcellated data to the surface
+        CT_d_fsa5 = parcel_to_surface(CT_z_mean{:, :}, 'aparc_fsa5');
 
         % Project the results on the surface brain
         f = figure,

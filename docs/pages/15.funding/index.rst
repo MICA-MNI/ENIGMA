@@ -74,7 +74,8 @@ by the ENIGMA Sex Differences Initiative (R01 MH116147).
    <br>
 
 | And finally, a many thanks to our wonderful enigmator collaborators 🦀
-| - **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+| - **Casey Paquola**, *MICA Lab - Montreal Neurological Institute*
+| - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
 | - **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
 | - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
-| - **Jessica Royer**, *MICA Lab - Montreal Neurological Institute*
+| - **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*

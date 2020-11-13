@@ -30,7 +30,7 @@ Following the examples below, we can fetch microarray expression data.
 
      The command ``fetch_ahba()`` fetches a large (~24 MB) microarray dataset from the internet and may thus be 
      incredibly slow to load if you lack a good connection. But don't you worry: you can download the
-     relevant file by typing this command in your terminal ``wget https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv``
+     relevant file by typing this command in your terminal ``wget https://github.com/saratheriver/enigma-extra/raw/master/ahba/allgenes_stable.csv``
      and specifying its path in the ``fetch_ahba()`` function as follows:``fetch_ahba('/path/to/allgenes.csv')``
 
 .. _fetch_genes:
@@ -41,7 +41,7 @@ Following the examples below, we can fetch microarray expression data.
        
         >>> from enigmatoolbox.datasets import fetch_ahba
 
-        >>> # Fetch gene expression data (output of fetch_ahba() is a dataframe)
+        >>> # Fetch gene expression data
         >>> genes = fetch_ahba()
 
         >>> # Obtain region labels

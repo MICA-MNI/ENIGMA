@@ -31,6 +31,50 @@ Connectivity data
 
    <br>
 
+Gene co-expression data
+-----------------------------
+- Arnatkevic̆iūtė, A., Fulcher, B. D., & Fornito, A. (2019). A practical guide to linking brain-wide gene expression and neuroimaging data. Neuroimage, 189, 353-367.
+- Hawrylycz, M. J., Lein, E. S., Guillozet-Bongaarts, A. L., Shen, E. H., Ng, L., Miller, J. A., ... & Abajian, C. (2012). An anatomically comprehensive atlas of the adult human brain transcriptome. Nature, 489(7416), 391-399.
+- Markello, Ross, Shafiei, Golia, Zheng, Ying-Qiu, Mišić, Bratislav. abagen: A toolbox for the Allen Brain Atlas genetics data. Zenodo; 2020. Available from: https://doi.org/10.5281/zenodo.3726257. 
+
+.. raw:: html
+
+   <br>
+
+GWAS
+-----------------------------
+- Demontis, D., Walters, R. K., Martin, J., Mattheisen, M., Als, T. D., Agerbo, E., ... & Cerrato, F. (2019). Discovery of the first genome-wide significant risk loci for attention deficit/hyperactivity disorder. Nature genetics, 51(1), 63-75.
+- Grove, J., Ripke, S., Als, T. D., Mattheisen, M., Walters, R. K., Won, H., ... & Awashti, S. (2019). Identification of common genetic risk variants for autism spectrum disorder. Nature genetics, 51(3), 431-444.
+- Stahl, E. A., Breen, G., Forstner, A. J., McQuillin, A., Ripke, S., Trubetskoy, V., ... & de Leeuw, C. A. (2019). Genome-wide association study identifies 30 loci associated with bipolar disorder. Nature genetics, 51(5), 793-803.
+- Howard, D. M., Adams, M. J., Clarke, T. K., Hafferty, J. D., Gibson, J., Shirali, M., ... & Alloza, C. (2019). Genome-wide meta-analysis of depression identifies 102 independent variants and highlights the importance of the prefrontal brain regions. Nature neuroscience, 22(3), 343-352.
+- Consortium, T. I. L. A. E. (2018). Genome-wide mega-analysis identifies 16 loci and highlights diverse biological mechanisms in the common epilepsies. Nature communications, 9.
+- Pardiñas, A. F., Holmans, P., Pocklington, A. J., Escott-Price, V., Ripke, S., Carrera, N., ... & Han, J. (2018). Common schizophrenia alleles are enriched in mutation-intolerant genes and in regions under strong background selection. Nature genetics, 50(3), 381-389.
+- Yu, D., Sul, J. H., Tsetsos, F., Nawaz, M. S., Huang, A. Y., Zelaya, I., ... & Greenberg, E. (2019). Interrogating the genetic determinants of Tourette’s syndrome and other tic disorders through genome-wide association studies. American Journal of Psychiatry, 176(3), 217-227.
+
+.. raw:: html
+
+   <br>
+
+BigBrain
+------------------------------------------------------------
+- Amunts, K., Lepage, C., Borgeat, L., Mohlberg, H., Dickscheid, T., Rousseau, M. É., ... & Shah, N. J. (2013). BigBrain: an ultrahigh-resolution 3D human brain model. Science, 340(6139), 1472-1475.
+- vPapoulis, A., & Pillai, S. U. (2002). Probability, random variables, and stochastic processes. Tata McGraw-Hill Education.
+- Paquola, C., De Wael, R. V., Wagstyl, K., Bethlehem, R. A., Hong, S. J., Seidlitz, J., ... & Smallwood, J. (2019). Microstructural and functional gradients are increasingly dissociated in transmodal cortices. PLoS biology, 17(5), e3000284.
+
+.. raw:: html
+
+   <br>
+
+von Economo and Koskinas atlas
+------------------------------------------------------------
+- von Economo, C. F., & Koskinas, G. N. (1925). Die cytoarchitektonik der hirnrinde des erwachsenen menschen. J. Springer.
+- Scholtens, L. H., de Reus, M. A., de Lange, S. C., Schmidt, R., & van den Heuvel, M. P. (2018). An mri von economo–koskinas atlas. NeuroImage, 170, 249-256.
+- Triarhou, L. C. (2007). The Economo-Koskinas atlas revisited: cytoarchitectonics and functional context. Stereotactic and functional neurosurgery, 85(5), 195-203.
+
+.. raw:: html
+
+   <br>
+
 Network-based atrophy models (*hubs*)
 ------------------------------------------------------------
 - Fornito, A., Zalesky, A., & Breakspear, M. (2015). The connectomics of brain disorders. Nature Reviews Neuroscience, 16(3), 159-172.
@@ -56,28 +100,3 @@ Spin permutations
 -----------------------
 - Alexander-Bloch, A. F., Shou, H., Liu, S., Satterthwaite, T. D., Glahn, D. C., Shinohara, R. T., ... & Raznahan, A. (2018). On testing for spatial correspondence between maps of human brain structure and function. Neuroimage, 178, 540-551.
 - Váša, F., Seidlitz, J., Romero-Garcia, R., Whitaker, K. J., Rosenthal, G., Vértes, P. E., ... & Jones, P. B. (2018). Adolescent tuning of association cortex in human structural brain networks. Cerebral Cortex, 28(1), 281-294.
-
-.. raw:: html
-
-   <br>
-
-Gene co-expression data
------------------------------
-- Arnatkevic̆iūtė, A., Fulcher, B. D., & Fornito, A. (2019). A practical guide to linking brain-wide gene expression and neuroimaging data. Neuroimage, 189, 353-367.
-- Hawrylycz, M. J., Lein, E. S., Guillozet-Bongaarts, A. L., Shen, E. H., Ng, L., Miller, J. A., ... & Abajian, C. (2012). An anatomically comprehensive atlas of the adult human brain transcriptome. Nature, 489(7416), 391-399.
-- Markello, Ross, Shafiei, Golia, Zheng, Ying-Qiu, Mišić, Bratislav. abagen: A toolbox for the Allen Brain Atlas genetics data. Zenodo; 2020. Available from: https://doi.org/10.5281/zenodo.3726257. 
-
-.. raw:: html
-
-   <br>
-
-GWAS
------------------------------
-- Demontis, D., Walters, R. K., Martin, J., Mattheisen, M., Als, T. D., Agerbo, E., ... & Cerrato, F. (2019). Discovery of the first genome-wide significant risk loci for attention deficit/hyperactivity disorder. Nature genetics, 51(1), 63-75.
-- Grove, J., Ripke, S., Als, T. D., Mattheisen, M., Walters, R. K., Won, H., ... & Awashti, S. (2019). Identification of common genetic risk variants for autism spectrum disorder. Nature genetics, 51(3), 431-444.
-- Stahl, E. A., Breen, G., Forstner, A. J., McQuillin, A., Ripke, S., Trubetskoy, V., ... & de Leeuw, C. A. (2019). Genome-wide association study identifies 30 loci associated with bipolar disorder. Nature genetics, 51(5), 793-803.
-- Howard, D. M., Adams, M. J., Clarke, T. K., Hafferty, J. D., Gibson, J., Shirali, M., ... & Alloza, C. (2019). Genome-wide meta-analysis of depression identifies 102 independent variants and highlights the importance of the prefrontal brain regions. Nature neuroscience, 22(3), 343-352.
-- Consortium, T. I. L. A. E. (2018). Genome-wide mega-analysis identifies 16 loci and highlights diverse biological mechanisms in the common epilepsies. Nature communications, 9.
-- Pardiñas, A. F., Holmans, P., Pocklington, A. J., Escott-Price, V., Ripke, S., Carrera, N., ... & Han, J. (2018). Common schizophrenia alleles are enriched in mutation-intolerant genes and in regions under strong background selection. Nature genetics, 50(3), 381-389.
-- Yu, D., Sul, J. H., Tsetsos, F., Nawaz, M. S., Huang, A. Y., Zelaya, I., ... & Greenberg, E. (2019). Interrogating the genetic determinants of Tourette’s syndrome and other tic disorders through genome-wide association studies. American Journal of Psychiatry, 176(3), 217-227.
-

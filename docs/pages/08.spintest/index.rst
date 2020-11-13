@@ -8,7 +8,7 @@ Spin permutation tests
 This page contains descriptions and examples to assess statistical significance of two spatial maps.
 
 
-Spin permutation tests
+Assess statistical significance
 -------------------------------------------------------
 The intrinsic spatial smoothness in two given **cortical maps** may inflate the significance of their spatial correlation. 
 To overcome this challenge, we assess statistical significance using *spin permutation tests*. 
@@ -141,6 +141,13 @@ the empirical distribution determined by the ensemble of spatially permuted corr
         p_and_d =  cell2struct({[fc_ctx_p; fc_ctx_d], [fc_sctx_p; fc_sctx_d], [sc_ctx_p; sc_ctx_d], [sc_sctx_p; sc_sctx_d]}, ...
                                {'functional_cortical_hubs', 'functional_subcortical_hubs', ...
                                 'structural_cortical_hubs', 'structural_subcortical_hubs'}, 2);
+
+
+|
+
+
+Plot null distributions
+-------------------------------------------------------
 
 To better interpret statistical significance, we can plot the null distribution of generated correlations
 (*i.e.*, "spun" or "shuffled" correlations) and overlay the correlation coefficient obtained from the empirical 

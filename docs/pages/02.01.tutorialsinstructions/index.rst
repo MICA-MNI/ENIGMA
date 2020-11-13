@@ -8,9 +8,9 @@ Usage notes
 | The **ENIGMA TOOLBOX** includes a set of commonly used tools accompanied by validated, ready-to-use, and easy-to-follow code snippets. 
         These code snippets will guide you through each analysis step, starting from loading ENIGMA-derived datasets to visualizing findings from advanced secondary analyses.
 
-| To accomodate a larger scientific audience, we present code snippets in both *Python* and *Matlab*. Tutorials in the **ENIGMA TOOLBOX** are also compatible 
+| To accommodate a larger scientific audience, we present code snippets in both *Python* and *Matlab*. Tutorials in the **ENIGMA TOOLBOX** are also compatible 
         with individual site data or data derived from a mega-analysis (**mega**) as well as data obtained from a meta-analytical studies (**meta**). 
-        Each available options are presented in their respective tabs as shown below; if tabs do not specify **meta** or **mega**, then the code is 
+        Each available options is presented in their respective tabs as shown below; if tabs do not specify **meta** or **mega**, then the code is 
         generalizable to both dataset options.
 
 .. tabs::

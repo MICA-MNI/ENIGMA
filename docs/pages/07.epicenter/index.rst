@@ -5,7 +5,9 @@
 Epicenter mapping
 ======================================
 
-This page contains descriptions and examples to identify disease epicenters!
+This page contains descriptions and examples to identify disease epicenters! For additional details 
+on disease epicenter mapping, please see our manuscript entitled 
+`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
 
 
 Cortical epicenters
@@ -48,7 +50,7 @@ derived from cortical thickness decreases in individuals with left TLE.
         >>>     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
         >>>     fc_ctx_epi_p = np.append(fc_ctx_epi_p,
         ...                              spin_test(seed_con, CT_d, surface_name='fsa5', parcellation_name='aparc',
-        ...                                        type='pearson', n_rot=1000))
+        ...                                        type='pearson', n_rot=1000, null_dist=False))
 
         >>> # Identify cortical epicenters (from structural connectivity)
         >>> sc_ctx_epi = []
@@ -58,7 +60,7 @@ derived from cortical thickness decreases in individuals with left TLE.
         >>>     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_d)[0, 1])
         >>>     sc_ctx_epi_p = np.append(sc_ctx_epi_p,
         ...                              spin_test(seed_con, CT_d, surface_name='fsa5', parcellation_name='aparc',
-        ...                                        type='pearson', n_rot=1000))
+        ...                                        type='pearson', n_rot=1000, null_dist=False))
 
    .. code-tab:: matlab **Matlab** | meta
 
@@ -70,7 +72,7 @@ derived from cortical thickness decreases in individuals with left TLE.
             r_tmp               = corrcoef(seed_conn, CT_d);
             fc_ctx_epi(seed)    = r_tmp(1, 2);
             fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_d, 'surface_name', 'fsa5', 'parcellation_name', ...
-                                            'aparc', 'n_rot', 100, 'type', 'pearson');
+                                            'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
         % Computing cortical epicenter values (from structural connectivity)
@@ -101,8 +103,8 @@ derived from cortical thickness decreases in individuals with left TLE.
         >>>     seed_con = fc_ctx[:, seed]
         >>>     fc_ctx_epi = np.append(fc_ctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
         >>>     fc_ctx_epi_p = np.append(fc_ctx_epi_p,
-        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5',
-        ...                                        parcellation_name='aparc', type='pearson', n_rot=1000))
+        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
+        ...                                        type='pearson', n_rot=1000, null_dist=False))
 
         >>> # Identify cortical epicenters (from structural connectivity)
         >>> sc_ctx_epi = []
@@ -111,8 +113,8 @@ derived from cortical thickness decreases in individuals with left TLE.
         >>>     seed_con = sc_ctx[:, seed]
         >>>     sc_ctx_epi = np.append(sc_ctx_epi, np.corrcoef(seed_con, CT_z_mean)[0, 1])
         >>>     sc_ctx_epi_p = np.append(sc_ctx_epi_p,
-        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5',
-        ...                                        parcellation_name='aparc', type='pearson', n_rot=1000))
+        ...                              spin_test(seed_con, CT_z_mean, surface_name='fsa5', parcellation_name='aparc',
+        ...                                        type='pearson', n_rot=1000, null_dist=False))
 
    .. code-tab:: matlab **Matlab** | mega
 
@@ -124,7 +126,7 @@ derived from cortical thickness decreases in individuals with left TLE.
             r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
             fc_ctx_epi(seed)    = r_tmp(1, 2);
             fc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
-                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
+                                            'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
         % Computing cortical epicenter values (from structural connectivity)
@@ -135,13 +137,13 @@ derived from cortical thickness decreases in individuals with left TLE.
             r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
             sc_ctx_epi(seed)    = r_tmp(1, 2);
             sc_ctx_epi_p(seed)  = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
-                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
+                                            'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
 As we have assessed the significance of every spatial correlation between seed-based cortico-cortical connectivity and cortical atrophy measures
 using spin permutation tests, we can set a significance threshold to identify disease epicenters. In the following example,
 we set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
-were greater than 0.1). As such, we are displaying the correlation coefficients of mdoerate-to-strong connectivity-atrophy 
+were greater than 0.1). As such, we are displaying the correlation coefficients of moderate-to-strong connectivity-atrophy 
 associations.
 
 .. tabs::
@@ -291,7 +293,7 @@ derived from cortical thickness decreases in individuals with left TLE.
             r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
             fc_sctx_epi(seed)   = r_tmp(1, 2);
             fc_sctx_epi_p(seed) = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
-                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
+                                            'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
         % Computing subcortical epicenter values (from structural connectivity)
@@ -302,13 +304,13 @@ derived from cortical thickness decreases in individuals with left TLE.
             r_tmp               = corrcoef(seed_conn, CT_z_mean{:, :});
             sc_sctx_epi(seed)   = r_tmp(1, 2);
             sc_sctx_epi_p(seed) = spin_test(seed_conn, CT_z_mean{:, :}, 'surface_name', 'fsa5', ...
-                                            'parcellation_name', 'aparc', 'n_rot', 100, 'type', 'pearson');
+                                            'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
 As in the :ref:`cortical epicenters <ctx_epi>` example above, we have assessed the significance of every spatial correlation between 
 seed-based subcortico-cortical connectivity and cortical atrophy measures
 using spin permutation tests, and set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
-were greater than 0.1). As such, we are displaying the correlation coefficients of mdoerate-to-strong connectivity-atrophy 
+were greater than 0.1). As such, we are displaying the correlation coefficients of moderate-to-strong connectivity-atrophy 
 associations.
 
 .. tabs::

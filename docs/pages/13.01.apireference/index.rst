@@ -173,6 +173,38 @@ Surface plotting
    <hr>
 
 
+.. _pyref_contextmod:
+
+:mod:`enigmatoolbox.histology`
+-------------------------------------------------
+.. automodule:: enigmatoolbox.histology
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: enigmatoolbox.histology
+
+
+BigBrain stratification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.histology.bb_moments_raincloud
+   enigmatoolbox.histology.bb_gradient_plot
+
+
+von Economo-Koskinas stratification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.histology.economo_koskinas_spider
+
+
 .. _pyref_utils:
 
 :mod:`enigmatoolbox.utils`

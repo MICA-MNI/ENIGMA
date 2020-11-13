@@ -86,6 +86,11 @@ so that lower values correspond to greater atrophy. For simplicity, we also comp
 all left TLE patients. These mean, z-scored vectors will be used in subsequent tutorials as measures of subcortical 
 and cortical atrophy!
 
+.. parsed-literal:: 
+
+    **Prerequisites**
+    ↪ :ref:`Re-order subcortical data <reorder_sctx>`
+
 .. tabs::
 
    .. code-tab:: py **Python** | mega
@@ -111,7 +116,7 @@ and cortical atrophy!
         controlCode  = 0;
         SV_z         = zscore_matrix(metr1_SubVol_r(:, 2:end-1), group, controlCode);
         CT_z         = zscore_matrix(metr2_CortThick(:, 2:end-5), group, controlCode);
-        SA_z         = zscore_matrix(metr3_CortSurf(:, 2:end-1), group, controlCode);
+        SA_z         = zscore_matrix(metr3_CortSurf(:, 2:end-5), group, controlCode);
 
         % Mean z-score values across individuals with from a specific group (e.g., left TLE, that is SDx == 3)
         SV_z_mean    = array2table(mean(SV_z{find(cov.SDx == 3), :}, 1), ...

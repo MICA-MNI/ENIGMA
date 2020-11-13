@@ -2,7 +2,7 @@
 
 .. title:: Disease-related genes
 
-Disease-related gene expression maps
+Disease-related transcriptomics
 =========================================
 
 This page contains descriptions and examples to extract GWAS-implicated gene expression data
@@ -44,7 +44,7 @@ Extract disease-related genes
        
         >>> from enigmatoolbox.datasets import risk_genes
 
-        >>> # Get the names of genes associated with a specific epilepsy subtype (e.g., Focal HS)
+        >>> # Get the names of epilepsy-related genes (Focal HS phenotype)
         >>> epilepsy_genes = risk_genes('epilepsy')['focalhs']
 
         >>> # Extract gene expression data for these Focal HS genes
@@ -52,11 +52,11 @@ Extract disease-related genes
 
    .. code-tab:: matlab
 
-        % Get the names of genes associated with a specific epilepsy subtype (e.g., Focal HS)
+        % Get the names of epilepsy-related genes (Focal HS phenotype)
         epilepsy_genes = risk_genes('epilepsy');
-        epilepsy_genes = epilepsy_genes.focalhs
+        epilepsy_genes = epilepsy_genes.focalhs;
 
-        % Extract the gene expression data for these Focal HS genes
+        % Extract gene expression data for these Focal HS genes
         epilepsy_gene_data = genes(:, contains(genes.Properties.VariableNames, ...
                                    epilepsy_genes));
 

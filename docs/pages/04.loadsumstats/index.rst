@@ -6,7 +6,10 @@ Summary statistics
 ======================================
 
 This page contains descriptions and examples to load case-control datasets from 
-several ENIGMA Working Groups!
+several ENIGMA Working Groups! These ENIGMA summary statistics contain the following data: **effect sizes 
+for case-control differences** (d_icv), **standard error** (se_icv), **lower bound of the confidence interval** 
+(low_ci_icv), **upper bound of the confidence interval** (up_ci_icv), **number of controls** (n_controls), 
+**number of patiens** (n_patients), **observed p-values** (pobs), **false discovery rate (FDR)-corrected p-value** (fdr_p).
 
 .. admonition:: Can't find the data you're searching for? 🙈
 
@@ -334,6 +337,9 @@ Schizophrenia
 
    .. code-tab:: matlab **Matlab** | meta
 
+        % Load summary statistics for ENIGMA-schizophrenia
+        sum_stats = load_summary_stats('schizophrenia');
+        
         % Get case-control cortical thickness and surface area tables
         CT = sum_stats.CortThick_case_vs_controls;
         SA = sum_stats.CortSurf_case_vs_controls;

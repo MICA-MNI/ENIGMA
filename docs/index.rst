@@ -45,22 +45,12 @@
 |
 
 
-Data archiving and data sharing 💌
-----------------------------------
-The **ENIGMA TOOLBOX** provides a platform for archiving meta- and mega-analytical :ref:`case-control 
-comparisons<load_sumstats>` across a wide range of disorders. As part of the **ENIGMA TOOLBOX**, we are 
-also making several data matrices openly available! As of now, these include :ref:`functional and structural 
-connectivity data<hcp_connectivity>` as well as :ref:`transcriptomic data<gene_maps>`.
-
-.. raw:: html
-
-   <br>
-
-Harmonization of analytical methods 👯‍♀️
---------------------------------------------------------
-One key goal of the **ENIGMA TOOLBOX** is
-to harmonize analytical methods both *within* and *across* ENIGMA Working Groups, ultimately facilitating
-comparisons of imaging and genetic findings across diseases.
+Data archiving and accessing 🗝
+------------------------------------
+The **ENIGMA TOOLBOX** has a *No data, No problem* policy! We provide a central repository for archiving meta-analytical :ref:`case-control 
+comparisons<load_sumstats>` across a wide range of disorders. As many ENIGMA groups have moved beyond meta-analysis 
+towards ‘mega’-analysis of subject-level data, the **ENIGMA TOOLBOX** also includes subject-level :ref:`example data<load_ct>` 
+from an individual site that have been processed according to ENIGMA protocols.
 
 .. raw:: html
 
@@ -75,11 +65,34 @@ covered! Check out our :ref:`visualization tools<surf_visualization>` and projec
 
    <br>
 
+Data sharing and exploiting 💌
+------------------------------------
+As part of the **ENIGMA TOOLBOX**, we are 
+also making several data matrices openly available! As of now, these include :ref:`functional and structural 
+connectivity data<hcp_connectivity>` and :ref:`transcriptomic data<gene_maps>`.
+
+.. raw:: html
+
+   <br>
+
+Advanced analytical workflows 🦾
+--------------------------------------------------------
+The main goal of the **ENIGMA TOOLBOX** is
+to provide the ENIGMA community with open-access methodological pipelines and analytical tools for 
+conducting advanced secondary analyses, offering a platform to facilitate results reproducibility both 
+*within* and *across* ENIGMA Working Groups. From these workflows, users can gain further neurobiological 
+insights into how disease-related regional susceptibility patterns are anchored to multiple scales of 
+cortical and subcortical brain network architecture.
+
+.. raw:: html
+
+   <br>
+
 Step-by-step tutorials 👣
 ------------------------------------
-The **ENIGMA TOOLBOX** has a *No data, No problem* policy! To make things easier, we provide :ref:`example data<load_ct>` from an individual site
-that have been processed according to ENIGMA protocols. Using our example data, previously published summary statistics, or any other ENIGMA-derived 
-datasets, you can easily complete all of the tutorials!
+The **ENIGMA TOOLBOX** includes ready-to-use and easy-to-follow code snippets
+for every functionality and analytical workflow! Owing to its comprehensive tutorials, detailed functionality descriptions, 
+and visual reports, the **ENIGMA TOOLBOX** is easy to use for researchers and clinicians without extensive programming expertise. 
 
 .. raw:: html
 
@@ -88,7 +101,7 @@ datasets, you can easily complete all of the tutorials!
 Development and getting involved ⚙️
 -------------------------------------------
 Should you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**, please do not
-hesitate to post them to our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_! Or are you interested in collaborating 
+hesitate to post them to our `mailing list <https://groups.google.com/g/enigma-toolbox>`_! Or are you interested in collaborating 
 or sharing your ENIGMA-related codes/tools? `Noice <https://www.urbandictionary.com/define.php?term=noice>`_! 
 Make sure you familiarize yourself with our `contributing guidelines <https://github.com/MICA-MNI/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
 first and then discuss your ideas on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_ and 
@@ -103,39 +116,14 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    pages/02.01.tutorialsinstructions/index
    pages/02.whatsnew/index
 
+
 .. toctree::
    :maxdepth: 1
    :hidden:
    :caption: ENIGMA datasets
    
-   pages/03.loadct/index
    pages/04.loadsumstats/index
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Network-based atrophy models
-   
-   pages/05.HCP/index
-   pages/06.hubs/index
-   pages/07.epicenter/index
-
-
-.. .. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Structural covariance networks
-   pages/08.covariance/index
-   pages/09.gt/index
-
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Gene expression
-
-   pages/10.genemaps/index
-   pages/11.epilepsygenes/index
+   pages/03.loadct/index
 
 
 .. toctree::
@@ -144,6 +132,43 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    :caption: Surface data visualization
 
    pages/12.visualization/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Data sharing and exploiting
+   
+   pages/05.HCP/index
+   pages/10.genemaps/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Microscale contextualization
+
+   pages/11.epilepsygenes/index
+   pages/11.01.bigbrain/index
+   pages/11.02.voneconomo/index
+
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Network-based atrophy models
+   
+   pages/06.hubs/index
+   pages/07.epicenter/index
+   pages/08.spintest/index
+
+
+.. .. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Structural covariance networks
+   pages/08.covariance/index
+   pages/09.gt/index
 
 
 .. toctree::

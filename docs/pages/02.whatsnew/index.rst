@@ -5,10 +5,25 @@
 What's new?
 ======================================
 
-
-v0.0.1 (October 16, 2020)
+v0.1.1 (November 14, 2020)
 ------------------------------------------
-Initial release of the **ENIGMA TOOLBOX**: it's the start of a beautiful thing!
+Bug fixes and improvement following beta testing
+
+::
+
+    ↪ [TES 🧪] Toolbox testing                               |  @boyngpark, @royj23, @caseypaquola, @YezhouWang, @sofievalk
+    ↪ [DOC 📄] Revise documentations                         |  @saratheriver
+    ↪ [ENH 🔧] Fix minor code bugs here and there            |  @saratheriver
+    ↪ [ENH 🔧] Remove unstable genes across donors           |  @saratheriver
+    ↪ [NEW 🗽] BigBrain contextualization module             |  @caseypaquola, @saratheriver
+    ↪ [NEW 🗽] Cytoarchitectonics contextualization module   |  @caseypaquola, @saratheriver
+    ↪ [NEW 🗽] HCP subcortico-subcortical connectivity       |  @saratheriver
+    ↪ [ENH 🔧] References for new modules                    |  @saratheriver
+    ↪ [ENH 🔧] Update API for new functions                  |  @saratheriver
+
+v0.1.0 (October 16, 2020)
+------------------------------------------
+Pre-release of the **ENIGMA TOOLBOX**: it's the start of a beautiful thing!
 
 ::
 

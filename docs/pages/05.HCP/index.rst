@@ -7,7 +7,7 @@ Connectivity data
 
 This page contains descriptions and examples to use HCP connectivity data!
 For details on HCP participants and data processing, please see our manuscript entitled 
-`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_
+`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
 
 
 .. _load_corticocortical:
@@ -44,14 +44,16 @@ The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional
 
         % Plot cortico-cortical connectivity matrices
         f = figure,
-          imagesc(fc_ctx, [0 0.8]);               
+          imagesc(fc_ctx, [0 0.8]); 
+          axis square;              
           colormap(Reds);                          
           colorbar;                                
           set(gca, 'YTick', 1:1:length(fc_ctx_labels), ...   
               'YTickLabel', fc_ctx_labels)         
 
         f = figure,
-          imagesc(sc_ctx, [0 10]);                 
+          imagesc(sc_ctx, [0 10]); 
+          axis square;                
           colormap(Blues);                        
           colorbar;                               
           set(gca, 'YTick', 1:1:length(sc_ctx_labels), ...   
@@ -145,14 +147,16 @@ Load subcortical connectivity matrices
 
         % Plot subcortico-cortical connectivity matrices 
         f = figure,
-          imagesc(fc_sctx, [0 0.5]);               
+          imagesc(fc_sctx, [0 0.5]);  
+          axis square;             
           colormap(Reds);                          
           colorbar;                                
           set(gca, 'YTick', 1:1:length(fc_sctx_labels), ...   
               'YTickLabel', fc_sctx_labels)       
 
         f = figure,
-          imagesc(sc_sctx, [0 10]);                
+          imagesc(sc_sctx, [0 10]);    
+          axis square;            
           colormap(Blues);                         
           colorbar;                                
           set(gca, 'YTick', 1:1:length(sc_sctx_labels), ...   

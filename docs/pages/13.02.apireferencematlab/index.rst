@@ -211,6 +211,35 @@ Matlab API
    <hr>
 
 
+.. _matlabref_histology:
+
+:mod:`histology`
+------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/bb_moments_raincloud.rst
+   generated/bb_gradient_plot.rst
+   generated/economo_koskinas_spider.rst
+
+.. list-table::
+   :widths: 50 400
+   :header-rows: 0
+
+   * - :ref:`bb_moments_raincloud(region_idx, title)<bb_moments_raincloud_mat>`
+     - Stratify regional data according to BigBrain statistical moments (authors: @caseypaquola, @saratheriver)
+   * - :ref:`bb_gradient_plot(data, varargin)<bb_gradient_plot_mat>`
+     - Stratify parcellated data according to the BigBrain gradient (authors: @caseypaquola, @saratheriver)
+   * - :ref:`economo_koskinas_spider(parcel_data, varargin)<economo_koskinas_spider_mat>`
+     - Stratify parcellated data according to von Economo-Koskinas cytoarchitectonic classes (authors: @caseypaquola, @saratheriver)
+
+.. raw:: html
+
+   <hr>
+
+
 .. _matlabref_reordsctx:
 
 :mod:`re-order subcortical data matrix`
