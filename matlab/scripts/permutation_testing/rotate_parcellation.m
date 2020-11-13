@@ -9,7 +9,7 @@ function perm_id = rotate_parcellation(coord_l, coord_r, nrot)
 % Inputs:
 %   coord_l (double array) - Coordinates of left hemisphere regions on the sphere, size = [m x 3]
 %   coord_r (double array) - Coordinates of right hemisphere regions on the sphere, size = [m x 3]
-%   nrot (int, optional) - Number of rotations. Default is 100.
+%   nrot (int, optional) - Number of rotations. Default is 1000.
 %
 % Outputs:
 %   perm_id (double array) - Array of permutations, size = [m x nrot]
@@ -36,7 +36,7 @@ end
 
 % default number of rotations
 if nargin < 3
-    nrot = 100;
+    nrot = 1000;
 end
 
 nroi_l = size(coord_l,1);   % n(regions) in the left hemisphere

@@ -17,7 +17,7 @@ function genes = fetch_ahba()
 
 if nargin < 1
     % Fetch the csv table from github and load it locally | option 1
-    url   = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes.csv';
+    url   = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stab.csv';
     urlwrite(url, '.gtmp.csv');
     genes = readtable('.gtmp.csv');
 

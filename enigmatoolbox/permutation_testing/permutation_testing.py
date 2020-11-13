@@ -84,7 +84,7 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
     return centroid
 
 
-def rotate_parcellation(coord_l, coord_r, nrot=100):
+def rotate_parcellation(coord_l, coord_r, nrot=1000):
     """
     Rotate parcellation (author: @saratheriver)
 
@@ -95,7 +95,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=100):
     coord_r : ndarray
         Coordinates of right hemisphere regions on the sphere, shape = (m, 3)
     nrot : int, optional
-        Number of rotations. Default is 100.
+        Number of rotations. Default is 1000.
 
     Returns
     -------
@@ -299,7 +299,7 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
         return p_perm
 
 
-def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=100,
+def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=1000,
               type='pearson', null_dist=False, ventricles=False):
     """
     Spin permutation (author: @saratheriver)
@@ -315,7 +315,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     parcellation_name : string, optional
         Parcellation name {'aparc', 'aparc_aseg'}. Default is 'aparc'.
     n_rot : int, optional
-        Number of spin rotations. Default is 100.
+        Number of spin rotations. Default is 1000.
     type : string, optional
         Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
     null_dist : bool, optional
@@ -390,7 +390,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
         return p_spin
 
 
-def shuf_test(map1, map2, n_rot=100, type='pearson', null_dist=False):
+def shuf_test(map1, map2, n_rot=1000, type='pearson', null_dist=False):
     """
     Shuf permuation (author: @saratheriver)
 
@@ -401,7 +401,7 @@ def shuf_test(map1, map2, n_rot=100, type='pearson', null_dist=False):
     map2 : narray, ndarray, or pandas.Series
         The other map to be correlated
     n_rot : int, optional
-        Number of shuffles. Default is 100.
+        Number of shuffles. Default is 1000.
     type : string, optional
         Correlation type {'pearson', 'spearman'}. Default is 'pearson'.
     null_dist : bool, optional

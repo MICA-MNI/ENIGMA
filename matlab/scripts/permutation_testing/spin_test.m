@@ -15,7 +15,7 @@ function [p_spin, r_dist] = spin_test(map1, map2, varargin)
 %       'conte69'}. Default is 'fsa5'.
 %   parcellation_name (string, optional) - Parcellation name {'aparc', 
 %       'aparc_aseg'}. Default is 'aparc'.
-%   n_rot (int, optional) - Number of spin rotations. Default is 100.
+%   n_rot (int, optional) - Number of spin rotations. Default is 1000.
 %   type (string, optional) - Correlation type {'pearson', 'spearman'}. 
 %       Default is 'pearson'.
 %   ventricles (string, optional) - Whether ventricles are present in map1, 
@@ -41,7 +41,7 @@ function [p_spin, r_dist] = spin_test(map1, map2, varargin)
 p = inputParser;
 addParameter(p, 'surface_name', 'fsa5', @ischar);
 addParameter(p, 'parcellation_name', 'aparc', @ischar);
-addParameter(p, 'n_rot', 100, @isnumeric);
+addParameter(p, 'n_rot', 1000, @isnumeric);
 addParameter(p, 'type', 'pearson', @ischar);
 addParameter(p, 'ventricles', 'False', @ischar);
 

@@ -228,7 +228,7 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
 
     if mask is not None:
         target_lab2 = target_lab[mask]
-        labs2 = map_to_labels(source_val, target_lab2, source_lab=source_lab)
+        labs2 = parcel_to_surface(source_val, target_lab2, source_lab=source_lab)
         return map_to_mask(labs2, mask, fill=fill)
 
     if source_lab is None:

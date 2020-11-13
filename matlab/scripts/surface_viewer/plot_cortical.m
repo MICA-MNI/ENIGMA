@@ -9,7 +9,7 @@ function [a, cb] = plot_cortical(data, varargin);
 % Inputs:
 %   data (double array) - vector of data, size = [1 x v]
 %
-% Outputs:
+% Name/value pairs:
 %   surface_name (string, optional) - Name of surface {'fsa5', 'conte69}. 
 %       Default is 'fsa5'.
 %   label_text (string, optional) - Label text for colorbar. Default is empty.
@@ -18,6 +18,10 @@ function [a, cb] = plot_cortical(data, varargin);
 %   color_range (double array, optional) - Range of colorbar. Default is 
 %       [min(data) max(data)].
 %   cmap (string, double array, optional) - Colormap name. Default is 'RdBu_r'.
+%
+% Outputs:
+%   a (axes) - vector of handles to the axes, left to right, top to bottom
+%   cb (colorbar) - colorbar handle
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 

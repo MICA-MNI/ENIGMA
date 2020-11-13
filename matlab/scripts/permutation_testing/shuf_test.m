@@ -11,7 +11,7 @@ function [p_shuf, r_dist] = shuf_test(map1, map2, varargin)
 %   map2 (double array) - The other map to be correlated
 %
 % Name/value pairs:
-%   n_rot (int, optional) - Number of spin rotations. Default is 100.
+%   n_rot (int, optional) - Number of spin rotations. Default is 1000.
 %   type (string, optional) - Correlation type {'pearson', 'spearman'}. 
 %       Default is 'pearson'.
 %
@@ -23,7 +23,7 @@ function [p_shuf, r_dist] = shuf_test(map1, map2, varargin)
 
 
 p = inputParser;
-addParameter(p, 'n_rot', 100, @isnumeric);
+addParameter(p, 'n_rot', 1000, @isnumeric);
 addParameter(p, 'type', 'pearson', @ischar);
 
 % Parse the input

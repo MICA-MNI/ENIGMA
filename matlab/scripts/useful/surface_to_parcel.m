@@ -28,7 +28,7 @@ surf2parcel      = zeros(size(surf_data, 1), length(uparcel));
 
 for ii = 1:length(uparcel) 
     thisparcel          = uparcel(ii); 
-    surf2parcel(:, ii)  = mean(surf_data(:, label_vector == thisparcel), 2);
+    surf2parcel(:, ii)  = nanmean(surf_data(:, label_vector == thisparcel), 2);
 end
 
 end

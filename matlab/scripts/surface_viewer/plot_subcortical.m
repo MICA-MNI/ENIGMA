@@ -13,7 +13,7 @@ function [a, cb] = plot_subcortical(data, varargin);
 %       L-ventricle, R-accumbens, R-amygdala, R-caudate, R-hippocampus, 
 %       R-pallidum, R-putamen, R-thalamus, R-ventricle
 %
-% Outputs:
+% Name/value pairs:
 %   ventricles (string, optional) - If 'True' (default) shows the ventricles 
 %       (data must be size = [1 x 16]). If 'False', then ventricles are not 
 %       shown and data must be size = [1 x 14].
@@ -23,6 +23,10 @@ function [a, cb] = plot_subcortical(data, varargin);
 %   color_range (double array, optional) - Range of colorbar. Default is 
 %       [min(data) max(data)].
 %   cmap (string, double array, optional) - Colormap name. Default is 'RdBu_r'.
+%
+% Outputs:
+%   a (axes) - vector of handles to the axes, left to right, top to bottom
+%   cb (colorbar) - colorbar handle
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 

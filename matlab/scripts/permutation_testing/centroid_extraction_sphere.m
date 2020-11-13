@@ -37,7 +37,8 @@ if ~contains(annotfile, 'aparc_aseg')
     centroid = [];                                                                   % initialisation of centroid array
     for ic = 1:colortable.numEntries                                                 % loop over parcellated structures
         if isempty(strfind(colortable.struct_names{ic},'unknown')) && ...
-           isempty(strfind(colortable.struct_names{ic},'corpus'))                    % exclude "unknown" structures and corpus callosum from the parcellation 
+           isempty(strfind(colortable.struct_names{ic},'corpus')) && ...
+           isempty(strfind(colortable.struct_names{ic},'Background+FreeSurfer_Defined_Medial_Wall')) % exclude "unknown" structures and corpus callosum from the parcellation 
             ind = ind + 1;                                                           % increment counter for every valid region
             label = colortable.table(ic,5);                                          % ID of current parcel
             centroid(ind,:) = mean(sphere_coords(label_annot == label, :));          % average coordinates of all vertices within the current parcel to generate the centroid
