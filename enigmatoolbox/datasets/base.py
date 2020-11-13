@@ -246,6 +246,52 @@ def load_fc():
            np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
 
 
+def load_sc_as_one():
+    """ Load structural connectivity data (cortical + subcortical in one matrix) parcellated
+        using Desikan Killiany (author: @saratheriver)
+
+        Returns
+        -------
+        strucMatrix_ctx : 2D ndarray
+            Structural connectivity, shape = (82, 82)
+        strucLabels_ctx : 1D ndarray
+            Region labels, shape = (82,)
+    """
+    root_pth = os.path.dirname(__file__)
+
+    ctx = 'strucMatrix_with_sctx.csv'
+    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+    ctxL = 'strucLabels_with_sctx.csv'
+    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+
+    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
+
+
+def load_fc_as_one():
+    """ Load functional connectivity data (cortical + subcortical in one matrix) parcellated
+        using Desikan Killiany (author: @saratheriver)
+
+        Returns
+        -------
+        funcMatrix_ctx : 2D ndarray
+            Functional connectivity, shape = (82, 82)
+        funcLabels_ctx : 1D ndarray
+            Region labels, shape = (82,)
+    """
+    root_pth = os.path.dirname(__file__)
+
+    ctx = 'funcMatrix_with_sctx.csv'
+    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+    ctxL = 'funcLabels_with_sctx.csv'
+    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+
+    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
+
+
 def structural_covariance(zdata):
     """ Construction of intra-individual brain structural covariance networks
 

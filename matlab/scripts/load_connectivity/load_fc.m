@@ -4,7 +4,7 @@ function [funcMatrix_ctx, funcLabels_ctx, funcMatrix_sctx, funcLabels_sctx] = lo
 %   [funcMatrix_ctx, funcLabels_ctx, funcMatrix_sctx, funcLabels_sctx] = load_fc()
 %
 % Description:
-%   Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
+%   Load functional connectivity data parcellated using Desikan Killiany (author: @saratheriver)
 %
 % Outputs:
 %   funcMatrix_ctx (double array) - Cortico-cortical connectivity, size = [68 x 68]

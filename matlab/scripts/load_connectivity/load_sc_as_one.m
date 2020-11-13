@@ -1,7 +1,7 @@
-function [strucMatrix, strucLabels] = load_sc_with_stcx()
+function [strucMatrix, strucLabels] = load_sc_as_one()
 %
 % Usage: 
-%   [strucMatrix_ctx, strucLabels_ctx] = load_sc_with_stcx()
+%   [strucMatrix_ctx, strucLabels_ctx] = load_sc_as_one()
 %
 % Description:
 %   Load structural connectivity data (cortical + subcortical in one matrix) 

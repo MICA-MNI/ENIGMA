@@ -1,7 +1,7 @@
-function [funcMatrix, funcLabels] = load_fc_with_stcx()
+function [funcMatrix, funcLabels] = load_fc_as_one()
 %
 % Usage: 
-%   [funcMatrix_ctx, funcLabels_ctx] = load_fc_with_stcx()
+%   [funcMatrix_ctx, funcLabels_ctx] = load_fc_as_one()
 %
 % Description:
 %   Load functional connectivity data (cortical + subcortical in one matrix) 
