@@ -10,6 +10,13 @@ For details on HCP participants and data processing, please see our manuscript e
 `Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
 
 
+.. admonition:: one matrix 🎤
+
+     Are you looking for subcortico-subcortical connectivity? Or do you want cortical and subcortical connectivity 
+     in one 82 x 82 matrix (68 cortical + 14 subcortical regions)? If so, check out our functions: ``load_fc_as_one()`` 
+     :ref:`here<load_fc_as_one_mat>` and ``load_sc_as_one()`` :ref:`here<load_sc_as_one_mat>`!
+
+
 .. _load_corticocortical:
 
 Load cortical connectivity matrices
