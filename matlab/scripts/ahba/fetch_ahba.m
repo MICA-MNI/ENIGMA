@@ -1,6 +1,6 @@
-function genes = fetch_ahba()
+function genes = fetch_ahba(csvfile)
 %
-% Usage: genes = fetch_ahba();
+% Usage: genes = fetch_ahba(csvfile);
 %
 % Description
 %   Fetch Allen Human Brain Atlas microarray expression data from all 
@@ -8,7 +8,7 @@ function genes = fetch_ahba()
 %
 % Inputs:
 %   csvfile (empty or string, optional) - Path to downloaded csvfile. 
-%   If empty (default), fetches microarray expression data from the internet.
+%   If empty, fetches microarray expression data from the internet.
 %
 % Outputs: 
 %   genes (table) - Gene co-expression data, size = [82 x 15634]
@@ -17,7 +17,7 @@ function genes = fetch_ahba()
 
 if nargin < 1
     % Fetch the csv table from github and load it locally | option 1
-    url   = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stab.csv';
+    url   = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stable20.csv';
     urlwrite(url, '.gtmp.csv');
     genes = readtable('.gtmp.csv');
 

@@ -327,7 +327,7 @@ def fetch_ahba(csvfile=None):
                 Table of gene co-expression data, shape = (82, 15634)
         """
     if csvfile is None:
-        url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stable.csv'
+        url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stable20.csv'
         return pd.read_csv(url, error_bad_lines=False)
     else:
         return pd.read_csv(csvfile, error_bad_lines=False)
