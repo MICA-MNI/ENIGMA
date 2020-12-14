@@ -2,11 +2,13 @@
 ENIGMA TOOLBOX
 =======================
 
-[![Documentation Status](https://readthedocs.org/projects/enigma-toolbox/badge/?version=latest)](https://enigma-toolox.readthedocs.io/en/latest/?badge=latest)
-
 .. image:: https://api.codacy.com/project/badge/Grade/a793c78a53eb4435a4bb86d725c8f817
    :alt: Codacy Badge
    :target: https://app.codacy.com/gh/saratheriver/ENIGMA?utm_source=github.com&utm_medium=referral&utm_content=saratheriver/ENIGMA&utm_campaign=Badge_Grade
+
+
+[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+
 
 The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
