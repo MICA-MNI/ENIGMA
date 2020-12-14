@@ -10,8 +10,8 @@ ENIGMA TOOLBOX
    :target: https://opensource.org/licenses/BSD-3-Clause
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=stable
-:target: https://pip.pypa.io/en/stable/?badge=stable
-:alt: Documentation Status   
+    :target: https://pip.pypa.io/en/stable/?badge=stable
+    :alt: Documentation Status   
 
 The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
