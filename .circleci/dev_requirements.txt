@@ -1,0 +1,9 @@
+-r requirements.txt
+fastparquet
+flake8
+python-snappy
+pytest>=3.6
+pytest-cov
+sphinx>=2.0
+sphinx-argparse
+sphinx_rtd_theme
