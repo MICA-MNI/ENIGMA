@@ -6,8 +6,12 @@ ENIGMA TOOLBOX
    :alt: Codacy Badge
    :target: https://app.codacy.com/gh/saratheriver/ENIGMA?utm_source=github.com&utm_medium=referral&utm_content=saratheriver/ENIGMA&utm_campaign=Badge_Grade
 
-[![License](https://img.shields.io/badge/License-BSD%203--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)  
+.. image:: https://img.shields.io/pypi/l/brainspace?label=License
+   :target: https://opensource.org/licenses/BSD-3-Clause
 
+.. image:: https://readthedocs.org/projects/pip/badge/?version=stable
+:target: https://pip.pypa.io/en/stable/?badge=stable
+:alt: Documentation Status   
 
 The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
