@@ -225,6 +225,10 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
         ddk = np.ones(71) * fill
         ddk[a_idx] = source_val
         source_val = ddk
+    elif np.max(source_val.size) % 100 == 0 and np.unique(target_lab).size in np.arange(101, 1002, 100):
+        source_val = np.append(0, source_val)
+    elif np.max(source_val.size) % 10 == 0 and np.unique(target_lab).size == 361:
+        source_val = np.append(0, source_val)
 
     if mask is not None:
         target_lab2 = target_lab[mask]

@@ -9,7 +9,7 @@ function parcel2surf = parcel_to_surface(parcel_data, parcellation, fill)
 % Inputs:
 %   parcel_data (double array) - Parcel vector, size = [p x 1]. For example, 
 %       if Desikan Killiany from ENIGMA data, then parcel_data is size = [68 x 1].
-%   parcellation (string, optional) - Default is 'aparc_fsa5?
+%   parcellation (string, optional) - Default is 'aparc_fsa5'.
 %   fill (double, optional) - Value for mask. Default is 0.
 %
 % Outputs
@@ -26,10 +26,19 @@ if nargin < 3
     fill = 0;
 end
 
-if any(size(parcel_data) == 68)
+% transpose if data across columns
+if size(parcel_data, 2) > size(parcel_data, 1)
+    parcel_data = parcel_data.';
+end
+
+if contains(parcellation, 'aparc') && any(size(parcel_data) == 68)
     a_idx                 = [2:1:4 6:1:39 41:1:71];     % indices of parcels included in ENIGMA
     data_DK               = ones(71, 1) * fill;               
     data_DK(a_idx)        = parcel_data; 
+elseif contains(parcellation, 'schaefer') && mod(max(size(parcel_data)), 100) == 0
+    data_DK               = [fill; parcel_data];    % add mask
+elseif contains(parcellation, 'glasser') && mod(max(size(parcel_data)), 10) == 0
+    data_DK               = [fill; parcel_data];    % add mask
 else
     data_DK               = parcel_data;
 end

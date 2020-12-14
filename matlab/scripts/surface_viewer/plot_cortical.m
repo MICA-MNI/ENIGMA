@@ -41,6 +41,8 @@ if strcmp(in.surface_name, 'fsa5')
     surf = SurfStatAvSurf({'fsa5_lh', 'fsa5_rh'});
 elseif strcmp(in.surface_name, 'conte69')
     surf = SurfStatAvSurf({'conte69_lh', 'conte69_rh'});
+elseif strcmp(in.surface_name, 'ss')
+    surf = SurfStatAvSurf({'fsa5_with_sctx_sphere_lh', 'fsa5_with_sctx_sphere_lh'});
 end
 
 v=length(data);

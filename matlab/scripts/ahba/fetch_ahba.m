@@ -8,10 +8,13 @@ function genes = fetch_ahba(csvfile)
 %
 % Inputs:
 %   csvfile (empty or string, optional) - Path to downloaded csvfile. 
-%   If empty, fetches microarray expression data from the internet.
+%   For more threshold and parcellation options, download csvfile from here:
+%   https://github.com/saratheriver/enigma-extra/tree/master/ahba
+%   If empty, fetches microarray expression data from the internet (aparc
+%   and stable r > 0.2).
 %
 % Outputs: 
-%   genes (table) - Gene co-expression data, size = [82 x 15634]
+%   genes (table) - Gene co-expression data, size = [82 x 1563]
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 
