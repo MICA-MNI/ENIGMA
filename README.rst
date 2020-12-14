@@ -1,7 +1,3 @@
-=======================
-ENIGMA TOOLBOX
-=======================
-
 .. image:: https://api.codacy.com/project/badge/Grade/a793c78a53eb4435a4bb86d725c8f817
    :alt: Codacy Badge
    :target: https://app.codacy.com/gh/saratheriver/ENIGMA?utm_source=github.com&utm_medium=referral&utm_content=saratheriver/ENIGMA&utm_campaign=Badge_Grade
@@ -16,6 +12,10 @@ ENIGMA TOOLBOX
 The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
 analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
 
+
+=======================
+ENIGMA TOOLBOX
+=======================
 
 |
 
