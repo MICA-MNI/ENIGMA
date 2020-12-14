@@ -110,13 +110,16 @@ def economo_koskinas_spider(parcel_data=None, parcellation='aparc_fsa5', fill=0,
     return class_mean
 
 
-def bb_moments_raincloud(region_idx=None, title=''):
+def bb_moments_raincloud(region_idx=None, parcellation='aparc', title=''):
     """Stratify regional data according to BigBrain statistical moments (authors: @caseypaquola, @saratheriver)
 
         Parameters
         ----------
         region_idx : ndarray, shape = (n_val,)
             Indices of regions to be included in analysis.
+        parcellation : string, optional
+                Name of parcellation. Options are 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300',
+                'schaefer_400', 'glasser_360'. Default is 'aparc'.
         title : string, optional
             Title of raincloud plot. Default is empty.
 
@@ -137,7 +140,7 @@ def bb_moments_raincloud(region_idx=None, title=''):
         return np.percentile(x, p)
 
     # Load BigBrain statistical moments (mean, skewness)
-    bb_pth = os.path.dirname(os.path.dirname(__file__)) + '/histology/bb_moments_aparc.csv'
+    bb_pth = os.path.dirname(os.path.dirname(__file__)) + '/histology/bb_moments_' + parcellation + '.csv'
     bb_moments_aparc = np.loadtxt(bb_pth, delimiter=',', dtype=float)
 
     # Initiate figure and axes
@@ -213,13 +216,16 @@ def bb_moments_raincloud(region_idx=None, title=''):
     return fig, axs, axs2
 
 
-def bb_gradient_plot(data=None, axis_range=None, title='', yaxis_label='', xaxis_label=''):
+def bb_gradient_plot(data=None, parcellation='aparc', axis_range=None, title='', yaxis_label='', xaxis_label=''):
     """Stratify parcellated data according to the BigBrain gradient (authors: @caseypaquola, @saratheriver)
 
         Parameters
         ----------
         data : ndarray, shape = (n_val,)
             Parcellated data.
+        parcellation : string, optional
+                Name of parcellation. Options are 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300',
+                'schaefer_400', 'glasser_360'. Default is 'aparc'.
         axis_range : tuple, optional
             Range of spider plot axes. Default is (min, max).
         title : string, optional
@@ -240,7 +246,7 @@ def bb_gradient_plot(data=None, axis_range=None, title='', yaxis_label='', xaxis
         data = pd.Series(data)
 
     # Load BigBrain gradient
-    bb_pth = os.path.dirname(os.path.dirname(__file__)) + '/histology/bb_gradient_aparc.csv'
+    bb_pth = os.path.dirname(os.path.dirname(__file__)) + '/histology/bb_gradient_' + parcellation + '.csv'
     g = np.loadtxt(bb_pth, delimiter=',', dtype=float)
 
     # Define number of bins

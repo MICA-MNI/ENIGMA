@@ -12,6 +12,9 @@ function bb_gradient_plot(data, varargin)
 %       Parcellated data.
 %
 % Name/value pairs:
+%   parcellation (string, optional) - Name of parcellation.
+%       Options are: 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300',
+%       'schaefer_400', 'glasser_360'. Default is 'aparc'.
 %   title (string, optional) - Title of spider plot. Default is empty.
 %   axis_range (double array, optional) - Range of spider plot axes. 
 %       Default is (min, max).
@@ -29,6 +32,7 @@ if nargin < 1; error('Need data to plot'); end
 
 % Parse the input
 p = inputParser;
+addParameter(p, 'parcellation', 'aparc', @ischar);
 addParameter(p, 'title', '', @ischar);
 addParameter(p, 'axis_range', [min(data) max(data)], @isnumeric);
 addParameter(p, 'yaxis_label', '', @ischar);
@@ -37,7 +41,7 @@ parse(p, varargin{:});
 in = p.Results;
 
 % Load gradient
-g = dlmread('bb_gradient_aparc.csv');
+g = dlmread(['bb_gradient_' parcellation '.csv']);
 
 % Define number of bins
 numbin = 5;

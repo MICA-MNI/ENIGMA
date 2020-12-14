@@ -1,4 +1,4 @@
-function bb_moments_raincloud(region_idx, title)
+function bb_moments_raincloud(region_idx, parcellation, title)
 %
 % Usage:
 %   bb_moments_raincloud(region_idx, title)
@@ -10,6 +10,9 @@ function bb_moments_raincloud(region_idx, title)
 % Inputs:
 %   region_idx (double array) - vector of data.
 %       Indices of regions to be included in analysis.
+%       parcellation (string, optional) - Name of parcellation.
+%       Options are: 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300',
+%       'schaefer_400', 'glasser_360'. Default is 'aparc'.
 %   title (string, optional) - Title of raincloud plot. Default is empty.
 %
 % Outputs:
@@ -20,16 +23,17 @@ function bb_moments_raincloud(region_idx, title)
 
 % data check
 if nargin < 1; error('Need data to plot'); end
-if nargin < 2; title = ''; end
+if nargin < 2; parcellation = 'aparc'; end
+if nargin < 3; title = ''; end
 
 % Load BigBrain statistical moments (mean, skewness) 
-bb_moments_aparc = dlmread('bb_moments_aparc.csv')
+bb_moments = dlmread(['bb_moments_' parcellation '.csv']);
 
 % Moments colors
 spec = [158,1,66; 102,194,165]/255;
 
 % Plot first moment at the top
-inv = 2 * (size(bb_moments_aparc, 1):-1:1);
+inv = 2 * (size(bb_moments, 1):-1:1);
 
 % Initiate figure
 set(gcf, 'color', 'white', 'renderer', 'painters', ...
@@ -37,17 +41,17 @@ set(gcf, 'color', 'white', 'renderer', 'painters', ...
 hold on
 
 % Loop over BigBrain moments
-for ii = 1:size(bb_moments_aparc, 1)
+for ii = 1:size(bb_moments, 1)
     jj = inv(ii);
      
     % Scatter plot
-    scatter(bb_moments_aparc(ii, region_idx), ...
+    scatter(bb_moments(ii, region_idx), ...
             rand([length(region_idx), 1])*.3 + (jj - 0.15), ...
             122, spec(ii,:), 'filled', 'MarkerEdgeColor', [1 1 1], ...
             'LineWidth', 0.88, 'MarkerFaceAlpha', 0.88)
 
     % Density distribution
-    [fi,xi] = ksdensity(bb_moments_aparc(ii, region_idx), 'Function', 'pdf');
+    [fi,xi] = ksdensity(bb_moments(ii, region_idx), 'Function', 'pdf');
     p = patch(xi, fi + jj + 0.3, spec(ii,:));
     p.EdgeColor = [1 1 1];
     p.LineWidth = 0.75;
@@ -55,21 +59,21 @@ for ii = 1:size(bb_moments_aparc, 1)
     p.FaceAlpha = .88;
 
     % In-house box plot
-    qr = [prctile(bb_moments_aparc(ii, region_idx), 25) prctile(bb_moments_aparc(ii, region_idx), 75)];
+    qr = [prctile(bb_moments(ii, region_idx), 25) prctile(bb_moments(ii, region_idx), 75)];
     rectangle('position',[qr(1) jj-0.15 qr(2)-qr(1) .3], 'FaceColor', [spec(ii, :) 0.41], ...
                   'EdgeColor', [0 0 0 .88], 'LineWidth', 1.5, 'Curvature', [.1 .1]);
     
     % Median line
-    line([median(bb_moments_aparc(ii, region_idx)) median(bb_moments_aparc(ii, region_idx))], ...
+    line([median(bb_moments(ii, region_idx)) median(bb_moments(ii, region_idx))], ...
           [(jj-0.15) (jj+0.15)], 'color', [0 0 0], 'linewidth', 4)  
 
     % Detect outliers, and if any, excluse them from the whiskers
-    if sum(isoutlier(bb_moments_aparc(ii, region_idx))) == 0
-        mini = nanmin(bb_moments_aparc(ii, region_idx));
-        maxi = nanmax(bb_moments_aparc(ii, region_idx));
+    if sum(isoutlier(bb_moments(ii, region_idx))) == 0
+        mini = nanmin(bb_moments(ii, region_idx));
+        maxi = nanmax(bb_moments(ii, region_idx));
     else
-        outid = find(isoutlier(bb_moments_aparc(ii, region_idx)));
-        dat = bb_moments_aparc(ii, region_idx);
+        outid = find(isoutlier(bb_moments(ii, region_idx)));
+        dat = bb_moments(ii, region_idx);
         dat(outid) = [];
         mini = nanmin(dat);
         maxi = nanmax(dat);
