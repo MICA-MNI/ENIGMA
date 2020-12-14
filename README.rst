@@ -9,13 +9,14 @@
     :target: https://pip.pypa.io/en/stable/?badge=stable
     :alt: Documentation Status   
 
-The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
-analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
 
 
 =======================
 ENIGMA TOOLBOX
 =======================
+
+The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
+analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
 
 |
 
