@@ -2,7 +2,7 @@
 ENIGMA TOOLBOX
 =======================
 
-[![Documentation Status](https://readthedocs.org/projects/micapipe/badge/?version=latest)](https://micapipe.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/enigma-toolbox/badge/?version=latest)](https://enigma-toolox.readthedocs.io/en/latest/?badge=latest)
 
 
 The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
