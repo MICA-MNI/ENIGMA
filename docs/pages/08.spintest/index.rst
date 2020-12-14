@@ -11,7 +11,8 @@ This page contains descriptions and examples to assess statistical significance 
 Assess statistical significance
 -------------------------------------------------------
 The intrinsic spatial smoothness in two given **cortical maps** may inflate the significance of their spatial correlation. 
-To overcome this challenge, we assess statistical significance using *spin permutation tests*. 
+To overcome this challenge, we assess statistical significance using *spin permutation tests*, 
+a framework proposed by `Alexander-Bloch and colleagues <https://www.sciencedirect.com/science/article/abs/pii/S1053811918304968?via%3Dihub>`_.
 To do so, we generate null models of overlap between cortical maps by projecting the spatial 
 coordinates of cortical data onto the surface spheres, apply randomly sampled rotations, 
 and reassign cortical values. We then compare the original correlation coefficients against 

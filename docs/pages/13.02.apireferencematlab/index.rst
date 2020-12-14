@@ -55,20 +55,22 @@ Matlab API
    :hidden:
 
    generated/load_fc.rst
+   generated/load_fc_as_one.rst
    generated/load_sc.rst
+   generated/load_sc_as_one.rst
 
 .. list-table::
    :widths: 25 400
    :header-rows: 0
 
    * - :ref:`load_fc()<load_fc_mat>`
-     - Load functional connectivity data parcellated using Desikan Killiany (author: @saratheriver)
+     - Load functional connectivity data (author: @saratheriver)
    * - :ref:`load_fc_as_one()<load_fc_as_one_mat>`
-     - Load functional connectivity data (cortical + subcortical in one matrix) parcellated using Desikan Killiany (author: @saratheriver)
+     - Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
    * - :ref:`load_sc()<load_sc_mat>`
-     - Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
+     - Load structural connectivity data (author: @saratheriver)
    * - :ref:`load_sc_as_one()<load_sc_as_one_mat>`
-     - Load structural connectivity data (cortical + subcortical in one matrix) parcellated using Desikan Killiany (author: @saratheriver)
+     - Load structural connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
 
 .. _matlabref_genedata:

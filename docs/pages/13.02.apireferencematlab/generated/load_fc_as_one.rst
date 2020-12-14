@@ -12,7 +12,7 @@ load_fc_as_one()
         [funcMatrix, funcLabels] = load_fc_as_one(parcellation)
 
 **Description:**
-    Load functional connectivity data (cortical + subcortical in one matrix) parcellated using Desikan Killiany (author: @saratheriver)
+    Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
 **Inputs:**
     **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is

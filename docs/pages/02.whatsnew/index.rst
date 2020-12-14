@@ -5,9 +5,21 @@
 What's new?
 ======================================
 
+v0.1.2 (December 1, 2020)
+------------------------------------------
+Bug fixes and improvement - still in pre-release
+
+::
+
+    ↪ [DOC 📄] Revise documentations                         |  @saratheriver
+    ↪ [ENH 🔧] Fix bug in fetch_ahba                         |  @saratheriver
+    ↪ [ENH 🔧] Reference updates                             |  @saratheriver
+
+
+
 v0.1.1 (November 14, 2020)
 ------------------------------------------
-Bug fixes and improvement following beta testing
+Bug fixes and improvement following beta testing - still in pre-release
 
 ::
 
@@ -20,6 +32,7 @@ Bug fixes and improvement following beta testing
     ↪ [NEW 🗽] HCP subcortico-subcortical connectivity       |  @saratheriver
     ↪ [ENH 🔧] References for new modules                    |  @saratheriver
     ↪ [ENH 🔧] Update API for new functions                  |  @saratheriver
+
 
 v0.1.0 (October 16, 2020)
 ------------------------------------------

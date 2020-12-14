@@ -5,15 +5,16 @@
 Connectivity data
 ==================================================
 
-This page contains descriptions and examples to use HCP connectivity data!
+This page contains descriptions and examples to use Human Connectome Project (HCP) connectivity data.
+
 For details on HCP participants and data processing, please see our manuscript entitled 
-`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
+`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://advances.sciencemag.org/content/6/47/eabc6457>`_.
 
 
 .. admonition:: one matrix 🎤
 
      Are you looking for subcortico-subcortical connectivity? Or do you want cortical and subcortical connectivity 
-     in one 82 x 82 matrix (68 cortical + 14 subcortical regions)? If so, check out our functions: ``load_fc_as_one()`` 
+     in one matrix? If so, check out our functions: ``load_fc_as_one()`` 
      :ref:`here<load_fc_as_one_mat>` and ``load_sc_as_one()`` :ref:`here<load_sc_as_one_mat>`!
 
 
@@ -22,7 +23,7 @@ For details on HCP participants and data processing, please see our manuscript e
 Load cortical connectivity matrices
 ----------------------------------------
 The **ENIGMA TOOLBOX** provides structural (diffusion MRI) and functional 
-(resting-state functional MRI) connectivity matrices obtained from the Human Connectome Project (HCP). 
+(resting-state functional MRI) connectivity matrices obtained from the HCP. 
 
 .. tabs::
 
@@ -124,8 +125,8 @@ left middle temporal gyrus as example seed.
 Load subcortical connectivity matrices
 -------------------------------------------
 | Subcortico-cortical as well as subcortico-subcortical connectivity matrices are also included in the
- **ENIGMA TOOLBOX**! As above, we can load these structural and functional matrices and extract seed-based connectivity
- from subcortical seeds!
+ **ENIGMA TOOLBOX**. As above, we can load these structural and functional matrices and extract seed-based connectivity
+ from subcortical seeds.
 
 .. tabs::
 

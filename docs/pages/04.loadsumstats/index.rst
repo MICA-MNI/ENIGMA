@@ -6,15 +6,15 @@ Summary statistics
 ======================================
 
 This page contains descriptions and examples to load case-control datasets from 
-several ENIGMA Working Groups! These ENIGMA summary statistics contain the following data: **effect sizes 
+several ENIGMA Working Groups. These ENIGMA summary statistics contain the following data: **effect sizes 
 for case-control differences** (d_icv), **standard error** (se_icv), **lower bound of the confidence interval** 
 (low_ci_icv), **upper bound of the confidence interval** (up_ci_icv), **number of controls** (n_controls), 
 **number of patiens** (n_patients), **observed p-values** (pobs), **false discovery rate (FDR)-corrected p-value** (fdr_p).
 
 .. admonition:: Can't find the data you're searching for? 🙈
 
-     Let us know what's missing and we'll try and fetch that data for you and implement it in our toolbox! 
-     Get in touch with us `here <https://github.com/MICA-MNI/ENIGMA/issues>`_!
+     Let us know what's missing and we'll try and fetch that data for you and implement it in our toolbox. 
+     Get in touch with us `here <https://github.com/MICA-MNI/ENIGMA/issues>`_.
 
 
 \* 📸 *indicates case-control tables used in the code snippets.*

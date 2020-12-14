@@ -5,18 +5,18 @@
 Surface data visualization
 ======================================
 
-This page contains descriptions and examples to visualize surface data!
+This page contains descriptions and examples to visualize surface data.
 
 
 Cortical surface visualization
 -----------------------------------
-**ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations!   
+**ENIGMA TOOLBOX** comes equipped with fsaverage5 and Conte69 cortical midsurfaces and numerous parcellations.   
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
 In the following example, we will display cortical atrophy in individuals with left TLE.
 
 .. admonition:: Our visualization tools work with ENIGMA and non-ENIGMA datasets 👀
 
-     Mapping parcellated data to the surface has never been easier! Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA datasets. Our toolbox include several
+     Mapping parcellated data to the surface has never been easier! Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA datasets. Our toolbox includes several
      other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, ...), so you can take advantage of
      our visualization tools for all your other projects!
 
@@ -92,14 +92,15 @@ In the following example, we will display cortical atrophy in individuals with l
 Subcortical surface visualization
 ---------------------------------------
 The **ENIGMA TOOLBOX**'s subcortical viewer includes 16 segmented subcortical structures obtained from the Desikan-Killiany atlas (aparc+aseg.mgz). 
-Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus, pallidum, putamen, thalamus, and ventricles. In the following example,
+Subcortical regions include bilateral accumbens, amygdala, caudate, hippocampus (technically not subcortical but considered as such by FreeSurfer), 
+pallidum, putamen, thalamus, and ventricles. In the following example,
 we will display subcortical atrophy in individuals with left TLE.
 
 .. admonition:: We've mentioned this already, but don't forget that...
 
      Subcortical input values are ordered as follows: left-accumbens, left-amygdala, left-caudate, left-hippocampus, 
      left-pallidum, left-putamen, left-thalamus, left-ventricles, right-accumbens, right-amygdala, right-caudate, right-hippocampus, 
-     right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our ``reorder_sctx()`` function! 
+     right-pallidum, right-putamen, right-thalamus, right-ventricles! You can re-order your subcortical dataset using our ``reorder_sctx()`` function. 
      \*Ventricles are optional.
 
 .. parsed-literal:: 

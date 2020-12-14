@@ -5,9 +5,9 @@
 Hub susceptibility
 ======================================
 
-This page contains descriptions and examples to build hub susceptibility models! For additional details 
+This page contains descriptions and examples to build hub susceptibility models. For additional details 
 on hub susceptibility models, please see our manuscript entitled 
-`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
+`Network-based atrophy modeling in the common epilepsies: a worldwide ENIGMA study <https://advances.sciencemag.org/content/6/47/eabc6457>`_.
 
 
 .. _cortical_hubs:
@@ -81,12 +81,12 @@ Subcortical hubs
 The :ref:`HCP connectivity data <surf_visualization>` can also be used to identify structural 
 and functional subcortico-cortical hub regions. As above, we simply compute the sum of all weighted 
 subcortico-cortical connections for every subcortical area. Once again, higher degree centrality 
-denotes increased hubness!
+denotes increased hubness.
 
 .. admonition:: No ventricles, no problem 👌🏼
 
      Because we do not have connectivity values for the ventricles, do make sure to set 
-     the "ventricles" flag to ``False`` when displaying the findings on the subcortical surfaces!
+     the "ventricles" flag to ``False`` when displaying the findings on the subcortical surfaces.
 
 .. parsed-literal:: 
 
@@ -245,7 +245,7 @@ cortical and subcortical atrophy (where lower values indicate greater atrophy re
 
 Plot hub-atrophy correlations
 ------------------------------------------------------------------------
-Now that we have done all the necessary analyses, we can finally display our correlations! 
+Now that we have done all the necessary analyses, we can finally display our correlations. 
 Here, a negative correlation indicates that greater atrophy correlates 
 with the spatial distribution of hub regions (greater degree centrality).  
 

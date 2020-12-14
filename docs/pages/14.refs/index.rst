@@ -87,7 +87,7 @@ Network-based atrophy models (*hubs*)
 
 Network-based atrophy models (*disease epicenters*)
 ------------------------------------------------------------
-- Larivière, S., Rodríguez-Cruces, R., Royer, J., Caligiuri, M. E., Gambardella, A., Concha, L., ... & Gleichgerrcht, E. (2020). Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study. bioRxiv.
+- Larivière, S., Rodríguez-Cruces, R., Royer, J., Caligiuri, M. E., Gambardella, A., Concha, L., ... & Gleichgerrcht, E. (2020). Network-based atrophy modeling in the common epilepsies: a worldwide ENIGMA study. Science Advances, 6.
 - Shafiei, G., Markello, R. D., Makowski, C., Talpalaru, A., Kirschner, M., Devenyi, G. A., ... & Chakravarty, M. M. (2020). Spatial patterning of tissue volume loss in schizophrenia reflects brain network architecture. Biological psychiatry, 87(8), 727-735.
 - Zeighami, Y., Ulla, M., Iturria-Medina, Y., Dadar, M., Zhang, Y., Larcher, K. M. H., ... & Dagher, A. (2015). Network structure of brain atrophy in de novo Parkinson's disease. Elife, 4, e08440.
 - Brown, J. A., Deng, J., Neuhaus, J., Sible, I. J., Sias, A. C., Lee, S. E., ... & Grinberg, L. T. (2019). Patient-tailored, connectivity-based forecasts of spreading brain atrophy. Neuron, 104(5), 856-868.

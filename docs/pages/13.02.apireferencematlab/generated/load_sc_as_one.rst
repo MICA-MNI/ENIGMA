@@ -12,7 +12,7 @@ load_sc_as_one()
         [strucMatrix, strucLabels] = load_sc_as_one(parcellation)
 
 **Description:**
-    Load structural connectivity data (cortical + subcortical in one matrix) parcellated using Desikan Killiany (author: @saratheriver)
+    Load structural connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
 **Inputs:**
     **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is

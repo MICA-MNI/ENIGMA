@@ -5,7 +5,7 @@
 Economo-Koskinas cytoarchitectonics
 ==================================================
 
-This page contains descriptions and examples to stratify and visualize surface-based findings according to cyatoarchitectural variation! 
+This page contains descriptions and examples to stratify and visualize surface-based findings according to cyatoarchitectural variation. 
 
 .. _ve_classes:
 
@@ -22,7 +22,7 @@ in smalls cells, even in layer IV, and a rarified layer V).
     :align: center
 
 In the following example, we contextualized disease-related cortical atrophy patterns with respect to the 
-well-established von Economo and Koskinas cytoarchiteconic atlas by summarizing cortex-wide effects across each
+well-established von Economo and Koskinas cytoarchitectonic atlas by summarizing cortex-wide effects across each
 of the five structural types of isocortex. To ease interpretation, stratification of findings based on the von Economo and Koskinas 
 atlas are also visualized in a spider plot. Here, negative values (towards the center) represent
 greater atrophy in disease cases relative to healthy controls.

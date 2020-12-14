@@ -6,7 +6,7 @@ BigBrain moments & gradient
 ==================================================
 
 This page contains descriptions and examples to stratify and visualize surface-based 
-findings according to BigBrain statistical moments and gradient! 
+findings according to BigBrain statistical moments and gradient. 
 
 .. _thr_map:
 
@@ -14,8 +14,8 @@ BigBrain statistical moments
 --------------------------------------
 As part of the **ENIGMA Toolbox**, we parametrized cytoarchitectural properties of the `BigBrain <https://science.sciencemag.org/content/340/6139/1472>`_ 
 — a 3D reconstruction of a *postmortem* stained and sliced  human brain – using two central moments (*i.e.*, mean and skewness) calculated across several cortical depths. 
-In essence, studying the mean of BigBrain intensity profiles across the cortical mantle allows inferences on overall cellular density, 
-whereas analysis of skewness contrasts relative properties of deep and superficial cortical layers, indexing the unevenness of cellular 
+In essence, studying the mean of BigBrain intensity profiles across the cortical mantle probes cellular/neuronal density, 
+whereas analysis of skewness contrasts deep and superficial cortical layers, indexing the unevenness of cellular 
 distribution, a critical dimension of laminar differentiation.
 
 .. image:: ./examples/example_figs/bb_moments_orig.png

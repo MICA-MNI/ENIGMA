@@ -5,9 +5,9 @@
 Epicenter mapping
 ======================================
 
-This page contains descriptions and examples to identify disease epicenters! For additional details 
+This page contains descriptions and examples to identify disease epicenters. For additional details 
 on disease epicenter mapping, please see our manuscript entitled 
-`Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_!
+`Network-based atrophy modeling in the common epilepsies: a worldwide ENIGMA study <https://advances.sciencemag.org/content/6/47/eabc6457>`_.
 
 
 Cortical epicenters
@@ -143,8 +143,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 As we have assessed the significance of every spatial correlation between seed-based cortico-cortical connectivity and cortical atrophy measures
 using spin permutation tests, we can set a significance threshold to identify disease epicenters. In the following example,
 we set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
-were greater than 0.1). As such, we are displaying the correlation coefficients of moderate-to-strong connectivity-atrophy 
-associations.
+were greater than 0.1). We are, thus, displaying only correlation coefficients whose significances passes at least these lenient thresholds.
 
 .. tabs::
 
@@ -310,8 +309,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 As in the :ref:`cortical epicenters <ctx_epi>` example above, we have assessed the significance of every spatial correlation between 
 seed-based subcortico-cortical connectivity and cortical atrophy measures
 using spin permutation tests, and set a lenient threshold of *p* < 0.1 (*i.e.*, correlation coefficients were set to zeros for regions whose *p*-values 
-were greater than 0.1). As such, we are displaying the correlation coefficients of moderate-to-strong connectivity-atrophy 
-associations.
+were greater than 0.1). We are, thus, displaying only correlation coefficients whose significances passes at least these lenient thresholds.
 
 .. tabs::
 

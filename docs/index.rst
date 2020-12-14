@@ -78,7 +78,7 @@ connectivity data<hcp_connectivity>` and :ref:`transcriptomic data<gene_maps>`.
 Advanced analytical workflows 🦾
 --------------------------------------------------------
 The main goal of the **ENIGMA TOOLBOX** is
-to provide the ENIGMA community with open-access methodological pipelines and analytical tools for 
+to provide the ENIGMA community with open-access pipelines and analytical tools for 
 conducting advanced secondary analyses, offering a platform to facilitate results reproducibility both 
 *within* and *across* ENIGMA Working Groups. From these workflows, users can gain further neurobiological 
 insights into how disease-related regional susceptibility patterns are anchored to multiple scales of 

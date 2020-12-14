@@ -15,7 +15,8 @@ bb_moments_raincloud()
     Stratify regional data according to BigBrain statistical moments (authors: @caseypaquola, @saratheriver)
 
 **Inputs**:
-    - **region_idx** (*double array*) - vector of data. Indices of regions to be included in analysis
+    - **region_idx** (*double array*) - Vector of data. Indices of regions to be included in analysis
+    - **parcellation** (*string, optional*) - Name of parcellation. Options are 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser_360'. Default is 'aparc'.
     - **title** (*string, optional*) - Title of raincloud plot. Default is empty.
 
 **Outputs**:

@@ -10,7 +10,7 @@ Usage notes
 
 | To accommodate a larger scientific audience, we present code snippets in both *Python* and *Matlab*. Tutorials in the **ENIGMA TOOLBOX** are also compatible 
         with individual site data or data derived from a mega-analysis (**mega**) as well as data obtained from a meta-analytical studies (**meta**). 
-        Each available options is presented in their respective tabs as shown below; if tabs do not specify **meta** or **mega**, then the code is 
+        Each available option is presented in their respective tabs as shown below; if tabs do not specify **meta** or **mega**, then the code is 
         generalizable to both dataset options.
 
 .. tabs::

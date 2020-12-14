@@ -6,8 +6,10 @@ Disease-related transcriptomics
 =========================================
 
 This page contains descriptions and examples to extract GWAS-implicated gene expression data
-and project them to cortical and subcortical surfaces! In the following tutorial, we will use epilepsy-related genes (more specifically, genes related to focal 
-sclerosis) as an example, but feel free to replace *epilepsy* with any other disorder listed below!
+and project them to cortical and subcortical surfaces. 
+
+In the following tutorial, we will use epilepsy-related genes (more specifically, genes related to hippocampal 
+sclerosis) as an example, but feel free to replace *epilepsy* with any other disorder listed below.
 
 
 Extract disease-related genes
@@ -26,10 +28,10 @@ Extract disease-related genes
 
 .. admonition:: Caution ⚠️
 
-     Pre-defined gene sets are obtained from individual studies and are liable to be changed!
+     Pre-defined gene sets are obtained from individual studies and are liable to be changed.
      We welcome any suggestions you may have on defining proper disease-related gene sets and are
-     happy to expand this function to include other interesting disorders! Get in touch with us
-     `here <https://github.com/saratheriver/ENIGMA/issues>`_!
+     happy to expand this function to include other interesting disorders. Get in touch with us
+     `here <https://github.com/saratheriver/ENIGMA/issues>`_.
 
 .. parsed-literal:: 
 
@@ -66,8 +68,8 @@ Extract disease-related genes
 
 Visualize disease-related gene expression maps
 ------------------------------------------------------------------------
-Following up on the above example, we provide a brief example to project gene expression maps to the surface! 
-Once again, we use Focal HS (epilepsy) genes as an example.
+Following up on the above example, we provide a brief example to project gene expression maps to the surface. 
+Once again, we use genes related to hippocampal sclerosis as an example.
 
 .. parsed-literal:: 
 

@@ -52,7 +52,9 @@ Connectivity matrices
    :toctree: generated/
 
    enigmatoolbox.datasets.load_fc
+   enigmatoolbox.datasets.load_fc_as_one
    enigmatoolbox.datasets.load_sc
+   enigmatoolbox.datasets.load_sc_as_one
 
 Gene co-expression data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

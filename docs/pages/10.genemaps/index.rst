@@ -5,7 +5,7 @@
 Gene expression data
 ======================================
 
-This page contains descriptions and examples to load gene expression data!
+This page contains descriptions and examples to load gene expression data.
 
 
 Fetch gene expression data
@@ -19,7 +19,7 @@ Following the examples below, we can fetch microarray expression data.
      The Allen Human Brain Atlas microarray expression data loaded as part of the **ENIGMA TOOLBOX** was originally
      fetched from the `abagen <https://github.com/rmarkello/abagen>`_ toolbox using the ``abagen.get_expression_data()``
      command, using data from *all* donors. We then re-organized the rows (corresponding to region labels) to match the order 
-     used in ENIGMA-derived data matrices! For more flexibility, check our their toolbox!
+     used in ENIGMA-derived data matrices. For more flexibility, check out their toolbox!
 
 .. admonition:: Got NaNs? 🥛
 
