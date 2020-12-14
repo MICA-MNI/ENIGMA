@@ -9,7 +9,7 @@
     :target: https://pip.pypa.io/en/stable/?badge=stable
     :alt: Documentation Status   
 
-.. image:: https://circleci.com/gh/saratheriver/ENIGMA/tree/master.svg?style=svg
+.. image:: https://circleci.com/gh/saratheriver/ENIGMA/tree/master.svg?style=shield
     :target: https://circleci.com/gh/saratheriver/ENIGMA/tree/master
 
 
