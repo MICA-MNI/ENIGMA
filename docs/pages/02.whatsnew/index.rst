@@ -12,6 +12,10 @@ Bug fixes and improvement - still in pre-release
 ::
 
     ↪ [DOC 📄] Revise documentations                         |  @saratheriver
+    ↪ [NEW 🗽] Generalizability to several parcellations     |  @saratheriver
+    ↪ [NEW 🗽] Additional parcellations for HCP connectivity |  @saratheriver
+    ↪ [NEW 🗽] Additional parcellations for AHBA             |  @saratheriver
+    ↪ [NEW 🗽] Additional parcellations for histology module |  @saratheriver
     ↪ [ENH 🔧] Fix bug in fetch_ahba                         |  @saratheriver
     ↪ [ENH 🔧] Reference updates                             |  @saratheriver
 

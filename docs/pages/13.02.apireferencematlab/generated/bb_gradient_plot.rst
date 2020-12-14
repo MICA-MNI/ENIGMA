@@ -18,6 +18,7 @@ bb_gradient_plot()
     - **data** (*double array*) – vector of data. Parcellated data.
 
 **Name/value pairs**:
+    - **parcellation** (*string, optional*) - Name of parcellation. Options are: 'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser_360'. Default is 'aparc'.
     - **title** (*string, optional*) – Title of spider plot. Default is empty.
     - **axis_range** (*double array, optional*) - Range of spider plot axes. Default is (min, max).
     - **yaxis_label** (*string, optional*) - Label for y-axis. Default is empty.
