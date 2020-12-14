@@ -58,12 +58,13 @@ plot_subcortical(array_name=np.mean(epilepsy_gene_data, axis=1)[68:], ventricles
 """
 Figure 4a. Load connectivity data
 """
-from enigmatoolbox.datasets import load_fc, load_sc
+from enigmatoolbox.datasets import load_fc, load_sc, load_fc_as_one, load_sc_as_one
 from nilearn import plotting
 import numpy as np
 
 # Load and plot functional connectivity data
-fc_ctx, fc_ctx_labels, fc_sctx, fc_sctx_labels = load_fc()
+# fc_ctx, fc_ctx_labels, fc_sctx, fc_sctx_labels = load_fc()
+fc_ctx, fc_ctx_labels = load_fc_as_one()
 
 fc_plot_ctx = plotting.plot_matrix(np.tril(fc_ctx), figure=(11,11), labels=fc_ctx_labels, vmax=0.8, vmin=0, cmap='Reds')
 fc_plot_ctx.axes.spines['right'].set_visible(False)
@@ -78,7 +79,8 @@ fc_plot_sctx.axes.set_xticks(range(fc_ctx.shape[1]))
 fc_plot_sctx.axes.set_xticklabels(fc_ctx_labels)
 
 # Load and plot structural connectivity data
-sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels = load_sc()
+# sc_ctx, sc_ctx_labels, sc_sctx, sc_sctx_labels = load_sc()
+sc_ctx, sc_ctx_labels = load_sc_as_one()
 
 sc_plot_ctx = plotting.plot_matrix(np.triu(sc_ctx), figure=(11, 11), labels=sc_ctx_labels, vmax=10, vmin=0, cmap='Blues')
 sc_plot_ctx.axes.set_xticklabels('')
@@ -104,7 +106,6 @@ from enigmatoolbox.utils.parcellation import parcel_to_surface
 from enigmatoolbox.plotting import plot_cortical, plot_subcortical
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
-from enigmatoolbox.plotting import enigma_scatter
 
 # Remove subcortical values corresponding to the ventricles
 SV_d_noVent = SV_d.drop([np.where(SV['Structure'] == 'LLatVent')[0][0],
@@ -125,18 +126,6 @@ plot_subcortical(array_name=fc_sctx_dc, ventricles=False, size=(800, 400),
 fc_ctx_r = np.corrcoef(fc_ctx_dc, CT_d)[0, 1]
 fc_sctx_r = np.corrcoef(fc_sctx_dc, SV_d_noVent)[0, 1]
 
-fig = plt.figure(constrained_layout=True, figsize=(8, 3))
-gs = gridspec.GridSpec(1, 2, figure=fig)
-
-ax1 = fig.add_subplot(gs[0, 0])
-enigma_scatter(ax1, fc_ctx_dc, CT_d, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-               xlabel='Cortico-cortical degree centrality', ylabel='Cortical thickness (z-score)',
-               xlim=(5, 30), ylim=(-1, 0.5), corr_value=fc_ctx_r)
-
-ax2 = fig.add_subplot(gs[0, 1])
-enigma_scatter(ax2, fc_sctx_dc, SV_d_noVent, scatter_color='#A8221C', linear_fit=True, fit_color='#A8221C',
-               xlabel='Subcortico-cortical degree centrality', ylabel='Subcortical volume (z-score)',
-               xlim=(1, 13), ylim=(-1, 0.5), corr_value=fc_sctx_r)
 
 
 """

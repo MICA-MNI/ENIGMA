@@ -178,33 +178,53 @@ def load_subcortical(with_normals=False, join=False):
     return surfs[0], surfs[1]
 
 
-def load_sc():
-    """ Load structural connectivity data parcellated using Desikan Killiany (author: @saratheriver)
+def load_sc(parcellation='aparc'):
+    """ Load structural connectivity data (author: @saratheriver)
+
+        Parameters
+        ----------
+        parcellation : str, optional
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Default is 'aparc' with n cortical regions.
 
         Returns
         -------
         strucMatrix_ctx : 2D ndarray
-            Cortico-cortical connectivity, shape = (68, 68)
+            Cortico-cortical connectivity, shape = (n, n)
         strucLabels_ctx : 1D ndarray
-            Cortical labels, shape = (68,)
+            Cortical labels, shape = (n,)
         strucMatrix_sctx : 2D ndarray
-            Subcortico-cortical connectivity, shape = (14, 68)
+            Subcortico-cortical connectivity, shape = (14, n)
         strucLabels_sctx : 1D ndarray
             Subcortical labels, shape = (14,)
     """
     root_pth = os.path.dirname(__file__)
 
-    ctx = 'strucMatrix_ctx.csv'
-    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+    if parcellation is 'aparc':
+        ctx = 'strucMatrix_ctx.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
-    ctxL = 'strucLabels_ctx.csv'
-    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+        ctxL = 'strucLabels_ctx.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
-    sctx = 'strucMatrix_sctx.csv'
-    sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
+        sctx = 'strucMatrix_sctx.csv'
+        sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
 
-    sctxL = 'strucLabels_sctx.csv'
-    sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
+        sctxL = 'strucLabels_sctx.csv'
+        sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
+
+    else:
+        ctx = 'strucMatrix_ctx_' + parcellation + '.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+        ctxL = 'strucLabels_ctx_' + parcellation + '.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+
+        sctx = 'strucMatrix_sctx_' + parcellation + '.csv'
+        sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
+
+        sctxL = 'strucLabels_sctx_' + parcellation + '.csv'
+        sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
 
     return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
            np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
@@ -212,33 +232,53 @@ def load_sc():
            np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
 
 
-def load_fc():
-    """ Load functional connectivity data parcellated using Desikan Killiany (author: @saratheriver)
+def load_fc(parcellation='aparc'):
+    """ Load functional connectivity data (author: @saratheriver)
+
+        Parameters
+        ----------
+        parcellation : str, optional
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Default is 'aparc' with n cortical regions.
 
         Returns
         -------
         funcMatrix_ctx : 2D ndarray
-            Cortico-cortical connectivity, shape = (68, 68)
+            Cortico-cortical connectivity, shape = (n, n)
         funcLabels_ctx : 1D ndarray
-            Cortical labels, shape = (68,)
+            Cortical labels, shape = (n,)
         funcMatrix_sctx : 2D ndarray
-            Subcortico-cortical connectivity, shape = (14, 68)
+            Subcortico-cortical connectivity, shape = (14, n)
         funcLabels_sctx : 1D ndarray
             Subcortical labels, shape = (14,)
     """
     root_pth = os.path.dirname(__file__)
 
-    ctx = 'funcMatrix_ctx.csv'
-    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+    if parcellation is 'aparc':
+        ctx = 'funcMatrix_ctx.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
-    ctxL = 'funcLabels_ctx.csv'
-    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+        ctxL = 'funcLabels_ctx.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
-    sctx = 'funcMatrix_sctx.csv'
-    sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
+        sctx = 'funcMatrix_sctx.csv'
+        sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
 
-    sctxL = 'funcLabels_sctx.csv'
-    sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
+        sctxL = 'funcLabels_sctx.csv'
+        sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
+
+    else:
+        ctx = 'funcMatrix_ctx_' + parcellation + '.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+        ctxL = 'funcLabels_ctx_' + parcellation + '.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+
+        sctx = 'funcMatrix_sctx_' + parcellation + '.csv'
+        sctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctx)
+
+        sctxL = 'funcLabels_sctx_' + parcellation + '.csv'
+        sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
 
     return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
            np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
@@ -246,47 +286,72 @@ def load_fc():
            np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
 
 
-def load_sc_as_one():
-    """ Load structural connectivity data (cortical + subcortical in one matrix) parcellated
-        using Desikan Killiany (author: @saratheriver)
+def load_sc_as_one(parcellation='aparc'):
+    """ Load structural connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
+
+        Parameters
+        ----------
+        parcellation : str, optional
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Default is 'aparc' with n cortical regions.
 
         Returns
         -------
         strucMatrix_ctx : 2D ndarray
-            Structural connectivity, shape = (82, 82)
+            Structural connectivity, shape = (n+14, n+14)
         strucLabels_ctx : 1D ndarray
-            Region labels, shape = (82,)
+            Region labels, shape = (n+14,)
     """
     root_pth = os.path.dirname(__file__)
+    if parcellation is 'aparc':
+        ctx = 'strucMatrix_with_sctx.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
-    ctx = 'strucMatrix_with_sctx.csv'
-    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+        ctxL = 'strucLabels_with_sctx.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
-    ctxL = 'strucLabels_with_sctx.csv'
-    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+    else:
+        ctx = 'strucMatrix_with_sctx_' + parcellation + '.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+        ctxL = 'strucLabels_with_sctx_' + parcellation + '.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
     return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
            np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
 
 
-def load_fc_as_one():
-    """ Load functional connectivity data (cortical + subcortical in one matrix) parcellated
-        using Desikan Killiany (author: @saratheriver)
+def load_fc_as_one(parcellation='aparc'):
+    """ Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
+
+        Parameters
+        ----------
+        parcellation : str, optional
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Default is 'aparc' with n cortical regions.
 
         Returns
         -------
         funcMatrix_ctx : 2D ndarray
-            Functional connectivity, shape = (82, 82)
+            Functional connectivity, shape = (n+14, n+14)
         funcLabels_ctx : 1D ndarray
-            Region labels, shape = (82,)
+            Region labels, shape = (n+14,)
     """
     root_pth = os.path.dirname(__file__)
 
-    ctx = 'funcMatrix_with_sctx.csv'
-    ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+    if parcellation is 'aparc':
+        ctx = 'funcMatrix_with_sctx.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
-    ctxL = 'funcLabels_with_sctx.csv'
-    ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+        ctxL = 'funcLabels_with_sctx.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
+
+    else:
+        ctx = 'funcMatrix_with_sctx_' + parcellation + '.csv'
+        ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
+
+        ctxL = 'funcLabels_with_sctx_' + parcellation + '.csv'
+        ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
     return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
            np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
@@ -318,13 +383,14 @@ def fetch_ahba(csvfile=None):
             Parameters
             ----------
             csvfile : None or string, optional
-                Path to downloaded csvfile.
-                If None (default), fetches microarray expression data from the internet.
+                Path to downloaded csvfile. For more threshold and parcellation options, download csvfile from here:
+                https://github.com/saratheriver/enigma-extra/tree/master/ahba
+                If None (default), fetches microarray expression data from the internet (aparc and stable r > 0.2).
 
             Returns
             -------
             genes : pandas.DataFrame
-                Table of gene co-expression data, shape = (82, 15634)
+                Table of gene co-expression data, shape = (82, 15633)
         """
     if csvfile is None:
         url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stable20.csv'
