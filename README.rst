@@ -27,9 +27,9 @@ Related publication 📝
 
 Some scripts and analyses have been used in a previous ENIGMA publication. Make sure you check it out!
 
-`Network modeling, hub susceptibility, and epicenter mapping in epilepsy <https://www.biorxiv.org/content/10.1101/2020.05.04.076836v1>`_
+`Network modeling, hub susceptibility, and epicenter mapping in epilepsy <https://advances.sciencemag.org/content/6/47/eabc6457>`_
     Larivière S, Rodríguez-Cruces, Royer J, ..., Whelan CD, Thompson PM, Sisodiya SM, Bernasconi A, Labate A, McDonald CR, Bernasconi N, Bernhardt BC (2020). 
-    *Network-based atrophy modelling in the common epilepsies: a worldwide ENIGMA study*, bioRxiv.
+    *Network-based atrophy modeling in the common epilepsies: a worldwide ENIGMA study*, Science Advances, 6.
 
 .. image:: ./docs/pages/extrafigs/rdme_epi.png
     :scale: 50%
