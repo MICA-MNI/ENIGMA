@@ -11,10 +11,12 @@ function [p_spin, r_dist] = spin_test(map1, map2, varargin)
 %   map2 (double array) - The other map to be correlated
 %
 % Name/value pairs:
-%   surface_name (string, optional) - Surface name {'fsa5', 'fsa5_with_sctx', 
-%       'conte69'}. Default is 'fsa5'.
+%   Surface name (string, optional) ? Surface name {?fsa5?, ?fsa5_with_sctx?}. 
+%       Use 'fsa5' for Conte69. Default is ?fsa5?.
 %   parcellation_name (string, optional) - Parcellation name {'aparc', 
-%       'aparc_aseg'}. Default is 'aparc'.
+%       'aparc_aseg', 'schaefer_100', 'schaefer_200', 'schaefer_300', 
+%       'schaefer_400', 'schaefer_500', 'schaefer_600', 'schaefer_700', 
+%       'schaefer_800', 'schaefer_900', 'schaefer_1000'}. Default is 'aparc'.
 %   n_rot (int, optional) - Number of spin rotations. Default is 1000.
 %   type (string, optional) - Correlation type {'pearson', 'spearman'}. 
 %       Default is 'pearson'.
@@ -57,11 +59,6 @@ if strcmp(in.surface_name, 'fsa5')
 elseif strcmp(in.surface_name, 'fsa5_with_sctx')
     lsphere = SurfStatReadSurf1('fsa5_with_sctx_sphere_lh');
     rsphere = SurfStatReadSurf1('fsa5_with_sctx_sphere_rh');
-    
-elseif strcmp(in.surface_name, 'conte69')
-    error('Not yet implemented :/')
-    lsphere = SurfStatReadSurf1('conte69_sphere_lh');
-    rsphere = SurfStatReadSurf1('conte69_sphere_rh');
 end
 
 

@@ -19,7 +19,7 @@ spin_test()
     - **map2** (*double array*) – The other map to be correlated
 
 **Name/value pairs**:
-    - **surface_name** (*string, optional*) – Surface name {‘fsa5’, ‘fsa5_with_sctx’, ‘conte69’}. Default is ‘fsa5’.
+    - **surface_name** (*string, optional*) – Surface name {‘fsa5’, ‘fsa5_with_sctx’}. Use 'fsa5' for Conte69. Default is ‘fsa5’.
     - **parcellation_name** (*string, optional*) – Parcellation name {‘aparc’, ‘aparc_aseg’}. Default is ‘aparc’.
     - **n_rot** (*int, optional*) – Number of spin rotations. Default is 100.
     - **type** (*string, optional*) – Correlation type {‘pearson’, ‘spearman’}. Default is ‘pearson’.

@@ -57,7 +57,8 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
 
         centroid = np.empty((0, 3))
         for ic in range(ctab.shape[0]):
-            if not names[ic].decode("utf-8") == 'unknown' and not names[ic].decode("utf-8") == 'corpuscallosum':
+            if not names[ic].decode("utf-8") == 'unknown' and not names[ic].decode("utf-8") == 'corpus'\
+                    and not names[ic].decode("utf-8") == 'medialwall' and not names[ic].decode("utf-8") == 'Background+FreeSurfer_Defined_Medial_Wall':
                 label = ctab[ic, -1]
                 centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[labels == label, :], axis=0))))
 
@@ -311,7 +312,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
     map2 : narray, ndarray, or pandas.Series
         The other map to be correlated
     surface_name : string, optional
-        Surface name {'fsa5', 'fsa5_with_sctx', 'conte69'}. Default is 'fsa5'.
+        Surface name {'fsa5', 'fsa5_with_sctx'}. Use 'fsa5' for Conte69. Default is 'fsa5'.
     parcellation_name : string, optional
         Parcellation name {'aparc', 'aparc_aseg'}. Default is 'aparc'.
     n_rot : int, optional
@@ -353,9 +354,6 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True)
     elif surface_name is "fsa5_with_sctx":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True, with_sctx=True)
-    elif surface_name is "conte69":
-        raise ValueError('Not yet implemented :/')
-        sphere_lh, sphere_rh = load_conte69(as_sphere=True)
 
     root_pth = os.path.dirname(__file__)
     # get sphere coordinates of parcels
