@@ -5,7 +5,7 @@
 What's new?
 ======================================
 
-v0.1.2 (December 1, 2020)
+v0.1.2 (December 18, 2020)
 ------------------------------------------
 Bug fixes and improvement - still in pre-release
 
