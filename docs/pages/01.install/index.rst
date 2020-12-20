@@ -17,11 +17,14 @@ Installation
         **ENIGMA TOOLBOX** has the following dependencies:
 
         - `numpy <https://numpy.org/>`_
-        - `pandas <https://pandas.pydata.org/>`_
+        - `matplotlib <https://matplotlib.org/>`_ 
         - `vtk <https://vtk.org/>`_
         - `nibabel <https://nipy.org/nibabel/index.html>`_
+        - `pillow <https://pillow.readthedocs.io/en/stable/>`_
+        - `pandas <https://pandas.pydata.org/>`_
+        - `scipy <https://www.scipy.org/>`_
+        - `scikit-learn <https://scikit-learn.org/stable/>`_
         - `nilearn <https://nilearn.github.io/>`_
-        - `matplotlib <https://matplotlib.org/>`_
 
         The **ENIGMA TOOLBOX** can be directly downloaded from Github as follows: ::
 
@@ -34,7 +37,7 @@ Installation
 
         **ENIGMA TOOLBOX** was tested with MATLAB R2017b.
 
-        To install the MATLAB toolbox simply `download <https://github.com/MICA-MNI/ENIGMA/archive/0.1.1.zip>`_ 
+        To install the MATLAB toolbox simply `download <https://github.com/MICA-MNI/ENIGMA/archive/0.1.2.zip>`_ 
         and unzip the GitHub toolbox (slow 🐢) or run the following command in your terminal (fast 🐅): ::
             
             git clone https://github.com/MICA-MNI/ENIGMA.git
