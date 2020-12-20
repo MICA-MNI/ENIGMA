@@ -89,7 +89,7 @@ fc_ctx_p, fc_ctx_d = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5',
 
 # Shuf permutation testing for two subcortical maps
 fc_sctx_p, fc_sctx_d = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000,
-                                 type='pearson', spin_dist=True)
+                                 type='pearson', null_dist=True)
 
 
 """

@@ -423,7 +423,7 @@ def get_connected_components(surf, labeling=None, mask=None, fill=0,
     adj.data[mask_remove] = 0
     adj.eliminate_zeros()
 
-    nc, cc = csg.connected_components(adj, directed=True, connection='weak')
+    _, cc = csg.connected_components(adj, directed=True, connection='weak')
     cc += 1
     if mask is not None:
         cc = map_to_mask(cc, mask=mask, fill=fill)

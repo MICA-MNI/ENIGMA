@@ -55,10 +55,10 @@ def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSu
         fieldos = list(sum_stats.keys())
 
         # Loop through structure fields (case-control options)
-        for jj in range(len(fieldos)):
-            if not any(ig in fieldos[jj] for ig in ignore) and any(meas in fieldos[jj] for meas in measure):
-                mat_d.append(sum_stats[fieldos[jj]].iloc[:, 2])
-                names.append(disorder[jj] + ': ' + fieldos[jj])
+        for jj in enumerate(fieldos):
+            if not any(ig in jj[1] for ig in ignore) and any(meas in jj[1] for meas in measure):
+                mat_d.append(sum_stats[jj[1]].iloc[:, 2])
+                names.append(disorder[jj[0]] + ': ' + jj[1])
 
     mat_d = (np.asarray(mat_d))
 

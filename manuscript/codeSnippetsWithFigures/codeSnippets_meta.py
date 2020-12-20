@@ -136,10 +136,10 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 
 # Spin permutation testing for two cortical maps
-fc_ctx_p, fc_ctx_dist = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, spin_dist=True)
+fc_ctx_p, fc_ctx_dist = spin_test(fc_ctx_dc, CT_d, surface_name='fsa5', parcellation_name='aparc', n_rot=1000, null_dist=True)
 
 # Shuf permutation testing for two subcortical maps
-fc_sctx_p, fc_sctx_dist = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000, spin_dist=True)
+fc_sctx_p, fc_sctx_dist = shuf_test(fc_sctx_dc, SV_d_noVent, n_rot=1000, null_dist=True)
 
 # Plot null distributions
 fig = plt.figure(constrained_layout=True, figsize=(8, 3))

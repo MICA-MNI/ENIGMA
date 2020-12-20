@@ -58,7 +58,6 @@ def _read_geometry_fs(ipth, is_ascii=False):
     if is_ascii:
         with open(ipth) as fh:
             re_header = re.compile('^#!ascii version (.*)$')
-            fname_header = re_header.match(fh.readline()).group(1)
 
             re_npoints_cells = re.compile('[\s]*(\d+)[\s]*(\d+)[\s]*$')
             re_n = re_npoints_cells.match(fh.readline())

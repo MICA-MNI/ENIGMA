@@ -56,8 +56,8 @@ def economo_koskinas_spider(parcel_data=None, parcellation='aparc_fsa5', fill=0,
     ve_class = np.zeros((5, 1))
     for ii in range(5):
         jj = ii + 1
-        id = np.where(ve == jj)
-        ve_class[ii] = np.nanmean(surf_data[id])
+        ido = np.where(ve == jj)
+        ve_class[ii] = np.nanmean(surf_data[ido])
 
     # Create dataframe
     class_mean = pd.DataFrame(data=np.transpose(ve_class), columns=['Agranular', 'Frontal', 'Parietal', 'Polar',

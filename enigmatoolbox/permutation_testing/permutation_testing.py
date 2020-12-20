@@ -7,7 +7,7 @@ import nibabel as nb
 import numpy as np
 import pandas as pd
 import warnings
-from ..datasets import load_fsa5, load_conte69
+from ..datasets import load_fsa5
 from sklearn.utils import check_random_state
 from scipy.spatial.distance import cdist
 from sklearn.base import BaseEstimator

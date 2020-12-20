@@ -58,7 +58,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         raise ValueError("'{0}' only accepts {1} input ports.".
                          format(ftr1.__vtkname__, ftr1.nip))
 
-    if add_conn is True or type(add_conn) == int:
+    if add_conn is True or isinstance(add_conn, int):
         if ftr1.nip > 1:
             raise ValueError("No support yet for 'add_conn' when filter "
                              "has more than 1 input ports.")
@@ -69,7 +69,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
                              "accept multiple connections.".
                              format(ftr1.nip, ftr1.__vtkname__))
 
-        if type(add_conn) == int:
+        if isinstance(add_conn, int):
             if not hasattr(ftr1, 'GetUserManagedInputs') or \
                     ftr1.GetUserManagedInputs() == 0:
                 raise ValueError("Input port {0} of '{1}' does not accept "

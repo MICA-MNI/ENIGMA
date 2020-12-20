@@ -26,7 +26,7 @@ class Scraper(object):
             raise ImportError('You must install `sphinx_gallery`')
         image_names = list()
         image_path_iterator = block_vars["image_path_iterator"]
-        for k, p in Plotter.DICT_PLOTTERS.items():
+        for _, p in Plotter.DICT_PLOTTERS.items():
             fname = next(image_path_iterator)
 
             for _, lren in p.renderers.items():

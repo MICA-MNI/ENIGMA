@@ -139,7 +139,7 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         if vtkobject is None:
             name = type(self).__name__.replace('BS', 'vtk', 1)
             vtkobject = getattr(vtk, name)()
-        elif type(vtkobject) == type:
+        elif isinstance(vtkobject, type):
             vtkobject = vtkobject()
 
         if isinstance(vtkobject, type(self)):
