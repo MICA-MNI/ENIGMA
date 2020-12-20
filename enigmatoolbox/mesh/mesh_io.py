@@ -92,7 +92,6 @@ def read_surface(ipth, itype=None, return_data=True, update=True):
     :func:`write_surface`
 
     """
-
     if itype is None:
         itype = ipth.split('.')[-1]
 

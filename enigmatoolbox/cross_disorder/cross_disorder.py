@@ -43,7 +43,6 @@ def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSu
         names - list
             Name of disorder and case-control effect maps included in analysis.
     """
-
     if disorder is 'all_disorder':
         disorder = ['22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia']
 

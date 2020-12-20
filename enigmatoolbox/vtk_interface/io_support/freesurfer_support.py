@@ -54,10 +54,8 @@ def _fread3_many(fobj, n):
 
 def _read_geometry_fs(ipth, is_ascii=False):
     """Adapted from nibabel. Add ascii support."""
-
     if is_ascii:
         with open(ipth) as fh:
-            re_header = re.compile('^#!ascii version (.*)$')
 
             re_npoints_cells = re.compile('[\s]*(\d+)[\s]*(\d+)[\s]*$')
             re_n = re_npoints_cells.match(fh.readline())
@@ -115,7 +113,6 @@ def _read_geometry_fs(ipth, is_ascii=False):
 @wrap_input(0)
 def _write_geometry_fs(pd, opth, fname_header=None, is_ascii=False):
     """Adapted from nibabel. Add ascii support."""
-
     if not has_only_triangle(pd):
         raise ValueError('FreeSurfer writer only accepts triangles.')
 
@@ -162,7 +159,6 @@ class vtkFSReader(VTKPythonAlgorithmBase):
 
     Supports both binary and ASCII files. Default is binary.
     """
-
     def __init__(self):
         super().__init__(nInputPorts=0, nOutputPorts=1,
                          outputType='vtkPolyData')
@@ -206,7 +202,6 @@ class vtkFSWriter(VTKPythonAlgorithmBase):
     Only writes surface geometry/topology (points and cells).
     Supports both binary and ASCII files. Default is binary.
     """
-
     def __init__(self):
         super().__init__(nInputPorts=1, inputType='vtkPolyData', nOutputPorts=0)
         self.__FileName = ''

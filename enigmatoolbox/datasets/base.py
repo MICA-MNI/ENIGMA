@@ -30,7 +30,6 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
         Boolean masks for left and right hemispheres. If ``join == True``, one
         mask with both hemispheres
     """
-
     root_pth = os.path.dirname(__file__)
     if surface_name is "conte69":
         ipth = os.path.join(root_pth, 'surfaces', 'conte69_32k_{0}{1}_mask.csv')
@@ -75,7 +74,6 @@ def load_conte69(as_sphere=False, with_normals=True, join=False):
     surf : tuple of BSPolyData or BSPolyData
         Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
-
     root_pth = os.path.dirname(__file__)
     if as_sphere:
         fname = 'conte69_32k_{}_sphere.gii'
@@ -118,7 +116,6 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
     surf : tuple of BSPolyData or BSPolyData
         Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
-
     root_pth = os.path.dirname(__file__)
     if as_sphere is True and with_sctx is not True:
         fname = 'fsa5_sphere_{}.gii'
@@ -160,7 +157,6 @@ def load_subcortical(with_normals=False, join=False):
     surf : tuple of BSPolyData or BSPolyData
         Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
     """
-
     root_pth = os.path.dirname(__file__)
     fname = 'sctx_{}.gii'
 
@@ -380,18 +376,18 @@ def structural_covariance(zdata):
 def fetch_ahba(csvfile=None):
     """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes (author: @saratheriver)
 
-            Parameters
-            ----------
-            csvfile : None or string, optional
-                Path to downloaded csvfile. For more threshold and parcellation options, download csvfile from here:
-                https://github.com/saratheriver/enigma-extra/tree/master/ahba
-                If None (default), fetches microarray expression data from the internet (aparc and stable r > 0.2).
+        Parameters
+        ----------
+        csvfile : None or string, optional
+            Path to downloaded csvfile. For more threshold and parcellation options, download csvfile from here:
+            https://github.com/saratheriver/enigma-extra/tree/master/ahba
+            If None (default), fetches microarray expression data from the internet (aparc and stable r > 0.2).
 
-            Returns
-            -------
-            genes : pandas.DataFrame
-                Table of gene co-expression data, shape = (82, 15633)
-        """
+        Returns
+        -------
+        genes : pandas.DataFrame
+            Table of gene co-expression data, shape = (82, 15633)
+     """
     if csvfile is None:
         url = 'https://raw.githubusercontent.com/saratheriver/enigma-extra/master/ahba/allgenes_stable20.csv'
         return pd.read_csv(url, error_bad_lines=False)
@@ -508,16 +504,16 @@ def risk_genes(disorder=None):
 def load_example_data():
     """ Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
 
-    Returns
-    -------
-    cov : pandas.DataFrame
-        Contains information on covariates
-    metr1 : pandas.DataFrame
-        Contains information on subcortical volume
-    metr2 : pandas.DataFrame
-        Contains information on cortical thickness
-    metr3 : pandas.DataFrame
-        Contains information on surface area
+        Returns
+        -------
+        cov : pandas.DataFrame
+            Contains information on covariates
+        metr1 : pandas.DataFrame
+            Contains information on subcortical volume
+        metr2 : pandas.DataFrame
+            Contains information on cortical thickness
+        metr3 : pandas.DataFrame
+            Contains information on surface area
     """
     root_pth = os.path.dirname(__file__)
 
@@ -739,6 +735,7 @@ def reorder_sum_stats(in_file, out_file):
     out = in_file.iloc[newidx]
 
     return out.to_csv(out_file, index=False)
+
 
 """
     For every new summary statistic file, run the following command to reorder

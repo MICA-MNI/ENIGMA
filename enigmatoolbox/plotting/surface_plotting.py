@@ -320,7 +320,6 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
               size=(400, 400), embed_nb=False, interactive=True, scale=(1, 1),
               transparent_bg=True, screenshot=False, filename=None,
               return_plotter=False, **kwargs):
-
     """Plot surfaces arranged according to the `layout` (author: @OualidBenkarim)
 
     Parameters
@@ -404,7 +403,6 @@ def plot_surf(surfs, layout, array_name=None, view=None, color_bar=None,
     names per entry. Actor and mapper keywords must also be broadcastable to
     the shape of `array_name`.
     """
-
     if screenshot and filename is None:
         raise ValueError('Filename is required.')
 

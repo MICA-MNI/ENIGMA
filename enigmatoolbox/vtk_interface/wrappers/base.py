@@ -43,9 +43,7 @@ class BSVTKObjectWrapperMeta(type):
         opacity because it belongs to the actor's property and this is created
         after BSVTKObjectWrapper __init__.
 
-
     """
-
     entries = {}
 
     def __init__(cls, name, bases, attrs):
@@ -131,7 +129,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
     'Default'
 
     """
-
     _vtk_map = dict()
 
     def __init__(self, vtkobject, **kwargs):
@@ -194,7 +191,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         -1
 
         """
-
         # We are here cause name is not in self
         # First forward to vtkobject
         # If it doesn't exist, look for it in vtk_map, find its corresponding
@@ -219,7 +215,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         3
 
         """
-
         # Check self attributes first
         # Note: With this we cannot create attributes dynamically
         if name in self.__dict__:
@@ -258,7 +253,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         'MapScalars'
 
         """
-
         kwargs = dict(zip(args, [None] * len(args)), **kwargs)
         for k, v in kwargs.items():
             self._handle_call('set', k, v)
@@ -297,7 +291,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         {'numberOfInputConnections': 0}
 
         """
-
         kwargs = dict(zip(args, [None] * len(args)), **kwargs)
         output = {}
         for k, v in kwargs.items():
@@ -360,7 +353,6 @@ def BSWrapVTKObject(obj):
     wrapped : None or BSVTKObjectWrapper
         Wrapped object. Returns None if `obj` is None.
     """
-
     if obj is None or is_wrapper(obj):
         return obj
 
@@ -462,7 +454,6 @@ def wrap_vtk(obj, **kwargs):
     wrapper : BSVTKObjectWrapper
         The wrapped object.
     """
-
     wobj = BSWrapVTKObject(obj)
     if len(kwargs) > 0:
         wobj.setVTK(**kwargs)
@@ -501,7 +492,6 @@ def _wrap_output_data(data):
         Wrapped data.
 
     """
-
     if is_vtk(data):
         return wrap_vtk(data)
     return data
@@ -523,7 +513,6 @@ def _unwrap_output_data(data, vtype=False):
         Unwrapped data.
 
     """
-
     # if is_wrapper(data) or isinstance(data, np.ndarray) and data.ndim < 3:
     #     return unwrap_vtk(data, vtype=vtype)
     # return data
@@ -561,7 +550,6 @@ def _wrap_input_data(args, kwargs, *xargs, skip=False):
          Return keyword args with wrapped vtk objects.
 
     """
-
     list_args = list(range(len(args))) + list(kwargs.keys())
     if len(xargs) == 0:
         xargs = list_args
@@ -606,7 +594,6 @@ def _unwrap_input_data(args, kwargs, *xargs, vtype=False, skip=False):
          Return keyword args with unwrapped vtk objects.
 
     """
-
     dv = False
     if not isinstance(vtype, dict):
         if vtype in [True, None]:

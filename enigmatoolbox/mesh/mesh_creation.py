@@ -42,7 +42,6 @@ def build_polydata(points, cells=None):
     points.
 
     """
-
     s = BSPolyData(points=points)
     if cells is not None:
         n_cells, n_points_cell = cells.shape
@@ -76,7 +75,6 @@ def to_vertex(surf):
     :func:`build_polydata`
 
     """
-
     return serial_connect(surf, vtkVertexGlyphFilter())
 
 
@@ -99,7 +97,6 @@ def to_lines(surf):
     :func:`to_vertex`
     :func:`build_polydata`
     """
-
     edges = get_edges(surf)
     s = build_polydata(surf.Points, cells=edges)
 

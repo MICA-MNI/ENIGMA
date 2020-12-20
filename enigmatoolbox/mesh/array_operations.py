@@ -48,7 +48,6 @@ def compute_cell_area(surf, append=False, key='cell_area'):
         with the new array.
 
     """
-
     alg = wrap_vtk(vtkCellSizeFilter, computeArea=True, areaArrayName=key,
                    computeVolume=False, computeLength=False, computeSum=False,
                    computeVertexCount=False)
@@ -77,7 +76,6 @@ def compute_cell_center(surf, append=False, key='cell_center'):
         with the new array.
 
     """
-
     return serial_connect(surf, vtkCellCenters()).Points
 
 
@@ -103,7 +101,6 @@ def get_n_adjacent_cells(surf, append=False, key='point_ncells'):
         with the new array.
 
     """
-
     return me.get_point2cell_connectivity(surf).getnnz(axis=1)
 
 
@@ -140,7 +137,6 @@ def map_celldata_to_pointdata(surf, cell_data, red_func='mean',
         with the new array.
 
     """
-
     if red_func not in ['sum', 'mean', 'mode', 'one_third', 'min', 'max'] and \
             not callable(red_func):
         ValueError('Unknown reduction function \'{0}\'.'.format(red_func))
@@ -220,7 +216,6 @@ def map_pointdata_to_celldata(surf, point_data, red_func='mean',
         with the new array.
 
     """
-
     if red_func not in ['sum', 'mean', 'mode', 'min', 'max'] and \
             not callable(red_func):
         ValueError('Unknown reduction function \'{0}\'.'.format(red_func))
@@ -294,7 +289,6 @@ def compute_point_area(surf, cell_area=None, area_as='one_third',
         Otherwise, return input surface with the new array.
 
     """
-
     if cell_area is None:
         cell_area = compute_cell_area(surf)
     elif isinstance(cell_area, str):
@@ -475,7 +469,6 @@ def get_labeling_border(surf, labeling, append=False, key='border'):
         new array.
 
     """
-
     edges = me.get_edges(surf)
     if isinstance(labeling, str):
         labeling = surf.get_array(name=labeling, at='p')
@@ -604,7 +597,6 @@ def propagate_labeling(surf, labeling, no_label=np.nan, mask=None, alpha=0.99,
       information processing systems, 16(16), 321-328.
 
     """
-
     if isinstance(labeling, str):
         labeling = surf.get_array(name=labeling, at='p')
 
@@ -715,7 +707,6 @@ def smooth_array(surf, point_data, n_iter=5, mask=None, kernel='gaussian',
     For 2D arrays, each array is smoothed separately.
 
     """
-
     if relax <= 0 or relax >= 1:
         raise ValueError('Relaxation factor must be between 0 and 1.')
 
@@ -785,7 +776,6 @@ def smooth_array(surf, point_data, n_iter=5, mask=None, kernel='gaussian',
 
 def _get_pids_sphere(source, target, source_mask=None, target_mask=None):
     """Spheres `source` and `target` must be aligned."""
-
     c = vtkGenericCell()
     close_pt, pcoord = np.empty((2, 3))
     cid, subcid, dist = [vtk_mutable(0) for _ in range(3)]
@@ -825,7 +815,6 @@ def _get_pids_sphere(source, target, source_mask=None, target_mask=None):
 def _get_pids_naive(source, target, k=1, source_mask=None, target_mask=None,
                     return_weights=True, n_jobs=1):
     """Resampling based on k nearest points."""
-
     sp = me.get_points(source, mask=source_mask)
     tp = me.get_points(target, mask=target_mask)
 

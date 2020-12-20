@@ -59,7 +59,6 @@ def find_point_correspondence(surf, ref_surf, eps=0, n_jobs=1):
         point in the reference surface `ref_surf`.
 
     """
-
     return _find_correspondence(surf, ref_surf, eps=eps, n_jobs=n_jobs,
                                 use_cell=False)
 
@@ -89,6 +88,5 @@ def find_cell_correspondence(surf, ref_surf, eps=0, n_jobs=1):
         cell in the reference surface `ref_surf`.
 
     """
-
     return _find_correspondence(surf, ref_surf, eps=eps, n_jobs=n_jobs,
                                 use_cell=True)

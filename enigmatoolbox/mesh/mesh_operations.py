@@ -51,7 +51,6 @@ def _surface_selection(surf, array, low=-np.inf, upp=np.inf, use_cell=False):
         Surface after thresholding.
 
     """
-
     if low > upp:
         raise ValueError('Threshold not valid: [{},{}]'.format(low, upp))
 
@@ -119,7 +118,6 @@ def _surface_mask(surf, mask, use_cell=False):
         PolyData after masking.
 
     """
-
     if isinstance(mask, np.ndarray):
         if np.issubdtype(mask.dtype, np.bool_):
             mask = mask.astype(np.uint8)
@@ -161,7 +159,6 @@ def drop_points(surf, array, low=-np.inf, upp=np.inf):
     :func:`mask_points`
 
     """
-
     if isinstance(array, str):
         array = surf.get_array(name=array, at='p')
 
@@ -198,7 +195,6 @@ def drop_cells(surf, array, low=-np.inf, upp=np.inf):
     :func:`mask_cells`
 
     """
-
     if isinstance(array, str):
         array = surf.get_array(name=array, at='c')
 
@@ -235,7 +231,6 @@ def select_points(surf, array, low=-np.inf, upp=np.inf):
     :func:`mask_points`
 
     """
-
     return _surface_selection(surf, array, low=low, upp=upp)
 
 
@@ -268,7 +263,6 @@ def select_cells(surf, array, low=-np.inf, upp=np.inf):
     :func:`mask_cells`
 
     """
-
     return _surface_selection(surf, array, low=low, upp=upp, use_cell=True)
 
 
@@ -296,7 +290,6 @@ def mask_points(surf, mask):
     :func:`select_points`
 
     """
-
     return _surface_mask(surf, mask)
 
 
@@ -324,7 +317,6 @@ def mask_cells(surf, mask):
     :func:`select_cells`
 
     """
-
     return _surface_mask(surf, mask, use_cell=True)
 
 
@@ -346,7 +338,6 @@ def combine_surfaces(*surfs):
     :func:`split_surface`
 
     """
-
     alg = vtkAppendPolyData()
     for s in surfs:
         alg = connect(s, alg, add_conn=True)
@@ -397,7 +388,6 @@ def get_connected_components(surf, labeling=None, mask=None, fill=0,
     value larger than 0 is True.
 
     """
-
     if isinstance(mask, str):
         mask = surf.get_array(name=mask, at='p') > 0
 
@@ -455,7 +445,6 @@ def split_surface(surf, labeling=None):
     :func:`mask_points`
 
     """
-
     if labeling is None:
         labeling = get_connected_components(surf)
     elif isinstance(labeling, str):
@@ -494,7 +483,6 @@ def downsample_with_parcellation(surf, labeling, name='parcel',
         Downsampled surface.
 
     """
-
     if isinstance(labeling, str):
         labeling = surf.get_array(labeling, at='p')
 

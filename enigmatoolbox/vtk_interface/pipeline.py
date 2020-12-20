@@ -49,7 +49,6 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         Returns (wrapped) `frt1` after connecting it with the input filter.
 
     """
-
     if isinstance(ftr0, BSAlgorithm) and port0 >= ftr0.nop:
         raise ValueError("'{0}' only has {1} output ports.".
                          format(ftr0.__vtkname__, ftr0.nop))
@@ -126,7 +125,6 @@ def to_data(ftr, port=0):
     Filters are automatically updated to get the output.
 
     """
-
     list_ports = [port] if port > -1 else range(ftr.nop)
     n_ports = len(list_ports)
     out = [None] * n_ports
@@ -165,7 +163,6 @@ def get_output(ftr, as_data=True, update=True, port=0):
         list if ``as_data == True``.
 
     """
-
     if as_data:
         return to_data(ftr, port=port)
 
@@ -337,7 +334,6 @@ def serial_connect(*filters, as_data=True, update=True, port=0):
     >>> serial_connect(ps, dn, sf)
     <brainspace.vtk_interface.wrappers.BSPolyData at 0x7f0134eee898>
     """
-
     prev_f, prev_op = _map_input_filter(filters[0])
 
     for i, f1 in enumerate(filters[1:-1]):

@@ -40,7 +40,6 @@ def get_points(surf, mask=None):
     :func:`get_edges`
 
     """
-
     return surf.Points if mask is None else surf.Points[mask]
 
 
@@ -70,7 +69,6 @@ def get_cells(surf):
     :func:`get_edges`
 
     """
-
     return surf.GetCells2D()
 
 
@@ -88,7 +86,6 @@ def get_extent(surf):
         Extent of data.
 
     """
-
     bounds = np.array(surf.GetBounds())
     return bounds[1::2] - bounds[::2]
 
@@ -123,7 +120,6 @@ def get_point2cell_connectivity(surf, mask=None, dtype=np.uint8):
     :func:`get_cell_neighbors`
 
     """
-
     cells = surf.GetCells2D()
 
     data = np.ones(cells.size, dtype=dtype)
@@ -165,7 +161,6 @@ def get_cell2point_connectivity(surf, mask=None, dtype=np.uint8):
     This function returns the transpose of :func:`get_point2cell_connectivity`.
 
     """
-
     pc = get_point2cell_connectivity(surf, mask=mask, dtype=dtype)
     return pc.T.tocsr(copy=False)
 
@@ -198,7 +193,6 @@ def get_cell_neighbors(surf, include_self=True, with_edge=True,
     :func:`get_cell2point_connectivity`
 
     """
-
     if with_edge:
         ce = get_cell2point_connectivity(surf, dtype=np.uint8)
         ce *= ce.T
@@ -250,7 +244,6 @@ def get_immediate_adjacency(surf, include_self=True, mask=None,
     Immediate adjacency: set to one all entries of points that
     share and edge with current point.
     """
-
     adj = get_point2cell_connectivity(surf, mask=mask, dtype=np.bool)
     adj *= adj.T
     if not include_self:
@@ -291,7 +284,6 @@ def get_ring_adjacency(surf, n_ring=1, include_self=True, mask=None,
     :func:`get_ring_distance`
 
     """
-
     if n_ring == 1:
         return get_immediate_adjacency(surf, include_self=include_self,
                                        mask=mask, dtype=dtype)
@@ -329,7 +321,6 @@ def get_edges(surf, mask=None):
     :func:`get_cells`
 
     """
-
     adj = get_immediate_adjacency(surf, include_self=False, mask=mask,
                                   dtype=np.bool)
     adj.sort_indices()
@@ -370,7 +361,6 @@ def get_point2edge_connectivity(surf, mask=None, dtype=np.uint8):
     :func:`get_edges`
 
     """
-
     edges = get_edges(surf, mask=mask)
     n_pts = surf.n_points if mask is None else np.count_nonzero(mask)
 
@@ -414,7 +404,6 @@ def get_edge2point_connectivity(surf, mask=None, dtype=np.uint8):
     :func:`get_edges`
 
     """
-
     pe = get_point2edge_connectivity(surf, mask=mask, dtype=dtype)
     return pe.T.tocsr(copy=False)
 
@@ -451,7 +440,6 @@ def get_edge2cell_connectivity(surf, mask=None, dtype=np.uint8):
     :func:`get_edges`
 
     """
-
     ec = get_edge2point_connectivity(surf, mask=mask, dtype=np.uint8)
     ec *= get_point2cell_connectivity(surf, mask=mask, dtype=np.uint8)
     ec.data = ec.data == 2
@@ -492,7 +480,6 @@ def get_cell2edge_connectivity(surf, mask=None, dtype=np.uint8):
     :func:`get_edges`
 
     """
-
     ec = get_edge2cell_connectivity(surf, mask=mask, dtype=dtype)
     return ec.T.tocsr(copy=False)
 
@@ -521,7 +508,6 @@ def get_edge_length(surf, metric='euclidean', mask=None):
     :func:`get_immediate_distance`
 
     """
-
     points = get_points(surf, mask=mask)
     edges = get_edges(surf, mask=mask)
 
@@ -547,7 +533,6 @@ def _get_boundary(surf):
     boundary_points : 1D ndarray
         Array of point ids in the boundary.
     """
-
     an = surf.append_array(np.arange(surf.n_points))
     fe = wrap_vtk(vtk.vtkFeatureEdges, boundaryEdges=True, manifoldEdges=False,
                   nonManifoldEdges=False, featureEdges=False)
@@ -575,7 +560,6 @@ def get_boundary_points(surf):
     :func:`get_boundary_cells`
 
     """
-
     _, bp = _get_boundary(surf)
     return np.sort(bp)
 
@@ -600,7 +584,6 @@ def get_boundary_edges(surf):
     :func:`get_edges`
 
     """
-
     bs, bp = _get_boundary(surf)
     if bs.n_cells == 0:
         return np.array([])
@@ -631,7 +614,6 @@ def get_boundary_cells(surf, with_edge=True):
     :func:`get_boundary_edges`
 
     """
-
     ce = get_cell_neighbors(surf, include_self=False, with_edge=True)
     mask = ce.getnnz(axis=1) < 3
     if not with_edge:
@@ -672,7 +654,6 @@ def get_immediate_distance(surf, metric='euclidean', mask=None,
     share and edge with current point.
 
     """
-
     points = get_points(surf, mask=mask)
     edges = get_edges(surf, mask=mask)
 
@@ -724,7 +705,6 @@ def get_ring_distance(surf, n_ring=1, metric='geodesic', mask=None,
     the ring.
 
     """
-
     if n_ring == 1:
         return get_immediate_distance(surf, mask=mask, dtype=dtype)
 

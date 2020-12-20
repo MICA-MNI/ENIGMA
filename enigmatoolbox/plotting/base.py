@@ -136,7 +136,6 @@ def _create_grid(nrow, ncol):
            [[0.5, 0. , 0.6, 0.5],
             [0.6, 0. , 0.7, 0.5]]])
     """
-
     if not isinstance(nrow, int):
         nrow = np.atleast_1d(nrow)
         if nrow.size < 2 or np.any(np.sort(nrow) != nrow) or \

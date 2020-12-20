@@ -50,7 +50,6 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
       Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
       structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
-
     # for cortical annotation files only
     if "aparc_aseg" not in annotfile:
         labels, ctab, names = nb.freesurfer.io.read_annot(annotfile, orig_ids=True)
@@ -254,7 +253,6 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
       Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
       structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
-
     nroi = perm_id.shape[0]   # number of regions
     nperm = perm_id.shape[1]  # number of permutations
 
@@ -349,7 +347,6 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
       Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
       structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
-
     if surface_name is "fsa5":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True)
     elif surface_name is "fsa5_with_sctx":
@@ -412,7 +409,6 @@ def shuf_test(map1, map2, n_rot=1000, type='pearson', null_dist=False):
     r_dist : 1D ndarray
         Null correlations, shape = (n_rot*2,). Only if ``null_dist is True``.
     """
-
     r = 0  # count successful (r) iterations unsuccessful (c) iterations
     c = 0  # count unsuccessful (c) iterations
     nroi = map1.shape[0]  # number of regions
@@ -520,7 +516,6 @@ def compute_mem(w, n_ring=1, spectrum='nonzero', tol=1e-10):
       randomization methods. Methods in Ecology and Evolution, 6(10):1169-78.
 
     """
-
     if spectrum not in ['all', 'nonzero']:
         raise ValueError("Unknown autocor '{0}'.".format(spectrum))
 
@@ -627,7 +622,6 @@ def moran_randomization(x, mem, n_rep=100, procedure='singleton', joint=False,
       randomization methods. Methods in Ecology and Evolution, 6(10):1169-78.
 
     """
-
     if x.ndim == 1:
         x = np.atleast_2d(x).T
 
@@ -695,7 +689,6 @@ def is_symmetric(x, tol=1E-10):
         If `x` is not square.
 
     """
-
     if x.ndim != 2 or x.shape[0] != x.shape[1]:
         raise ValueError('Array is not square.')
 
@@ -738,7 +731,6 @@ def make_symmetric(x, check=True, tol=1E-10, copy=True, sparse_format=None):
         If `x` is not square.
 
     """
-
     if not check or not is_symmetric(x, tol=tol):
         if copy:
             xs = .5 * (x + x.T)
@@ -758,7 +750,7 @@ def make_symmetric(x, check=True, tol=1E-10, copy=True, sparse_format=None):
 
 
 def get_subcortical_distance(ventricles=False):
-
+    """ """
     sphere_lh, sphere_rh = load_fsa5(as_sphere=True, with_sctx=True)
 
     root_pth = os.path.dirname(__file__)
@@ -844,7 +836,6 @@ class MoranRandomization(BaseEstimator):
     :class:`.SpinPermutations`
 
     """
-
     def __init__(self, procedure='singleton', spectrum='nonzero', joint=False,
                  n_rep=100, n_ring=1, tol=1e-10, random_state=None):
 
@@ -872,7 +863,6 @@ class MoranRandomization(BaseEstimator):
             Returns self.
 
         """
-
         self.mem_, self.mev_ = compute_mem(w, spectrum=self.spectrum,
                                            tol=self.tol)
         return self
@@ -892,7 +882,6 @@ class MoranRandomization(BaseEstimator):
             Random samples. If ``n_feat == 1``, shape = (n_rep, n_verts).
 
         """
-
         rand = moran_randomization(x, self.mem_, n_rep=self.n_rep,
                                    procedure=self.procedure, joint=self.joint,
                                    random_state=self.random_state)

@@ -32,7 +32,6 @@ def relabel_consecutive(lab, start_from=0):
         Array with consecutive labels.
 
     """
-
     new_lab = np.empty_like(lab)
     new_lab[:] = np.unique(lab, return_inverse=True)[1]
     new_lab += start_from
@@ -57,7 +56,6 @@ def relabel(lab, new_labels=None):
         Array with new labels.
 
     """
-
     if isinstance(new_labels, dict):
         new_lab = lab.copy()
         for l1, l2 in new_labels.items():
@@ -91,7 +89,6 @@ def find_label_correspondence(lab1, lab2):
     -----
     Correspondences are based on largest overlap using the Hungarian algorithm.
     """
-
     u1, idx1 = np.unique(lab1, return_inverse=True)
     u2, idx2 = np.unique(lab2, return_inverse=True)
 
@@ -126,7 +123,6 @@ def relabel_by_overlap(lab, ref_lab):
     Correspondences between labels are based on largest overlap using the
     Hungarian algorithm.
     """
-
     u1 = np.unique(lab)
     u2 = np.unique(ref_lab)
     if u1.size > u2.size:
@@ -168,7 +164,6 @@ def map_to_mask(values, mask, fill=0, axis=0):
         (n_mask, n_cols) otherwise.
 
     """
-
     if np.issubdtype(values.dtype, np.integer) and not np.isfinite(fill):
         raise ValueError("Cannot use non-finite 'fill' with integer arrays.")
 
@@ -214,7 +209,6 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
     target_val : ndarray, shape = (n_lab,)
         Target array with corresponding source values.
     """
-
     if isinstance(target_lab, str):
         fname = target_lab + '.csv'
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
@@ -309,7 +303,6 @@ def surface_to_parcel(values, labels, weights=None, target_labels=None,
     target_values : ndarray
         Summarized target values.
     """
-
     if isinstance(labels, str):
         fname = labels + '.csv'
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
