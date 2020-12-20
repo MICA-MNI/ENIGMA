@@ -11,7 +11,7 @@ from enigmatoolbox.datasets.base import load_summary_stats
 
 def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSurf'], additional_data=None,
                           additional_name=None, ignore=['mega'], method='pca', figure=True):
-    """ Cross-disorder effect (authors: @boyongpark, @saratheriver)
+    """Cross-disorder effect (authors: @boyongpark, @saratheriver)
 
         Parameters
         ----------
@@ -66,7 +66,7 @@ def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSu
         mat_d = np.append(mat_d, additional_data)
         names.append(names, additional_name)
 
-    if method is 'pca':
+    if method == 'pca':
         pca = PCA()
         components = pca.fit_transform(np.transpose(mat_d))
         variance = pca.explained_variance_ratio_
@@ -77,7 +77,7 @@ def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSu
 
         return components, variance, names
 
-    elif method is 'correlation':
+    elif method == 'correlation':
         correlation_measure = ConnectivityMeasure(kind='correlation')
         correlation_matrix = correlation_measure.fit_transform([np.transpose(mat_d)])[0]
 

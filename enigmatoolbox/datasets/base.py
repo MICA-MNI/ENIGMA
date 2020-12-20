@@ -283,7 +283,7 @@ def load_fc(parcellation='aparc'):
 
 
 def load_sc_as_one(parcellation='aparc'):
-    """ Load structural connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
+    """Load structural connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
         Parameters
         ----------
@@ -299,7 +299,7 @@ def load_sc_as_one(parcellation='aparc'):
             Region labels, shape = (n+14,)
     """
     root_pth = os.path.dirname(__file__)
-    if parcellation is 'aparc':
+    if parcellation == 'aparc':
         ctx = 'strucMatrix_with_sctx.csv'
         ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
@@ -396,7 +396,7 @@ def fetch_ahba(csvfile=None):
 
 
 def risk_genes(disorder=None):
-    """ Outputs names of GWAS-derived risk genes for a given disorder (author: @saratheriver)
+    """Outputs names of GWAS-derived risk genes for a given disorder (author: @saratheriver)
 
         Parameters
         ----------
@@ -408,27 +408,27 @@ def risk_genes(disorder=None):
         risk_genes : set
             Names of genes for a given disorder
     """
-    if disorder is "adhd":
+    if disorder == "adhd":
         return {'ST3GAL3', 'KDM4A', 'KDM4A-AS1', 'PTPRF', 'SLC6A9', 'ARTN', 'DPH2',
                  'ATP6V0B', 'B4GALT2', 'CCDC24', 'IPO13', 'SPAG16', 'PCDH7', 'LINC02497',
                  'LINC00461', 'MIR9-2', 'LINC02060', 'TMEM161B-AS1', 'FOXP2', 'MIR3666',
                  'LINC01288', 'SORCS3', 'DUSP6', 'POC1B', 'SEMA6D', 'LINC01572'};
 
-    elif disorder is "asd":
+    elif disorder == "asd":
         return {'NEGR1', 'PTBP2', 'CADPS', 'FEZF2', 'TMEM33', 'DCAF4L1',
                 'SLC30A9', 'BEND4', 'NUDT12', 'KCNN2', 'MMS22L', 'POU3F2',
                 'KMT2E', 'SRPK2', 'C8orf74', 'SOX7', 'PINX1', 'MROH5',
                 'MARK3', 'CKB', 'TRMT61A', 'BAG5', 'APOPT1', 'KLC1',
                 'XRCC3', 'MACROD2', 'XRN2', 'KIZ', 'NKX2-4', 'NKX2-2'}
 
-    elif disorder is "bipolar":
+    elif disorder == "bipolar":
         return {'PLEKHO1', 'LMAN2L', 'SCN2A', 'PCGEM1', 'TRANK1', 'ITIH1',
                 'CD47', 'FSTL5', 'ADCY2', 'SSBP2', 'RIMS1', 'POU3F2',
                 'RPS6KA2', 'THSD7A', 'SRPK2', 'MRPS33', 'ANK3', 'ADD3',
                 'FADS2', 'PACS1', 'PC', 'SHANK2', 'CACNA1C', 'STARD9',
                 'ZNF592', 'GRIN2A', 'HDAC5', 'ZCCHC2', 'NCAN', 'STK4'}
 
-    elif disorder is "depression":
+    elif disorder == "depression":
         return {'SORCS3', 'RBFOX1', 'GRM5', 'HIST1H2BN', 'SHISA9', 'TCF4', 'NEGR1', 'HIST1H3J', 'DENND1A',
                 'DCC', 'RSRC1', 'TENM2', 'TMEM161B', 'DRD2', 'PGBD1', 'ZKSCAN4', 'HIST1H1B', 'ERBB4', 'ZKSCAN8',
                 'BTN3A2', 'PCLO', 'ZSCAN16', 'ZSCAN9', 'TMEM106B', 'MEF2C', 'OLFM4', 'GRM8', 'ZNF165', 'LRFN5',
@@ -453,7 +453,7 @@ def risk_genes(disorder=None):
                 'ATP1A3', 'ITGB6', 'ASXL3', 'ANKHD1', 'PCDHA7', 'PTPRS', 'CCS', 'PHF2', 'IK', 'KYNU', 'PPID', 'FAM120AOS', 'ZMAT2', 'SERPING1',
                 'USP3', 'CACNA2D1', 'ANKHD1-EIF4EBP3', 'GINM1', 'C1QTNF7', 'MIER1', 'SLC4A9', 'PSEN2'}
 
-    elif disorder is "epilepsy":
+    elif disorder == "epilepsy":
         allepilepsy = ['FANCL', 'BCL11A', 'SCN3A', 'SCN2A', 'TTC21B', 'SCN1A', 'HEATR3', 'BRD7']
         focalepilepsy = ['SCN3A', 'SCN2A', 'TTC21B', 'SCN1A']
         generalizedepilepsy = ['FANCL', 'BCL11A', 'SCN3A', 'SCN2A', 'TTC21B', 'SCN1A', 'STAT4', 'PCDH7', 'GABRA2', 'KCNN2',
@@ -466,13 +466,13 @@ def risk_genes(disorder=None):
                  'generalizedepilepsy': generalizedepilepsy, 'jme': jme,
                  'cae': cae, 'focalhs': focalhs}
 
-    elif disorder is "hippocampal_volume":
+    elif disorder == "hippocampal_volume":
         return {'TESC','ACVR1','MSRB3','DPP4'}
 
-    elif disorder is "ocd":
+    elif disorder == "ocd":
         return print("aye aye aye I've got nothin'")
 
-    elif disorder is "schizophrenia":
+    elif disorder == "schizophrenia":
         return {'xMHC','DPYD','MIR137','ARL3','AS3MT','C10orf32','CNNM2','CYP17A1','INA','NT5C2','PCGF6','PDCD11','SFXN2','TAF5','TRIM8',
                 'USMG5','WBP1L','CACNA1C','TSNARE1','SLC39A8','MAD1L1','ZSWIM6','ABCB9','ARL6IP4','C12orf65','CDK2AP1','MPHOSPH9','OGFOD2',
                 'PITPNM2','RILPL2','SBNO1','SETD8','AC073043.2','C2orf47','C2orf69','TYW5','FES','FURIN','MAN2A2','TRANK1','AL049840.1','APOPT1',
@@ -488,7 +488,7 @@ def risk_genes(disorder=None):
                 'SNAP91','PLCH2','ERCC4','MLL5','PUS7','SRPK2','RERE','SLC45A1','ATP2A2','C4orf27','CLCN3','NEK1','FUT9','CENPM','CYP2D6','FAM109B','NAGA','NDUFA6',
                 'SEPT3','SHISA8','SMDT1','SREBF2','TCF20','TNFRSF13C','WBP2NL'}
 
-    elif disorder is "tourette":
+    elif disorder == "tourette":
         return {'FLT3', 'OTUD1', 'LINC01122', 'MIR2113', 'CSMD3', 'MIR2053', 'EPB41', 'MECR', 'OPRD1',
                 'PTPRU', 'SRSF4', 'TMEM200B', 'CDKN1A', 'KCTD20', 'MIR3925', 'PANDAR', 'PXT1', 'RAB44',
                 'SRSF3', 'STK38', 'LOC402160', 'RNF4', 'ZFYVE28', 'AHCTF1P1', 'BAZ2B', 'CD302', 'DPP4',

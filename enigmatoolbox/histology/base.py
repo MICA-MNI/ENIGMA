@@ -129,7 +129,7 @@ def bb_moments_raincloud(region_idx=None, parcellation='aparc', title=''):
             Raincloud plot.
         """
     def prctile(x, p):
-        """ Matlab-like percentile function (author: someone from the internet) """
+        """Matlab-like percentile function (author: someone from the internet)"""
         p = np.asarray(p, dtype=float)
         n = len(x)
         p = (p - 50) * n / (n - 1) + 50

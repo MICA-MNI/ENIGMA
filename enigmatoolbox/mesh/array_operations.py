@@ -1,6 +1,4 @@
-"""
-Functions on PointData and CellData.
-"""
+"""Functions on PointData and CellData."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -16,12 +14,12 @@ from scipy.sparse.csgraph import laplacian, connected_components
 from sklearn.utils.extmath import weighted_mode
 
 from vtk import (vtkCellSizeFilter, vtkCellCenters, vtkCellLocator,
-                 vtkPolyDataConnectivityFilter, vtkGenericCell,
+                 vtkGenericCell,
                  mutable as vtk_mutable)
 
 from . import mesh_elements as me
 from .mesh_operations import mask_points
-from ..utils.parcellation import map_to_mask, surface_to_parcel
+from ..utils.parcellation import map_to_mask
 from ..vtk_interface import wrap_vtk, serial_connect
 from ..vtk_interface.decorators import append_vtk, wrap_input
 

@@ -1,6 +1,4 @@
-"""
-Basic functions on surface meshes.
-"""
+"""Basic functions on surface meshes."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
