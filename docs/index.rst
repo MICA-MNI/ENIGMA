@@ -124,6 +124,7 @@ first and then discuss your ideas on our Github `issues <https://github.com/MICA
    
    pages/04.loadsumstats/index
    pages/03.loadct/index
+   pages/04.crossdisorder/index
 
 
 .. toctree::

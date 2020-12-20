@@ -95,6 +95,24 @@ Matlab API
      - Outputs names of GWAS-derived risk genes for a given disorder
 
 
+.. _matlabref_crossdisord:
+
+:mod:`cross-disorder effect`
+------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/cross_disorder.rst
+
+.. list-table::
+   :widths: 25 400
+   :header-rows: 0
+
+   * - :ref:`cross_disorder_effect()<cross_disorder_mat>`
+     - Cross-disorder effect (authors: @boyongpark, @saratheriver)  
+
 .. 
    .. _matlabref_surfdata:
    :mod:`surface data`

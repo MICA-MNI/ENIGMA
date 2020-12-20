@@ -44,6 +44,7 @@ ENIGMA datasets
    enigmatoolbox.datasets.load_example_data
    enigmatoolbox.datasets.load_summary_stats
 
+
 Connectivity matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -83,6 +84,29 @@ Surface templates
    enigmatoolbox.datasets.load_fsa5
    enigmatoolbox.datasets.load_conte69
    enigmatoolbox.datasets.load_subcortical
+
+.. raw:: html
+
+   <hr>
+
+.. _pyref_crossdis:
+
+:mod:`enigmatoolbox.cross_disorder`
+-------------------------------------------------
+.. automodule:: enigmatoolbox.cross_disorder
+   :no-members:
+   :no-inherited-members:
+
+.. currentmodule:: enigmatoolbox.cross_disorder
+
+Cross-disorder effect
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.cross_disorder.cross_disorder_effect
 
 .. raw:: html
 

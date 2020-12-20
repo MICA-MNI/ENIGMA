@@ -5,7 +5,7 @@
 What's new?
 ======================================
 
-v0.1.2 (December 18, 2020)
+v0.1.2 (December 20, 2020)
 ------------------------------------------
 Bug fixes and improvement - still in pre-release
 
@@ -16,6 +16,7 @@ Bug fixes and improvement - still in pre-release
     ↪ [NEW 🗽] Additional parcellations for HCP connectivity |  @saratheriver
     ↪ [NEW 🗽] Additional parcellations for AHBA             |  @saratheriver
     ↪ [NEW 🗽] Additional parcellations for histology module |  @saratheriver
+    ↪ [NEW 🗽] Cross-disorder module                         |  @boyongpark, @saratheriver
     ↪ [ENH 🔧] Fix bug in fetch_ahba                         |  @saratheriver
     ↪ [ENH 🔧] Reference updates                             |  @saratheriver
 
