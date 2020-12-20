@@ -4,7 +4,7 @@
 # License: BSD 3 clause
 
 
-from vtk import (vtkPolyData, vtkCellArray, vtkTriangleFilter,
+from vtk import (vtkPolyData, vtkTriangleFilter,
                  vtkVertexGlyphFilter)
 
 from .mesh_elements import get_edges
@@ -42,7 +42,7 @@ def build_polydata(points, cells=None):
     """
     s = BSPolyData(points=points)
     if cells is not None:
-        n_cells, n_points_cell = cells.shape
+        _, n_points_cell = cells.shape
         if n_points_cell == 1:
             s.SetVerts(cells)
         elif n_points_cell == 2:

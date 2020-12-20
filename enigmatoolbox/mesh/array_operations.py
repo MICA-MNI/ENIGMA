@@ -9,7 +9,7 @@ import warnings
 import numpy as np
 from scipy.stats import mode
 from scipy.spatial import cKDTree
-from scipy.sparse.csgraph import laplacian, connected_components
+from scipy.sparse.csgraph import laplacian
 
 from sklearn.utils.extmath import weighted_mode
 
@@ -25,7 +25,7 @@ from ..vtk_interface.decorators import append_vtk, wrap_input
 
 
 @append_vtk(to='cell')
-def compute_cell_area(surf, append=False, key='cell_area'):
+def compute_cell_area(surf, key='cell_area'):
     """Compute cell area.
 
     Parameters
@@ -258,8 +258,7 @@ def map_pointdata_to_celldata(surf, point_data, red_func='mean',
 
 
 @append_vtk(to='point')
-def compute_point_area(surf, cell_area=None, area_as='one_third',
-                       append=False, key='point_area'):
+def compute_point_area(surf, cell_area=None, area_as='one_third'):
     """Compute point area from its adjacent cells.
 
     Parameters
@@ -285,7 +284,6 @@ def compute_point_area(surf, cell_area=None, area_as='one_third',
     output : vtkPolyData, BSPolyData or ndarray
         1D array with point area. Return ndarray if ``append == False``.
         Otherwise, return input surface with the new array.
-
     """
     if cell_area is None:
         cell_area = compute_cell_area(surf)
@@ -338,9 +336,7 @@ def compute_point_area(surf, cell_area=None, area_as='one_third',
 #     VTK point data does not accept boolean arrays. If the mask is provided as
 #     a string, the mask is built from the corresponding array such that any
 #     value larger than 0 is True.
-#
 #     """
-#
 #     if isinstance(mask, str):
 #         mask = surf.get_array(name=mask, at='p') > 0
 #

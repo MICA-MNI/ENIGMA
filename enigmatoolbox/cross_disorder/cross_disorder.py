@@ -48,9 +48,9 @@ def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSu
 
     mat_d = []
     names = []
-    for ii in range(len(disorder)):
+    for ii in enumerate(disorder):
         # Load summary statistics
-        sum_stats = load_summary_stats(disorder[ii])
+        sum_stats = load_summary_stats(ii[1])
         fieldos = list(sum_stats.keys())
 
         # Loop through structure fields (case-control options)

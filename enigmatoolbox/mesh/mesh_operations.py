@@ -319,7 +319,7 @@ def mask_cells(surf, mask):
 
 
 def combine_surfaces(*surfs):
-    """ Combine surfaces.
+    """Combine surfaces.
 
     Parameters
     ----------
@@ -343,8 +343,7 @@ def combine_surfaces(*surfs):
 
 
 @append_vtk(to='point')
-def get_connected_components(surf, labeling=None, mask=None, fill=0,
-                             append=False, key='components'):
+def get_connected_components(surf, labeling=None, mask=None, fill=0):
     """Get connected components.
 
     Connected components are based on connectivity (and same label if
@@ -384,7 +383,6 @@ def get_connected_components(surf, labeling=None, mask=None, fill=0,
     VTK point data does not accept boolean arrays. If the mask is provided as
     a string, the mask is built from the corresponding array such that any
     value larger than 0 is True.
-
     """
     if isinstance(mask, str):
         mask = surf.get_array(name=mask, at='p') > 0
@@ -421,7 +419,7 @@ def get_connected_components(surf, labeling=None, mask=None, fill=0,
 
 @wrap_input(0)
 def split_surface(surf, labeling=None):
-    """ Split surface according to the labeling.
+    """Split surface according to the labeling.
 
     Parameters
     ----------
@@ -441,7 +439,6 @@ def split_surface(surf, labeling=None):
     --------
     :func:`combine_surfaces`
     :func:`mask_points`
-
     """
     if labeling is None:
         labeling = get_connected_components(surf)
@@ -455,7 +452,7 @@ def split_surface(surf, labeling=None):
 @wrap_input(0)
 def downsample_with_parcellation(surf, labeling, name='parcel',
                                  check_connected=True):
-    """ Downsample surface according to the labeling.
+    """Downsample surface according to the labeling.
 
     Such that, each parcel centroid is used as a point in the new donwsampled
     surface. Connectivity is based on neighboring parcels.
@@ -479,7 +476,6 @@ def downsample_with_parcellation(surf, labeling, name='parcel',
     -------
     res : BSPolyData
         Downsampled surface.
-
     """
     if isinstance(labeling, str):
         labeling = surf.get_array(labeling, at='p')

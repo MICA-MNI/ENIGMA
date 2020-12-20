@@ -1,6 +1,4 @@
-"""
-Utility functions for vtk wrappers.
-"""
+"""Utility functions for vtk wrappers."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -12,7 +10,7 @@ from collections import defaultdict
 
 import numpy as np
 
-from vtk.util.vtkConstants import VTK_BIT, VTK_STRING, VTK_UNICODE_STRING
+from vtk.util.vtkConstants import VTK_STRING, VTK_UNICODE_STRING
 
 
 re_state = 'Set(?P<state>(?P<root>[A-Z0-9].*)To(?P<value>[A-Z0-9].*))'

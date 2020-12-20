@@ -17,8 +17,7 @@ import scipy.sparse as ssp
 
 
 def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
-    """
-    Extract centroids of a cortical parcellation on a surface sphere (author: @saratheriver)
+    """Extract centroids of a cortical parcellation on a surface sphere (author: @saratheriver)
 
     Parameters
     ----------
@@ -85,8 +84,7 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
 
 
 def rotate_parcellation(coord_l, coord_r, nrot=1000):
-    """
-    Rotate parcellation (author: @saratheriver)
+    """Rotate parcellation (author: @saratheriver)
 
     Parameters
     ----------
@@ -215,8 +213,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=1000):
 
 
 def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
-    """
-    Generate a p-value for the spatial correlation between two parcellated cortical surface maps (author: @saratheriver)
+    """Generate a p-value for the spatial correlation between two parcellated cortical surface maps (author: @saratheriver)
 
     Parameters
     ----------
@@ -300,8 +297,7 @@ def perm_sphere_p(x, y, perm_id, corr_type='pearson', null_dist=False):
 
 def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=1000,
               type='pearson', null_dist=False, ventricles=False):
-    """
-    Spin permutation (author: @saratheriver)
+    """Spin permutation (author: @saratheriver)
 
     Parameters
     ----------
@@ -386,8 +382,7 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
 
 
 def shuf_test(map1, map2, n_rot=1000, type='pearson', null_dist=False):
-    """
-    Shuf permuation (author: @saratheriver)
+    """Shuf permuation (author: @saratheriver)
 
     Parameters
     ----------
@@ -476,7 +471,7 @@ def shuf_test(map1, map2, n_rot=1000, type='pearson', null_dist=False):
 
 
 def compute_mem(w, n_ring=1, spectrum='nonzero', tol=1e-10):
-    """ Compute Moran eigenvectors map.
+    """Compute Moran eigenvectors map.
 
     Parameters
     ----------
@@ -514,7 +509,6 @@ def compute_mem(w, n_ring=1, spectrum='nonzero', tol=1e-10):
     * Wagner H.H. and Dray S. (2015). Generating spatially constrained
       null models for irregularly spaced data using Moran spectral
       randomization methods. Methods in Ecology and Evolution, 6(10):1169-78.
-
     """
     if spectrum not in ['all', 'nonzero']:
         raise ValueError("Unknown autocor '{0}'.".format(spectrum))
@@ -585,7 +579,7 @@ def compute_mem(w, n_ring=1, spectrum='nonzero', tol=1e-10):
 
 def moran_randomization(x, mem, n_rep=100, procedure='singleton', joint=False,
                         random_state=None):
-    """ Generate random samples from `x` based on Moran spectral randomization.
+    """Generate random samples from `x` based on Moran spectral randomization.
 
     Parameters
     ----------
@@ -620,7 +614,6 @@ def moran_randomization(x, mem, n_rep=100, procedure='singleton', joint=False,
     * Wagner H.H. and Dray S. (2015). Generating spatially constrained
       null models for irregularly spaced data using Moran spectral
       randomization methods. Methods in Ecology and Evolution, 6(10):1169-78.
-
     """
     if x.ndim == 1:
         x = np.atleast_2d(x).T
@@ -687,7 +680,6 @@ def is_symmetric(x, tol=1E-10):
     ------
     ValueError
         If `x` is not square.
-
     """
     if x.ndim != 2 or x.shape[0] != x.shape[1]:
         raise ValueError('Array is not square.')
@@ -729,7 +721,6 @@ def make_symmetric(x, check=True, tol=1E-10, copy=True, sparse_format=None):
     ------
     ValueError
         If `x` is not square.
-
     """
     if not check or not is_symmetric(x, tol=tol):
         if copy:
@@ -800,7 +791,7 @@ def get_subcortical_distance(ventricles=False):
 
 
 class MoranRandomization(BaseEstimator):
-    """ Moran spectral randomization.
+    """Moran spectral randomization.
 
     Parameters
     ----------
@@ -834,7 +825,6 @@ class MoranRandomization(BaseEstimator):
     See Also
     --------
     :class:`.SpinPermutations`
-
     """
     def __init__(self, procedure='singleton', spectrum='nonzero', joint=False,
                  n_rep=100, n_ring=1, tol=1e-10, random_state=None):

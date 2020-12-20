@@ -10,7 +10,7 @@ from ..vtk_interface import wrap_vtk, serial_connect
 
 
 def load_mask(name='midline', surface_name="fsa5", join=False):
-    """ Load mask for surface template (authors: @OualidBenkarim, @saratheriver)
+    """Load mask for surface template (authors: @OualidBenkarim, @saratheriver)
 
     Parameters
     ----------
@@ -57,7 +57,7 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
 
 
 def load_conte69(as_sphere=False, with_normals=True, join=False):
-    """ Load conte69 surfaces (author: @OualidBenkarim)
+    """Load conte69 surfaces (author: @OualidBenkarim)
 
     Parameters
     ----------
@@ -95,7 +95,7 @@ def load_conte69(as_sphere=False, with_normals=True, join=False):
 
 
 def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
-    """ Load fsaverage5 surfaces (author: @saratheriver)
+    """Load fsaverage5 surfaces (author: @saratheriver)
 
     Parameters
     ----------
@@ -141,7 +141,7 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
 
 
 def load_subcortical(with_normals=False, join=False):
-    """ Load subcortical surfaces (author: @saratheriver)
+    """Load subcortical surfaces (author: @saratheriver)
 
     Parameters
     ----------
@@ -175,7 +175,7 @@ def load_subcortical(with_normals=False, join=False):
 
 
 def load_sc(parcellation='aparc'):
-    """ Load structural connectivity data (author: @saratheriver)
+    """Load structural connectivity data (author: @saratheriver)
 
         Parameters
         ----------
@@ -229,7 +229,7 @@ def load_sc(parcellation='aparc'):
 
 
 def load_fc(parcellation='aparc'):
-    """ Load functional connectivity data (author: @saratheriver)
+    """Load functional connectivity data (author: @saratheriver)
 
         Parameters
         ----------
@@ -318,7 +318,7 @@ def load_sc_as_one(parcellation='aparc'):
 
 
 def load_fc_as_one(parcellation='aparc'):
-    """ Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
+    """Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
         Parameters
         ----------
@@ -354,7 +354,7 @@ def load_fc_as_one(parcellation='aparc'):
 
 
 def structural_covariance(zdata):
-    """ Construction of intra-individual brain structural covariance networks
+    """Construction of intra-individual brain structural covariance networks
 
         Parameters
         ----------
@@ -374,7 +374,7 @@ def structural_covariance(zdata):
 
 
 def fetch_ahba(csvfile=None):
-    """ Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes (author: @saratheriver)
+    """Fetch Allen Human Brain Atlas microarray expression data from all donors and all genes (author: @saratheriver)
 
         Parameters
         ----------
@@ -502,7 +502,7 @@ def risk_genes(disorder=None):
 
 
 def load_example_data():
-    """ Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
+    """Loads the ENIGMA example dataset (from one site - MICA-MNI Montreal; author: @saratheriver)
 
         Returns
         -------
@@ -529,7 +529,7 @@ def load_example_data():
 
 
 def load_summary_stats(disorder=None):
-    """ Outputs summary statistics for a given disorder (author: @saratheriver)
+    """Outputs summary statistics for a given disorder (author: @saratheriver)
 
         Parameters
         ----------
@@ -736,14 +736,9 @@ def reorder_sum_stats(in_file, out_file):
 
     return out.to_csv(out_file, index=False)
 
+# For every new summary statistic file, run the following command to reorder
+# cortical structures according to ENIGMA mega-analysis protocols!
 
-"""
-    For every new summary statistic file, run the following command to reorder
-    cortical structures according to ENIGMA mega-analysis protocols!
-    
-    * only run for CortThick and CortSurf
-    ------------------------------------------------------------------------------------
-
-    in_file = '/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/enigmatoolbox/datasets/summary_statistics/tlemtsl_case-controls_CortThick.csv'
-    reorder_sum_stats(in_file, in_file)
-"""
+# * only run for CortThick and CortSurf
+# in_file = '/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/enigmatoolbox/datasets/summary_statistics/tlemtsl_case-controls_CortThick.csv'
+# reorder_sum_stats(in_file, in_file)

@@ -1,6 +1,4 @@
-"""
-Utility functions for parcellations/labelings.
-"""
+"""Utility functions for parcellations/labelings."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -230,7 +228,7 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
         return map_to_mask(labs2, mask, fill=fill)
 
     if source_lab is None:
-        uq_tl, idx_tl = np.unique(target_lab, return_inverse=True)
+        _, idx_tl = np.unique(target_lab, return_inverse=True)
         return source_val[idx_tl]
 
     if source_lab.size != source_val.size:

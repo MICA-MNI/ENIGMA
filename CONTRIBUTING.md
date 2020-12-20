@@ -17,22 +17,22 @@ Been here before?
 Already know what you're looking for in this guide?
 Jump to the following sections:
 
-- [Joining the community](#joining-the-community)
-- [Contributing through Github](#contributing-through-github)
-- [Where to start: GitHub Issues](#where-to-start-github-issues)
-  - [Issue labels](#issue-labels)
-- [Making a change with a pull request](#making-a-change-with-a-pull-request)
-  - [1. Comment on or open an issue](#1-comment-on-an-existing-issue-or-open-a-new-issue-referencing-your-addition)
-  - [2. Fork the `enigmatoolbox` repository](#2-forklink_fork-the-enigmatoolbox-repositorylink_enigmatoolbox-to-your-profile)
-  - [3. Install `enigmatoolbox` locally](#3-install-enigmatoolbox-in-developer-mode)
-  - [4. Make the discussed changes](#4-make-the-changes-youve-discussed)
-  - [5. Test your changes](#5-test-your-changes)
-  - [6. Submit a pull request](#6-submit-a-pull-requestlink_pullrequest)
-- [Style guide](#style-guide)
-  - [Writing Python code](#writing-python-code)
-  - [Writing in reStructuredText](#writing-in-restructuredtext)
-  - [Pull requests](#pull-requests)
-- [Recognizing contributions](#recognizing-contributions)
+-  [Joining the community](#joining-the-community)
+-  [Contributing through Github](#contributing-through-github)
+-  [Where to start: GitHub Issues](#where-to-start-github-issues)
+  -  [Issue labels](#issue-labels)
+-  [Making a change with a pull request](#making-a-change-with-a-pull-request)
+  -  [1. Comment on or open an issue](#1-comment-on-an-existing-issue-or-open-a-new-issue-referencing-your-addition)
+  -  [2. Fork the `enigmatoolbox` repository](#2-forklink_fork-the-enigmatoolbox-repositorylink_enigmatoolbox-to-your-profile)
+  -  [3. Install `enigmatoolbox` locally](#3-install-enigmatoolbox-in-developer-mode)
+  -  [4. Make the discussed changes](#4-make-the-changes-youve-discussed)
+  -  [5. Test your changes](#5-test-your-changes)
+  -  [6. Submit a pull request](#6-submit-a-pull-requestlink_pullrequest)
+-  [Style guide](#style-guide)
+  -  [Writing Python code](#writing-python-code)
+  -  [Writing in reStructuredText](#writing-in-restructuredtext)
+  -  [Pull requests](#pull-requests)
+-  [Recognizing contributions](#recognizing-contributions)
 
 ## Joining the community
 
@@ -63,51 +63,51 @@ Before you open a new issue, please check if any of our [open issues][link_enigm
 
 The current list of labels can be found [here][link_enigmatoolbox_labels] and includes:
 
-- [![Good first issue](https://img.shields.io/badge/-good%20first%20issue-%237057ff)][labels_goodfirst] *These issues are great ways to get started contributing.*
+-  [![Good first issue](https://img.shields.io/badge/-good%20first%20issue-%237057ff)][labels_goodfirst] *These issues are great ways to get started contributing.*
 
-    If you are interested in getting involved in `enigmatoolbox` then these are good places to start!
-    The maintainers will be happy to walk you through the contribution process step-by-step.
-    Please note: if you're a seasoned contributor we would appreciate if you could select a different issue to work from to keep these available for newer and potentially more anxious team members!
+  If you are interested in getting involved in `enigmatoolbox` then these are good places to start!
+  The maintainers will be happy to walk you through the contribution process step-by-step.
+  Please note: if you're a seasoned contributor we would appreciate if you could select a different issue to work from to keep these available for newer and potentially more anxious team members!
 
-- [![Help Wanted](https://img.shields.io/badge/-help%20wanted-%23008672)][labels_helpwanted] *These issues contain a task that a member of the team has determined we need additional help with.*
+-  [![Help Wanted](https://img.shields.io/badge/-help%20wanted-%23008672)][labels_helpwanted] *These issues contain a task that a member of the team has determined we need additional help with.*
 
-    If you feel that you can contribute to one of these issues, we especially encourage you to do so.
+  If you feel that you can contribute to one of these issues, we especially encourage you to do so.
 
-- [![Bug](https://img.shields.io/badge/-bug-%23d73a4a)][labels_bugs] *These issues point to problems in the project.*
+-  [![Bug](https://img.shields.io/badge/-bug-%23d73a4a)][labels_bugs] *These issues point to problems in the project.*
 
-    If you find new a bug, please give as much detail as possible in your issue, including steps to recreate the error.
-    If you experience the same bug as one already listed please add any additional information that you have as a comment on the issue.
+  If you find new a bug, please give as much detail as possible in your issue, including steps to recreate the error.
+  If you experience the same bug as one already listed please add any additional information that you have as a comment on the issue.
 
-- [![Documentation](https://img.shields.io/badge/-documentation-%2376e853)][labels_documentation] *These issues relate to updating documentation.*
+-  [![Documentation](https://img.shields.io/badge/-documentation-%2376e853)][labels_documentation] *These issues relate to updating documentation.*
 
-    This is used to highlight when something is missing from or unclear in the current documentation.
+  This is used to highlight when something is missing from or unclear in the current documentation.
 
-- [![Question](https://img.shields.io/badge/-question-%23d876e3)][labels_question] *These issues are open-ended and don't necessarily have a definite solution.*
+-  [![Question](https://img.shields.io/badge/-question-%23d876e3)][labels_question] *These issues are open-ended and don't necessarily have a definite solution.*
 
-    If you're unclear about something in repository or the related documentation and simply need to ask a clarifying *question*, this is the label for you!
-    This can also be paired with other labels (e.g., *enhancement*, *refactor*) on issues when the means by which to resolve the issue is unclear and warrants discussion.
+  If you're unclear about something in repository or the related documentation and simply need to ask a clarifying *question*, this is the label for you!
+  This can also be paired with other labels (e.g., *enhancement*, *refactor*) on issues when the means by which to resolve the issue is unclear and warrants discussion.
 
-- [![Enhancement](https://img.shields.io/badge/-enhancement-%23a2eeef)][labels_enhancement] *These issues suggest new features that can be added to the project.*
+-  [![Enhancement](https://img.shields.io/badge/-enhancement-%23a2eeef)][labels_enhancement] *These issues suggest new features that can be added to the project.*
 
-    If you want to ask for something new please try to make sure that your request is distinct from any others that are already in the queue.
-    If you find another issue requesting an enhancement that is similar to your suggestion but still distinct please reference the related enhancement in your issue.
+  If you want to ask for something new please try to make sure that your request is distinct from any others that are already in the queue.
+  If you find another issue requesting an enhancement that is similar to your suggestion but still distinct please reference the related enhancement in your issue.
 
-- [![Maintenance](https://img.shields.io/badge/-maintenance-%23ffe359)][labels_maintenance] *These issues relate to general package management*
+-  [![Maintenance](https://img.shields.io/badge/-maintenance-%23ffe359)][labels_maintenance] *These issues relate to general package management*
 
-    Does a dependency need to be pinned?
-    Is a link not resolving anymore?
-    These issues address when there's a change, update, or modification that needs to be made to the package that doesn't necessarily impact anything other besides managing `enigmatoolbox`.
+  Does a dependency need to be pinned?
+  Is a link not resolving anymore?
+  These issues address when there's a change, update, or modification that needs to be made to the package that doesn't necessarily impact anything other besides managing `enigmatoolbox`.
 
-- [![Refactor](https://img.shields.io/badge/-refactor-%23ffdbc6)][labels_refactor] *These issues address changes that need to be made*
+-  [![Refactor](https://img.shields.io/badge/-refactor-%23ffdbc6)][labels_refactor] *These issues address changes that need to be made*
 
-    If you're suggesting a modification that isn't a bug or enhancement, but rather a change to the existing code designed to make it more accessible/understandable, this label may be appropriate.
-    While refactoring often **does** significantly enhance the code, we reserve the *enhacement* label for **new** features.
+  If you're suggesting a modification that isn't a bug or enhancement, but rather a change to the existing code designed to make it more accessible/understandable, this label may be appropriate.
+  While refactoring often **does** significantly enhance the code, we reserve the *enhacement* label for **new** features.
 
-- [![High priority](https://img.shields.io/badge/-high%20priority-%233387f4)][labels_highpriority] *These issues are pressing and need to be addressed urgently*
+-  [![High priority](https://img.shields.io/badge/-high%20priority-%233387f4)][labels_highpriority] *These issues are pressing and need to be addressed urgently*
   
-    This label will likely be added by an `enigmatoolbox` team member to highlight critical bugs or updates that need to be made.
+  This label will likely be added by an `enigmatoolbox` team member to highlight critical bugs or updates that need to be made.
 
-- [![Testing](https://img.shields.io/badge/-testing-%23c5def5)][labels_testing] *These issues relate to code testing*
+-  [![Testing](https://img.shields.io/badge/-testing-%23c5def5)][labels_testing] *These issues relate to code testing*
 
 ## Making a change with a pull request
 
@@ -188,7 +188,7 @@ Once this finishes you can fire up a web browser and open the `enigmatoolbox/doc
 
 ### 6. Submit a [pull request][link_pullrequest]
 
-_Before submitting your pull request please make sure you review the `enigmatoolbox` [pull request style guide](#pull-requests)!_
+*Before submitting your pull request please make sure you review the `enigmatoolbox` [pull request style guide](#pull-requests)!*
 
 We encourage you to open a pull request as early in your contributing process as possible.
 This allows everyone to see what is currently being worked on.
@@ -252,13 +252,13 @@ If you have any questions as you make edits to the documentation please don't he
 To improve understanding of pull requests "at a glance", we encourage the use of several standardized tags. 
 When opening a pull request, please use at least one of the following prefixes in the title of the pull request:
 
-- **[BRK]** for changes which break existing builds or tests
-- **[DOC]** for new or updated documentation
-- **[ENH]** for enhancements
-- **[FIX]** for bug fixes
-- **[REF]** for refactoring existing code
-- **[STY]** for stylistic changes
-- **[TST]** for new or updated tests, and
+-  **[BRK]** for changes which break existing builds or tests
+-  **[DOC]** for new or updated documentation
+-  **[ENH]** for enhancements
+-  **[FIX]** for bug fixes
+-  **[REF]** for refactoring existing code
+-  **[STY]** for stylistic changes
+-  **[TST]** for new or updated tests, and
 
 You can also combine the tags!
 If you are updating both a test and some related documentation, you could use **[TST, DOC]**.

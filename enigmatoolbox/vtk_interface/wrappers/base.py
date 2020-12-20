@@ -356,7 +356,7 @@ def BSWrapVTKObject(obj):
     if obj is None or is_wrapper(obj):
         return obj
 
-    if type(obj) == type:
+    if isinstance(obj, type):
         obj = obj()
 
     if not is_vtk(obj):

@@ -80,7 +80,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         if add_conn is True:
             # Connection for only 1 input port. Not tested.
             ftr1.AddInputConnection(port1, op)
-        elif type(add_conn) == int:
+        elif isinstance(add_conn, int):
             # Connection for only 1 input port. Not tested.
             ftr1.SetInputConnectionByNumber(add_conn, op)
         else:
