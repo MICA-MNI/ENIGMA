@@ -9,16 +9,16 @@ Although no list can hope to be all-encompassing, we explicitly honor diversity 
 We aim to promote behavior that contributes to a positive and welcoming environment.
 Examples of such behavior include:
 
-*  Using inclusive language
-*  Being respectful of differing viewpoints and experiences
-*  Showing empathy towards other community members
+*Using inclusive language
+*Being respectful of differing viewpoints and experiences
+*Showing empathy towards other community members
 
 We do not tolerate harassment or other, inappropriate behavior in our community.
 Examples of unacceptable behavior by participants include:
 
-*  The use of sexualized language or imagery and unwelcome sexual attention or advances
-*  Personal or political attacks on contributors, and insulting or derogatory comments on contributed code with the intent to undermine contributions
-*  Public or private harassment
+*The use of sexualized language or imagery and unwelcome sexual attention or advances
+*Personal or political attacks on contributors, and insulting or derogatory comments on contributed code with the intent to undermine contributions
+*Public or private harassment
 
 ## Our Responsibilities
 
@@ -38,10 +38,10 @@ Confidentiality will be respected in reporting.
 
 Enforcement of this Code can include (but is not limited to):
 
-*  Facilitating a converstaion between the two parties involved in the violation of the Code of Conduct
-*  Requesting a community member apologize for their behavior
-*  Asking a community member (or multiple members) to enter a cooling off period that puts a time-limited pause on a particular discussion topic
-*  Asking a community member to no longer participate in the `enigmatoolbox` community, including making contributions or commenting on issues/pull requests
+*Facilitating a converstaion between the two parties involved in the violation of the Code of Conduct
+*Requesting a community member apologize for their behavior
+*Asking a community member (or multiple members) to enter a cooling off period that puts a time-limited pause on a particular discussion topic
+*Asking a community member to no longer participate in the `enigmatoolbox` community, including making contributions or commenting on issues/pull requests
 
 ## Attribution
 
