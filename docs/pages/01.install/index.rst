@@ -1,7 +1,5 @@
 .. _install_page:
 
-.. Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
-    pip install enigmatoolbox
 
 .. title:: Install me
 
@@ -31,6 +29,10 @@ Installation
             git clone https://github.com/MICA-MNI/ENIGMA.git
             cd ENIGMA
             python setup.py install
+
+        Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
+        
+            pip install enigmatoolbox
 
 
     .. tab:: Matlab

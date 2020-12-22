@@ -5,6 +5,16 @@
 What's new?
 ======================================
 
+v1.0.0 (December 22, 2020)
+------------------------------------------
+Initial release 😱
+
+::
+
+    ↪ [DOC 📄] Citation for ENIGMA Toolbox preprint          |  @saratheriver
+    ↪ [NEW 🗽] Pip package available                         |  @saratheriver
+
+
 v0.1.2 (December 20, 2020)
 ------------------------------------------
 Bug fixes and improvement - still in pre-release
