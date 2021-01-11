@@ -30,10 +30,6 @@ Installation
             cd ENIGMA
             python setup.py install
 
-        Alternatively, you can also install the **ENIGMA TOOLBOX** using ``pip``: ::
-        
-            pip install enigmatoolbox
-
 
     .. tab:: Matlab
 
