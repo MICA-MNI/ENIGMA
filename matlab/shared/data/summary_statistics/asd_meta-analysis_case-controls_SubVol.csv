@@ -1,0 +1,17 @@
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+ASD_meta-analysis_casevsCN,Laccumb,-0.05,,,,1071,984,,2.91E-01
+ASD_meta-analysis_casevsCN,Lamyg,-0.06,,,,1068,980,,2.82E-01
+ASD_meta-analysis_casevsCN,Lcaud,-0.05,,,,1070,984,,4.60E-01
+ASD_meta-analysis_casevsCN,Lhippo,-0.03,,,,1069,981,,6.67E-01
+ASD_meta-analysis_casevsCN,Lpal,-0.03,,,,1071,983,,5.56E-01
+ASD_meta-analysis_casevsCN,Lput,-0.03,,,,1071,985,,3.90E-02
+ASD_meta-analysis_casevsCN,Lthal,-0.09,,,,1070,982,,4.30E-02
+ASD_meta-analysis_casevsCN,LLatVent,0.11,,,,1071,985,,3.10E-02
+ASD_meta-analysis_casevsCN,Raccumb,-0.05,,,,1071,984,,2.91E-01
+ASD_meta-analysis_casevsCN,Ramyg,-0.06,,,,1068,980,,2.82E-01
+ASD_meta-analysis_casevsCN,Rcaud,-0.05,,,,1070,984,,4.60E-01
+ASD_meta-analysis_casevsCN,Rhippo,-0.03,,,,1069,981,,6.67E-01
+ASD_meta-analysis_casevsCN,Rpal,-0.03,,,,1071,983,,5.56E-01
+ASD_meta-analysis_casevsCN,Rput,-0.03,,,,1071,985,,3.90E-02
+ASD_meta-analysis_casevsCN,Rthal,-0.09,,,,1070,982,,4.30E-02
+ASD_meta-analysis_casevsCN,RLatVent,0.11,,,,1071,985,,3.10E-02

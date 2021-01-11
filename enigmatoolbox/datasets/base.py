@@ -552,15 +552,31 @@ def load_summary_stats(disorder=None):
                                                            '22q_psych+-psych-_CortThick.csv'), error_bad_lines=False)
         CortSurf_psychP_psychN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           '22q_psych+-psych-_CortSurf.csv'), error_bad_lines=False)
+        SubVol_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                           '22q_case-controls_SubVol.csv'), error_bad_lines=False)
+        SubVol_case_controls_AB = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                        '22q_case-controls_SubVol_AB.csv'), error_bad_lines=False)
+        SubVol_case_controls_AD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                        '22q_case-controls_SubVol_AD.csv'), error_bad_lines=False)
+        SubVol_AB_AD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                        '22q_AB-AD_SubVol.csv'), error_bad_lines=False)
+        SubVol_psychP_psychN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                          '22q_psych+-psych-_SubVol.csv'), error_bad_lines=False)
+
         return {'CortThick_case_vs_controls': CortThick_case_controls,
                 'CortSurf_case_vs_controls': CortSurf_case_controls,
                 'CortThick_psychP_vs_psychN': CortThick_psychP_psychN,
-                'CortSurf_psychP_vs_psychN': CortSurf_psychP_psychN}
+                'CortSurf_psychP_vs_psychN': CortSurf_psychP_psychN,
+                'SubVol_case_vs_controls': SubVol_case_controls,
+                'SubVol_case_vs_controls_AD': SubVol_case_controls_AD,
+                'SubVol_case_vs_controls_AB': SubVol_case_controls_AB,
+                'SubVol_AB_vs_AD': SubVol_AB_AD,
+                'SubVol_psychP_vs_psychN': SubVol_psychP_psychN}
 
     elif disorder is "adhd":
-        CortThick_case_controls_allages = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                   'adhdallages_case-controls_CortThick.csv'),
-                                                      error_bad_lines=False)
+        CortThick_case_controls_allages = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'adhdallages_case-controls_CortThick.csv'),
+            error_bad_lines=False)
         CortSurf_case_controls_allages = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                   'adhdallages_case-controls_CortSurf.csv'),
                                                      error_bad_lines=False)
@@ -582,6 +598,18 @@ def load_summary_stats(disorder=None):
         CortSurf_case_controls_pediatric = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                     'adhdpediatric_case-controls_CortSurf.csv'),
                                                        error_bad_lines=False)
+        SubVol_case_controls_allages = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'adhdallages_case-controls_SubVol.csv'),
+            error_bad_lines=False)
+        SubVol_case_controls_adult = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'adhdadult_case-controls_SubVol.csv'),
+            error_bad_lines=False)
+        SubVol_case_controls_adolescent = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'adhdadolescent_case-controls_SubVol.csv'),
+            error_bad_lines=False)
+        SubVol_case_controls_pediatric = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'adhdpediatric_case-controls_SubVol.csv'),
+            error_bad_lines=False)
 
         return {'CortThick_case_vs_controls_allages': CortThick_case_controls_allages,
                 'CortSurf_case_vs_controls_allages': CortSurf_case_controls_allages,
@@ -590,43 +618,179 @@ def load_summary_stats(disorder=None):
                 'CortThick_case_vs_controls_adolescent': CortThick_case_controls_adolescent,
                 'CortSurf_case_vs_controls_adolescent': CortSurf_case_controls_adolescent,
                 'CortThick_case_vs_controls_pediatric': CortThick_case_controls_pediatric,
-                'CortSurf_case_vs_controls_pediatric': CortSurf_case_controls_pediatric}
+                'CortSurf_case_vs_controls_pediatric': CortSurf_case_controls_pediatric,
+                'SubVol_case_vs_controls_allages':SubVol_case_controls_allages,
+                'SubVol_case_vs_controls_adult':SubVol_case_controls_adult,
+                'SubVol_case_vs_controls_adolescent':SubVol_case_controls_adolescent,
+                'SubVol_case_vs_controls_pediatric':SubVol_case_controls_pediatric}
 
     elif disorder is "asd":
-        CortThick_case_controls_meta_analysis = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                         'asd_meta-analysis_case-controls_CortThick.csv'),
-                                                            error_bad_lines=False)
-        CortThick_case_controls_mega_analysis = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                         'asd_mega-analysis_case-controls_CortThick.csv'),
-                                                            error_bad_lines=False)
+        CortThick_case_controls_meta_analysis = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'asd_meta-analysis_case-controls_CortThick.csv'),
+            error_bad_lines=False)
+        CortThick_case_controls_mega_analysis = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'asd_mega-analysis_case-controls_CortThick.csv'),
+            error_bad_lines=False)
+        SubVol_case_controls_meta_analysis = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'asd_meta-analysis_case-controls_SubVol.csv'),
+            error_bad_lines=False)
 
         return {'CortThick_case_vs_controls_meta_analysis': CortThick_case_controls_meta_analysis,
-                'CortThick_case_vs_controls_mega_analysis': CortThick_case_controls_mega_analysis}
+                'CortThick_case_vs_controls_mega_analysis': CortThick_case_controls_mega_analysis,
+                'SubVol_case_vs_controls_meta_analysis': SubVol_case_controls_meta_analysis}
 
     elif disorder is "bipolar":
-        CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                          'bd_case-controls_CortSurf.csv'), error_bad_lines=False)
-
-        return {'CortSurf_case_vs_controls': CortSurf_case_controls}
-
-    elif disorder is "depression":
-        CortThick_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'mddadult_case-controls_CortThick.csv'),
-                                                    error_bad_lines=False)
-        CortSurf_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'mddadult_case-controls_CortSurf.csv'),
-                                                    error_bad_lines=False)
-        CortThick_case_controls_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                      'mddadolescent_case-controls_CortThick.csv'),
-                                                         error_bad_lines=False)
-        CortSurf_case_controls_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                     'mddadolescent_case-controls_CortSurf.csv'),
-                                                        error_bad_lines=False)
+        CortThick_case_controls_adult = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_CortThick_adult.csv'), error_bad_lines=False)
+        CortSurf_case_controls_adult = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_CortSurf_adult.csv'), error_bad_lines=False)
+        CortThick_typeI_typeII_adult = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_typeI-typeII_CortThick_adult.csv'), error_bad_lines=False)
+        CortSurf_typeI_typeII_adult = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_typeI-typeII_CortSurf_adult.csv'), error_bad_lines=False)
+        CortThick_case_controls_adolescent = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_CortThick_adolescent.csv'), error_bad_lines=False)
+        CortSurf_case_controls_adolescent = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_CortSurf_adolescent.csv'), error_bad_lines=False)
+        CortThick_typeI_typeII_adolescent = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_typeI-typeII_CortThick_adolescent.csv'), error_bad_lines=False)
+        CortSurf_typeI_typeII_adolescent = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_typeI-typeII_CortSurf_adolescent.csv'), error_bad_lines=False)
+        SubVol_case_controls_typeI = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_SubVol_typeI.csv'), error_bad_lines=False)
+        SubVol_case_controls_typeII = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_SubVol_typeII.csv'), error_bad_lines=False)
+        SubVol_typeII_typeI = pd.read_csv(
+            os.path.join(root_pth, 'summary_statistics', 'bd_typeII-typeI_SubVol.csv'), error_bad_lines=False)
 
         return {'CortThick_case_vs_controls_adult': CortThick_case_controls_adult,
                 'CortSurf_case_vs_controls_adult': CortSurf_case_controls_adult,
+                'CortThick_typeI_vs_typeII_adult': CortThick_typeI_typeII_adult,
+                'CortSurf_typeI_vs_typeII_adult': CortSurf_typeI_typeII_adult,
                 'CortThick_case_vs_controls_adolescent': CortThick_case_controls_adolescent,
-                'CortSurf_case_vs_controls_adolescent': CortSurf_case_controls_adolescent}
+                'CortSurf_case_vs_controls_adolescent': CortSurf_case_controls_adolescent,
+                'CortThick_typeI_vs_typeII_adolescent': CortThick_typeI_typeII_adolescent,
+                'CortSurf_typeI_vs_typeII_adolescent': CortSurf_typeI_typeII_adolescent,
+                'SubVol_case_vs_controls_typeI': SubVol_case_controls_typeI,
+                'SubVol_case_vs_controls_typeII': SubVol_case_controls_typeII,
+                'SubVol_typeII_vs_typeI': SubVol_typeII_typeI}
+
+    elif disorder is "depression":
+        CortThick_case_vs_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'mddadult_case-controls_CortThick.csv'),
+                                                    error_bad_lines=False)
+        CortSurf_case_vs_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                'mddadult_case-controls_CortSurf.csv'),
+                                                   error_bad_lines=False)
+        CortThick_case_vs_controls_adult_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                 'mddadult_case-controls_CortThick_firstepisode.csv'),
+                                                                    error_bad_lines=False)
+        CortSurf_case_vs_controls_adult_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                'mddadult_case-controls_CortSurf_firstepisode.csv'),
+                                                                   error_bad_lines=False)
+        CortThick_case_vs_controls_adult_recurrent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                              'mddadult_case-controls_CortThick_recurrent.csv'),
+                                                                 error_bad_lines=False)
+        CortSurf_case_vs_controls_adult_recurrent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                             'mddadult_case-controls_CortSurf_recurrent.csv'),
+                                                                error_bad_lines=False)
+        CortThick_firstepisode_vs_recurrent_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                             'mddadult_firstepisode-recurrent_CortThick.csv'),
+                                                                error_bad_lines=False)
+        CortSurf_firstepisode_vs_recurrent_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                            'mddadult_firstepisode-recurrent_CortSurf.csv'),
+                                                               error_bad_lines=False)
+        CortThick_case_vs_controls_adult_early = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                          'mddadult_case-controls_CortThick_early.csv'),
+                                                             error_bad_lines=False)
+        CortSurf_case_vs_controls_adult_early = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                         'mddadult_case-controls_CortSurf_early.csv'),
+                                                            error_bad_lines=False)
+        CortThick_case_vs_controls_adult_late = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                         'mddadult_case-controls_CortThick_late.csv'),
+                                                            error_bad_lines=False)
+        CortSurf_case_vs_controls_adult_late = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                        'mddadult_case-controls_CortSurf_late.csv'),
+                                                           error_bad_lines=False)
+        CortThick_early_vs_late_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'mddadult_early-late_CortThick.csv'),
+                                                    error_bad_lines=False)
+        CortSurf_early_vs_late_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                'mddadult_early-late_CortSurf.csv'),
+                                                   error_bad_lines=False)
+        CortThick_case_vs_controls_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                      'mddadolescent_case-controls_CortThick.csv'),
+                                                         error_bad_lines=False)
+        CortSurf_case_vs_controls_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                     'mddadolescent_case-controls_CortSurf.csv'),
+                                                        error_bad_lines=False)
+        CortThick_case_vs_controls_adolescent_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                      'mddadolescent_case-controls_CortThick_firstepisode.csv'),
+                                                                         error_bad_lines=False)
+        CortSurf_case_vs_controls_adolescent_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                     'mddadolescent_case-controls_CortSurf_firstepisode.csv'),
+                                                                        error_bad_lines=False)
+        CortThick_case_vs_controls_adolescent_recurrent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                   'mddadolescent_case-controls_CortThick_recurrent.csv'),
+                                                                      error_bad_lines=False)
+        CortSurf_case_vs_controls_adolescent_recurrent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                  'mddadolescent_case-controls_CortSurf_recurrent.csv'),
+                                                                     error_bad_lines=False)
+        CortThick_firstepisode_vs_recurrent_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                  'mddadolescent_firstepisode-recurrent_CortThick.csv'),
+                                                                     error_bad_lines=False)
+        CortSurf_firstepisode_vs_recurrent_adolescent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                                 'mddadolescent_firstepisode-recurrent_CortSurf.csv'),
+                                                                    error_bad_lines=False)
+        SubVol_case_vs_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                           'mdd_case-controls_SubVol.csv'), error_bad_lines=False)
+        SubVol_case_vs_controls_late = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                'mddlate_case-controls_SubVol.csv'),
+                                                   error_bad_lines=False)
+        SubVol_case_vs_controls_early = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'mddearly_case-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_late_vs_early = pd.read_csv(os.path.join(root_pth, 'summary_statistics', 'mdd_late-early_SubVol.csv'),
+                                           error_bad_lines=False)
+        SubVol_case_vs_controls_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                        'mddfirstepisode_case-controls_SubVol.csv'),
+                                                           error_bad_lines=False)
+        SubVol_case_vs_controls_recurrent = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                     'mddrecurrent_case-controls_SubVol.csv'),
+                                                        error_bad_lines=False)
+        SubVol_recurrrent_vs_firstepisode = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                     'mdd_recurrent-firstepisode_SubVol.csv'),
+                                                        error_bad_lines=False)
+
+        return {'CortThick_case_vs_controls_adult': CortThick_case_vs_controls_adult,
+                'CortSurf_case_vs_controls_adult': CortSurf_case_vs_controls_adult,
+                'CortThick_case_vs_controls_adult_firstepisode': CortThick_case_vs_controls_adult_firstepisode,
+                'CortSurf_case_vs_controls_adult_firstepisode': CortSurf_case_vs_controls_adult_firstepisode,
+                'CortThick_case_vs_controls_adult_recurrent': CortThick_case_vs_controls_adult_recurrent,
+                'CortSurf_case_vs_controls_adult_recurrent': CortSurf_case_vs_controls_adult_recurrent,
+                'CortThick_firstepisode_vs_recurrent_adult': CortThick_firstepisode_vs_recurrent_adult,
+                'CortSurf_firstepisode_vs_recurrent_adult': CortSurf_firstepisode_vs_recurrent_adult,
+                'CortThick_case_vs_controls_adult_early': CortThick_case_vs_controls_adult_early,
+                'CortSurf_case_vs_controls_adult_early': CortSurf_case_vs_controls_adult_early,
+                'CortThick_case_vs_controls_adult_late': CortThick_case_vs_controls_adult_late,
+                'CortSurf_case_vs_controls_adult_late': CortSurf_case_vs_controls_adult_late,
+                'CortThick_early_vs_late_adult': CortThick_early_vs_late_adult,
+                'CortSurf_early_vs_late_adult': CortSurf_early_vs_late_adult,
+                'CortThick_case_vs_controls_adolescent': CortThick_case_vs_controls_adolescent,
+                'CortSurf_case_vs_controls_adolescent': CortSurf_case_vs_controls_adolescent,
+                'CortThick_case_vs_controls_adolescent_firstepisode': CortThick_case_vs_controls_adolescent_firstepisode,
+                'CortSurf_case_vs_controls_adolescent_firstepisode': CortSurf_case_vs_controls_adolescent_firstepisode,
+                'CortThick_case_vs_controls_adolescent_recurrent': CortThick_case_vs_controls_adolescent_recurrent,
+                'CortSurf_case_vs_controls_adolescent_recurrent': CortSurf_case_vs_controls_adolescent_recurrent,
+                'CortThick_firstepisode_vs_recurrent_adolescent': CortThick_firstepisode_vs_recurrent_adolescent,
+                'CortSurf_firstepisode_vs_recurrent_adolescent': CortSurf_firstepisode_vs_recurrent_adolescent,
+                'SubVol_case_vs_controls': SubVol_case_vs_controls,
+                'SubVol_case_vs_controls_late': SubVol_case_vs_controls_late,
+                'SubVol_case_vs_controls_early': SubVol_case_vs_controls_early,
+                'SubVol_late_vs_early': SubVol_late_vs_early,
+                'SubVol_case_vs_controls_firstepisode': SubVol_case_vs_controls_firstepisode,
+                'SubVol_case_vs_controls_recurrent': SubVol_case_vs_controls_recurrent,
+                'SubVol_recurrrent_vs_firstepisode': SubVol_recurrrent_vs_firstepisode}
 
     elif disorder is "epilepsy":
         CortThick_case_controls_allepilepsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -653,6 +817,12 @@ def load_summary_stats(disorder=None):
         SubVol_case_controls_rtle = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                              'tlemtsr_case-controls_SubVol.csv'),
                                                 error_bad_lines=False)
+        CortThick_case_controls_allotherepilepsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                       'allotherepi_case-controls_CortThick.csv'),
+                                                          error_bad_lines=False)
+        SubVol_case_controls_allotherepilepsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                    'allotherepi_case-controls_SubVol.csv'),
+                                                       error_bad_lines=False)
 
         return {'CortThick_case_vs_controls_allepilepsy': CortThick_case_controls_allepilepsy,
                 'SubVol_case_vs_controls_allepilepsy': SubVol_case_controls_allepilepsy,
@@ -661,7 +831,9 @@ def load_summary_stats(disorder=None):
                 'CortThick_case_vs_controls_ltle': CortThick_case_controls_ltle,
                 'SubVol_case_vs_controls_ltle': SubVol_case_controls_ltle,
                 'CortThick_case_vs_controls_rtle': CortThick_case_controls_rtle,
-                'SubVol_case_vs_controls_rtle': SubVol_case_controls_rtle}
+                'SubVol_case_vs_controls_rtle': SubVol_case_controls_rtle,
+                'CortThick_case_vs_controls_allotherepilepsy': CortThick_case_controls_allotherepilepsy,
+                'SubVol_case_vs_controls_allotherepilepsy': SubVol_case_controls_allotherepilepsy}
 
     elif disorder is "ocd":
         CortThick_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -703,9 +875,15 @@ def load_summary_stats(disorder=None):
                                                           'scz_case-controls_CortThick.csv'), error_bad_lines=False)
         CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'scz_case-controls_CortSurf.csv'), error_bad_lines=False)
+        SubVol_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                           'scz_case-controls_SubVol.csv'), error_bad_lines=False)
+        SubVol_case_controls_mean = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                          'scz_case-controls_SubVol_mean.csv'), error_bad_lines=False)
 
         return {'CortThick_case_vs_controls': CortThick_case_controls,
-                'CortSurf_case_vs_controls': CortSurf_case_controls}
+                'CortSurf_case_vs_controls': CortSurf_case_controls,
+                'SubVol_case_vs_controls': SubVol_case_controls,
+                'SubVol_case_vs_controls_mean': SubVol_case_controls_mean}
 
     else:
         raise ValueError("must specify a valid disorder...!")

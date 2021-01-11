@@ -1,0 +1,17 @@
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_psych+,n_psych-,pobs,fdr_p
+Psych+vsPsych-,Laccumb,-0.39,0.18,-0.75,-0.04,63,62,4.15E-02,9.04E-02
+Psych+vsPsych-,Lamyg,-0.55,0.18,-0.91,-0.2,63,64,4.27E-03,1.21E-02
+Psych+vsPsych-,Lcaud,-0.21,0.18,-0.56,0.14,61,64,2.67E-01,3.85E-01
+Psych+vsPsych-,Lhippo,-0.91,0.21,-1.32,0.5,49,54,4.96E-05,2.01E-04
+Psych+vsPsych-,Lpal,0.10,0.18,-0.26,0.46,62,59,6.11E-01,6.92E-01
+Psych+vsPsych-,Lput,-0.13,0.18,-0.48,0.22,62,64,4.82E-01,6.11E-01
+Psych+vsPsych-,Lthal,-0.42,0.18,-0.78,-0.06,61,61,3.22E-02,7.20E-02
+Psych+vsPsych-,LLatVent,-0.12,0.18,-0.47,0.22,64,64,5.16E-01,6.36E-01
+Psych+vsPsych-,Raccumb,-0.34,0.18,-0.69,0.02,63,63,7.84E-02,1.51E-01
+Psych+vsPsych-,Ramyg,-0.59,0.18,-0.94,-0.23,63,64,2.48E-03,7.53E-03
+Psych+vsPsych-,Rcaud,-0.20,0.18,-0.56,0.16,61,60,3.08E-01,4.22E-01
+Psych+vsPsych-,Rhippo,-0.87,0.19,-1.25,-0.49,59,57,2.93E-05,1.38E-04
+Psych+vsPsych-,Rpal,0.01,0.18,-0.34,0.36,62,64,9.47E-01,9.82E-01
+Psych+vsPsych-,Rput,-0.17,0.18,-0.52,0.18,62,64,3.70E-01,4.84E-01
+Psych+vsPsych-,Rthal,-0.53,0.19,-0.9,-0.17,59,61,7.46E-03,1.98E-02
+Psych+vsPsych-,RLatVent,-0.08,0.18,-0.43,0.27,64,64,6.72E-01,7.42E-01

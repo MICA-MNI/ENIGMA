@@ -5,6 +5,16 @@
 What's new?
 ======================================
 
+v1.0.1 (January 11, 2021)
+------------------------------------------
+Bug fixes and improvement
+
+::
+
+    ↪ [ENH 🔧] Enhance cross-disorder module                 |  @saratheriver
+    ↪ [ENH 🔧] Fix bug in surface visualization              |  @saratheriver
+
+
 v1.0.0 (December 22, 2020)
 ------------------------------------------
 Initial release 😱

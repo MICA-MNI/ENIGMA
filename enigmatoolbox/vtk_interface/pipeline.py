@@ -49,6 +49,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         Returns (wrapped) `frt1` after connecting it with the input filter.
 
     """
+
     if isinstance(ftr0, BSAlgorithm) and port0 >= ftr0.nop:
         raise ValueError("'{0}' only has {1} output ports.".
                          format(ftr0.__vtkname__, ftr0.nop))
@@ -57,7 +58,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         raise ValueError("'{0}' only accepts {1} input ports.".
                          format(ftr1.__vtkname__, ftr1.nip))
 
-    if add_conn is True or isinstance(add_conn, int):
+    if add_conn is True or type(add_conn) == int:
         if ftr1.nip > 1:
             raise ValueError("No support yet for 'add_conn' when filter "
                              "has more than 1 input ports.")
@@ -68,7 +69,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
                              "accept multiple connections.".
                              format(ftr1.nip, ftr1.__vtkname__))
 
-        if isinstance(add_conn, int):
+        if type(add_conn) == int:
             if not hasattr(ftr1, 'GetUserManagedInputs') or \
                     ftr1.GetUserManagedInputs() == 0:
                 raise ValueError("Input port {0} of '{1}' does not accept "
@@ -80,7 +81,7 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         if add_conn is True:
             # Connection for only 1 input port. Not tested.
             ftr1.AddInputConnection(port1, op)
-        elif isinstance(add_conn, int):
+        elif type(add_conn) == int:
             # Connection for only 1 input port. Not tested.
             ftr1.SetInputConnectionByNumber(add_conn, op)
         else:
@@ -125,6 +126,7 @@ def to_data(ftr, port=0):
     Filters are automatically updated to get the output.
 
     """
+
     list_ports = [port] if port > -1 else range(ftr.nop)
     n_ports = len(list_ports)
     out = [None] * n_ports
@@ -163,6 +165,7 @@ def get_output(ftr, as_data=True, update=True, port=0):
         list if ``as_data == True``.
 
     """
+
     if as_data:
         return to_data(ftr, port=port)
 
@@ -334,6 +337,7 @@ def serial_connect(*filters, as_data=True, update=True, port=0):
     >>> serial_connect(ps, dn, sf)
     <brainspace.vtk_interface.wrappers.BSPolyData at 0x7f0134eee898>
     """
+
     prev_f, prev_op = _map_input_filter(filters[0])
 
     for i, f1 in enumerate(filters[1:-1]):

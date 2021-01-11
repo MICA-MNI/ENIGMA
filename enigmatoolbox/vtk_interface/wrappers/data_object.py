@@ -1,4 +1,6 @@
-"""Wrappers for VTK data objects."""
+"""
+Wrappers for VTK data objects.
+"""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -9,7 +11,7 @@ import warnings
 import numpy as np
 
 from vtk.numpy_interface import dataset_adapter as dsa
-from vtk.util.vtkConstants import (VTK_POLY_VERTEX, VTK_POLY_LINE,
+from vtk.util.vtkConstants import (VTK_ID_TYPE, VTK_POLY_VERTEX, VTK_POLY_LINE,
                                    VTK_TRIANGLE, VTK_POLYGON, VTK_QUAD)
 
 from .base import BSVTKObjectWrapper

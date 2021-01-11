@@ -1,0 +1,17 @@
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+allotherepi_subvol,Laccumb,-0.11,0.096,-0.199,0.178,1437,996,9.12E-01,4.58E-01
+allotherepi_subvol,Lamyg,0.327,0.065,0.199,0.455,1448,998,5.05E-07,9.18E-01
+allotherepi_subvol,Lcaud,-0.07,0.059,-0.185,0.045,1453,995,2.34E-01,2.84E-02
+allotherepi_subvol,Lhippo,-0.021,0.056,-0.132,0.09,1439,988,7.08E-01,4.16E-02
+allotherepi_subvol,Lpal,-0.208,0.09,-0.385,-0.031,1339,903,2.13E-02,3.08E-04
+allotherepi_subvol,Lput,-0.193,0.082,-0.353,-0.033,1366,955,1.82E-02,5.74E-03
+allotherepi_subvol,Lthal,-0.197,0.079,-0.353,-0.041,1417,993,1.32E-02,2.77E-05
+allotherepi_subvol,LLatVent,0.198,0.045,0.109,0.287,1452,996,1.23E-05,8.15E-01
+allotherepi_subvol,Raccumb,0.016,0.091,-0.163,-0.194,1431,997,8.64E-01,7.83E-02
+allotherepi_subvol,Ramyg,0.218,0.057,0.106,0.33,1422,989,1.46E-04,9.18E-01
+allotherepi_subvol,Rcaud,-0.009,0.062,-0.131,0.112,1454,997,8.81E-01,2.98E-01
+allotherepi_subvol,Rhippo,-0.041,0.046,-0.131,0.05,1448,991,3.82E-01,3.73E-02
+allotherepi_subvol,Rpal,-0.235,0.06,-0.352,-0.118,1440,976,8.07E-05,5.30E-06
+allotherepi_subvol,Rput,-0.166,0.083,-0.329,-0.003,1420,993,4.57E-02,5.11E-04
+allotherepi_subvol,Rthal,-0.305,0.047,-0.397,-0.213,1446,998,7.92E-11,1.66E-09
+allotherepi_subvol,RLatVent,0.212,0.046,0.122,0.303,1453,996,4.62E-06,9.18E-01

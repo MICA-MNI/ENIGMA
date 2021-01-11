@@ -1,89 +1,122 @@
 import numpy as np
-from nilearn import plotting
 from nilearn.connectome import ConnectivityMeasure
 from sklearn.decomposition import PCA
-
-from enigmatoolbox.plotting import plot_cortical
-from enigmatoolbox.utils import parcel_to_surface
 
 from enigmatoolbox.datasets.base import load_summary_stats
 
 
-def cross_disorder_effect(disorder='all_disorder', measure=['CortThick', 'CortSurf'], additional_data=None,
-                          additional_name=None, ignore=['mega'], method='pca', figure=True):
+def cross_disorder_effect(disorder='all_disorder', measure=None,
+                          additional_data_cortex=None, additional_name_cortex=None, additional_data_subcortex=None,
+                          additional_name_subcortex=None, ignore=None, include=None, method='pca'):
     """Cross-disorder effect (authors: @boyongpark, @saratheriver)
 
         Parameters
         ----------
         disorder : list, optional
-            Any combination of disorder name. Default is all available disorders
+            Any combination of disorder name. Default is all available disorders, except 'adhd'. Options are:
             {'22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia'}.
         measure : list, optional
-            Any combination of measure names. Default is {'CortThick', 'CortSurf'}.
-        additional_data : ndarray, optional
-            Name for additional ENIGMA-type data. Must also provide 'additional_name'.
-        additional_name : list, optional
-            Additional ENIGMA-type data (n, 68). Must also provide 'additional_name'.
+            Any combination of measure names. Default is {'CortThick', 'CortSurf', 'SubVol'}.
+        additional_data_cortex : ndarray, optional
+            Name for additional cortical ENIGMA-type data. Must also provide 'additional_name_cortex'.
+        additional_name_cortex : list, optional
+            Additional cortical ENIGMA-type data (n, 68). Must also provide 'additional_name_cortex'.
+        additional_data_subcortex : ndarray, optional
+            Name for additional subcortical ENIGMA-type data. Must also provide 'additional_name_subcortex'.
+        additional_name_subcortex : list, optional
+            Additional subcortical ENIGMA-type data (n, 16). Must also provide 'additional_name_subcortex'.
         ignore : list, optional
             Ignore summary statistics with these expressions. Default is ('mega') as it contains NaNs.
+        include : list, optional
+            Include only summary statistics with these expressions. Default is empty, i.e., include everything.
         method : string, optional
             Analysis method {'pca', 'correlation'}. Default is 'pca'.
-        figure : string, optional
-            Whether to output figures {'True', 'False'}. Default is 'True'.
 
         Returns
         -------
-        components : ndarray
+        components : dict
             Principal components of shared effects in descending order in terms of component variance.
             Only is method is 'pca'.
-        variance : ndarray
+        variance : dict
             Variance of components. Only is method is 'pca'.
-        correlation_matrix : ndarray
-            Correlation matrix of for every pair of shared effect maps. Only is method is 'correlation'.
-        names - list
-            Name of disorder and case-control effect maps included in analysis.
+        correlation_matrix : dict
+            Correlation matrices of for every pair of shared effect maps. Only is method is 'correlation'.
+        names : dict
+            Names of disorder and case-control effect maps included in analysis.
     """
+    if measure is None:
+        measure = ['CortThick', 'CortSurf', 'SubVol']
+    if ignore is None:
+        ignore = ['mega']
+    if include is None:
+        include = []
     if disorder is 'all_disorder':
-        disorder = ['22q', 'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia']
+        disorder = ['22q', 'asd', 'bipolar', 'depression', 'epilepsy', 'ocd', 'schizophrenia']
 
-    mat_d = []
-    names = []
-    for ii in enumerate(disorder):
+    mat_d = {'cortex': [], 'subcortex': []}
+    names = {'cortex': [], 'subcortex': []}
+    for _, ii in enumerate(disorder):
         # Load summary statistics
-        sum_stats = load_summary_stats(ii[1])
+        sum_stats = load_summary_stats(ii)
         fieldos = list(sum_stats.keys())
 
         # Loop through structure fields (case-control options)
-        for jj in enumerate(fieldos):
-            if not any(ig in jj[1] for ig in ignore) and any(meas in jj[1] for meas in measure):
-                mat_d.append(sum_stats[jj[1]].iloc[:, 2])
-                names.append(disorder[jj[0]] + ': ' + jj[1])
+        for kk, jj in enumerate(fieldos):
+            if 'Cort' in jj:
+                if not include:
+                    if not any(ig in jj for ig in ignore) and any(meas in jj for meas in measure):
+                        mat_d['cortex'].append(sum_stats[jj].iloc[:, 2])
+                        names['cortex'].append(ii + ': ' + jj)
 
-    mat_d = (np.asarray(mat_d))
+                elif include:
+                    if any(inc in jj for inc in include) and not any(ig in jj for ig in ignore) \
+                            and any(meas in jj for meas in measure):
+                        mat_d['cortex'].append(sum_stats[jj].iloc[:, 2])
+                        names['cortex'].append(ii + ': ' + jj)
+
+            if 'Sub' in jj:
+                if not include:
+                    if not any(ig in jj for ig in ignore) and any(meas in jj for meas in measure):
+                        mat_d['subcortex'].append(sum_stats[jj].iloc[:, 2])
+                        names['subcortex'].append(ii + ': ' + jj)
+
+                elif include:
+                    if any(inc in jj for inc in include) and not any(ig in jj for ig in ignore) \
+                            and any(meas in jj for meas in measure):
+                        mat_d['subcortex'].append(sum_stats[jj].iloc[:, 2])
+                        names['subcortex'].append(ii + ': ' + jj)
+
+    for ii, jj in enumerate(mat_d):
+        mat_d[jj] = (np.asarray(mat_d[jj]))
 
     # If additional data and name
-    if additional_data is not None and additional_name is not None:
-        mat_d = np.append(mat_d, additional_data)
-        names.append(names, additional_name)
+    if additional_data_cortex is not None and additional_name_cortex is not None:
+        mat_d['cortex'] = np.append(mat_d['cortex'], additional_data_cortex)
+        names['cortex'] = np.append(names['cortex'], additional_name_cortex)
+
+    if additional_data_subcortex is not None and additional_name_subcortex is not None:
+        mat_d['subcortex'] = np.append(mat_d['subcortex'], additional_data_subcortex)
+        names['subcortex'] = np.append(names['subcortex'], additional_name_subcortex)
 
     if method == 'pca':
-        pca = PCA()
-        components = pca.fit_transform(np.transpose(mat_d))
-        variance = pca.explained_variance_ratio_
+        components = {'cortex': [], 'subcortex': []}
+        variance = {'cortex': [], 'subcortex': []}
 
-        if figure:
-            plot_cortical(parcel_to_surface(components[:, 0], 'aparc_fsa5'), color_range=(-0.5, 0.5),
-                          cmap='RdBu_r', color_bar=True, size=(800, 400))
+        pca = PCA()
+        components['cortex'] = pca.fit_transform(np.transpose(mat_d['cortex']))
+        variance['cortex'] = pca.explained_variance_ratio_
+
+        components['subcortex'] = pca.fit_transform(np.transpose(mat_d['subcortex']))
+        variance['subcortex'] = pca.explained_variance_ratio_
 
         return components, variance, names
 
     elif method == 'correlation':
-        correlation_measure = ConnectivityMeasure(kind='correlation')
-        correlation_matrix = correlation_measure.fit_transform([np.transpose(mat_d)])[0]
+        correlation_matrix = {'cortex': [], 'subcortex': []}
 
-        if figure:
-            plotting.plot_matrix(correlation_matrix, figure=(12, 8), labels=names, vmax=1,
-                                 vmin=-1, cmap='RdBu_r', auto_fit=False)
+        correlation_measure = ConnectivityMeasure(kind='correlation')
+        correlation_matrix['cortex'] = np.corrcoef(mat_d['cortex'])
+        correlation_matrix['subcortex'] = np.corrcoef(mat_d['subcortex'])
 
         return correlation_matrix, names
 
