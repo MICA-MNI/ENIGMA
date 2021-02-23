@@ -64,7 +64,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
    .. code-tab:: matlab **Matlab** | meta
 
-        % Computing cortical epicenter values (from functional connectivity)
+        % Identify cortical epicenter values (from functional connectivity)
         fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
         fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
         for seed = 1:size(fc_ctx, 1)
@@ -75,7 +75,7 @@ derived from cortical thickness decreases in individuals with left TLE.
                                             'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
-        % Computing cortical epicenter values (from structural connectivity)
+        % Identify cortical epicenter values (from structural connectivity)
         sc_ctx_epi              = zeros(size(sc_ctx, 1), 1);
         sc_ctx_epi_p            = zeros(size(sc_ctx, 1), 1);
         for seed = 1:size(sc_ctx, 1)
@@ -118,7 +118,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Computing cortical epicenter values (from functional connectivity)
+        % Identify cortical epicenter values (from functional connectivity)
         fc_ctx_epi              = zeros(size(fc_ctx, 1), 1);
         fc_ctx_epi_p            = zeros(size(fc_ctx, 1), 1);
         for seed = 1:size(fc_ctx, 1)
@@ -129,7 +129,7 @@ derived from cortical thickness decreases in individuals with left TLE.
                                             'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
-        % Computing cortical epicenter values (from structural connectivity)
+        % Identify cortical epicenter values (from structural connectivity)
         sc_ctx_epi              = zeros(size(sc_ctx, 1), 1);
         sc_ctx_epi_p            = zeros(size(sc_ctx, 1), 1);
         for seed = 1:size(sc_ctx, 1)
@@ -232,7 +232,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
    .. code-tab:: matlab **Matlab** | meta
 
-        % Computing subcortical epicenter values (from functional connectivity)
+        % Identify subcortical epicenter values (from functional connectivity)
         fc_sctx_epi             = zeros(size(fc_sctx, 1), 1);
         fc_sctx_epi_p           = zeros(size(fc_sctx, 1), 1);
         for seed = 1:size(fc_sctx, 1)
@@ -243,7 +243,7 @@ derived from cortical thickness decreases in individuals with left TLE.
                                             'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
-        % Computing subcortical epicenter values (from structural connectivity)
+        % Identify subcortical epicenter values (from structural connectivity)
         sc_sctx_epi             = zeros(size(sc_sctx, 1), 1);
         sc_sctx_epi_p           = zeros(size(sc_sctx, 1), 1);
         for seed = 1:size(sc_sctx, 1)
@@ -284,7 +284,7 @@ derived from cortical thickness decreases in individuals with left TLE.
 
    .. code-tab:: matlab **Matlab** | mega
 
-        % Computing subcortical epicenter values (from functional connectivity)
+        % Identify subcortical epicenter values (from functional connectivity)
         fc_sctx_epi             = zeros(size(fc_sctx, 1), 1);
         fc_sctx_epi_p           = zeros(size(fc_sctx, 1), 1);
         for seed = 1:size(fc_sctx, 1)
@@ -295,7 +295,7 @@ derived from cortical thickness decreases in individuals with left TLE.
                                             'parcellation_name', 'aparc', 'n_rot', 1000, 'type', 'pearson');
         end
 
-        % Computing subcortical epicenter values (from structural connectivity)
+        % Identify subcortical epicenter values (from structural connectivity)
         sc_sctx_epi             = zeros(size(sc_sctx, 1), 1);
         sc_sctx_epi_p           = zeros(size(sc_sctx, 1), 1);
         for seed = 1:size(sc_sctx, 1)

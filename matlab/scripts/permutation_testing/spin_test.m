@@ -11,8 +11,8 @@ function [p_spin, r_dist] = spin_test(map1, map2, varargin)
 %   map2 (double array) - The other map to be correlated
 %
 % Name/value pairs:
-%   Surface name (string, optional) ? Surface name {?fsa5?, ?fsa5_with_sctx?}. 
-%       Use 'fsa5' for Conte69. Default is ?fsa5?.
+%   Surface name (string, optional) - Surface name {'fsa5', 'fsa5_with_sctx'}. 
+%       Use 'fsa5' for Conte69. Default is 'fsa5'.
 %   parcellation_name (string, optional) - Parcellation name {'aparc', 
 %       'aparc_aseg', 'schaefer_100', 'schaefer_200', 'schaefer_300', 
 %       'schaefer_400', 'schaefer_500', 'schaefer_600', 'schaefer_700', 

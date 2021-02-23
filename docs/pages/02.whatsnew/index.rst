@@ -5,6 +5,17 @@
 What's new?
 ======================================
 
+v1.0.2 (February 23, 2021)
+------------------------------------------
+Bug fixes in the ``fetch_ahba`` function. Users who wish to use this function (or have used it in a previous version) 
+must update their **ENIGMA Toolbox** to this release; ``fetch_ahba`` from previous releases will now error.
+
+::
+
+    ↪ [ENH 🔧] Fix python version mislabeling                |  @saratheriver
+    ↪ [ENH 🔧] Fix bug and replace stable gene lists         |  @saratheriver
+    ↪ [DOC 📄] Update documentations                         |  @saratheriver
+
 v1.0.1 (January 11, 2021)
 ------------------------------------------
 Bug fixes and improvement
