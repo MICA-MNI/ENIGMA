@@ -59,7 +59,7 @@ Extract disease-related genes
         epilepsy_genes = epilepsy_genes.focalhs;
 
         % Extract gene expression data for these Focal HS genes
-        epilepsy_gene_data = genes(:, contains(genes.Properties.VariableNames, ...
+        epilepsy_gene_data = genes(:, ismember(genes.Properties.VariableNames, ...
                                    epilepsy_genes));
 
 
