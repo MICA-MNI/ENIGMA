@@ -118,6 +118,25 @@ switch disorder
         summary_stats.CortSurf_case_vs_controls_pediatric = readtable('ocdpediatric_case-controls_CortSurf.csv');
         summary_stats.CortThick_medicatedcase_vs_controls_pediatric = readtable('ocdpediatric_medicatedcase-controls_CortThick.csv');
         summary_stats.CortSurf_medicatedcase_vs_controls_pediatric = readtable('ocdpediatric_medicatedcase-controls_CortSurf.csv');
+        
+        summary_stats.SubVol_case_vs_controls_adult = readtable('ocdadult_case-controls_SubVol.csv');
+        summary_stats.SubVol_medicatedcase_vs_controls_adult = readtable('ocdadult_medicatedcase-controls_SubVol.csv');
+        summary_stats.SubVol_unmedicatedcase_vs_controls_adult = readtable('ocdadult_unmedicatedcase-controls_SubVol.csv');
+        summary_stats.SubVol_medicatedcase_vs_unmedicated_adult = readtable('ocdadult_medicatedcase-unmedicatedcase_SubVol.csv');
+        summary_stats.SubVol_case_vs_controls_adult_late = readtable('ocdadult_case-controls_SubVol_late.csv');
+        summary_stats.SubVol_case_vs_controls_adult_early = readtable('ocdadult_case-controls_SubVol_early.csv');
+        summary_stats.SubVol_late_vs_early_adult = readtable('ocdadult_late-early_SubVol.csv');
+        summary_stats.SubVol_case_vs_controls_adult_depression = readtable('ocdadult_case-controls_SubVol_depression.csv');
+        summary_stats.SubVol_case_vs_controls_adult_nodepression = readtable('ocdadult_case-controls_SubVol_nodepression.csv');
+        summary_stats.SubVol_depression_vs_nodepression_adult = readtable('ocdadult_depression-nodepression_SubVol.csv');
+        summary_stats.SubVol_case_vs_controls_adult_anxiety = readtable('ocdadult_case-controls_SubVol_anxiety.csv');
+        summary_stats.SubVol_case_vs_controls_adult_noanxiety = readtable('ocdadult_case-controls_SubVol_noanxiety.csv');
+        summary_stats.SubVol_anxiety_vs_noanxiety_adult = readtable('ocdadult_anxiety-noanxiety_SubVol.csv');
+        
+        summary_stats.SubVol_case_vs_controls_pediatric = readtable('ocdpediatric_case-controls_SubVol.csv');
+        summary_stats.SubVol_medicatedcase_vs_controls_pediatric = readtable('ocdpediatric_medicatedcase-controls_SubVol.csv');
+        summary_stats.SubVol_unmedicatedcase_vs_controls_pediatric = readtable('ocdpediatric_unmedicatedcase-controls_SubVol.csv');
+        summary_stats.SubVol_medicatedcase_vs_unmedicated_pediatric = readtable('ocdpediatric_medicatedcase-unmedicatedcase_SubVol.csv');
                
     case 'schizophrenia'
         summary_stats.CortThick_case_vs_controls = readtable('scz_case-controls_CortThick.csv');

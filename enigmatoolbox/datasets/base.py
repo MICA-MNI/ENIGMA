@@ -860,6 +860,74 @@ def load_summary_stats(disorder=None):
         CortSurf_medicatedcase_controls_pediatric = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                              'ocdpediatric_medicatedcase-controls_CortSurf.csv'),
                                                                 error_bad_lines=False)
+        SubVol_case_vs_controls_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_medicatedcase_vs_controls_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_medicatedcase-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_unmedicatedcase_vs_controls_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_unmedicatedcase-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_medicatedcase_vs_unmedicated_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_medicatedcase-unmedicatedcase_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_adult_late = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_late.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_adult_early = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_early.csv'),
+                                                    error_bad_lines=False)
+        SubVol_late_vs_early_adult = pd.read_csv(os.path.join(root_pth,
+                                                                       'summary_statistics',
+                                                                       'ocdadult_late-early_SubVol.csv'),
+                                                          error_bad_lines=False)
+        SubVol_case_vs_controls_adult_depression = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_depression.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_adult_nodepression = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_nodepression.csv'),
+                                                    error_bad_lines=False)
+        SubVol_depression_vs_nodepression_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_depression-nodepression_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_adult_anxiety = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_anxiety.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_adult_noanxiety = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_case-controls_SubVol_noanxiety.csv'),
+                                                    error_bad_lines=False)
+        SubVol_anxiety_vs_noanxiety_adult = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdadult_anxiety-noanxiety_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_case_vs_controls_pediatric = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdpediatric_case-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_medicatedcase_vs_controls_pediatric = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdpediatric_medicatedcase-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_unmedicatedcase_vs_controls_pediatric = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdpediatric_unmedicatedcase-controls_SubVol.csv'),
+                                                    error_bad_lines=False)
+        SubVol_medicatedcase_vs_unmedicated_pediatric = pd.read_csv(os.path.join(root_pth,
+                                                                 'summary_statistics',
+                                                                 'ocdpediatric_medicatedcase-unmedicatedcase_SubVol.csv'),
+                                                    error_bad_lines=False)
 
         return {'CortThick_case_vs_controls_adult': CortThick_case_controls_adult,
                 'CortSurf_case_vs_controls_adult': CortSurf_case_controls_adult,
@@ -868,7 +936,24 @@ def load_summary_stats(disorder=None):
                 'CortThick_case_vs_controls_pediatric': CortThick_case_controls_pediatric,
                 'CortSurf_case_vs_controls_pediatric': CortSurf_case_controls_pediatric,
                 'CortThick_medicatedcase_vs_controls_pediatric': CortThick_medicatedcase_controls_pediatric,
-                'CortSurf_medicatedcase_vs_controls_pediatric': CortSurf_medicatedcase_controls_pediatric}
+                'CortSurf_medicatedcase_vs_controls_pediatric': CortSurf_medicatedcase_controls_pediatric,
+                'SubVol_case_vs_controls_adult': SubVol_case_vs_controls_adult,
+                'SubVol_medicatedcase_vs_controls_adult': SubVol_medicatedcase_vs_controls_adult,
+                'SubVol_unmedicatedcase_vs_controls_adult': SubVol_unmedicatedcase_vs_controls_adult,
+                'SubVol_medicatedcase_vs_unmedicated_adult': SubVol_medicatedcase_vs_unmedicated_adult,
+                'SubVol_case_vs_controls_adult_late': SubVol_case_vs_controls_adult_late,
+                'SubVol_case_vs_controls_adult_early': SubVol_case_vs_controls_adult_early,
+                'SubVol_late_vs_early_adult': SubVol_late_vs_early_adult,
+                'SubVol_case_vs_controls_adult_depression': SubVol_case_vs_controls_adult_depression,
+                'SubVol_case_vs_controls_adult_nodepression': SubVol_case_vs_controls_adult_nodepression,
+                'SubVol_depression_vs_nodepression_adult': SubVol_depression_vs_nodepression_adult,
+                'SubVol_case_vs_controls_adult_anxiety': SubVol_case_vs_controls_adult_anxiety,
+                'SubVol_case_vs_controls_adult_noanxiety': SubVol_case_vs_controls_adult_noanxiety,
+                'SubVol_anxiety_vs_noanxiety_adult': SubVol_anxiety_vs_noanxiety_adult,
+                'SubVol_case_vs_controls_pediatric': SubVol_case_vs_controls_pediatric,
+                'SubVol_medicatedcase_vs_controls_pediatric': SubVol_medicatedcase_vs_controls_pediatric,
+                'SubVol_unmedicatedcase_vs_controls_pediatric': SubVol_unmedicatedcase_vs_controls_pediatric,
+                'SubVol_medicatedcase_vs_unmedicated_pediatric': SubVol_medicatedcase_vs_unmedicated_pediatric}
 
     elif disorder is "schizophrenia":
         CortThick_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
