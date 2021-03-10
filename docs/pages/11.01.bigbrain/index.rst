@@ -8,15 +8,31 @@ BigBrain moments & gradient
 This page contains descriptions and examples to stratify and visualize surface-based 
 findings according to BigBrain statistical moments and gradient. 
 
+BigBrain is a ultra-high resolution, 3D volumetric reconstruction of a *postmortem* 
+Merker-stained and sliced human brain from a 65-year-old male, with specialized pial and 
+white matter surface reconstructions (obtained via the open-access `BigBrain repository <https://bigbrain.loris.ca/main.php>`_. 
+The *postmortem* brain was paraffin-embedded, coronally sliced into 7400 20μm sections, 
+silver-stained for cell bodies, and digitized. A 3D reconstruction was implemented with a 
+successive coarse-to-fine hierarchical procedure, resulting in a full brain volume. 
+For the **ENIGMA TOOLBOX**, we used the highest resolution full brain volume (100μm isotropic voxels), 
+then generated 50 equivolumetric surfaces between the pial and white matter surfaces. 
+The equivolumetric model compensates for cortical folding by varying the Euclidean distance between pairs 
+of intracortical surfaces throughout the cortex, thus preserving the fractional volume between surfaces. 
+Next, staining intensity profiles, representing neuronal density and soma size by cortical depth, were 
+sampled along 327,684 surface points in the direction of cortical columns.
+
 .. _thr_map:
 
 BigBrain statistical moments
 --------------------------------------
-As part of the **ENIGMA Toolbox**, we parametrized cytoarchitectural properties of the `BigBrain <https://science.sciencemag.org/content/340/6139/1472>`_ 
-— a 3D reconstruction of a *postmortem* stained and sliced  human brain – using two central moments (*i.e.*, mean and skewness) calculated across several cortical depths. 
+As part of the **ENIGMA Toolbox**, we parametrized cytoarchitectural properties of the BigBrain by using two central moments 
+(*i.e.*, mean and skewness) calculated across several cortical depths. 
 In essence, studying the mean of BigBrain intensity profiles across the cortical mantle probes cellular/neuronal density, 
 whereas analysis of skewness contrasts deep and superficial cortical layers, indexing the unevenness of cellular 
-distribution, a critical dimension of laminar differentiation.
+distribution, a critical dimension of laminar differentiation. 
+Finally, the Desikan-Killiany atlas was nonlinearly transformed to the BigBrain histological surfaces `Lewis et al., 2019, OHBM <https://scholar.google.ca/scholar?hl=fr&as_sdt=0%2C5&q=An+extended+MSM+surface+registration+pipeline+to+bridge+atlases+across+the+MNI+and+the+FS%2FHCP+worlds&btnG=>`_ 
+and central moments were averaged within each parcels, excluding outlier vertices with values more than three 
+scaled median absolute deviations away from the parcel median. 
 
 .. image:: ./examples/example_figs/bb_moments_orig.png
     :align: center
@@ -128,8 +144,18 @@ reflecting microstructural composition (*e.g.*, cellular density, cellular distr
 
 BigBrain gradient
 --------------------------------------
-In addition to statistical moments, we also incorporated the BigBrain microstructural profile covariance (MPC) gradient, 
-which describes a sensory-fugal transition in intracortical microstructure. Stratifying cortical findings relative to this gradient can, 
+In addition to statistical moments, we also incorporated the BigBrain microstructural profile covariance (MPC) gradient from the original publication 
+(`Paquola et al., 2019, PLoS Biol <https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.3000284>`_). In brief, 
+the authors derived an MPC matrix by correlating BigBrain intensity profiles between every pair of regions in a 1,012 cortical node parcellation, 
+controlling for the average whole-cortex intensity profile. The MPC matrix was thresholded row-wise to retain the top 10% of correlations and 
+converted into a normalized angle matrix. Diffusion map embedding, a nonlinear manifold learning technique, identified the principal axis 
+of variation across cortical areas, *i.e.*, the BigBrain gradient. In this space, cortical nodes that are strongly similar are closer together, 
+whereas nodes with little to no intercovariance are farther apart. 
+
+To allow contextualization of ENIGMA-derived surface-based findings, 
+we mapped the BigBrain gradient, which describes a sensory-fugal transition in intracortical microstructure, 
+to the Desikan-Killiany atlas and partitioned it into five equally sized discrete bins. 
+Stratifying cortical findings relative to this gradient can, 
 for example, test whether patterns of changes are conspicuous in cortices with marked laminar differentiation (*e.g.*, 1st bin; sensory and motor cortices) 
 or in those with subtle laminar differentiation (*e.g.*, 5th bin limbic cortices). 
 

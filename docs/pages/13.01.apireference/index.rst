@@ -45,6 +45,17 @@ ENIGMA datasets
    enigmatoolbox.datasets.load_summary_stats
 
 
+Export functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. autosummary::
+   :template: function.rst
+   :toctree: generated/
+
+   enigmatoolbox.datasets.nfaces
+   enigmatoolbox.datasets.getaffine
+
+
 Connectivity matrices
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

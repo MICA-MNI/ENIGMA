@@ -20,7 +20,7 @@ rotate_parcellation()
     - **nrot** (*int, optional*) – Number of rotations. Default is 100.
 
 **Outputs**:
-    **perm_id** (*double array*) – Array of permutations, size = [m x nrot]
+    - **perm_id** (*double array*) – Array of permutations, size = [m x nrot]
 
 **References**:
     - Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC, Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial correspondence between maps of human brain structure and function. NeuroImage, 178:540-51.

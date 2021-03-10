@@ -15,9 +15,9 @@ zscore_matrix()
     Z-score data relative to a given group (author: @saratheriver)
 
 **Inputs**:
-    **data** (*double array*) - Data matrix (e.g., thickness data), size = [n_subject x n_region]
-    **group** (*double array*) - Vector of values for group assignment (e.g, [0 0 0 1 1 1], same length as n_subject. 
-    **controlCode** (*int*) - Value that corresponds to "baseline" group.
+    - **data** (*double array*) - Data matrix (e.g., thickness data), size = [n_subject x n_region]
+    - **group** (*double array*) - Vector of values for group assignment (e.g, [0 0 0 1 1 1], same length as n_subject. 
+    - **controlCode** (*int*) - Value that corresponds to "baseline" group.
 
 **Outputs**:
-    **Z** (*doule array*) – Z-scored data relative to control code
+    - **Z** (*doule array*) – Z-scored data relative to control code

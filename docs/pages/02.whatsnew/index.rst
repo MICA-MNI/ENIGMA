@@ -5,6 +5,15 @@
 What's new?
 ======================================
 
+v1.1.0 (March XX, 2021)
+------------------------------------------
+New import/export features allowing compatibility with other dataset formats and neuroimaging softwares. Improved documentation.
+::
+
+    ↪ [NEW 💾] New import/export module                     |  @saratheriver
+    ↪ [DOC 📄] Update documentations                        |  @saratheriver
+
+
 v1.0.3 (February 25, 2021)
 ------------------------------------------
 OCD subcortical volume measures were not loading when using ``load_summary_stats('ocd')``; this issue is now resolved.

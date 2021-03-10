@@ -15,7 +15,7 @@ reorder_sctx()
     Re-order subcortical volume data alphabetically and by hemisphere (left then right; author: @saratheriver)
 
 **Inputs**:
-    **data** (*table*) - Data matrix
+    - **data** (*table*) - Data matrix
 
 **Outputs**:
-    **data_r** (*table*) – Re-ordered data
+    - **data_r** (*table*) – Re-ordered data

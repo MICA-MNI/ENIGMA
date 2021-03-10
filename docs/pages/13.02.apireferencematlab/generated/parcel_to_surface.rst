@@ -20,4 +20,4 @@ parcel_to_surface()
     - **fill** (*double, optional*) - Value for mask. Default is 0.
 
 **Outputs**:
-    **parcel2surf** (*double array*) – Vector of values mapped from a parcellation to the surface
+    - **parcel2surf** (*double array*) – Vector of values mapped from a parcellation to the surface

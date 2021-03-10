@@ -15,8 +15,8 @@ risk_genes(disorder)
     Outputs names of GWAS-derived risk genes for a given disorder (author: @saratheriver)
 
 **Inputs**:
-    **disorder** ({'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia', 'tourette'}) – 
+    - **disorder** ({'adhd', 'asd', 'bipolar', 'depression', 'epilepsy', 'hippocampal_volume', 'ocd', 'schizophrenia', 'tourette'}) – 
     Disorder name, must pick one.
 
 **Outputs**:
-    **risk_genes** (*cell array*) – Names of genes for a given disorder
+    - **risk_genes** (*cell array*) – Names of genes for a given disorder

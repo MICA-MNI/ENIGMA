@@ -20,7 +20,7 @@ centroid_extraction_sphere()
     - **ventricles** (*string, optional*) – Whether ventricle data are present. Only used when ‘annotfile’ is fsa5_with_sctx_lh_aparc_aseg or fsa5_with_sctx_lh_aparc_aseg. Default is 'False'.
 
 **Outputs**:
-    **coord** (*double array*) – Coordinates of the centroid of each region on the sphere, size = [m x 3].
+    - **coord** (*double array*) – Coordinates of the centroid of each region on the sphere, size = [m x 3].
 
 **References**:
     - Alexander-Bloch A, Shou H, Liu S, Satterthwaite TD, Glahn DC, Shinohara RT, Vandekar SN and Raznahan A (2018). On testing for spatial correspondence between maps of human brain structure and function. NeuroImage, 178:540-51.

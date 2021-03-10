@@ -15,7 +15,7 @@ load_sc()
     Load structural connectivity data (author: @saratheriver)
 
 **Inputs:**
-    **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is
+    - **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is
     'aparc'. Other options are 'schaefer_100', 'schaefer_200', 'schaefer_300',
     'schaefer_400'.
 

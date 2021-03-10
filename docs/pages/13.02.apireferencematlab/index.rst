@@ -324,4 +324,25 @@ Matlab API
      - Map surface data to a parcellation (authors : @MICA-MNI, @saratheriver)
 
 
+.. _matlabref_importexport:
+
+:mod:`import / export`
+------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/nfaces.rst
+   generated/getaffine.rst
+
+.. list-table::
+   :widths: 50 400
+   :header-rows: 0
+
+   * - :ref:`nfaces(surface_name, hemisphere)<nfaces_mat>`
+     - Returns number of faces/triangles for a surface (author: @saratheriver)
+   * - :ref:`getaffine(surface_name, hemisphere)<get_affine_mat>`
+     - Returns vox2ras transform for a surface (author: @saratheriver)
+
 

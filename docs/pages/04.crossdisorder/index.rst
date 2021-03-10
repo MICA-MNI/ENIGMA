@@ -12,8 +12,9 @@ brain structural abnormalities that are common or different across disorders.
 
 Principal component analysis
 -----------------------------------------
-We can explore shared and disease-specific morphometric signatures by applying a principal component 
-analysis (PCA) to any combination of disease-specific summary statistics (or other pre-loaded ENIGMA-type data), 
+To yield novel insights into brain structural abnormalities that are common or different across disorders, 
+we can explore shared and disease-specific morphometric signatures by applying a principal component 
+analysis (PCA) to any combination of disease-specific summary statistics (or other imported data), 
 resulting in shared latent components that can be used for further analysis.
 
 .. tabs::

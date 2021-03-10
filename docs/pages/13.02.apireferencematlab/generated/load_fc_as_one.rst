@@ -15,7 +15,7 @@ load_fc_as_one()
     Load functional connectivity data (cortical + subcortical in one matrix; author: @saratheriver)
 
 **Inputs:**
-    **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is
+    - **parcellation** (*string, optional*) - Name of parcellation (with n cortical parcels). Default is
     'aparc'. Other options are 'schaefer_100', 'schaefer_200', 'schaefer_300',
     'schaefer_400'.
 

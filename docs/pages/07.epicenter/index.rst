@@ -12,11 +12,19 @@ on disease epicenter mapping, please see our manuscript entitled
 
 Cortical epicenters
 ---------------------
-Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can also identify epicenters of cortical atrophy.
-This is done by systematically correlating every cortical region's seed-based connectivity profile (*i.e.*, cortico-cortical connectivity) with 
-a whole-brain atrophy map. Disease epicenters thus represent regions whose connectivity profile 
-spatially resembles the disease-related atrophy map. In this tutorial, our *atrophy map* will be 
-derived from cortical thickness decreases in individuals with left TLE.
+Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can also identify epicenters of cortical atrophy. 
+Disease epicenters are regions whose functional and/or structural connectivity profile spatially resembles a given 
+disease-related atrophy map. Hence, disease epicenters can be identified by spatially correlating every region’s 
+healthy functional and/or structural connectivity profiles (*i.e.*, cortico-cortical connectivity) to whole-brain 
+atrophy patterns in a given disease. This approach must be repeated systematically across the whole brain, 
+assessing the statistical significance of the spatial similarity of every region’s functional and/or structural 
+connectivity profiles to disease-specific abnormality maps with :ref:`spatial permutation tests <spin_perm>`. 
+Cortical and subcortical (see :ref:`tutorial <sctx_epi>` below) epicenter regions can then be identified if 
+their connectivity profiles are significantly correlated with the disease-specific abnormality map. 
+Regardless of its atrophy level, a cortical (or subcortical) region could potentially be an epicenter if it is 
+(*i*) strongly connected to other high-atrophy regions and (*ii*) weakly connected to low-atrophy regions.
+
+In this tutorial, our *atrophy map* was derived from cortical thickness decreases in individuals with left TLE.
 
 
 .. admonition:: Epicenters? 🤔
@@ -193,10 +201,9 @@ were greater than 0.1). We are, thus, displaying only correlation coefficients w
 
 Subcortical epicenters
 -------------------------
-To identify subcortical epicenters of cortical atrophy, we once again correlate every subcortical region's seed-based 
-connectivity profile (*e.g.*, subcortico-cortical connectivity) with 
-a whole-brain cortical atrophy map. As above, our *atrophy map* will be 
-derived from cortical thickness decreases in individuals with left TLE.
+Similar to the :ref:`cortical epicenter approach <ctx_epi>`, we can identify subcortical epicenters of cortical atrophy by 
+correlating every subcortical region's seed-based connectivity profile (*e.g.*, subcortico-cortical connectivity) with 
+a whole-brain cortical atrophy map. As above, our *atrophy map* was derived from cortical thickness decreases in individuals with left TLE.
 
 .. parsed-literal:: 
 
@@ -204,6 +211,8 @@ derived from cortical thickness decreases in individuals with left TLE.
     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
     ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
     ↪ Load :ref:`subcortico-cortical connectivity matrices <load_subcorticocortical>` 
+
+.. _sctx_epi:
 
 .. tabs::
 

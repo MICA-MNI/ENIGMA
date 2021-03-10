@@ -14,10 +14,12 @@ on hub susceptibility models, please see our manuscript entitled
 
 Cortical hubs
 ------------------------------------------
-Using the :ref:`HCP connectivity data <hcp_connectivity>`, we can then compute weighted (optimal for unthresholded connectivity
-matrices) degree centrality to identify structural and functional hub regions. This is done by simply 
-computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality 
-denotes increased hubness (*i.e.*, node with many connections).
+Normative structural and functional connectomes hold valuable information for relating macroscopic brain network 
+organization to patterns of disease-related atrophy. Using the :ref:`HCP connectivity data <hcp_connectivity>`, 
+we can first compute weighted (optimal for unthresholded connectivity
+matrices) degree centrality to identify structural and functional hub regions (*i.e.*, brain regions with many connections). 
+This is done by simply computing the sum of all weighted cortico-cortical connections for every region. Higher degree centrality 
+denotes increased hubness.
 
 
 .. parsed-literal:: 
@@ -78,7 +80,7 @@ denotes increased hubness (*i.e.*, node with many connections).
 
 Subcortical hubs
 ---------------------------------------------
-The :ref:`HCP connectivity data <surf_visualization>` can also be used to identify structural 
+The :ref:`HCP connectivity data <load_subcorticocortical>` can also be used to identify structural 
 and functional subcortico-cortical hub regions. As above, we simply compute the sum of all weighted 
 subcortico-cortical connections for every subcortical area. Once again, higher degree centrality 
 denotes increased hubness.

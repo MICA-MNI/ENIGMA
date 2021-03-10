@@ -5,7 +5,14 @@
 Surface data visualization
 ======================================
 
-This page contains descriptions and examples to visualize surface data.
+This page contains descriptions and examples to visualize and manipulate surface data.
+
+.. admonition:: How to zoom and rotate surfaces 🔍
+
+     Users can manipulate cortical and subcortical surfaces within the *Python* and *Matlab* viewers. **To zoom in and out**: Scroll up and down on trackpad or mouse wheel (*Python*) or 
+     use the magnifying glass buttons in the figure toolbar and click on the surface (*Matlab*). **To rotate surfaces in 3D**: Click and hold down the left mouse 
+     button and move it around (*Python*) or press the 3D rotate figure toolbar button then click and hold down the left mouse 
+     button and move it around (*Matlab*).
 
 
 Cortical surface visualization
@@ -14,21 +21,10 @@ Cortical surface visualization
 Following the examples below, we can easily map parcellated data (*e.g.*, Desikan-Killiany) to fsaverage5 surface space (*i.e.*, vertices).
 In the following example, we will display cortical atrophy in individuals with left TLE.
 
-.. admonition:: Our visualization tools work with ENIGMA and non-ENIGMA datasets 👀
-
-     Mapping parcellated data to the surface has never been easier! Our ``parcel_to_surface()`` function works with ENIGMA- and non-ENIGMA datasets. Our toolbox includes several
-     other parcellations (*e.g.*, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, ...), so you can take advantage of
-     our visualization tools for all your other projects!
-
-.. admonition:: Don't like fsaverage5? Relax, we got you covered! 🛀🏾
-
-     The same approach can be used to map parcellated data to the Conte69 surface template; simply replace every instance of 'fsa5' with 'conte69'!
-     Easy peasy lemon squeezy 🍋
-
 .. parsed-literal:: 
 
      **Prerequisites**
-     ↪ Load :ref:`summary statistics <load_sumstats>` **or** :ref:`example data <load_example_data>`
+     ↪ Load :ref:`summary statistics <load_sumstats>`, :ref:`example data <load_example_data>`, **or** :ref:`your own data <import_data>`
      ↪ :ref:`Z-score data <zscore_data>` (*mega only*)
      
 .. tabs::

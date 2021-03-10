@@ -6,16 +6,13 @@ Disease-related transcriptomics
 =========================================
 
 This page contains descriptions and examples to extract GWAS-implicated gene expression data
-and project them to cortical and subcortical surfaces. 
-
-In the following tutorial, we will use epilepsy-related genes (more specifically, genes related to hippocampal 
-sclerosis) as an example, but feel free to replace *epilepsy* with any other disorder listed below.
-
+and project them to cortical and subcortical surfaces. In the following tutorial, we will use epilepsy-related genes 
+(more specifically, genes related to hippocampal sclerosis) as an example, but feel free to replace *epilepsy* with 
+any other disorder listed below.
 
 Extract disease-related genes
 -----------------------------------------
-| Leveraging findings from recent GWAS, we can extract gene expression maps for a set of pre-defined 
-     disease-related genes, including:
+| As part of the **ENIGMA TOOLBOX**, users can query pre-defined lists of disease-related genes (obtained from several recently published GWAS), including gene sets for:
 | ↪ `attention deficit/hyperactivity disorder <https://www.nature.com/articles/s41588-018-0269-7>`_
 | ↪ `autism spectrum disorder <https://www.nature.com/articles/s41588-019-0344-8>`_
 | ↪ `bipolar disorder <https://www.nature.com/articles/s41588-019-0397-8>`_

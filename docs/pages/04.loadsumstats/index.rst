@@ -11,10 +11,20 @@ for case-control differences** (d_icv), **standard error** (se_icv), **lower bou
 (low_ci_icv), **upper bound of the confidence interval** (up_ci_icv), **number of controls** (n_controls), 
 **number of patiens** (n_patients), **observed p-values** (pobs), **false discovery rate (FDR)-corrected p-value** (fdr_p).
 
+ENIGMA’s standardized protocols for data processing, quality assurance, and meta-analysis of individual subject data were 
+conducted at each site. For site-level meta-analysis, all research centres within a given specialized Working Group tested 
+for case *vs*. control differences using multiple linear regressions, where diagnosis (*e.g.*, healthy controls vs. individuals 
+with epilepsy) was the predictor of interest, and subcortical volume, cortical thickness, or surface area of a given brain region 
+was the outcome measure. Case-control differences were computed across all regions using either Cohen’s *d* effect sizes or *t*-values, 
+after adjusting for different combinations of age, sex, site/scan/dataset, intracranial volume, IQ (see below for disease-specific 
+models).  
+
 .. admonition:: Can't find the data you're searching for? 🙈
 
      Let us know what's missing and we'll try and fetch that data for you and implement it in our toolbox. 
-     Get in touch with us `here <https://github.com/MICA-MNI/ENIGMA/issues>`_.
+     Get in touch with us `here <https://github.com/MICA-MNI/ENIGMA/issues>`_. If you have locally stored 
+     summary statistics on your computer, check out our tutorials on :ref:`how to import data <import_data>`
+     and accordingly take advantage of all the **ENIGMA TOOLBOX** functions.
 
 
 \* 📸 *indicates case-control tables used in the code snippets.*

@@ -19,4 +19,4 @@ surface_to_parcel()
     - **parcellation** (*string, optional*) - Default is 'aparc_fsa5'
 
 **Outputs**:
-    **surf2parcel** (*double array*) – Vector of values mapped from a surface to a parcellation
+    - **surf2parcel** (*double array*) – Vector of values mapped from a surface to a parcellation
