@@ -56,7 +56,8 @@ def centroid_extraction_sphere(sphere_coords, annotfile, ventricles=False):
         centroid = np.empty((0, 3))
         for ic in range(ctab.shape[0]):
             if not names[ic].decode("utf-8") == 'unknown' and not names[ic].decode("utf-8") == 'corpus'\
-                    and not names[ic].decode("utf-8") == 'medialwall' and not names[ic].decode("utf-8") == 'Background+FreeSurfer_Defined_Medial_Wall':
+                and not names[ic].decode("utf-8") == 'corpuscallosum' and not names[ic].decode("utf-8") == 'medialwall'\
+                and not names[ic].decode("utf-8") == 'Background+FreeSurfer_Defined_Medial_Wall':
                 label = ctab[ic, -1]
                 centroid = np.vstack((centroid, np.array(np.mean(sphere_coords[labels == label, :], axis=0))))
 
