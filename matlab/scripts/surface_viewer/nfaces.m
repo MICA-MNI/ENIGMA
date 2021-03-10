@@ -1,16 +1,17 @@
 function numfaces = nfaces(surface_name, hemisphere);
 %
 % Usage:
-%   numfaces = numfaces(surface_name);
+%   numfaces = nfaces(surface_name, hemisphere);
 %
 % Description:
-%   Returns number of faces/triangles for a surface (authors: @MICA-MNI, @saratheriver)
+%   Returns number of faces/triangles for a surface (author: @saratheriver)
 %
 % Inputs:
 %   surface_name (string) - Name of surface {'fsa5', 'conte69'}
-%   hemisphere (string) - Name of hemispherer {'lh', 'rh', 'both'}
+%   hemisphere (string) - Name of hemisphere {'lh', 'rh', 'both'}
+%
 % Outputs:
-%   numfaces (double) - number of faces/triangles
+%   numfaces (double) - Number of faces/triangles
 %
 % Sara Lariviere  |  saratheriver@gmail.com
 

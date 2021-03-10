@@ -999,6 +999,79 @@ def reorder_sum_stats(in_file, out_file):
 
     return out.to_csv(out_file, index=False)
 
+
+def nfaces(surface_name, hemisphere):
+    """Returns number of faces/triangles for a surface (author: @saratheriver)
+
+            Parameters
+            ----------
+            surface_name : string
+                Name of surface {'fsa5', 'conte69'}
+            hemisphere : string
+               Name of hemisphere {'lh', 'rh', 'both'}
+
+            Returns
+            -------
+            numfaces : int
+                number of faces/triangles
+         """
+
+    if surface_name is 'fsa5':
+        if hemisphere is 'lh':
+            return load_fsa5()[0].GetPolys2D().shape[0]
+        elif hemisphere is 'rh':
+            return load_fsa5()[1].GetPolys2D().shape[0]
+        elif hemisphere is 'both':
+            return load_fsa5()[0].GetPolys2D().shape[0] + load_fsa5()[1].GetPolys2D().shape[0]
+    elif surface_name is 'conte69':
+        if hemisphere is 'lh':
+            return load_conte69()[0].GetPolys2D().shape[0]
+        elif hemisphere is 'rh':
+            return load_conte69()[1].GetPolys2D().shape[0]
+        elif hemisphere is 'both':
+            return load_conte69()[0].GetPolys2D().shape[0] + load_conte69()[1].GetPolys2D().shape[0]
+
+
+def getaffine(surface_name, hemisphere):
+    """Returns vox2ras transform for a surface (author: @saratheriver)
+
+            Parameters
+            ----------
+            surface_name : string
+                Name of surface {'fsa5', 'conte69'}
+            hemisphere : string
+               Name of hemisphere {'lh', 'rh', 'both'}
+
+            Returns
+            -------
+            numfaces : 2D ndarray
+                vox2ras transform, shape = (4, 4)
+         """
+
+    if surface_name is 'fsa5':
+        if hemisphere is 'lh' or 'rh':
+            return np.asarray([[-1.000e+00,  0.000e+00,  0.000e+00,  5.121e+03],
+                               [0.000e+00,  0.000e+00,  1.000e+00, -5.000e-01],
+                               [0.000e+00, -1.000e+00,  0.000e+00,  5.000e-01],
+                               [0.000e+00,  0.000e+00,  0.000e+00,  1.000e+00]])
+        elif hemisphere is 'both':
+            return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  1.0242e+04],
+                               [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
+                               [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
+                               [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
+    elif surface_name is 'conte69':
+        if hemisphere is 'lh' or 'rh':
+            return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  1.6246e+04],
+                               [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
+                               [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
+                               [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
+        elif hemisphere is 'both':
+            return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  3.2492e+04],
+                               [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
+                               [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
+                               [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
+
+
 # For every new summary statistic file, run the following command to reorder
 # cortical structures according to ENIGMA mega-analysis protocols!
 
