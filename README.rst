@@ -13,44 +13,39 @@
     :target: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master
 
 .. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
-    :target: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master
+    :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
 
 =======================
 ENIGMA TOOLBOX
 =======================
 
-The **ENIGMA TOOLBOX** is an open source repository for the sharing of neuroimaging and genetics data, 
-analytical codes, and visualization tools that are 100% ENIGMA-friendly and -focused.
+The **ENIGMA TOOLBOX** is an open source repository for (*i*) accessing 100+ ENIGMA-derived statistical maps, (*ii*) 
+visualizing and manipulating cortical and subcortical surface data, and (*iii*) contextualizing neuroimaging findings 
+at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
+connectome data).
 
-|
-
-
-Development and getting involved 🔧 
----------------------------------------------
-Did you find a bug? Or do you have any problems, questions, or suggestions about the **ENIGMA TOOLBOX**?
-Please do not hesitate to get in touch with us on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_! 
-If you are interested in collaborating or sharing your ENIGMA-related codes/tools (`noice <https://www.urbandictionary.com/define.php?term=noice>`_!), 
-make sure you familiarize yourself with our `contributing guidelines <https://github.com/MICA-MNI/ENIGMA/blob/master/CONTRIBUTING.md>`_ 
-first and then discuss your ideas on our Github `issues <https://github.com/MICA-MNI/ENIGMA/issues>`_ and 
-pull request `pull request <https://github.com/MICA-MNI/ENIGMA/pulls>`_.
-
-
-|
-
-
-Related publication 📝
-----------------------------
-
-Some scripts and analyses have been used in a previous ENIGMA publication. Make sure you check it out!
-
-`Network modeling, hub susceptibility, and epicenter mapping in epilepsy <https://advances.sciencemag.org/content/6/47/eabc6457>`_
-    Larivière S, Rodríguez-Cruces, Royer J, ..., Whelan CD, Thompson PM, Sisodiya SM, Bernasconi A, Labate A, McDonald CR, Bernasconi N, Bernhardt BC (2020). 
-    *Network-based atrophy modeling in the common epilepsies: a worldwide ENIGMA study*, Science Advances, 6.
-
-.. image:: ./docs/pages/extrafigs/rdme_epi.png
+.. image:: https://github.com/saratheriver/enigma-extra/blob/master/Figure0_2.png?raw=true
     :scale: 50%
     :align: center
+
+|
+
+
+Documentation 📝
+---------------------------------------------
+Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to:
+
+
+|
+
+
+Acknowledgements 💕
+----------------------------
+
+Please acknowledge this work using the citation below:
+
+Larivière S, Paquola C, Park BY, Royer J, Wang Y, Benkarim O, Vos de Wael R, Valk SL, Thomopoulos SI, Kirschner M, ENIGMA Consortium, Sisodiya S, McDonald C, Thompson PM, Bernhardt BC (2020). The ENIGMA Toolbox: Cross-disorder integration and multiscale neural contextualization of multisite neuroimaging datasets. bioRxiv, https://doi.org/10.1101/2020.12.21.423838.
 
 
 |
