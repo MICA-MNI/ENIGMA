@@ -2,7 +2,7 @@
    :alt: Codacy Badge
    :target: https://app.codacy.com/gh/saratheriver/ENIGMA?utm_source=github.com&utm_medium=referral&utm_content=saratheriver/ENIGMA&utm_campaign=Badge_Grade
 
-.. image:: https://img.shields.io/pypi/l/brainspace?label=License
+.. image:: https://img.shields.io/badge/license-BSD-brightgreen
    :target: https://opensource.org/licenses/BSD-3-Clause
 
 .. image:: https://readthedocs.org/projects/pip/badge/?version=stable
@@ -12,8 +12,8 @@
 .. image:: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master.svg?style=shield
     :target: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master
 
-
-
+.. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
+    :target: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master
 
 
 =======================
