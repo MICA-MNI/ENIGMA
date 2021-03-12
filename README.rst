@@ -25,9 +25,6 @@ visualizing and manipulating cortical and subcortical surface data, and (*iii*) 
 at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
 connectome data).
 
-
-|
-
 .. raw:: html
 
     <hr>
