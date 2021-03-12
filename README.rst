@@ -32,7 +32,7 @@ visualizing and manipulating cortical and subcortical surface data, and (*iii*) 
 at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
 connectome data).
 
-.. image::  https://github.com/saratheriver/enigma-extra/blob/master/Figure0_GH_2.png?raw=true
+.. image::  https://github.com/saratheriver/enigma-extra/blob/master/Figure0_GH.png?raw=trues
     :align: center
     :scale: 50%
 
