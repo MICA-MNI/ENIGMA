@@ -32,9 +32,10 @@ connectome data).
 Documentation 📝
 ---------------------------------------------
 Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to learn how to:
-- install the Toolbox in Python or Matlab.
-- load over 100 case-control datasets from several ENIGMA Working Groups.
-- perform cross-disorder analyses.
+
+- install the Toolbox in Python or Matlab
+- load over 100 case-control datasets from several ENIGMA Working Groups
+- perform cross-disorder analyses
 - import your own data.
 - map parcellated data to and from vertexwise space.
 - export data and data results to several file formats.
