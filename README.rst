@@ -36,8 +36,6 @@ connectome data).
     :align: center
     :scale: 50%
 
-|
-
 Documentation 📝
 ---------------------------------------------
 Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to learn how to:
