@@ -16,7 +16,6 @@
     :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
 
-=======================
 ENIGMA TOOLBOX
 =======================
 
@@ -49,8 +48,9 @@ Check out our expandable online documentation at http://enigma-toolbox.readthedo
 - identify disease epicenters
 - perform spin permutation testing on parcellated data
 
-|
+.. raw:: html
 
+    <hr>
 
 Acknowledgements 💕
 ----------------------------
