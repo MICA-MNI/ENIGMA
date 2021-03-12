@@ -54,7 +54,7 @@ Check out our expandable online documentation at http://enigma-toolbox.readthedo
 - stratify neuroimaging findings according to cytoarchitectural variations
 - build hub susceptibility models
 - identify disease epicenters
-- perform spin permutation testing on parcellated data
+- perform spin permutation tests on parcellated data
 
 |
 
