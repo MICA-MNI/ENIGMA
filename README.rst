@@ -15,14 +15,22 @@
 .. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
     :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
+.. raw:: html
 
-ENIGMA TOOLBOX
-=======================
+    <hr>
+
+.. image::  https://github.com/saratheriver/enigma-extra/blob/master/title.png?raw=true
+    :align: center
+    :scale: 50%
 
 The **ENIGMA TOOLBOX** is an open source repository for (*i*) accessing 100+ ENIGMA-derived statistical maps, (*ii*) 
 visualizing and manipulating cortical and subcortical surface data, and (*iii*) contextualizing neuroimaging findings 
 at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
 connectome data).
+
+.. image::  https://github.com/saratheriver/enigma-extra/blob/master/Figure0_GH_2.png?raw=true
+    :align: center
+    :scale: 50%
 
 .. raw:: html
 
@@ -32,7 +40,7 @@ Documentation 📝
 ---------------------------------------------
 Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to learn how to:
 
-- install the Toolbox in Python or Matlab
+- install ENIGMA Toolbox in Python or Matlab
 - load over 100 case-control datasets from several ENIGMA Working Groups
 - perform cross-disorder analyses
 - import your own data
