@@ -23,6 +23,10 @@
     :align: center
     :scale: 50%
 
+.. raw:: html
+
+    <hr>
+
 The **ENIGMA TOOLBOX** is an open source repository for (*i*) accessing 100+ ENIGMA-derived statistical maps, (*ii*) 
 visualizing and manipulating cortical and subcortical surface data, and (*iii*) contextualizing neuroimaging findings 
 at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
@@ -32,9 +36,7 @@ connectome data).
     :align: center
     :scale: 50%
 
-.. raw:: html
-
-    <hr>
+|
 
 Documentation 📝
 ---------------------------------------------
@@ -56,9 +58,7 @@ Check out our expandable online documentation at http://enigma-toolbox.readthedo
 - identify disease epicenters
 - perform spin permutation testing on parcellated data
 
-.. raw:: html
-
-    <hr>
+|
 
 Acknowledgements 💕
 ----------------------------
@@ -66,14 +66,4 @@ Acknowledgements 💕
 Please acknowledge this work using the citation below:
 
     Larivière S, Paquola C, Park BY, Royer J, Wang Y, Benkarim O, Vos de Wael R, Valk SL, Thomopoulos SI, Kirschner M, ENIGMA Consortium, Sisodiya S, McDonald C, Thompson PM, Bernhardt BC (2020). The ENIGMA Toolbox: Cross-disorder integration and multiscale neural contextualization of multisite neuroimaging datasets. *bioRxiv*, https://doi.org/10.1101/2020.12.21.423838.
-
-.. raw:: html
-
-    <hr>
-
-Core developers 👩🏻‍💻
------------------------
-
-- **Sara Larivière**, *MICA Lab - Montreal Neurological Institute*
-- **Boris Bernhardt**, *MICA Lab - Montreal Neurological Institute*
 
