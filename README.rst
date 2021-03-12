@@ -25,17 +25,28 @@ visualizing and manipulating cortical and subcortical surface data, and (*iii*) 
 at the microscale (using *postmortem* gene expression and cytoarchitecture) and macroscale (using structural and functional 
 connectome data).
 
-.. image:: https://github.com/saratheriver/enigma-extra/blob/master/Figure0_2.png?raw=true
-    :scale: 50%
-    :align: center
 
 |
 
 
 Documentation 📝
 ---------------------------------------------
-Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to:
-
+Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to learn how to:
+- install the Toolbox in Python or Matlab
+- load over 100 case-control datasets from several ENIGMA Working Groups
+- perform cross-disorder analyses
+- import your own data
+- map parcellated data to and from vertexwise space
+- export data and data results to several file formats
+- visualize and manipulate cortical and subcortical surface data
+- load preprocessed connectivity data from the Human Connectome Project (HCP)
+- load gene expression data from the Allen Human Brain Atlas
+- query pre-defined lists of disease-related genes from published GWAS
+- stratify neuroimaging findings according to BigBrain statistical moments and gradient
+- stratify neuroimaging findings according to cytoarchitectural variations
+- build hub susceptibility models
+- identify disease epicenters
+- perform spin permutation testing on parcellated data
 
 |
 
