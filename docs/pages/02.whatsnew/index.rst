@@ -5,12 +5,14 @@
 What's new?
 ======================================
 
-v1.1.0 (March XX, 2021)
+v1.1.0 (March 15, 2021)
 ------------------------------------------
 New import/export features allowing compatibility with other dataset formats and neuroimaging softwares. Improved documentation.
+
 ::
 
     ↪ [NEW 💾] New import/export module                     |  @saratheriver
+    ↪ [FIX 🐛] Fix spin permutation index error             |  @saratheriver
     ↪ [DOC 📄] Update documentations                        |  @saratheriver
 
 
