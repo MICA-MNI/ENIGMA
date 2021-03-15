@@ -119,7 +119,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=1000):
     warnings.filterwarnings('ignore')
 
     # check that coordinate dimensions are correct
-    if coord_l.shape[1] is not 3 or coord_r.shape[1] is not 3:
+    if coord_l.shape[1] != 3 or coord_r.shape[1] != 3:
         print('transposing coordinates to be of dimensions nROI x 3')
         coord_l = np.transpose(coord_l)
         coord_r = np.transpose(coord_r)
@@ -344,14 +344,14 @@ def spin_test(map1, map2, surface_name='fsa5', parcellation_name='aparc', n_rot=
       Sporns O, Bullmore ET (2017). Adolescent tuning of association cortex in human
       structural brain networks. Cerebral Cortex, 28(1):281–294.
     """
-    if surface_name is "fsa5":
+    if surface_name == "fsa5":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True)
-    elif surface_name is "fsa5_with_sctx":
+    elif surface_name == "fsa5_with_sctx":
         sphere_lh, sphere_rh = load_fsa5(as_sphere=True, with_sctx=True)
 
     root_pth = os.path.dirname(__file__)
     # get sphere coordinates of parcels
-    if surface_name is "fsa5_with_sctx" and parcellation_name is "aparc_aseg":
+    if surface_name == "fsa5_with_sctx" and parcellation_name =="aparc_aseg":
         annotfile_lh = os.path.join(root_pth, 'annot', surface_name + '_lh_' + parcellation_name + '.csv')
         annotfile_rh = os.path.join(root_pth, 'annot', surface_name + '_rh_' + parcellation_name + '.csv')
 
