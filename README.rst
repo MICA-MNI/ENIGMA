@@ -12,10 +12,10 @@
 .. image:: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master.svg?style=shield
     :target: https://circleci.com/gh/MICA-MNI/ENIGMA/tree/master
 
-.. image:: https://img.shields.io/badge/DOI-10.1101%2F2020.12.21.423838-brightgreen
+.. image:: https://img.shields.io/badge/doi-10.1101%2F2020.12.21.423838-brightgreen
     :target: https://doi.org/10.1101/2020.12.21.423838
 
-.. image::  https://img.shields.io/badge/doi-10.1101%2F2020.12.21.423838-brightgreen
+.. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
     :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
 .. raw:: html
