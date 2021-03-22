@@ -51,7 +51,7 @@ The **ENIGMA TOOLBOX** provides a centralized, and continuously updated, reposit
 comparisons <load_sumstats>` across a wide range of disorders. As many ENIGMA groups have moved beyond meta-analysis 
 towards ‘mega’-analysis of subject-level data, the **ENIGMA TOOLBOX** also includes an example of subject-level :ref:`example data<load_ct>` 
 from an individual site that have been processed according to `ENIGMA protocols <http://enigma.ini.usc.edu/protocols/>`_. 
-It should be noted, however, that subject-level or raw imaging data are not yet available for dissemination to the scientific community. 
+It should be noted, however, that subject-level or raw imaging data are not openly available for dissemination to the scientific community. 
 Interested scientists are encouraged to visit the `ENIGMA website <http://enigma.ini.usc.edu/>`_ to learn more about 
 current projects, joining and contributing to an active Working Group, 
 or proposing a new group.
@@ -62,8 +62,8 @@ or proposing a new group.
 
 Compatible with any neuroimaging datasets and software 💌
 --------------------------------------------------------------------
-To increase generalizability and usability, every function within the **ENIGMA TOOLBOX** is compatible with any 
-neuroimaging data parcellated according to the `Desikan-Killiany <https://www.sciencedirect.com/science/article/abs/pii/S1053811906000437?via%3Dihub>`_, 
+To increase generalizability and usability, every function within the **ENIGMA TOOLBOX** is also compatible with typical 
+neuroimaging datasets parcellated according to the `Desikan-Killiany <https://www.sciencedirect.com/science/article/abs/pii/S1053811906000437?via%3Dihub>`_, 
 `Glasser <https://www.nature.com/articles/nature18933>`_, and 
 `Schaefer <https://academic.oup.com/cercor/article/28/9/3095/3978804>`_ parcellations. 
 
