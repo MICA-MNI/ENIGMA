@@ -15,6 +15,9 @@
 .. image:: https://img.shields.io/badge/doi-10.1101%2F2020.12.21.423838-brightgreen
     :target: https://doi.org/10.1101/2020.12.21.423838
 
+.. image:: https://img.shields.io/twitter/follow/saratheriver?style=flat&logo=twitter&color=brightgreen
+    :target: https://twitter.com/intent/follow?screen_name=saratheriver
+
 .. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
     :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
