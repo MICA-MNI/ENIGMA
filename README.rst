@@ -21,6 +21,9 @@
 .. image::  https://img.shields.io/badge/great%20tools-good%20vibes%20%F0%9F%A4%99-brightgreen
     :target: https://www.youtube.com/watch?v=bNowU63PF5E&ab_channel=TheNiceAnders
 
+.. image:: https://img.shields.io/github/stars/MICA-MNI/ENIGMA.svg?style=flat&label=%E2%AD%90%EF%B8%8F%20give%20us%20some%20love&color=brightgreen
+    :target: https://github.com/MICA-MNI/ENIGMA/stargazers
+
 .. raw:: html
 
     <hr>
