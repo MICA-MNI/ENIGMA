@@ -79,3 +79,4 @@ by the ENIGMA Sex Differences Initiative (R01 MH116147).
 | - **Bo-Yong Park**, *MICA Lab - Montreal Neurological Institute*
 | - **Oualid Benkarim**, *MICA Lab - Montreal Neurological Institute*
 | - **Raúl Rodríguez-Cruces**, *MICA Lab - Montreal Neurological Institute*
+| - **Nicole Eichert**, *MICA Lab - Montreal Neurological Institute*

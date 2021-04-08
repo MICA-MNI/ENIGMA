@@ -5,6 +5,16 @@
 What's new?
 ======================================
 
+v1.1.1 (April 9, 2021)
+------------------------------------------
+New import/export features for CIfTI files. Improved documentation.
+
+::
+
+    ↪ [NEW 💾] New import/export module (CIfTI)             |  @NicoleEic, @saratheriver
+    ↪ [DOC 📄] Update documentations                        |  @saratheriver
+
+
 v1.1.0 (March 15, 2021)
 ------------------------------------------
 New import/export features allowing compatibility with other dataset formats and neuroimaging softwares. Improved documentation.

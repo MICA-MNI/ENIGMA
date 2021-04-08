@@ -45,6 +45,31 @@ Matlab API
      - Outputs summary statistics for a given disorder (author: @saratheriver)
 
 
+.. _matlabref_importexport:
+
+:mod:`import / export`
+------------------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+
+   generated/nfaces.rst
+   generated/getaffine.rst
+   generated/write_cifti.rst
+
+.. list-table::
+   :widths: 50 400
+   :header-rows: 0
+
+   * - :ref:`nfaces(surface_name, hemisphere)<nfaces_mat>`
+     - Returns number of faces/triangles for a surface (author: @saratheriver)
+   * - :ref:`getaffine(surface_name, hemisphere)<get_affine_mat>`
+     - Returns vox2ras transform for a surface (author: @saratheriver)
+   * - :ref:`write_cifti(data, varargin)<write_cifti_mat>`
+     - Writes cifti file (authors: @NicoleEic, @saratheriver) 
+  
+
 .. _matlabref_connmatrix:
 
 :mod:`connectivity matrices`
@@ -323,26 +348,5 @@ Matlab API
    * - :ref:`surface_to_parcel(surf_data, parcellation)<surface_to_parcel_mat>`
      - Map surface data to a parcellation (authors : @MICA-MNI, @saratheriver)
 
-
-.. _matlabref_importexport:
-
-:mod:`import / export`
-------------------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   generated/nfaces.rst
-   generated/getaffine.rst
-
-.. list-table::
-   :widths: 50 400
-   :header-rows: 0
-
-   * - :ref:`nfaces(surface_name, hemisphere)<nfaces_mat>`
-     - Returns number of faces/triangles for a surface (author: @saratheriver)
-   * - :ref:`getaffine(surface_name, hemisphere)<get_affine_mat>`
-     - Returns vox2ras transform for a surface (author: @saratheriver)
 
 

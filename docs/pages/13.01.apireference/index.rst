@@ -54,6 +54,7 @@ Export functions
 
    enigmatoolbox.datasets.nfaces
    enigmatoolbox.datasets.getaffine
+   enigmatoolbox.datasets.write_cifti
 
 
 Connectivity matrices
