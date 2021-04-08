@@ -72,6 +72,8 @@ Installation 🔨
 
 To install the Toolbox in ``Python``, run the following in your terminal:
 
+.. code-block:: bash
+
     git clone https://github.com/MICA-MNI/ENIGMA.git
     cd ENIGMA
     python setup.py install
