@@ -81,9 +81,13 @@ To install the Toolbox in ``Python``, run the following in your terminal:
 
 To install the Toolbox in ``Matlab``, run the following in your terminal:
 
+.. code-block:: bash
+
     git clone https://github.com/MICA-MNI/ENIGMA.git
 
 And then simply run the following in Matlab:
+
+.. code-block:: matlab
 
     addpath(genpath('/path/to/ENIGMA/matlab/'))
 
