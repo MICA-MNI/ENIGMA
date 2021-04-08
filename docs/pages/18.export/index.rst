@@ -46,8 +46,8 @@ functions.
         >>> filename_rh = 'rh.schaefer_200_c69_thickness.txt'
 
         >>> # Export cortical thickness data as .txt / .csv
-        >>>         np.savetxt(data_path + filename_lh, data[:len(data)//2])
-        >>>         np.savetxt(data_path + filename_rh, data[len(data)//2:])
+        >>> np.savetxt(data_path + filename_lh, data[:len(data)//2])
+        >>> np.savetxt(data_path + filename_rh, data[len(data)//2:])
 
    .. code-tab:: matlab
 
@@ -205,6 +205,10 @@ functions to load your data. You can get the Matlab function from `here <https:/
 
    .. code-tab:: py
 
+        >>> import enigmatoolbox
+        >>> import nibabel as nib
+        >>> import os  
+
         >>> # Specify data to be exported 
         >>> data = CT_schaefer_200_c69
 
@@ -244,3 +248,46 @@ functions to load your data. You can get the Matlab function from `here <https:/
         savegifti(data_rh, [data_path, filename_rh], 'Base64Binary');
 
 
+|
+
+
+.. _e_cifti:
+
+CIfTI / .dscalar.nii / .dtseries.nii
+---------------------------------------------------
+
+If you want to export your data as CIfTI/.dscalar.nii/.dtseries.nii format, then you may use the ``ciftisave()`` (*Matlab*) or ``write_cifti`` (*Python*) 
+functions to load your data. You can get the Matlab function from `here <https://github.com/Washington-University/cifti-matlab>`_.
+
+.. tabs::
+
+   .. code-tab:: py
+
+        >>> from enigmatoolbox.datasets import write_cifti
+
+        >>> # Define output path and filenames
+        >>> dpath='/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/enigmatoolbox/datasets/import_export/'
+        >>> fname_lh='lh.schaefer_200_c69_thickness.dscalar.nii'
+        >>> fname_rh='rh.schaefer_200_c69_thickness.dscalar.nii'
+        
+        >>> # Write left and right files as CIfTI
+        >>> write_cifti(data[:len(data)//2], dpath=dpath, fname=fname_lh, labels=None, surface_name='conte69', hemi='lh')
+        >>> write_cifti(data[len(data)//2:], dpath=dpath, fname=fname_rh, labels=None, surface_name='conte69', hemi='rh')
+
+   .. code-tab:: matlab
+
+        % Specify data to be exported 
+        data = gifti(CT_schaefer_200_c69);
+        data_lh = data; data_lh.cdata = data_lh.cdata(1:end/2);
+        data_rh = data; data_rh.cdata = data_rh.cdata(end/2+1:end);
+
+        % Define export path
+        data_path = what('import_export'); data_path = data_path.path;
+        
+        % Define filenames for left and right hemisphere data
+        filename_lh = 'lh.schaefer_200_c69_thickness.gii'
+        filename_rh = 'rh.schaefer_200_c69_thickness.gii'
+
+         % Export cortical thickness data as GIfTI / .gii 
+        savegifti(data_lh, [data_path, filename_lh], 'Base64Binary');
+        savegifti(data_rh, [data_path, filename_rh], 'Base64Binary');

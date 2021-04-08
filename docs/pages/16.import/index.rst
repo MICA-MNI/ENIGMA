@@ -32,6 +32,7 @@ functions to load your data.
 
         >>> import enigmatoolbox 
         >>> import numpy as np 
+        >>> import os
 
         >>> # Define path to your data
         >>> # Here we use data from the ENIGMA Toolbox
@@ -72,6 +73,7 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import enigmatoolbox 
         >>> import nibabel as nib
         >>> import numpy as np 
+        >>> import os
 
         >>> # Define path to your data
         >>> # Here we use data from the ENIGMA Toolbox
@@ -112,6 +114,7 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import enigmatoolbox 
         >>> import nibabel as nib
         >>> import numpy as np 
+        >>> import os
 
         >>> # Define path to your data
         >>> # Here we use data from the ENIGMA Toolbox
@@ -152,6 +155,7 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import enigmatoolbox 
         >>> import nibabel as nib
         >>> import numpy as np 
+        >>> import os
 
         >>> # Define path to your data
         >>> # Here we use data from the ENIGMA Toolbox
@@ -173,3 +177,45 @@ functions to load your data. You can get the Matlab function from `here <https:/
         data_rh = gifti([data_path '/rh.conte69_32k_thickness.gii']);
         CT = [data_lh.cdata; data_rh.cdata].';
 
+
+        |
+
+
+.. _i_cifti:
+
+CIfTI / .dscalar.nii / .dtseries.nii
+---------------------------------------------------
+
+If your data are stored as CIfTI/.dscalar.nii/dtseries.nii format, then you may use the ``cifti_read()`` (*Matlab*) or ``nib.load`` (*Python*) 
+functions to load your data. You can get the Matlab function from `here <https://github.com/Washington-University/cifti-matlab>`_.
+        
+     .. tabs::
+     
+          .. code-tab:: py
+     
+               >>> import enigmatoolbox 
+               >>> import nibabel as nib
+               >>> import numpy as np 
+               >>> import os
+     
+               >>> # Define path to your data
+               >>> # Here we use data from the ENIGMA Toolbox
+               >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+     
+               >>> # Import cortical thickness data stored as CIfTI / .dscalar.nii
+               >>> CT = []
+               >>> for _, h in enumerate(['lh', 'rh']):
+               >>>     CT = np.append(CT, np.asarray(nib.load(data_path + '{}.conte69_32k_thickness.dscalar.nii'.format(h)).get_data()))
+     
+          .. code-tab:: matlab
+     
+               % Define path to your data
+               % Here we use data from the ENIGMA Toolbox
+               data_path = what('import_export'); data_path = data_path.path;
+     
+               % Import cortical thickness data stored as CIfTI / .dscalar.nii
+               data_lh = cifti_read([data_path '/lh.conte69_32k_thickness.dscalar.nii']);
+               data_rh = cifti_read([data_path '/rh.conte69_32k_thickness.dscalar.nii']);
+               CT = [data_lh.cdata; data_rh.cdata].';
+     
+     

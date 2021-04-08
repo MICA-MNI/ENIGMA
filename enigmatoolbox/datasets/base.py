@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import pandas as pd
+import nibabel as nib
 
 from vtk import vtkPolyDataNormals
 
@@ -976,9 +977,9 @@ def load_summary_stats(disorder=None):
 
 def reorder_sum_stats(in_file, out_file):
     """
-    Re-order cortical structures in summary statistics files
+        Re-order cortical structures in summary statistics files
 
-    in_file = pd dataframe (sum_stats)
+        in_file = pd dataframe (sum_stats)
     """
     # Load in_fil
     in_file = pd.read_csv(in_file, error_bad_lines=False)
@@ -1003,19 +1004,18 @@ def reorder_sum_stats(in_file, out_file):
 def nfaces(surface_name, hemisphere):
     """Returns number of faces/triangles for a surface (author: @saratheriver)
 
-            Parameters
-            ----------
-            surface_name : string
-                Name of surface {'fsa5', 'conte69'}
-            hemisphere : string
-               Name of hemisphere {'lh', 'rh', 'both'}
+        Parameters
+        ----------
+        surface_name : string
+            Name of surface {'fsa5', 'conte69'}
+        hemisphere : string
+           Name of hemisphere {'lh', 'rh', 'both'}
 
-            Returns
-            -------
-            numfaces : int
-                number of faces/triangles
-         """
-
+        Returns
+        -------
+        numfaces : int
+            number of faces/triangles
+     """
     if surface_name is 'fsa5':
         if hemisphere is 'lh':
             return load_fsa5()[0].GetPolys2D().shape[0]
@@ -1035,19 +1035,18 @@ def nfaces(surface_name, hemisphere):
 def getaffine(surface_name, hemisphere):
     """Returns vox2ras transform for a surface (author: @saratheriver)
 
-            Parameters
-            ----------
-            surface_name : string
-                Name of surface {'fsa5', 'conte69'}
-            hemisphere : string
-               Name of hemisphere {'lh', 'rh', 'both'}
+        Parameters
+        ----------
+        surface_name : string
+            Name of surface {'fsa5', 'conte69'}
+        hemisphere : string
+           Name of hemisphere {'lh', 'rh', 'both'}
 
-            Returns
-            -------
-            numfaces : 2D ndarray
-                vox2ras transform, shape = (4, 4)
-         """
-
+        Returns
+        -------
+        numfaces : 2D ndarray
+            vox2ras transform, shape = (4, 4)
+     """
     if surface_name is 'fsa5':
         if hemisphere is 'lh' or 'rh':
             return np.asarray([[-1.000e+00,  0.000e+00,  0.000e+00,  5.121e+03],
@@ -1070,6 +1069,47 @@ def getaffine(surface_name, hemisphere):
                                [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
                                [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
                                [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
+
+
+def write_cifti(data, dpath=None, fname=None, labels=None, surface_name='conte69', hemi='lh'):
+    """Writes cifti file (authors: @NicoleEic, @saratheriver)
+
+        Parameters
+        ----------
+        dpath : string
+            Path to location for saving file (e.g., '/Users/bonjour/')
+        fname : string
+            Name of file (e.g., 'ello.dscalar.nii')
+            Default is None
+        labels : list
+            List of region labels
+            Default is None
+        surface_name : string
+            Name of surface {'fsa5', 'conte69'}
+            Default is 'conte69'
+        hemi : string
+           Name of hemisphere {'lh', 'rh'}
+           Default is 'lh'
+    """
+    if dpath is None or fname is None:
+        print("ey ey ya gotta specify the path and the filename :)")
+    if data.ndim == 1:
+        data = np.expand_dims(data, axis=0)
+    if labels is None:
+        labels = ['map ' + str(dim) for dim in np.arange(0, data.shape[0])]
+
+    # Load reference file
+    root_pth = os.path.dirname(__file__)
+    ref_ds = nib.load(os.path.join(root_pth, 'import_export', hemi + '.' + surface_name + '_ref.dscalar.nii'))
+
+    # Get axis
+    sa = nib.cifti2.cifti2_axes.ScalarAxis(labels)
+    bm = ref_ds.header.get_axis(1)
+    out_img = nib.cifti2.cifti2.Cifti2Image(dataobj=data, header=(sa, bm))
+
+    # Save cifti, woohoo!
+    nib.save(out_img, dpath + fname)
+    print(f'file saved as: {dpath + fname} .... #yolo')
 
 
 # For every new summary statistic file, run the following command to reorder
