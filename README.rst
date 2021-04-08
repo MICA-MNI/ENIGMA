@@ -78,6 +78,9 @@ To install the Toolbox in ``Python``, run the following in your terminal:
     cd ENIGMA
     python setup.py install
 
+.. raw:: html
+
+<hr>
 
 To install the Toolbox in ``Matlab``, run the following in your terminal:
 
