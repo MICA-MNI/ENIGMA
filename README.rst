@@ -49,7 +49,7 @@ Documentation 💼
 ---------------------------------------------
 Check out our expandable online documentation at http://enigma-toolbox.readthedocs.io to learn how to:
 
-| 🔌 | install ENIGMA Toolbox in Python or Matlab
+| 🔌 install ENIGMA Toolbox in Python or Matlab
 | 💯 load over 100 case-control datasets from several ENIGMA Working Groups
 | 🥍 perform cross-disorder analyses
 | 🚢 import your own data
