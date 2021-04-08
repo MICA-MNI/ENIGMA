@@ -70,7 +70,7 @@ neuroimaging datasets parcellated according to the `Desikan-Killiany <https://ww
 To simplify things, we provide tutorials on how to (*i*) :ref:`import vertexwise and/or parcellated data <import_data>`, 
 (*ii*) :ref:`parcellate vertexwise cortical data <vw_to_parc>`, (*iii*) :ref:`map parcellated data to the surface <parc_to_vw>`, and 
 (*iv*) :ref:`export data results <export_data>`. Import/export file formats include: .txt/.csv, 
-FreeSurfer/"curv". mgh/.mgz, GIfTI/.gii. Cortical and subcortical surfaces are also available in FreeSurfer/surface, GIfTI/.gii, .vtk, and .obj 
+FreeSurfer/"curv". mgh/.mgz, GIfTI/.gii, and CIfTI/.dscalar.nii/.dtseries.nii. Cortical and subcortical surfaces are also available in FreeSurfer/surface, GIfTI/.gii, .vtk, and .obj 
 formats, allowing cross-software compatibility.
 
 .. raw:: html

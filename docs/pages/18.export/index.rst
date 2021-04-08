@@ -34,36 +34,33 @@ functions.
 
         >>> import enigmatoolbox 
         >>> import numpy as np
+        >>> import os
 
         >>> # Specify data to be exported 
         >>> data = CT_schaefer_200_c69
         
-        >>> # Define export path
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> # Define output path and filenames
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> fname_lh = 'lh.schaefer_200_c69_thickness.txt'
+        >>> fname_rh = 'rh.schaefer_200_c69_thickness.txt'
 
-        >>> # Define filenames for left and right hemisphere data
-        >>> filename_lh = 'lh.schaefer_200_c69_thickness.txt'
-        >>> filename_rh = 'rh.schaefer_200_c69_thickness.txt'
-
-        >>> # Export cortical thickness data as .txt / .csv
-        >>> np.savetxt(data_path + filename_lh, data[:len(data)//2])
-        >>> np.savetxt(data_path + filename_rh, data[len(data)//2:])
+        >>> # Export data as .txt / .csv
+        >>> np.savetxt(dpath + fname_lh, data[:len(data)//2])
+        >>> np.savetxt(dpath + fname_rh, data[len(data)//2:])
 
    .. code-tab:: matlab
 
         % Specify data to be exported 
         data = CT_schaefer_200_c69
 
-        % Define export path
-        data_path = what('import_export'); data_path = data_path.path;
-        
-        % Define filenames for left and right hemisphere data
-        filename_lh = 'lh.schaefer_200_c69_thickness.txt'
-        filename_rh = 'rh.schaefer_200_c69_thickness.txt'
+        % Define output path and filenames
+        dpath = what('import_export'); dpath = dpath.path;
+        fname_lh = 'lh.schaefer_200_c69_thickness.txt'
+        fname_rh = 'rh.schaefer_200_c69_thickness.txt'
 
-        % Export cortical thickness data as .txt / .csv
-        writetable(array2table(data(1:end/2)), [data_path, filename_lh], 'WriteVariableNames', 0)
-        writetable(array2table(datta(end/2+1:end)), [data_path, filename_rh], 'WriteVariableNames', 0)
+        % Export data as .txt / .csv
+        writetable(array2table(data(1:end/2)), [dpath, fname_lh], 'WriteVariableNames', 0)
+        writetable(array2table(data(end/2+1:end)), [dpath, fname_rh], 'WriteVariableNames', 0)
 
 
 |
@@ -92,20 +89,19 @@ You can get the Matlab function from `here <https://github.com/neurodebian/frees
         >>> import enigmatoolbox 
         >>> from enigmatoolbox.datasets import nfaces
         >>> import nibabel as nib
+        >>> import os
 
         >>> # Specify data to be exported 
         >>> data = CT_schaefer_200_c69
         
-        >>> # Define export path
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
-
-        >>> # Define filenames for left and right hemisphere data
-        >>> filename_lh = 'lh.schaefer_200_c69_thickness'
-        >>> filename_rh = 'rh.schaefer_200_c69_thickness'
+        >>> # Define output path and filenames
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> fname_lh = 'lh.schaefer_200_c69_thickness'
+        >>> fname_rh = 'rh.schaefer_200_c69_thickness'
         
-        >>> # Export cortical thickness data as FreeSurfer "curv"
-        >>> nib.freesurfer.io.write_morph_data(data_path + filename_lh, data[:len(data)//2], nfaces('conte69', 'lh'))
-        >>> nib.freesurfer.io.write_morph_data(data_path + filename_rh, data[len(data)//2:], nfaces('conte69', 'rh'))
+        >>> # Export data as FreeSurfer "curv"
+        >>> nib.freesurfer.io.write_morph_data(dpath + fname_lh, data[:len(data)//2], nfaces('conte69', 'lh'))
+        >>> nib.freesurfer.io.write_morph_data(dpath + fname_rh, data[len(data)//2:], nfaces('conte69', 'rh'))
 
 
    .. code-tab:: matlab
@@ -113,16 +109,14 @@ You can get the Matlab function from `here <https://github.com/neurodebian/frees
         % Specify data to be exported 
         data = CT_schaefer_200_c69
 
-        % Define export path
-        data_path = what('import_export'); data_path = data_path.path;
+        % Define output path and filenames
+        dpath = what('import_export'); dpath = dpath.path;
+        fname_lh = 'lh.schaefer_200_c69_thickness'
+        fname_rh = 'rh.schaefer_200_c69_thickness'
         
-        % Define filenames for left and right hemisphere data
-        filename_lh = 'lh.schaefer_200_c69_thickness'
-        filename_rh = 'rh.schaefer_200_c69_thickness'
-        
-        % Export cortical thickness data as FreeSurfer "curv"
-        write_curv([data_path, filename_lh], data(1:end/2), nfaces('conte69', 'lh'));
-        write_curv([data_path filename_rh], data(end/2+1:end), nfaces('conte69', 'rh'));
+        % Export data as FreeSurfer "curv"
+        write_curv([dpath, fname_lh], data(1:end/2), nfaces('conte69', 'lh'));
+        write_curv([dpath fname_rh], data(end/2+1:end), nfaces('conte69', 'rh'));
 
 
 |
@@ -151,38 +145,35 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> from enigmatoolbox.datasets import getaffine
         >>> import nibabel as nib
         >>> import numpy as np 
+        >>> import os
 
         >>> # Specify data to be exported 
         >>> data = CT_schaefer_200_c69
         
-        >>> # Define export path
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> # Define output path and filenames
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> fname_lh = 'lh.schaefer_200_c69_thickness.mgh'
+        >>> fname_rh = 'rh.schaefer_200_c69_thickness.mgh'
 
-        >>> # Define filenames for left and right hemisphere data
-        >>> filename_lh = 'lh.schaefer_200_c69_thickness.mgh'
-        >>> filename_rh = 'rh.schaefer_200_c69_thickness.mgh'
-
-        >>> # Export cortical thickness data as .mgh / .mgz 
+        >>> # Export data as .mgh / .mgz 
         >>> nib.freesurfer.mghformat.MGHImage(np.float32(data[:len(data)//2]),
-        ...                                   getaffine('conte69', 'lh')).to_filename(data_path + filename_lh)
+        ...                                   getaffine('conte69', 'lh')).to_filename(dpath + fname_lh)
         >>> nib.freesurfer.mghformat.MGHImage(np.float32(data[len(data)//2:]),
-        ...                                   getaffine('conte69', 'lh')).to_filename(data_path + filename_rh)
+        ...                                   getaffine('conte69', 'lh')).to_filename(dpath + fname_rh)
 
    .. code-tab:: matlab
 
         % Specify data to be exported 
         data = CT_schaefer_200_c69
 
-        % Define export path
-        data_path = what('import_export'); data_path = data_path.path;
-        
-        % Define filenames for left and right hemisphere data
-        filename_lh = 'lh.schaefer_200_c69_thickness.mgh'
-        filename_rh = 'rh.schaefer_200_c69_thickness.mgh'
+        % Define output path and filenames
+        dpath = what('import_export'); dpath = dpath.path;
+        fname_lh = 'lh.schaefer_200_c69_thickness.mgh'
+        fname_rh = 'rh.schaefer_200_c69_thickness.mgh'
 
-        % Export cortical thickness data as .mgh / .mgz 
-        save_mgh(data(1:end/2), [data_path, filename_lh], getaffine('conte69', 'lh'));
-        save_mgh(data(end/2+1:end), [data_path, filename_rh], getaffine('conte69', 'rh'));
+        % Export data as .mgh / .mgz 
+        save_mgh(data(1:end/2), [dpath, fname_lh], getaffine('conte69', 'lh'));
+        save_mgh(data(end/2+1:end), [dpath, fname_rh], getaffine('conte69', 'rh'));
 
 
 |
@@ -218,16 +209,14 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> data_rh = nib.gifti.gifti.GiftiImage()
         >>> data_rh.add_gifti_data_array(nib.gifti.gifti.GiftiDataArray(data=data[len(data)//2:]))
 
-        >>> # Define export path
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> # Define output path and filenames
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> fname_lh = 'lh.schaefer_200_c69_thickness.gii'
+        >>> fname_rh = 'rh.schaefer_200_c69_thickness.gii'
 
-        >>> # Define filenames for left and right hemisphere data
-        >>> filename_lh = 'lh.schaefer_200_c69_thickness.gii'
-        >>> filename_rh = 'rh.schaefer_200_c69_thickness.gii'
-
-        >>> # Export cortical thickness data as GIfTI / .gii 
-        >>> nib.save(data_lh, data_path + filename_lh)
-        >>> nib.save(data_rh, data_path + filename_rh)
+        >>> # Export data as GIfTI / .gii 
+        >>> nib.save(data_lh, dpath + fname_lh)
+        >>> nib.save(data_rh, dpath + fname_rh)
 
    .. code-tab:: matlab
 
@@ -236,16 +225,14 @@ functions to load your data. You can get the Matlab function from `here <https:/
         data_lh = data; data_lh.cdata = data_lh.cdata(1:end/2);
         data_rh = data; data_rh.cdata = data_rh.cdata(end/2+1:end);
 
-        % Define export path
-        data_path = what('import_export'); data_path = data_path.path;
-        
-        % Define filenames for left and right hemisphere data
-        filename_lh = 'lh.schaefer_200_c69_thickness.gii'
-        filename_rh = 'rh.schaefer_200_c69_thickness.gii'
+        % Define output path and filenames
+        dpath = what('import_export'); dpath = dpath.path;
+        fname_lh = 'lh.schaefer_200_c69_thickness.gii'
+        fname_rh = 'rh.schaefer_200_c69_thickness.gii'
 
-         % Export cortical thickness data as GIfTI / .gii 
-        savegifti(data_lh, [data_path, filename_lh], 'Base64Binary');
-        savegifti(data_rh, [data_path, filename_rh], 'Base64Binary');
+        % Export data as GIfTI / .gii 
+        savegifti(data_lh, [dpath, fname_lh], 'Base64Binary');
+        savegifti(data_rh, [dpath, fname_rh], 'Base64Binary');
 
 
 |
@@ -256,38 +243,38 @@ functions to load your data. You can get the Matlab function from `here <https:/
 CIfTI / .dscalar.nii / .dtseries.nii
 ---------------------------------------------------
 
-If you want to export your data as CIfTI/.dscalar.nii/.dtseries.nii format, then you may use the ``ciftisave()`` (*Matlab*) or ``write_cifti`` (*Python*) 
-functions to load your data. You can get the Matlab function from `here <https://github.com/Washington-University/cifti-matlab>`_.
+If you want to export your data as CIfTI/.dscalar.nii/.dtseries.nii format, then you may use the ``write_cifti()`` (*Matlab* and *Python*)  
+functions to load your data. The *Matlab* function, however, relies on this toolbox right `here <https://github.com/Washington-University/cifti-matlab>`_.
 
 .. tabs::
 
    .. code-tab:: py
 
         >>> from enigmatoolbox.datasets import write_cifti
+        >>> import os
+
+        >>> # Specify data to be exported 
+        >>> data = CT_schaefer_200_c69;
 
         >>> # Define output path and filenames
-        >>> dpath='/Users/saratheriver/Desktop/McGill_PhD/ENIGMA/enigmatoolbox/datasets/import_export/'
-        >>> fname_lh='lh.schaefer_200_c69_thickness.dscalar.nii'
-        >>> fname_rh='rh.schaefer_200_c69_thickness.dscalar.nii'
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> fname_lh = 'lh.schaefer_200_c69_thickness.dscalar.nii'
+        >>> fname_rh = 'rh.schaefer_200_c69_thickness.dscalar.nii'
         
-        >>> # Write left and right files as CIfTI
+        >>> # Export data as CIfTI / .dscalar.nii / .dtseries.nii
         >>> write_cifti(data[:len(data)//2], dpath=dpath, fname=fname_lh, labels=None, surface_name='conte69', hemi='lh')
         >>> write_cifti(data[len(data)//2:], dpath=dpath, fname=fname_rh, labels=None, surface_name='conte69', hemi='rh')
 
    .. code-tab:: matlab
 
         % Specify data to be exported 
-        data = gifti(CT_schaefer_200_c69);
-        data_lh = data; data_lh.cdata = data_lh.cdata(1:end/2);
-        data_rh = data; data_rh.cdata = data_rh.cdata(end/2+1:end);
+        data = CT_schaefer_200_c69;
 
-        % Define export path
-        data_path = what('import_export'); data_path = data_path.path;
-        
-        % Define filenames for left and right hemisphere data
-        filename_lh = 'lh.schaefer_200_c69_thickness.gii'
-        filename_rh = 'rh.schaefer_200_c69_thickness.gii'
+        % Define output path and filenames
+        dpath = what('import_export'); dpath = dpath.path;
+        fname_lh = 'lh.schaefer_200_c69_thickness.dscalar.nii'
+        fname_rh = 'rh.schaefer_200_c69_thickness.dscalar.nii'
 
-         % Export cortical thickness data as GIfTI / .gii 
-        savegifti(data_lh, [data_path, filename_lh], 'Base64Binary');
-        savegifti(data_rh, [data_path, filename_rh], 'Base64Binary');
+        % Export data as CIfTI / .dscalar.nii / .dtseries.nii
+        write_cifti(data(1:end/2), 'dpath', dpath, 'fname', fname_lh, 'surface_name', 'conte69', 'hemi', 'lh')
+        write_cifti(data(end/2+1:end), 'dpath', dpath, 'fname', fname_rh, 'surface_name', 'conte69', 'hemi', 'rh')
