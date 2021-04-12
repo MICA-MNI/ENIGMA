@@ -6,7 +6,7 @@
 Installation
 ==============================
 
-**ENIGMA TOOLBOX** is available in Python and MATLAB!
+**ENIGMA TOOLBOX** is available in Python and Matlab!
 
 .. tabs::
 
@@ -33,14 +33,14 @@ Installation
 
     .. tab:: Matlab
 
-        **ENIGMA TOOLBOX** was tested with MATLAB R2017b.
+        **ENIGMA TOOLBOX** was tested with Matlab R2017b.
 
-        To install the MATLAB toolbox simply `download <https://github.com/MICA-MNI/ENIGMA/archive/1.1.0.zip>`_ 
+        To install the Matlab toolbox simply `download <https://github.com/MICA-MNI/ENIGMA/archive/1.1.1.zip>`_ 
         and unzip the GitHub toolbox (slow 🐢) or run the following command in your terminal (fast 🐅): ::
             
             git clone https://github.com/MICA-MNI/ENIGMA.git
         
         
-        Once you have the toolbox on your computer, simply run the following command in MATLAB: ::
+        Once you have the toolbox on your computer, simply run the following command in Matlab: ::
 
             addpath(genpath('/path/to/ENIGMA/matlab/'))

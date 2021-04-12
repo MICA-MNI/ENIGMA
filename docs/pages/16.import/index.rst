@@ -11,14 +11,14 @@ Compatible import file formats are: :ref:`.txt/.csv <i_txt_csv>`, :ref:`FreeSurf
 
 As an example, we will import vertexwise cortical thickness data sampled on the Conte69 surface template (available within the **ENIGMA Toolbox**). 
 The examples below can be easily modified to import any vertexwise or parcellated data by simply changing the path to the data and the filenames. 
-Here, we imported data from the ENIGMA's import_export datasets directory.
+Here, we imported data from ENIGMA's import_export directory.
 
 .. _i_txt_csv:
 
 .txt / .csv
 ---------------------------------------------------
 
-If your data are stored as text (.txt) or comma-separated values files, then you may use the ``dlmread()`` (*Matlab*) or ``np.loadtxt()`` (*Python*) 
+If your data are stored as text (.txt) or comma-separated values (.csv) files, then you may use the ``dlmread()`` (*Matlab*) or ``np.loadtxt()`` (*Python*) 
 functions to load your data.
 
 .. admonition:: Table please 🍴
@@ -35,21 +35,21 @@ functions to load your data.
         >>> import os
 
         >>> # Define path to your data
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
 
         >>> # Import data stored as .txt / .csv
         >>> CT = []
         >>> for _, h in enumerate(['lh', 'rh']):
-        >>>     CT = np.append(CT, np.loadtxt(data_path + '{}.conte69_32k_thickness.txt'.format(h)))
+        >>>     CT = np.append(CT, np.loadtxt(dpath + '{}.conte69_32k_thickness.txt'.format(h)))
 
    .. code-tab:: matlab
 
         % Define path to your data
-        data_path = what('import_export'); data_path = data_path.path;
+        dpath = what('import_export'); dpath = data_path.path;
 
         % Import data stored as .txt / .csv
-        data_lh = dlmread([data_path '/lh.conte69_32k_thickness.txt']);
-        data_rh = dlmread([data_path '/rh.conte69_32k_thickness.txt']);
+        data_lh = dlmread([dpath '/lh.conte69_32k_thickness.txt']);
+        data_rh = dlmread([dpath '/rh.conte69_32k_thickness.txt']);
         CT = [data_lh data_rh];
 
 
@@ -74,21 +74,21 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import os
 
         >>> # Define path to your data
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
 
         >>> # Import data stored as FreeSurfer "curv"
         >>> CT = []
         >>> for _, h in enumerate(['lh', 'rh']):
-        >>>     CT = np.append(CT, nib.freesurfer.io.read_morph_data(data_path + '{}.conte69_32k_thickness'.format(h)))
+        >>>     CT = np.append(CT, nib.freesurfer.io.read_morph_data(dpath + '{}.conte69_32k_thickness'.format(h)))
 
    .. code-tab:: matlab
 
         % Define path to your data
-        data_path = what('import_export'); data_path = data_path.path;
+        dpath = what('import_export'); dpath = dpath.path;
 
         % Import data stored as FreeSurfer "curv"
-        data_lh = read_curv([data_path '/lh.conte69_32k_thickness']);
-        data_rh = read_curv([data_path '/rh.conte69_32k_thickness']);
+        data_lh = read_curv([dpath '/lh.conte69_32k_thickness']);
+        data_rh = read_curv([dpath '/rh.conte69_32k_thickness']);
         CT = [data_lh; data_rh].';
 
 
@@ -113,21 +113,21 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import os
 
         >>> # Define path to your data
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
 
         >>> # Import data stored as .mgh / .mgz
         >>> CT = []
         >>> for _, h in enumerate(['lh', 'rh']):
-        >>>     CT = np.append(CT, nib.load(data_path + '{}.conte69_32k_thickness.mgh'.format(h)).get_fdata().squeeze())
+        >>>     CT = np.append(CT, nib.load(dpath + '{}.conte69_32k_thickness.mgh'.format(h)).get_fdata().squeeze())
 
    .. code-tab:: matlab
 
         % Define path to your data
-        data_path = what('import_export'); data_path = data_path.path;
+        dpath = what('import_export'); dpath = dpath.path;
 
         % Import data stored as .mgh / .mgz
-        data_lh = load_mgh([data_path '/lh.conte69_32k_thickness.mgh']);
-        data_rh = load_mgh([data_path '/rh.conte69_32k_thickness.mgh']);
+        data_lh = load_mgh([dpath '/lh.conte69_32k_thickness.mgh']);
+        data_rh = load_mgh([dpath '/rh.conte69_32k_thickness.mgh']);
         CT = [data_lh; data_rh].';
 
 
@@ -152,21 +152,21 @@ functions to load your data. You can get the Matlab function from `here <https:/
         >>> import os
 
         >>> # Define path to your data
-        >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+        >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
 
         >>> # Import data stored as GIfTI / .gii
         >>> CT = []
         >>> for _, h in enumerate(['lh', 'rh']):
-        >>>     CT = np.append(CT, nib.load(data_path + '{}.conte69_32k_thickness.gii'.format(h)).darrays[0].data)
+        >>>     CT = np.append(CT, nib.load(dpath + '{}.conte69_32k_thickness.gii'.format(h)).darrays[0].data)
 
    .. code-tab:: matlab
 
         % Define path to your data
-        data_path = what('import_export'); data_path = data_path.path;
+        dpath = what('import_export'); dpath = dpath.path;
 
         % Import data stored as GIfTI / .gii
-        data_lh = gifti([data_path '/lh.conte69_32k_thickness.gii']);
-        data_rh = gifti([data_path '/rh.conte69_32k_thickness.gii']);
+        data_lh = gifti([dpath '/lh.conte69_32k_thickness.gii']);
+        data_rh = gifti([dpath '/rh.conte69_32k_thickness.gii']);
         CT = [data_lh.cdata; data_rh.cdata].';
 
 
@@ -191,21 +191,21 @@ functions to load your data. You can get the Matlab function from `here <https:/
                >>> import os
      
                >>> # Define path to your data
-               >>> data_path = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
+               >>> dpath = os.path.join(os.path.dirname(enigmatoolbox.__file__) + "/datasets/import_export/")
      
                >>> # Import data stored as CIfTI / .dscalar.nii / .dtseries.nii
                >>> CT = []
                >>> for _, h in enumerate(['lh', 'rh']):
-               >>>     CT = np.append(CT, np.asarray(nib.load(data_path + '{}.conte69_32k_thickness.dscalar.nii'.format(h)).get_data()))
+               >>>     CT = np.append(CT, np.asarray(nib.load(dpath + '{}.conte69_32k_thickness.dscalar.nii'.format(h)).get_data()))
      
           .. code-tab:: matlab
      
                % Define path to your data
-               data_path = what('import_export'); data_path = data_path.path;
+               dpath = what('import_export'); dpath = dpath.path;
      
                % Import data stored as CIfTI / .dscalar.nii / .dtseries.nii
-               data_lh = cifti_read([data_path '/lh.conte69_32k_thickness.dscalar.nii']);
-               data_rh = cifti_read([data_path '/rh.conte69_32k_thickness.dscalar.nii']);
+               data_lh = cifti_read([dpath '/lh.conte69_32k_thickness.dscalar.nii']);
+               data_rh = cifti_read([dpath '/rh.conte69_32k_thickness.dscalar.nii']);
                CT = [data_lh.cdata; data_rh.cdata].';
      
      

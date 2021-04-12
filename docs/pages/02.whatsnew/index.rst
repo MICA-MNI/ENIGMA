@@ -5,7 +5,7 @@
 What's new?
 ======================================
 
-v1.1.1 (April 9, 2021)
+v1.1.1 (April 12, 2021)
 ------------------------------------------
 New import/export features for CIfTI files. Improved documentation.
 
