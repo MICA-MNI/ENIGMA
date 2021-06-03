@@ -184,7 +184,7 @@ functions to load your data. You can get the Matlab function from `here <https:/
 GIfTI / .gii
 ---------------------------------------------------
 
-If you want to export your data as GIfTI/.gii format, then you may use the ``savegifti()`` (*Matlab*) or ``nib.load`` (*Python*) 
+If you want to export your data as GIfTI/.gii format, then you may use the ``savegifti()`` (*Matlab*) or ``nib.save`` (*Python*) 
 functions to load your data. You can get the Matlab function from `here <https://github.com/gllmflndn/gifti>`_.
 
 .. admonition:: Script name change 📛
