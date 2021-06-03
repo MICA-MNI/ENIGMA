@@ -19,12 +19,6 @@ according to the Schaefer-200 atlas. Users can use this function to parcellate (
 including: aparc_fsa5, glasser_fsa5, schaefer_100_fsa5, schaefer_200_fsa5, schaefer_300_fsa5, schaefer_400_fsa5, 
 aparc_conte69, glasser_conte69, schaefer_100_conte69, schaefer_200_conte69, schaefer_300_conte69, schaefer_400_conte69.
 
-
-.. admonition:: Your desired parcellation is not there? 🕵🏽‍♀️
-
-     We are happy to add any additional parcellations upon request! Let us know `here <https://github.com/MICA-MNI/ENIGMA/issues>`_.
-
-
 .. tabs::
 
    .. code-tab:: py
