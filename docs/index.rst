@@ -32,9 +32,9 @@
 
 .. raw:: html
 
-   <a href="http://enigma.ini.usc.edu/">
-      <img src="https://raw.githubusercontent.com/saratheriver/enigma-extra/master/wmap2.gif"
-         width=300px>
+   <a href="https://github.com/MICA-MNI/ENIGMA">
+      <img src="https://github.com/saratheriver/enigma-extra/blob/master/Enigma_toolbox2.png?raw=true"
+         width=500px>
    </a>
 
 
