@@ -5,6 +5,16 @@
 What's new?
 ======================================
 
+v1.1.2 (June 30, 2021)
+------------------------------------------
+Replaced dashes with underscores in summary statistics.
+
+::
+
+    ↪ [FIX 🐛] Removed dashes in sumstats                   |  @saratheriver
+    ↪ [DOC 📄] Update documentations                        |  @saratheriver
+
+
 v1.1.1 (April 12, 2021)
 ------------------------------------------
 New import/export features for CIfTI files. Improved documentation.
