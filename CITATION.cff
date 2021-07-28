@@ -1,0 +1,45 @@
+cff-version: 1.1.0
+message: "If you use CFF in your research, please cite it using these metadata."
+abstract: CITATION.cff files are plain text files with human- and machine-readable citation information for software. Code developers can include them in their repositories to let others know how to correctly cite their software. This is the specification for the Citation File Format.
+authors:
+  - family-names: Larivière
+    given-names: Sara
+    email: saratheriver@gmail.com
+  - family-names: Paquola
+    given-names: Casey
+  - family-names: Park
+    given-names: Bo-yong
+  - family-names: Royer
+    given-names: Jessica
+  - family-names: Wang
+    given-names: Yezhou
+  - family-names: Benkarim
+    given-names: Oualid
+  - family-names: Vos de Wael
+    given-names: Reinger
+  - family-names: Valk
+    given-names: Sofie L.
+  - family-names: Thomopoulos
+    given-names: Sophia I.
+  - family-names: Kirschner
+    given-names: Matthias
+  - family-names: Lewis
+    given-names: Lindsay B.
+  - family-names: Evans
+    given-names: Alan C.
+  - family-names: Sisodiya
+    given-names: Sanjay M.
+  - family-names: McDonald
+    given-names: Carrie R.
+  - family-names: Thompson
+    given-names: Paul M.
+  - family-names: Bernhardt
+    given-names: Boris C.
+title: The ENIGMA Toolbox: multiscale neural contextualization of multisite neuroimaging datasets
+journal: Nature Methods
+volume: 18
+pages: 608-700
+doi: 10.1038/s41592-021-01186-4
+date-released: 2021-30-06
+license: "BSD-3-Clause"
+
