@@ -34,7 +34,5 @@ authors:
 - family-names: "Bernhardt"
   given-names: "Boris C."
 title: "The ENIGMA Toolbox: multiscale neural contextualization of multisite neuroimaging datasets"
-journal: "Nature Methods"
-volume: 18
 doi: 10.1038/s41592-021-01186-4
 date-released: 2021-30-06
