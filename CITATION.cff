@@ -3,7 +3,6 @@ message: "If you use our software, please cite it as below."
 authors:
 - family-names: "Larivière"
   given-names: "Sara"
-  email: "saratheriver@gmail.com"
 - family-names: "Paquola"
   given-names: "Casey"
 - family-names: "Park"
