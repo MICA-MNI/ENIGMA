@@ -5,6 +5,16 @@
 What's new?
 ======================================
 
+v1.1.3 (July 28, 2021)
+------------------------------------------
+Typo in ``economo_koskinas_spider`` matlab function.
+
+::
+
+    ↪ [FIX 🐛] Fixed typo in economo_koskinas_spider        |  @saratheriver
+    ↪ [DOC 📄] Updated citation                             |  @saratheriver
+
+
 v1.1.2 (June 30, 2021)
 ------------------------------------------
 Replaced dashes with underscores in summary statistics.

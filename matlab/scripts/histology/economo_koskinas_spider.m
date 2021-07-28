@@ -54,7 +54,7 @@ surf_data = parcel_to_surface(parcel_data, in.parcellation, in.fill);
 % average within ve classes
 if contains(in.parcellation, 'fsa5')
     ve = dlmread('economo_koskinas_fsa5.csv');
-elseif contains(in.parcellation, 'fsa5')
+elseif contains(in.parcellation, 'conte69')
     ve = dlmread('economo_koskinas_conte69.csv');
 end
 ve_class = zeros(5, 1);
