@@ -99,7 +99,7 @@ Acknowledgements 💕
 
 Please acknowledge this work using the citation below:
 
-    Larivière, S., Paquola, C., Park, By. et al. The ENIGMA Toolbox: multiscale neural contextualization of multisite neuroimaging datasets. *Nat Methods* **18**, 698–700 (2021). https://doi.org/10.1038/s41592-021-01186-4
+    Larivière, S., Paquola, C., Park, By. Royer, J., Wang, Y., Benkarim, O., Vos de Wael, R., Valk, S., Thomopoulos, S.I., Kirschner, M., Lewis, L.B., Evans, A.C., Sisodiya, S.M., McDonald, C.R., Thompson, P.T, Bernhardt, B.C.. The ENIGMA Toolbox: multiscale neural contextualization of multisite neuroimaging datasets. *Nat Methods* **18**, 698–700 (2021). https://doi.org/10.1038/s41592-021-01186-4
 
 .. raw:: html
 
