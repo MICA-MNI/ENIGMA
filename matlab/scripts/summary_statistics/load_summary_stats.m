@@ -54,7 +54,7 @@ switch disorder
         summary_stats.CortThick_case_vs_controls_adult = readtable('bd_case-controls_CortThick_adult.csv');
         summary_stats.CortSurf_case_vs_controls_adult = readtable('bd_case-controls_CortSurf_adult.csv');
         summary_stats.CortThick_typeI_vs_typeII_adult = readtable('bd_typeI-typeII_CortThick_adult.csv');
-        summary_stats.CortSurf_case_vs_controls_adult = readtable('bd_typeI-typeII_CortSurf_adult.csv');
+        summary_stats.CortSurf_typeI_vs_typeII_adult = readtable('bd_typeI-typeII_CortSurf_adult.csv');
         summary_stats.CortThick_case_vs_controls_adolecscent = readtable('bd_case-controls_CortThick_adolescent.csv');
         summary_stats.CortSurf_case_vs_controls_adolecscent = readtable('bd_case-controls_CortSurf_adolescent.csv');
         summary_stats.CortThick_typeI_vs_typeII_adolecscent = readtable('bd_typeI-typeII_CortThick_adolescent.csv');

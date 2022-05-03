@@ -39,6 +39,8 @@ elseif contains(parcellation, 'schaefer') && mod(max(size(parcel_data)), 100) ==
     data_DK               = [fill; parcel_data];    % add mask
 elseif contains(parcellation, 'glasser') && mod(max(size(parcel_data)), 10) == 0
     data_DK               = [fill; parcel_data];    % add mask
+elseif contains(parcellation, 'vosdewael') && mod(max(size(parcel_data)), 10) == 0
+    data_DK               = [fill; parcel_data];    % add mask
 else
     data_DK               = parcel_data;
 end
