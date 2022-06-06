@@ -181,7 +181,7 @@ def load_sc(parcellation='aparc'):
         Parameters
         ----------
         parcellation : str, optional
-            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser_360'}.
             Default is 'aparc' with n cortical regions.
 
         Returns
@@ -235,7 +235,7 @@ def load_fc(parcellation='aparc'):
         Parameters
         ----------
         parcellation : str, optional
-            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser'}.
+            Parcellation name {'aparc', 'schaefer_100', 'schaefer_200', 'schaefer_300', 'schaefer_400', 'glasser_360'}.
             Default is 'aparc' with n cortical regions.
 
         Returns
