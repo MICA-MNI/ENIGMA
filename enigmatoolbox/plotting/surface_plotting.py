@@ -159,7 +159,6 @@ def build_plotter(surfs, layout, array_name=None, view=None, color_bar=None,
     names per entry. Actor and mapper keywords must also be broadcastable to
     the shape of `array_name`.
     """
-
     # Layout
     for k in np.unique(layout):
         if k not in surfs and k is not None:

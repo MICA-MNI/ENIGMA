@@ -17,6 +17,7 @@ from ..decorators import unwrap_input
 
 
 class BSAlgorithm(BSVTKObjectWrapper):
+    
     """Wrapper for vtkAlgorithm."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)

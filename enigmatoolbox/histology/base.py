@@ -251,7 +251,7 @@ def bb_gradient_plot(data=None, parcellation='aparc', axis_range=None, title='',
     newg = np.zeros((0, round(g.shape[0] / numbin)))
 
     # Initiate figure and axes
-    fig, axs = plt.subplots(1, 1, figsize=(15, 5))
+    _, axs = plt.subplots(1, 1, figsize=(15, 5))
 
     # Store means
     means = []

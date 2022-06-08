@@ -32,7 +32,7 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
         mask with both hemispheres
     """
     root_pth = os.path.dirname(__file__)
-    if surface_name is "conte69":
+    if surface_name == "conte69":
         ipth = os.path.join(root_pth, 'surfaces', 'conte69_32k_{0}{1}_mask.csv')
         if name == 'midline':
             name = ''
