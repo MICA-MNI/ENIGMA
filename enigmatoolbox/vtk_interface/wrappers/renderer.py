@@ -14,6 +14,7 @@ from .actor import BSActor, BSActor2D, BSScalarBarActor, BSTextActor
 # Renderer
 ###############################################################
 class BSViewport(BSVTKObjectWrapper):
+    
     """Wrapper for vtkViewport."""
 
     def __init__(self, vtkobject, **kwargs):
@@ -32,7 +33,6 @@ class BSViewport(BSVTKObjectWrapper):
         kwargs : optional keyword arguments
             Arguments are used to set the actor.
         """
-
         actor = BSActor2D(vtkobject=obj, **kwargs)
         self.VTKObject.AddActor2D(actor.VTKObject)
         return actor
@@ -49,6 +49,7 @@ class BSViewport(BSVTKObjectWrapper):
 
 
 class BSRenderer(BSViewport):
+    
     """Wrapper for vtkRenderer."""
 
     def __init__(self, vtkobject=None, **kwargs):
@@ -67,7 +68,6 @@ class BSRenderer(BSViewport):
         kwargs : optional keyword arguments
             Arguments are used to set the actor.
         """
-
         actor = BSActor(vtkobject=obj, **kwargs)
         self.VTKObject.AddActor(actor.VTKObject)
         return actor
@@ -77,63 +77,75 @@ class BSRenderer(BSViewport):
 # Interactor style
 ###############################################################
 class BSInteractorObserver(BSVTKObjectWrapper):
+    
     """Wrapper for vtkInteractorObserver."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSInteractorStyle(BSInteractorObserver):
+    
     """Wrapper for vtkInteractorStyle."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSInteractorStyleJoystickCamera(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleJoystickCamera."""
     pass
 
 
 class BSInteractorStyleJoystickActor(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleJoystickActor."""
     pass
 
 
 class BSInteractorStyleTerrain(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleTerrain."""
     pass
 
 
 class BSInteractorStyleRubberBandZoom(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleRubberBandZoom."""
     pass
 
 
 class BSInteractorStyleTrackballActor(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleTrackballActor."""
     pass
 
 
 class BSInteractorStyleTrackballCamera(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleTrackballCamera."""
     pass
 
 
 class BSInteractorStyleImage(BSInteractorStyleTrackballCamera):
+    
     """Wrapper for vtkInteractorStyleImage."""
     pass
 
 
 class BSInteractorStyleRubberBandPick(BSInteractorStyleTrackballCamera):
+    
     """Wrapper for vtkInteractorStyleRubberBandPick."""
     pass
 
 
 class BSInteractorStyleSwitchBase(BSInteractorStyle):
+    
     """Wrapper for vtkInteractorStyleSwitchBase."""
     pass
 
 
 class BSInteractorStyleSwitch(BSInteractorStyleSwitchBase):
+    
     """Wrapper for vtkInteractorStyleSwitch."""
     pass
 
@@ -142,6 +154,7 @@ class BSInteractorStyleSwitch(BSInteractorStyleSwitchBase):
 # Window Interactor
 ###############################################################
 class BSRenderWindowInteractor(BSVTKObjectWrapper):
+    
     """Wrapper for vtkRenderWindowInteractor."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
@@ -207,6 +220,7 @@ class BSRenderWindowInteractor(BSVTKObjectWrapper):
 
 
 class BSGenericRenderWindowInteractor(BSRenderWindowInteractor):
+    
     """Wrapper for vtkGenericRenderWindowInteractor."""
     pass
 
@@ -215,12 +229,14 @@ class BSGenericRenderWindowInteractor(BSRenderWindowInteractor):
 # Window
 ###############################################################
 class BSWindow(BSVTKObjectWrapper):
+    
     """Wrapper for vtkWindow."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSRenderWindow(BSWindow):
+    
     """Wrapper for vtkRenderWindow."""
 
     def __init__(self, vtkobject=None, **kwargs):
@@ -244,6 +260,7 @@ class BSRenderWindow(BSWindow):
 # Camera
 ###############################################################
 class BSCamera(BSVTKObjectWrapper):
+    
     """Wrapper for vtkCamera."""
 
     def __init__(self, vtkobject=None, **kwargs):

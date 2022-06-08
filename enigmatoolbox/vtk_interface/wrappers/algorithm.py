@@ -72,7 +72,6 @@ class LUTMixin:
         kwargs : optional keyword arguments
             Arguments are use to set the lookup table.
         """
-
         if obj is None:
             obj = BSLookupTable(**kwargs)
         else:
@@ -91,7 +90,6 @@ class LUTMixin:
         kwargs : optional keyword arguments
             Arguments are use to set the lookup table.
         """
-
         obj = BSLookupTableWithEnabling(vtkobject=obj, **kwargs)
         self.VTKObject.SetLookupTable(obj.VTKObject)
         return obj
@@ -107,7 +105,6 @@ class LUTMixin:
         kwargs : optional keyword arguments
             Arguments are use to set the lookup table.
         """
-
         obj = BSWindowLevelLookupTable(vtkobject=obj, **kwargs)
         self.VTKObject.SetLookupTable(obj.VTKObject)
         return obj
@@ -123,7 +120,6 @@ class LUTMixin:
         kwargs : optional keyword arguments
             Arguments are use to set the lookup table.
         """
-
         obj = BSColorTransferFunction(vtkobject=obj, **kwargs)
         self.VTKObject.SetLookupTable(obj.VTKObject)
         return obj
@@ -140,24 +136,26 @@ class LUTMixin:
         kwargs : optional keyword arguments
             Arguments are use to set the lookup table.
         """
-
         obj = BSDiscretizableColorTransferFunction(vtkobject=obj, **kwargs)
         self.VTKObject.SetLookupTable(obj.VTKObject)
         return obj
 
 
 class BSAbstractMapper(BSAlgorithm):
+    
     """Wrapper for vtkAbstractMapper."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSAbstractMapper3D(BSAbstractMapper):
+    
     """Wrapper for vtkAbstractMapper."""
     pass
 
 
 class BSMapper(BSAbstractMapper3D, LUTMixin):
+    
     """Wrapper for vtkMapper."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
@@ -192,18 +190,21 @@ class BSMapper(BSAbstractMapper3D, LUTMixin):
 
 
 class BSDataSetMapper(BSMapper):
+    
     """Wrapper for vtkDataSetMapper."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSPolyDataMapper(BSMapper):
+    
     """Wrapper for vtkPolyDataMapper."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSLabeledContourMapper(BSMapper):
+    
     """Wrapper for vtkLabeledContourMapper."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
@@ -222,7 +223,6 @@ class BSLabeledContourMapper(BSMapper):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         obj = BSTextProperty(vtkobject=obj, **kwargs)
         self.VTKObject.SetTextProperty(obj.VTKObject)
         return obj
@@ -233,30 +233,35 @@ class BSLabeledContourMapper(BSMapper):
 
 
 class BSMapper2D(BSAbstractMapper):
+    
     """Wrapper for vtkMapper2D."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSLabeledDataMapper(BSMapper2D):
+    
     """Wrapper for vtkLabeledDataMapper."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSLabelPlacementMapper(BSMapper2D):
+    
     """Wrapper for vtkLabelPlacementMapper."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSPolyDataMapper2D(BSMapper2D, LUTMixin):
+    
     """Wrapper for vtkPolyDataMapper2D."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSTextMapper2D(BSMapper2D):
+    
     """Wrapper for vtkPolyDataMapper2D."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
@@ -275,7 +280,6 @@ class BSTextMapper2D(BSMapper2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetTextProperty()
         obj = BSTextProperty(vtkobject=obj, **kwargs)
@@ -284,45 +288,54 @@ class BSTextMapper2D(BSMapper2D):
 
 
 class BSPolyDataAlgorithm(BSAlgorithm):
+    
     """Wrapper for vtkPolyDataAlgorithm."""
     pass
 
 
 class BSWindowToImageFilter(BSAlgorithm):
+    
     """Wrapper for vtkWindowToImageFilter."""
     pass
 
 
 class BSImageAlgorithm(BSAlgorithm):
+    
     """Wrapper for vtkImageAlgorithm."""
     pass
 
 
 class BSImageWriter(BSImageAlgorithm):
+   
     """Wrapper for vtkImageWriter."""
     pass
 
 
 class BSBMPWriter(BSImageWriter):
+    
     """Wrapper for vtkBMPWriter."""
     pass
 
 
 class BSJPEGWriter(BSImageWriter):
+    
     """Wrapper for vtkJPEGWriter."""
     pass
 
 
 class BSPNGWriter(BSImageWriter):
+    
     """Wrapper for vtkPNGWriter."""
     pass
 
 
 class BSPostScriptWriter(BSImageWriter):
+    
     """Wrapper for vtkPostScriptWriter."""
     pass
 
 
 class BSTIFFWriter(BSImageWriter):
+    
     """Wrapper for vtkTIFFWriter."""
     pass

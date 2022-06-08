@@ -13,18 +13,21 @@ from .algorithm import (BSPolyDataMapper, BSDataSetMapper,
 
 
 class BSProp(BSVTKObjectWrapper):
+    
     """Wrapper for vtkProp."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSProp3D(BSProp):
+    
     """Wrapper for vtkProp3D."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSActor2D(BSProp):
+    
     """Wrapper for vtkActor2D.
 
     Unresolved requests are forwarded to its 2D property.
@@ -67,12 +70,12 @@ class BSActor2D(BSProp):
 
 
 class BSScalarBarActor(BSActor2D):
+    
     """Wrapper for vtkScalarBarActor.
 
     Unresolved requests are forwarded to its 2D property.
 
     """
-
     def SetTitleTextProperty(self, obj=None, **kwargs):
         """Set title text property.
 
@@ -87,7 +90,6 @@ class BSScalarBarActor(BSActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetTitleTextProperty()
         obj = BSTextProperty(vtkobject=obj, **kwargs)
@@ -108,7 +110,6 @@ class BSScalarBarActor(BSActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetLabelTextProperty()
         obj = BSTextProperty(vtkobject=obj, **kwargs)
@@ -129,7 +130,6 @@ class BSScalarBarActor(BSActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetAnnotationTextProperty()
         obj = BSTextProperty(vtkobject=obj, **kwargs)
@@ -150,7 +150,6 @@ class BSScalarBarActor(BSActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetBackgroundProperty()
         obj = BSProperty2D(vtkobject=obj, **kwargs)
@@ -171,7 +170,6 @@ class BSScalarBarActor(BSActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetFrameProperty()
         obj = BSProperty2D(vtkobject=obj, **kwargs)
@@ -180,11 +178,13 @@ class BSScalarBarActor(BSActor2D):
 
 
 class BSTexturedActor2D(BSActor2D):
+    
     """Wrapper for vtkTexturedActor2D."""
     pass
 
 
 class BSTextActor(BSTexturedActor2D):
+    
     """Wrapper for vtkTextActor."""
 
     def SetTextProperty(self, obj=None, **kwargs):
@@ -201,7 +201,6 @@ class BSTextActor(BSTexturedActor2D):
         kwargs : optional keyword arguments
             Arguments are use to set the property.
         """
-
         if obj is None:
             obj = self.VTKObject.GetTextProperty()
         obj = BSTextProperty(vtkobject=obj, **kwargs)
@@ -210,6 +209,7 @@ class BSTextActor(BSTexturedActor2D):
 
 
 class BSActor(BSProp3D):
+    
     """Wrapper for vtkActor.
 
     Unresolved requests are forwarded to its property.
@@ -226,7 +226,6 @@ class BSActor(BSProp3D):
     >>> a.VTKObject.GetProperty().GetOpacity()
     0.5
     """
-
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
         self._property = BSProperty(self.VTKObject.GetProperty())
@@ -262,7 +261,6 @@ class BSActor(BSProp3D):
         kwargs : optional keyword arguments
             Arguments are used to set the mapper.
         """
-
         if obj is None:
             return self.SetPolyDataMapper(**kwargs)
         obj = wrap_vtk(obj, **kwargs)
@@ -279,7 +277,6 @@ class BSActor(BSProp3D):
         kwargs : optional keyword arguments
             Arguments are used to set the mapper.
         """
-
         obj = BSPolyDataMapper(vtkobject=obj, **kwargs)
         self.VTKObject.SetMapper(obj.VTKObject)
         return obj
@@ -294,7 +291,6 @@ class BSActor(BSProp3D):
         kwargs : optional keyword arguments
             Arguments are used to set the mapper.
         """
-
         obj = BSDataSetMapper(vtkobject=obj, **kwargs)
         self.VTKObject.SetMapper(obj.VTKObject)
         return obj
@@ -309,7 +305,6 @@ class BSActor(BSProp3D):
         kwargs : optional keyword arguments
             Arguments are used to set the mapper.
         """
-
         obj = BSLabeledContourMapper(vtkobject=obj, **kwargs)
         self.VTKObject.SetMapper(obj.VTKObject)
         return obj

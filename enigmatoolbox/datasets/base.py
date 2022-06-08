@@ -544,7 +544,7 @@ def load_summary_stats(disorder=None):
     """
     root_pth = os.path.dirname(__file__)
 
-    if disorder is "22q":
+    if disorder == "22q":
         CortThick_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                              '22q_case-controls_CortThick.csv'), error_bad_lines=False)
         CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -574,7 +574,7 @@ def load_summary_stats(disorder=None):
                 'SubVol_AB_vs_AD': SubVol_AB_AD,
                 'SubVol_psychP_vs_psychN': SubVol_psychP_psychN}
 
-    elif disorder is "adhd":
+    elif disorder == "adhd":
         CortThick_case_controls_allages = pd.read_csv(
             os.path.join(root_pth, 'summary_statistics', 'adhdallages_case-controls_CortThick.csv'),
             error_bad_lines=False)
@@ -625,7 +625,7 @@ def load_summary_stats(disorder=None):
                 'SubVol_case_vs_controls_adolescent':SubVol_case_controls_adolescent,
                 'SubVol_case_vs_controls_pediatric':SubVol_case_controls_pediatric}
 
-    elif disorder is "asd":
+    elif disorder == "asd":
         CortThick_case_controls_meta_analysis = pd.read_csv(
             os.path.join(root_pth, 'summary_statistics', 'asd_meta-analysis_case-controls_CortThick.csv'),
             error_bad_lines=False)
@@ -640,7 +640,7 @@ def load_summary_stats(disorder=None):
                 'CortThick_case_vs_controls_mega_analysis': CortThick_case_controls_mega_analysis,
                 'SubVol_case_vs_controls_meta_analysis': SubVol_case_controls_meta_analysis}
 
-    elif disorder is "bipolar":
+    elif disorder == "bipolar":
         CortThick_case_controls_adult = pd.read_csv(
             os.path.join(root_pth, 'summary_statistics', 'bd_case-controls_CortThick_adult.csv'), error_bad_lines=False)
         CortSurf_case_controls_adult = pd.read_csv(
@@ -676,7 +676,7 @@ def load_summary_stats(disorder=None):
                 'SubVol_case_vs_controls_typeII': SubVol_case_controls_typeII,
                 'SubVol_typeII_vs_typeI': SubVol_typeII_typeI}
 
-    elif disorder is "depression":
+    elif disorder == "depression":
         CortThick_case_vs_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'mddadult_case-controls_CortThick.csv'),
                                                     error_bad_lines=False)
@@ -793,7 +793,7 @@ def load_summary_stats(disorder=None):
                 'SubVol_case_vs_controls_recurrent': SubVol_case_vs_controls_recurrent,
                 'SubVol_recurrrent_vs_firstepisode': SubVol_recurrrent_vs_firstepisode}
 
-    elif disorder is "epilepsy":
+    elif disorder == "epilepsy":
         CortThick_case_controls_allepilepsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                        'allepi_case-controls_CortThick.csv'),
                                                           error_bad_lines=False)
@@ -836,7 +836,7 @@ def load_summary_stats(disorder=None):
                 'CortThick_case_vs_controls_allotherepilepsy': CortThick_case_controls_allotherepilepsy,
                 'SubVol_case_vs_controls_allotherepilepsy': SubVol_case_controls_allotherepilepsy}
 
-    elif disorder is "ocd":
+    elif disorder == "ocd":
         CortThick_case_controls_adult = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'ocdadults_case-controls_CortThick.csv'),
                                                     error_bad_lines=False)
@@ -956,7 +956,7 @@ def load_summary_stats(disorder=None):
                 'SubVol_unmedicatedcase_vs_controls_pediatric': SubVol_unmedicatedcase_vs_controls_pediatric,
                 'SubVol_medicatedcase_vs_unmedicated_pediatric': SubVol_medicatedcase_vs_unmedicated_pediatric}
 
-    elif disorder is "schizophrenia":
+    elif disorder == "schizophrenia":
         CortThick_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'scz_case-controls_CortThick.csv'), error_bad_lines=False)
         CortSurf_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -1016,19 +1016,19 @@ def nfaces(surface_name, hemisphere):
         numfaces : int
             number of faces/triangles
      """
-    if surface_name is 'fsa5':
-        if hemisphere is 'lh':
+    if surface_name == 'fsa5':
+        if hemisphere == 'lh':
             return load_fsa5()[0].GetPolys2D().shape[0]
-        elif hemisphere is 'rh':
+        elif hemisphere == 'rh':
             return load_fsa5()[1].GetPolys2D().shape[0]
-        elif hemisphere is 'both':
+        elif hemisphere == 'both':
             return load_fsa5()[0].GetPolys2D().shape[0] + load_fsa5()[1].GetPolys2D().shape[0]
-    elif surface_name is 'conte69':
-        if hemisphere is 'lh':
+    elif surface_name == 'conte69':
+        if hemisphere == 'lh':
             return load_conte69()[0].GetPolys2D().shape[0]
-        elif hemisphere is 'rh':
+        elif hemisphere == 'rh':
             return load_conte69()[1].GetPolys2D().shape[0]
-        elif hemisphere is 'both':
+        elif hemisphere == 'both':
             return load_conte69()[0].GetPolys2D().shape[0] + load_conte69()[1].GetPolys2D().shape[0]
 
 
@@ -1047,24 +1047,24 @@ def getaffine(surface_name, hemisphere):
         numfaces : 2D ndarray
             vox2ras transform, shape = (4, 4)
      """
-    if surface_name is 'fsa5':
-        if hemisphere is 'lh' or 'rh':
+    if surface_name == 'fsa5':
+        if hemisphere == 'lh' or 'rh':
             return np.asarray([[-1.000e+00,  0.000e+00,  0.000e+00,  5.121e+03],
                                [0.000e+00,  0.000e+00,  1.000e+00, -5.000e-01],
                                [0.000e+00, -1.000e+00,  0.000e+00,  5.000e-01],
                                [0.000e+00,  0.000e+00,  0.000e+00,  1.000e+00]])
-        elif hemisphere is 'both':
+        elif hemisphere == 'both':
             return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  1.0242e+04],
                                [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
                                [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
                                [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
-    elif surface_name is 'conte69':
-        if hemisphere is 'lh' or 'rh':
+    elif surface_name == 'conte69':
+        if hemisphere == 'lh' or 'rh':
             return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  1.6246e+04],
                                [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
                                [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],
                                [0.0000e+00,  0.0000e+00,  0.0000e+00,  1.0000e+00]])
-        elif hemisphere is 'both':
+        elif hemisphere == 'both':
             return np.asarray([[-1.0000e+00,  0.0000e+00,  0.0000e+00,  3.2492e+04],
                                [0.0000e+00,  0.0000e+00,  1.0000e+00, -5.0000e-01],
                                [0.0000e+00, -1.0000e+00,  0.0000e+00,  5.0000e-01],

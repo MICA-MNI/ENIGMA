@@ -28,6 +28,7 @@ class VTKMethodWrapper:
 
 
 class BSVTKObjectWrapperMeta(type):
+    
     """ Metaclass for our VTK wrapper
 
         BSVTKObjectWrapper __setattr__ does not allow creating attributes
@@ -42,8 +43,6 @@ class BSVTKObjectWrapperMeta(type):
         Here visibility is forwarded to vtkActor. But we cannot forward
         opacity because it belongs to the actor's property and this is created
         after BSVTKObjectWrapper __init__.
-
-
     """
     entries = {}
 
@@ -68,6 +67,7 @@ class BSVTKObjectWrapperMeta(type):
 
 class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
                          metaclass=BSVTKObjectWrapperMeta):
+    
     """Base class for all classes that wrap VTK objects.
 
     Adapted from dataset_adapter, with additional setVTK and getVTK methods.
@@ -128,7 +128,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
     >>> m2.colorMode = 'default'
     >>> m2.VTKObject.GetColorModeAsString()
     'Default'
-
     """
     _vtk_map = dict()
 
@@ -216,7 +215,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         3
 
         """
-
         # Check self attributes first
         # Note: With this we cannot create attributes dynamically
         if name in self.__dict__:

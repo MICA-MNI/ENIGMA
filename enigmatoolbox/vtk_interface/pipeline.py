@@ -49,7 +49,6 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
         Returns (wrapped) `frt1` after connecting it with the input filter.
 
     """
-
     if isinstance(ftr0, BSAlgorithm) and port0 >= ftr0.nop:
         raise ValueError("'{0}' only has {1} output ports.".
                          format(ftr0.__vtkname__, ftr0.nop))
@@ -340,7 +339,7 @@ def serial_connect(*filters, as_data=True, update=True, port=0):
 
     prev_f, prev_op = _map_input_filter(filters[0])
 
-    for i, f1 in enumerate(filters[1:-1]):
+    for _, f1 in enumerate(filters[1:-1]):
         ic, ip, fi, op = _map_intermediate_filter(f1)
         prev_f = connect(prev_f, fi, port0=prev_op, port1=ip, add_conn=ic)
         prev_op = op
