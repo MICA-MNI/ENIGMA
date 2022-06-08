@@ -61,7 +61,7 @@ def cross_disorder_effect(disorder='all_disorder', measure=None,
         fieldos = list(sum_stats.keys())
 
         # Loop through structure fields (case-control options)
-        for kk, jj in enumerate(fieldos):
+        for _, jj in enumerate(fieldos):
             if 'Cort' in jj:
                 if not include:
                     if not any(ig in jj for ig in ignore) and any(meas in jj for meas in measure):
@@ -114,7 +114,6 @@ def cross_disorder_effect(disorder='all_disorder', measure=None,
     elif method == 'correlation':
         correlation_matrix = {'cortex': [], 'subcortex': []}
 
-        correlation_measure = ConnectivityMeasure(kind='correlation')
         correlation_matrix['cortex'] = np.corrcoef(mat_d['cortex'])
         correlation_matrix['subcortex'] = np.corrcoef(mat_d['subcortex'])
 
