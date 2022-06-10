@@ -859,7 +859,7 @@ class MoranRandomization(BaseEstimator):
         return self
 
     def randomize(self, x):
-        """ Generate random samples from `x`.
+        """Generate random samples from `x`.
 
         Parameters
         ----------

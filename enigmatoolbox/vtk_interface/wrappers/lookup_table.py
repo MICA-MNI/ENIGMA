@@ -13,6 +13,7 @@ from ..decorators import unwrap_input
 
 
 class BSScalarsToColors(BSVTKObjectWrapper):
+    
     """Wrapper for vtkScalarsToColors."""
 
     def __init__(self, vtkobject=None, **kwargs):
@@ -24,6 +25,7 @@ class BSScalarsToColors(BSVTKObjectWrapper):
 
 
 class BSLookupTable(BSScalarsToColors):
+    
     """Wrapper for vtkLookupTable."""
 
     def __init__(self, vtkobject=None, **kwargs):
@@ -54,6 +56,7 @@ class BSLookupTable(BSScalarsToColors):
 
 
 class BSLookupTableWithEnabling(BSLookupTable):
+    
     """Wrapper for vtkLookupTableWithEnabling."""
 
     @unwrap_input(1, vtype=None)
@@ -62,15 +65,18 @@ class BSLookupTableWithEnabling(BSLookupTable):
 
 
 class BSWindowLevelLookupTable(BSLookupTable):
+   
     """Wrapper for vtkWindowLevelLookupTable."""
     pass
 
 
 class BSColorTransferFunction(BSScalarsToColors):
+    
     """Wrapper for vtkColorTransferFunction."""
     pass
 
 
 class BSDiscretizableColorTransferFunction(BSColorTransferFunction):
+    
     """Wrapper for vtkDiscretizableColorTransferFunction."""
     pass

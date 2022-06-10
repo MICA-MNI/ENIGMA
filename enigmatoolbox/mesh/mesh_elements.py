@@ -1,6 +1,4 @@
-"""
-Functions on surface mesh elements.
-"""
+"""Functions on surface mesh elements."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause

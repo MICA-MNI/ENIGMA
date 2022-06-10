@@ -1,6 +1,4 @@
-"""
-Utility functions for plotting.
-"""
+"""Utility functions for plotting."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -49,7 +47,6 @@ def _broadcast(arg, name, shape):
     ValueError
         If `arg` is not compatible with the new shape.
     """
-
     nrow, ncol = shape
 
     arg_np = np.empty(shape, dtype=np.object_)
@@ -141,7 +138,6 @@ def _grep_args(name, kwds, shape=None, ref=None):
     -----
     Entries are removed from `kwds`.
     """
-
     d = {k.split('__')[1].lower(): k for k in kwds
          if k.lower().startswith(name + '__')}
     for k, korg in d.items():
@@ -174,7 +170,6 @@ def _gen_entries(loc, idx, labs):
     Entries: list of tuples
         List of entries.
     """
-
     Entry = namedtuple('Entry', ['row', 'col', 'loc', 'label'])
     n = len(labs)
     st = idx.shape[0] // n
@@ -217,7 +212,6 @@ def _gen_grid(nrow, ncol, lab_text, cbar, share, size_bar=0.11, size_lab=0.05):
     entries : list of tuples
         Entries for color bar and text labels.
     """
-
     locs = ['top', 'bottom', 'left', 'right', 'cb']
     ridx, cidx = list(range(nrow)), list(range(ncol))
 
@@ -294,7 +288,6 @@ def _get_specs(layout, surfs, array_name, cbar_range, nvals=256):
     specs : ndarray
         Array with specifications for each array entry.
     """
-
     nrow, ncol = layout.shape
     n_overlays = max([len(a) for a in array_name.ravel()])
 
@@ -353,7 +346,6 @@ def _get_ranges(layout, surfs, array_name, share, cbar_range, nvals=256):
     specs : ndarray
         Array with specifications for each array entry.
     """
-
     specs = _get_specs(layout, surfs, array_name, cbar_range, nvals=nvals)
 
     if share:
