@@ -1,6 +1,4 @@
-"""
-VTK read/write filters for FreeSurfer geometry files.
-"""
+"""VTK read/write filters for FreeSurfer geometry files."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause

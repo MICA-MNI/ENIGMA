@@ -1,6 +1,4 @@
-"""
-Base wrapper for VTK objects.
-"""
+"""Base wrapper for VTK objects."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -178,7 +176,7 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         return call_vtk(self, method, args)
 
     def __getattr__(self, name):
-        """ Forwards unknown attribute requests to vtk object.
+        """Forwards unknown attribute requests to vtk object.
 
         Examples
         --------
@@ -201,7 +199,7 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
             return self._handle_call('get', name, None)
 
     def __setattr__(self, name, value):
-        """ Forwards unknown set requests to vtk object.
+        """Forwards unknown set requests to vtk object.
 
         Examples
         --------

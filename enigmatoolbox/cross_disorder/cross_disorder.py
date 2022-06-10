@@ -1,5 +1,4 @@
 import numpy as np
-from nilearn.connectome import ConnectivityMeasure
 from sklearn.decomposition import PCA
 
 from enigmatoolbox.datasets.base import load_summary_stats

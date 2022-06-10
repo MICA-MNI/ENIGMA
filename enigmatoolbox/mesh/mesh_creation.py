@@ -4,7 +4,7 @@
 # License: BSD 3 clause
 
 
-from vtk import (vtkPolyData, vtkTriangleFilter,
+from vtk import (vtkTriangleFilter,
                  vtkVertexGlyphFilter)
 
 from .mesh_elements import get_edges
