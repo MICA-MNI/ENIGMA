@@ -1,4 +1,3 @@
-
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
 
@@ -487,7 +486,6 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
     :func:`build_plotter`
     :func:`plot_surf`
     """
-
     if color_bar is True:
         color_bar = 'right'
 
@@ -600,7 +598,6 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
     :func:`build_plotter`
     :func:`plot_surf`
     """
-
     if color_bar is True:
         color_bar = 'right'
 

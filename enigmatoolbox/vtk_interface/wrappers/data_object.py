@@ -1,6 +1,4 @@
-"""
-Wrappers for VTK data objects.
-"""
+"""Wrappers for VTK data objects."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -24,8 +22,8 @@ from ..checks import (get_cell_types, get_number_of_cell_types, has_only_line,
 
 # Wrap vtk data objects from dataset_adapter
 class BSDataObject(BSVTKObjectWrapper, dsa.DataObject):
+    
     """Wrapper for vtkDataObject."""
-
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
@@ -41,18 +39,20 @@ class BSDataObject(BSVTKObjectWrapper, dsa.DataObject):
 
 
 class BSTable(BSDataObject, dsa.Table):
+    
     """Wrapper for vtkTable."""
     pass
 
 
 class BSCompositeDataSet(BSDataObject, dsa.CompositeDataSet):
+    
     """Wrapper for vtkCompositeDataSet."""
     pass
 
 
 class BSDataSet(BSDataObject, dsa.DataSet):
+    
     """Wrapper for vtkDataSet."""
-
     @property
     def point_keys(self):
         """list of str: Returns keys of point data."""
@@ -155,7 +155,6 @@ class BSDataSet(BSDataObject, dsa.DataSet):
         name : str
             Array name used to append the array to the dataset.
         """
-
         # Check bool
         if np.issubdtype(array.dtype, np.bool_):
             if convert_bool == 'raise':
@@ -234,7 +233,6 @@ class BSDataSet(BSDataObject, dsa.DataSet):
             If None, remove array name from all attributes. Default is None.
 
         """
-
         if name is None:
             name = []
             if at in ['point', 'p', None]:
@@ -281,7 +279,6 @@ class BSDataSet(BSDataObject, dsa.DataSet):
                 Names of returned arrays. Only if ``return_name == True``.
 
             """
-
         if name is None and at is None:
             raise ValueError('Please specify \'name\' or \'at\'.')
 
@@ -324,13 +321,14 @@ class BSDataSet(BSDataObject, dsa.DataSet):
 
 
 class BSPointSet(BSDataSet, dsa.PointSet):
+    
     """Wrapper for vtkPointSet."""
     pass
 
 
 class BSPolyData(BSPointSet, dsa.PolyData):
+    
     """Wrapper for vtkPolyData."""
-
     def GetCells2D(self):
         """Return cells as a 2D ndarray.
 
@@ -383,7 +381,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
         ValueError
             If PolyData has different vertex types.
         """
-
         v = self.GetVerts()
         if v is None:
             return v
@@ -405,7 +402,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
         ValueError
             If PolyData has different line types.
         """
-
         v = self.GetLines()
         if v is None:
             return v
@@ -427,7 +423,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
         ValueError
             If PolyData has different poly types.
         """
-
         v = self.GetPolys()
         if v is None:
             return v
@@ -469,7 +464,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
             vertex. All verts must use the same number of points.
 
         """
-
         if isinstance(verts, np.ndarray):
             verts = self._numpy2cells(verts)
         self.VTKObject.SetVerts(verts)
@@ -482,7 +476,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
         lines : 1D or 2D ndarray
             If 2D, shape = (n_points, n), and n is the number of points per
             line. All lines must use the same number of points.
-
         """
         if isinstance(lines, np.ndarray):
             lines = self._numpy2cells(lines)
@@ -496,7 +489,6 @@ class BSPolyData(BSPointSet, dsa.PolyData):
         polys : 1D or 2D ndarray
             If 2D, shape = (n_points, n), and n is the number of points per
             poly. All polys must use the same number of points.
-
         """
         if isinstance(polys, np.ndarray):
             polys = self._numpy2cells(polys)
@@ -546,6 +538,7 @@ class BSPolyData(BSPointSet, dsa.PolyData):
 
 
 class BSUnstructuredGrid(BSPointSet, dsa.UnstructuredGrid):
+    
     """Wrapper for vtkUnstructuredGrid."""
     pass
 

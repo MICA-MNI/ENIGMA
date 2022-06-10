@@ -238,7 +238,6 @@ class BSWindow(BSVTKObjectWrapper):
 class BSRenderWindow(BSWindow):
     
     """Wrapper for vtkRenderWindow."""
-
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
@@ -262,6 +261,5 @@ class BSRenderWindow(BSWindow):
 class BSCamera(BSVTKObjectWrapper):
     
     """Wrapper for vtkCamera."""
-
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)

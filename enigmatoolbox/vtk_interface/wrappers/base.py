@@ -287,7 +287,6 @@ class BSVTKObjectWrapper(dsa.VTKObjectWrapper,
         {'colorModeAsString': 'Default', 'arrayId': -1}
         >>> m1.getVTK(numberOfInputConnections=0)
         {'numberOfInputConnections': 0}
-
         """
         kwargs = dict(zip(args, [None] * len(args)), **kwargs)
         output = {}

@@ -52,7 +52,7 @@ except ImportError:
 
 
 def in_ipython():
-    """Some description here"""
+    """Some description here."""
     is_ipy = False
     if has_ipython:
         try:
@@ -65,7 +65,7 @@ def in_ipython():
 
 
 def in_notebook():
-    """Some description here"""
+    """Some description here."""
     is_nb = False
     if has_ipython:
         try:
@@ -78,7 +78,7 @@ def in_notebook():
 
 
 def _get_qt_app():
-    """Some description here"""
+    """Some description here."""
     app = None
 
     if in_ipython():
@@ -179,12 +179,12 @@ def _create_grid(nrow, ncol):
 
 class Plotter(object):
 
-    """Some description here"""
+    """Some description here."""
     DICT_PLOTTERS = dict()
 
     def __init__(self, nrow=1, ncol=1, offscreen=None, force_close=False,
                  try_qt=False, **kwargs):
-        """Some description here"""
+        """Some description here."""
         if try_qt:
             warnings.warn('Qt rendering is not supported for the moment.')
             try_qt = False
@@ -237,12 +237,12 @@ class Plotter(object):
 
     @classmethod
     def close_all(cls):
-        """Some description here"""
+        """Some description here."""
         for k in list(cls.DICT_PLOTTERS.keys()):
             cls.DICT_PLOTTERS.pop(k).close()
 
     def AddRenderer(self, row=None, col=None, renderer=None, **kwargs):
-        """Some description here"""
+        """Some description here."""
         # row/col = 1, (0, 2), (None, 2), (1, None), (None, None) or None
         # bounds in the form :xmins[i], ymins[i], xmaxs[i], ymaxs[i]
         if row is None or isinstance(row, tuple):
@@ -279,7 +279,7 @@ class Plotter(object):
         return getattr(self.ren_win, name)
 
     def _check_interactive(self, embed_nb, interactive):
-        """Some description here"""
+        """Some description here."""
         if not embed_nb or not interactive:
             return interactive
         # if embed_nb and not in_notebook():
@@ -300,7 +300,7 @@ class Plotter(object):
 
     def show(self, embed_nb=False, interactive=True, transparent_bg=True,
              scale=(1, 1)):
-        """Some description here"""
+        """Some description here."""
         if embed_nb:
             interactive = self._check_interactive(embed_nb, interactive)
             if interactive:
@@ -339,12 +339,12 @@ class Plotter(object):
         return None
 
     def key_quit(self, obj=None, event=None):
-        """Some description here"""
+        """Some description here."""
         if self.iren.keySym.lower() in ['q', 'e']:
             self.quit()
 
     def close(self):
-        """Some description here"""
+        """Some description here."""
         self.ren_win.Finalize()
         del self.ren_win
         self.ren_win = None
@@ -356,7 +356,7 @@ class Plotter(object):
             self.app_window.close()
 
     def quit(self, *args):
-        """Some description here"""
+        """Some description here."""
         if self.force_close:
             self.close()
         else:
@@ -367,12 +367,12 @@ class Plotter(object):
                 self.app_window.close()
 
     def _check_closed(self):
-        """Some description here"""
+        """Some description here."""
         if self.ren_win is None:
             raise ValueError('This plotter has been closed.')
 
     def _check_offscreen(self):
-        """Some description here"""
+        """Some description here."""
         if not self.offscreen:
             self.ren_win.offScreenRendering = True
             self.ren_win.interactor = None
@@ -380,7 +380,7 @@ class Plotter(object):
         self.ren_win.Render()
 
     def to_panel(self, scale=(1, 1)):
-        """Some description here"""
+        """Some description here."""
         if not self._check_interactive(True, True):
             return self.to_notebook(scale=scale)
 
@@ -393,7 +393,7 @@ class Plotter(object):
         return self.panel
 
     def _win2img(self, transparent_bg, scale):
-        """Some description here"""
+        """Some description here."""
         self._check_closed()
         self._check_offscreen()
 
@@ -406,7 +406,7 @@ class Plotter(object):
     def to_notebook(self, transparent_bg=True, scale=(1, 1)):
         # if not in_notebook():
         #     raise ValueError("Cannot find notebook.")
-        """Some description here"""
+        """Some description here."""
         wimg = self._win2img(transparent_bg, scale)
         writer = BSPNGWriter(writeToMemory=True)
         result = serial_connect(wimg, writer, as_data=False).result
@@ -415,7 +415,7 @@ class Plotter(object):
         return Image(data)
 
     def to_numpy(self, transparent_bg=True, scale=(1, 1)):
-        """Some description here"""
+        """Some description here."""
         wf = self._win2img(transparent_bg, scale)
         img = get_output(wf)
         shape = img.dimensions[::-1][1:] + (-1,)
@@ -423,7 +423,7 @@ class Plotter(object):
         return img
 
     def _to_image(self, filename, transparent_bg, scale):
-        """Some description here"""
+        """Some description here."""
         pth = os.path.abspath(os.path.expanduser(filename))
         pth_no_ext, ext = os.path.splitext(filename)
         ext = ext[1:]
@@ -466,21 +466,21 @@ class Plotter(object):
         return pth
 
     def screenshot(self, filename, transparent_bg=True, scale=(1, 1)):
-        """Some description here"""
+        """Some description here."""
         return self._to_image(filename, transparent_bg, scale)
 
 
 class GridPlotter(Plotter):
 
-    """Some description here"""
+    """Some description here."""
     def __init__(self, nrow=1, ncol=1, try_qt=True, offscreen=None,
                  **kwargs):
-        """Some description here"""
+        """Some description here."""
         super().__init__(nrow=nrow, ncol=ncol, try_qt=try_qt,
                          offscreen=offscreen, **kwargs)
 
     def AddRenderer(self, row, col, renderer=None, **kwargs):
-        """Some description here"""
+        """Some description here."""
         if not isinstance(row, int) or not isinstance(row, int):
             raise ValueError('GridPlotter only supports one renderer '
                              'for each grid entry')
@@ -488,7 +488,7 @@ class GridPlotter(Plotter):
                                    **kwargs)
 
     def AddRenderers(self, **kwargs):
-        """Some description here"""
+        """Some description here."""
         ren = np.empty((self.nrow, self.ncol), dtype=np.object)
         for i in range(self.nrow):
             for j in range(self.ncol):

@@ -1,6 +1,4 @@
-"""
-Pipeline for VTK filters.
-"""
+"""Pipeline for VTK filters."""
 
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
@@ -47,7 +45,6 @@ def connect(ftr0, ftr1, port0=0, port1=0, add_conn=False):
     -------
     ftr1 : BSAlgorithm
         Returns (wrapped) `frt1` after connecting it with the input filter.
-
     """
     if isinstance(ftr0, BSAlgorithm) and port0 >= ftr0.nop:
         raise ValueError("'{0}' only has {1} output ports.".
@@ -119,11 +116,9 @@ def to_data(ftr, port=0):
         Returns the output of the filter. If port is -1 and number of output
         ports > 1, then return list of outputs.
 
-
     Notes
     -----
     Filters are automatically updated to get the output.
-
     """
     list_ports = [port] if port > -1 else range(ftr.nop)
     n_ports = len(list_ports)
@@ -161,7 +156,6 @@ def get_output(ftr, as_data=True, update=True, port=0):
     poly : BSAlgorithm or BSDataObject
         Returns filter or its output. If port is -1, returns all outputs in a
         list if ``as_data == True``.
-
     """
     if as_data:
         return to_data(ftr, port=port)
@@ -196,7 +190,7 @@ def get_output(ftr, as_data=True, update=True, port=0):
 
 
 def _map_input_filter(f):
-    """Some comments here"""
+    """Some comments here."""
     if not isinstance(f, (list, tuple)):
         return f, 0  # assume is only filter
 
@@ -212,7 +206,7 @@ def _map_input_filter(f):
 
 
 def _map_output_filter(f):
-    """Some comments here"""
+    """Some comments here."""
     if not isinstance(f, (list, tuple)):
         return False, 0, f  # assume is only filter
 
@@ -230,7 +224,7 @@ def _map_output_filter(f):
 
 
 def _map_intermediate_filter(f):
-    """Some comments here"""
+    """Some comments here."""
     if not isinstance(f, (list, tuple)):
         return False, 0, f, 0  # assume is only filter
 
