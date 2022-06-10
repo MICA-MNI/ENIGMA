@@ -162,7 +162,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=1000):
         temp_dist_l = dist_l
         rot_l = []
         ref_l = []
-        for ii in range(nroi_l):
+        for _ in range(nroi_l):
             # max(min) (described above)
             ref_ix = np.argwhere(np.nanmin(temp_dist_l, axis=1) == np.nanmax(np.nanmin(temp_dist_l, axis=1)))[0]
             rot_ix = np.argwhere(temp_dist_l[ref_ix, :][0] == np.nanmin(temp_dist_l[ref_ix, :], axis=1))[0]
@@ -180,7 +180,7 @@ def rotate_parcellation(coord_l, coord_r, nrot=1000):
         temp_dist_r = dist_r
         rot_r = []
         ref_r = []
-        for ii in range(nroi_r):
+        for _ in range(nroi_r):
             # max(min) (described above)
             ref_ix = np.argwhere(np.nanmin(temp_dist_r, axis=1) == np.nanmax(np.nanmin(temp_dist_r, axis=1)))[0]
             rot_ix = np.argwhere(temp_dist_r[ref_ix, :][0] == np.nanmin(temp_dist_r[ref_ix, :], axis=1))[0]

@@ -756,7 +756,7 @@ def smooth_array(surf, point_data, n_iter=5, mask=None, kernel='gaussian',
     else:
         spd = pd.astype(np.float)
 
-    for i in range(n_iter):
+    for _ in range(n_iter):
         wp = w.dot(spd)
         spd *= retain
         spd += wp

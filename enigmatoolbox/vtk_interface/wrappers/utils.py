@@ -12,7 +12,7 @@ from collections import defaultdict
 
 import numpy as np
 
-from vtk.util.vtkConstants import VTK_BIT, VTK_STRING, VTK_UNICODE_STRING
+from vtk.util.vtkConstants import VTK_STRING, VTK_UNICODE_STRING
 
 
 re_state = 'Set(?P<state>(?P<root>[A-Z0-9].*)To(?P<value>[A-Z0-9].*))'
@@ -184,7 +184,7 @@ def generate_random_string(size=20, n_reps=10, exclude_list=None,
     if exclude_list is None:
         return ''.join(rs.choice(choices, size=size))
 
-    for i in range(n_reps):
+    for _ in range(n_reps):
         s = ''.join(rs.choice(choices, size=size))
         if s not in exclude_list:
             return s
