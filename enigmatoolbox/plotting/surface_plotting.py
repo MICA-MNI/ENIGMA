@@ -1,7 +1,6 @@
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
 
-
 from itertools import product as iter_prod
 
 import matplotlib.pyplot as plt
@@ -19,7 +18,6 @@ from ..datasets import load_fsa5, load_conte69, load_subcortical
 from ..utils.parcellation import subcorticalvertices
 
 from ..vtk_interface.decorators import wrap_input
-
 
 orientations = {'medial': (0, -90, -90),
                 'lateral': (0, 90, 90),
@@ -489,9 +487,9 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
     if color_bar is True:
         color_bar = 'right'
 
-    if surface_name is "fsa5":
+    if surface_name == "fsa5":
         surf_lh, surf_rh = load_fsa5()
-    elif surface_name is "conte69":
+    elif surface_name ==. "conte69":
         surf_lh, surf_rh = load_conte69()
 
     surfs = {'lh': surf_lh, 'rh': surf_rh}

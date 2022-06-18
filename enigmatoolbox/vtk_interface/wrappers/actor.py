@@ -13,14 +13,14 @@ from .algorithm import (BSPolyDataMapper, BSDataSetMapper,
 
 
 class BSProp(BSVTKObjectWrapper):
-    
+
     """Wrapper for vtkProp."""
     def __init__(self, vtkobject, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)
 
 
 class BSProp3D(BSProp):
-    
+
     """Wrapper for vtkProp3D."""
     def __init__(self, vtkobject=None, **kwargs):
         super().__init__(vtkobject=vtkobject, **kwargs)

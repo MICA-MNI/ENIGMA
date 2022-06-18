@@ -3,15 +3,12 @@
 # Author: Oualid Benkarim <oualid.benkarim@mcgill.ca>
 # License: BSD 3 clause
 
-
 import numpy as np
-
 import vtk
 from vtk.numpy_interface import dataset_adapter as dsa
 from vtk.util.vtkConstants import VTK_STRING
 
 from .utils import call_vtk, get_vtk_methods, is_numpy_string, is_vtk_string
-
 
 class VTKMethodWrapper:
     def __init__(self, name):
