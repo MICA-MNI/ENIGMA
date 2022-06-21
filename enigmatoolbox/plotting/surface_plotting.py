@@ -489,7 +489,7 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
 
     if surface_name == "fsa5":
         surf_lh, surf_rh = load_fsa5()
-    elif surface_name ==. "conte69":
+    elif surface_name == "conte69":
         surf_lh, surf_rh = load_conte69()
 
     surfs = {'lh': surf_lh, 'rh': surf_rh}
