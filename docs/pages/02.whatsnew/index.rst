@@ -5,6 +5,17 @@
 What's new?
 ======================================
 
+v2.0.0 (July 26, 2022)
+------------------------------------------
+One year of bug fixing and brand spanking new BigBrain moments
+
+::
+
+    ↪ [FIX 🐛] Bug fixes all throughout                     |  @saratheriver
+    ↪ [DOC 📄] Updated citation                             |  @saratheriver
+    ↪ [NEW 💾] New BigBrain moments                         |  @caseypaquola
+
+
 v1.1.3 (July 28, 2021)
 ------------------------------------------
 Typo in ``economo_koskinas_spider`` matlab function.
