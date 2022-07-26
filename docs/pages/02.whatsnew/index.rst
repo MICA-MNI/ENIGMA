@@ -12,7 +12,7 @@ One year of bug fixing and brand spanking new BigBrain moments
 ::
 
     ↪ [FIX 🐛] Bug fixes all throughout                     |  @saratheriver
-    ↪ [DOC 📄] Updated citation                             |  @saratheriver
+    ↪ [DOC 📄] Updated documentations                       |  @saratheriver
     ↪ [NEW 💾] New BigBrain moments                         |  @caseypaquola
 
 
