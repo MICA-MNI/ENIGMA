@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.load_summary_stats
+﻿enigmatoolbox.datasets.load_summary_stats
 =========================================
 
 .. currentmodule:: enigmatoolbox.datasets

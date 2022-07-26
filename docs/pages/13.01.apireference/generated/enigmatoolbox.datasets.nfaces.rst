@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.nfaces
+﻿enigmatoolbox.datasets.nfaces
 =============================
 
 .. currentmodule:: enigmatoolbox.datasets

@@ -1,4 +1,4 @@
-enigmatoolbox.plotting.surface_plotting.plot_subcortical
+﻿enigmatoolbox.plotting.surface_plotting.plot_subcortical
 ========================================================
 
 .. currentmodule:: enigmatoolbox.plotting.surface_plotting

@@ -1,4 +1,4 @@
-enigmatoolbox.histology.bb_gradient_plot
+﻿enigmatoolbox.histology.bb_gradient_plot
 ========================================
 
 .. currentmodule:: enigmatoolbox.histology

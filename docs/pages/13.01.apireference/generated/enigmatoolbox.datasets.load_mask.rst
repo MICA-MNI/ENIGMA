@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.load_mask
+﻿enigmatoolbox.datasets.load_mask
 ================================
 
 .. currentmodule:: enigmatoolbox.datasets

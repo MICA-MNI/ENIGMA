@@ -1,4 +1,4 @@
-enigmatoolbox.plotting.surface_plotting.build_plotter
+﻿enigmatoolbox.plotting.surface_plotting.build_plotter
 =====================================================
 
 .. currentmodule:: enigmatoolbox.plotting.surface_plotting

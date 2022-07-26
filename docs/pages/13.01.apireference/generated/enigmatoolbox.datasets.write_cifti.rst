@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.write_cifti
+﻿enigmatoolbox.datasets.write_cifti
 ==================================
 
 .. currentmodule:: enigmatoolbox.datasets

@@ -1,4 +1,4 @@
-enigmatoolbox.cross_disorder.cross_disorder_effect
+﻿enigmatoolbox.cross_disorder.cross_disorder_effect
 ==================================================
 
 .. currentmodule:: enigmatoolbox.cross_disorder

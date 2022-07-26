@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.load_fc_as_one
+﻿enigmatoolbox.datasets.load_fc_as_one
 =====================================
 
 .. currentmodule:: enigmatoolbox.datasets

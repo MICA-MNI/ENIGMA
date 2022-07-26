@@ -1,4 +1,4 @@
-enigmatoolbox.datasets.getaffine
+﻿enigmatoolbox.datasets.getaffine
 ================================
 
 .. currentmodule:: enigmatoolbox.datasets

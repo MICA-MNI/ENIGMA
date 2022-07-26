@@ -1,4 +1,4 @@
-enigmatoolbox.permutation_testing.perm_sphere_p
+﻿enigmatoolbox.permutation_testing.perm_sphere_p
 ===============================================
 
 .. currentmodule:: enigmatoolbox.permutation_testing

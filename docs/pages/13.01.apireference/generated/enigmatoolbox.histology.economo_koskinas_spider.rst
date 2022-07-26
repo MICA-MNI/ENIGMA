@@ -1,4 +1,4 @@
-enigmatoolbox.histology.economo_koskinas_spider
+﻿enigmatoolbox.histology.economo_koskinas_spider
 ===============================================
 
 .. currentmodule:: enigmatoolbox.histology
