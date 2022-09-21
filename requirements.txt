@@ -1,6 +1,6 @@
 numpy>=1.11.0
 matplotlib>=2.0.0
-vtk==8.1.2
+vtk==9.0.1
 nibabel
 pillow
 pandas
