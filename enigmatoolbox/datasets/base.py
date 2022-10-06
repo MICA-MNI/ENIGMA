@@ -141,6 +141,45 @@ def load_fsa5(as_sphere=False, with_normals=True, join=False, with_sctx=False):
     return surfs[0], surfs[1]
 
 
+def load_fsa(as_sphere=False, with_normals=True, join=False):
+    """Load fsaverage surfaces (author: @saratheriver)
+
+    Parameters
+    ----------
+    as_sphere : bool, optional
+        Return spheres instead of cortical surfaces. Default is False.
+    with_normals : bool, optional
+        Whether to compute surface normals. Default is True.
+    join : bool, optional
+        If False, return one surface for left and right hemispheres. Otherwise,
+        return a single surface as a combination of both left and right
+        surfaces. Default is False.
+
+    Returns
+    -------
+    surf : tuple of BSPolyData or BSPolyData
+        Surfaces for left and right hemispheres. If ``join == True``, one surface with both hemispheres.
+    """
+    root_pth = os.path.dirname(__file__)
+    if as_sphere is True:
+        fname = 'fsa_sphere_{}.gii'
+    elif as_sphere is not True:
+        fname = 'fsa_{}.gii'
+
+    ipth = os.path.join(root_pth, 'surfaces', fname)
+    surfs = [None] * 2
+    for i, side in enumerate(['lh', 'rh']):
+        surfs[i] = read_surface(ipth.format(side))
+        if with_normals:
+            nf = wrap_vtk(vtkPolyDataNormals, splitting=False,
+                          featureAngle=0.1)
+            surfs[i] = serial_connect(surfs[i], nf)
+
+    if join:
+        return combine_surfaces(*surfs)
+    return surfs[0], surfs[1]
+
+
 def load_subcortical(with_normals=False, join=False):
     """Load subcortical surfaces (author: @saratheriver)
 

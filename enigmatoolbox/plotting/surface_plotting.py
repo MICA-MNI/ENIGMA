@@ -14,7 +14,7 @@ from .base import Plotter
 from .colormaps import colormaps
 from . import defaults_plotting as dp
 from .utils import _broadcast, _expand_arg, _grep_args, _gen_grid, _get_ranges
-from ..datasets import load_fsa5, load_conte69, load_subcortical
+from ..datasets import load_fsa, load_fsa5, load_conte69, load_subcortical
 from ..utils.parcellation import subcorticalvertices
 from ..mesh.mesh_io import read_surface
 from ..vtk_interface.decorators import wrap_input
@@ -436,7 +436,7 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
         the left and right hemispheres. If list, plot one row per array.
         Default is None.
     surface_name : str, optional
-        Name of surface {'fsa5', 'conte69}. Default is 'fsa5'.
+        Name of surface {'fsa', 'fsa5', 'conte69}. Default is 'fsa5'.
     color_bar : bool, optional
         Plot color bar for each array (row). Default is False.
     color_range : {'sym'}, tuple or sequence.
@@ -489,6 +489,8 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
 
     if surface_name == "fsa5":
         surf_lh, surf_rh = load_fsa5()
+    elif surface_name == "fsa":
+        surf_lh, surf_rh = load_fsa()
     elif surface_name == "conte69":
         surf_lh, surf_rh = load_conte69()
 

@@ -10,7 +10,7 @@ function [a, cb] = plot_cortical(data, varargin);
 %   data (double array) - vector of data, size = [1 x v]
 %
 % Name/value pairs:
-%   surface_name (string, optional) - Name of surface {'fsa5', 'conte69}. 
+%   surface_name (string, optional) - Name of surface {'fsa', 'fsa5', 'conte69}. 
 %       Default is 'fsa5'.
 %   label_text (string, optional) - Label text for colorbar. Default is empty.
 %   background (string, double array, optional) - Background color. 
@@ -39,6 +39,8 @@ in = p.Results;
 % load surfaces
 if strcmp(in.surface_name, 'fsa5')
     surf = SurfStatAvSurf({'fsa5_lh', 'fsa5_rh'});
+elseif strcmp(in.surface_name, 'fsa')
+    surf = SurfStatAvSurf({'fsa_lh', 'fsa_rh'});
 elseif strcmp(in.surface_name, 'conte69')
     surf = SurfStatAvSurf({'conte69_lh', 'conte69_rh'});
 elseif strcmp(in.surface_name, 'ss')
