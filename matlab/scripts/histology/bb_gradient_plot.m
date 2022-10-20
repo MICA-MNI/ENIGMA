@@ -41,7 +41,7 @@ parse(p, varargin{:});
 in = p.Results;
 
 % Load gradient
-g = dlmread(['bb_gradient_' parcellation '.csv']);
+g = dlmread(['bb_gradient_' in.parcellation '.csv']);
 
 % Define number of bins
 numbin = 5;

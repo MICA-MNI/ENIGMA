@@ -28,6 +28,9 @@ if nargin < 3; title = ''; end
 
 % Load BigBrain statistical moments (mean, skewness) 
 bb_moments = dlmread(['bb_moments_' parcellation '.csv']);
+bb_moments = bb_moments([2 4], :);
+bb_moments(1,:) = rescale(bb_moments(1,:), -1, 1);
+bb_moments(2,:) = rescale(bb_moments(2,:), -1, 1);
 
 % Moments colors
 spec = [158,1,66; 102,194,165]/255;

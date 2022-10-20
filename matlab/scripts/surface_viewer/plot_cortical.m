@@ -110,10 +110,10 @@ dcm_obj = datacursormode(gcf);
 set(dcm_obj, 'UpdateFcn', @SurfStatDataCursor, 'DisplayStyle', 'window');
 
 %% set colorbar range 
-colorbar_range(in.color_range)
+colorbar_range(in.color_range);
 
 %% set colormaps 
-enigma_colormap(in.cmap)
+enigma_colormap(in.cmap);
 
 return
 end
