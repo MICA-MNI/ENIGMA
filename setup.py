@@ -74,7 +74,7 @@ setup(
     zip_safe=False,
     project_urls={  # Optional
         'Documentation': 'https://enigma-toolbox.readthedocs.io',
-        #'Bug Reports': 'https://github.com/MICA-MNI/ENIGMA/issues',
+        'Bug Reports': 'https://github.com/MICA-MNI/ENIGMA/issues',
         'Source': 'https://github.com/MICA-MNI/ENIGMA',
     },
     download_url='https://github.com/MICA-MNI/ENIGMA/archive/'
