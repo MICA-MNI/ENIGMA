@@ -3,4 +3,9 @@ https://github.com/djungelorm/sphinx-tabs/releases/download/v1.1.11/sphinx-tabs-
 sphinx_rtd_theme
 sphinx-gallery
 https://github.com/saratheriver/enigma-pygments/releases/download/v2020.7.8.2/enigma-pygments-style-2020.7.8.2.tar.gz
+jinja2<3.1
+bleach>=2.1.0
+tornado>=5.1
+attrs
+tinycss2
 -r ../requirements.txt

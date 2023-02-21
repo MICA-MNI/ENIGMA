@@ -5,6 +5,15 @@
 What's new?
 ======================================
 
+v2.0.1 (October 19, 2022)
+------------------------------------------
+Trying to put the python version on PyPi
+
+::
+
+    ↪ [DOC 📄] Updated documentations                       |  @saratheriver
+    
+
 v2.0.0 (July 26, 2022)
 ------------------------------------------
 One year of bug fixing and brand spanking new BigBrain moments
