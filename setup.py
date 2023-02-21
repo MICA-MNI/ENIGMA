@@ -77,5 +77,5 @@ setup(
         'Bug Reports': 'https://github.com/MICA-MNI/ENIGMA/issues',
         'Source': 'https://github.com/MICA-MNI/ENIGMA',
     },
-    download_url='https://github.com/MICA-MNI/ENIGMA/archive/refs/tags/v2.0.3.tar.gz',
+    download_url='https://github.com/MICA-MNI/ENIGMA/archive/refs/tags/v2.0.4.tar.gz',
 )
