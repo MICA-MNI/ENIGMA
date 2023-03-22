@@ -657,7 +657,7 @@ def plot_subcortical(array_name=None, ventricles=True, color_bar=False,
                      transparent_bg=transparent_bg, **kwds)
 
 
-def plot_hippocampal(array_name=None, color_bar=False,
+def plot_hippocampal(array_name=None, color_bar=False, mm=2,
                     color_range=None, label_text=None,
                     cmap='RdBu_r', nan_color=(1, 1, 1, 0), zoom=1,
                     background=(1, 1, 1), size=(400, 400), interactive=True,
@@ -704,6 +704,9 @@ def plot_hippocampal(array_name=None, color_bar=False,
     scale : tuple, optional
         Scale (magnification). Only used if ``screenshot==True``.
         Default is None.
+    mm : str, optional
+        Resolution of hippocampal surface. '0p5' or '2'.
+        Default is '2'.
     kwargs : keyword-valued args
         Additional arguments passed to the plotter.
 
@@ -722,7 +725,7 @@ def plot_hippocampal(array_name=None, color_bar=False,
         color_bar = 'right'
 
     root_pth = os.path.dirname(__file__)
-    fname = 'tpl-avg_space-canonical_den-0p5mm_label-hipp_midthickness.surf.gii'
+    fname = 'tpl-avg_space-canonical_den-{}mm_label-hipp_midthickness.surf.gii'.format(mm)
     ipth = os.path.join(os.path.dirname(root_pth), 'datasets', 'surfaces', fname)
     surfsTmp = [None] * 2
     for i in range(2):
