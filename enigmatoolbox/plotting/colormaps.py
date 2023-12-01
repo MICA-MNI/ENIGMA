@@ -1,5 +1,16 @@
 import numpy as np
 import os
+from matplotlib import cm
+from matplotlib.colors import ListedColormap, LinearSegmentedColormap
+
+autumn = cm.get_cmap('autumn', 256)
+newcolors = autumn(np.linspace(0, 1, 256))
+winter = cm.get_cmap('winter_r', 256)
+winter_col = winter(np.linspace(0, 1, 256))
+winter_col = winter_col[66:, :]
+newcolors = newcolors[:-66, :]
+winter_autumn = ListedColormap(np.vstack((winter_col, newcolors)))
+winter_autumn_colors = np.vstack((winter_col, newcolors))*255
 
 yeo7_colors = np.array([[0, 0, 0, 255],
                         [0, 118, 14, 255],
@@ -76,8 +87,11 @@ bb_o_r_colors = np.flipud(np.loadtxt(os.path.join(root_pth, 'cmaps', 'bb_o.csv')
 bb_g_r_colors = np.flipud(np.loadtxt(os.path.join(root_pth, 'cmaps', 'bb_g.csv')))
 bb_p_r_colors = np.flipud(np.loadtxt(os.path.join(root_pth, 'cmaps', 'bb_p.csv')))
 
+
+
 colormaps = {'yeo7': yeo7_colors, 'TealRd': TealRd_colors, 'GyRd': GyRd_colors,
              'GyRd_r': GyRd_r_colors, 'GyBu': GyBu_colors, 'GyBu_r': GyBu_r_colors,
              'eco_kos': eco_kos_colors, 'bb_r': bb_r_colors, 'bb_o': bb_o_colors,
              'bb_g': bb_g_colors, 'bb_p': bb_p_colors, 'bb_r_r': bb_r_r_colors, 'bb_o_r': bb_o_r_colors,
-             'bb_g_r': bb_g_r_colors, 'bb_p_r': bb_p_r_colors, 'spec_5': spec_5_colors, 'fs': fs_colours2}
+             'bb_g_r': bb_g_r_colors, 'bb_p_r': bb_p_r_colors, 'spec_5': spec_5_colors, 'fs': fs_colours2,
+             'winter_autumn': winter_autumn_colors}
