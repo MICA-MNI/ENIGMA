@@ -489,7 +489,7 @@ class GridPlotter(Plotter):
 
     def AddRenderers(self, **kwargs):
         """Some description here."""
-        ren = np.empty((self.nrow, self.ncol), dtype=np.object)
+        ren = np.empty((self.nrow, self.ncol), dtype=object)
         for i in range(self.nrow):
             for j in range(self.ncol):
                 ren[i, j] = super().AddRenderer(row=i, col=j, **kwargs)
