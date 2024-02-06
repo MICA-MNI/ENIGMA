@@ -48,10 +48,10 @@ def economo_koskinas_spider(parcel_data=None, parcellation='aparc_fsa5', fill=0,
     # Average within ve classes
     if 'fsa5' in parcellation:
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/economo_koskinas_fsa5.csv'
-        ve = np.loadtxt(parc_pth, dtype=np.int)
+        ve = np.loadtxt(parc_pth, dtype=int)
     elif 'conte69' in parcellation:
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/economo_koskinas_conte69.csv'
-        ve = np.loadtxt(parc_pth, dtype=np.int)
+        ve = np.loadtxt(parc_pth, dtype=int)
 
     ve_class = np.zeros((5, 1))
     for ii in range(5):

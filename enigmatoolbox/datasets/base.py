@@ -38,8 +38,8 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
             name = ''
         else:
             name = '_' + name
-        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=np.bool)
-        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=np.bool)
+        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=bool)
+        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=bool)
         if join:
             return np.concatenate([mask_lh, mask_rh])
 
@@ -49,8 +49,8 @@ def load_mask(name='midline', surface_name="fsa5", join=False):
             name = ''
         else:
             print('sorry there\'s no other option for now')
-        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=np.bool)
-        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=np.bool)
+        mask_lh = np.loadtxt(ipth.format('lh', name), dtype=bool)
+        mask_rh = np.loadtxt(ipth.format('rh', name), dtype=bool)
         if join:
             return np.concatenate([mask_lh, mask_rh])
 
@@ -262,10 +262,10 @@ def load_sc(parcellation='aparc'):
         sctxL = 'strucLabels_sctx_' + parcellation + '.csv'
         sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
 
-    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
-           np.loadtxt(sctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
+    return np.loadtxt(ctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype=str, delimiter=','), \
+           np.loadtxt(sctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(sctxL_ipth, dtype=str, delimiter=',')
 
 
 def load_fc(parcellation='aparc'):
@@ -316,10 +316,10 @@ def load_fc(parcellation='aparc'):
         sctxL = 'funcLabels_sctx_' + parcellation + '.csv'
         sctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', sctxL)
 
-    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
-           np.loadtxt(sctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(sctxL_ipth, dtype='str', delimiter=',')
+    return np.loadtxt(ctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype=str, delimiter=','), \
+           np.loadtxt(sctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(sctxL_ipth, dtype=str, delimiter=',')
 
 
 def load_sc_as_one(parcellation='aparc'):
@@ -353,8 +353,8 @@ def load_sc_as_one(parcellation='aparc'):
         ctxL = 'strucLabels_with_sctx_' + parcellation + '.csv'
         ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
-    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
+    return np.loadtxt(ctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype=str, delimiter=','), \
 
 
 def load_fc_as_one(parcellation='aparc'):
@@ -389,8 +389,8 @@ def load_fc_as_one(parcellation='aparc'):
         ctxL = 'funcLabels_with_sctx_' + parcellation + '.csv'
         ctxL_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctxL)
 
-    return np.loadtxt(ctx_ipth, dtype=np.float, delimiter=','), \
-           np.loadtxt(ctxL_ipth, dtype='str', delimiter=','), \
+    return np.loadtxt(ctx_ipth, dtype=float, delimiter=','), \
+           np.loadtxt(ctxL_ipth, dtype=str, delimiter=','), \
 
 
 def structural_covariance(zdata):

@@ -210,7 +210,7 @@ def parcel_to_surface(source_val, target_lab, mask=None, fill=0, source_lab=None
     if isinstance(target_lab, str):
         fname = target_lab + '.csv'
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
-        target_lab = np.loadtxt(parc_pth, dtype=np.int)
+        target_lab = np.loadtxt(parc_pth, dtype=int)
 
     if source_val.size == 68 and np.unique(target_lab).size == 71:
         a_idx = list(range(1, 4)) + list(range(5, 39)) + list(range(40, 71))
@@ -267,7 +267,7 @@ def _get_redop(red_op, weights=None, axis=None):
 
 
 def surface_to_parcel(values, labels, weights=None, target_labels=None,
-                     red_op='mean', axis=0, dtype=np.float):
+                     red_op='mean', axis=0, dtype=float):
     """Summarize data in `values` according to `labels` (author: @OualidBenkarim)
 
     Parameters
@@ -304,7 +304,7 @@ def surface_to_parcel(values, labels, weights=None, target_labels=None,
     if isinstance(labels, str):
         fname = labels + '.csv'
         parc_pth = os.path.dirname(os.path.dirname(__file__)) + '/datasets/parcellations/' + fname
-        labels = np.loadtxt(parc_pth, dtype=np.int)
+        labels = np.loadtxt(parc_pth, dtype=int)
 
     if axis == 1 and values.ndim == 1:
         axis = 0
