@@ -488,7 +488,7 @@ def downsample_with_parcellation(surf, labeling, name='parcel',
     adj = get_immediate_adjacency(surf)
     adj_neigh = adj.multiply(labeling_con).tocsr()
 
-    adj_small = np.zeros((nlabs, nlabs), dtype=np.bool)
+    adj_small = np.zeros((nlabs, nlabs), dtype=bool)
     for i in range(nlabs):
         arow = adj_neigh[labeling_con == i]
         for j in range(i + 1, nlabs):
