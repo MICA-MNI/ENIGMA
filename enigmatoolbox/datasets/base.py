@@ -236,7 +236,7 @@ def load_sc(parcellation='aparc'):
     """
     root_pth = os.path.dirname(__file__)
 
-    if parcellation is 'aparc':
+    if parcellation == 'aparc':
         ctx = 'strucMatrix_ctx.csv'
         ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
@@ -290,7 +290,7 @@ def load_fc(parcellation='aparc'):
     """
     root_pth = os.path.dirname(__file__)
 
-    if parcellation is 'aparc':
+    if parcellation == 'aparc':
         ctx = 'funcMatrix_ctx.csv'
         ctx_ipth = os.path.join(root_pth, 'matrices', 'hcp_connectivity', ctx)
 
