@@ -410,7 +410,12 @@ class Plotter(object):
         wimg = self._win2img(transparent_bg, scale)
         writer = BSPNGWriter(writeToMemory=True)
         result = serial_connect(wimg, writer, as_data=False).result
-        data = memoryview(result).tobytes()
+  
+        try:
+            data = memoryview(result).tobytes()
+        except Exception as e:
+            print(e)
+            data = memoryview(result.VTKObject).tobytes()
         from IPython.display import Image
         return Image(data)
 
