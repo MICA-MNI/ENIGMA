@@ -1,4 +1,4 @@
-Surface_Area,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,%diff,n_controls,n_patients,pobs,fdr_p
+SurfaceArea,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,%diff,n_controls,n_patients,pobs,fdr_p
 HY1PDvsCN,L_bankssts,-0.004,9.34,-19.00,17.65,-0.07,776,383,0.942,
 HY1PDvsCN,L_caudalanteriorcingulate,0.053,7.56,-7.80,21.87,1.13,839,432,0.352,
 HY1PDvsCN,L_caudalmiddlefrontal,0.076,19.14,-11.75,63.34,1.17,838,429,0.178,
