@@ -1189,7 +1189,7 @@ def load_summary_stats(disorder=None):
         CortSurf_HY1PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'parkinsons_case-controls_CortSurf_HY1PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        CortSurf_HY1PDvsH2YPD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+        CortSurf_HY1PDvsHY2PD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'parkinsons_case-controls_CortSurf_HY1PDvsH2YPD.csv'),
                                                     on_bad_lines='skip')
         CortSurf_HY2PDvsH3YPD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
@@ -1232,7 +1232,7 @@ def load_summary_stats(disorder=None):
                                                     on_bad_lines='skip')
         CortThick_HY3PDvsHY4PDandHY5PD = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_CortThick_,HY3PDvsHY4PDandHY5PD.csv'),
+                                                                 'parkinsons_case-controls_CortThick_HY3PDvsHY4PDandHY5PD.csv'),
                                                     on_bad_lines='skip')
         CortThick_HY3PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
@@ -1289,7 +1289,7 @@ def load_summary_stats(disorder=None):
                 'CortSurf_HY1PDvsHY2PD': CortSurf_HY1PDvsHY2PD,
                 'CortSurf_HY2PDvsH3YPD': CortSurf_HY2PDvsH3YPD,
                 'CortSurf_HY2PDvsCN': CortSurf_HY2PDvsCN,
-                'CortSurf_HY3PDvsHY4PDandHY5PD': CortSurf_HY3PDvsHY4PDandHY5PD,
+                'CortSurf_HY3PDvsHY4PDandH5YPD': CortSurf_HY3PDvsHY4PDandH5YPD,
                 'CortSurf_HY3PDvsCN': CortSurf_HY3PDvsCN,
                 'CortSurf_HY4PDandHY5PDvsCN': CortSurf_HY4PDandHY5PDvsCN,
                 'CortSurf_MoCAvsCN': CortSurf_MoCAvsCN,
@@ -1298,7 +1298,7 @@ def load_summary_stats(disorder=None):
                 'CortThick_HY1PDvsHY2PD': CortThick_HY1PDvsHY2PD,
                 'CortThick_HY2PDvsHY3PD': CortThick_HY2PDvsHY3PD,
                 'CortThick_HY2PDvsCN': CortThick_HY2PDvsCN,
-                'CortThick_HY3PDvsH4YPDandHY5PD': CortThick_HY3PDvsH4YPDandHY5PD,
+                'CortThick_HY3PDvsHY4PDandHY5PD': CortThick_HY3PDvsHY4PDandHY5PD,
                 'CortThick_HY3PDvsCN': CortThick_HY3PDvsCN,
                 'CortThick_HY4PDandHY5PDvsCN': CortThick_HY4PDandHY5PDvsCN,
                 'CortThick_MoCAvsCN': CortThick_MoCAvsCN,
