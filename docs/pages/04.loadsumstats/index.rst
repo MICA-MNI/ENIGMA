@@ -548,7 +548,6 @@ Available summary statistics tables
 |    ↪ SubVol_case_vs_controls_recurrent
 |    ↪ SubVol_recurrrent_vs_firstepisode
 
-
 .. tabs::
 
    .. code-tab:: py **Python** | meta
@@ -581,9 +580,7 @@ Available summary statistics tables
         CT_d = CT.d_icv;
         SA_d = SA.d_icv;
 
-
 |
-
 
 Obsessive-compulsive disorder
 -----------------------------------------
@@ -659,6 +656,84 @@ Available summary statistics tables
 
 |
 
+Parkinson's Disease
+-------------------------------------
+Available summary statistics tables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| **From** `Laansma et al., 2021, Movement Disorders <https://movementdisorders.onlinelibrary.wiley.com/doi/10.1002/mds.28706>`_  |  **See paper for specific model corrections**
+|    **PARKINSON'S DISEASE (PD) VS CONTROLS (CN)** 
+|    ↪ CortThick_PDvsCN 📸
+|    ↪ CortSurf_PDvsCN
+|    ↪ Subvol_PDvsCN
+|
+|    **MOCA PD VS CONTROLS** 
+|    ↪ CortThick_MoCAvsCN
+|    ↪ CortSurf_MoCAvsCN
+|    ↪ SubVol_MoCAvsCN
+|
+|    **HY1 (Hoehn and Yahr stage 1) VS CONTROLS** 
+|    ↪ CortThick_HY1PDvsCN
+|    ↪ CortSurf_HY1PDvsCN
+|    ↪ SubVol_HY1PDvsCN
+|
+|    **HY2 VS CONTROLS** 
+|    ↪ CortThick_HY2PDvsCN
+|    ↪ CortSurf_HY2PDvsCN
+|    ↪ SubVol_HY2PDvsCN
+|
+|    **HY3 VS CONTROLS** 
+|    ↪ CortThick_HY3PDvsCN
+|    ↪ CortSurf_HY3PDvsCN
+|    ↪ SubVol_HY3PDvsCN
+|
+|    **HY4 AND HY5 VS CONTROLS** 
+|    ↪ CortThick_HY4PDandHY5PDvsCN
+|    ↪ CortSurf_HY4PDandHY5PDvsCN
+|    ↪ SubVol_HY4PDandHY5PDvsCN
+|
+|    **HY1 VS HY2** 
+|    ↪ CortThick_HY1PDvsHY2PD
+|    ↪ CortSurf_HY1PDvsHY2PD
+|    ↪ SubVol_HY1PDvsHY2PD
+|
+|    **HY2 VS HY3** 
+|    ↪ CortThick_HY2PDvsHY3PD
+|    ↪ CortSurf_HY2PDvsH3YPD
+|    ↪ SubVol_HY2PDvsHY3PD
+|
+|    **HY3 VS HY4 AND HY5** 
+|    ↪ CortThick_HY3PDvsHY4PDandHY5PD
+|    ↪ CortSurf_HY3PDvsHY4PDandH5YPD
+|    ↪ SubVol_HY3PDvsHY4PDandHY5PD
+
+.. tabs::
+
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.datasets import load_summary_stats
+
+        >>> # Load summary statistics for ENIGMA-PD
+        >>> sum_stats = load_summary_stats('parkinsons')
+
+        >>> # Get case-control cortical thickness table
+        >>> CT = sum_stats['CortThick_PDvsCN']
+
+        >>> # Extract Pearson's correlation values
+        >>> CT_d = CT['d_icv']
+
+   .. code-tab:: matlab **Matlab** | meta
+
+        % Load summary statistics for ENIGMA-PD 
+        sum_stats = load_summary_stats('parkinsons');
+
+        % Get case-control cortical thickness table
+        CT = sum_stats.CortThick_PDvsCN;
+
+        % Extract Pearson's correlation values
+        CT_d = CT.d_icv;
+
+|
 
 Schizophrenia
 ----------------------------

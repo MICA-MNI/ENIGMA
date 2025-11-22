@@ -1,4 +1,4 @@
-Subcortical Volume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,%diff,n_controls,n_patients,pobs,fdr_p
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,%diff,n_controls,n_patients,pobs,fdr_p
 PDvsCN,Laccumb,-0.028,4.02,-11.53,4.22,-0.768,1158,2302,0.363,
 PDvsCN,Lamyg,-0.130,7.99,-49.3,-17.97,-2.267,1158,2284,<0.001,
 PDvsCN,Lcaud,-0.071,16.99,-70.75,-4.13,-1.083,1162,2312,0.028,

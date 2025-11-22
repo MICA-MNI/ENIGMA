@@ -1,4 +1,4 @@
-CorticalThickness,Structure,dicv,seicv,lowciicv,upciicv,%diff,ncontrols,npatients,pobs,fdrp
+CorticalThickness,Structure,d_icv,seicv,lowciicv,upciicv,%diff,ncontrols,npatients,pobs,fdrp
 HY2PDvsCN,Lbankssts,-0.104,0.010,-0.047,-0.008,-1.184,832,819,0.006,
 HY2PDvsCN,Lcaudalanteriorcingulate,0.060,0.015,-0.008,0.050,0.815,901,928,0.150,
 HY2PDvsCN,Lcaudalmiddlefrontal,-0.100,0.008,-0.038,-0.005,-0.884,898,933,0.011,

@@ -1190,10 +1190,10 @@ def load_summary_stats(disorder=None):
                                                                  'parkinsons_case-controls_CortSurf_HY1PDvsCN.csv'),
                                                     on_bad_lines='skip')
         CortSurf_HY1PDvsHY2PD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'parkinsons_case-controls_CortSurf_HY1PDvsH2YPD.csv'),
+                                                                 'parkinsons_case-controls_CortSurf_HY1PDvsHY2PD.csv'),
                                                     on_bad_lines='skip')
         CortSurf_HY2PDvsH3YPD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                          'parkinsons_case-controls_CortSurf_HY2PDvsH3YPD.csv'),
+                                                                          'parkinsons_case-controls_CortSurf_HY2PDvsHY3PD.csv'),
                                                     on_bad_lines='skip')
         CortSurf_HY2PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                          'parkinsons_case-controls_CortSurf_HY2PDvsCN.csv'),
