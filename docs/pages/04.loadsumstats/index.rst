@@ -159,34 +159,34 @@ Available summary statistics tables
 |    ↪ CortThick_anorexia_case_controls 📸
 |    ↪ CortSurf_anorexia_case_controls
 |    ↪ SubVol_anorexia_case_controls
-
+|
 |    **ANOREXIA VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
 |    ↪ CortThick_anorexia_case_controls_wGlo
 |    ↪ CortSurf_anorexia_case_controls_wGlo
-
+|
 |    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS CONTROLS**
 |    ↪ CortThick_anorexia_acAN_controls
 |    ↪ CortSurf_anorexia_acAN_controls
 |    ↪ SubVol_anorexia_acAN_controls
-
+|
 |    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
 |    ↪ CortThick_anorexia_acAN_controls_wGlo
 |    ↪ CortSurf_anorexia_acAN_controls_wGlo
-
+|
 |    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN)**
 |    ↪ CortSurf_anorexia_acANpwrAN
 |    ↪ CortThick_anorexia_acANpwrAN
 |    ↪ SubVol_anorexia_acAN_pwrAN
-
+|
 |    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN), INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
 |    ↪ CortThick_anorexia_acANpwrAN_wGlo
 |    ↪ CortSurf_anorexia_acANpwrAN_wGlo
-
+|
 |    **PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN) VS CONTROLS**
 |    ↪ CortSurf_anorexia_pwrAN_controls
 |    ↪ CortThick_anorexia_pwrAN_controls
 |    ↪ SubVol_anorexia_pwrAN_controls
-
+|
 |    **PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN) VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
 |    ↪ CortSurf_anorexia_pwrANcontrols_wGlo
 |    ↪ CortThick_anorexia_pwrAN_controls_wGlo
@@ -361,21 +361,21 @@ Available summary statistics tables
 |    **POPULATION LEVEL** 
 |    ↪ CortThick_asymm_population_level 📸
 |    ↪ CortSurf_asymm_population_level
-
+|
 |    **Effects of ICV** 
 |    ↪ CortThick_asymm_ICVeffects 
 |    ↪ CortSurf_asymm_ICVeffects
-
+|
 |    **Effects of handedness** 
 |    ↪ CortThick_asymm_handedness-diff
 |    ↪ CortSurf_asymm_handedness-diff
-
+|
 |    **Effects of age** 
 |    ↪ CortThick_asymm_ageeffects
 |    ↪ CortSurf_asymm_ageeffects
 |    ↪ CortThick_asymm_ageeffects_20years
 |    ↪ CortSurf_asymm_ageeffects_20years
-
+|
 |    **Effects of sex** 
 |    ↪ CortThick_asymm_sexeffects
 |    ↪ CortSurf_asymm_sexeffects
@@ -468,12 +468,12 @@ Available summary statistics tables
 |    ↪ CortThick_agevsthick_all_3to29 📸
 |    ↪ CortThick_agevsthick_all_30to59
 |    ↪ CortThick_agevsthick_all_60to90
-
+|
 |    **FEMALES** 
 |    ↪ CortThick_agevsthick_F_3to29
 |    ↪ CortThick_agevsthick_F_30to59
 |    ↪ CortThick_agevsthick_F_60to90
-
+|
 |    **MALES** 
 |    ↪ CortThick_agevsthick_M_3to29
 |    ↪ CortThick_agevsthick_M_30to59
