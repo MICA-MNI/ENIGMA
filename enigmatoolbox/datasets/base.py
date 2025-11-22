@@ -1027,31 +1027,31 @@ def load_summary_stats(disorder=None):
 
     elif disorder == "lifespan":
         CortThick_agevsthick_all_3to29 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(all3-29years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_all3-29years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_all_30to59 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(all30-59years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_all30-59years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_all_60to90 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(all60-90years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_all60-90years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_F_3to29 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(F3-29years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_F3-29years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_F_30to59 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(F30-59years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_F30-59years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_F_60to90 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(F60-90years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_F60-90years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_M_3to29 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(M3-29years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_M3-29years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_M_30to59 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(M30-59years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_M30-59years.csv'),
             on_bad_lines='skip')
         CortThick_agevsthick_M_60to90 = pd.read_csv(
-            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness(M60-90years).csv'),
+            os.path.join(root_pth, 'summary_statistics', 'lifespan_CortThick_age_vs_thickness_M60-90years.csv'),
             on_bad_lines='skip')
 
         return {'CortThick_agevsthick_all_3to29': CortThick_agevsthick_all_3to29,

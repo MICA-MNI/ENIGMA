@@ -81,7 +81,6 @@ Available summary statistics tables
 
 |
 
-
 Attention deficit hyperactivity disorder
 ------------------------------------------------------
 Available summary statistics tables
@@ -148,7 +147,6 @@ Available summary statistics tables
         CT_d = CT.d_icv;
         SA_d = SA.d_icv;
 
-
 |
 
 Anorexia Nervosa
@@ -157,26 +155,41 @@ Available summary statistics tables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | **From** `Walton et al., 2022, Biological Psychiatry <https://www.biologicalpsychiatryjournal.com/article/S0006-3223(22)01290-2/abstract>`_  |  **See paper for specific model corrections; FDR correction available**
-| ↪ CortThick_anorexia_case_controls 📸
-| ↪ CortSurf_anorexia_case_controls
-| ↪ SubVol_anorexia_case_controls
-| ↪ CortThick_anorexia_case_controls_wGlo
-| ↪ CortSurf_anorexia_case_controls_wGlo
-| ↪ CortThick_anorexia_acAN_controls
-| ↪ CortSurf_anorexia_acAN_controls
-| ↪ SubVol_anorexia_acAN_controls
-| ↪ CortThick_anorexia_acAN_controls_wGlo
-| ↪ CortSurf_anorexia_acAN_controls_wGlo
-| ↪ CortThick_anorexia_acANpwrAN_wGlo
-| ↪ CortSurf_anorexia_acANpwrAN
-| ↪ CortThick_anorexia_acANpwrAN
-| ↪ CortSurf_anorexia_acANpwrAN_wGlo
-| ↪ SubVol_anorexia_acAN_pwrAN
-| ↪ CortSurf_anorexia_pwrANcontrols_wGlo
-| ↪ CortSurf_anorexia_pwrAN_controls
-| ↪ CortThick_anorexia_pwrAN_controls_wGlo
-| ↪ CortThick_anorexia_pwrAN_controls
-| ↪ SubVol_anorexia_pwrAN_controls
+|    **ANOREXIA VS CONTROLS**
+|    ↪ CortThick_anorexia_case_controls 📸
+|    ↪ CortSurf_anorexia_case_controls
+|    ↪ SubVol_anorexia_case_controls
+
+|    **ANOREXIA VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
+|    ↪ CortThick_anorexia_case_controls_wGlo
+|    ↪ CortSurf_anorexia_case_controls_wGlo
+
+|    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS CONTROLS**
+|    ↪ CortThick_anorexia_acAN_controls
+|    ↪ CortSurf_anorexia_acAN_controls
+|    ↪ SubVol_anorexia_acAN_controls
+
+|    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
+|    ↪ CortThick_anorexia_acAN_controls_wGlo
+|    ↪ CortSurf_anorexia_acAN_controls_wGlo
+
+|    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN)**
+|    ↪ CortSurf_anorexia_acANpwrAN
+|    ↪ CortThick_anorexia_acANpwrAN
+|    ↪ SubVol_anorexia_acAN_pwrAN
+
+|    **ACUTELY ILL WITH ANOREXIA NERVOSA (acAN) VS PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN), INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
+|    ↪ CortThick_anorexia_acANpwrAN_wGlo
+|    ↪ CortSurf_anorexia_acANpwrAN_wGlo
+
+|    **PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN) VS CONTROLS**
+|    ↪ CortSurf_anorexia_pwrAN_controls
+|    ↪ CortThick_anorexia_pwrAN_controls
+|    ↪ SubVol_anorexia_pwrAN_controls
+
+|    **PARTIALLY WEIGHT-RESTORED PATIENTS WITH ANOREXIA NERVOSA (pwrAN) VS CONTROLS, INCLUDING GLOBAL MEAN CT OR TOTAL SA AS COVARIATES**
+|    ↪ CortSurf_anorexia_pwrANcontrols_wGlo
+|    ↪ CortThick_anorexia_pwrAN_controls_wGlo
 
 .. tabs::
 
@@ -204,6 +217,7 @@ Available summary statistics tables
         % Extract Cohen's d values
         CT_d = CT.d_icv;
 
+|
 
 Antisocial
 -------------------------------------
@@ -280,9 +294,7 @@ Available summary statistics tables
         % Extract Cohen's d values
         CT_d = CT.d_icv;
 
-
 |
-
 
 Bipolar disorder
 ----------------------------
@@ -338,7 +350,6 @@ Available summary statistics tables
         CT_d = CT.d_icv;
         SA_d = SA.d_icv;
 
-
 |
 
 Brain Asymmetry
@@ -347,18 +358,27 @@ Available summary statistics tables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 | **From** `Kong et al., 2018, PNAS <https://www.pnas.org/doi/full/10.1073/pnas.1718418115#supplementary-materials>`_  |  **See paper for specific model corrections; Same values are used in each hemisphere for visualization purposes**
-| ↪ CortThick_asymm_population_level 📸
-| ↪ CortSurf_asymm_population_level
-| ↪ CortThick_asymm_ICVeffects 
-| ↪ CortSurf_asymm_ICVeffects
-| ↪ CortThick_asymm_handedness-diff
-| ↪ CortSurf_asymm_handedness-diff
-| ↪ CortThick_asymm_ageeffects
-| ↪ CortSurf_asymm_ageeffects
-| ↪ CortThick_asymm_ageeffects_20years
-| ↪ CortSurf_asymm_ageeffects_20years
-| ↪ CortThick_asymm_sexeffects
-| ↪ CortSurf_asymm_sexeffects
+|    **POPULATION LEVEL** 
+|    ↪ CortThick_asymm_population_level 📸
+|    ↪ CortSurf_asymm_population_level
+
+|    **Effects of ICV** 
+|    ↪ CortThick_asymm_ICVeffects 
+|    ↪ CortSurf_asymm_ICVeffects
+
+|    **Effects of handedness** 
+|    ↪ CortThick_asymm_handedness-diff
+|    ↪ CortSurf_asymm_handedness-diff
+
+|    **Effects of age** 
+|    ↪ CortThick_asymm_ageeffects
+|    ↪ CortSurf_asymm_ageeffects
+|    ↪ CortThick_asymm_ageeffects_20years
+|    ↪ CortSurf_asymm_ageeffects_20years
+
+|    **Effects of sex** 
+|    ↪ CortThick_asymm_sexeffects
+|    ↪ CortSurf_asymm_sexeffects
 
 .. tabs::
 
@@ -436,9 +456,56 @@ Available summary statistics tables
         SV_d = SV.d_icv;
         CT_d = CT.d_icv;
 
-
 |
 
+Lifespan
+-------------------------------------
+Available summary statistics tables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| **From** `Frangou et al., 2021, Human Brain Mapping <https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.25364>`_  |  **See paper for specific model corrections; Only Pearson's correlations are reported (not Cohen's d).**
+|    **ALL** 
+|    ↪ CortThick_agevsthick_all_3to29 📸
+|    ↪ CortThick_agevsthick_all_30to59
+|    ↪ CortThick_agevsthick_all_60to90
+
+|    **FEMALES** 
+|    ↪ CortThick_agevsthick_F_3to29
+|    ↪ CortThick_agevsthick_F_30to59
+|    ↪ CortThick_agevsthick_F_60to90
+
+|    **MALES** 
+|    ↪ CortThick_agevsthick_M_3to29
+|    ↪ CortThick_agevsthick_M_30to59
+|    ↪ CortThick_agevsthick_M_60to90
+
+.. tabs::
+
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.datasets import load_summary_stats
+
+        >>> # Load summary statistics for ENIGMA-Lifespan
+        >>> sum_stats = load_summary_stats('lifespan')
+
+        >>> # Get case-control cortical thickness table
+        >>> CT = sum_stats['CortThick_agevsthick_all_3to29']
+
+        >>> # Extract Pearson's correlation values
+        >>> CT_d = CT['d_icv']
+
+   .. code-tab:: matlab **Matlab** | meta
+
+        % Load summary statistics for ENIGMA-Lifespan 
+        sum_stats = load_summary_stats('lifespan');
+
+        % Get case-control cortical thickness table
+        CT = sum_stats.CortThick_agevsthick_all_3to29;
+
+        % Extract Pearson's correlation values
+        CT_d = CT.d_icv;
+
+|
 
 Major depressive disorder
 ----------------------------------
