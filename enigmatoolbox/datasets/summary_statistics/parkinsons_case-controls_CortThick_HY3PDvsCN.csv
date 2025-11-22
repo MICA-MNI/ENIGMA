@@ -1,70 +1,69 @@
-CorticalThickness;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;%diff;n_controls;n_patients;pobs;;
-HY3 PD vsCN;L_bankssts_thickavg;-0.172;0.017;-0.081;-0.013;-2.077;459;227;0.007;;
-HY3 PD vsCN;L_caudalanteriorcingulate_thickavg;0.087;0.025;-0.017;0.080;1.226;497;255;0.204;;
-HY3 PD vsCN;L_caudalmiddlefrontal_thickavg;-0.0258;0.014;-0.082;-0.028;-2.308;499;258;<0.001;;
-HY3 PD vsCN;L_cuneus_thickavg;-0.129;0.013;-0.052;-0.001;-1.521;475;223;0.039;;
-HY3 PD vsCN;L_entorhinal_thickavg;-0.276;0.029;-0.174;-0.062;-3.672;499;257;<0.001;;
-HY3 PD vsCN;L_fusiform_thickavg;-0.372;0.014;-0.117;-0.061;-3.476;499;252;<0.001;;
-HY3 PD vsCN;L_inferiorparietal_thickavg;-0.359;0.013;-0.103;-0.051;-3.427;483;248;<0.001;;
-HY3 PD vsCN;L_inferiortemporal_thickavg;-0.336;0.014;-0.106;-0.049;-2.928;481;232;<0.001;;
-HY3 PD vsCN;L_isthmuscingulate_thickavg;-0.283;0.017;-0.107;-0.039;-3.154;501;257;<0.001;;
-HY3 PD vsCN;L_lateraloccipital_thickavg;-0.220;0.013;-0.071;-0.020;-2.210;489;246;<0.001;;
-HY3 PD vsCN;L_lateralorbitofrontal_thickavg;-0.166;0.014;-0.062;-0.008;-1.397;500;258;0.011;;
-HY3 PD vsCN;L_lingual_thickavg;-0.217;0.012;-0.068;-0.020;-2.320;490;242;<0.001;;
-HY3 PD vsCN;L_medialorbitofrontal_thickavg;-0.005;0.014;-0.029;0.027;-0.048;496;254;0.937;;
-HY3 PD vsCN;L_middletemporal_thickavg;-0.311;0.016;-0.109;-0.048;-2.954;470;229;<0.001;;
-HY3 PD vsCN;L_parahippocampal_thickavg;-0.183;0.028;-0.128;-0.020;-2.895;499;257;0.007;;
-HY3 PD vsCN;L_paracentral_thickavg;-0.211;0.015;-0.085;-0.025;-2.466;498;255;<0.001;;
-HY3 PD vsCN;L_parsopercularis_thickavg;-0.095;0.013;-0.047;0.005;-0.868;501;257;0.119;;
-HY3 PD vsCN;L_parsorbitalis_thickavg;-0.121;0.018;-0.071;0.002;-1.371;499;258;0.061;;
-HY3 PD vsCN;L_parstriangularis_thickavg;-0.165;0.014;-0.064;-0.011;-1.663;501;258;0.006;;
-HY3 PD vsCN;L_pericalcarine_thickavg;-0.031;0.013;-0.032;0.019;-0.436;473;217;0.607;;
-HY3 PD vsCN;L_postcentral_thickavg;-0.077;0.012;-0.039;0.008;-0.810;481;246;0.186;;
-HY3 PD vsCN;L_posteriorcingulate_thickavg;-0.094;0.015;-0.050;0.007;-0.907;500;257;0.145;;
-HY3 PD vsCN;L_precentral_thickavg;-0.244;0.015;-0.088;-0.031;-2.522;480;245;<0.001;;
-HY3 PD vsCN;L_precuneus_thickavg;-0.267;0.013;-0.085;-0.034;-2.701;501;255;<0.001;;
-HY3 PD vsCN;L_rostralanteriorcingulate_thickavg;0.075;0.021;-0.018;0.064;0.838;494;255;0.275;;
-HY3 PD vsCN;L_rostralmiddlefrontal_thickavg;-0.141;0.012;-0.052;-0.05;-1.282;499;256;0.018;;
-HY3 PD vsCN;L_superiorfrontal_thickavg;-0.206;0.013;-0.068;-0.017;-1.674;494;251;0.001;;
-HY3 PD vsCN;L_superiorparietal_thickavg;-0.226;0.013;-0.076;-0.025;-2.463;495;242;<0.001;;
-HY3 PD vsCN;L_superiortemporal_thickavg;-0.304;0.015;-0.103;-0.043;-2.854;454;210;<0.001;;
-HY3 PD vsCN;L_supramarginal_thickavg;-0.265;0.013;-0.083;-0.031;-2.424;477;244;<0.001;;
-HY3 PD vsCN;L_frontalpole_thickavg;0.003;0.023;-0.044;0.046;0.039;500;258;0.964;;
-HY3 PD vsCN;L_temporalpole_thickavg;-0.117;0.027;-0.098;0.009;-1.257;494;237;0.103;;
-HY3 PD vsCN;L_transversetemporal_thickavg;-0.194;0.020;-0.100;-0.021;-2.808;501;258;0.003;;
-HY3 PD vsCN;L_insula_thickavg;0.009;0.016;-0.030;0.034;0.074;499;253;0.895;;
-HY3 PD vsCN;R_bankssts_thickavg;-0.249;0.016;-0.097;-0.034;-2.737;481;239;<0.001;;
-HY3 PD vsCN;R_caudalanteriorcingulate_thickavg;-0.021;0.023;-0.052;0.038;-0.293;500;256;0.752;;
-HY3 PD vsCN;R_caudalmiddlefrontal_thickavg;-0.160;0.014;-0.063;-0.007;-1.469;495;256;0.015;;
-HY3 PD vsCN;R_cuneus_thickavg;-0.130;0.013;-0.057;-0.006;-1.786;458;228;0.014;;
-HY3 PD vsCN;R_entorhinal_thickavg;-0.280;0.032;-0.222;-0.097;-4.743;487;243;<0.001;;
-HY3 PD vsCN;R_fusiform_thickavg;-0.204;0.018;-0.103;-0.034;-2.632;499;253;<0.001;;
-HY3 PD vsCN;R_inferiorparietal_thickavg;-0.321;0.014;-0.102;-0.049;-3.295;492;250;<0.001;;
-HY3 PD vsCN;R_inferiortemporal_thickavg;-0.273;0.014;-0.097;-0.040;-2.566;480;240;<0.001;;
-HY3 PD vsCN;R_isthmuscingulate_thickavg;-0.237;0.017;-0.097;-0.031;-2.786;501;256;<0.001;;
-HY3 PD vsCN;R_lateraloccipital_thickavg;-0.239;0.014;-0.083;-0.026;-2.579;491;250;<0.001;;
-HY3 PD vsCN;R_lateralorbitofrontal_thickavg;-0.114;0.014;-0.056;-0.001;-1.152;499;257;0.046;;
-HY3 PD vsCN;R_lingual_thickavg;-0.124;0.013;-0.054;-0.004;-1.491;476;243;0.024;;
-HY3 PD vsCN;R_medialorbitofrontal_thickavg;0.037;0.014;-0.019;0.037;0.391;493;254;0.535;;
-HY3 PD vsCN;R_middletemporal_thickavg;-0.230;0.015;-0.089;-0.031;-2.242;478;249;<0.001;;
-HY3 PD vsCN;R_parahippocampal_thickavg;-0.298;0.023;-0.154;-0.063;-4.257;500;256;<0.001;;
-HY3 PD vsCN;R_paracentral_thickavg;-0.133;0.016;-0.067;-0.004;-1.564;499;252;0.026;;
-HY3 PD vsCN;R_parsopercularis_thickavg;-0.098;0.014;-0.049;0.005;-0.924;501;257;0.106;;
-HY3 PD vsCN;R_parsorbitalis_thickavg;-0.036;0.018;-0.045;0.025;-0.402;499;256;0.574;;
-HY3 PD vsCN;R_parstriangularis_thickavg;-0.065;0.014;-0.042;0.012;-0.663;501;257;0.270;;
-HY3 PD vsCN;R_pericalcarine_thickavg;-0.094;0.013;-0.051;0.002;-1.546;451;220;0.073;;
-HY3 PD vsCN;R_postcentral_thickavg;-0.142;0.012;-0.053;-0.006;-1.553;481;243;0.012;;
-HY3 PD vsCN;R_posteriorcingulate_thickavg;-0.256;0.015;-0.094;-0.034;-2.738;501;257;<0.001;;
-HY3 PD vsCN;R_precentral_thickavg;-0.202;0.015;-0.081;-0.021;-2.194;477;246;<0.001;;
-HY3 PD vsCN;R_precuneus_thickavg;-0.326;0.013;-0.097;-0.047;-3.242;501;256;<0.001;;
-HY3 PD vsCN;R_rostralanteriorcingulate_thickavg;0.137;0.021;0.006;0.090;1.779;492;253;0.025;;
-HY3 PD vsCN;R_rostralmiddlefrontal_thickavg;-0.012;0.013;-0.029;0.023;-0.135;498;257;0.822;;
-HY3 PD vsCN;R_superiorfrontal_thickavg;-0.220;0.013;-0.073;-0.022;-1.887;495;250;<0.001;;
-HY3 PD vsCN;R_superiorparietal_thickavg;-0.261;0.013;-0.089;-0.038;-3.109;496;245;<0.001;;
-HY3 PD vsCN;R_superiortemporal_thickavg;-0.191;0.015;-0.083;-0.024;-2.099;478;237;<0.001;;
-HY3 PD vsCN;R_supramarginal_thickavg;-0.300;0.014;-0.094;-0.041;-2.854;491;248;<0.001;;
-HY3 PD vsCN;R_frontalpole_thickavg;-0.062;0.024;-0.069;0.026;-0.824;500;255;0.373;;
-HY3 PD vsCN;R_temporalpole_thickavg;-0.198;0.27;-0.147;-0.040;-2.573;487;240;<0.001;;
-HY3 PD vsCN;R_transversetemporal_thickavg;-0.167;0.021;-0.116;-0.032;-3.268;500;257;<0.001;;
-HY3 PD vsCN;R_insula_thickavg;-0.072;0.018;-0.057;0.014;-0.744;494;254;0.244;;
-;;;;;;;;;;;
+CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,%diff,n_controls,n_patients,pobs,fdr_p
+HY3PDvsCN,L_bankssts,-0.172,0.017,-0.081,-0.013,-2.077,459,227,0.007,
+HY3PDvsCN,L_caudalanteriorcingulate,0.087,0.025,-0.017,0.080,1.226,497,255,0.204,
+HY3PDvsCN,L_caudalmiddlefrontal,-0.0258,0.014,-0.082,-0.028,-2.308,499,258,<0.001,
+HY3PDvsCN,L_cuneus,-0.129,0.013,-0.052,-0.001,-1.521,475,223,0.039,
+HY3PDvsCN,L_entorhinal,-0.276,0.029,-0.174,-0.062,-3.672,499,257,<0.001,
+HY3PDvsCN,L_fusiform,-0.372,0.014,-0.117,-0.061,-3.476,499,252,<0.001,
+HY3PDvsCN,L_inferiorparietal,-0.359,0.013,-0.103,-0.051,-3.427,483,248,<0.001,
+HY3PDvsCN,L_inferiortemporal,-0.336,0.014,-0.106,-0.049,-2.928,481,232,<0.001,
+HY3PDvsCN,L_isthmuscingulate,-0.283,0.017,-0.107,-0.039,-3.154,501,257,<0.001,
+HY3PDvsCN,L_lateraloccipital,-0.220,0.013,-0.071,-0.020,-2.210,489,246,<0.001,
+HY3PDvsCN,L_lateralorbitofrontal,-0.166,0.014,-0.062,-0.008,-1.397,500,258,0.011,
+HY3PDvsCN,L_lingual,-0.217,0.012,-0.068,-0.020,-2.320,490,242,<0.001,
+HY3PDvsCN,L_medialorbitofrontal,-0.005,0.014,-0.029,0.027,-0.048,496,254,0.937,
+HY3PDvsCN,L_middletemporal,-0.311,0.016,-0.109,-0.048,-2.954,470,229,<0.001,
+HY3PDvsCN,L_parahippocampal,-0.183,0.028,-0.128,-0.020,-2.895,499,257,0.007,
+HY3PDvsCN,L_paracentral,-0.211,0.015,-0.085,-0.025,-2.466,498,255,<0.001,
+HY3PDvsCN,L_parsopercularis,-0.095,0.013,-0.047,0.005,-0.868,501,257,0.119,
+HY3PDvsCN,L_parsorbitalis,-0.121,0.018,-0.071,0.002,-1.371,499,258,0.061,
+HY3PDvsCN,L_parstriangularis,-0.165,0.014,-0.064,-0.011,-1.663,501,258,0.006,
+HY3PDvsCN,L_pericalcarine,-0.031,0.013,-0.032,0.019,-0.436,473,217,0.607,
+HY3PDvsCN,L_postcentral,-0.077,0.012,-0.039,0.008,-0.810,481,246,0.186,
+HY3PDvsCN,L_posteriorcingulate,-0.094,0.015,-0.050,0.007,-0.907,500,257,0.145,
+HY3PDvsCN,L_precentral,-0.244,0.015,-0.088,-0.031,-2.522,480,245,<0.001,
+HY3PDvsCN,L_precuneus,-0.267,0.013,-0.085,-0.034,-2.701,501,255,<0.001,
+HY3PDvsCN,L_rostralanteriorcingulate,0.075,0.021,-0.018,0.064,0.838,494,255,0.275,
+HY3PDvsCN,L_rostralmiddlefrontal,-0.141,0.012,-0.052,-0.05,-1.282,499,256,0.018,
+HY3PDvsCN,L_superiorfrontal,-0.206,0.013,-0.068,-0.017,-1.674,494,251,0.001,
+HY3PDvsCN,L_superiorparietal,-0.226,0.013,-0.076,-0.025,-2.463,495,242,<0.001,
+HY3PDvsCN,L_superiortemporal,-0.304,0.015,-0.103,-0.043,-2.854,454,210,<0.001,
+HY3PDvsCN,L_supramarginal,-0.265,0.013,-0.083,-0.031,-2.424,477,244,<0.001,
+HY3PDvsCN,L_frontalpole,0.003,0.023,-0.044,0.046,0.039,500,258,0.964,
+HY3PDvsCN,L_temporalpole,-0.117,0.027,-0.098,0.009,-1.257,494,237,0.103,
+HY3PDvsCN,L_transversetemporal,-0.194,0.020,-0.100,-0.021,-2.808,501,258,0.003,
+HY3PDvsCN,L_insula,0.009,0.016,-0.030,0.034,0.074,499,253,0.895,
+HY3PDvsCN,R_bankssts,-0.249,0.016,-0.097,-0.034,-2.737,481,239,<0.001,
+HY3PDvsCN,R_caudalanteriorcingulate,-0.021,0.023,-0.052,0.038,-0.293,500,256,0.752,
+HY3PDvsCN,R_caudalmiddlefrontal,-0.160,0.014,-0.063,-0.007,-1.469,495,256,0.015,
+HY3PDvsCN,R_cuneus,-0.130,0.013,-0.057,-0.006,-1.786,458,228,0.014,
+HY3PDvsCN,R_entorhinal,-0.280,0.032,-0.222,-0.097,-4.743,487,243,<0.001,
+HY3PDvsCN,R_fusiform,-0.204,0.018,-0.103,-0.034,-2.632,499,253,<0.001,
+HY3PDvsCN,R_inferiorparietal,-0.321,0.014,-0.102,-0.049,-3.295,492,250,<0.001,
+HY3PDvsCN,R_inferiortemporal,-0.273,0.014,-0.097,-0.040,-2.566,480,240,<0.001,
+HY3PDvsCN,R_isthmuscingulate,-0.237,0.017,-0.097,-0.031,-2.786,501,256,<0.001,
+HY3PDvsCN,R_lateraloccipital,-0.239,0.014,-0.083,-0.026,-2.579,491,250,<0.001,
+HY3PDvsCN,R_lateralorbitofrontal,-0.114,0.014,-0.056,-0.001,-1.152,499,257,0.046,
+HY3PDvsCN,R_lingual,-0.124,0.013,-0.054,-0.004,-1.491,476,243,0.024,
+HY3PDvsCN,R_medialorbitofrontal,0.037,0.014,-0.019,0.037,0.391,493,254,0.535,
+HY3PDvsCN,R_middletemporal,-0.230,0.015,-0.089,-0.031,-2.242,478,249,<0.001,
+HY3PDvsCN,R_parahippocampal,-0.298,0.023,-0.154,-0.063,-4.257,500,256,<0.001,
+HY3PDvsCN,R_paracentral,-0.133,0.016,-0.067,-0.004,-1.564,499,252,0.026,
+HY3PDvsCN,R_parsopercularis,-0.098,0.014,-0.049,0.005,-0.924,501,257,0.106,
+HY3PDvsCN,R_parsorbitalis,-0.036,0.018,-0.045,0.025,-0.402,499,256,0.574,
+HY3PDvsCN,R_parstriangularis,-0.065,0.014,-0.042,0.012,-0.663,501,257,0.270,
+HY3PDvsCN,R_pericalcarine,-0.094,0.013,-0.051,0.002,-1.546,451,220,0.073,
+HY3PDvsCN,R_postcentral,-0.142,0.012,-0.053,-0.006,-1.553,481,243,0.012,
+HY3PDvsCN,R_posteriorcingulate,-0.256,0.015,-0.094,-0.034,-2.738,501,257,<0.001,
+HY3PDvsCN,R_precentral,-0.202,0.015,-0.081,-0.021,-2.194,477,246,<0.001,
+HY3PDvsCN,R_precuneus,-0.326,0.013,-0.097,-0.047,-3.242,501,256,<0.001,
+HY3PDvsCN,R_rostralanteriorcingulate,0.137,0.021,0.006,0.090,1.779,492,253,0.025,
+HY3PDvsCN,R_rostralmiddlefrontal,-0.012,0.013,-0.029,0.023,-0.135,498,257,0.822,
+HY3PDvsCN,R_superiorfrontal,-0.220,0.013,-0.073,-0.022,-1.887,495,250,<0.001,
+HY3PDvsCN,R_superiorparietal,-0.261,0.013,-0.089,-0.038,-3.109,496,245,<0.001,
+HY3PDvsCN,R_superiortemporal,-0.191,0.015,-0.083,-0.024,-2.099,478,237,<0.001,
+HY3PDvsCN,R_supramarginal,-0.300,0.014,-0.094,-0.041,-2.854,491,248,<0.001,
+HY3PDvsCN,R_frontalpole,-0.062,0.024,-0.069,0.026,-0.824,500,255,0.373,
+HY3PDvsCN,R_temporalpole,-0.198,0.27,-0.147,-0.040,-2.573,487,240,<0.001,
+HY3PDvsCN,R_transversetemporal,-0.167,0.021,-0.116,-0.032,-3.268,500,257,<0.001,
+HY3PDvsCN,R_insula,-0.072,0.018,-0.057,0.014,-0.744,494,254,0.244,

@@ -1198,14 +1198,14 @@ def load_summary_stats(disorder=None):
         CortSurf_HY2PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                          'parkinsons_case-controls_CortSurf_HY2PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        CortSurf_HY3PDvsH4YPD_H5YPD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                     'parkinsons_case-controls_CortSurf_HY3PDvsH4&5YPD.csv'),
+        CortSurf_HY3PDvsHY4PDandH5YPD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                     'parkinsons_case-controls_CortSurf_HY3PDvsHY4PDandHY5PD.csv'),
                                                     on_bad_lines='skip')
         CortSurf_HY3PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                     'parkinsons_case-controls_CortSurf_HY3PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        CortSurf_HY4PD_HY5PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                              'parkinsons_case-controls_CortSurf_HY4&5PDvsCN.csv'),
+        CortSurf_HY4PDandHY5PDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                              'parkinsons_case-controls_CortSurf_HY4PDandHY5PDvsCN.csv'),
                                                     on_bad_lines='skip')
         CortSurf_MoCAvsCN = pd.read_csv(os.path.join(root_pth,   'summary_statistics',
                                                                  'parkinsons_case-controls_CortSurf_MoCAvsCN.csv'),
@@ -1218,29 +1218,29 @@ def load_summary_stats(disorder=None):
                                                                  'summary_statistics',
                                                                  'parkinsons_case-controls_CortThick_HY1PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        CortThick_HY1PDvsH2YPD = pd.read_csv(os.path.join(root_pth,
+        CortThick_HY1PDvsHY2PD = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_CortThick_HY1PDvsH2YPD.csv'),
+                                                                 'parkinsons_case-controls_CortThick_HY1PDvsHY2PD.csv'),
                                                     on_bad_lines='skip')
-        CortThick_HY2PDvsH3YPD = pd.read_csv(os.path.join(root_pth,
+        CortThick_HY2PDvsHY3PD = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_CortThick_HY2PDvsH3YPD.csv'),
+                                                                 'parkinsons_case-controls_CortThick_HY2PDvsHY3PD.csv'),
                                                     on_bad_lines='skip')
         CortThick_HY2PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
                                                                  'parkinsons_case-controls_CortThick_HY2PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        CortThick_HY3PDvsH4YPD_H5YPD = pd.read_csv(os.path.join(root_pth,
+        CortThick_HY3PDvsHY4PDandHY5PD = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_CortThick_,HY3PDvsH4&5YPD.csv'),
+                                                                 'parkinsons_case-controls_CortThick_,HY3PDvsHY4PDandHY5PD.csv'),
                                                     on_bad_lines='skip')
         CortThick_HY3PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
                                                                  'parkinsons_case-controls_CortThick_HY3PDvsCN.csv'),
                                                     on_bad_lines='skip')                                            
-        CortThick_HY4PD_HY5PDvsCN = pd.read_csv(os.path.join(root_pth,
+        CortThick_HY4PDandHY5PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                 'summary_statistics',
-                                                                'parkinsons_case-controls_CortThick_HY4&5PDvsCN.csv'),
+                                                                'parkinsons_case-controls_CortThick_HY4PDandHY5PDvsCN.csv'),
                                                     on_bad_lines='skip')
         CortThick_MoCAvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
@@ -1266,17 +1266,17 @@ def load_summary_stats(disorder=None):
                                                                  'summary_statistics',
                                                                  'parkinsons_case-controls_SubVol_HY2PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        SubVol_HY3PDvsHY4PD_HY5PD = pd.read_csv(os.path.join(root_pth,
+        SubVol_HY3PDvsHY4PDandHY5PD = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_SubVol_HY3PDvsHY4&5PD.csv'),
+                                                                 'parkinsons_case-controls_SubVol_HY3PDvsHY4PDandHY5PD.csv'),
                                                     on_bad_lines='skip')
         SubVol_HY3PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
                                                                  'parkinsons_case-controls_SubVol_HY3PDvsCN.csv'),
                                                     on_bad_lines='skip')
-        SubVol_HY4PD_HY5PDvsCN = pd.read_csv(os.path.join(root_pth,
+        SubVol_HY4PDandHY5PDvsCN = pd.read_csv(os.path.join(root_pth,
                                                                  'summary_statistics',
-                                                                 'parkinsons_case-controls_SubVol_HY4&5PDvsCN.csv'),
+                                                                 'parkinsons_case-controls_SubVol_HY4PDandHY5PDvsCN.csv'),
                                                     on_bad_lines='skip')
         SubVol_MoCAvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',  
                                                              'parkinsons_case-controls_SubVol_MoCAvsCN.csv'),
@@ -1286,30 +1286,30 @@ def load_summary_stats(disorder=None):
                                                     on_bad_lines='skip')
 
         return {'CortSurf_HY1PDvsCN': CortSurf_HY1PDvsCN,
-                'CortSurf_HY1PDvsH2YPD': CortSurf_HY1PDvsH2YPD,
+                'CortSurf_HY1PDvsHY2PD': CortSurf_HY1PDvsHY2PD,
                 'CortSurf_HY2PDvsH3YPD': CortSurf_HY2PDvsH3YPD,
                 'CortSurf_HY2PDvsCN': CortSurf_HY2PDvsCN,
-                'CortSurf_HY3PDvsH4YPD_H5YPD': CortSurf_HY3PDvsH4YPD_H5YPD,
+                'CortSurf_HY3PDvsHY4PDandHY5PD': CortSurf_HY3PDvsHY4PDandHY5PD,
                 'CortSurf_HY3PDvsCN': CortSurf_HY3PDvsCN,
-                'CortSurf_HY4PD_HY5PDvsCN': CortSurf_HY4PD_HY5PDvsCN,
+                'CortSurf_HY4PDandHY5PDvsCN': CortSurf_HY4PDandHY5PDvsCN,
                 'CortSurf_MoCAvsCN': CortSurf_MoCAvsCN,
                 'CortSurf_PDvsCN': CortSurf_PDvsCN,
                 'CortThick_HY1PDvsCN': CortThick_HY1PDvsCN,
-                'CortThick_HY1PDvsH2YPD': CortThick_HY1PDvsH2YPD,
-                'CortThick_HY2PDvsH3YPD': CortThick_HY2PDvsH3YPD,
+                'CortThick_HY1PDvsHY2PD': CortThick_HY1PDvsHY2PD,
+                'CortThick_HY2PDvsHY3PD': CortThick_HY2PDvsHY3PD,
                 'CortThick_HY2PDvsCN': CortThick_HY2PDvsCN,
-                'CortThick_HY3PDvsH4YPD_H5YPD': CortThick_HY3PDvsH4YPD_H5YPD,
+                'CortThick_HY3PDvsH4YPDandHY5PD': CortThick_HY3PDvsH4YPDandHY5PD,
                 'CortThick_HY3PDvsCN': CortThick_HY3PDvsCN,
-                'CortThick_HY4PD_HY5PDvsCN': CortThick_HY4PD_HY5PDvsCN,
+                'CortThick_HY4PDandHY5PDvsCN': CortThick_HY4PDandHY5PDvsCN,
                 'CortThick_MoCAvsCN': CortThick_MoCAvsCN,
                 'CortThick_PDvsCN': CortThick_PDvsCN,
                 'SubVol_HY1PDvsHY2PD':SubVol_HY1PDvsHY2PD, 
                 'SubVol_HY1PDvsCN': SubVol_HY1PDvsCN,
                 'SubVol_HY2PDvsHY3PD': SubVol_HY2PDvsHY3PD,
                 'SubVol_HY2PDvsCN': SubVol_HY2PDvsCN,
-                'SubVol_HY3PDvsHY4PD_HY5PD': SubVol_HY3PDvsHY4PD_HY5PD,
+                'SubVol_HY3PDvsHY4PDandHY5PD': SubVol_HY3PDvsHY4PDandHY5PD,
                 'SubVol_HY3PDvsCN': SubVol_HY3PDvsCN,
-                'SubVol_HY4PD_HY5PDvsCN': SubVol_HY4PD_HY5PDvsCN,
+                'SubVol_HY4PDandHY5PDvsCN': SubVol_HY4PDandHY5PDvsCN,
                 'SubVol_MoCAvsCN': SubVol_MoCAvsCN,
                 'Subvol_PDvsCN': Subvol_PDvsCN}    
 
