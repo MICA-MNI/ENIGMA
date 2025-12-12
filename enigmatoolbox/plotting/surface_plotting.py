@@ -14,13 +14,15 @@ from .base import Plotter
 from .colormaps import colormaps
 from . import defaults_plotting as dp
 from .utils import _broadcast, _expand_arg, _grep_args, _gen_grid, _get_ranges
-from ..datasets import load_fsa, load_fsa5, load_conte69, load_subcortical
+from ..datasets import load_fsa, load_fsa5, load_fsa6, load_conte69, load_subcortical
 from ..utils.parcellation import subcorticalvertices
 from ..mesh.mesh_io import read_surface
 from ..vtk_interface.decorators import wrap_input
 
 orientations = {'medial': (0, -90, -90),
+                'medial2': (0, -90, 0),
                 'lateral': (0, 90, 90),
+                'lateral2': (0, 90, 0),
                 'ventral': (0, 180, 0),
                 'dorsal': (0, 0, 0)}
 
@@ -491,6 +493,8 @@ def plot_cortical(array_name=None, surface_name='fsa5', color_bar=False,
         surf_lh, surf_rh = load_fsa5()
     elif surface_name == "fsa":
         surf_lh, surf_rh = load_fsa()
+    elif surface_name == "fsa6":
+        surf_lh, surf_rh = load_fsa6()
     elif surface_name == "conte69":
         surf_lh, surf_rh = load_conte69()
 
