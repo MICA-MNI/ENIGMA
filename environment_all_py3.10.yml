@@ -1,0 +1,11 @@
+name: enigma310
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - vtk=9.3.1
+  - pip
+  - pip:
+      - .
