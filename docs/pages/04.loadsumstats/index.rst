@@ -778,3 +778,51 @@ Available summary statistics tables
         CT_d = CT.d_icv;
         SA_d = SA.d_icv;
 
+
+|
+
+Schizotypy
+----------------------------
+Available summary statistics tables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| **From** `Kirschner et al., 2021, Molecular Psychiatry <https://www.nature.com/articles/s41380-021-01359-9>`_   |  **Used Pearson’s r effect sizes; see paper for specific model corrections**
+|    ↪ CortThick_ThicknessCovariate 📸
+|    ↪ CortSurf_SurfAreaCovariate
+|    ↪ SubVol_CorrelationModel
+
+|    ↪ CortThick_noThicknessCovariate
+|    ↪ CortSurf_noSurfAreaCovariate
+
+|    ↪ CortThick_Smoking_Subgroup
+|    ↪ SubVol_Smoking_Subgroup
+
+|    ↪ CortThick_Controlling_SmokingStatus
+|    ↪ SubVol_Controlling_SmokingStatus
+
+.. tabs::
+
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.datasets import load_summary_stats
+
+        >>> # Load summary statistics for ENIGMA-Schizotypy
+        >>> sum_stats = load_summary_stats('schizotypy')
+
+        >>> # Get case-control cortical thickness table
+        >>> CT = sum_stats['CortThick_ThicknessCovariate']
+
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+
+   .. code-tab:: matlab **Matlab** | meta
+
+        % Load summary statistics for ENIGMA-Schizotypy
+        sum_stats = load_summary_stats('schizotypy');
+        
+        % Get case-control cortical thickness table
+        CT = sum_stats.CortThick_ThicknessCovariate;
+
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+

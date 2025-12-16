@@ -1,17 +1,17 @@
-Subcortical volume;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-schizotypy_SmokingCN;LLatVent;0.023;0.039;-0.053;0.100;;1334;0.550;0.877
-schizotypy_SmokingCN;Lthal;0.004;0.066;-0.126;0.134;;1325;0.954;0.996
-schizotypy_SmokingCN;Lcaud;0.035;0.044;-0.051;0.122;;1326;0.421;0.877
-schizotypy_SmokingCN;Lput;0.003;0.031;-0.059;0.064;;1292;0.934;0.996
-schizotypy_SmokingCN;Lpal;-0.035;0.029;-0.092;0.021;;1223;0.215;0.877
-schizotypy_SmokingCN;Lhippo;0.016;0.041;-0.063;0.095;;1326;0.692;0.877
-schizotypy_SmokingCN;Lamyg;0.025;0.027;-0.029;0.079;;1320;0.364;0.877
-schizotypy_SmokingCN;Laccumb;0.017;0.042;-0.066;0.099;;1318;0.694;0.877
-schizotypy_SmokingCN;RLatVent;0.006;0.042;-0.076;0.089;;1334;0.885;0.996
-schizotypy_SmokingCN;Rthal;0.050;0.069;-0.084;0.185;;1334;0.464;0.877
-schizotypy_SmokingCN;Rcaud;0.027;0.052;-0.075;0.129;;1330;0.607;0.877
-schizotypy_SmokingCN;Rput;-0.008;0.033;-0.072;0.056;;1316;0.802;0.962
-schizotypy_SmokingCN;Rpal;-0.035;0.043;-0.119;0.048;;1315;0.408;0.877
-schizotypy_SmokingCN;Rhippo;0.023;0.030;-0.036;0.082;;1329;0.445;0.877
-schizotypy_SmokingCN;Ramyg;0.031;0.027;-0.023;0.085;;1315;0.256;0.877
-schizotypy_SmokingCN;Raccumb;0.024;0.052;-0.078;0.126;;1319;0.649;0.877
+Subcortical volume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+schizotypy_SmokingCN,Laccumb,0.017,0.042,-0.066,0.099,,1318,0.694,0.877
+schizotypy_SmokingCN,Lamyg,0.025,0.027,-0.029,0.079,,1320,0.364,0.877
+schizotypy_SmokingCN,Lcaud,0.035,0.044,-0.051,0.122,,1326,0.421,0.877
+schizotypy_SmokingCN,Lhippo,0.016,0.041,-0.063,0.095,,1326,0.692,0.877
+schizotypy_SmokingCN,Lpal,-0.035,0.029,-0.092,0.021,,1223,0.215,0.877
+schizotypy_SmokingCN,Lput,0.003,0.031,-0.059,0.064,,1292,0.934,0.996
+schizotypy_SmokingCN,Lthal,0.004,0.066,-0.126,0.134,,1325,0.954,0.996
+schizotypy_SmokingCN,LLatVent,0.023,0.039,-0.053,0.100,,1334,0.550,0.877
+schizotypy_SmokingCN,Raccumb,0.024,0.052,-0.078,0.126,,1319,0.649,0.877
+schizotypy_SmokingCN,Ramyg,0.031,0.027,-0.023,0.085,,1315,0.256,0.877
+schizotypy_SmokingCN,Rcaud,0.027,0.052,-0.075,0.129,,1330,0.607,0.877
+schizotypy_SmokingCN,Rhippo,0.023,0.030,-0.036,0.082,,1329,0.445,0.877
+schizotypy_SmokingCN,Rpal,-0.035,0.043,-0.119,0.048,,1315,0.408,0.877
+schizotypy_SmokingCN,Rput,-0.008,0.033,-0.072,0.056,,1316,0.802,0.962
+schizotypy_SmokingCN,Rthal,0.050,0.069,-0.084,0.185,,1334,0.464,0.877
+schizotypy_SmokingCN,RLatVent,0.006,0.042,-0.076,0.089,,1334,0.885,0.996

@@ -1,17 +1,17 @@
-Subcortical volume;Structure;d_icv;se_civ;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-schizotypy_noSmokingCN;LLatVent;0.004;0.037;-0.069;0.077;;1137;0.914;0.962
-schizotypy_noSmokingCN;Lthal;0.004;0.082;-0.157;0.165;;1137;0.962;0.962
-schizotypy_noSmokingCN;Lcaud;0.028;0.048;-0.065;0.122;;1129;0.554;0.962
-schizotypy_noSmokingCN;Lput;-0.019;0.030;-0.078;0.040;;1098;0.530;0.962
-schizotypy_noSmokingCN;Lpal;-0.030;0.031;-0.091;0.031;;1034;0.333;0.962
-schizotypy_noSmokingCN;Lhippo;-0.008;0.030;-0.066;0.051;;1132;0.794;0.962
-schizotypy_noSmokingCN;Lamyg;-0.003;0.030;-0.061;0.056;;1127;0.926;0.962
-schizotypy_noSmokingCN;Laccumb;0.009;0.050;-0.090;0.107;;1123;0.859;0.962
-schizotypy_noSmokingCN;RLatVent;0.014;0.056;-0.095;0.123;;1137;0.799;0.962
-schizotypy_noSmokingCN;Rthal;0.059;0.088;-0.114;0.233;;1137;0.501;0.962
-schizotypy_noSmokingCN;Rcaud;0.015;0.057;-0.097;0.127;;1133;0.797;0.962
-schizotypy_noSmokingCN;Rput;-0.036;0.030;-0.095;0.023;;1120;0.228;0.962
-schizotypy_noSmokingCN;Rpal;-0.036;0.037;-0.107;0.036;;1119;0.329;0.962
-schizotypy_noSmokingCN;Rhippo;-0.031;0.030;-0.089;0.027;;1136;0.295;0.962
-schizotypy_noSmokingCN;Ramyg;0.014;0.030;-0.044;0.072;;1122;0.641;0.962
-schizotypy_noSmokingCN;Raccumb;0.014;0.050;-0.084;0.112;;1124;0.781;0.962
+Subcortical volume,Structure,d_icv,se_civ,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+schizotypy_noSmokingCN,Laccumb,0.009,0.050,-0.090,0.107,,1123,0.859,0.962
+schizotypy_noSmokingCN,Lamyg,-0.003,0.030,-0.061,0.056,,1127,0.926,0.962
+schizotypy_noSmokingCN,Lcaud,0.028,0.048,-0.065,0.122,,1129,0.554,0.962
+schizotypy_noSmokingCN,Lhippo,-0.008,0.030,-0.066,0.051,,1132,0.794,0.962
+schizotypy_noSmokingCN,Lpal,-0.030,0.031,-0.091,0.031,,1034,0.333,0.962
+schizotypy_noSmokingCN,Lput,-0.019,0.030,-0.078,0.040,,1098,0.530,0.962
+schizotypy_noSmokingCN,Lthal,0.004,0.082,-0.157,0.165,,1137,0.962,0.962
+schizotypy_noSmokingCN,LLatVent,0.004,0.037,-0.069,0.077,,1137,0.914,0.962
+schizotypy_noSmokingCN,Raccumb,0.014,0.050,-0.084,0.112,,1124,0.781,0.962
+schizotypy_noSmokingCN,Ramyg,0.014,0.030,-0.044,0.072,,1122,0.641,0.962
+schizotypy_noSmokingCN,Rcaud,0.015,0.057,-0.097,0.127,,1133,0.797,0.962
+schizotypy_noSmokingCN,Rhippo,-0.031,0.030,-0.089,0.027,,1136,0.295,0.962
+schizotypy_noSmokingCN,Rpal,-0.036,0.037,-0.107,0.036,,1119,0.329,0.962
+schizotypy_noSmokingCN,Rput,-0.036,0.030,-0.095,0.023,,1120,0.228,0.962
+schizotypy_noSmokingCN,Rthal,0.059,0.088,-0.114,0.233,,1137,0.501,0.962
+schizotypy_noSmokingCN,RLatVent,0.014,0.056,-0.095,0.123,,1137,0.799,0.962

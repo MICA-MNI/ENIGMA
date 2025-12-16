@@ -1,0 +1,17 @@
+Subcortical Volume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+psychosisvsCN,Laccumb,,,,,,,,
+psychosisvsCN,Lamyg,,,,,,,,
+psychosisvsCN,Lcaud,,,,,,,,
+psychosisvsCN,Lhippo,,,,,,,,
+psychosisvsCN,Lpal,,,,,,,,
+psychosisvsCN,Lput,,,,,,,,
+psychosisvsCN,Lthal,,,,,,,,
+psychosisvsCN,LLatVent,0.09,,0.02,0.17,,,,0.01
+psychosisvsCN,Raccumb,,,,,,,,
+psychosisvsCN,Ramyg,,,,,,,,
+psychosisvsCN,Rcaud,,,,,,,,
+psychosisvsCN,Rhippo,-0.13,,-0.2,-0.06,,,,1.21E-03
+psychosisvsCN,Rpal,,,,,,,,
+psychosisvsCN,Rput,,,,,,,,
+psychosisvsCN,Rthal,-0.06,,-0.13,0.01,,,,0.08
+psychosisvsCN,RLatVent,0.09,,0.02,0.16,,,,0.02

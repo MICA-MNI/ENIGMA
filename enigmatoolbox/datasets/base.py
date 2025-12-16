@@ -1709,34 +1709,34 @@ def load_summary_stats(disorder=None):
                 'Schizo_SubVol': Schizo_SubVol}
 
     elif disorder == "schizotypy":
-        Schizotypy_SmokingCN = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
-                                                          'schizotypy_SmokingCN.csv '), on_bad_lines='skip')
-        Schizotypy_SmokingSubgroup = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        CortThick_Controlling_SmokingStatus = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                          'schizotypy_SmokingCN.csv'), on_bad_lines='skip')
+        CortThick_Smoking_Subgroup = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'schizotypy_SmokingSubgroup.csv'), on_bad_lines='skip')
-        Schizotypy_SubVolnoSmokingSubgroup = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        SubVol_Controlling_SmokingStatus = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'schizotypy_SubVolnoSmokingSubgroup.csv'), on_bad_lines='skip')
-        Schizotypy_SubVolSmokingSubgroup = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        SubVol_Smoking_Subgroup = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'schizotypy_SubVolSmokingSubgroup.csv'), on_bad_lines='skip')                                                  
-        Schizotypy_CortSurf_noSurfAreaCovariate = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        CortSurf_noSurfAreaCovariate = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                            'schizotypy_CortSurf_noSurfAreaCovariate.csv'), on_bad_lines='skip')
-        Schizotypy_CortSurf_SurfAreaCovariate = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        CortSurf_SurfAreaCovariate = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'schizotypy_CortSurf_SurfAreaCovariate.csv'), on_bad_lines='skip')
-        Schizotypy_CortThick_noThicknessCovariate = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        CortThick_noThicknessCovariate = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                           'schizotypy_CortThick_noThicknessCovariate.csv'), on_bad_lines='skip')
-        Schizotypy_CortThick_ThicknessCovariate = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        CortThick_ThicknessCovariate = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                            'schizotypy_CortThick_ThicknessCovariate.csv'), on_bad_lines='skip')
-        Schizotypy_SubVol_CorrelationModel  = pd.read_csv(os.path.join(root_pth, 'mega_analysis',
+        SubVol_CorrelationModel  = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                            'schizotypy_SubVol_CorrelationModel.csv'), on_bad_lines='skip')                                                   
 
-        return {'Schizotypy_SmokingCN': Schizotypy_SmokingCN,
-                'Schizotypy_SmokingSubgroup': Schizotypy_SmokingSubgroup,
-                'Schizotypy_SubVolnoSmokingSubgroup': Schizotypy_SubVolnoSmokingSubgroup,
-                'Schizotypy_SubVolSmokingSubgroup': Schizotypy_SubVolSmokingSubgroup,
-                'Schizotypy_CortSurf_noSurfAreaCovariate': Schizotypy_CortSurf_noSurfAreaCovariate,
-                'Schizotypy_CortSurf_SurfAreaCovariate': Schizotypy_CortSurf_SurfAreaCovariate,
-                'Schizotypy_CortThick_noThicknessCovariate': Schizotypy_CortThick_noThicknessCovariate,
-                'Schizotypy_CortThick_ThicknessCovariate': Schizotypy_CortThick_ThicknessCovariate,
-                'Schizotypy_SubVol_CorrelationModel': Schizotypy_SubVol_CorrelationModel}
+        return {'CortThick_Controlling_SmokingStatus': CortThick_Controlling_SmokingStatus,
+                'CortThick_Smoking_Subgroup': CortThick_Smoking_Subgroup,
+                'SubVol_Controlling_SmokingStatus': SubVol_Controlling_SmokingStatus,
+                'SubVol_Smoking_Subgroup': SubVol_Smoking_Subgroup,
+                'CortSurf_noSurfAreaCovariate': CortSurf_noSurfAreaCovariate,
+                'CortSurf_SurfAreaCovariate': CortSurf_SurfAreaCovariate,
+                'CortThick_noThicknessCovariate': CortThick_noThicknessCovariate,
+                'CortThick_ThicknessCovariate': CortThick_ThicknessCovariate,
+                'SubVol_CorrelationModel': SubVol_CorrelationModel}
 
     else:
         raise ValueError("must specify a valid disorder...!")
