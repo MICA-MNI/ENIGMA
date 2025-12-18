@@ -1,69 +1,69 @@
-CorticalThickness;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-CHR-PS-< HC;L_bankssts_thickavg;-0.11;;-0.19;-0.03;;;7.27e-03;
-CHR-PS-< HC;L_caudalanteriorcingulate_thickavg;-0.09;;-0.16;-0.01;;;0.03;
-CHR-PS-< HC;L_caudalmiddlefrontal_thickavg;-0.12;;-0.2;-0.04;;;2.77e-03;
-CHR-PS-< HC;L_cuneus_thickavg;0.02;;-0.06;0.1;;;0.61;
-CHR-PS-< HC;L_entorhinal_thickavg;0;;-0.08;0.08;;;0.98;
-CHR-PS-< HC;L_fusiform_thickavg;-0.15;;-0.23;-0.07;;;1.52e-04;
-CHR-PS-< HC;L_inferiorparietal_thickavg;-0.16;;-0.24;-0.09;;;3.20e-05;
-CHR-PS-< HC;L_inferiortemporal_thickavg;-0.11;;-0.19;-0.04;;;4.28e-03;
-CHR-PS-< HC;L_isthmuscingulate_thickavg;-0.02;;-0.1;0.06;;;0.58;
-CHR-PS-< HC;L_lateraloccipital_thickavg;-0.11;;-0.19;-0.03;;;4.50e-03;
-CHR-PS-< HC;L_lateralorbitofrontal_thickavg;-0.07;;-0.15;0;;;0.06;
-CHR-PS-< HC;L_lingual_thickavg;-0.04;;-0.12;0.04;;;0.33;
-CHR-PS-< HC;L_medialorbitofrontal_thickavg;-0.15;;-0.23;-0.07;;;1.86e-04;
-CHR-PS-< HC;L_middletemporal_thickavg;-0.07;;-0.15;0.01;;;0.07;
-CHR-PS-< HC;L_parahippocampal_thickavg;-0.14;;-0.22;-0.06;;;3.45e-04;
-CHR-PS-< HC;L_paracentral_thickavg;-0.12;;-0.2;-0.04;;;2.25e-03;
-CHR-PS-< HC;L_parsopercularis_thickavg;-0.05;;-0.13;0.02;;;0.17;
-CHR-PS-< HC;L_parsorbitalis_thickavg;-0.05;;-0.12;0.03;;;0.23;
-CHR-PS-< HC;L_parstriangularis_thickavg;0.01;;-0.06;0.09;;;0.71;
-CHR-PS-< HC;L_pericalcarine_thickavg;0.02;;-0.06;0.1;;;0.60;
-CHR-PS-< HC;L_postcentral_thickavg;-0.10;;-0.18;-0.02;;;0.01;
-CHR-PS-< HC;L_posteriorcingulate_thickavg;-0.10;;-0.18;-0.03;;;8.04e-03;
-CHR-PS-< HC;L_precentral_thickavg;-0.14;;-0.22;-0.06;;;4.37e-04;
-CHR-PS-< HC;L_precuneus_thickavg;-0.12;;-0.2;-0.04;;;2.63e-03;
-CHR-PS-< HC;L_rostralanteriorcingulate_thickavg;-0.11;;-0.18;-0.03;;;8.06e-03;
-CHR-PS-< HC;L_rostralmiddlefrontal_thickavg;-0.13;;-0.21;-0.05;;;8.63e-04;
-CHR-PS-< HC;L_superiorfrontal_thickavg;-0.12;;-0.2;-0.05;;;1.95e-03;
-CHR-PS-< HC;L_superiorparietal_thickavg;-0.11;;-0.19;-0.03;;;6.53e-03;
-CHR-PS-< HC;L_superiortemporal_thickavg;-0.10;;-0.18;-0.02;;;0.01;
-CHR-PS-< HC;L_supramarginal_thickavg;-0.11;;-0.19;-0.03;;;5.22e-03;
-CHR-PS-< HC;L_frontalpole_thickavg;-0.04;;-0.12;0.04;;;0.30;
-CHR-PS-< HC;L_temporalpole_thickavg;-0.04;;-0.11;0.04;;;0.36;
-CHR-PS-< HC;L_transversetemporal_thickavg;-0.08;;-0.15;0;;;0.05;
-CHR-PS-< HC;L_insula_thickavg;-0.18;;-0.25;-0.1;;;8.07e-06;
-CHR-PS-< HC;R_bankssts_thickavg;-0.14;;-0.22;-0.07;;;3.21e-04;
-CHR-PS-< HC;R_caudalanteriorcingulate_thickavg;-0.06;;-0.14;0.02;;;0.12;
-CHR-PS-< HC;R_caudalmiddlefrontal_thickavg;-0.14;;-0.22;-0.06;;;3.91e-04;
-CHR-PS-< HC;R_cuneus_thickavg;-0.05;;-0.13;0.03;;;0.21;
-CHR-PS-< HC;R_entorhinal_thickavg;-0.04;;-0.11;0.04;;;0.37;
-CHR-PS-< HC;R_fusiform_thickavg;-0.09;;-0.17;-0.02;;;0.02;
-CHR-PS-< HC;R_inferiorparietal_thickavg;-0.13;;-0.21;-0.06;;;7.76e-04;
-CHR-PS-< HC;R_inferiortemporal_thickavg;-0.16;;-0.24;-0.09;;;3.73e-05;
-CHR-PS-< HC;R_isthmuscingulate_thickavg;-0.08;;-0.15;0;;;0.05;
-CHR-PS-< HC;R_lateraloccipital_thickavg;-0.16;;-0.23;-0.08;;;8.69e-05;
-CHR-PS-< HC;R_lateralorbitofrontal_thickavg;-0.09;;-0.16;-0.01;;;0.03;
-CHR-PS-< HC;R_lingual_thickavg;-0.01;;-0.08;0.07;;;0.88;
-CHR-PS-< HC;R_medialorbitofrontal_thickavg;-0.12;;-0.19;-0.04;;;3.43e-03;
-CHR-PS-< HC;R_middletemporal_thickavg;-0.18;;-0.25;-0.1;;;9.15e-06;
-CHR-PS-< HC;R_parahippocampal_thickavg;-0.07;;-0.14;0.01;;;0.09;
-CHR-PS-< HC;R_paracentral_thickavg;-0.09;;-0.16;-0.01;;;0.03;
-CHR-PS-< HC;R_parsopercularis_thickavg;-0.07;;-0.15;0;;;0.07;
-CHR-PS-< HC;R_parsorbitalis_thickavg;-0.02;;-0.09;0.06;;;0.68;
-CHR-PS-< HC;R_parstriangularis_thickavg;-0.06;;-0.14;0.02;;;0.12;
-CHR-PS-< HC;R_pericalcarine_thickavg;0.05;;-0.03;0.12;;;0.25;
-CHR-PS-< HC;R_postcentral_thickavg;-0.11;;-0.19;-0.04;;;4.57e-03;
-CHR-PS-< HC;R_posteriorcingulate_thickavg;-0.12;;-0.2;-0.05;;;1.83e-03;
-CHR-PS-< HC;R_precentral_thickavg;-0.12;;-0.2;-0.04;;;2.06e-03;
-CHR-PS-< HC;R_precuneus_thickavg;-0.16;;-0.24;-0.09;;;3.43e-05;
-CHR-PS-< HC;R_rostralanteriorcingulate_thickavg;-0.09;;-0.17;-0.02;;;0.02;
-CHR-PS-< HC;R_rostralmiddlefrontal_thickavg;-0.12;;-0.2;-0.04;;;2.63e-03;
-CHR-PS-< HC;R_superiorfrontal_thickavg;-0.10;;-0.18;-0.02;;;0.01;
-CHR-PS-< HC;R_superiorparietal_thickavg;-0.13;;.-0.21;-0.05;;;9.76e-04;
-CHR-PS-< HC;R_superiortemporal_thickavg;-0.14;;-0.21;-0.06;;;6.49e-04;
-CHR-PS-< HC;R_supramarginal_thickavg;-0.11;;-0.19;-0.03;;;6.68e-03;
-CHR-PS-< HC;R_frontalpole_thickavg;-0.06;;-0.14;0.02;;;0.12;
-CHR-PS-< HC;R_temporalpole_thickavg;-0.07;;-0.15;0.01;;;0.07;
-CHR-PS-< HC;R_transversetemporal_thickavg;-0.11;;-0.19;-0.03;;;5.45e-03;
-CHR-PS-< HC;R_insula_thickavg;-0.16;;-0.24;-0.08;;;4.67e-05;
+CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+CHR-PS-<HC,L_bankssts,-0.11,,-0.19,-0.03,,,7.27E-03,
+CHR-PS-<HC,L_caudalanteriorcingulate,-0.09,,-0.16,-0.01,,,0.03,
+CHR-PS-<HC,L_caudalmiddlefrontal,-0.12,,-0.2,-0.04,,,2.77E-03,
+CHR-PS-<HC,L_cuneus,0.02,,-0.06,0.1,,,0.61,
+CHR-PS-<HC,L_entorhinal,0,,-0.08,0.08,,,0.98,
+CHR-PS-<HC,L_fusiform,-0.15,,-0.23,-0.07,,,1.52E-04,
+CHR-PS-<HC,L_inferiorparietal,-0.16,,-0.24,-0.09,,,3.2E-05,
+CHR-PS-<HC,L_inferiortemporal,-0.11,,-0.19,-0.04,,,4.28E-03,
+CHR-PS-<HC,L_isthmuscingulate,-0.02,,-0.1,0.06,,,0.58,
+CHR-PS-<HC,L_lateraloccipital,-0.11,,-0.19,-0.03,,,4.5E-03,
+CHR-PS-<HC,L_lateralorbitofrontal,-0.07,,-0.15,0,,,0.06,
+CHR-PS-<HC,L_lingual,-0.04,,-0.12,0.04,,,0.33,
+CHR-PS-<HC,L_medialorbitofrontal,-0.15,,-0.23,-0.07,,,1.86E-04,
+CHR-PS-<HC,L_middletemporal,-0.07,,-0.15,0.01,,,0.07,
+CHR-PS-<HC,L_parahippocampal,-0.14,,-0.22,-0.06,,,3.45E-04,
+CHR-PS-<HC,L_paracentral,-0.12,,-0.2,-0.04,,,2.25E-03,
+CHR-PS-<HC,L_parsopercularis,-0.05,,-0.13,0.02,,,0.17,
+CHR-PS-<HC,L_parsorbitalis,-0.05,,-0.12,0.03,,,0.23,
+CHR-PS-<HC,L_parstriangularis,0.01,,-0.06,0.09,,,0.71,
+CHR-PS-<HC,L_pericalcarine,0.02,,-0.06,0.1,,,0.60,
+CHR-PS-<HC,L_postcentral,-0.10,,-0.18,-0.02,,,0.01,
+CHR-PS-<HC,L_posteriorcingulate,-0.10,,-0.18,-0.03,,,8.04E-03,
+CHR-PS-<HC,L_precentral,-0.14,,-0.22,-0.06,,,4.37E-04,
+CHR-PS-<HC,L_precuneus,-0.12,,-0.2,-0.04,,,2.63E-03,
+CHR-PS-<HC,L_rostralanteriorcingulate,-0.11,,-0.18,-0.03,,,8.06E-03,
+CHR-PS-<HC,L_rostralmiddlefrontal,-0.13,,-0.21,-0.05,,,8.63E-04,
+CHR-PS-<HC,L_superiorfrontal,-0.12,,-0.2,-0.05,,,1.95E-03,
+CHR-PS-<HC,L_superiorparietal,-0.11,,-0.19,-0.03,,,6.53E-03,
+CHR-PS-<HC,L_superiortemporal,-0.10,,-0.18,-0.02,,,0.01,
+CHR-PS-<HC,L_supramarginal,-0.11,,-0.19,-0.03,,,5.22E-03,
+CHR-PS-<HC,L_frontalpole,-0.04,,-0.12,0.04,,,0.30,
+CHR-PS-<HC,L_temporalpole,-0.04,,-0.11,0.04,,,0.36,
+CHR-PS-<HC,L_transversetemporal,-0.08,,-0.15,0,,,0.05,
+CHR-PS-<HC,L_insula,-0.18,,-0.25,-0.1,,,8.07E-06,
+CHR-PS-<HC,R_bankssts,-0.14,,-0.22,-0.07,,,3.21E-04,
+CHR-PS-<HC,R_caudalanteriorcingulate,-0.06,,-0.14,0.02,,,0.12,
+CHR-PS-<HC,R_caudalmiddlefrontal,-0.14,,-0.22,-0.06,,,3.91E-04,
+CHR-PS-<HC,R_cuneus,-0.05,,-0.13,0.03,,,0.21,
+CHR-PS-<HC,R_entorhinal,-0.04,,-0.11,0.04,,,0.37,
+CHR-PS-<HC,R_fusiform,-0.09,,-0.17,-0.02,,,0.02,
+CHR-PS-<HC,R_inferiorparietal,-0.13,,-0.21,-0.06,,,7.76E-04,
+CHR-PS-<HC,R_inferiortemporal,-0.16,,-0.24,-0.09,,,3.73E-05,
+CHR-PS-<HC,R_isthmuscingulate,-0.08,,-0.15,0,,,0.05,
+CHR-PS-<HC,R_lateraloccipital,-0.16,,-0.23,-0.08,,,8.69E-05,
+CHR-PS-<HC,R_lateralorbitofrontal,-0.09,,-0.16,-0.01,,,0.03,
+CHR-PS-<HC,R_lingual,-0.01,,-0.08,0.07,,,0.88,
+CHR-PS-<HC,R_medialorbitofrontal,-0.12,,-0.19,-0.04,,,3.43E-03,
+CHR-PS-<HC,R_middletemporal,-0.18,,-0.25,-0.1,,,9.15E-06,
+CHR-PS-<HC,R_parahippocampal,-0.07,,-0.14,0.01,,,0.09,
+CHR-PS-<HC,R_paracentral,-0.09,,-0.16,-0.01,,,0.03,
+CHR-PS-<HC,R_parsopercularis,-0.07,,-0.15,0,,,0.07,
+CHR-PS-<HC,R_parsorbitalis,-0.02,,-0.09,0.06,,,0.68,
+CHR-PS-<HC,R_parstriangularis,-0.06,,-0.14,0.02,,,0.12,
+CHR-PS-<HC,R_pericalcarine,0.05,,-0.03,0.12,,,0.25,
+CHR-PS-<HC,R_postcentral,-0.11,,-0.19,-0.04,,,4.57E-03,
+CHR-PS-<HC,R_posteriorcingulate,-0.12,,-0.2,-0.05,,,1.83E-03,
+CHR-PS-<HC,R_precentral,-0.12,,-0.2,-0.04,,,2.06E-03,
+CHR-PS-<HC,R_precuneus,-0.16,,-0.24,-0.09,,,3.43E-05,
+CHR-PS-<HC,R_rostralanteriorcingulate,-0.09,,-0.17,-0.02,,,0.02,
+CHR-PS-<HC,R_rostralmiddlefrontal,-0.12,,-0.2,-0.04,,,2.63E-03,
+CHR-PS-<HC,R_superiorfrontal,-0.10,,-0.18,-0.02,,,0.01,
+CHR-PS-<HC,R_superiorparietal,-0.13,,-0.21,-0.05,,,9.76E-04,
+CHR-PS-<HC,R_superiortemporal,-0.14,,-0.21,-0.06,,,6.49E-04,
+CHR-PS-<HC,R_supramarginal,-0.11,,-0.19,-0.03,,,6.68E-03,
+CHR-PS-<HC,R_frontalpole,-0.06,,-0.14,0.02,,,0.12,
+CHR-PS-<HC,R_temporalpole,-0.07,,-0.15,0.01,,,0.07,
+CHR-PS-<HC,R_transversetemporal,-0.11,,-0.19,-0.03,,,5.45E-03,
+CHR-PS-<HC,R_insula,-0.16,,-0.24,-0.08,,,4.67E-05,

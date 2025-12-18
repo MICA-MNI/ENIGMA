@@ -1,69 +1,69 @@
-CorticalThickness;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;p;q
-psychosisvsCN;L_bankssts_thickavg;-0,1;;-0,17;-0,03;;;5,67E-03;0,01
-psychosisvsCN;L_caudalanteriorcingulate_thickavg;-0.07 ;;-0,14;0;;;0,06;0,08
-psychosisvsCN;L_caudalmiddlefrontal_thickavg;-0,12;;-0,19;-0,05;;;5,81E-04;2,31E-03
-psychosisvsCN;L_cuneus_thickavg;0;;-0,07;0,07;;;0,98;0,98
-psychosisvsCN;L_entorhinal_thickavg;-0,02;;-0,09;0,05;;;0,53;0,57
-psychosisvsCN;L_fusiform_thickavg;-0,18;;-0,25;-0,1;;;1,22E-06;3,77E-05
-psychosisvsCN;L_inferiorparietal_thickavg;-0,17;;-0,24;-0,1;;;3,26E-06;6,31E-05
-psychosisvsCN;L_inferiortemporal_thickavg;-0,13;;-0,2;-0,06;;;3,91E-04;1,68E-03
-psychosisvsCN;L_isthmuscingulate_thickavg;-0,03;;-0,1;0,04;;; 0,37  ; 0,41  
-psychosisvsCN;L_lateraloccipital_thickavg;-0,12;;-0,19;-0,05;;;6,90E-04;2,61E-03
-psychosisvsCN;L_lateralorbitofrontal_thickavg;-0,08;;-0,15;-0,01;;; 0,03  ; 0,04  
-psychosisvsCN;L_lingual_thickavg;-0,05;;-0,12; 0,02  ;;; 0,18  ; 0,21  
-psychosisvsCN;L_medialorbitofrontal_thickavg;-0,13;;-0,2;-0,06;;;3,16E-04;1,44E-03
-psychosisvsCN;L_middletemporal_thickavg;-0,1;;-0,17;-0,03;;;7,51E-03; 0,02  
-psychosisvsCN;L_parahippocampal_thickavg;-0,12;;-0,19;-0,05;;;8,85E-04;3,27E-03
-psychosisvsCN;L_paracentral_thickavg;-0,16;;-0,23;-0,09;;;1,11E-05;1,56E-04
-psychosisvsCN;L_parsopercularis_thickavg;-0,05;;-0,12;0,02;;; 0,14  ; 0,16  
-psychosisvsCN;L_parsorbitalis_thickavg;-0,05;;-0,12;0,02;;; 0,18  ; 0,21  
-psychosisvsCN;L_parstriangularis_thickavg;0,01;;-0,06;0,09;;; 0,68  ; 0,72  
-psychosisvsCN;L_pericalcarine_thickavg;0,01;;-0,06;0,08;;; 0,76  ; 0,80  
-psychosisvsCN;L_postcentral_thickavg;-0,1;;-0,18;-0,03;;;4,23E-03;9,68E-03
-psychosisvsCN;L_posteriorcingulate_thickavg;-0,1;;-0,17;-0,03;;;3,82E-03;9,26E-03
-psychosisvsCN;L_precentral_thickavg;-0,14;;-0,21;-0,07;;;7,62E-05;5,91E-04
-psychosisvsCN;L_precuneus_thickavg;-0,11;;-0,18;-0,04;;;1,63E-03;4,86E-03
-psychosisvsCN;L_rostralanteriorcingulate_thickavg;-0,09;;-0,16;-0,02;;; 0,02  ; 0,03  
-psychosisvsCN;L_rostralmiddlefrontal_thickavg;-0,13;;-0,2;-0,06;;;2,97E-04;1,39E-03
-psychosisvsCN;L_superiorfrontal_thickavg;-0,1;;-0,17;-0,03;;;4,18E-03;9,68E-03
-psychosisvsCN;L_superiorparietal_thickavg;-0,11;;-0,18;-0,04;;;2,35E-03;6,08E-03
-psychosisvsCN;L_superiortemporal_thickavg;-0,13;;-0,2;-0,06;;;4,41E-04;1,80E-03
-psychosisvsCN;L_supramarginal_thickavg;-0,1;;-0,17;-0,03;;;4,25E-03;9,68E-03
-psychosisvsCN;L_frontalpole_thickavg;-0,04;;-0,11;0,03;;;0,27;0,31
-psychosisvsCN;L_temporalpole_thickavg;-0,05;;-0,12;0,02;;; 0,16  ; 0,19  
-psychosisvsCN;L_transversetemporal_thickavg;-0,08;;-0,15;-0,01;;; 0,03  ; 0,05  
-psychosisvsCN;L_insula_thickavg;-0,18;;-0,25;-0,11;;;7,28E-07;2,82E-05
-psychosisvsCN;R_bankssts_thickavg;-0,13;;-0,21;-0,06;;;1,99E-04;1,18E-03
-psychosisvsCN;R_caudalanteriorcingulate_thickavg;-0,05;;-0,12;0,02;;;0,13;0,16
-psychosisvsCN;R_caudalmiddlefrontal_thickavg;-0,14;;-0,21;-0,06;;;1,84E-04;1,14E-03
-psychosisvsCN;R_cuneus_thickavg;-0,05;;-0,13;0,02;;;0,13;0,16
-psychosisvsCN;R_entorhinal_thickavg;-0,06;;-0,13;0,01;;;0,11;0,14
-psychosisvsCN;R_fusiform_thickavg;-0,11;;-0,18;-0,04;;;2,34E-03;6,08E-03
-psychosisvsCN;R_inferiorparietal_thickavg;-0,12;;-0,19;-0,04;;;1,41E-03;4,45E-03
-psychosisvsCN;R_inferiortemporal_thickavg;-0,14;;-0,21;-0,07;;;9,00E-05;6,64E-04
-psychosisvsCN;R_isthmuscingulate_thickavg;-0,07;;-0,14;0;;; 0,07  ; 0,09  
-psychosisvsCN;R_lateraloccipital_thickavg;-0,17;;-0,24;-0,1;;;2,28E-06;5,88E-05
-psychosisvsCN;R_lateralorbitofrontal_thickavg;-0,08;;-0,15;-0,01;;; 0,02  ; 0,04  
-psychosisvsCN;R_lingual_thickavg;-0,01;;-0,08;0,06;;; 0,72  ; 0,76  
-psychosisvsCN;R_medialorbitofrontal_thickavg;-0,09;;-0,16;-0,02;;; 0,01  ; 0,02  
-psychosisvsCN;R_middletemporal_thickavg;-0,18;;-0,25;-0,11;;;4,61E-07;2,82E-05
-psychosisvsCN;R_parahippocampal_thickavg;-0,07;;-0,14;0;;; 0,04  ; 0,06  
-psychosisvsCN;R_paracentral_thickavg;-0,11;;-0,18;-0,04;;;2,65E-03;6,74E-03
-psychosisvsCN;R_parsopercularis_thickavg;-0,08;;-0,15;-0,01;;; 0,03  ; 0,05  
-psychosisvsCN;R_parsorbitalis_thickavg;0,01;;-0,06;0,08;;; 0,79  ; 0,81  
-psychosisvsCN;R_parstriangularis_thickavg;-0,05;;-0,12;0,02;;; 0,19  ; 0,22  
-psychosisvsCN;R_pericalcarine_thickavg;0,04;;-0,03;0,11;;; 0,31  ; 0,34  
-psychosisvsCN;R_postcentral_thickavg;-0,14;;-0,21;-0,07;;;1,55E-04;1,04E-03
-psychosisvsCN;R_posteriorcingulate_thickavg;-0,13;;-0,2;-0,06;;;2,69E-04;1,36E-03
-psychosisvsCN;R_precentral_thickavg;-0,15;;-0,22;-0,07;;;6,15E-05;5,02E-04
-psychosisvsCN;R_precuneus_thickavg;-0,15;;-0,22;-0,08;;;2,99E-05;3,31E-04
-psychosisvsCN;R_rostralanteriorcingulate_thickavg;-0,06;;-0,13;-0,01;;; 0,10  ; 0,12  
-psychosisvsCN;R_rostralmiddlefrontal_thickavg;-0,11;;-0,18;-0,04;;;1,83E-03;5,19E-03
-psychosisvsCN;R_superiorfrontal_thickavg;-0,08;;-0,15;-0,01;;; 0,03  ; 0,04  
-psychosisvsCN;R_superiorparietal_thickavg;-0,13;;-0,2;-0,06;;;3,96E-04;1,68E-03
-psychosisvsCN;R_superiortemporal_thickavg;-0,15;;-0,22;-0,08;;;2,72E-05;3,24E-04
-psychosisvsCN;R_supramarginal_thickavg;-0,1;;-0,17;-0,03;;;5,49E-03; 0,01  
-psychosisvsCN;R_frontalpole_thickavg;-0,07;;-0,14;0;;;0,05;0,07
-psychosisvsCN;R_temporalpole_thickavg;-0,08;;-0,15;-0,01;;; 0,03  ; 0,05  
-psychosisvsCN;R_transversetemporal_thickavg;-0,12;;-0,19;-0,04;;;1,35E-03;4,44E-03
-;R_insula_thickavg;-0,16;;-0,23;-0,06;;;7,40E-06;1,15E-04
+CorticalThickness,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+psychosisvsCN,L_bankssts,-0.1,,-0.17,-0.03,,,5.67E-03,0.01
+psychosisvsCN,L_caudalanteriorcingulate,-0.07,,-0.14,0,,,0.06,0.08
+psychosisvsCN,L_caudalmiddlefrontal,-0.12,,-0.19,-0.05,,,5.81E-04,2.31E-03
+psychosisvsCN,L_cuneus,0,,-0.07,0.07,,,0.98,0.98
+psychosisvsCN,L_entorhinal,-0.02,,-0.09,0.05,,,0.53,0.57
+psychosisvsCN,L_fusiform,-0.18,,-0.25,-0.1,,,1.22E-06,3.77E-05
+psychosisvsCN,L_inferiorparietal,-0.17,,-0.24,-0.1,,,3.26E-06,6.31E-05
+psychosisvsCN,L_inferiortemporal,-0.13,,-0.2,-0.06,,,3.91E-04,1.68E-03
+psychosisvsCN,L_isthmuscingulate,-0.03,,-0.1,0.04,,,0.37,0.41
+psychosisvsCN,L_lateraloccipital,-0.12,,-0.19,-0.05,,,6.90E-04,2.61E-03
+psychosisvsCN,L_lateralorbitofrontal,-0.08,,-0.15,-0.01,,,0.03,0.04
+psychosisvsCN,L_lingual,-0.05,,-0.12,0.02,,,0.18,0.21
+psychosisvsCN,L_medialorbitofrontal,-0.13,,-0.2,-0.06,,,3.16E-04,1.44E-03
+psychosisvsCN,L_middletemporal,-0.1,,-0.17,-0.03,,,7.51E-03,0.02
+psychosisvsCN,L_parahippocampal,-0.12,,-0.19,-0.05,,,8.85E-04,3.27E-03
+psychosisvsCN,L_paracentral,-0.16,,-0.23,-0.09,,,1.11E-05,1.56E-04
+psychosisvsCN,L_parsopercularis,-0.05,,-0.12,0.02,,,0.14,0.16
+psychosisvsCN,L_parsorbitalis,-0.05,,-0.12,0.02,,,0.18,0.21
+psychosisvsCN,L_parstriangularis,0.01,,-0.06,0.09,,,0.68,0.72
+psychosisvsCN,L_pericalcarine,0.01,,-0.06,0.08,,,0.76,0.80
+psychosisvsCN,L_postcentral,-0.1,,-0.18,-0.03,,,4.23E-03,9.68E-03
+psychosisvsCN,L_posteriorcingulate,-0.1,,-0.17,-0.03,,,3.82E-03,9.26E-03
+psychosisvsCN,L_precentral,-0.14,,-0.21,-0.07,,,7.62E-05,5.91E-04
+psychosisvsCN,L_precuneus,-0.11,,-0.18,-0.04,,,1.63E-03,4.86E-03
+psychosisvsCN,L_rostralanteriorcingulate,-0.09,,-0.16,-0.02,,,0.02,0.03
+psychosisvsCN,L_rostralmiddlefrontal,-0.13,,-0.2,-0.06,,,2.97E-04,1.39E-03
+psychosisvsCN,L_superiorfrontal,-0.1,,-0.17,-0.03,,,4.18E-03,9.68E-03
+psychosisvsCN,L_superiorparietal,-0.11,,-0.18,-0.04,,,2.35E-03,6.08E-03
+psychosisvsCN,L_superiortemporal,-0.13,,-0.2,-0.06,,,4.41E-04,1.80E-03
+psychosisvsCN,L_supramarginal,-0.1,,-0.17,-0.03,,,4.25E-03,9.68E-03
+psychosisvsCN,L_frontalpole,-0.04,,-0.11,0.03,,,0.27,0.31
+psychosisvsCN,L_temporalpole,-0.05,,-0.12,0.02,,,0.16,0.19
+psychosisvsCN,L_transversetemporal,-0.08,,-0.15,-0.01,,,0.03,0.05
+psychosisvsCN,L_insula,-0.18,,-0.25,-0.11,,,7.28E-07,2.82E-05
+psychosisvsCN,R_bankssts,-0.13,,-0.21,-0.06,,,1.99E-04,1.18E-03
+psychosisvsCN,R_caudalanteriorcingulate,-0.05,,-0.12,0.02,,,0.13,0.16
+psychosisvsCN,R_caudalmiddlefrontal,-0.14,,-0.21,-0.06,,,1.84E-04,1.14E-03
+psychosisvsCN,R_cuneus,-0.05,,-0.13,0.02,,,0.13,0.16
+psychosisvsCN,R_entorhinal,-0.06,,-0.13,0.01,,,0.11,0.14
+psychosisvsCN,R_fusiform,-0.11,,-0.18,-0.04,,,2.34E-03,6.08E-03
+psychosisvsCN,R_inferiorparietal,-0.12,,-0.19,-0.04,,,1.41E-03,4.45E-03
+psychosisvsCN,R_inferiortemporal,-0.14,,-0.21,-0.07,,,9.00E-05,6.64E-04
+psychosisvsCN,R_isthmuscingulate,-0.07,,-0.14,0,,,0.07,0.09
+psychosisvsCN,R_lateraloccipital,-0.17,,-0.24,-0.1,,,2.28E-06,5.88E-05
+psychosisvsCN,R_lateralorbitofrontal,-0.08,,-0.15,-0.01,,,0.02,0.04
+psychosisvsCN,R_lingual,-0.01,,-0.08,0.06,,,0.72,0.76
+psychosisvsCN,R_medialorbitofrontal,-0.09,,-0.16,-0.02,,,0.01,0.02
+psychosisvsCN,R_middletemporal,-0.18,,-0.25,-0.11,,,4.61E-07,2.82E-05
+psychosisvsCN,R_parahippocampal,-0.07,,-0.14,0,,,0.04,0.06
+psychosisvsCN,R_paracentral,-0.11,,-0.18,-0.04,,,2.65E-03,6.74E-03
+psychosisvsCN,R_parsopercularis,-0.08,,-0.15,-0.01,,,0.03,0.05
+psychosisvsCN,R_parsorbitalis,0.01,,-0.06,0.08,,,0.79,0.81
+psychosisvsCN,R_parstriangularis,-0.05,,-0.12,0.02,,,0.19,0.22
+psychosisvsCN,R_pericalcarine,0.04,,-0.03,0.11,,,0.31,0.34
+psychosisvsCN,R_postcentral,-0.14,,-0.21,-0.07,,,1.55E-04,1.04E-03
+psychosisvsCN,R_posteriorcingulate,-0.13,,-0.2,-0.06,,,2.69E-04,1.36E-03
+psychosisvsCN,R_precentral,-0.15,,-0.22,-0.07,,,6.15E-05,5.02E-04
+psychosisvsCN,R_precuneus,-0.15,,-0.22,-0.08,,,2.99E-05,3.31E-04
+psychosisvsCN,R_rostralanteriorcingulate,-0.06,,-0.13,-0.01,,,0.10,0.12
+psychosisvsCN,R_rostralmiddlefrontal,-0.11,,-0.18,-0.04,,,1.83E-03,5.19E-03
+psychosisvsCN,R_superiorfrontal,-0.08,,-0.15,-0.01,,,0.03,0.04
+psychosisvsCN,R_superiorparietal,-0.13,,-0.2,-0.06,,,3.96E-04,1.68E-03
+psychosisvsCN,R_superiortemporal,-0.15,,-0.22,-0.08,,,2.72E-05,3.24E-04
+psychosisvsCN,R_supramarginal,-0.1,,-0.17,-0.03,,,5.49E-03,0.01
+psychosisvsCN,R_frontalpole,-0.07,,-0.14,0,,,0.05,0.07
+psychosisvsCN,R_temporalpole,-0.08,,-0.15,-0.01,,,0.03,0.05
+psychosisvsCN,R_transversetemporal,-0.12,,-0.19,-0.04,,,1.35E-03,4.44E-03
+psychosisvsCN,R_insula,-0.16,,-0.23,-0.06,,,7.40E-06,1.15E-04

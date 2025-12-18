@@ -1,18 +1,17 @@
-Subcortical Volume;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-CHR-PS+ < CHR-PS-;LLatVent;-0.09;;-0.27;0.08;;;0.18;
-CHR-PS+ < CHR-PS-;Lthal;0;;-0.18;0.17;;;0.95;
-CHR-PS+ < CHR-PS-;Lcaud;0.02;;-0.16;0.19;;;0.78;
-CHR-PS+ < CHR-PS-;Lput;-0.03;;-0.21;0.14;;;0.64;
-CHR-PS+ < CHR-PS-;Lpal;0.01;;-0.16;0.18;;;0.89;
-CHR-PS+ < CHR-PS-;Lhippo;0.06;;-0.12;0.23;;;0.42;
-CHR-PS+ < CHR-PS-;Lamyg;0;;-0.18;0.17;;;0.96;
-CHR-PS+ < CHR-PS-;Laccumb;-0.06;;-0.24;0.11;;;0.37;
-CHR-PS+ < CHR-PS-;RLatVent;-0.06;;-0.23;0.12;;;0.43;
-CHR-PS+ < CHR-PS-;Rthal;-0.03;;-0.21;0.14;;;0.64;
-CHR-PS+ < CHR-PS-;Rcaud;0.01;;-0.17;0.19;;;0.88;
-CHR-PS+ < CHR-PS-;Rput;0.03;;-0.15;0.2;;;0.72;
-CHR-PS+ < CHR-PS-;Rpal;-0.08;;-0.25;0.1;;;0.26;
-CHR-PS+ < CHR-PS-;Rhippo;0;;-0.18;0.17;;;0.96;
-CHR-PS+ < CHR-PS-;Ramyg;0;;-0.18;0.17;;;0.95;
-CHR-PS+ < CHR-PS-;Raccumb;0.01;;-0.16;0.19;;;0.87;
-;;;;;;;;;
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+CHR-PS+<CHR-PS-,Laccumb,-0.06,,-0.24,0.11,,,0.37,
+CHR-PS+<CHR-PS-,Lamyg,0,,-0.18,0.17,,,0.96,
+CHR-PS+<CHR-PS-,Lcaud,0.02,,-0.16,0.19,,,0.78,
+CHR-PS+<CHR-PS-,Lhippo,0.06,,-0.12,0.23,,,0.42,
+CHR-PS+<CHR-PS-,Lpal,0.01,,-0.16,0.18,,,0.89,
+CHR-PS+<CHR-PS-,Lput,-0.03,,-0.21,0.14,,,0.64,
+CHR-PS+<CHR-PS-,Lthal,0,,-0.18,0.17,,,0.95,
+CHR-PS+<CHR-PS-,LLatVent,-0.09,,-0.27,0.08,,,0.18,
+CHR-PS+<CHR-PS-,Raccumb,0.01,,-0.16,0.19,,,0.87,
+CHR-PS+<CHR-PS-,Ramyg,0,,-0.18,0.17,,,0.95,
+CHR-PS+<CHR-PS-,Rcaud,0.01,,-0.17,0.19,,,0.88,
+CHR-PS+<CHR-PS-,Rhippo,0,,-0.18,0.17,,,0.96,
+CHR-PS+<CHR-PS-,Rpal,-0.08,,-0.25,0.1,,,0.26,
+CHR-PS+<CHR-PS-,Rput,0.03,,-0.15,0.2,,,0.72,
+CHR-PS+<CHR-PS-,Rthal,-0.03,,-0.21,0.14,,,0.64,
+CHR-PS+<CHR-PS-,RLatVent,-0.06,,-0.23,0.12,,,0.43,

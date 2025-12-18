@@ -735,6 +735,140 @@ Available summary statistics tables
 
 |
 
+Psychosis
+----------------------------
+Available summary statistics tables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+| **From** `Jalbrzikowski al., 2021, JAMA Psychiatry <https://jamanetwork.com/journals/jamapsychiatry/fullarticle/2779599#247859159>`_   |  **See paper for specific model corrections; FDR correction available**
+|    **Clinical high risk (CHR) vs. HC effect size overview (post-ComBat mega analysis)**
+|    ↪ CortThick_CHR_vs_HC_postCombat_mega 📸
+|    ↪ CortSurf_CHR_vs_HC_postCombat_mega 
+|    ↪ SubVol_CHR_vs_HC_postCombat_mega 
+|
+|    **CHR vs. HC effect size overview, ICV excluded (post-ComBat mega analysis)**
+|    ↪ CortThick_CHR_vs_HC_postCombat_ICVexcluded_mega
+|    ↪ CortSurf_CHR_vs_HC_postCombat_ICVexcluded_mega 
+|    ↪ SubVol_CHR_vs_HC_postCombat_ICVexcluded_mega 
+|
+|    **CHR subgroup (Attenuated Positive Symptom Syndrome, APS vs. HC)**
+|    ↪ CortThick_CHR_Subgroup_APS_vs_HC
+|    ↪ CortSurf_CHR_Subgroup_APS_vs_HC
+|    ↪ SubVol_CHR_Subgroup_APS_vs_HC
+|
+|    **CHR subgroup (Brief Intermittent Psychotic Symptom Syndrome, BIPS vs. HC)**
+|    ↪ CortThick_CHR_Subgroup_BIPS_vs_HC
+|    ↪ CortSurf_CHR_Subgroup_BIPS_vs_HC
+|    ↪ SubVol_CHR_Subgroup_BIPS_vs_HC
+|
+|    **CHR subgroup (Genetic Risk and Deterioration Syndrome, GRD vs. HC)**
+|    ↪ CortThick_CHR_Subgroup_GRD_vs_HC
+|    ↪ CortSurf_CHR_Subgroup_GRD_vs_HC
+|    ↪ SubVol_CHR_Subgroup_GRD_vs_HC
+|
+|    **CHR subgroup (APS vs BIPS)**
+|    ↪ CortThick_CHR_Subgroup_APS_vs_BIPS
+|    ↪ CortSurf_CHR_Subgroup_APS_vs_BIPS
+|    ↪ SubVol_CHR_Subgroup_APS_vs_BIPS
+|
+|    **CHR subgroup (APS vs GRD)**
+|    ↪ CortThick_CHR_Subgroup_APS_vs_GRD
+|    ↪ CortSurf_CHR_Subgroup_APS_vs_GRD
+|    ↪ SubVol_CHR_Subgroup_APS_vs_GRD
+|
+|    **CHR subgroup (GRD vs BIPS)**
+|    ↪ CortThick_CHR_Subgroup_GRD_vs_BIPS
+|    ↪ CortSurf_CHR_Subgroup_GRD_vs_BIPS
+|    ↪ SubVol_CHR_Subgroup_GRD_vs_BIPS
+|
+|    **APS subgroup (APS vs HC)**
+|    ↪ CortThick_APS_Subgroup_APS_vs_HC
+|    ↪ CortSurf_APS_Subgroup_APS_vs_HC
+|    ↪ SubVol_APS_Subgroup_APS_vs_HC
+|
+|    **APS subgroup (APS vs noAPS)**
+|    ↪ CortThick_APS_Subgroup_APS_vs_noAPS
+|    ↪ CortSurf_APS_Subgroup_APS_vs_noAPS
+|    ↪ SubVol_APS_Subgroup_APS_vs_noAPS
+|
+|    **APS subgroup (noAPS vs HC)**
+|    ↪ CortThick_APS_Subgroup_noAPS_vs_HC
+|    ↪ CortSurf_APS_Subgroup_noAPS_vs_HC
+|    ↪ SubVol_APS_Subgroup_noAPS_vs_HC
+|
+|    **BIPS subgroup (BIPS vs HC)**
+|    ↪ CortThick_BIPS_Subgroup_BIPS_vs_HC
+|    ↪ CortSurf_BIPS_Subgroup_BIPS_vs_HC
+|    ↪ SubVol_BIPS_Subgroup_BIPS_vs_HC
+|
+|    **BIPS subgroup (BIPS vs noBIPS)**
+|    ↪ CortThick_BIPS_Subgroup_BIPS_vs_noBIPS
+|    ↪ CortSurf_BIPS_Subgroup_BIPS_vs_noBIPS
+|    ↪ SubVol_BIPS_Subgroup_BIPS_vs_noBIPS
+|
+|    **BIPS subgroup (noBIPS vs HC)**
+|    ↪ CortThick_BIPS_Subgroup_noBIPS_vs_HC
+|    ↪ CortSurf_BIPS_Subgroup_noBIPS_vs_HC
+|    ↪ SubVol_BIPS_Subgroup_noBIPS_vs_HC
+|
+|    **GRD subgroup (GRD vs HC)**
+|    ↪ CortThick_GRD_Subgroup_GRD_vs_HC
+|    ↪ CortSurf_GRD_Subgroup_GRD_vs_HC
+|    ↪ SubVol_GRD_Subgroup_GRD_vs_HC
+|
+|    **GRD subgroup (GRD vs noGRD)**
+|    ↪ CortThick_GRD_Subgroup_GRD_vs_noGRD
+|    ↪ CortSurf_GRD_Subgroup_GRD_vs_noGRD
+|    ↪ SubVol_GRD_Subgroup_GRD_vs_noGRD
+|
+|    **GRD subgroup (noGRD vs HC)**
+|    ↪ CortThick_GRD_Subgroup_noGRD_vs_HC
+|    ↪ CortSurf_GRD_Subgroup_noGRD_vs_HC
+|    ↪ SubVol_GRD_Subgroup_noGRD_vs_HC
+|
+|    **CHR-PS subgroup (PS+ vs HC, post-ComBat mega analysis, with ICV correction)**
+|    ↪ CortThick_CHR_PS_Subgroup_PSpos_vs_HC
+|    ↪ CortSurf_CHR_PS_Subgroup_PSpos_vs_HC
+|    ↪ SubVol_CHR_PS_Subgroup_PSpos_vs_HC
+|
+|    **CHR-PS subgroup (PS- vs HC, post-ComBat mega analysis, with ICV correction)**
+|    ↪ CortThick_CHR_PS_Subgroup_PSneg_vs_HC
+|    ↪ CortSurf_CHR_PS_Subgroup_PSneg_vs_HC
+|    ↪ SubVol_CHR_PS_Subgroup_PSneg_vs_HC
+|
+|    **CHR-PS subgroup (PS+ vs PS+, post-ComBat mega analysis, with ICV correction)**
+|    ↪ CortThick_CHR_PS_Subgroup_PSpos_vs_PSneg
+|    ↪ CortSurf_CHR_PS_Subgroup_PSpos_vs_PSneg
+|    ↪ SubVol_CHR_PS_Subgroup_PSpos_vs_PSneg
+
+.. tabs::
+
+   .. code-tab:: py **Python** | meta
+
+        >>> from enigmatoolbox.datasets import load_summary_stats
+
+        >>> # Load summary statistics for ENIGMA-Clinical High Risk for Psychosis
+        >>> sum_stats = load_summary_stats('psychosis')
+
+        >>> # Get case-control cortical thickness table
+        >>> CT = sum_stats['CortThick_CHR_vs_HC_postCombat_mega']
+
+        >>> # Extract Cohen's d values
+        >>> CT_d = CT['d_icv']
+
+   .. code-tab:: matlab **Matlab** | meta
+
+        % Load summary statistics for ENIGMA-Clinical High Risk for Psychosis
+        sum_stats = load_summary_stats('psychosis');
+        
+        % Get case-control cortical thickness table
+        CT = sum_stats.CortThick_CHR_vs_HC_postCombat_mega;
+
+        % Extract Cohen's d values
+        CT_d = CT.d_icv;
+
+|
+
 Schizophrenia
 ----------------------------
 Available summary statistics tables

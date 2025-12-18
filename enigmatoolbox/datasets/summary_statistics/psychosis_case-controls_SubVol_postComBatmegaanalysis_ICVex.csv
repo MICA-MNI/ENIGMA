@@ -1,19 +1,17 @@
-Subcortical Volume;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-psychosisvsCN;LLatVent;0,06;;-0.01;0,13;;;0,08;0,11
-psychosisvsCN;Lthal;-0,12;;-0,19;-0,05;;;6,66E-04;2,58E-03
-psychosisvsCN;Lcaud;-0,04;;-0,12;0,03;;;0,21;0,24
-psychosisvsCN;Lput;-0,06;;-0,13;0,01;;;0,09;0,12
-psychosisvsCN;Lpal;-0,08;;-0,15;-0,01;;;0,04;0,05
-psychosisvsCN;Lhippo;-0,15;;-0,22;-0,08;;;5,20E-05;4,48E-04
-psychosisvsCN;Lamyg;-0,09;;-0,16;-0,02;;;9,09E-03;0,02
-psychosisvsCN;Laccumb;-0,09;;-0,16;-0,02;;;0,01;0,03
-psychosisvsCN;RLatVent;0,06;;-0,01;0,13;;;0,11;0,14
-psychosisvsCN;Rthal;-0,15;;-0,22;-0,08;;;4,75E-05;4,38E-04
-psychosisvsCN;Rcaud;-0,07;;-0,14;0;;;0,04;0,06
-psychosisvsCN;Rput;-0,07;;-0,14;0;;;0,07;0,09
-psychosisvsCN;Rpal;-0,08;;-0,15;-0,01;;;0,03;0,05
-psychosisvsCN;Rhippo;-0,2;;-0,27;-0,13;;;1,64E-08;2,55E-06
-psychosisvsCN;Ramyg;-0,13;;-0,2;-0,06;;;2,80E-04;1,36E-03
-psychosisvsCN;Raccumb;-0,06;;-0,13;0,01;;;0,11;0,14
-;;;;;;;;;
-;;;;;;;;;
+Subcortical Volume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+psychosisvsCN,Laccumb,-0.09,,-0.16,-0.02,,,0.01,0.03
+psychosisvsCN,Lamyg,-0.09,,-0.16,-0.02,,,9.09E-03,0.02
+psychosisvsCN,Lcaud,-0.04,,-0.12,0.03,,,0.21,0.24
+psychosisvsCN,Lhippo,-0.15,,-0.22,-0.08,,,5.20E-05,4.48E-04
+psychosisvsCN,Lpal,-0.08,,-0.15,-0.01,,,0.04,0.05
+psychosisvsCN,Lput,-0.06,,-0.13,0.01,,,0.09,0.12
+psychosisvsCN,Lthal,-0.12,,-0.19,-0.05,,,6.66E-04,2.58E-03
+psychosisvsCN,LLatVent,0.06,,-0.01,0.13,,,0.08,0.11
+psychosisvsCN,Raccumb,-0.06,,-0.13,0.01,,,0.11,0.14
+psychosisvsCN,Ramyg,-0.13,,-0.2,-0.06,,,2.80E-04,1.36E-03
+psychosisvsCN,Rcaud,-0.07,,-0.14,0,,,0.04,0.06
+psychosisvsCN,Rhippo,-0.2,,-0.27,-0.13,,,1.64E-08,2.55E-06
+psychosisvsCN,Rpal,-0.08,,-0.15,-0.01,,,0.03,0.05
+psychosisvsCN,Rput,-0.07,,-0.14,0,,,0.07,0.09
+psychosisvsCN,Rthal,-0.15,,-0.22,-0.08,,,4.75E-05,4.38E-04
+psychosisvsCN,RLatVent,0.06,,-0.01,0.13,,,0.11,0.14

@@ -1347,345 +1347,247 @@ def load_summary_stats(disorder=None):
                 'Subvol_PDvsCN': Subvol_PDvsCN}    
 
     elif disorder == "psychosis":
-        psychosis_case_controls_SubVol_AntiPsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_AntiPsy.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_AntiPsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_AntiPsy.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_APSSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_APSSubgroup_APSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_APSSubgroup_APSvsnoAPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_APSSubgroup_APSvsnoAPS.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_APSSubgroup_noAPSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_APSSubgroup_noAPSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_BIPSSubgroup_BIPSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsnoBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_BIPSSubgroup_BIPSvsnoBIPS.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_BIPSSubgroup_noBIPSvsCN = pd.read_csv(os.path.join(root_pth,   'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_BIPSSubgroup_noBIPSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS-vsCN_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PSvsplusCHR_PS_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCHR-PS-_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PSplusvsCHR_PS_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCN_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCN_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHRSubgroup_APSvsBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHRSubgroup_APSvsBIPS.csv'),
-                                                    on_bad_lines='skip')                                            
-        psychosis_case_controls_CortSurf_CHRSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                'summary_statistics',
-                                                                'psychosis_case-controls_CortSurf_CHRSubgroup_APSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHRSubgroup_APSvsGRD = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHRSubgroup_APSvsGRD.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHRSubgroup_BIPSvsCN  = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHRSubgroup_BIPSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHRSubgroup_GRDvsBIPS.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_CHRSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_GRDSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsnoGRD = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_GRDSubgroup_GRDvsnoGRD.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_GRDSubgroup_noGRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_GRDSubgroup_noGRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_ICV = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_ICV.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortSurf_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortSurf_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_AntiPsy = pd.read_csv(os.path.join(root_pth, 'summary_statistics',  
-                                                             'psychosis_case-controls_CortThick_AntiPsy.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_APSSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth,  'summary_statistics',
-                                                             'psychosis_case-controls_CortThick_APSSubgroup_APSvsCN.csv'),
-                                                    on_bad_lines='skip') 
-        psychosis_case_controls_CortThick_APSSubgroup_APSvsnoAPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_APSSubgroup_APSvsnoAPS.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_BIPSSubgroup_BIPSvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsnoBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                          'psychosis_case-controls_CortThick_BIPSSubgroup_BIPSvsnoBIPS.csv'),
-                                                             on_bad_lines='skip')
-        psychosis_case_controls_CortThick_BIPSSubgroup_noBIPSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                         'psychosis_case-controls_CortThick_BIPSSubgroup_noBIPSvsCN.csv'),
-                                                            on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_APSvsBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                     'psychosis_case-controls_CortThick_CHRSubgroup_APSvsBIPS.csv'),
-                                                        on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                    'psychosis_case-controls_CortThick_CHRSubgroup_APSvsCN.csv'),
-                                                       on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_APSvsGRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                              'psychosis_case-controls_CortThick_CHRSubgroup_APSvsGRD.csv'),
-                                                                 on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_BIPSvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
-                                                                             'psychosis_case-controls_CortThick_CHRSubgroup_BIPSvsCN.csv'),
-                                                                on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_GRDvsBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHRSubgroup_GRDvsBIPS.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHRSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHRSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysisICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHR-PS-vsCN_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHR-PS+vsCHR-PS-_postComBatmegaanalysis_ICVex.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                       'summary_statistics',
-                                                                'psychosis_case-controls_CortThick_CHR-PS+vsCN_postComBatmegaanalysis_ICVex.csv'),
-                                                          on_bad_lines='skip')
-        psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_CHR-PS+vsCN_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_GRDSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_GRDSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_GRDSubgroup_GRDvsnoGRD = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_GRDSubgroup_GRDvsnoGRD.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_GRDSubgroup_noGRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_GRDSubgroup_noGRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_CortThick_ICV = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
+        CortThick_CHR_vs_HC_postCombat_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'psychosis_case-controls_CortThick_ICV.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_CortThick_noAPSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_CortThick_noAPSvsCN.csv'),
+        CortSurf_CHR_vs_HC_postCombat_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_ICV.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_CortThick_postComBatmegaanalysis_ICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
+        SubVol_CHR_vs_HC_postCombat_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_ICV.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_CHR_vs_HC_postCombat_ICVexcluded_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'psychosis_case-controls_CortThick_postComBatmegaanalysis_ICVex.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_APSSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_APSSubgroup_APSvsCN.csv'),
+        CortSurf_CHR_vs_HC_postCombat_ICVexcluded_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_postComBatmegaanalysis_ICVex.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_APSSubgroup_APSvsnoAPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_APSSubgroup_APSvsnoAPS.csv'),
+        SubVol_CHR_vs_HC_postCombat_ICVexcluded_mega = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_postComBatmegaanalysis_ICVex.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_APSSubgroup_noAPSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_APSSubgroup_noAPSvsCN.csv'),
-                                                    on_bad_lines='skip') 
-        psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_BIPSSubgroup_BIPSvsCN.csv'),
+        CortThick_CHR_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_APSvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsnoBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_BIPSSubgroup_BIPSvsnoBIPS.csv'),
+        CortSurf_CHR_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_APSvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_BIPSSubgroup_noBIPSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_BIPSSubgroup_noBIPSvsCN.csv'),
+        SubVol_CHR_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_APSvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysisICVex = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHR-PS-vsCN_postComBatmegaanalysis_ICVex.csv'),
+        CortThick_CHR_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_BIPSvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
-                                                    on_bad_lines='skip')                                            
-        psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex = pd.read_csv(os.path.join(root_pth,
-                                                                'summary_statistics',
-                                                                'psychosis_case-controls_SubVol_CHR-PS+vsCHR-PS-_postComBatmegaanalysis_ICVex.csv'),
+        CortSurf_CHR_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_BIPSvcCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
+        SubVol_CHR_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_BIPSvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysisICVex  = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHR-PS+vsCN_postComBatmegaanalysis_ICVex.csv'),
+        CortThick_CHR_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_GRDvsCN.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysis = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
+        CortSurf_CHR_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_GRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_CHR_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_GRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_CHR_Subgroup_APS_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_APSvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_CHR_Subgroup_APS_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_APSvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_CHR_Subgroup_APS_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_APSvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_CHR_Subgroup_GRD_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_GRDvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_CHR_Subgroup_GRD_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_GRDvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_CHR_Subgroup_GRD_vs_BIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_GRDvsBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_CHR_Subgroup_APS_vs_GRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR_Subgroup_APSvsGRD.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_CHR_Subgroup_APS_vs_GRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR_Subgroup_APSvsGRD.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_CHR_Subgroup_APS_vs_GRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR_Subgroup_APSvsGRD.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_APS_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_APS_Subgroup_APSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_APS_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_APS_Subgroup_APSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_APS_Subgroup_APS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_APS_Subgroup_APSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_APS_Subgroup_APS_vs_noAPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_APS_Subgroup_APSvsnoAPS.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_APS_Subgroup_APS_vs_noAPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_APS_Subgroup_APSvsnoAPS.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_APS_Subgroup_APS_vs_noAPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_APS_Subgroup_APSvsnoAPS.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_APS_Subgroup_noAPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_APS_Subgroup_noAPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_APS_Subgroup_noAPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_APS_Subgroup_noAPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_APS_Subgroup_noAPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_APS_Subgroup_noAPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_BIPS_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_BIPS_Subgroup_BIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_BIPS_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_BIPS_Subgroup_BIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_BIPS_Subgroup_BIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_BIPS_Subgroup_BIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_BIPS_Subgroup_BIPS_vs_noBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_BIPS_Subgroup_BIPSvsnoBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_BIPS_Subgroup_BIPS_vs_noBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_BIPS_Subgroup_BIPSvsnoBIPS.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_BIPS_Subgroup_BIPS_vs_noBIPS = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_BIPS_Subgroup_BIPSvsnoBIPS.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_BIPS_Subgroup_noBIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_BIPS_Subgroup_noBIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_BIPS_Subgroup_noBIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_BIPS_Subgroup_noBIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_BIPS_Subgroup_noBIPS_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_BIPS_Subgroup_noBIPSvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_GRD_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_GRD_Subgroup_GRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_GRD_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_GRD_Subgroup_GRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_GRD_Subgroup_GRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_GRD_Subgroup_GRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_GRD_Subgroup_GRD_vs_noGRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_GRD_Subgroup_GRDvsnoGRD.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_GRD_Subgroup_GRD_vs_noGRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_GRD_Subgroup_GRDvsnoGRD.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_GRD_Subgroup_GRD_vs_noGRD = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_GRD_Subgroup_GRDvsnoGRD.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_GRD_Subgroup_noGRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_GRD_Subgroup_noGRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_GRD_Subgroup_noGRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_GRD_Subgroup_noGRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_GRD_Subgroup_noGRD_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_GRD_Subgroup_noGRDvsCN.csv'),
+                                                    on_bad_lines='skip')
+        CortThick_CHR_PS_Subgroup_PSpos_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR-PS+vsCN_postComBatmegaanalysis.csv'),
+                                                    on_bad_lines='skip')
+        CortSurf_CHR_PS_Subgroup_PSpos_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCN_postComBatmegaanalysis.csv'),
+                                                    on_bad_lines='skip')
+        SubVol_CHR_PS_Subgroup_PSpos_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
                                                                  'psychosis_case-controls_SubVol_CHR-PS+vsCN_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_APSvsBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_APSvsBIPS.csv'),
+        CortThick_CHR_PS_Subgroup_PSneg_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_APSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_APSvsCN.csv'),
+        CortSurf_CHR_PS_Subgroup_PSneg_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_APSvsGRD = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_APSvsGRD.csv'),
+        SubVol_CHR_PS_Subgroup_PSneg_vs_HC = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR-PS-vsCN_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_BIPSvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_BIPSvsCN.csv'),
+        CortThick_CHR_PS_Subgroup_PSpos_vs_PSneg = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortThick_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_GRDvsBIPS = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_GRDvsBIPS.csv'),
+        CortSurf_CHR_PS_Subgroup_PSpos_vs_PSneg = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_CortSurf_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
-        psychosis_case_controls_SubVol_CHRSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_CHRSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_SubVol_GRDSubgroup_GRDvsCN = pd.read_csv(os.path.join(root_pth, 'summary_statistics',  
-                                                             'psychosis_case-controls_SubVol_GRDSubgroup_GRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_SubVol_GRDSubgroup_GRDvsnoGRD = pd.read_csv(os.path.join(root_pth,  'summary_statistics',
-                                                             'psychosis_case-controls_SubVol_GRDSubgroup_GRDvsnoGRD.csv'),
-                                                    on_bad_lines='skip')   
-        psychosis_case_controls_SubVol_GRDSubgroup_noGRDvsCN = pd.read_csv(os.path.join(root_pth,
-                                                                 'summary_statistics',
-                                                                 'psychosis_case-controls_SubVol_GRDSubgroup_noGRDvsCN.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_SubVol_ICV = pd.read_csv(os.path.join(root_pth, 'summary_statistics',  
-                                                             'psychosis_case-controls_SubVol_ICV.csv'),
-                                                    on_bad_lines='skip')
-        psychosis_case_controls_SubVol_postComBatmegaanalysisICVex = pd.read_csv(os.path.join(root_pth,  'summary_statistics',
-                                                             'psychosis_case-controls_SubVol_postComBatmegaanalysis_ICVex.csv'),
+        SubVol_CHR_PS_Subgroup_PSpos_vs_PSneg = pd.read_csv(os.path.join(root_pth, 'summary_statistics',
+                                                                 'psychosis_case-controls_SubVol_CHR-PS+vsCHR-PS-_postComBatmegaanalysis.csv'),
                                                     on_bad_lines='skip')
 
-        return {'psychosis_case_controls_SubVol_AntiPsy': psychosis_case_controls_SubVol_AntiPsy,
-                'psychosis_case_controls_CortSurf_AntiPsy': psychosis_case_controls_CortSurf_AntiPsy,
-                'psychosis_case_controls_CortSurf_APSSubgroup_APSvsCN':psychosis_case_controls_CortSurf_APSSubgroup_APSvsCN,
-                'psychosis_case_controls_CortSurf_APSSubgroup_APSvsnoAPS': psychosis_case_controls_CortSurf_APSSubgroup_APSvsnoAPS,
-                'psychosis_case_controls_CortSurf_APSSubgroup_noAPSvsCN': psychosis_case_controls_CortSurf_APSSubgroup_noAPSvsCN,
-                'psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsCN': psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsCN,
-                'psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsnoBIPS': psychosis_case_controls_CortSurf_BIPSSubgroup_BIPSvsnoBIPS,
-                'psychosis_case_controls_CortSurf_BIPSSubgroup_noBIPSvsCN':psychosis_case_controls_CortSurf_BIPSSubgroup_noBIPSvsCN,
-                'psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis_ICVex':psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis':psychosis_case_controls_CortSurf_CHR_PS_vsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_CortSurf_CHR_PSvsplusCHR_PS_postComBatmegaanalysis_ICVex': psychosis_case_controls_CortSurf_CHR_PSvsplusCHR_PS_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_CortSurf_CHR_PSplusvsCHR_PS_postComBatmegaanalysis':psychosis_case_controls_CortSurf_CHR_PSplusvsCHR_PS_postComBatmegaanalysis,
-                'psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex': psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis':psychosis_case_controls_CortSurf_CHR_PSplusvsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_APSvsBIPS':psychosis_case_controls_CortSurf_CHRSubgroup_APSvsBIPS,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_APSvsCN':psychosis_case_controls_CortSurf_CHRSubgroup_APSvsCN,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_APSvsGRD':psychosis_case_controls_CortSurf_CHRSubgroup_APSvsGRD,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_BIPSvsCN':psychosis_case_controls_CortSurf_CHRSubgroup_BIPSvsCN,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsBIPS':psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsBIPS,
-                'psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsCN':psychosis_case_controls_CortSurf_CHRSubgroup_GRDvsCN,
-                'psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsCN':psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsCN,
-                'psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsnoGRD':psychosis_case_controls_CortSurf_GRDSubgroup_GRDvsnoGRD,
-                'psychosis_case_controls_CortSurf_GRDSubgroup_noGRDvsCN':psychosis_case_controls_CortSurf_GRDSubgroup_noGRDvsCN,
-                'psychosis_case_controls_CortSurf_ICV': psychosis_case_controls_CortSurf_ICV,
-                'psychosis_case_controls_CortSurf_postComBatmegaanalysis_ICVex': psychosis_case_controls_CortSurf_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_CortThick_AntiPsy':psychosis_case_controls_CortThick_AntiPsy,
-                'psychosis_case_controls_CortThick_APSSubgroup_APSvsCN': psychosis_case_controls_CortThick_APSSubgroup_APSvsCN,
-                'psychosis_case_controls_CortThick_APSSubgroup_APSvsnoAPS':psychosis_case_controls_CortThick_APSSubgroup_APSvsnoAPS,
-                'psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsCN':psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsCN,
-                'psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsnoBIPS':psychosis_case_controls_CortThick_BIPSSubgroup_BIPSvsnoBIPS,
-                'psychosis_case_controls_CortThick_BIPSSubgroup_noBIPSvsCN': psychosis_case_controls_CortThick_BIPSSubgroup_noBIPSvsCN,
-                'psychosis_case_controls_CortThick_CHRSubgroup_APSvsBIPS':psychosis_case_controls_CortThick_CHRSubgroup_APSvsBIPS,
-                'psychosis_case_controls_CortThick_CHRSubgroup_APSvsCN': psychosis_case_controls_CortThick_CHRSubgroup_APSvsCN,
-                'psychosis_case_controls_CortThick_CHRSubgroup_APSvsGRD':psychosis_case_controls_CortThick_CHRSubgroup_APSvsGRD,
-                'psychosis_case_controls_CortThick_CHRSubgroup_BIPSvsCN':psychosis_case_controls_CortThick_CHRSubgroup_BIPSvsCN,
-                'psychosis_case_controls_CortThick_CHRSubgroup_GRDvsBIPS':psychosis_case_controls_CortThick_CHRSubgroup_GRDvsBIPS,
-                'psychosis_case_controls_CortThick_CHRSubgroup_GRDvsCN':psychosis_case_controls_CortThick_CHRSubgroup_GRDvsCN,
-                'psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysisICVex':psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysisICVex,
-                'psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysis':psychosis_case_controls_CortThick_CHR_PS_vsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex':psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex,
-                'psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysis':psychosis_case_controls_CortThick_CHR_PSplusvsCHR_PS_postComBatmegaanalysis,
-                'psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex':psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis':psychosis_case_controls_CortThick_CHR_PSplusvsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_CortThick_GRDSubgroup_GRDvsCN':psychosis_case_controls_CortThick_GRDSubgroup_GRDvsCN,
-                'psychosis_case_controls_CortThick_GRDSubgroup_GRDvsnoGRD':psychosis_case_controls_CortThick_GRDSubgroup_GRDvsnoGRD,
-                'psychosis_case_controls_CortThick_GRDSubgroup_noGRDvsCN':psychosis_case_controls_CortThick_GRDSubgroup_noGRDvsCN,
-                'psychosis_case_controls_CortThick_ICV':psychosis_case_controls_CortThick_ICV,
-                'psychosis_case_controls_CortThick_noAPSvsCN':psychosis_case_controls_CortThick_noAPSvsCN,
-                'psychosis_case_controls_CortThick_postComBatmegaanalysis_ICVex':psychosis_case_controls_CortThick_postComBatmegaanalysis_ICVex,
-                'psychosis_case_controls_SubVol_APSSubgroup_APSvsCN':psychosis_case_controls_SubVol_APSSubgroup_APSvsCN,
-                'psychosis_case_controls_SubVol_APSSubgroup_APSvsnoAPS':psychosis_case_controls_SubVol_APSSubgroup_APSvsnoAPS,
-                'psychosis_case_controls_SubVol_APSSubgroup_noAPSvsCN':psychosis_case_controls_SubVol_APSSubgroup_noAPSvsCN,
-                'psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsCN':psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsCN,
-                'psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsnoBIPS':psychosis_case_controls_SubVol_BIPSSubgroup_BIPSvsnoBIPS,
-                'psychosis_case_controls_SubVol_BIPSSubgroup_noBIPSvsCN':psychosis_case_controls_SubVol_BIPSSubgroup_noBIPSvsCN,
-                'psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysisICVex':psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysisICVex,
-                'psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysis':psychosis_case_controls_SubVol_CHR_PS_vsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex':psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysisICVex,
-                'psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysis':psychosis_case_controls_SubVol_CHR_PSplusvsCHR_PS_postComBatmegaanalysis,
-                'psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysisICVex':psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysisICVex,
-                'psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysis':psychosis_case_controls_SubVol_CHR_PSplusvsCN_postComBatmegaanalysis,
-                'psychosis_case_controls_SubVol_CHRSubgroup_APSvsBIPS':psychosis_case_controls_SubVol_CHRSubgroup_APSvsBIPS,
-                'psychosis_case_controls_SubVol_CHRSubgroup_APSvsCN':psychosis_case_controls_SubVol_CHRSubgroup_APSvsCN,
-                'psychosis_case_controls_SubVol_CHRSubgroup_APSvsGRD':psychosis_case_controls_SubVol_CHRSubgroup_APSvsGRD,
-                'psychosis_case_controls_SubVol_CHRSubgroup_BIPSvsCN':psychosis_case_controls_SubVol_CHRSubgroup_BIPSvsCN,
-                'psychosis_case_controls_SubVol_CHRSubgroup_GRDvsBIPS': psychosis_case_controls_SubVol_CHRSubgroup_GRDvsBIPS,
-                'psychosis_case_controls_SubVol_CHRSubgroup_GRDvsCN':psychosis_case_controls_SubVol_CHRSubgroup_GRDvsCN,
-                'psychosis_case_controls_SubVol_GRDSubgroup_GRDvsCN':psychosis_case_controls_SubVol_GRDSubgroup_GRDvsCN,
-                'psychosis_case_controls_SubVol_GRDSubgroup_GRDvsnoGRD':psychosis_case_controls_SubVol_GRDSubgroup_GRDvsnoGRD,
-                'psychosis_case_controls_SubVol_GRDSubgroup_noGRDvsCN':psychosis_case_controls_SubVol_GRDSubgroup_noGRDvsCN,
-                'psychosis_case_controls_SubVol_ICV':psychosis_case_controls_SubVol_ICV,
-                'psychosis_case_controls_SubVol_postComBatmegaanalysisICVex': psychosis_case_controls_SubVol_postComBatmegaanalysisICVex}
+        return {'CortThick_CHR_vs_HC_postCombat_mega': CortThick_CHR_vs_HC_postCombat_mega,
+                'CortSurf_CHR_vs_HC_postCombat_mega': CortSurf_CHR_vs_HC_postCombat_mega,
+                'SubVol_CHR_vs_HC_postCombat_mega': SubVol_CHR_vs_HC_postCombat_mega,
+                'CortThick_CHR_vs_HC_postCombat_ICVexcluded_mega': CortThick_CHR_vs_HC_postCombat_ICVexcluded_mega,
+                'CortSurf_CHR_vs_HC_postCombat_ICVexcluded_mega': CortSurf_CHR_vs_HC_postCombat_ICVexcluded_mega,
+                'SubVol_CHR_vs_HC_postCombat_ICVexcluded_mega': SubVol_CHR_vs_HC_postCombat_ICVexcluded_mega,
+                'CortThick_CHR_Subgroup_APS_vs_HC': CortThick_CHR_Subgroup_APS_vs_HC,
+                'CortSurf_CHR_Subgroup_APS_vs_HC': CortSurf_CHR_Subgroup_APS_vs_HC,
+                'SubVol_CHR_Subgroup_APS_vs_HC': SubVol_CHR_Subgroup_APS_vs_HC,
+                'CortThick_CHR_Subgroup_BIPS_vs_HC': CortThick_CHR_Subgroup_BIPS_vs_HC,
+                'CortSurf_CHR_Subgroup_BIPS_vs_HC': CortSurf_CHR_Subgroup_BIPS_vs_HC,
+                'SubVol_CHR_Subgroup_BIPS_vs_HC': SubVol_CHR_Subgroup_BIPS_vs_HC,
+                'CortThick_CHR_Subgroup_GRD_vs_HC': CortThick_CHR_Subgroup_GRD_vs_HC,
+                'CortSurf_CHR_Subgroup_GRD_vs_HC': CortSurf_CHR_Subgroup_GRD_vs_HC,
+                'SubVol_CHR_Subgroup_GRD_vs_HC': SubVol_CHR_Subgroup_GRD_vs_HC,
+                'CortThick_CHR_Subgroup_APS_vs_BIPS': CortThick_CHR_Subgroup_APS_vs_BIPS,
+                'CortSurf_CHR_Subgroup_APS_vs_BIPS': CortSurf_CHR_Subgroup_APS_vs_BIPS,
+                'SubVol_CHR_Subgroup_APS_vs_BIPS': SubVol_CHR_Subgroup_APS_vs_BIPS,
+                'CortThick_CHR_Subgroup_GRD_vs_BIPS': CortThick_CHR_Subgroup_GRD_vs_BIPS,
+                'CortSurf_CHR_Subgroup_GRD_vs_BIPS': CortSurf_CHR_Subgroup_GRD_vs_BIPS,
+                'SubVol_CHR_Subgroup_GRD_vs_BIPS': SubVol_CHR_Subgroup_GRD_vs_BIPS,
+                'CortThick_CHR_Subgroup_APS_vs_GRD': CortThick_CHR_Subgroup_APS_vs_GRD,
+                'CortSurf_CHR_Subgroup_APS_vs_GRD': CortSurf_CHR_Subgroup_APS_vs_GRD,
+                'SubVol_CHR_Subgroup_APS_vs_GRD': SubVol_CHR_Subgroup_APS_vs_GRD,
+                'CortThick_APS_Subgroup_APS_vs_HC': CortThick_APS_Subgroup_APS_vs_HC,
+                'CortSurf_APS_Subgroup_APS_vs_HC': CortSurf_APS_Subgroup_APS_vs_HC,
+                'SubVol_APS_Subgroup_APS_vs_HC': SubVol_APS_Subgroup_APS_vs_HC,
+                'CortThick_APS_Subgroup_APS_vs_noAPS': CortThick_APS_Subgroup_APS_vs_noAPS,
+                'CortSurf_APS_Subgroup_APS_vs_noAPS': CortSurf_APS_Subgroup_APS_vs_noAPS,
+                'SubVol_APS_Subgroup_APS_vs_noAPS': SubVol_APS_Subgroup_APS_vs_noAPS,
+                'CortThick_APS_Subgroup_noAPS_vs_HC': CortThick_APS_Subgroup_noAPS_vs_HC,
+                'CortSurf_APS_Subgroup_noAPS_vs_HC': CortSurf_APS_Subgroup_noAPS_vs_HC,
+                'SubVol_APS_Subgroup_noAPS_vs_HC': SubVol_APS_Subgroup_noAPS_vs_HC,
+                'CortThick_BIPS_Subgroup_BIPS_vs_HC': CortThick_BIPS_Subgroup_BIPS_vs_HC,
+                'CortSurf_BIPS_Subgroup_BIPS_vs_HC': CortSurf_BIPS_Subgroup_BIPS_vs_HC,
+                'SubVol_BIPS_Subgroup_BIPS_vs_HC': SubVol_BIPS_Subgroup_BIPS_vs_HC,
+                'CortThick_BIPS_Subgroup_BIPS_vs_noBIPS': CortThick_BIPS_Subgroup_BIPS_vs_noBIPS,
+                'CortSurf_BIPS_Subgroup_BIPS_vs_noBIPS': CortSurf_BIPS_Subgroup_BIPS_vs_noBIPS,
+                'SubVol_BIPS_Subgroup_BIPS_vs_noBIPS': SubVol_BIPS_Subgroup_BIPS_vs_noBIPS,
+                'CortThick_BIPS_Subgroup_noBIPS_vs_HC': CortThick_BIPS_Subgroup_noBIPS_vs_HC,
+                'CortSurf_BIPS_Subgroup_noBIPS_vs_HC': CortSurf_BIPS_Subgroup_noBIPS_vs_HC,
+                'SubVol_BIPS_Subgroup_noBIPS_vs_HC': SubVol_BIPS_Subgroup_noBIPS_vs_HC,
+                'CortThick_GRD_Subgroup_GRD_vs_HC': CortThick_GRD_Subgroup_GRD_vs_HC,
+                'CortSurf_GRD_Subgroup_GRD_vs_HC': CortSurf_GRD_Subgroup_GRD_vs_HC,
+                'SubVol_GRD_Subgroup_GRD_vs_HC': SubVol_GRD_Subgroup_GRD_vs_HC,
+                'CortThick_GRD_Subgroup_GRD_vs_noGRD': CortThick_GRD_Subgroup_GRD_vs_noGRD,
+                'CortSurf_GRD_Subgroup_GRD_vs_noGRD': CortSurf_GRD_Subgroup_GRD_vs_noGRD,
+                'SubVol_GRD_Subgroup_GRD_vs_noGRD': SubVol_GRD_Subgroup_GRD_vs_noGRD,
+                'CortThick_GRD_Subgroup_noGRD_vs_HC': CortThick_GRD_Subgroup_noGRD_vs_HC,
+                'CortSurf_GRD_Subgroup_noGRD_vs_HC': CortSurf_GRD_Subgroup_noGRD_vs_HC,
+                'SubVol_GRD_Subgroup_noGRD_vs_HC': SubVol_GRD_Subgroup_noGRD_vs_HC,
+                'CortThick_CHR_PS_Subgroup_PSpos_vs_HC': CortThick_CHR_PS_Subgroup_PSpos_vs_HC,
+                'CortSurf_CHR_PS_Subgroup_PSpos_vs_HC': CortSurf_CHR_PS_Subgroup_PSpos_vs_HC,
+                'SubVol_CHR_PS_Subgroup_PSpos_vs_HC': SubVol_CHR_PS_Subgroup_PSpos_vs_HC,
+                'CortThick_CHR_PS_Subgroup_PSneg_vs_HC': CortThick_CHR_PS_Subgroup_PSneg_vs_HC,
+                'CortSurf_CHR_PS_Subgroup_PSneg_vs_HC': CortSurf_CHR_PS_Subgroup_PSneg_vs_HC,
+                'SubVol_CHR_PS_Subgroup_PSneg_vs_HC': SubVol_CHR_PS_Subgroup_PSneg_vs_HC,
+                'CortThick_CHR_PS_Subgroup_PSpos_vs_PSneg': CortThick_CHR_PS_Subgroup_PSpos_vs_PSneg,
+                'CortSurf_CHR_PS_Subgroup_PSpos_vs_PSneg': CortSurf_CHR_PS_Subgroup_PSpos_vs_PSneg,
+                'SubVol_CHR_PS_Subgroup_PSpos_vs_PSneg': SubVol_CHR_PS_Subgroup_PSpos_vs_PSneg}
 
     elif disorder == "schizophrenia":
         CortThick_case_controls = pd.read_csv(os.path.join(root_pth, 'summary_statistics',

@@ -1,17 +1,17 @@
-Subcortical Volume;Structure;d_icv;se_icv;low_ci_icv;up_ci_icv;n_controls;n_patients;pobs;fdr_p
-no GRD< HC;LLatVent;0.13;;0.05;0.2;;;8.52e-04;
-no GRD< HC;Lthal;-0.05;;-0.13;0.02;;;0.16;
-no GRD< HC;Lcaud;0.01;;-0.06;0.09;;;0.70;
-no GRD< HC;Lput;-0.01;;-0.09;0.06;;;0.76;
-no GRD< HC;Lpal;-0.03;;-0.1;0.05;;;0.48;
-no GRD< HC;Lhippo;-0.07;;-0.15;0;;;0.05;
-no GRD< HC;Lamyg;-0.04;;-0.12;0.03;;;0.25;
-no GRD< HC;Laccumb;-0.02;;-0.09;0.06;;;0.67;
-no GRD< HC;RLatVent;0.11;;0.03;0.18;;;5.47e03;
-no GRD< HC;Rthal;-0.10;;-0.17;-0.02;;;0.01;
-no GRD< HC;Rcaud;-0.02;;-0.1;0.05;;;0.53;
-no GRD< HC;Rput;-0.02;;-0.09;0.06;;;0.63;
-no GRD< HC;Rpal;-0.03;;-0.1;0.05;;;0.44;
-no GRD< HC;Rhippo;-0.16;;-0.23;-0.08;;;4.04e-05;
-no GRD< HC;Ramyg;-0.09;;-0.16;-0.01;;;0.03;
-no GRD< HC;Raccumb;0.01;;-0.07;0.08;;;0.85;
+SubcorticalVolume,Structure,d_icv,se_icv,low_ci_icv,up_ci_icv,n_controls,n_patients,pobs,fdr_p
+noGRD<HC,Laccumb,-0.02,,-0.09,0.06,,,0.67,
+noGRD<HC,Lamyg,-0.04,,-0.12,0.03,,,0.25,
+noGRD<HC,Lcaud,0.01,,-0.06,0.09,,,0.70,
+noGRD<HC,Lhippo,-0.07,,-0.15,0,,,0.05,
+noGRD<HC,Lpal,-0.03,,-0.1,0.05,,,0.48,
+noGRD<HC,Lput,-0.01,,-0.09,0.06,,,0.76,
+noGRD<HC,Lthal,-0.05,,-0.13,0.02,,,0.16,
+noGRD<HC,LLatVent,0.13,,0.05,0.2,,,8.52E-04,
+noGRD<HC,Raccumb,0.01,,-0.07,0.08,,,0.85,
+noGRD<HC,Ramyg,-0.09,,-0.16,-0.01,,,0.03,
+noGRD<HC,Rcaud,-0.02,,-0.1,0.05,,,0.53,
+noGRD<HC,Rhippo,-0.16,,-0.23,-0.08,,,4.04E-05,
+noGRD<HC,Rpal,-0.03,,-0.1,0.05,,,0.44,
+noGRD<HC,Rput,-0.02,,-0.09,0.06,,,0.63,
+noGRD<HC,Rthal,-0.10,,-0.17,-0.02,,,0.01,
+noGRD<HC,RLatVent,0.11,,0.03,0.18,,,5.47e03,
